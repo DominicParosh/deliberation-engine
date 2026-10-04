@@ -1,0 +1,581 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 10,
+    "repairs": 3,
+    "input_tokens": 33870,
+    "output_tokens": 5598,
+    "cost_usd": 0.0084,
+    "seconds": 64.3,
+    "warnings": []
+  },
+  "executive_summary": "This release will implement an alert system that notifies users when engagement levels with a country drop below a defined threshold and enhance data accuracy for compliance. The system will not include integrations with external notification systems or allow changes to the 'cold' definition from a 6-month period. Key decisions remain regarding ownership transfers for project managers and compliance practices, including retention of cold engagement records.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Enable users to receive alerts when engagement levels with any country drop below a specified threshold.",
+      "note": "This commitment enables users to receive alerts when engagement levels drop, a core aspect of the request.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Define 'cold' engagement as any country that has had no formal documented contact recorded in the system for a period of 6 months, while including informal engagements that are logged as exceptions. Implement a verification process that ensures the engagement history is accurate, which includes a regular audit of logged engagements every 3 months.",
+      "note": "Defining 'cold' engagement includes formal contacts for 6 months with exceptions for informal engagements, ensuring clarity in notifications.",
+      "refs": [
+        "C6"
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "Implement a notification system that sends alerts only to regional coordinators and project managers who are actively assigned to manage the country in the CRM, ensuring that notifications are limited to authorized personnel.",
+      "note": "Limiting alerts to regional coordinators and project managers addresses confidentiality concerns about sensitive information sharing.",
+      "refs": [
+        "C1",
+        "C3"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Allow users to configure the alert notification settings within their user profiles.",
+      "note": "Allowing users to configure alert settings supports individual user preferences, enhancing usability of the feature.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "Provide a dashboard widget that displays countries whose relationships are currently classified as 'cold'.",
+      "note": "The dashboard widget is a useful tool for visualizing cold relationships, contributing to proactive management.",
+      "refs": []
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include integrations with external notification systems (e.g., email alerts, SMS alerts).",
+      "note": "Integrations with external systems are out of scope to keep the project focused and manageable at this stage.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not allow users to change the definition of 'cold' to a time frame other than 6 months.",
+      "note": "Not allowing changes to the definition of 'cold' engagement ensures a consistent application of the criteria across users and use cases.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users have access to the CRM system where relationships and engagements are logged, which the alert feature depends on.",
+      "note": "Assuming users have access to the CRM is crucial for the functionality of alerts as part of their management responsibilities.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "User roles are already established within the CRM, allowing for differentiated access to features such as alerts, which this proposal relies on.",
+      "note": "Established user roles are fundamental to ensuring that access restrictions align with the sensitive nature of data involved in the alerts.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "The organization has defined engagement activities that can be tracked in order to determine when a relationship is classified as 'cold'.",
+      "note": "Defined engagement activities are necessary for classification purposes, ensuring that the alert system can function accurately.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Cold' engagement means having no documented contact recorded between the organization and a country within the last 6 months.",
+      "note": "Clarifying the definition of 'cold' engagement avoids ambiguity in the alert system, contributing to effective communication strategies.",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "'Alert notification' means a message generated by the CRM system that informs users of a change in a relationship status.",
+      "note": "Defining 'alert notification' provides a clear understanding of what users can expect from the alert system features.",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "'Users' refers to regional coordinators and project managers who have the authority to manage relationships with government counterparts.",
+      "note": "Clearly defining 'users' ensures the intended audience for notifications is understood, safeguarding sensitive information.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 80% of users receive the alert notification within 24 hours of the engagement status being classified as 'cold', measured through user feedback and system logs.",
+      "note": "Setting a target of 80% for alert notifications ensures a measurable success criterion for this feature implementation.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C2",
+      "question": "What process will be established for transferring ownership of relationships when project managers leave or change roles?",
+      "why_it_matters": "This decision impacts continuity and effectiveness in managing government relationships.",
+      "decision_owner": "Head of Operations",
+      "options": [
+        "Define a transfer protocol",
+        "Allow project managers to assign successors",
+        "Create an automated assignment system"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C4",
+      "question": "What quality control measures will be put in place to ensure the accuracy of engagement history?",
+      "why_it_matters": "Accurate engagement history is critical to prevent false alerts and maintain effective communications.",
+      "decision_owner": "Head of Data Management",
+      "options": [
+        "Implement regular audits of engagement records",
+        "Establish user verification processes",
+        "Adjust data entry protocols"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C5",
+      "question": "What will be the defined retention period for records related to cold engagements?",
+      "why_it_matters": "This is essential for compliance and ensures that critical historical information is not lost.",
+      "decision_owner": "Compliance Officer",
+      "options": [
+        "Set a fixed retention period (e.g., 2 years)",
+        "Adopt a rolling review process for records",
+        "Maintain indefinitely unless manually deleted"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C8",
+      "question": "How long will records related to cold engagements be retained?",
+      "why_it_matters": "Retention policies directly affect compliance and operational effectiveness in managing relationships.",
+      "decision_owner": "Head of Compliance",
+      "options": [
+        "6 months",
+        "1 year",
+        "Undefined"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The real disagreement focused on data ownership and compliance risks related to undefined retention policies for cold engagement records. While the Proposer emphasized the importance of defining the alert system's parameters, the Critic stressed the need for organizational decisions on handling ownership transfers and compliance measures, leading to unresolved questions.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 30,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 8,
+        "open": 2,
+        "resolved": 3,
+        "escalated": 3,
+        "disagreement": 0.59,
+        "proposer_confidence": 80,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 8,
+        "open": 0,
+        "resolved": 4,
+        "escalated": 4,
+        "disagreement": 0.47,
+        "proposer_confidence": 75,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 75,
+        "worry": "Ensuring the implemented verification process effectively identifies and corrects any inaccuracies in engagement records."
+      },
+      "critic": {
+        "confidence": 70,
+        "worry": "Unresolved compliance risk due to undefined retention policies for cold engagement records."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S2 does not specify which user roles can see alerts related to cold relationships, leading to the risk of sensitive information being improperly shared among users.",
+      "failure_scenario": "A regional coordinator receives alerts about cold relationships with countries but does not have the context of recent engagements since project managers have visibility limitations, resulting in misguided communications.",
+      "resolution_test": "Which user roles can see alerts related to cold relationships?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 does not specify which user roles can see alerts related to cold relationships, leading to the risk of sensitive information being improperly shared among users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "My edit clarifies that only users responsible for managing the relationship with a country will receive alerts, which addresses the confidentiality concern.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies who receives notifications, addressing the confidentiality concern. Fact: Only regional coordinators and project managers managing the country receive alerts. Evidence: \"S2: Implement a notification system that sends alerts only to regional coordinators and project managers who are actively assigned to manage the country in the CRM, ensuring that notifications are limited to authorized personnel.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on what happens when a project manager changes roles or leaves the organization, potentially leaving gaps in relationship management responsibilities.",
+      "failure_scenario": "A project manager responsible for maintaining relationships with several key government counterparts leaves the organization, and their alerts and engagement history are not transferred or managed, leading to a breakdown in communications with those countries.",
+      "resolution_test": "What happens to alerts and ownership of relationships when a project manager leaves or changes roles?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on what happens when a project manager changes roles or leaves the organization, potentially leaving gaps in relationship management responsibilities.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Decisions regarding the process for transferring ownership of relationships when project managers leave or change roles must be defined by the organization.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "A process for ownership transfer relies on organizational decisions, which cannot be settled here.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define the criteria for user notifications when a relationship is classified as 'cold', potentially allowing unauthorized personnel to receive sensitive alerts.",
+      "failure_scenario": "An alert is sent to an executive who does not require this information, leading to unnecessary escalations or inquiries regarding countries that the executive is not responsible for managing.",
+      "resolution_test": "What criteria determine who gets notified when a relationship is classified as 'cold'?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define the criteria for user notifications when a relationship is classified as 'cold', potentially allowing unauthorized personnel to receive sensitive alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit ensures that alerts are only sent to those who are responsible for the country, thereby improving confidentiality and preventing unauthorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This change addresses unauthorized access to sensitive information. Fact: Only responsible personnel receive notifications about cold relationships. Evidence: \"S2: Implement a notification system that sends alerts only to regional coordinators and project managers who are actively assigned to manage the country in the CRM, ensuring that notifications are limited to authorized personnel.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "Insufficient precautions are specified to ensure the accuracy of engagement history that determines cold status, risking false alerts.",
+      "failure_scenario": "Due to inconsistencies in logged engagement data, a country is classified as 'cold' despite recent informal contacts, resulting in a project manager being incorrectly alerted and reacting inappropriately.",
+      "resolution_test": "What measures are in place to ensure engagement history is accurate to avoid false alerts?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Insufficient precautions are specified to ensure the accuracy of engagement history that determines cold status, risking false alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Ensuring the accuracy of engagement history to avoid false alerts is a matter that requires a decision from the organization regarding quality control measures.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Quality control measures for data accuracy require organizational decisions.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The retention period of records related to cold engagements is not defined, which raises compliance risks.",
+      "failure_scenario": "Engagement records automatically deleted after a certain period lead to a project manager not having access to critical historical context, causing miscommunication with government counterparts.",
+      "resolution_test": "How long will 'cold' engagement records be retained, and what happens to them after that period?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The retention period of records related to cold engagements is not defined, which raises compliance risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Decisions about compliance and the retention of engagement records must be made by the organization, as they involve legal and regulatory considerations.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Retention periods for records involve legal compliance decisions that cannot be resolved in this proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not provide parameters to differentiate between cold relationships and those with minimal contact, which may result in unnecessary alerts.",
+      "failure_scenario": "A country with minimal contact but ongoing informal discussions is mistakenly classified as cold, leading to unwarranted outreach efforts from a project manager.",
+      "resolution_test": "Are there parameters to distinguish between cold relationships and relationships with minimal contact?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not provide parameters to differentiate between cold relationships and those with minimal contact, which may result in unnecessary alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clearly distinguishes between 'cold' and minimally engaged relationships, helping to avoid unnecessary alerts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This provides a clear distinction between cold relationships and those with minimal contact. Fact: 'Cold' engagement is defined as no formal contact for 6 months, with exceptions for logged informal engagements. Evidence: \"S1: Define 'cold' engagement as any country that has had no formal documented contact recorded in the system for a period of 6 months, while including informal engagements that are logged as exceptions.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks specific measures to ensure the accuracy of engagement history, risking that inaccurate data could lead to false alerts.",
+      "failure_scenario": "Without quality control measures, a country is inaccurately classified as 'cold', prompting unnecessary outreach from a project manager and causing relationship strain.",
+      "resolution_test": "What specific measures are in place to verify the accuracy of engagement history to prevent false alerts?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks specific measures to ensure the accuracy of engagement history, risking that inaccurate data could lead to false alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that a verification process including regular audits will be implemented to ensure the accuracy of engagement history, which addresses the risk of false alerts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment to a verification process and regular audits addresses concerns about data accuracy. Fact: Engagement history will undergo audits every 3 months for accuracy. Evidence: \"Implement a verification process that ensures the engagement history is accurate, which includes a regular audit of logged engagements every 3 months.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define how long cold engagement records will be retained, creating compliance risks.",
+      "failure_scenario": "Engagement records being deleted prematurely makes it impossible for project managers to access critical historical context, leading to miscommunication.",
+      "resolution_test": "What is the defined retention period for records related to cold engagements?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define how long cold engagement records will be retained, creating compliance risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The retention period for records related to cold engagements must be defined by organizational policy, and this is not within the scope of decisions that can be made in this proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The answer requires a decision regarding the retention policy, which is a human decision.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    }
+  ]
+}

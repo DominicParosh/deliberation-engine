@@ -1,0 +1,410 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "pre_mortem": "A year after launch, the engagement history feature mistakenly allowed project managers to view sensitive records related to diplomatic interactions that should have remained confidential. A project manager inadvertently shared this information with external partners during a presentation, leading to a diplomatic incident that strained relations between the organization and a key government representative.",
+  "gaps": [
+    "Who can see the engagement history of a country aside from project managers?",
+    "What specific data from the engagement history is considered sensitive or confidential, and how is it protected?",
+    "How will access to engagement history be audited or logged to ensure compliance with data handling regulations?",
+    "What happens to the engagement history if a project manager does not have clearance for specific records?",
+    "What criteria are used to verify the accuracy and relevance of the engagement data gathered?",
+    "How will the feature handle the transition of project managers leaving or changing roles?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will enable project managers to view the complete history of engagements with a country, including past missions and interactions. The feature is designed for project managers who need access to this information to make informed decisions before initiating new missions.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Project managers can access the full history of engagements with each country."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a user interface for project managers that displays engagement history with countries, including dates, descriptions of interactions, and associated personnel."
+        },
+        {
+          "id": "S2",
+          "text": "Gather and aggregate relevant historical data from existing records related to each country's engagements into a unified view."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that the engagement history includes data only from the last 5 years to keep the information relevant and manageable."
+        },
+        {
+          "id": "S4",
+          "text": "Restrict access to this engagement history feature to project managers only."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any functionality for editing or deleting historical engagement records."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover engagement data older than 5 years."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include access for users outside of the project management role."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that historical engagement data is already available in the system and can be aggregated without major technical challenges."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that project managers are already established as a distinct user role within the Government CRM."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that the sensitivity of the data will be appropriately managed according to existing organizational policies."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"engagement history\" means a chronological record of all interactions with a country, including but not limited to meetings, communications, project updates, and mission reports."
+        },
+        {
+          "id": "D2",
+          "text": "\"project managers\" means individuals assigned within the organization whose responsibilities include overseeing specific projects and missions."
+        },
+        {
+          "id": "D3",
+          "text": "\"full history\" means all records of engagement for a country within the last 5 years."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of project managers report satisfaction with the new engagement history feature based on a user survey conducted within three months of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enable project managers and regional coordinators to view the complete history of engagements with a country, including past missions and interactions, while addressing confidentiality and data management concerns. The feature will ensure access is appropriately restricted and that engagement histories are accurate, relevant, and compliant with organizational policies.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Project managers can access the full history of engagements with each country."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a user interface for project managers that displays engagement history with countries, including dates, descriptions of interactions, and associated personnel."
+        },
+        {
+          "id": "S2",
+          "text": "Gather and aggregate relevant historical data from existing records related to each country's engagements into a unified view, with a designated data owner responsible for maintaining and updating access as project managers transition roles."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that the engagement history includes data only from the last 5 years in accordance with the organization's data retention policy, while records older than 5 years will be archived and accessible only with special permission to ensure compliance and historical context."
+        },
+        {
+          "id": "S4",
+          "text": "Restrict access to this engagement history feature to project managers and regional coordinators only. Access by regional coordinators allows for appropriate oversight and ensures that sensitive information is more securely managed."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any functionality for editing or deleting historical engagement records."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover engagement data older than 5 years."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include access for users outside of the project management role."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that historical engagement data is already available in the system and can be aggregated without major technical challenges."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that project managers are already established as a distinct user role within the Government CRM."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that the sensitivity of the data will be appropriately managed according to existing organizational policies."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"engagement history\" means a chronological record of all interactions with a country, excluding sensitive diplomatic communications, confidential internal memos, and any records designated as restricted access."
+        },
+        {
+          "id": "D2",
+          "text": "\"project managers\" means individuals assigned within the organization whose responsibilities include overseeing specific projects and missions."
+        },
+        {
+          "id": "D3",
+          "text": "\"full history\" means all records of engagement for a country within the last 5 years."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of project managers report satisfaction with the new engagement history feature based on a user survey conducted within three months of release."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S4 restricts access to the engagement history feature to project managers without clarifying who else may access this data or how cross-functional access is managed.",
+      "failure_scenario": "A new project manager accidentally views sensitive engagement data that should only have been available to regional coordinators or higher-level staff, leading to exposure of confidential information.",
+      "resolution_test": "Which roles can view the engagement history of a country, and what are the restrictions?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S4 restricts access to the engagement history feature to project managers without clarifying who else may access this data or how cross-functional access is managed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies the access to the engagement history and includes regional coordinators, addressing the confidentiality concern by ensuring that access is controlled.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Access roles are clearly defined, which answers the test. Fact: Access is restricted to project managers and regional coordinators. Evidence: \"Restrict access to this engagement history feature to project managers and regional coordinators only.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "D1 describes \"engagement history\" but does not specify which records are excluded from this definition, risking the inclusion of sensitive communications.",
+      "failure_scenario": "The engagement history includes sensitive diplomatic communications mistakenly, resulting in a breach of confidentiality when accessed by project managers.",
+      "resolution_test": "What types of interactions are excluded from the definition of 'engagement history'?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D1 describes \"engagement history\" but does not specify which records are excluded from this definition, risking the inclusion of sensitive communications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies exclusions from the engagement history, reducing the risk of including sensitive communications and addressing the confidentiality challenge.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition now explicitly excludes sensitive interactions, addressing the risk. Fact: Sensitive communications are excluded from engagement history. Evidence: \"...excluding sensitive diplomatic communications, confidential internal memos, and any records designated as restricted access.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "S2 lacks detail about the source of historical engagement data and how the accuracy of this data will be ensured during aggregation.",
+      "failure_scenario": "Aggregated data contains inaccuracies or duplicates that mislead project managers, leading to poor decision-making on missions with a country.",
+      "resolution_test": "What process will be used to verify the accuracy and source of the engagement data being aggregated?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 lacks detail about the source of historical engagement data and how the accuracy of this data will be ensured during aggregation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit details the process of verifying data accuracy, addressing concerns about misleading information that could impact decision-making.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Data ownership and accuracy verification are clarified, resolving the challenge. Fact: A designated data owner will verify data accuracy and maintain access control. Evidence: \"...with a designated data owner responsible for maintaining and updating access as project managers transition roles.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify who maintains the engagement history data or how it is managed when project managers transition or leave.",
+      "failure_scenario": "A project manager leaves the organization but their access remains, allowing them to view and share sensitive historical data, risking data breaches.",
+      "resolution_test": "What is the process for updating and maintaining ownership of engagement history records when project managers change roles?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who maintains the engagement history data or how it is managed when project managers transition or leave.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This amendment ensures clear ownership of the engagement history and addresses the risk of former project managers retaining access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal defines who manages data access and updates during transitions. Fact: Data ownership and access management is designated to a specific role. Evidence: \"...with a designated data owner responsible for maintaining and updating access as project managers transition roles.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "S3 states engagement history will only include data from the last 5 years, but does not address retention policies for older data or compliance aspects related to sensitive information.",
+      "failure_scenario": "Engagement records over 5 years old contain necessary historical context for missions, but their deletion causes loss of valuable information and potential compliance issues with data retention policies.",
+      "resolution_test": "What are the retention policies for historical engagement data older than 5 years?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S3 states engagement history will only include data from the last 5 years, but does not address retention policies for older data or compliance aspects related to sensitive information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds stipulations regarding compliance with data retention policies, addressing concerns surrounding the potential loss of valuable historical information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Retention policies are clarified, addressing compliance and historical context concerns. Fact: Records older than 5 years will be archived and require special permission for access. Evidence: \"...while records older than 5 years will be archived and accessible only with special permission to ensure compliance and historical context.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 5,
+      "open": 5,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 40,
+      "proposer_worry": "The aggregation of historical data might be more complex than anticipated, affecting the timeline for delivery.",
+      "critic_worry": "Sensitive data may be accessed inappropriately due to unclear access roles and inadequate definitions of engagement history.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 5,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 85,
+      "critic_confidence": 85,
+      "proposer_worry": "Ensuring sensitive information remains protected while providing adequate access for project managers and regional coordinators.",
+      "critic_worry": "Ensuring that access control remains strict and effectively managed as project managers change roles.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

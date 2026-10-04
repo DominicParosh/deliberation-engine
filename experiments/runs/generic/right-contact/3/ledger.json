@@ -1,0 +1,648 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, an unauthorized regional coordinator accessed sensitive diplomatic contact details for a sensitive government project, causing diplomatic tensions when the wrong information was shared publicly. This breach occurred because the user permissions set up allowed greater access to contact information than initially intended, resulting in a significant backlash against the organization.",
+  "gaps": [
+    "Which specific roles have the necessary access rights to sensitive contact information?",
+    "What criteria determine the authorizations for different user roles to access sensitive information?",
+    "How is the searchability of the database limited to prevent unauthorized access to sensitive contact details?",
+    "What precautions are in place to ensure that only relevant contact history is displayed to users?",
+    "How will changes in personnel roles affect access to contact details, particularly for those leaving or changing roles?",
+    "What procedures are in place to update and maintain the accuracy of contact details within the searchable database?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release delivers a new contact tracking feature for government representatives in the CRM system, aimed at project managers and regional coordinators. It enables users to easily identify the appropriate contact person for each member country based on their roles.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enhance user ability to identify the right contact person for government counterparts based on specific criteria."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status."
+        },
+        {
+          "id": "S2",
+          "text": "Develop a user interface for project managers and regional coordinators to view and select relevant contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate contact history to reflect the most active and relevant contacts for current projects and missions."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure users can view the contact details for the selected representatives, including name, role, and current engagement."
+        },
+        {
+          "id": "S5",
+          "text": "Establish user permissions so that only authorized personnel can access sensitive contact details."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated suggestions for contacts or any AI-driven features."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not integrate with external government databases or systems."
+        },
+        {
+          "id": "X3",
+          "text": "This version will not provide any functionality for tracking engagement history beyond the current contact details."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have appropriate access rights to sensitive contact information depending on their roles."
+        },
+        {
+          "id": "A2",
+          "text": "The existing CRM infrastructure has the capacity to support a new searchable database feature."
+        },
+        {
+          "id": "A3",
+          "text": "Users require accurate and up-to-date information about the contacts in their respective countries."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Contact tracking feature\" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria."
+        },
+        {
+          "id": "D2",
+          "text": "\"Searchable database\" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status."
+        },
+        {
+          "id": "D3",
+          "text": "\"Authorized personnel\" means users who have received the necessary approvals to access sensitive information within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers a new contact tracking feature for government representatives in the CRM system, aimed at project managers and regional coordinators. It enables users to easily identify the appropriate contact person for each member country based on their roles, with defined access controls and user support to maintain data accuracy and facilitate effective use of the system.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enhance user ability to identify the right contact person for government counterparts based on specific criteria."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status."
+        },
+        {
+          "id": "S2",
+          "text": "Develop a user interface for project managers and regional coordinators to view and select relevant contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate contact history in a manner that limits visibility to users based on their access rights, ensuring only authorized personnel can view sensitive histories."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that there is a mechanism in place for regularly updating and verifying the accuracy of contact details in the database."
+        },
+        {
+          "id": "S5",
+          "text": "Establish user permissions so that only personnel in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff' can access sensitive contact details."
+        },
+        {
+          "id": "S6",
+          "text": "Provide user training and support materials to ensure users are familiar with the new contact tracking feature and can utilize it effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated suggestions for contacts or any AI-driven features."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not integrate with external government databases or systems."
+        },
+        {
+          "id": "X3",
+          "text": "This version will not provide any functionality for tracking engagement history beyond the current contact details."
+        },
+        {
+          "id": "X4",
+          "text": "This release will not include any automatic management of access rights when personnel change roles or leave."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have appropriate access rights to sensitive contact information depending on their roles."
+        },
+        {
+          "id": "A2",
+          "text": "The existing CRM infrastructure has the capacity to support a new searchable database feature."
+        },
+        {
+          "id": "A3",
+          "text": "Users require accurate and up-to-date information about the contacts in their respective countries."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Contact tracking feature\" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria."
+        },
+        {
+          "id": "D2",
+          "text": "\"Searchable database\" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status."
+        },
+        {
+          "id": "D3",
+          "text": "\"Authorized personnel\" means users who have received the necessary approvals from their direct supervisors to access sensitive information within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers a new contact tracking feature for government representatives in the CRM system, aimed at project managers and regional coordinators. It enables users to easily identify the appropriate contact person for each member country based on their roles, with defined access controls, user support, and improved clarity on user permissions to maintain data accuracy and facilitate effective use of the system.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enhance user ability to identify the right contact person for government counterparts based on specific criteria."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status."
+        },
+        {
+          "id": "S2",
+          "text": "Develop a user interface for project managers and regional coordinators to view and select relevant contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate contact history in a manner that limits visibility to users based on their access rights, ensuring only 'Project Managers' and 'Regional Coordinators' can view sensitive histories associated with their projects."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that there is a mechanism in place for regularly updating and verifying the accuracy of contact details in the database, including a process for timely revocation of access when personnel change roles or leave."
+        },
+        {
+          "id": "S5",
+          "text": "Establish user permissions so that only personnel in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff' can access sensitive contact details."
+        },
+        {
+          "id": "S6",
+          "text": "Provide user training and support materials to ensure users are familiar with the new contact tracking feature and can utilize it effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated suggestions for contacts or any AI-driven features."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not integrate with external government databases or systems."
+        },
+        {
+          "id": "X3",
+          "text": "This version will not provide any functionality for tracking engagement history beyond the current contact details."
+        },
+        {
+          "id": "X4",
+          "text": "This release will not include any automatic management of access rights when personnel change roles or leave."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have appropriate access rights to sensitive contact information depending on their roles."
+        },
+        {
+          "id": "A2",
+          "text": "The existing CRM infrastructure has the capacity to support a new searchable database feature."
+        },
+        {
+          "id": "A3",
+          "text": "Users require accurate and up-to-date information about the contacts in their respective countries."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Contact tracking feature\" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria."
+        },
+        {
+          "id": "D2",
+          "text": "\"Searchable database\" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status."
+        },
+        {
+          "id": "D3",
+          "text": "\"Authorized personnel\" means users in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff', who have received explicit approvals from their direct supervisors to access sensitive information within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S5 states that 'only authorized personnel can access sensitive contact details,' but it fails to specify which roles constitute 'authorized personnel.'",
+      "failure_scenario": "A project manager accidentally shares sensitive information with a user who lacks the necessary clearance, leading to leaks and potential diplomatic incidents.",
+      "resolution_test": "Which specific roles have the necessary access rights to sensitive contact information?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S5 states that 'only authorized personnel can access sensitive contact details,' but it fails to specify which roles constitute 'authorized personnel.'",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the roles that are authorized personnel, ensuring clarity about who has access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal clearly specifies which roles have access, thus addressing the concern about unauthorized access. Fact: Roles with access rights to sensitive contact details are 'Project Manager', 'Regional Coordinator', and 'Executive Staff'. Evidence: \"S5: Establish user permissions so that only personnel in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff' can access sensitive contact details.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify what happens when personnel change roles or leave, potentially leaving gaps in ownership of contact records.",
+      "failure_scenario": "When a regional coordinator leaves, their access to contact details remains active, and no one updates the records, leading to confusion and unauthorized access.",
+      "resolution_test": "What processes are in place to manage access to sensitive contact details when personnel change roles or leave?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify what happens when personnel change roles or leave, potentially leaving gaps in ownership of contact records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision acknowledges that access management will not be automated in this release, and it raises an awareness of responsibility that must be managed outside of the system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The acknowledgement that access won't be managed automatically raises awareness of the manual process required, which is crucial for ownership. Fact: There will be no automated management of access rights when personnel change roles or leave. Evidence: \"X4: This release will not include any automatic management of access rights when personnel change roles or leave.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "D3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "D3 cites 'authorized personnel' but does not define the criteria for what qualifies someone to be authorized, which could lead to ambiguity.",
+      "failure_scenario": "A project manager assumes they are authorized to access sensitive information based on unclear definitions, resulting in unauthorized access and diplomatic issues.",
+      "resolution_test": "What criteria determine the authorizations for different user roles to access sensitive information?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D3 cites 'authorized personnel' but does not define the criteria for what qualifies someone to be authorized, which could lead to ambiguity.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies the criteria for being classified as authorized personnel, reducing ambiguity regarding access rights.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The definition does not provide specific roles, so it does not clearly indicate who has authorization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies the specific roles that qualify as authorized personnel, removing ambiguity regarding access rights.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition now specifies that users must receive explicit approvals for access, clearly defining authorization criteria. Fact: Users require explicit supervisory approvals for sensitive information access. Evidence: \"'Authorized personnel' means users in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff', who have received explicit approvals from their direct supervisors to access sensitive information within the CRM.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "S3 mentions integrating contact history but does not indicate how this historical data will be managed to prevent unauthorized access.",
+      "failure_scenario": "A project manager inadvertently views sensitive contact histories of other projects, leading to the sharing of confidential information inappropriately.",
+      "resolution_test": "How is the searchability of the database limited to prevent unauthorized access to sensitive contact details?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S3 mentions integrating contact history but does not indicate how this historical data will be managed to prevent unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies that visibility of contact histories will be restricted based on user access, addressing confidentiality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The evidence does not specifically outline the exact roles that have rights to view sensitive histories.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the roles that can view sensitive contact histories, addressing confidentiality concerns and ensuring appropriate access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The specification of roles clarifies visibility limits for sensitive histories, addressing prior concerns. Fact: Only specific roles can view sensitive histories. Evidence: \"'only 'Project Managers' and 'Regional Coordinators' can view sensitive histories associated with their projects.'\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MINOR",
+      "challenge": "The proposal does not address how outdated or incorrect data within the contact records will be maintained or updated.",
+      "failure_scenario": "Users rely on outdated contact details and end up contacting individuals who are no longer in the right role, leading to ineffective communication and project delays.",
+      "resolution_test": "What procedures are in place to update and maintain the accuracy of contact details within the searchable database?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how outdated or incorrect data within the contact records will be maintained or updated.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This addition establishes a commitment to data quality and sets expectations for maintaining the accuracy of contact records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment to regularly update and verify the data addresses concerns regarding outdated information. Fact: A mechanism for regularly updating and verifying contact details will be implemented. Evidence: \"S4: Ensure that there is a mechanism in place for regularly updating and verifying the accuracy of contact details in the database.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "There is no mention of user training or support to ensure the system is adopted effectively, which could lead to underutilization.",
+      "failure_scenario": "Users find the new feature complex and abandon it, leading to ongoing reliance on outdated methods for contact tracking.",
+      "resolution_test": "What training or support will be available to ensure effective adoption of the new contact tracking feature?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of user training or support to ensure the system is adopted effectively, which could lead to underutilization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit commits to offering training and support to facilitate effective adoption of the new feature.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal includes training and support, mitigating the risk of underutilization. Fact: Training and support will be available to help users utilize the new feature effectively. Evidence: \"S6: Provide user training and support materials to ensure users are familiar with the new contact tracking feature and can utilize it effectively.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on how access to sensitive contact details will be managed during the transition when personnel leave or change roles.",
+      "failure_scenario": "When a regional coordinator leaves, their access remains active and may not get revoked in a timely manner, possibly allowing unauthorized access.",
+      "resolution_test": "What processes are in place to manage access rights dynamically when personnel change roles or leave?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on how access to sensitive contact details will be managed during the transition when personnel leave or change roles.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This addition establishes a clear process for managing access rights during personnel changes, reducing the risk of unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment to a timely revocation process clarifies ownership during personnel changes. Fact: A process exists for revoking access rights promptly. Evidence: \"'a process for timely revocation of access when personnel change roles or leave.'\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 60,
+      "proposer_worry": "The assumptions about user access rights and CRM capacity may not hold true.",
+      "critic_worry": "The proposal may create significant risks due to ambiguous definitions and unclear user access controls.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 3,
+      "resolved": 4,
+      "escalated": 0,
+      "disagreement": 0.46,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "The success of user adoption may depend significantly on the effectiveness of training and support provided.",
+      "critic_worry": "There is ambiguity regarding who qualifies as 'authorized personnel', which could lead to unauthorized access to sensitive information.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 0,
+      "resolved": 7,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 85,
+      "critic_confidence": 85,
+      "proposer_worry": "Ensuring all specified user roles understand their permissions and the processes in place to maintain data security.",
+      "critic_worry": "The handling of user permissions remains critical to avoid unauthorized access.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

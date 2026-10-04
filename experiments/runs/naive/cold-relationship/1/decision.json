@@ -1,0 +1,559 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "naive",
+    "rounds": 3,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 9,
+    "repairs": 3,
+    "input_tokens": 33537,
+    "output_tokens": 5783,
+    "cost_usd": 0.0084,
+    "seconds": 60.6,
+    "warnings": []
+  },
+  "executive_summary": "An alert system will be implemented to notify users when engagement with country representatives falls below a defined threshold. This system will not include analytics or dashboards, and will only focus on improving the alert notifications based on user interaction with defined criteria. Human decision-makers must still clarify the flexibility of engagement thresholds based on different countries or contexts.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Implement an alert system that notifies users of declining engagement with country representatives.",
+      "note": "The commitment to implement the alert system is based on the need for proactive monitoring of diplomatic engagements.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Users will receive an alert when there have been no recorded engagements with a country representative for 90 days.",
+      "note": "An alert will trigger after 90 days of no recorded engagements, establishing a clear inactivity threshold for monitoring.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "The alert will be sent via email to the registered email addresses of the regional coordinators and project managers associated with that country.",
+      "note": "The alert notification will target registered emails of relevant personnel to ensure that appropriate team members receive timely information.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "The system will log all user engagements, defined as any documented interactions with country representatives that are officially recorded in the CRM, including emails, meetings, phone calls, and notes. There will also be a mechanism in place to regularly review logged engagements to ensure compliance and accuracy.",
+      "note": "The logging of engagements will include various forms of documented interactions to ensure a comprehensive record is maintained.",
+      "refs": [
+        "C1",
+        "C7"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "Users will have the option to customize the alert threshold to be notified after 30, 60, or 90 days of inactivity, but all thresholds must adhere to a maximum of 90 days across the organization to ensure consistency in engagement monitoring.",
+      "note": "While users can set custom thresholds for inactivity alerts, the maximum is capped at 90 days to maintain consistency across the organization.",
+      "refs": [
+        "C5"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "The CRM will include functionality that automatically removes users from the alert subscription list when they change roles or leave the organization, based on HR data.",
+      "note": "An automated process will be implemented to manage alert subscriptions based on HR updates, enhancing relevance.",
+      "refs": [
+        "C2"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not provide analytics or dashboards on engagement metrics or any auditing mechanism related to logged engagements.",
+      "note": "The exclusion of analytics or dashboards allows focus on the alert system without complicating the release with additional features.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "The system will not notify users about relationships going cold with organizations other than country representatives.",
+      "note": "Relationship notifications are limited to country representatives, which clearly scopes the alert system's functionality.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "No modifications to the existing user interface beyond the alert settings will be included.",
+      "note": "No changes to the user interface beyond alert settings were included to streamline the implementation.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users will have access to the CRM system and appropriate permissions to configure alert settings.",
+      "note": "Assumption regarding user access and permissions aligns with standard operational practices for CRM use.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "There exists a clear definition of what constitutes an engagement, specifically what types of interactions are tracked in the CRM.",
+      "note": "Defining engagements is crucial to ensure clarity in what will be tracked to support the alert system.",
+      "refs": [
+        "C3",
+        "C6"
+      ],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "The email notification system is functioning and able to deliver alerts to users.",
+      "note": "The successful functioning of the email notification system is critical to the alert system's effectiveness.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A4",
+      "text": "Users understand the importance of monitoring their engagements and will actively use the alert system.",
+      "note": "User understanding of engagement monitoring underscores the need for active participation in utilization of the alert system.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "\"cold relationship\" means a lack of recorded engagement with a country representative for a specified duration, requiring that all engagements which contribute to this classification are documented in the CRM regardless of the type of interaction; these include emails, meetings, phone calls, or official notes.",
+      "note": "The refined definition of a cold relationship clarifies the engagement tracking requirements, reducing the possibility of misclassification.",
+      "refs": [
+        "C1",
+        "C6"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "\"alert\" means a notification system that sends an email to users when a specified threshold of inactivity is met.",
+      "note": "The definition of an alert is straightforward, ensuring users understand what to expect when notifications are triggered.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "Success will be measured by a 70% user adoption rate of the alert system within three months of release.",
+      "note": "A user adoption target of 70% within three months is measurable and ensures accountability in engagement monitoring.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C3",
+      "question": "How were the thresholds of 30, 60, and 90 days determined to be appropriate, and is there flexibility to adjust them based on countries or regions?",
+      "why_it_matters": "Finding the right thresholds is essential for ensuring that the alert system is sensitive to the varying contexts of diplomatic relations.",
+      "decision_owner": "Head of Operations",
+      "options": [
+        "Maintain current thresholds",
+        "Allow adjustments based on regional input"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The main disagreement centered around the definition and thresholds for classifying a cold relationship, with concerns about their appropriateness in different diplomatic contexts. The proposer favored a standardized approach, while the critic argued for the need for flexibility and input from diplomatic teams, leaving an unresolved question regarding threshold adaptation.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 5,
+        "open": 5,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 25,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 7,
+        "open": 4,
+        "resolved": 2,
+        "escalated": 1,
+        "disagreement": 0.73,
+        "proposer_confidence": 80,
+        "critic_confidence": 65,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 7,
+        "open": 0,
+        "resolved": 6,
+        "escalated": 1,
+        "disagreement": 0.13,
+        "proposer_confidence": 80,
+        "critic_confidence": 80,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "If users do not log engagements consistently, it may undermine the system's effectiveness."
+      },
+      "critic": {
+        "confidence": 80,
+        "worry": "Despite recent improvements, the system may still suffer from misclassifications due to informal engagements not recorded in the CRM."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "There is a risk that sensitive diplomatic interactions are misclassified as 'cold' due to the lack of clear definitions for what constitutes an engagement, potentially leading to alerts being sent out indiscriminately.",
+      "failure_scenario": "A regional coordinator receives an alert about a cold relationship with a country representative, despite ongoing sensitive discussions that are not logged in the CRM because they were informal or conducted via different channels. This misunderstanding results in breakdowns in diplomatic relations.",
+      "resolution_test": "What specific criteria are used to define and classify interactions as engagements in the CRM?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is a risk that sensitive diplomatic interactions are misclassified as 'cold' due to the lack of clear definitions for what constitutes an engagement, potentially leading to alerts being sent out indiscriminately.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While the risk of misclassified engagements exists, we will provide guidance on documenting informal interactions to mitigate this. Additionally, the alert system will be designed to encourage users to log interactions that are of diplomatic significance.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While there is a definition of 'cold relationship', it lacks specifics on what qualifies as an engagement, leaving too much subjective interpretation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit clarifies what constitutes a documented engagement, reducing the risk of sensitive interactions being misclassified as 'cold' and ensuring alerts are based on official records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition of documented engagements clarifies the criteria, which helps minimize the risk of misclassification. Fact: Documented engagement means emails, meetings, phone calls, and official notes contribute to a cold relationship classification. Evidence: \"D1: \"cold relationship\" means a lack of recorded engagement with a country representative for a specified duration, requiring that all engagements which contribute to this classification are documented in the CRM regardless of the type of interaction; these include emails, meetings, phone calls, or official notes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S2",
+        "S4"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "It is unclear who is responsible for managing alert subscriptions and ensuring that users who are no longer relevant to certain country relationships are removed from the notification list.",
+      "failure_scenario": "A former project manager continues to receive alerts about a cold relationship with a country their organization is no longer engaged with, resulting in confusion and miscommunication amongst team members.",
+      "resolution_test": "What procedures will be put in place for managing user access to alerts when personnel changes occur?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "It is unclear who is responsible for managing alert subscriptions and ensuring that users who are no longer relevant to certain country relationships are removed from the notification list.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit decides that the system will have an automated process to handle alert subscriptions based on user role changes, ensuring clarity and relevance of the alerts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment to automate user management for alerts settles the concern. Fact: An automated process will manage alert subscriptions based on HR data for user role changes. Evidence: \"S5: The CRM will include functionality that automatically removes users from the alert subscription list when they change roles or leave the organization, based on HR data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of a 'cold relationship' relies on a generic 90-day inactivity threshold but lacks clarity on whether this is sufficient or appropriate for different countries and contexts.",
+      "failure_scenario": "Due to a one-size-fits-all threshold for alerting, a project manager misses the nuanced diplomatic context in which some relationships can be considered active even with sparse formal engagements, leading to early terminations of communication.",
+      "resolution_test": "How were the 30, 60, and 90-day thresholds determined to be appropriate, and is there flexibility to adjust them based on countries or regions?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of a 'cold relationship' relies on a generic 90-day inactivity threshold but lacks clarity on whether this is sufficient or appropriate for different countries and contexts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Determining appropriate thresholds may require input from diplomatic teams to understand regional contexts and nuances, which we cannot decide at this stage.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The defense highlights that thresholds require diplomatic input, making this uncertain for implementation as it cannot be decided here.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "Without providing analytics or dashboards, there may be no clear compliance or audit mechanism for engagement activity which could lead to issues in accountability or tracking of diplomatic relations.",
+      "failure_scenario": "In the absence of audit trails for logged engagements, regional coordinators have no way to validate or contest an alert that inaccurately reflects their engagement history, potentially jeopardizing sensitive partnerships.",
+      "resolution_test": "What audit trails or logs will be maintained, and how can users access their engagement histories to clarify the context of alerts they receive?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Without providing analytics or dashboards, there may be no clear compliance or audit mechanism for engagement activity which could lead to issues in accountability or tracking of diplomatic relations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "CONCEDE",
+          "text": "Removing the dashboard and analytics component helps focus on delivering the alert system effectively without added complexity for this release.",
+          "grounds": "SHOULD_NOT_BUILD",
+          "changed": [
+            "X1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal accepts the current release cannot ensure compliance — it’s settled but may compromise accountability. Fact: The alert system will not include any compliance or audit functionalities for engagement history. Evidence: \"X1: This release will not provide analytics or dashboards on engagement metrics or any auditing mechanism related to logged engagements.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "CONCEDED"
+    },
+    {
+      "targets": [
+        "S3",
+        "S4"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "The option for users to customize alert thresholds might lead to inconsistency in definitions of engagement and how 'cold relationships' are treated across teams.",
+      "failure_scenario": "Regional coordinators set different alert thresholds based on personal judgment rather than established standards, resulting in unequal responses to 'cold' notifications and increasing the risk of diplomatic issues or confusion.",
+      "resolution_test": "How will the system ensure consistency in the treatment of cold relationships across different users and teams intending to use the alerts?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The option for users to customize alert thresholds might lead to inconsistency in definitions of engagement and how 'cold relationships' are treated across teams.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While there is a risk of inconsistencies, the system will provide training and guidance to ensure users understand how to apply thresholds consistently.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "Lack of standardization on thresholds remains a concern, as user discretion could result in varied classifications of cold relationships.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a maximum threshold for user customization, which will standardize alert responses and reduce potential confusion across teams.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The update provides a maximum threshold, promoting consistency and minimizing varied classifications. Fact: Users can customize alert thresholds but cannot exceed 90 days, standardizing responses across the organization. Evidence: \"S4: Users will have the option to customize the alert threshold to be notified after 30, 60, or 90 days of inactivity, but all thresholds must adhere to a maximum of 90 days across the organization to ensure consistency in engagement monitoring.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The current definition of a 'cold relationship' is too vague; it does not clarify what types or contexts of engagements must be recorded to avoid misclassification.",
+      "failure_scenario": "A project manager interprets 'cold relationship' based on CRM data alone without knowledge of informal diplomatic efforts, damaging relations due to premature cut-offs of communication.",
+      "resolution_test": "What specific examples and types of engagements will be required to prevent a misclassification of a 'cold relationship'?",
+      "id": "C6",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The current definition of a 'cold relationship' is too vague; it does not clarify what types or contexts of engagements must be recorded to avoid misclassification.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Revising the definition clarifies that all documented interactions count towards engagement classification, which helps prevent misclassification based on incomplete data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision defines the engagements clearly, thereby helping to ensure better classification and monitoring. Fact: All types of documented interactions are required to prevent misclassification of a cold relationship. Evidence: \"D1: \"cold relationship\" means a lack of recorded engagement with a country representative for a specified duration, requiring that all engagements which contribute to this classification are documented in the CRM regardless of the type of interaction; these include emails, meetings, phone calls, or official notes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "There are potential gaps in data quality and accuracy regarding recorded engagements, which can lead to alerts being poorly informed.",
+      "failure_scenario": "Inaccurate logging of engagements due to poor user compliance results in an alert being sent for a cold relationship that is not actually cold, damaging diplomatic communications.",
+      "resolution_test": "What processes are in place to validate and ensure the accuracy of engagement data logged in the CRM?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There are potential gaps in data quality and accuracy regarding recorded engagements, which can lead to alerts being poorly informed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision establishes a validation process for ensuring engagement data quality, thereby reducing the chances of inaccurate alerts being sent due to incomplete logging.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal clearly states a review mechanism, which addresses potential quality concerns. Fact: There will be a review mechanism for monitoring the accuracy and compliance of logged engagements. Evidence: \"S3: The system will log all user engagements, defined as any documented interactions with country representatives that are officially recorded in the CRM, including emails, meetings, phone calls, and notes. There will also be a mechanism in place to regularly review logged engagements to ensure compliance and accuracy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

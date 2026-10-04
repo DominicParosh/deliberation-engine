@@ -1,0 +1,1893 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, a critical incident occurred when a regional coordinator mistakenly contacted the wrong primary contact in a member country regarding a sensitive diplomatic engagement, due to outdated or incorrect contact details. This not only caused a diplomatic faux pas but also exposed the organization to reputational damage and raised serious concerns about the security and integrity of the contact management process.",
+  "gaps": [
+    "What specific user roles have permission to view and edit contact information across different countries?",
+    "How will the system prevent unauthorized access to sensitive contact information, and what safeguards are in place?",
+    "What will be the process for regularly verifying and updating the contact information to ensure data accuracy?",
+    "How will the system handle the situation when someone leaves a role or changes responsibilities, regarding their associated contact information?",
+    "How will the search function prioritize contacts, or will it return multiple matching results?",
+    "What happens if a primary contact's details are missing or incorrect when a user tries to retrieve them?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will enhance the Government CRM by adding a dedicated feature for tracking primary contact persons in each member country for various engagement topics. It will be utilized by regional coordinators and project managers to streamline contact management and improve communication efficiency with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface for users to update and manage contact information."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only authorized users to view and edit contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of communication for government engagement in a specific country."
+        },
+        {
+          "id": "D2",
+          "text": "'User access controls' means the permissions established to restrict and allow user access to different features and data within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the Government CRM by adding a dedicated feature for tracking primary contact persons in each member country, ensuring data accuracy and appropriate user access. Key functionalities include the ability for designated users to manage contact details and a robust search feature to improve communication efficiency.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only regional coordinators and project managers to view and edit contact information for primary contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role, prioritizing results based on the most frequently contacted individuals and displaying a message when multiple contacts meet the search criteria."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary contact person\" means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the Government CRM by adding a dedicated feature for tracking primary contact persons in each member country with clear user access controls and processes for data accuracy. Key functionalities include designated user management of contact details and an improved search feature for efficient communication.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role, with prioritization criteria based on the frequency of communication and the most relevant roles, displaying a message when multiple contacts meet the search criteria."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary contact person\" means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the Government CRM by adding a dedicated feature for tracking primary contact persons in each member country with clear user access controls and processes for data accuracy. Key functionalities include designated user management of contact details and an improved search feature for efficient communication.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role, prioritizing contacts based on the frequency of communication and relevance to active projects, and displaying a message indicating when multiple contacts meet the search criteria, with the most frequently contacted appearing at the top."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary contact person\" means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the Government CRM by adding a dedicated feature for tracking primary contact persons in each member country with clear user access controls and processes for data accuracy. Key functionalities include designated user management of contact details and an improved search feature for efficient communication, with clear criteria for data accuracy, ongoing management responsibilities, and prioritization in search results.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        },
+        {
+          "id": "V3",
+          "text": "A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role, prioritizing contacts based on the frequency of communication and relevance to active projects. In cases where multiple contacts meet the search criteria, the system will display a message indicating the presence of multiple matches, sort contacts in descending order of recent communication activity, and provide buttons for users to view all matched contacts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary contact person\" means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        },
+        {
+          "id": "D4",
+          "text": "'Data accuracy' means that all contact information, including name, position, email address, and phone number, must be current, verified through regular audits by designated staff members at least quarterly, and updated in real-time when changes occur."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal details the creation of a feature for tracking primary contact persons in the Government CRM, with specific focus on user access controls, data accuracy, and an improved search function for communication efficiency.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        },
+        {
+          "id": "V3",
+          "text": "A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role, prioritizing contacts based on communication frequency and relevance to active projects. In cases where multiple contacts meet the search criteria, the system will display a message indicating the presence of multiple matches, sort contacts in descending order of recent communication activity, and when three or more matches exist, provide buttons for users to view all matched contacts with clear indications of the primary contact for each project."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary contact person\" means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        },
+        {
+          "id": "D4",
+          "text": "Data accuracy means that all contact information, including name, position, email address, and phone number, must be current, verified quarterly by designated data integrity officers responsible for these records, and updated in real-time when changes occur."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal details the creation of a feature for tracking primary contact persons in the Government CRM, with specific focus on user access controls, data accuracy, and an improved search function for communication efficiency. The revised proposal now better addresses user experience with handling search results, defines accountability for data ownership and accuracy, and clarifies the need for compliance with data protection regulations.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        },
+        {
+          "id": "V3",
+          "text": "A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to audit and verify records at least quarterly and implement corrective actions for any inaccuracies identified outside of these updates."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role. The search function will prioritize contacts based on the most recent communication activity, sorting contacts in descending order of last communication date, ensuring that users receive the most relevant contact first. In cases where multiple contacts meet the search criteria, the system will display a message indicating the presence of multiple matches, provide buttons for users to view all matched contacts, with the primary contact clearly indicated for each project."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not track secondary or alternative contacts or provide notifications about contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of communication for government engagement in a specific country, who has the responsibility for maintaining current contact information and engaging in government counterparts on relevant issues, with ownership of data updates resting with the regional coordinator responsible for that country."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        },
+        {
+          "id": "D4",
+          "text": "Data accuracy means that all contact information, including name, position, email address, and phone number, must be current and verified by a designated data integrity officer, with updates made in real-time when changes occur and verified quarterly to maintain the reliability of the records."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes specific measures to protect sensitive information from unauthorized access and states that a retention policy will be developed in future releases, ensuring compliance planning.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable tracking of primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy."
+        },
+        {
+          "id": "V3",
+          "text": "A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to audit, verify, and protect records at least quarterly and implement corrective actions for any inaccuracies identified outside of these updates. Additionally, implement role-based authentication to ensure that only authorized users can access sensitive contact information, regularly audit user access permissions, and monitor data access logs for suspicious activities."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility."
+        },
+        {
+          "id": "S4",
+          "text": "Include a search function that allows users to filter and find appropriate contacts by country and role. The search function will prioritize contacts based on the most recent communication activity, sorting contacts in descending order of last communication date, ensuring that users receive the most relevant contact first. In cases where multiple contacts meet the search criteria, the system will display a message indicating the presence of multiple matches, provide buttons for users to view all matched contacts, with the primary contact clearly indicated for each project."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external contact databases or systems."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not define a specific retention period for contact information; this will be determined in future releases after compliance assessment."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively."
+        },
+        {
+          "id": "A2",
+          "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications."
+        },
+        {
+          "id": "A3",
+          "text": "There are designated staff members responsible for entering and regularly updating contact information."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of communication for government engagement in a specific country, who has the responsibility for maintaining current contact information and engaging in government counterparts on relevant issues, with ownership of data updates resting with the regional coordinator responsible for that country."
+        },
+        {
+          "id": "D2",
+          "text": "\"User access controls\" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff."
+        },
+        {
+          "id": "D3",
+          "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields."
+        },
+        {
+          "id": "D4",
+          "text": "Data accuracy means that all contact information, including name, position, email address, and phone number, must be current and verified by a designated data integrity officer, with updates made in real-time when changes occur and verified quarterly to maintain the reliability of the records."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clearly specify the criteria for user access controls and how they will prevent unauthorized access to sensitive contact information.",
+      "failure_scenario": "A project manager accesses and edits a primary contact's information for a sensitive diplomatic relationship without the necessary permissions, leading to a potential disclosure of confidential information.",
+      "resolution_test": "What specific roles are authorized to view and edit primary contact information?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clearly specify the criteria for user access controls and how they will prevent unauthorized access to sensitive contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies the roles authorized to view and edit contact information, establishing clear access controls to safeguard sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The current text does not specify the exact roles or permissions and only states that controls will be in place.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies the exact roles authorized to access and edit primary contact information, addressing the risk of unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This specifies the exact roles authorized to access and edit primary contact information. [Not counted as settled: the sentence you quote leans on 'controls are in place', which names no role, number or rule.]",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised item now specifies that user access controls not only define the roles but also establish that access will be bounded by designated territories and responsibilities, minimizing the risk of unauthorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal specifies roles but still lacks detailed access control measures and rules for preventing unauthorized access, meaning it remains unaddressed.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'primary contact person' is not clearly defined in terms of authority or responsibility, leading to ambiguity in its application.",
+      "failure_scenario": "A regional coordinator assumes authority over a primary contact relationship that another team is managing, causing conflicting communications and confusion with government counterparts.",
+      "resolution_test": "What specific responsibilities define a 'primary contact person' within the CRM?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'primary contact person' is not clearly defined in terms of authority or responsibility, leading to ambiguity in its application.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies the responsibilities of the primary contact, ensuring that users understand their authority and scope of engagement to prevent conflicting communications.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This definition clarifies the responsibilities associated with the role, eliminating ambiguity. Fact: The primary contact person maintains current contact information and engages with government counterparts. Evidence: \"D1: 'Primary contact person' means the individual identified as the main point of communication for government engagement in a specific country, with the responsibility for maintaining current contact information and engaging with government counterparts on relevant issues.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "There is no clear plan for how to ensure data accuracy and regular updates, which is critical for maintaining reliable contact records.",
+      "failure_scenario": "A user retrieves outdated contact information, resulting in a failed communication with a government entity while trying to engage on a sensitive matter.",
+      "resolution_test": "What is the process established for verifying and updating contact information to ensure its accuracy?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clear plan for how to ensure data accuracy and regular updates, which is critical for maintaining reliable contact records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Setting a commitment for a dedicated process to regularly audit and verify contact information addresses the data accuracy need directly.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "V2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The text describes responsibilities but does not specify who these designated staff members are.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies which designated staff members are responsible for maintaining data accuracy, thereby addressing the concern regarding data quality.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "V2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This outlines who is responsible for auditing and updating contact information. Fact: Designated staff members responsible for maintaining data accuracy are regional coordinators and project managers. Evidence: \"V2: Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks a clear outline of who is responsible for data integrity when contacts leave or change roles, leading to potential data management gaps.",
+      "failure_scenario": "Following the departure of a primary contact, the regional coordinator inadvertently uses old contact details, resulting in a failed diplomatic outreach.",
+      "resolution_test": "What process will the CRM implement to handle updates to contact information when individuals leave or change roles?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a clear outline of who is responsible for data integrity when contacts leave or change roles, leading to potential data management gaps.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit details the process for managing updates when contacts change roles or leave, which clarifies ownership and responsibility for maintaining accurate data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This decision clarifies ownership and accountability for maintaining accurate data when roles change. Fact: There is a mandatory process to update records when contacts leave or change roles. Evidence: \"S2: Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "There is insufficient detail on how the search function will work, specifically regarding prioritization or filtering criteria, which could affect user experience.",
+      "failure_scenario": "Users receive multiple results when searching for a primary contact, causing delays and increasing frustration due to inability to quickly identify the correct contact.",
+      "resolution_test": "How will the search function prioritize contacts or handle multiple matches in results?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 5,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is insufficient detail on how the search function will work, specifically regarding prioritization or filtering criteria, which could affect user experience.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies how the search function will prioritize contacts and handle multiple matches, improving user experience and reducing frustration.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The text does not specify clear criteria for prioritization or how multiple matches will be handled.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies the criteria for prioritization and handling of multiple matches in the search function, which improves the user experience.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The text does not provide enough detail to answer the resolution test.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision now clarifies that the search function prioritizes contacts based on communication frequency and relevance to projects, improving user experience and addressing potential frustration from multiple search results.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This adequately addresses my test; the criteria for prioritization are now clear. [Not counted as settled: the sentence you quote leans on 'appropriate', which names no role, number or rule.]",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits now specify how multiple contacts will be prioritized based on recent communication activity, addressing the concern about user experience and clarity in search results.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This does not adequately settle how prioritization is handled.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised wording in S4 now outlines specific criteria on how the search function will handle prioritization and multiple contact matches, ensuring a clearer user experience.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The revised wording does not specify what constitutes 'communication frequency' and does not provide clarity on how the sorting mechanism works.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits now specify how contacts will be prioritized based on recent communication activity, addressing the concern about user experience and clarity in search results.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This adequately addresses the resolution test. Fact: Contacts are prioritized by the most recent communication activity. Evidence: \"The search function will prioritize contacts based on the most recent communication activity, sorting contacts in descending order of last communication date.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The definition of 'user access controls' is vague and does not specify how access levels will be determined or enforced.",
+      "failure_scenario": "An executive bypasses normal access protocols to gain insight into sensitive contacts, risking information leaks and breaching confidentiality agreements.",
+      "resolution_test": "What specific criteria or guidelines will be used to determine user access controls?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'user access controls' is vague and does not specify how access levels will be determined or enforced.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By defining the criteria for user access controls in relation to specific user roles, this change enhances security and adherence to confidentiality.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This provides clarity on how access levels are determined, addressing the previous vagueness. Fact: Access controls are defined by user roles. Evidence: \"D2: 'User access controls' means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The lack of clarity around who is responsible for auditing and updating contact information means there is a risk of data becoming outdated.",
+      "failure_scenario": "Without a defined role for data maintenance, outdated contacts could lead to failures in diplomatic communication, impacting international relations.",
+      "resolution_test": "Who is designated to regularly audit and verify contact information?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The lack of clarity around who is responsible for auditing and updating contact information means there is a risk of data becoming outdated.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The responsibility for regularly auditing and verifying contact information is a determination that the organization must decide, making this a question for them.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This aspect requires a decision that is beyond the current proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify who is responsible for maintaining the data integrity of contact information or how ongoing management will occur after updates are made by regional coordinators and project managers.",
+      "failure_scenario": "After changing roles, a project manager updates a primary contact's information, but nobody monitors or verifies these changes, leading to outdated or incorrect contact records, which creates issues during sensitive communications.",
+      "resolution_test": "Who is designated to oversee the ongoing accuracy of primary contact information?",
+      "id": "C8",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who is responsible for maintaining the data integrity of contact information or how ongoing management will occur after updates are made by regional coordinators and project managers.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clearly identifies who is responsible for maintaining the ongoing accuracy of primary contact information, addressing concerns about data management after updates.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "V3"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This provides clarity on data integrity management and addresses my earlier concerns. Fact: A designated data integrity officer oversees data accuracy, with support from regional coordinators and project managers for updates. Evidence: \"A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'data accuracy' is not provided, leading to ambiguity around what conditions must be met for contact information to be considered accurate and current.",
+      "failure_scenario": "Users believe they can rely on out-of-date contact information because 'data accuracy' was not well-defined, ultimately leading to errors in diplomatic engagements.",
+      "resolution_test": "What specific criteria define 'data accuracy' for primary contact information?",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'data accuracy' is not provided, leading to ambiguity around what conditions must be met for contact information to be considered accurate and current.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit provides a specific definition for data accuracy, outlining the conditions that must be met to ensure contact records are reliable.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This is not defined clearly enough; 'designated staff members' does not name a specific title or role.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision provides a more specific definition of data accuracy by naming 'designated data integrity officers' as the responsible party, eliminating ambiguity.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the definition includes some specifics, it relies on 'designated data integrity officers', which still lacks naming a precise role responsible for ensuring data integrity.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies the role responsible for maintaining data accuracy and provides specific criteria that define what constitutes accurate contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision clarifies the criteria for data accuracy sufficiently. Fact: Data accuracy requires current contact info verified by a designated data integrity officer. Evidence: \"Data accuracy means that all contact information, including name, position, email address, and phone number, must be current and verified by a designated data integrity officer, with updates made in real-time when changes occur and verified quarterly to maintain the reliability of the records.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "There is no mention of how personal data will be managed in compliance with data protection regulations, especially given the sensitivity of diplomatic contacts.",
+      "failure_scenario": "Sensitive personal information regarding diplomats or officials gets mishandled, leading to a compliance breach and potential legal repercussions for the organization.",
+      "resolution_test": "What measures are in place to ensure compliance with data protection laws regarding personal contact information?",
+      "id": "C10",
+      "round_raised": 4,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of how personal data will be managed in compliance with data protection regulations, especially given the sensitivity of diplomatic contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "This challenge requires input from legal and compliance teams regarding data protection regulations; current wording will remain as it directs attention to potential compliance issues that must be addressed.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This challenge requires a clear input from legal and compliance teams; further actions on compliance must be taken.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C11": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not outline specific measures or procedures in place for ensuring compliance with data protection regulations regarding personal contact information.",
+      "failure_scenario": "Sensitive personal information regarding diplomats is mishandled due to a lack of defined procedures for data management and compliance, leading to legal repercussions.",
+      "resolution_test": "What specific procedures are in place to ensure compliance with data protection laws regarding personal information?",
+      "id": "C11",
+      "round_raised": 5,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline specific measures or procedures in place for ensuring compliance with data protection regulations regarding personal contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal requires input from the organization to outline specific measures or procedures for compliance with data protection regulations regarding personal contact information.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The lack of clear procedures creates a significant compliance risk that necessitates human decision-making.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C12": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify how sensitive contact information, particularly diplomatic contacts, will be protected from unauthorized access or breaches in the system.",
+      "failure_scenario": "Diplomats' personal contact information is exposed due to inadequate protection measures, leading to potential security breaches and diplomatic fallout.",
+      "resolution_test": "What specific data protection measures are in place to safeguard the sensitive personal information of diplomatic contacts?",
+      "id": "C12",
+      "round_raised": 6,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how sensitive contact information, particularly diplomatic contacts, will be protected from unauthorized access or breaches in the system.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must define specific data protection measures to safeguard sensitive contact information, as this requires compliance with existing legal frameworks and policies.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This is a compliance issue that needs human input.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C13": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not outline a retention policy for contact information, which is crucial for compliance with data protection laws.",
+      "failure_scenario": "Contact information is retained longer than necessary, risking legal exposure for not adhering to data protection regulations, leading to potential fines or legal challenges.",
+      "resolution_test": "What is the defined retention period for contact information and how is it managed?",
+      "id": "C13",
+      "round_raised": 6,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline a retention policy for contact information, which is crucial for compliance with data protection laws.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization needs to establish a retention policy for contact information to ensure compliance with data protection laws, which is outside the scope of this proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This is a compliance issue that requires human decision.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C14": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify who officially owns the contact data once it is updated by various users, which raises accountability issues.",
+      "failure_scenario": "Disputes arise over responsibility and ownership of contact data updates, leading to confusion in data management and maintenance duties.",
+      "resolution_test": "Who officially owns the responsibility for maintaining the contact information once updated by regional coordinators and project managers?",
+      "id": "C14",
+      "round_raised": 6,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who officially owns the contact data once it is updated by various users, which raises accountability issues.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies the ownership of updated contact data, which is crucial for accountability in data management.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This adequately addresses the resolution test. Fact: Regional coordinators own the responsibility for maintaining data updates. Evidence: \"The individual identified as the main point of communication for government engagement in a specific country, who has the responsibility for maintaining current contact information and engaging in government counterparts on relevant issues, with ownership of data updates resting with the regional coordinator responsible for that country.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C15": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "There is no process defined for identifying and fixing inaccuracies in the contact database outside regular updates, risking reliance on outdated information.",
+      "failure_scenario": "Users come across outdated or incorrect contact information because there is no systematic way to identify and correct inaccuracies, causing operational and diplomatic issues.",
+      "resolution_test": "What processes are in place to audit the contact information outside of scheduled updates to ensure ongoing accuracy?",
+      "id": "C15",
+      "round_raised": 6,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no process defined for identifying and fixing inaccuracies in the contact database outside regular updates, risking reliance on outdated information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit outlines a systematic process for identifying and correcting inaccuracies in contact data, addressing ongoing data quality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This sufficiently answers the resolution test. Fact: A mandatory process for auditing and verifying records exists at least quarterly. Evidence: \"Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to audit and verify records at least quarterly and implement corrective actions for any inaccuracies identified outside of these updates.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C16": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal fails to address specific measures or procedures that will be used to protect sensitive diplomatic contact information from unauthorized access.",
+      "failure_scenario": "Sensitive diplomatic contact information is accessed by unauthorized individuals due to inadequately defined protection measures, leading to a security breach and damaging diplomatic relations.",
+      "resolution_test": "What specific measures will be implemented to safeguard the sensitive personal information of diplomatic contacts?",
+      "id": "C16",
+      "round_raised": 7,
+      "status": "UNRESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal fails to address specific measures or procedures that will be used to protect sensitive diplomatic contact information from unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits now specify concrete measures to protect sensitive diplomatic information, including role-based authentication and regular audits, which directly address the challenge of unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal fails to specify the roles that will be granted access, leaving ambiguity around who can actually view sensitive contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C17": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "Without a defined retention policy for contact information, the proposal risks non-compliance with data protection regulations.",
+      "failure_scenario": "Contact information is kept longer than necessary, violating legal requirements and resulting in potential fines or challenges.",
+      "resolution_test": "What is the proposed retention period for contact information and how will it be enforced?",
+      "id": "C17",
+      "round_raised": 7,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Without a defined retention policy for contact information, the proposal risks non-compliance with data protection regulations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "CONCEDE",
+          "text": "This edit removes the retention policy from the current scope, acknowledging it as a future requirement while focusing on the immediate needs of the release.",
+          "grounds": "SHOULD_NOT_BUILD",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "While this addresses the risk, it indicates that the proposal is not compliant at this stage, which is a significant concern. Fact: The retention period for contact information will be determined in future releases after a compliance assessment. Evidence: \"This release will not define a specific retention period for contact information; this will be determined in future releases after compliance assessment.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C18": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clearly specify the criteria for user access controls and how they will prevent unauthorized access to sensitive contact information, which remains a major risk.",
+      "failure_scenario": "Unauthorized access occurs because criteria for access controls are not defined; a non-authorized user views sensitive contact details, leading to security breaches and risk to diplomatic relations.",
+      "resolution_test": "What are the specific criteria for user access controls, and how are they enforced?",
+      "id": "C18",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clearly specify the criteria for user access controls and how they will prevent unauthorized access to sensitive contact information, which remains a major risk.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C19": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify how sensitive contact information, particularly diplomatic contacts, will be protected from unauthorized access or breaches in the system, leaving a gap in security measures.",
+      "failure_scenario": "Sensitive contact information is exposed due to lack of protective measures, potentially compromising diplomatic engagements and damaging relationships.",
+      "resolution_test": "What specific measures or procedures are in place for protecting sensitive diplomatic contact information?",
+      "id": "C19",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how sensitive contact information, particularly diplomatic contacts, will be protected from unauthorized access or breaches in the system, leaving a gap in security measures.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C20": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not mention how personal data will be managed in compliance with data protection regulations, especially given the sensitivity of diplomatic contacts, which poses legal risks.",
+      "failure_scenario": "The organization collects and stores personal data without compliance, leading to violations of data protection laws and incurring penalties.",
+      "resolution_test": "What measures are proposed to ensure compliance with data protection regulations for personal information?",
+      "id": "C20",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not mention how personal data will be managed in compliance with data protection regulations, especially given the sensitivity of diplomatic contacts, which poses legal risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C21": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not outline a retention policy for contact information, which is crucial for compliance with data protection laws, presenting significant legal risks.",
+      "failure_scenario": "Contact information is retained longer than legally allowed, which could result in fines or legal action against the organization.",
+      "resolution_test": "What will be the process for defining and enforcing a retention policy for contact information?",
+      "id": "C21",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline a retention policy for contact information, which is crucial for compliance with data protection laws, presenting significant legal risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C22": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not outline specific measures or procedures in place for ensuring compliance with data protection regulations regarding personal contact information, risking legal repercussions.",
+      "failure_scenario": "There are violations of data protection laws due to unclear compliance processes, leading to audits and potential penalties.",
+      "resolution_test": "What measures will be taken to ensure compliance with data protection regulations concerning personal contact information?",
+      "id": "C22",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline specific measures or procedures in place for ensuring compliance with data protection regulations regarding personal contact information, risking legal repercussions.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C23": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify who is responsible for maintaining the data integrity of contact information or how ongoing management will occur after updates are made, leading to potential data management gaps.",
+      "failure_scenario": "After an update is made, no one monitors the integrity of the data, leading to widespread inaccuracies and potential diplomatic miscommunications.",
+      "resolution_test": "Who is responsible for ongoing data integrity checks after updates to contact information?",
+      "id": "C23",
+      "round_raised": 8,
+      "status": "UNRESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who is responsible for maintaining the data integrity of contact information or how ongoing management will occur after updates are made, leading to potential data management gaps.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The effectiveness of user access controls might not fully prevent unauthorized modifications, potentially compromising data integrity.",
+      "critic_worry": "The lack of clarity around access controls and data integrity could lead to unauthorized access to sensitive contact information.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 4,
+      "resolved": 3,
+      "escalated": 0,
+      "disagreement": 0.62,
+      "proposer_confidence": 80,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring clear responsibilities and user access protocols will be critical to maintain data integrity and confidentiality.",
+      "critic_worry": "Unclear responsibilities for data maintenance and vague access controls could lead to unauthorized access and outdated information.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 2,
+      "resolved": 4,
+      "escalated": 1,
+      "disagreement": 0.46,
+      "proposer_confidence": 85,
+      "critic_confidence": 65,
+      "proposer_worry": "Ensuring that the designated staff consistently maintain contact information for accuracy may require ongoing oversight.",
+      "critic_worry": "The ongoing uncertainty regarding who will ultimately manage data accuracy may lead to outdated contacts affecting diplomatic communications.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 10,
+      "open": 4,
+      "resolved": 4,
+      "escalated": 2,
+      "disagreement": 0.65,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "The successful implementation of strict user access controls is critical to preventing unauthorized access to sensitive data.",
+      "critic_worry": "Lack of clarity on roles and responsibilities for data accuracy and management may lead to significant operational failures.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 11,
+      "open": 3,
+      "resolved": 5,
+      "escalated": 3,
+      "disagreement": 0.57,
+      "proposer_confidence": 70,
+      "critic_confidence": 60,
+      "proposer_worry": "Ensuring compliance with data protection laws remains unresolved and critical to the project's success.",
+      "critic_worry": "Compliance with data protection laws remains unaddressed, creating risks of mishandling sensitive information.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 6,
+      "raised": 15,
+      "open": 6,
+      "resolved": 5,
+      "escalated": 4,
+      "disagreement": 0.69,
+      "proposer_confidence": 70,
+      "critic_confidence": 55,
+      "proposer_worry": "The definition of compliance measures may still lead to issues unless properly addressed by the organization.",
+      "critic_worry": "The proposal lacks critical procedures for ensuring data protection and compliance, which could lead to severe legal consequences.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 7,
+      "raised": 17,
+      "open": 2,
+      "resolved": 9,
+      "escalated": 6,
+      "disagreement": 0.55,
+      "proposer_confidence": 75,
+      "critic_confidence": 70,
+      "proposer_worry": "There are still open challenges regarding data protection and compliance that require resolution.",
+      "critic_worry": "The lack of specific data protection measures for sensitive diplomatic contacts could lead to unauthorized access.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 8,
+      "raised": 23,
+      "open": 7,
+      "resolved": 10,
+      "escalated": 6,
+      "disagreement": 0.64,
+      "proposer_confidence": 75,
+      "critic_confidence": 30,
+      "proposer_worry": "The challenge of implementing sufficient security measures while balancing user access requirements remains significant.",
+      "critic_worry": "The proposal still lacks sufficient measures to ensure compliance and protect sensitive information, leading to significant security and legal risks.",
+      "signal": "CONTINUE",
+      "decision": "cap",
+      "feedback": ""
+    }
+  ],
+  "termination": "cap",
+  "warnings": [
+    "R2: dropped new challenge(s) that repeated an open question: #1 (C1), #3 (C5).",
+    "R3: Critic's ACCEPT of C1 was refused (the sentence you quote leans on 'controls are in place', which names no role, number or rule); recorded as MAINTAIN.",
+    "R4: Critic's ACCEPT of C5 was refused (the sentence you quote leans on 'appropriate', which names no role, number or rule); recorded as MAINTAIN.",
+    "Summarizer output needed coercion after a failed repair; see events.jsonl."
+  ]
+}

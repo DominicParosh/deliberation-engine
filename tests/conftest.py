@@ -94,7 +94,7 @@ def summarizer_json(prompt: str, _messages=None) -> str:
         "item_notes": [{"id": "S1", "note": "Kept.", "refs": []}],
         "rejected": [{"what": f"Item {d}", "why": "Descoped.", "refs": [d]} for d in dropped],
         "open_questions": [{"issue_id": c, "question": "Who decides?", "why_it_matters": "Risk.", "decision_owner": "DPO",
-                            "options": ["A", "B"], "blocks_build": True} for c in re.findall(r"C\d+", needing)],
+                            "options": ["A", "B"]} for c in re.findall(r"C\d+", needing)],
         "tension_summary": "They disagreed about access."})
 
 

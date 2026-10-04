@@ -1,0 +1,628 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, the primary contact tracking feature caused a serious incident when regional coordinators attempted to reach out to a newly appointed country representative. The CRM displayed outdated contact information due to lack of oversight on updates. A sensitive diplomatic communication went to the wrong person, threatening relations and causing embarrassment to the organization.",
+  "gaps": [
+    "What happens if a primary contact leaves or changes roles?",
+    "How will permissions be managed to ensure only authorized users can edit contact information?",
+    "What safeguards are in place to ensure the accuracy of primary contact information?",
+    "What procedures exist for updating the primary contact information to prevent outdated records?",
+    "What happens when a country has a more complex scenario with multiple relevant contacts?",
+    "How are users informed about changes to primary contact information?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will implement a mechanism for tracking the primary contact person for each country within the Government CRM system. It is aimed at regional coordinators and project managers who need to identify the appropriate contacts for communication and engagement.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Implement a feature that allows users to designate a primary contact for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a streamlined interface to update and view primary contact information."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Allow regional coordinators to set and edit the primary contact person for each country in the system."
+        },
+        {
+          "id": "S2",
+          "text": "Display the primary contact information prominently on each country profile within the CRM."
+        },
+        {
+          "id": "S3",
+          "text": "Enable project managers to view the list of primary contacts while browsing through country records."
+        },
+        {
+          "id": "S4",
+          "text": "Implement a search function that enables users to quickly find the primary contact for a selected country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not support multi-language capabilities for contact information display."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include any automated alerts or notifications regarding contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that each country will have only one designated primary contact person, which impacts the design of contact assignment."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that all users of the CRM have the necessary permissions to edit country contact information based on established organizational policies."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that current country records already contain basic information about contact entities, on which this feature will build."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'primary contact' means the designated individual responsible for communication on behalf of the organization within a specific country."
+        },
+        {
+          "id": "D2",
+          "text": "'user roles' means the classification of CRM users (regional coordinators, project managers) with specific permissions related to country contact management."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of regional coordinators report improved ability to identify primary contacts in a user satisfaction survey conducted three months after release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a mechanism for tracking the primary contact person for each country within the Government CRM system, ensuring accurate and timely updates. It is aimed at regional coordinators and project managers who need to identify appropriate contacts for communication and engagement effectively.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Implement a feature that allows users to designate a primary contact for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a streamlined interface to update and view primary contact information."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Allow regional coordinators to set and edit the primary contact person for each country in the system; if the primary contact leaves or changes roles, a designated administrator will be responsible for reassigning the primary contact to ensure up-to-date information."
+        },
+        {
+          "id": "S2",
+          "text": "Display the primary contact information prominently on each country profile within the CRM."
+        },
+        {
+          "id": "S3",
+          "text": "Enable project managers to view the list of primary contacts while browsing through country records."
+        },
+        {
+          "id": "S4",
+          "text": "Implement a search function that enables users to quickly find the primary contact for a selected country."
+        },
+        {
+          "id": "S5",
+          "text": "Implement a notification mechanism to alert users when primary contact information has been updated, ensuring that regional coordinators and project managers are aware of any changes."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not support multi-language capabilities for contact information display."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include any automated alerts or notifications regarding contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that each country will have only one designated primary contact person, which impacts the design of contact assignment."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that all users of the CRM have the necessary permissions to edit country contact information based on established organizational policies."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that current country records already contain basic information about contact entities, on which this feature will build."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'primary contact' means the designated individual responsible for communication on behalf of the organization within a specific country and designated by the regional coordinator; this individual is expected to be the point of contact for all engagements related to that country."
+        },
+        {
+          "id": "D2",
+          "text": "'user roles' means the classification of CRM users (regional coordinators, project managers) with specific permissions related to country contact management; regional coordinators can edit contact information, while project managers can only view it."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of regional coordinators report improved ability to identify primary contacts in a user satisfaction survey conducted three months after release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a mechanism for tracking the primary contact person for each country within the Government CRM system, ensuring accurate and timely updates. It is aimed at regional coordinators and project managers who need to identify appropriate contacts for communication and engagement effectively.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Implement a feature that allows users to designate a primary contact for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a streamlined interface to update and view primary contact information."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Allow regional coordinators to set and edit the primary contact person for each country in the system; if the primary contact leaves or changes roles, a designated administrator will be responsible for reassigning the primary contact to ensure up-to-date information."
+        },
+        {
+          "id": "S2",
+          "text": "Display the primary contact information prominently on each country profile within the CRM."
+        },
+        {
+          "id": "S3",
+          "text": "Enable project managers to view the list of primary contacts while browsing through country records."
+        },
+        {
+          "id": "S4",
+          "text": "Implement a search function that enables users to quickly find the primary contact for a selected country."
+        },
+        {
+          "id": "S5",
+          "text": "Implement a notification mechanism to alert users when primary contact information has been updated, ensuring that regional coordinators and project managers are aware of any changes."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not support multi-language capabilities for contact information display."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include any automated alerts or notifications regarding contact changes."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that each country will have only one designated primary contact person, which impacts the design of contact assignment."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that all users of the CRM have the necessary permissions to edit country contact information based on established organizational policies."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that current country records already contain basic information about contact entities, on which this feature will build."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'primary contact' means the designated individual responsible for communication on behalf of the organization within a specific country and designated by the regional coordinator; this individual is expected to be the point of contact for all engagements related to that country."
+        },
+        {
+          "id": "D2",
+          "text": "'user roles' means the classification of CRM users (regional coordinators, project managers) with specific permissions related to country contact management; regional coordinators can edit contact information, while project managers can only view it."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of regional coordinators report improved ability to identify primary contacts in a user satisfaction survey conducted three months after release."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1",
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify how changes to the primary contact information will be managed when personnel leave or change roles.",
+      "failure_scenario": "A regional coordinator attempts to contact a primary contact who has left the organization, only to find they have no ability to change or update this information in the CRM, resulting in misguided outreach.",
+      "resolution_test": "What is the procedure for updating or reassigning the primary contact when they leave or change roles?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how changes to the primary contact information will be managed when personnel leave or change roles.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit clarifies the responsibility for updating primary contact information when personnel changes occur. This decision ensures that accurate contact information is maintained in the CRM.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines the process for maintaining accuracy in primary contact information. Fact: A designated administrator is responsible for updating primary contact information when personnel changes occur. Evidence: \"if the primary contact leaves or changes roles, a designated administrator will be responsible for reassigning the primary contact to ensure up-to-date information.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S1",
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on who can see and edit primary contact information across different user roles. This could lead to unauthorized changes.",
+      "failure_scenario": "A project manager without proper permissions gains access to sensitive country contact information and makes unauthorized changes, leading to confusion and potential data leaks.",
+      "resolution_test": "What specific permissions are required for users to edit and view primary contact information?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on who can see and edit primary contact information across different user roles. This could lead to unauthorized changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies user permissions for editing and viewing contact information, addressing the potential for unauthorized changes by clearly defining user roles.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This specification clarifies the permissions for editing and viewing primary contact information. Fact: Regional coordinators can edit; project managers can only view contact information. Evidence: \"regional coordinators can edit contact information, while project managers can only view it.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The assumption that current country records contain basic contact information does not address potential inaccuracies or omissions in those records.",
+      "failure_scenario": "An attempt to set a primary contact based on inaccurate existing information leads to further errors in the engagement process.",
+      "resolution_test": "How will the accuracy and completeness of existing contact records be validated before this feature is implemented?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that current country records contain basic contact information does not address potential inaccuracies or omissions in those records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The accuracy and completeness of existing contact records require validation that must be conducted according to the organization's policies and procedures before implementing this feature.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The reliance on human decision for validation of existing records leaves a gap in assurance for data quality.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "X3"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "The proposal does not address how users will be notified of changes to primary contacts, which could lead to confusion and outdated interactions.",
+      "failure_scenario": "Regional coordinators are unaware of a change to a primary contact and continue to communicate with the outdated contact, undermining timely engagements.",
+      "resolution_test": "What mechanism will notify users of updates to primary contact information?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how users will be notified of changes to primary contacts, which could lead to confusion and outdated interactions.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds a new scope item that establishes a notification mechanism, providing clarity on how users will be informed of changes to primary contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This satisfactorily addresses user notifications regarding primary contact changes. Fact: There will be a notification mechanism to alert users of updates. Evidence: \"Implement a notification mechanism to alert users when primary contact information has been updated, ensuring that regional coordinators and project managers are aware of any changes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The definition of 'primary contact' is not detailed enough to avoid ambiguity in its application across different contexts or scenarios.",
+      "failure_scenario": "Users interpret 'primary contact' differently, leading to inconsistencies in the information entered and confusion over who the actual point of contact is.",
+      "resolution_test": "Is 'primary contact' defined as strictly the single individual responsible for communication on behalf of the organization within a specific country?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'primary contact' is not detailed enough to avoid ambiguity in its application across different contexts or scenarios.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit enhances the definition of 'primary contact' to clarify the role's responsibilities, which reduces ambiguity and ensures consistent understanding among users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This definition reduces ambiguity in interpreting primary contact roles. Fact: Primary contact is clearly defined with responsibilities. Evidence: \"'primary contact' means the designated individual responsible for communication on behalf of the organization within a specific country and designated by the regional coordinator.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MINOR",
+      "challenge": "The assumption about user permissions lacks specificity on how these permissions are established and enforced within the organization.",
+      "failure_scenario": "Users attempt to access or edit country contact records without appropriate permissions, leading to data integrity issues.",
+      "resolution_test": "What specific organizational policies govern user permissions regarding the editing of contact information?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption about user permissions lacks specificity on how these permissions are established and enforced within the organization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Establishing and enforcing user permissions regarding the editing of contact information must be determined by the organization's existing policies.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "User permissions require a clear rule from organizational policy, which remains unconfirmed.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not detail how to ensure the accuracy and completeness of contact records before the feature is implemented, which is critical for preventing misinformation.",
+      "failure_scenario": "If outdated or inaccurate contact records are not validated before implementation, regional coordinators may rely on incorrect information, leading to diplomatic miscommunications.",
+      "resolution_test": "What specific process will be followed to validate the accuracy and completeness of existing contact records?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not detail how to ensure the accuracy and completeness of contact records before the feature is implemented, which is critical for preventing misinformation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The accuracy and completeness of contact records will require input from the organization to define the validation process.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal does not specify a definitive process for validating existing contact records, relying on undefined input from the organization.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "User permissions for editing contact information remain unclear and require definitive organization-wide rules.",
+      "failure_scenario": "Without clear rules on user permissions, unauthorized users might alter or access sensitive information, risking data integrity and confidentiality.",
+      "resolution_test": "What specific organizational policies dictate user permissions for editing primary contact information?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "User permissions for editing contact information remain unclear and require definitive organization-wide rules.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The definition of user permissions for editing contact information must be established by organizational policies and cannot be decided in this proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal does not provide established user permissions for editing contact information, depending on policies outside this proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The assumption about having only one primary contact per country may not hold true for all countries, leading to potential gaps in contact assignment.",
+      "critic_worry": "The proposal does not prevent outdated contact information from causing serious diplomatic incidents.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 8,
+      "open": 2,
+      "resolved": 4,
+      "escalated": 2,
+      "disagreement": 0.56,
+      "proposer_confidence": 80,
+      "critic_confidence": 50,
+      "proposer_worry": "Ensuring strict adherence to user permissions to prevent unauthorized access and edits.",
+      "critic_worry": "The lack of confirmed processes for data quality and user permissions poses significant risks for the feature's success.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 0,
+      "resolved": 4,
+      "escalated": 4,
+      "disagreement": 0.56,
+      "proposer_confidence": 75,
+      "critic_confidence": 20,
+      "proposer_worry": "Ensuring the accuracy of contact records before the feature goes live is critical to avoid miscommunications.",
+      "critic_worry": "The lack of clarity and established processes for validating contact information and user permissions jeopardizes the feature's integrity.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

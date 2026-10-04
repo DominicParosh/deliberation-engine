@@ -221,7 +221,6 @@ class OpenQuestion(BaseModel):
     why_it_matters: str
     decision_owner: str = Field(description="A role, e.g. 'Head of Data Protection'.")
     options: list[str]
-    blocks_build: bool
 
 
 class Synthesis(BaseModel):

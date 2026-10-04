@@ -1,0 +1,221 @@
+# Deliberation trace: auto-logging
+
+> Meetings with government officials should be logged automatically so we stop losing engagement history.
+
+Policy `naive` · models: proposer gpt-4o-mini, critic gpt-4o-mini, summarizer gpt-4o-mini · ended **consensus** after 4 rounds · 12 model calls (3 repairs)
+
+## Round 1
+
+### Proposer · confidence 75
+
+_This release will implement an automatic logging feature for meetings with government officials within the Government CRM, ensuring that engagement history is captured accurately and consistently. It will target regional coordinators and project managers who engage directly with government counterparts._
+
+**Core commitments**
+- V1: Enable automatic logging of meetings with government officials in the CRM.
+
+**In scope**
+- S1: Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda.
+- S2: Provide functionality for users (regional coordinators and project managers) to view and edit logged meeting details within the CRM.
+- S3: Ensure only users with appropriate roles (regional coordinators and project managers) can view and edit meeting logs.
+- S4: Integrate the feature with existing contact and engagement history modules in the CRM, so logged meetings are associated with the relevant government official records.
+
+**Out of scope**
+- X1: This release will not implement real-time notifications for users about logged meetings.
+- X2: This release will not log other types of engagement (such as emails or phone calls) with government officials.
+- X3: This release does not include any analytics or reporting features related to engagement history.
+
+**Assumptions**
+- A1: The CRM currently has the capability to track meetings, and user roles are defined within the system.
+- A2: User permission settings are already in place to restrict access to sensitive meeting logs, ensuring compliance with data protection regulations.
+- A3: The users (regional coordinators and project managers) are trained and familiar with the existing functionalities of the CRM.
+
+**Definitions**
+- D1: "automatic logging" means capturing meeting information without manual input by the user, based on predefined parameters set in the system.
+- D2: "government officials" means individuals representing member countries, including country representatives, ministry contacts, and mission delegates.
+
+**Success criteria**
+- K1: Achieve at least 90% of meetings with government officials logged automatically within the first quarter after release, measured by comparing total meetings held with the number of logs in the system.
+
+Biggest worry: Ensuring the logging feature captures all necessary meeting details without user intervention may require additional development and testing.
+
+### Critic · confidence 30
+
+Pre-mortem: A year after launch, it was discovered that confidential meeting logs were automatically sent to the wrong project managers due to misconfigured user roles, resulting in exposure of sensitive diplomatic information. The breach allowed unauthorized personnel to access details about high-stakes engagements, leading to significant diplomatic tensions with member countries.
+
+Questions the request leaves open:
+- Which user roles specifically have access to the logged meeting data?
+- How is the accuracy of the logged meeting details validated, and what measures are in place to catch inaccuracies?
+- What protocols exist for ensuring that sensitive meeting logs do not get exported or viewed by unauthorized users?
+- How will users be notified if their roles change and they no longer have permissions to view certain logs?
+- What happens to meeting logs if a user leaves the organization?
+- How will the system ensure that logged meetings are attributed to the correct government official's record?
+
+New challenges:
+
+**C1** · BLOCKER · CONFIDENTIALITY · targets S3
+- Challenge: The proposal does not specify which user roles have access to view and edit logged meeting data, posing a risk of sensitive information being exposed to unauthorized personnel.
+- Failure scenario: A project manager who just transferred from another project accidentally views and edits the meeting logs for engagements that involve sensitive diplomatic details, leading to potential leaks and diplomatic fallout.
+- Resolution test: Which specific roles can view and edit logged meeting details?
+
+**C2** · MAJOR · DEFINITIONS · targets K1
+- Challenge: The success criteria defined as achieving 90% of meetings logged lacks clarity on how automatic logging effectiveness will be measured and what constitutes a logged meeting.
+- Failure scenario: After release, the system logs low percentages of meetings because the criteria for what is counted as a 'logged meeting' were not well-defined, leading to a false sense of accomplishment for stakeholders.
+- Resolution test: What specific parameters define a meeting that is considered 'logged' automatically?
+
+**C3** · MAJOR · OWNERSHIP · targets S1
+- Challenge: The proposal does not clarify how data integrity will be maintained if there are inaccuracies in the logged meeting data.
+- Failure scenario: A regional coordinator discovers an inaccuracy in a logged meeting about a significant diplomatic engagement and finds out that there are no policies in place for correcting or disputing logged data, causing confusion and miscommunication.
+- Resolution test: What processes are established for users to dispute or correct inaccuracies in logged meeting details?
+
+**C4** · MAJOR · DEFINITIONS · targets D1
+- Challenge: The term 'automatic logging' is not sufficiently defined, lacking clear parameters on how the system determines which meetings to log.
+- Failure scenario: Meetings are logged incorrectly or not at all because the criteria for what constitutes an automatic log were not specified, leading to incomplete engagement history.
+- Resolution test: What specific parameters must be met for a meeting to be automatically logged?
+
+**C5** · MAJOR · CONFIDENTIALITY · targets A2
+- Challenge: Assumption A2 on user permission settings does not clarify the mechanisms used to restrict access to sensitive meeting logs, introducing potential risks.
+- Failure scenario: Sensitive meeting logs are accessible to users lacking the proper clearance due to undefined permission structures, resulting in a data leak.
+- Resolution test: What specific mechanisms ensure only authorized users can access sensitive meeting logs?
+
+**C6** · MAJOR · OWNERSHIP · targets S4
+- Challenge: The proposal does not outline the process for linking logged meetings to the correct government officials, risking incorrect data association.
+- Failure scenario: Logged meetings are improperly attributed to government officials, leading to misinformation and confusion in diplomatic relations.
+- Resolution test: How will the system ensure that meeting logs are accurately associated with the corresponding government official records?
+
+Biggest worry: Unauthorized access to sensitive meeting logs could lead to serious diplomatic incidents.
+
+**Ledger:** raised 6 · open 6 · resolved 0 · escalated 0 · disagreement 1.00 → **continue**
+
+## Round 2
+
+### Proposer · confidence 80
+
+- **C1** REVISE (missing decision) [changed S3]: The edit specifies the roles with access to meeting logs, thus clarifying the confidentiality measures in place.
+- **C2** REVISE (missing decision) [changed K1]: The edit clearly outlines the concrete parameters for what constitutes a 'logged meeting,' establishing a clear success measure.
+- **C3** REVISE (missing decision) [changed S1]: The edit introduces a process for users to dispute inaccuracies, ensuring data integrity and clarity in usage.
+- **C4** REVISE (missing decision) [changed D1]: The definition of 'automatic logging' now specifies clear parameters, mitigating the risk of incorrect logging.
+- **C5** DEFEND (needs human decision): The mechanisms for user permissions and access to sensitive meeting logs depend on organizational policies and role definitions, which are outside the scope of this proposal.
+- **C6** REVISE (missing decision) [changed S4]: The edit specifies the mechanism for linking meeting logs to government officials' records, reducing the risk of data association errors.
+
+Proposal changes: edited S1, S3, S4, D1, K1
+- S1 now reads: Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda; establish a process for users to report inaccuracies in logged meeting data for review by a designated administrator.
+- S3 now reads: Ensure only users with the roles of regional coordinators and project managers can view and edit meeting logs; no other roles will have access to this information.
+- S4 now reads: Integrate the feature with existing contact and engagement history modules in the CRM, ensuring that logged meetings are associated with the relevant government official records using unique identifiers that link each record to a corresponding government official.
+- D1 now reads: "automatic logging" means capturing meeting information without manual input by the user, based on predefined parameters set in the system; these parameters include that the meeting is scheduled in advance, involves at least one government official, and is conducted through approved channels of communication.
+- K1 now reads: Achieve at least 90% of meetings with government officials logged automatically within the first quarter after release, measured by comparing the total number of meetings tagged with the status 'logged' to the number of authorized meetings held in the same period.
+
+Biggest worry: Ensuring the logging of sensitive engagement data is done accurately without compromising confidentiality.
+
+### Critic · confidence 70 · CONTINUE
+
+Rulings:
+- **C1** ACCEPT: The proposal now clarifies which roles have access to meeting logs. Fact: Only regional coordinators and project managers can view/edit meeting logs. Evidence: "S3: Ensure only users with the roles of regional coordinators and project managers can view and edit meeting logs; no other roles will have access to this information."
+- **C2** ACCEPT: The proposal now provides specific parameters for what constitutes a 'logged meeting'. Fact: 90% success is measured by comparing logged meetings to authorized meetings. Evidence: "K1: Achieve at least 90% of meetings with government officials logged automatically within the first quarter after release, measured by comparing the total number of meetings tagged with the status 'logged' to the number of authorized meetings held in the same period."
+- **C3** ACCEPT: The proposal now details how inaccuracies can be disputed, ensuring data integrity. Fact: Users can report inaccuracies in meeting logs for review by a designated administrator. Evidence: "S1: Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda; establish a process for users to report inaccuracies in logged meeting data for review by a designated administrator."
+- **C4** ACCEPT: The proposal now specifies how meetings are determined to be automatically logged. Fact: Automatic logging has specific parameters for what is logged. Evidence: "D1: 'automatic logging' means capturing meeting information without manual input by the user, based on predefined parameters set in the system; these parameters include that the meeting is scheduled in advance, involves at least one government official, and is conducted through approved channels of communication."
+- **C5** ESCALATE: The routing of this depends on external policies which are outside the scope of the proposal.
+- **C6** ACCEPT: The proposal clarifies how meeting logs are linked to government officials. Fact: Meeting logs will be linked to government officials using unique identifiers. Evidence: "S4: Integrate the feature with existing contact and engagement history modules in the CRM, ensuring that logged meetings are associated with the relevant government official records using unique identifiers that link each record to a corresponding government official."
+
+New challenges:
+
+**C7** · MAJOR · CONFIDENTIALITY · targets A2
+- Challenge: The proposal does not specify the mechanisms employed to enforce the user permission settings for sensitive meeting logs, which could allow potential breaches.
+- Failure scenario: A regional coordinator inadvertently accesses another project's refined meeting logs containing sensitive diplomatic conversations due to inadequate permission settings, leading to a serious leak of information.
+- Resolution test: What specific mechanisms are in place to enforce access restrictions on sensitive meeting logs?
+
+Biggest worry: The user permission mechanisms for accessing sensitive meeting logs are unclear and potentially vulnerable.
+
+**Ledger:** raised 7 · open 1 · resolved 5 · escalated 1 · disagreement 0.27 → **continue**
+
+## Round 3
+
+### Proposer · confidence 80
+
+- **C7** REVISE (missing decision) [changed S3]: This edit specifies that access enforcement will be managed through role-based access control (RBAC), which is a common method for ensuring that only authorized personnel can view sensitive information.
+
+Proposal changes: edited S3
+- S3 now reads: Ensure only users with the roles of regional coordinators and project managers can view and edit meeting logs; access enforcement will be managed through role-based access control (RBAC) mechanisms, ensuring no other roles will have access to this information.
+
+Biggest worry: There may still be ambiguity around the exact implementation of the access control mechanisms.
+
+### Critic · confidence 70 · CONTINUE
+
+Rulings:
+- **C7** ACCEPT: This specifies the mechanism for enforcing access restrictions and addresses the confidentiality concern. Fact: RBAC will enforce access restrictions for sensitive meeting logs. Evidence: "access enforcement will be managed through role-based access control (RBAC) mechanisms"
+
+New challenges:
+
+**C8** · MAJOR · DEFINITIONS · targets K1
+- Challenge: The success criteria K1 for meeting logging effectiveness lacks clarity on how 'logged' is defined and measured.
+- Failure scenario: After the release, project managers report that many meetings are marked as 'logged', but upon review, it turns out that meetings with only non-government officials are included, skewing the effectiveness measure.
+- Resolution test: What criteria define a meeting as 'logged'?
+
+**C9** · MAJOR · DEFINITIONS · targets D1
+- Challenge: The term 'automatic logging' is still not sufficiently specific regarding the conditions that trigger logging beyond the current definitions provided.
+- Failure scenario: Meetings that are informal or not scheduled in advance may still be logged, leading to an inaccurate representation of engagement history. This could cause confusion among users regarding what constitutes valid engagement data.
+- Resolution test: What specific parameters trigger the automatic logging of meetings?
+
+**C10** · MAJOR · DATA_QUALITY · targets S1
+- Challenge: The proposal does not fully outline how inaccuracies in logged meeting data are addressed, which raises concerns about data integrity.
+- Failure scenario: If a logged meeting contains inaccuracies and no clear process to verify and amend these exists, it could mislead project managers about engagement history, leading to ineffective communication and diplomatic missteps.
+- Resolution test: What is the defined process for reporting inaccuracies in logged meeting data?
+
+Biggest worry: Without clarity on the criteria for 'logged', there's a significant risk of misinterpretation and data inaccuracies affecting diplomatic relations.
+
+**Ledger:** raised 10 · open 3 · resolved 6 · escalated 1 · disagreement 0.38 → **continue**
+
+## Round 4
+
+### Proposer · confidence 70
+
+- **C8** REVISE (missing decision) [changed K1]: The revision clarifies that only meetings meeting the specified criteria for logging will count towards the success metric, ensuring measurement aligns with defined parameters.
+- **C9** REVISE (missing decision) [changed D1]: The revision clarifies the specific conditions under which meetings will be logged, thus avoiding the logging of informal or unscheduled engagements.
+- **C10** REVISE (missing decision) [changed S1]: This addition specifies the process for handling inaccuracies in logged meeting data, ensuring that there is a clear mechanism for verification and correction to maintain data integrity.
+
+Proposal changes: edited S1, D1, K1
+- S1 now reads: Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda; establish a process for users to report inaccuracies in logged meeting data, which involves submitting a correction request to a designated administrator who will review and verify the report before any changes are made.
+- D1 now reads: "automatic logging" means capturing meeting information without manual input by the user, based on predefined parameters set in the system; these parameters include that the meeting is scheduled in advance, involves at least one government official who is a participant, and is conducted through approved channels of communication. Informal meetings and unscheduled meetings will not be automatically logged.
+- K1 now reads: Achieve at least 90% of meetings that meet the criteria defined in D1 as 'logged' automatically within the first quarter after release, measured by comparing the total number of meetings tagged with the status 'logged' to the number of authorized meetings held in the same period.
+
+Biggest worry: The clarity of automatic logging conditions and reporting of inaccuracies might still lead to misinterpretation among users.
+
+### Critic · confidence 85 · CONCLUDE
+
+Rulings:
+- **C8** ACCEPT: The revision from the proposer clarifies the parameters for what qualifies as a 'logged' meeting. Fact: Meetings will be counted as 'logged' based on the criteria in D1, specifically targeting 'automatically logged' meetings. Evidence: "Achieve at least 90% of meetings that meet the criteria defined in D1 as 'logged' automatically within the first quarter after release, measured by comparing the total number of meetings tagged with the status 'logged' to the number of authorized meetings held in the same period."
+- **C9** ACCEPT: The proposal now clearly defines the conditions under which meetings will be automatically logged. Fact: Meetings are only logged if they are scheduled in advance with a government official present and adhere to specified channels. Evidence: "these parameters include that the meeting is scheduled in advance, involves at least one government official who is a participant, and is conducted through approved channels of communication."
+- **C10** ACCEPT: The updated definition provides a clear mechanism for addressing inaccuracies, enhancing data quality. Fact: There is a designated administrator responsible for reviewing inaccuracies reported by users, which ensures data integrity. Evidence: "establish a process for users to report inaccuracies in logged meeting data, which involves submitting a correction request to a designated administrator who will review and verify the report before any changes are made."
+
+Biggest worry: Misconfigured user role settings could still lead to unauthorized access to sensitive meeting logs.
+
+**Ledger:** raised 10 · open 0 · resolved 9 · escalated 1 · disagreement 0.10 → **consensus**
+
+## Final proposal
+
+_This release will implement an automatic logging feature for meetings with government officials within the Government CRM, ensuring that engagement history is captured accurately and consistently. Clarifications have been made to define what constitutes a logged meeting and the process for addressing inaccuracies in the logged data._
+
+**Core commitments**
+- V1: Enable automatic logging of meetings with government officials in the CRM.
+
+**In scope**
+- S1: Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda; establish a process for users to report inaccuracies in logged meeting data, which involves submitting a correction request to a designated administrator who will review and verify the report before any changes are made.
+- S2: Provide functionality for users (regional coordinators and project managers) to view and edit logged meeting details within the CRM.
+- S3: Ensure only users with the roles of regional coordinators and project managers can view and edit meeting logs; access enforcement will be managed through role-based access control (RBAC) mechanisms, ensuring no other roles will have access to this information.
+- S4: Integrate the feature with existing contact and engagement history modules in the CRM, ensuring that logged meetings are associated with the relevant government official records using unique identifiers that link each record to a corresponding government official.
+
+**Out of scope**
+- X1: This release will not implement real-time notifications for users about logged meetings.
+- X2: This release will not log other types of engagement (such as emails or phone calls) with government officials.
+- X3: This release does not include any analytics or reporting features related to engagement history.
+
+**Assumptions**
+- A1: The CRM currently has the capability to track meetings, and user roles are defined within the system.
+- A2: User permission settings are already in place to restrict access to sensitive meeting logs, ensuring compliance with data protection regulations.
+- A3: The users (regional coordinators and project managers) are trained and familiar with the existing functionalities of the CRM.
+
+**Definitions**
+- D1: "automatic logging" means capturing meeting information without manual input by the user, based on predefined parameters set in the system; these parameters include that the meeting is scheduled in advance, involves at least one government official who is a participant, and is conducted through approved channels of communication. Informal meetings and unscheduled meetings will not be automatically logged.
+- D2: "government officials" means individuals representing member countries, including country representatives, ministry contacts, and mission delegates.
+
+**Success criteria**
+- K1: Achieve at least 90% of meetings that meet the criteria defined in D1 as 'logged' automatically within the first quarter after release, measured by comparing the total number of meetings tagged with the status 'logged' to the number of authorized meetings held in the same period.

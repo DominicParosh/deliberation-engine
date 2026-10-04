@@ -1,0 +1,702 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "meta": {
+    "request_id": "right-contact",
+    "policy": "gated",
+    "rounds": 5,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 13,
+    "repairs": 2,
+    "input_tokens": 47482,
+    "output_tokens": 6213,
+    "cost_usd": 0.0109,
+    "seconds": 69.3,
+    "warnings": []
+  },
+  "executive_summary": "This release will enable users to track key contacts in each of the ~100 member countries while ensuring information remains current and access is controlled. It includes a history log of changes and compliance provisions for data protection policies. However, details on transitional ownership of contact data and specific data protection policies require further human decisions.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Enable users to view and update key contact information for each of the ~100 member countries.",
+      "note": "Users will be enabled to view and update key contact information, facilitating better management of government counterparts.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Allow users to assign a primary contact per country for easier identification.",
+      "note": "Assigning a primary contact per country simplifies identification and improves communication.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Create a 'Key Contacts' section in the Government CRM for each member country, displaying the primary contact's name, title, and contact details. The designation of primary contacts will be reviewed quarterly by regional coordinators to ensure accuracy.",
+      "note": "A 'Key Contacts' section will be created, with a quarterly review process for primary contacts to maintain data accuracy.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "Provide a form for users to add or edit contact information, including options to designate a contact as the primary for each country.",
+      "note": "A form for adding or editing contact information will facilitate user engagement with the system’s features.",
+      "refs": []
+    },
+    {
+      "id": "S3",
+      "text": "Implement a search feature that allows users to find key contacts by country or name.",
+      "note": "Implementing a search feature allows users to efficiently locate key contacts, supporting user needs.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "Ensure that only authorized users can add, edit, or view contact information. Authorized access is restricted to users within their own project teams for the countries they are responsible for, and is managed by the data privacy officer. Each project team will have a defined list of users authorized for their specific countries, with access privileges checkable through the system for compliance audits.",
+      "note": "Access is strictly limited to authorized users within their project teams to prevent unauthorized exposure of sensitive contacts.",
+      "refs": [
+        "C1",
+        "C3",
+        "C9"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "Provide a history log of changes made to each contact entry to track updates.",
+      "note": "A history log of contact entry changes will track updates and allow for review.",
+      "refs": [
+        "C6"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include automatic updates of contact information from external databases.",
+      "note": "Automatic updates from external databases were dropped to maintain control over data accuracy and integrity.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "Integration with third-party communication tools is not included in this release.",
+      "note": "Integration with third-party communication tools was deemed outside the scope of this release to avoid complexity.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "Historical engagement data with contacts beyond the current contact information will not be part of this release.",
+      "note": "Historical engagement data with contacts will not be included to focus on current contact management.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users have the necessary training to access and use the new 'Key Contacts' feature, which is necessary for engagement efficiency.",
+      "note": "The assumption that users have training is essential for the effective use of the new feature.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "There are no existing protocols preventing users from storing and updating contact details for government counterparts.",
+      "note": "Confirming no existing protocols preventing user updates is crucial for implementing the feature.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "Sensitive data protection policies are in place to ensure that contact details are securely managed, which is crucial for maintaining confidentiality.",
+      "note": "Policies must ensure secure management of sensitive data, which is critical for user trust.",
+      "refs": [],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C5",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C8",
+          "outcome": "REVISED"
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Key Contacts' means a designated individual representing a specific country for collaboration, including their name, title, and contact information.",
+      "note": "'Key Contacts' is defined to specify the individuals representing countries for communication.",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "'Primary contact' means the key contact designated as the main point of contact for a country in the Government CRM.",
+      "note": "'Primary contact' is clearly defined to help in the identification of main points of communication.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "By the end of the quarter, at least 80% of regional coordinators and project managers report improved access to key contact information, measured through a user survey.",
+      "note": "Success will be measured through surveys showing improved access, emphasizing user satisfaction.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C5",
+      "question": "What specific data protection policies will govern the storage and access of contact information within the 'Key Contacts' feature?",
+      "why_it_matters": "Lack of clarity can lead to mishandling of sensitive data and legal repercussions.",
+      "decision_owner": "Head of Data Protection",
+      "options": [
+        "Define specific protocols for sensitive data management",
+        "Train users on data protection practices",
+        "Implement regular audits for compliance"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C4",
+      "question": "What is the process for transitioning ownership of contact information when a responsible user changes roles or departs?",
+      "why_it_matters": "If not addressed, key contact information may become unmanaged, leading to confusion and ineffective outreach.",
+      "decision_owner": "Organizational Policy Maker",
+      "options": [
+        "Establish a formal handover process for outgoing personnel",
+        "Allow team members to assume responsibility",
+        "Implement a centralized system to reassign contacts"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C7",
+      "question": "What established processes are in place to ensure continuity in contact data management when users change roles or leave?",
+      "why_it_matters": "Ensuring data continuity is crucial to maintain effective communication and operations.",
+      "decision_owner": "Organizational Policy Maker",
+      "options": [
+        "Create a formal transition procedure for departing personnel",
+        "Assign a deputy to manage contact data",
+        "Document contact data protocols within teams"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C6",
+      "question": "What measures will be implemented to protect sensitive data within the history log of changes to contact entries?",
+      "why_it_matters": "Preventing unauthorized access to changes in sensitive information is critical for maintaining confidentiality.",
+      "decision_owner": "Data Privacy Officer",
+      "options": [
+        "Restrict access to the history log based on user roles",
+        "Encrypt sensitive data changes in the log",
+        "Limit retention of sensitive updates in the log"
+      ],
+      "severity": "MINOR",
+      "status": "ESCALATED",
+      "blocks_build": false
+    }
+  ],
+  "tension": {
+    "summary": "The major disagreement centered on the management of sensitive data access and the continuity of contact information when key personnel depart. While the Proposer pushed for immediate solutions, the Critic expressed concerns about potential gaps and mismanagement, resulting in several open questions that require resolution.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 6,
+        "open": 1,
+        "resolved": 3,
+        "escalated": 2,
+        "disagreement": 0.46,
+        "proposer_confidence": 80,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 8,
+        "open": 2,
+        "resolved": 3,
+        "escalated": 3,
+        "disagreement": 0.61,
+        "proposer_confidence": 75,
+        "critic_confidence": 55,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 4,
+        "raised": 9,
+        "open": 1,
+        "resolved": 4,
+        "escalated": 4,
+        "disagreement": 0.52,
+        "proposer_confidence": 75,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 5,
+        "raised": 9,
+        "open": 0,
+        "resolved": 5,
+        "escalated": 4,
+        "disagreement": 0.38,
+        "proposer_confidence": 80,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "Ensuring that all authorized access privileges are effectively managed and audited to avoid unauthorized exposure."
+      },
+      "critic": {
+        "confidence": 70,
+        "worry": "There is still a lack of clarity on what happens to contact data when key personnel leave, increasing the potential for gaps in management."
+      }
+    },
+    "flags": [
+      "Proposer reported 80/100 confidence while blocker(s) C5 remain unsettled."
+    ]
+  },
+  "issues": [
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify criteria for authorized access to sensitive contact information, risking exposure to unauthorized users.",
+      "failure_scenario": "A project manager accesses contact information for a sensitive country but lacks the proper clearance, leading to unauthorized communication and a diplomatic incident.",
+      "resolution_test": "What are the specific criteria for which roles are authorized to access and edit contact information for key contacts?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify criteria for authorized access to sensitive contact information, risking exposure to unauthorized users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify that not only the roles identified but any additional roles may be authorized, contingent upon permission from the data privacy officer. This adds a layer of oversight for sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The specification clarifies that roles are restricted to project teams, addressing the challenge. Fact: Access is limited to users in their own project teams, managed by the data privacy officer. Evidence: \"Authorized access is restricted to users within their own project teams for the countries they are responsible for, and is managed by the data privacy officer.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1",
+        "S5"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal is unclear about how the designation of a primary contact is managed and validated, risking inconsistency.",
+      "failure_scenario": "A regional coordinator assigns a primary contact who has since changed jobs, leading to outdated and ineffective outreach efforts.",
+      "resolution_test": "What process ensures that primary contact designations are regularly reviewed and updated?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal is unclear about how the designation of a primary contact is managed and validated, risking inconsistency.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Revising S1 establishes a clear process for reviewing and updating primary contacts. This aims to maintain the accuracy of the information and improve outreach efforts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The process for managing primary contacts is now defined clearly, resolving the inconsistency risk. Fact: Primary contacts are reviewed quarterly by regional coordinators. Evidence: \"The designation of primary contacts will be reviewed quarterly by regional coordinators to ensure accuracy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks details on how to prevent users from seeing sensitive contacts in other teams or regions, leading to possible leaks.",
+      "failure_scenario": "A project manager from one region accesses and views sensitive contacts from another region during a search, causing a breach in confidentiality.",
+      "resolution_test": "What safeguards are in place to limit visibility of contact information to authorized project teams only?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details on how to prevent users from seeing sensitive contacts in other teams or regions, leading to possible leaks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit defines that users can only access contact information pertinent to their project teams, mitigating the risk of unauthorized access to sensitive contacts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now includes safeguards that mitigate the risk of unauthorized access to sensitive contacts. Fact: Access is limited to users in their own project teams, preventing exposure to unauthorized users. Evidence: \"Authorized access is restricted to users within their own project teams for the countries they are responsible for, and is managed by the data privacy officer.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not mention what happens to the contact data if a user responsible for maintaining it leaves the organization.",
+      "failure_scenario": "When a regional coordinator leaves, key contact information goes unmaintained, leading to confusion and miscommunication.",
+      "resolution_test": "What is the process for transitioning ownership of contact information when a responsible user changes roles or departs?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not mention what happens to the contact data if a user responsible for maintaining it leaves the organization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The specific process for transitioning ownership of contact data when users leave must be determined by the organization, as it depends on existing protocols and policies.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The challenge regarding transitioning ownership remains open as it requires a human decision.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not detail how data protection policies will be enforced in relation to the new 'Key Contacts' feature.",
+      "failure_scenario": "Sensitive contact information is stored without adequate protections, violating data protection laws and leading to legal repercussions.",
+      "resolution_test": "What specific data protection policies will govern the storage and access of contact information within the 'Key Contacts' feature?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not detail how data protection policies will be enforced in relation to the new 'Key Contacts' feature.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The specific data protection policies must be established by the organization, as they vary based on regulatory requirements and existing frameworks.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The specifics of data protection policies are still unspecified, and thus the challenge remains open.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "The history log might expose sensitive updates unnecessarily, creating a security risk.",
+      "failure_scenario": "An unauthorized user gains access to the history log, revealing changes to key contacts that shouldn’t be publicly available.",
+      "resolution_test": "What measures will be implemented to protect sensitive data within the history log of changes to contact entries?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The history log might expose sensitive updates unnecessarily, creating a security risk.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The risk of exposing sensitive updates in the history log is acknowledged but acceptable for the first release, as access is already restricted to authorized users. Further mitigation can be reviewed in subsequent updates.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the risk has been acknowledged, the exposure remains a concern for implementation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The risk of sensitive updates being exposed in the history log is acknowledged as acceptable for this release, as access is restricted to authorized users only. This access control mitigates potential risks, although further steps can be considered in future updates.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While access is restricted to authorized users, the potential exposure of sensitive updates in the history log remains a concern that needs addressing.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S4",
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify who is responsible for the continuity of contact data in the event that regional coordinators or project managers leave, leading to gaps in contact management.",
+      "failure_scenario": "If a regional coordinator responsible for several country contacts departs without handing over duties or updating contacts, users may not know whom to contact or may attempt to reach obsolete contacts, causing diplomatic confusion.",
+      "resolution_test": "What process is in place to ensure continuity in contact data management when users change roles or leave?",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who is responsible for the continuity of contact data in the event that regional coordinators or project managers leave, leading to gaps in contact management.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The responsibility for data continuity and management during personnel changes must be established by organizational policies and cannot be assumed in this proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal lacks clarity on established processes for managing data continuity during personnel changes, requiring organizational input.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal lacks details on how data protection policies will be enforced specifically for the 'Key Contacts' feature, risking non-compliance with regulatory and internal policies.",
+      "failure_scenario": "Without clear enforcement mechanisms for data protection policies, sensitive contact information could be mishandled, leading to potential legal repercussions and loss of trust in data handling practices.",
+      "resolution_test": "What specific measures are implemented to ensure compliance with data protection policies for the 'Key Contacts' feature?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details on how data protection policies will be enforced specifically for the 'Key Contacts' feature, risking non-compliance with regulatory and internal policies.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits establish specific compliance measures for data protection policies, including regular audits, which is essential for legal adherence and trust in data management.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This answer specifies measures for compliance, satisfying the concern about data protection enforcement. Fact: Regular audits by the compliance team will verify data protection compliance for the feature. Evidence: \"Data protection compliance will be ensured through regular audits conducted by the compliance team to confirm access privileges and the secure handling of sensitive data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify how access to sensitive contact information is limited within teams, risking unauthorized exposure to sensitive data.",
+      "failure_scenario": "Without defined restrictions, a project manager in one region may inadvertently access sensitive contacts from another team, leading to diplomatic missteps and breaches of confidentiality.",
+      "resolution_test": "What specific access controls are implemented to restrict who can view sensitive contact information?",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how access to sensitive contact information is limited within teams, risking unauthorized exposure to sensitive data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that access to sensitive contact information is restricted to users within their designated project teams, and provide a mechanism for verifying authorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies that project teams have defined access to contacts for their specific countries, which helps prevent unauthorized exposure. Fact: Access is restricted to project teams assigned to specific countries, managed by the data privacy officer. Evidence: \"Authorized access is restricted to users within their own project teams for the countries they are responsible for, and is managed by the data privacy officer.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

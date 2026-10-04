@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from conftest import (Fake, answer, challenge, critic_json, open_ids, opening_json, proposal, proposer_json, round_of,
                       summarizer_json)
 
+from deliberation import render
 from deliberation.engine import deliberate, replay
 from deliberation.ledger import Event, Issue, Ledger
 from deliberation.llm import AnthropicLLM, OpenAILLM
@@ -73,6 +74,23 @@ def test_summarizer_cannot_drop_open_questions_or_cite_unknown_ids():
     assert [q.issue_id for q in result.synthesis.open_questions] == ["C1"]
     assert result.synthesis.item_notes[0].refs == []
     assert len(llms["summarizer"].prompts) == 2  # one repair attempt before coercion
+
+
+def test_what_blocks_the_build_follows_from_severity_and_older_records_still_load():
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        return critic_json({c: "ESCALATE" for c in open_ids(prompt)}, signal="CONCLUDE")
+
+    def older(prompt, _):  # written when the summarizer still judged this itself, and said yes to everything
+        doc = json.loads(summarizer_json(prompt))
+        return json.dumps({**doc, "open_questions": [{**q, "blocks_build": True} for q in doc["open_questions"]]})
+
+    doc = render.decision(deliberate("Request.", "ctx", agents(critic=critic, summarizer=older), GATED))
+    assert [(q["issue_id"], q["blocks_build"]) for q in doc["open_questions"]] == [("C1", True), ("C2", True), ("C3", False)]
+    md = render.decision_md(doc)
+    assert "### C3 · MINOR · does not block the build" in md
+    assert "Challenges: 3 raised · 0 settled between the agents · 3 handed to humans · 0 still open when it ended." in md
 
 
 def test_dropped_items_must_be_explained():

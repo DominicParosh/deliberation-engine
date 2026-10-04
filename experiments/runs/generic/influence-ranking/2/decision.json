@@ -1,0 +1,560 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "meta": {
+    "request_id": "influence-ranking",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 9,
+    "repairs": 3,
+    "input_tokens": 31957,
+    "output_tokens": 4890,
+    "cost_usd": 0.0078,
+    "seconds": 53.0,
+    "warnings": [
+      "R2: the Proposer's turn still broke these rules after a repair (illegal edits dropped, mislabelled moves corrected, the rest recorded as given): C4: grounds NEEDS_HUMAN_DECISION mean DEFEND, which leaves the proposal as it is, so `edits` must be empty. If an item has to change, the grounds are MISSING_DECISION or SHOULD_NOT_BUILD. C6: grounds NEEDS_HUMAN_DECISION mean DEFEND, which leaves the proposal as it is, so `edits` must be empty. If an item has to change, the grounds are MISSING_DECISION or SHOULD_NOT_BUILD."
+    ]
+  },
+  "executive_summary": "This release will implement a feature that enables users to categorize contacts by their influence levels, thereby allowing prioritization in engagements. It will not include automated assessments or changes to privacy policies. Key decisions remain regarding the consistency in user training and the organizational understanding of influence.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Enable users to categorize contacts by influence level to prioritize engagements.",
+      "note": "Users will be able to categorize contacts by influence levels to prioritize engagements, addressing the need for better resource allocation.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Provide a visual interface to quickly assess and filter contacts based on their influence.",
+      "note": "A visual interface will help users assess and filter contacts based on influence, enhancing user experience and decision-making.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Add a field in the contact profile to rate 'Influence Level' on a scale of 1-5, with 1 being lowest and 5 being highest.",
+      "note": "A new field for Influence Level will be added, ensuring clarity in how contacts are rated for prioritization.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "Create a dashboard that displays all contacts sorted by their Influence Level, ensuring that access to this dashboard is restricted to authorized users defined by their role, specifically regional coordinators and project managers.",
+      "note": "The dashboard will display contacts by Influence Level, with strict access controls to protect sensitive relationships.",
+      "refs": [
+        "C3"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Allow users to filter contacts based on specific Influence Level ratings while ensuring that access to sensitive information is restricted based on user roles and explicit permissions.",
+      "note": "Users will be able to filter contacts by Influence Level, with filtering measures ensuring role-based access to sensitive data.",
+      "refs": [
+        "C5"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "Provide access to this feature for users, specifically including regional coordinators and project managers, and designate a primary role (e.g., regional coordinators) responsible for maintaining and updating the 'Influence Level' ratings.",
+      "note": "Regional coordinators will be designated to maintain the Influence Level ratings, providing clear ownership and responsibility.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "Implement user training sessions to ensure efficient usage of the new influence tracking feature.",
+      "note": "User training sessions will be implemented to support effective usage of the new feature, addressing potential gaps in user competency.",
+      "refs": []
+    },
+    {
+      "id": "S6",
+      "text": "Implement a review process for validating 'Influence Level' ratings, where each contact's assigned rating must be reviewed and approved by a designated authority, such as a senior project manager or regional coordinator, on a quarterly basis. This review process aims to mitigate risks related to inflated or biased ratings.",
+      "note": "A review process for Influence Level ratings will be established, allowing for oversight and correctness in the ratings assigned.",
+      "refs": [
+        "C7"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not provide automated assessments of influence based on external data sources.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not change the existing data privacy or user access policies.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "This release will not address historical engagement data for analyzing past influence.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "The organization has defined criteria for determining the 'Influence Level' of contacts. This assumption is critical for coding and testing the ranking scale.",
+      "note": "The organization has established criteria for determining influence levels, which is critical for feature implementation.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "Users are able to provide subjective ratings without extensive training or guideline documentation. This assumption underpins user adoption of the new feature.",
+      "note": "The assumption that users can provide subjective ratings without extensive training raises concerns about potential data quality issues.",
+      "refs": [
+        "C4"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C4",
+          "outcome": "ESCALATED"
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "text": "Regional coordinators and project managers have a shared understanding of what constitutes influence in the context of their roles. This assumption directly affects how users implement and utilize the new categorization.",
+      "note": "Regional coordinators' and project managers' shared understanding of influence is essential for consistent implementation of the rating system.",
+      "refs": [
+        "C6"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C6",
+          "outcome": "ESCALATED"
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Influence Level' means a numeric rating from 1 (lowest influence) to 5 (highest influence) assigned to contacts based on established criteria, which include: role within the government, historical collaboration with our organization, perceived relationship strength, and influence on decision-making processes.",
+      "note": "The definition of 'Influence Level' provides a standardized numeric rating, mitigating subjectivity and protecting data integrity.",
+      "refs": [
+        "C1"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "'User Roles' means defined positions within the CRM system that have varying levels of access and capabilities, specifically including regional coordinators and project managers.",
+      "note": "Defined user roles will clarify varying access levels within the CRM system, ensuring appropriate permissions are maintained.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "Achieve at least a 75% user satisfaction rate with the new influence tracking feature, measured through user feedback surveys within one month of release.",
+      "note": "The desired user satisfaction rate reflects the goal of effective feature usage and acceptance among users.",
+      "refs": []
+    },
+    {
+      "id": "K2",
+      "text": "Ensure that at least 80% of contacts have their Influence Level rated within the first two months of feature launch.",
+      "note": "A target rate of Influence Levels assigned to contacts ensures timely and effective utilization of the feature post-launch.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C4",
+      "question": "What specific training or guidelines will the organization provide to ensure consistent and objective ratings of influence levels?",
+      "why_it_matters": "This decision is critical to maintain data quality and prevent biased ratings.",
+      "decision_owner": "Head of User Training",
+      "options": [
+        "Develop comprehensive training materials",
+        "Utilize existing guidelines for similar features",
+        "No additional training or guidelines"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C6",
+      "question": "How will the organization ensure all users have a consistent understanding of what constitutes influence?",
+      "why_it_matters": "A consistent definition of influence is vital for accurate and objective ratings.",
+      "decision_owner": "Head of Data Protection",
+      "options": [
+        "Create a formalized definition of influence",
+        "Conduct workshops to align understanding",
+        "Assume existing knowledge is sufficient"
+      ],
+      "severity": "MINOR",
+      "status": "ESCALATED",
+      "blocks_build": false
+    }
+  ],
+  "tension": {
+    "summary": "The primary disagreement revolved around concerns of data quality and user bias in assigning influence ratings. While mechanisms for oversight were established, there remained unresolved questions about the adequacy of user training and shared definitions of influence.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 7,
+        "open": 1,
+        "resolved": 4,
+        "escalated": 2,
+        "disagreement": 0.43,
+        "proposer_confidence": 80,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 7,
+        "open": 0,
+        "resolved": 5,
+        "escalated": 2,
+        "disagreement": 0.21,
+        "proposer_confidence": 85,
+        "critic_confidence": 85,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 85,
+        "worry": "Ensuring consistent application of the review process by all designated authorities."
+      },
+      "critic": {
+        "confidence": 85,
+        "worry": "Bias in assigning 'Influence Level' ratings could still lead to non-objective assessments despite the review process."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not provide clear, objective criteria for determining the 'Influence Level' of contacts, risking subjective bias in ratings.",
+      "failure_scenario": "A project manager assigns inflated ratings based on personal relationships rather than a standard, causing the organization to misallocate resources and privileges.",
+      "resolution_test": "What are the specific, objective criteria used to measure and categorize a contact's 'Influence Level'?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not provide clear, objective criteria for determining the 'Influence Level' of contacts, risking subjective bias in ratings.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The new wording provides clear, objective criteria for assessing 'Influence Level', thus reducing subjective biases in ratings.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now defines clear, objective criteria for determining 'Influence Level', addressing the concern. Fact: Defined criteria for 'Influence Level' based on role, collaboration, relationship strength, and influence. Evidence: \"D1: 'Influence Level' means a numeric rating from 1 (lowest influence) to 5 (highest influence) assigned to contacts based on established criteria, which include: role within the government, historical collaboration with our organization, perceived relationship strength, and influence on decision-making processes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1",
+        "S4"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define who will maintain or update the 'Influence Level' ratings, leading to inconsistencies over time.",
+      "failure_scenario": "After a regional coordinator leaves, their assigned influence levels are never reviewed or updated, resulting in outdated contact prioritization.",
+      "resolution_test": "Who is responsible for maintaining and updating the 'Influence Level' ratings over time?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define who will maintain or update the 'Influence Level' ratings, leading to inconsistencies over time.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies that regional coordinators are responsible for maintaining the 'Influence Level' ratings, which addresses concerns of inconsistencies.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies who is responsible for updating 'Influence Level' ratings. Fact: Regional coordinators are responsible for maintaining the 'Influence Level' ratings. Evidence: \"S4: Provide access to this feature for users, specifically including regional coordinators and project managers, and designate a primary role (e.g., regional coordinators) responsible for maintaining and updating the 'Influence Level' ratings.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The dashboard displaying contacts by 'Influence Level' may expose sensitive relationships to users who should not access this information.",
+      "failure_scenario": "A project manager accesses the dashboard and learns about relationships that are confidential, leading to inappropriate engagement actions.",
+      "resolution_test": "What access controls are in place to ensure that only authorized users can view the 'Influence Level' dashboard?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The dashboard displaying contacts by 'Influence Level' may expose sensitive relationships to users who should not access this information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The new wording clarifies that access to the dashboard will be controlled, reducing the risk of unauthorized exposure to sensitive relationships.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Access controls are clarified, reducing the risk of unauthorized exposure. Fact: Access to the dashboard is restricted to regional coordinators and project managers. Evidence: \"S2: Create a dashboard that displays all contacts sorted by their Influence Level, ensuring that access to this dashboard is restricted to authorized users defined by their role, specifically regional coordinators and project managers.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal assumes that users can provide subjective ratings without guidance, which raises concerns about data quality and ownership.",
+      "failure_scenario": "Users rate contacts based on personal opinions rather than consistent standards, leading to unreliable influence ratings and poor decision-making.",
+      "resolution_test": "What specific training or guidelines will be provided to ensure users can accurately assess contact influence?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal assumes that users can provide subjective ratings without guidance, which raises concerns about data quality and ownership.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "This edit assigns the development of training and guidelines to the organization, as it needs to decide how to ensure consistent ratings from users.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal still relies on unconfirmed organizational decisions on training and guidelines.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "The filtering feature may allow users to inadvertently access sensitive information based on influence ratings.",
+      "failure_scenario": "A user filters and accesses details of a contact marked as highly influential and acts on that information without clearance.",
+      "resolution_test": "What measures are in place to prevent users from accessing or acting on sensitive information related to high-influence contacts?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The filtering feature may allow users to inadvertently access sensitive information based on influence ratings.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that filtering will be role-based, which addresses the concern around unauthorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Filtering measures are defined, reducing risk of unauthorized access to sensitive data. Fact: Filtering will be role-based, ensuring access is controlled. Evidence: \"S3: Allow users to filter contacts based on specific Influence Level ratings while ensuring that access to sensitive information is restricted based on user roles and explicit permissions.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "The proposal relies on a shared understanding of 'influence,' which can vary significantly among users, presenting confidentiality risks.",
+      "failure_scenario": "Confusion among users leads to inconsistent ratings, potentially exposing confidential engagements to unintended audiences.",
+      "resolution_test": "How will the organization ensure that all users have a consistent understanding of what constitutes influence?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal relies on a shared understanding of 'influence,' which can vary significantly among users, presenting confidentiality risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "This revision indicates that the organization is responsible for creating a definition of influence, which is essential for consistency in ratings.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal still lacks a definitive framework for understanding 'influence'.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not account for the potential risk of users inflating ratings or rating based on bias without oversight, which could lead to significant inaccuracies in 'Influence Level'.",
+      "failure_scenario": "A project manager, possibly seeking to favor certain contacts, inflates their 'Influence Level', resulting in critical misallocation of resources and subsequent diplomatic fallout.",
+      "resolution_test": "What validation or review process is established for influence ratings to ensure their accuracy and reliability?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not account for the potential risk of users inflating ratings or rating based on bias without oversight, which could lead to significant inaccuracies in 'Influence Level'.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits establish a clear review process to validate the 'Influence Level' ratings, ensuring accuracy and reliability. This decision directly addresses the challenge by requiring oversight to prevent biased or inflated ratings.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The established review process effectively addresses the concerns about inflated ratings. Fact: A review process will validate 'Influence Level' ratings quarterly. Evidence: \"Implement a review process for validating 'Influence Level' ratings, where each contact's assigned rating must be reviewed and approved by a designated authority, such as a senior project manager or regional coordinator, on a quarterly basis.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

@@ -362,3 +362,57 @@ for High). Remaining problems:
 - **A resolution test must be a question** (ends with "?"); the repair asks for one with a concrete answer.
 - **A question that is with humans can't be asked again** (word for word, give or take two words); the task line says
   not to re-raise what was just escalated.
+
+## Comparison batch (2026-10-04 ~14:20, code 9545bcc)
+
+Five requests × three runs × three configurations, gpt-4o-mini throughout, ~$0.50 in total. Full table in
+`experiments/results.md`; runs in `experiments/runs/`. `naive` swaps the termination policy (stop rule, constant
+budget of 6, no two-strike escalation); `generic` swaps the prompts (no role stakes, no burden-of-proof guidance).
+
+| | gated | naive | generic |
+|---|---|---|---|
+| Runs closed with a BLOCKER/MAJOR open | 0/15 | 7/15 | 0/15 |
+| Ended consensus / converged / cap | 2 / 13 / 0 | 12 / 0 / 3 | 8 / 7 / 0 |
+| Rounds, median (range) | 3 (2–5) | 6 (2–8) | 3 (2–6) |
+| Challenges raised per run | 7.4 | 15.1 | 7.9 |
+| Defenses on merit (accepted) | 15 (4) | 7 (2) | 1 (0) |
+| Revisions accepted by the Critic | 84% | 76% | 84% |
+| Repair requests per run | 2.1 | 5.1 | 2.7 |
+
+What it shows:
+1. **naive concludes over its own objections.** In 3 of its 12 CONCLUDEs the Critic maintained a MAJOR in the same
+   turn (auto-logging/3 C16, engagement-history/1 C10, right-contact/3 C14 and C16); a fourth left a question the
+   Proposer had sent to humans open (engagement-history/3 C18); 3 runs hit the cap. The ledger-built record still
+   lists those questions, under a "consensus" header.
+2. **naive's extra challenges are mostly re-asks.** right-contact/1 asked the data-protection-compliance question four
+   times (C10, C11, C20, C22) and ended with 7 BLOCKERs open, 6 raised in round 8; influence-ranking/3 maintained C16
+   three rounds running while S11 grew. Proposals grew 77% in words (gated 35%).
+3. **gated's gate never fired.** The Critic concluded twice, both with nothing open; 13 runs ended `converged`. The
+   shrinking budget and the two-strike rule emptied the ledger before the Critic could conclude over an open issue.
+4. **The opposed prompts change the Proposer, not the Critic.** Same accept rate for revisions; 15 merit defenses vs 1;
+   runs with no defense 1/15 vs 4/15; the Critic declared itself satisfied 2/15 vs 8/15. Of the 4 accepted merit
+   defenses (all MINOR), one is clean (engagement-history/2 C6); MINOR risk disputes usually deadlock and are
+   auto-escalated (cold-relationship/3 C5, right-contact/1 C6, influence-ranking/1 C6).
+5. **What the ledger sent back** (gated, 31 repair requests, 46 problems): 16 assumption-only revisions, 10 resolution
+   tests that weren't questions, 7 ACCEPTs quoting outside a decided item, 5 weak phrases, 4 round-1 openings short of
+   their gaps, 2 repeats, 1 defense with edits, 1 missing answer.
+
+Audit of the 15 gated decision documents (red flags kept as README limitations): invented roles and teams accepted
+("data privacy officer", "compliance team", "data management team"); the Critic's `fact` often describes the quote
+instead of stating it; the same question escalated twice in different words (right-contact C4/C7, auto-logging
+C2/C7 and C5/C8, influence-ranking C3/C8, cold-relationship/2 C6/C7); role-change rules escalated although they are
+the agents' to decide; scope never shrinks (no "should this exist?"); a self-contradicting scope in right-contact/2
+(X3 excludes the notifications S1 includes); an unchallenged PDF export in engagement-history/3.
+
+### Fix after the batch (rendering only; prompts for the deliberation unchanged)
+
+- **Whether an open question blocks the build now follows from the Critic's severity.** The Rapporteur had been
+  asked to judge it and marked 14 of 16 MINOR questions as blocking (and 1 BLOCKER as not). Severity already defines
+  it ("MINOR: won't sink the release"), and decisions belong to the ledger, so the field left the Rapporteur's
+  schema and prompt. The decision header also counts challenges settled, handed to humans and still open, so a
+  "consensus" with open questions is visible at a glance.
+- All 45 runs replayed through the new code: ledgers, traces, events and run metadata byte-identical; decision
+  documents changed only by the new line, 25 corrected labels and 4 reorderings. The re-rendered documents replaced
+  the originals in `experiments/runs/`.
+- Published `runs/` (one gated run per request): right-contact/1, engagement-history/2, cold-relationship/3,
+  auto-logging/1, influence-ranking/1, chosen for the fewest red flags in the audit; each replays identically.

@@ -1,0 +1,706 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "gated",
+    "rounds": 5,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 15,
+    "repairs": 4,
+    "input_tokens": 60600,
+    "output_tokens": 8083,
+    "cost_usd": 0.014,
+    "seconds": 93.3,
+    "warnings": []
+  },
+  "executive_summary": "This release will implement an alert system to notify users when engagement with a country has been inactive for six months, including confidentiality measures and error correction protocols. It will not provide alerts for decreased engagement frequency or detailed historical analyses of cold relationships. The usability and management of alerts will depend on user adherence to the configured settings.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Users receive alerts when no engagement activities have occurred with a specific country for a period of six months.",
+      "note": "Users will receive alerts for inactive engagements after six months to prompt re-engagement.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "The system will define 'engagement activities' as any logged communication or meeting with a country representative, ministry contact, project lead, or mission delegate. All logged engagement activities must undergo an internal review process every six months, including checks for completeness, accuracy, and relevance. If errors are identified during the review, the designated authorized user must correct these discrepancies within five business days and document the corrective actions taken in a corrections log. Access to sensitive information will be restricted to authorized personnel only, and a two-factor authentication protocol will be implemented to access sensitive logs. Additionally, all reviews will be tracked through an access log.",
+      "note": "Defines engagement activities and includes a review process to ensure accuracy, though the specific metrics for these checks remain a point of contention.",
+      "refs": [
+        "C3"
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "An alert will be generated and sent via email to the designated regional coordinator and project manager when a relationship goes cold as defined in V1.",
+      "note": "Specifies that alerts will be sent to coordinators and project managers, ensuring relevant stakeholders are informed.",
+      "refs": []
+    },
+    {
+      "id": "S3",
+      "text": "The CRM will include a configuration option that allows only regional coordinators and project managers to set the duration for alerts related to inactive relationships, allowing for customization between three to twelve months. If a user who has set configurations leaves or changes their role, their alert settings will be reset, and the new user assigned to their role will need to establish new alert configurations.",
+      "note": "Defines which roles are authorized to set alert durations, addressing ownership concerns about misconfiguration when users change roles.",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "A dashboard will display a summary of all countries with cold relationships, indicating the country name and the last date of engagement.",
+      "note": "Includes a dashboard overview of cold relationships to facilitate quick visibility on engagement health.",
+      "refs": []
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include alerts for relationships that have simply decreased in frequency but still have some ongoing engagement.",
+      "note": "Will not include alerts for relationships with decreased engagement frequency to focus specifically on complete inactivity.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not cover any changes to the underlying CRM system architecture or any complex user-defined rules beyond the specified duration for alert settings.",
+      "note": "No changes to CRM architecture or complex user-defined alert rules will be made, keeping the implementation straightforward.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "The CRM will not provide detailed historical data analysis on the reasons for the cold relationship in this release.",
+      "note": "Historical reasons for cold relationships are outside the scope of this release to maintain focused objectives.",
+      "refs": []
+    },
+    {
+      "id": "X4",
+      "text": "This release will ensure all alerts regarding cold relationships are only accessible to regional coordinators and project managers, and sensitive engagement data will be protected by role-based access controls.",
+      "note": "Alerts for cold relationships will be accessible only to regional coordinators and project managers, ensuring proper confidentiality.",
+      "refs": [
+        "C5"
+      ]
+    },
+    {
+      "id": "X5",
+      "text": "This release will ensure alerts regarding cold relationships are retained for a maximum of six months before automatic deletion from the system.",
+      "note": "A maximum retention policy of six months for cold relationship alerts ensures compliance with data management regulations.",
+      "refs": [
+        "C6"
+      ]
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users will have access to the CRM and be trained on how to interpret alerts about cold relationships.",
+      "note": "Assumes users will access the CRM and be trained to use the alert system effectively.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "Users understand and agree on what constitutes a relationship being 'cold', based on engagement activity, per S1.",
+      "note": "Assumes a consensus on what constitutes a 'cold' relationship is in place among users.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "It is assumed that the CRM has the necessary permissions and data structures to track and log engagement activities.",
+      "note": "Assumes the CRM has the necessary structures to track engagement activities.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "\"cold relationship\" means a relationship with a country that has not recorded any engagement activity for six months as per V1.",
+      "note": "Defines a 'cold relationship' based on the absence of engagement activities for six months.",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "\"engagement activities\" means any recorded form of communication, meeting, or project interaction between users of the CRM and government representatives from member countries.",
+      "note": "Clarifies what constitutes 'engagement activities' to avoid confusion and ensure comprehensive tracking.",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "\"authorized users\" means users who have been granted permission to configure alert settings within the CRM.",
+      "note": "Defines 'authorized users' as those permitted to set alert configurations, ensuring clarity on responsibilities.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 80% of users report receiving timely alerts when relationships go cold, with 'timely' defined as alerts received within 48 hours of a relationship becoming inactive, measured via user feedback surveys two months post-release.",
+      "note": "Specifies that 'timely' alerts are those received within 48 hours, thus providing a measurable criterion for success.",
+      "refs": [
+        "C4"
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C8",
+      "question": "What specific measures and protocols are in place to protect sensitive engagement data during the internal review process?",
+      "why_it_matters": "To mitigate risks of confidentiality breaches during the review of engagement activities.",
+      "decision_owner": "Head of Data Protection",
+      "options": [
+        "Implement stricter access controls",
+        "Define protocols for information handling during reviews"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C3",
+      "question": "What specific metrics and data quality checks are in place to ensure the accuracy of logged engagement activities?",
+      "why_it_matters": "Ensuring logged engagement activities are accurate is critical for the reliability of the alert system.",
+      "decision_owner": "Product Owner",
+      "options": [
+        "Define specific quality metrics",
+        "Rely on existing generic review processes"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The primary disagreement was around ensuring effective data quality and confidentiality during the alert process. While the proposer included protocols for review and access control, the critic raised concerns that specifics were lacking, leading to unresolved issues that require further definition before moving forward.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 6,
+        "open": 1,
+        "resolved": 5,
+        "escalated": 0,
+        "disagreement": 0.15,
+        "proposer_confidence": 80,
+        "critic_confidence": 85,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 8,
+        "open": 2,
+        "resolved": 5,
+        "escalated": 1,
+        "disagreement": 0.39,
+        "proposer_confidence": 85,
+        "critic_confidence": 65,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 4,
+        "raised": 9,
+        "open": 2,
+        "resolved": 6,
+        "escalated": 1,
+        "disagreement": 0.38,
+        "proposer_confidence": 75,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 5,
+        "raised": 9,
+        "open": 0,
+        "resolved": 7,
+        "escalated": 2,
+        "disagreement": 0.24,
+        "proposer_confidence": 80,
+        "critic_confidence": 75,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "There may be additional unforeseen challenges regarding user adherence to the new protocols."
+      },
+      "critic": {
+        "confidence": 75,
+        "worry": "The alert requirements may still lead to misconfigurations when users change roles, affecting data accuracy."
+      }
+    },
+    "flags": [
+      "Proposer reported 80/100 confidence while blocker(s) C8 remain unsettled."
+    ]
+  },
+  "issues": [
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify which roles are authorized to set the duration for alerts related to cold relationships, potentially leading to inconsistencies in alert configurations.",
+      "failure_scenario": "If an unauthorized user inadvertently configures the alert duration, they may set it too long or too short, failing to catch cold relationships effectively and leading to potential diplomatic issues.",
+      "resolution_test": "Which roles can set the duration for alerts surrounding cold relationships?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify which roles are authorized to set the duration for alerts related to cold relationships, potentially leading to inconsistencies in alert configurations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the roles authorized to set the alert duration as mandated by the challenge.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly establishes which roles can set the alert duration, addressing the original concern. Fact: Only regional coordinators and project managers can set alert durations. Evidence: \"The CRM will include a configuration option that allows only regional coordinators and project managers to set the duration for alerts related to inactive relationships, allowing for customization between three to twelve months.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify what happens to alert configurations when users leave or change roles, risking ongoing misconfigurations of alert settings.",
+      "failure_scenario": "When a project manager leaves their position, their alert settings remain unchanged, causing a new project manager to miss vital alerts while receiving incorrect notifications related to past engagements.",
+      "resolution_test": "What is the process that adjusts alert configurations when a user leaves or changes roles?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify what happens to alert configurations when users leave or change roles, risking ongoing misconfigurations of alert settings.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit outlines the process for managing alert configurations when users leave or change roles, addressing the challenge's concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This specifies the process to adjust alert configurations when users leave, addressing the concern. Fact: When a user leaves or changes roles, their alert settings are reset for reassignment. Evidence: \"If a user who has set configurations leaves or changes their role, their alert settings will be reset, and the new user assigned to their role will need to establish new alert configurations.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The scope includes 'engagement activities' but lacks clarity on what happens if a communication is logged incorrectly or entries are missed, affecting the alert system's reliability.",
+      "failure_scenario": "Due to a logging error, an engagement activity does not appear, and an alert is triggered incorrectly, misinforming team members about the state of their relationship with a government counterpart.",
+      "resolution_test": "What specific metrics and data quality checks are in place to ensure the accuracy of logged engagement activities?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The scope includes 'engagement activities' but lacks clarity on what happens if a communication is logged incorrectly or entries are missed, affecting the alert system's reliability.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This change specifies quality checks on logged engagement activities, ensuring reliability in the alert system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While this states a review process, it does not specify what metrics or quality checks will ensure accuracy, leaving the risk of errors unaddressed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits specify the internal review process and metrics for ensuring the accuracy of logged engagement activities, addressing the risk of incorrect logging affecting the alert system's reliability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal states a review process but does not specify which metrics or quality checks will ensure the accuracy of logged engagement activities, leaving the potential for errors in logging unaddressed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The acceptance of 80% user positive feedback measured via surveys is vague and potentially untestable, lacking concrete criteria to confirm 'timely alerts.'",
+      "failure_scenario": "If users define 'timely' differently, the feedback collected is inconsistent, leading to an inaccurate assessment of the alert system's effectiveness, and potentially undermining its intended purpose.",
+      "resolution_test": "What specific criteria define 'timely alerts' in the user feedback surveys?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The acceptance of 80% user positive feedback measured via surveys is vague and potentially untestable, lacking concrete criteria to confirm 'timely alerts.'",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies the definition of 'timely alerts,' ensuring consistent measurement across user feedback.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies the timing criteria for alerts, ensuring consistent measurement across feedback. Fact: 'Timely' means alerts received within 48 hours. Evidence: \"with 'timely' defined as alerts received within 48 hours of a relationship becoming inactive, measured via user feedback surveys two months post-release.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "There is no mention of how sensitive data regarding country engagements is handled or who can access this information, which could lead to breaches of confidentiality.",
+      "failure_scenario": "An unauthorized person receives access to sensitive information about engagements due to a flaw in the alert configuration that does not appropriately restrict visibility based on user roles.",
+      "resolution_test": "What safeguards are implemented to ensure only authorized personnel can access engagement data related to cold relationships?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of how sensitive data regarding country engagements is handled or who can access this information, which could lead to breaches of confidentiality.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes safeguards to protect sensitive data and restrict access solely to authorized users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes safeguards to protect sensitive data related to engagements. Fact: Only regional coordinators and project managers can access alerts about cold relationships. Evidence: \"This release will ensure all alerts regarding cold relationships are only accessible to regional coordinators and project managers, and sensitive engagement data will be protected by role-based access controls.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address data retention policies for alerts that are generated regarding cold relationships, leaving the potential for non-compliance with data management regulations.",
+      "failure_scenario": "If alerts are stored indefinitely without proper retention policies, this leads to breaches in compliance laws regarding personal data management.",
+      "resolution_test": "How long are alerts regarding cold relationships retained in the system?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address data retention policies for alerts that are generated regarding cold relationships, leaving the potential for non-compliance with data management regulations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This change establishes a clear data retention policy for alerts, ensuring compliance with data management regulations.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies the retention policy for alerts, ensuring compliance with data management regulations. Fact: Alerts regarding cold relationships are retained for a maximum of six months. Evidence: \"This release will ensure alerts regarding cold relationships are retained for a maximum of six months before automatic deletion from the system.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clearly define the metrics or quality checks used in determining engagement activity accuracy, leaving potential for logging errors.",
+      "failure_scenario": "If a logged activity is incorrectly reported and the internal review process does not catch it due to vague quality checks, alerts may trigger for active relationships, misleading the team and damaging partnerships.",
+      "resolution_test": "What specific metrics and protocols are in place to ensure the accuracy of logged engagement activities?",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clearly define the metrics or quality checks used in determining engagement activity accuracy, leaving potential for logging errors.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify specific metrics and protocols to ensure the accuracy of logged engagement activities, reducing the potential for logging errors and false triggers for alerts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This fact clarifies the review process and provides structured checks on engagement activities. Fact: All engagement activities will undergo a review for completeness, accuracy, and relevance every six months. Evidence: \"All logged engagement activities must undergo an internal review process every six months, including checks for completeness, accuracy, and relevance.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The description of the internal review process for engagement activities lacks details on how sensitive information is protected during this review, posing risks to confidentiality.",
+      "failure_scenario": "During the review process, unauthorized personnel could access sensitive engagement details, leading to breaches of confidentiality and trust with foreign entities.",
+      "resolution_test": "What specific measures and protocols are in place to protect sensitive engagement data during the internal review process?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The description of the internal review process for engagement activities lacks details on how sensitive information is protected during this review, posing risks to confidentiality.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits include specific measures regarding access controls during the internal review process, ensuring sensitive engagement data is protected and confidentiality is upheld.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the access is described, there is no specification of what measures or protocols are in place to ensure confidentiality during the review.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify the implementation of a two-factor authentication protocol for access to sensitive logs and detail access restrictions, which provide clarity on how confidentiality is protected during the internal review process.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The specifics of which roles are considered 'authorized personnel' are not provided, leaving confidentiality protection unclear.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal fails to address what specific actions are taken if errors are found in the logged engagement activities during the internal review process, which could allow inaccuracies to persist uncorrected.",
+      "failure_scenario": "If a logged engagement activity is incorrect, and no clear action plan or protocol exists to address it during the review, alerts may trigger incorrectly for active relationships, leading to miscommunication and strained relations.",
+      "resolution_test": "What specific protocols are in place for addressing inaccuracies found during the internal review of engagement activities?",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal fails to address what specific actions are taken if errors are found in the logged engagement activities during the internal review process, which could allow inaccuracies to persist uncorrected.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify a tangible action plan for addressing inaccuracies during the internal review process, committing to corrective actions within a defined timeframe and establishing a revisions log.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This outlines protocols for addressing inaccuracies found during reviews. Fact: There is a plan for correcting discrepancies found during reviews, within a specified timeframe. Evidence: \"...the designated authorized user must correct these discrepancies within five business days and document the corrective actions taken in a corrections log.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

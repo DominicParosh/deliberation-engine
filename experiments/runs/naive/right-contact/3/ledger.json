@@ -1,0 +1,1582 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, the new primary contact feature inadvertently allowed unauthorized users from multiple regions to update contact details. This led to confusion and miscommunication, as key diplomatic contacts were assigned incorrectly, resulting in a breach of trust with several country officials. Sensitive government communications were mishandled, which triggered an internal review and external scrutiny concerning data security and compliance.",
+  "gaps": [
+    "What criteria determine the eligibility of a user to be a 'designated user' that can update contacts?",
+    "Who can view the primary contact information for each country, and can other project teams or regions see these records?",
+    "What measures are in place to ensure that the primary contact information is accurate and kept up-to-date?",
+    "What safeguards exist to prevent unauthorized access to sensitive contact records?",
+    "How will the system handle changes when a regional coordinator or project manager leaves their role or changes responsibilities?",
+    "How is the term 'contact' defined in terms of the necessary qualifications or roles these individuals hold?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release provides a new feature allowing users to designate and update a primary contact person for each country in the Government CRM. It is aimed at regional coordinators and project managers who need a reliable and transparent way to identify the appropriate contacts in each member country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines features to designate and update primary contact persons for countries, enabling proper communication channels while addressing security, accuracy, and compliance concerns.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter, where designated users are prompted to confirm the accuracy of their assigned contacts. Additionally, introduce a user feedback mechanism to report inaccuracies."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This will require an approval process from a government liaison officer who can validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "'Retention policy' means the guidelines that determine how long changes made to primary contact details will be stored, which is set to a minimum of two years from the last modification date, for audit and compliance purposes."
+        },
+        {
+          "id": "D5",
+          "text": "'Primary contact qualifications' means the criteria that must be met for an individual to be designated as a primary contact, including relevant experience in diplomatic communications and recognition by the organization as a point of contact."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines features to designate and update primary contact persons for countries, enabling proper communication channels while addressing security, accuracy, and compliance concerns, with defined qualifications and measures for accuracy, and clarifying limits on functionalities for multiple contacts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter, where designated users are prompted to confirm the accuracy of their assigned contacts. A reminder system will be built that requires designated users to submit confirmation or updates within 14 days of the prompt. Additionally, introduce a user feedback mechanism to report inaccuracies, allowing users to flag outdated or incorrect primary contacts for review."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This will require an approval process from a government liaison officer who can validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "'Retention policy' means the guidelines that determine how long changes made to primary contact details will be stored, which is set to a minimum of two years from the last modification date, for audit and compliance purposes."
+        },
+        {
+          "id": "D5",
+          "text": "'Primary contact qualifications' means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) the official authority granted by a government liaison officer to engage with counterparts."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines features to designate and update primary contact persons for countries, enabling proper communication channels while addressing security, accuracy, and compliance concerns, with defined qualifications and measures for accuracy, and clarifying limits on functionalities for multiple contacts. It includes a validation process to ensure data quality in contact information updates.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter by requiring designated users to confirm the accuracy of their assigned contacts. A reminder system will prompt users to submit confirmation or updates within 14 days of the prompt, and provide a mechanism for reporting inaccuracies. Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This will require an approval process from a government liaison officer who can validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "'Retention policy' means the guidelines that determine how long changes made to primary contact details will be stored, which is set to a minimum of two years from the last modification date, for audit and compliance purposes."
+        },
+        {
+          "id": "D5",
+          "text": "'Primary contact qualifications' means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) the official authority granted by a government liaison officer to engage with counterparts."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines features to designate and update primary contact persons for countries, enabling proper communication channels while addressing security, accuracy, and compliance concerns, with defined qualifications and measures for accuracy, and clarifying limits on functionalities for multiple contacts. It includes a validation process to ensure data quality in contact information updates, with additional clarifications on authority verification and access levels for sensitive information.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. Users from other regions will have no access to this information. A role-based access control system will be implemented to ensure that only qualified users can view or edit primary contact information."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter by requiring designated users to confirm the accuracy of their assigned contacts. A reminder system will prompt users to submit confirmation or updates within 14 days of the prompt, and provide a mechanism for reporting inaccuracies. Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This verification will require an approval process from a government liaison officer or a designated compliance officer who has the authority to validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "Retention policy means the guidelines that determine how long changes made to primary contact details will be stored, set to a minimum of two years from the last modification date. Additionally, the system will implement a scheduled review of retained records every two years to ensure compliance with evolving legal and organizational standards."
+        },
+        {
+          "id": "D5",
+          "text": "'Primary contact qualifications' means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) official authority granted by a government liaison officer to engage with counterparts. Any changes in qualifications will be documented through a formal process that includes notifying designated users and updating the CRM system to reflect such changes."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines features to designate and update primary contact persons for countries, enabling proper communication channels while addressing security, accuracy, and compliance. It includes defined qualifications and measures for accuracy, clarifying limits on functionalities for multiple contacts, and a validation process for ensuring data quality.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. Users from other regions will have no access to this information. A role-based access control system will be implemented to ensure that only qualified users can view or edit primary contact information."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter by requiring designated users to confirm the accuracy of their assigned contacts. A reminder system will prompt users to submit confirmation or updates within 14 days of the prompt, and provide a mechanism for reporting inaccuracies. Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This verification will require an approval process from a government liaison officer or a designated compliance officer who has the authority to validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "Retention policy means the guidelines that determine how long changes made to primary contact details will be stored, set to a minimum of two years from the last modification date. Additionally, the system will implement a scheduled review of retained records every two years to ensure compliance with evolving legal and organizational standards."
+        },
+        {
+          "id": "D5",
+          "text": "'Primary contact qualifications' means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) official authority granted by a government liaison officer to engage with counterparts. Any changes in qualifications will be documented through a formal process that requires notification to designated users following approval by a government liaison officer or designated compliance officer, and these changes will be recorded in the CRM system to ensure accurate and updated qualifications are maintained."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal details features for designating primary contacts for countries, including user access controls and periodic reviews for accuracy, while also addressing retention policies for both contact details and change logs. Specific processes for managing access and accountability have now been established, improving the overall governance of contact information management.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to designate a primary contact person for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Allow users to view and update the primary contact details easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Provide a user interface for designated users (regional coordinators and project managers) to select and set a primary contact for each member country."
+        },
+        {
+          "id": "S2",
+          "text": "Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system."
+        },
+        {
+          "id": "S3",
+          "text": "Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure that changes are logged for auditing purposes, tracking who made changes and when. These logs will be retained for a minimum of five years, ensuring compliance with data retention standards."
+        },
+        {
+          "id": "S5",
+          "text": "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. When a designated user changes roles or leaves the organization, access to the primary contact information will be automatically revoked through the role management system."
+        },
+        {
+          "id": "S6",
+          "text": "Implement periodic reviews of primary contact details every quarter by requiring designated users to confirm the accuracy of their assigned contacts based on criteria: 1) the designation is current, 2) contact details are up-to-date (name, title, email, phone), and 3) the designated user retains authority and recognition. A reminder system will prompt users to submit confirmation or updates within 14 days of the prompt, and provide a mechanism for reporting inaccuracies."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide detailed historical records of changes to contact designations beyond the latest record; however, designated users will be notified of any updates made to primary contact details for accountability."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement notifications or alerts for when contact assignments change."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "All relevant user groups (regional coordinators and project managers) have access to the CRM system, which they will utilize to track contact information."
+        },
+        {
+          "id": "A2",
+          "text": "Users understand their responsibility for maintaining up-to-date contact information to ensure effective communication with country officials."
+        },
+        {
+          "id": "A3",
+          "text": "The system has adequate security measures in place to ensure the confidentiality and proper handling of sensitive contact data."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact' means the designated individual for each member country who is responsible for communication and coordination on behalf of the organization, and the designated user is accountable for maintaining the accuracy of the details."
+        },
+        {
+          "id": "D2",
+          "text": "'Designated user' means any regional coordinator or project manager authorized to update contact information within the CRM."
+        },
+        {
+          "id": "D3",
+          "text": "'Verification process' means the steps taken to confirm that a designated user, such as a regional coordinator or project manager, has the official authority to alter the primary contact information for a member country. This verification will require an approval process from a government liaison officer or a designated compliance officer who has the authority to validate the user's status and authority."
+        },
+        {
+          "id": "D4",
+          "text": "‘Retention policy’ means the guidelines that determine how long changes made to primary contact details will be stored, set to a minimum of five years from the last modification date. Additionally, the system will implement a scheduled review of retained records every five years to ensure compliance with evolving legal and organizational standards."
+        },
+        {
+          "id": "D5",
+          "text": "‘Primary contact qualifications’ means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) official authority granted by a government liaison officer to engage with counterparts. Any updates must be verified and validated by the designated user."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "D2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify who verifies the accuracy of the designated user's authority to update contact information.",
+      "failure_scenario": "An unauthorized project manager attempts to change the primary contact for a sensitive country, leading to miscommunication and potential diplomatic fallout.",
+      "resolution_test": "What is the verification process to ensure only authorized users can update contact information?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who verifies the accuracy of the designated user's authority to update contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies a clear verification process involving a designated government liaison officer to ensure that only authorized users can update contact information, addressing the concern about unauthorized changes.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Acceptable confirmation process established. Fact: A government liaison officer will verify the authority of users to update primary contact information. Evidence: \"This will require an approval process from a government liaison officer who can validate the user's status and authority.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on who can view the primary contact information across different regions, potentially exposing sensitive data.",
+      "failure_scenario": "A project manager from a different region accesses and alters sensitive contact information without permission, complicating diplomatic communications and leading to distrust.",
+      "resolution_test": "Which roles can see primary contact records for different countries?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on who can view the primary contact information across different regions, potentially exposing sensitive data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By defining the access levels for viewing primary contact information, this edit addresses the issue of potential data exposure and ensures that sensitive contact details are protected.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Defined access levels mitigate risks of unauthorized data exposure. Fact: Only regional coordinators and project managers from the same region can view primary contact records. Evidence: \"allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not outline measures to ensure the accuracy and timeliness of the primary contact information updated by users.",
+      "failure_scenario": "Users make updates that are incorrect or out-of-date, leading to continued reliance on invalid contacts and further miscommunication.",
+      "resolution_test": "What measures will be implemented to ensure the accuracy of the designated contact's information?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline measures to ensure the accuracy and timeliness of the primary contact information updated by users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a review process and feedback mechanism to ensure the accuracy and timeliness of primary contact information, effectively addressing data quality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The actual measures to ensure accuracy and timeliness are still not clearly defined.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a clear reminder system and confirmation requirement, ensuring designated users take responsibility for the accuracy of the primary contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While a reminder system is proposed, it does not clearly outline how accuracy will ultimately be ensured for contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that not only will users confirm the accuracy of their assigned contacts quarterly, but a data validation process will also be implemented to ensure only verified entries are accepted.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The measure of a data validation process ensures accuracy and timeliness of primary contact information. Fact: A data validation process checks for inconsistencies or errors during updates. Evidence: \"Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "X3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal states that additional contact-related functionalities like multiple contacts will not be included, but does not specify the implications of this limitation.",
+      "failure_scenario": "A project team encounters a situation where multiple contacts are required for effective communication, but the system lacks this capability, leading to failure in outreach efforts.",
+      "resolution_test": "What alternative solutions will be provided for situations requiring multiple contacts in a country?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal states that additional contact-related functionalities like multiple contacts will not be included, but does not specify the implications of this limitation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The limitation on having multiple contacts is acknowledged, but the team's existing communication policies will allow for workarounds, such as having users reference additional contacts in project metadata when necessary.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Defined retention policy ensures compliance with auditing standards. Fact: Change logs for primary contacts will be retained for at least two years. Evidence: \"'Retention policy' means the guidelines that determine how long changes made to primary contact details will be stored, which is set to a minimum of two years from the last modification date, for audit and compliance purposes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks a defined retention policy or audit trail process for changes made to primary contacts, raising compliance concerns.",
+      "failure_scenario": "Changes made to primary contacts are undocumented, leading to disputes over who was responsible for communication mishaps with diplomatic entities.",
+      "resolution_test": "What is the defined retention policy for logs of changes made to primary contact details?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a defined retention policy or audit trail process for changes made to primary contacts, raising compliance concerns.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit defines a retention policy for change logs that ensures compliance while addressing concerns over the documentation of alterations made to primary contacts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Clarified qualifications will help avoid miscommunications. Fact: Criteria for primary contact designation include relevant experience and organization recognition. Evidence: \"'Primary contact qualifications' means the criteria that must be met for an individual to be designated as a primary contact, including relevant experience in diplomatic communications and recognition by the organization as a point of contact.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'Primary contact' is not explicitly defined in terms of the required qualifications or responsibilities of these individuals.",
+      "failure_scenario": "A project relies on an individual defined as primary contact who is neither qualified nor aware of their designation, leading to communication breakdowns.",
+      "resolution_test": "What qualifications must a person meet to be designated as a 'Primary contact' for a country?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'Primary contact' is not explicitly defined in terms of the required qualifications or responsibilities of these individuals.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By defining the qualifications for a primary contact, this edit clarifies the requirements necessary for effective communication and reduces the risk of miscommunications.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "Lack of functionality for multiple contacts could lead to operational challenges.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This change clarifies the qualifications needed for a primary contact, ensuring that users are aware of the criteria and responsibilities associated with this designation.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Clarifying qualifications for primary contacts addresses the concern about operational effectiveness. Fact: Clear qualifications are defined for a primary contact to ensure they are suitable for the role. Evidence: \"'Primary contact qualifications' means that an individual designated as a primary contact must have the following qualifications: 1) prior experience in diplomatic communications, 2) recognition by the organization as a point of contact, and 3) the official authority granted by a government liaison officer to engage with counterparts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "X3"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The workaround suggested for missing multiple contacts implies that sensitive communications may not be fully addressed, risking operational efficiency.",
+      "failure_scenario": "A regional coordinator needs to contact multiple individuals for critical updates on a diplomatic mission but finds only one primary contact assigned, leading to delays and miscommunication.",
+      "resolution_test": "What alternative process will users follow when they need to communicate with multiple points of contact for a country?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The workaround suggested for missing multiple contacts implies that sensitive communications may not be fully addressed, risking operational efficiency.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit formally states that there will be no alternative processes provided for multiple contacts, clarifying the expected use of the system while emphasizing the need for effective designation of a single primary contact.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal explicitly states the lack of alternative processes for multiple contacts, which needs to be well understood by users. Fact: No alternative processes will be provided for situations requiring multiple contacts. Evidence: \"This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "D2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal still does not clarify who has the authority to verify the accuracy of the designated user's authority to update contact information.",
+      "failure_scenario": "If the lack of defined authority verification allows unqualified individuals to update primary contact details, it could lead to incorrect contact information and resulting diplomatic miscommunications.",
+      "resolution_test": "Who verifies the accuracy of a designated user's authority to update contact information?",
+      "id": "C8",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal still does not clarify who has the authority to verify the accuracy of the designated user's authority to update contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that either a government liaison officer or a designated compliance officer will be responsible for verifying the user's authority to update contact information. This clarifies who has the authority and ensures accountability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines who is responsible for verifying user authority. Fact: User authority verification is confirmed by government liaison officer or compliance officer. Evidence: \"This verification will require an approval process from a government liaison officer or a designated compliance officer who has the authority to validate the user's status and authority.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks details on specific access levels and permissions for users from the same region to view primary contact information, which raises concerns about data exposure.",
+      "failure_scenario": "If some users from a different region gain unauthorized access to sensitive contact information, confidential diplomatic communications could be intercepted or mismanaged.",
+      "resolution_test": "What specific permissions and access levels define who can view primary contact information across different regions?",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details on specific access levels and permissions for users from the same region to view primary contact information, which raises concerns about data exposure.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit provides a clear definition of the access levels and permissions, establishing that only specific users from the same region can view primary contacts, thus addressing concerns about unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies access levels that ensure confidentiality. Fact: Access to primary contacts is limited to regional coordinators and project managers from the same region only. Evidence: \"Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. Users from other regions will have no access to this information.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "No defined retention policy is provided, raising important compliance regarding how long changes to primary contact details are kept for auditing purposes.",
+      "failure_scenario": "Without a retention policy, it is unclear how long the system retains updates, potentially leading to non-compliance during audits regarding data retention regulations.",
+      "resolution_test": "What is the exact retention period for changes made to primary contact information?",
+      "id": "C10",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "No defined retention policy is provided, raising important compliance regarding how long changes to primary contact details are kept for auditing purposes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit now specifies a two-year retention period and includes a scheduled review to ensure compliance, addressing the concerns about audit retention.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "A clear retention period for changes is now defined. Fact: Changes to primary contacts are retained for a minimum of two years. Evidence: \"Retention policy means the guidelines that determine how long changes made to primary contact details will be stored, set to a minimum of two years from the last modification date.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C11": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'Primary contact qualifications' is defined but not how changes in those qualifications are documented or managed in the CRM.",
+      "failure_scenario": "If qualifications of primary contacts change due to policy or personnel shifts without a defined process for updates, incorrect or outdated contacts may remain in the system.",
+      "resolution_test": "What is the defined process for documenting changes in primary contact qualifications?",
+      "id": "C11",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'Primary contact qualifications' is defined but not how changes in those qualifications are documented or managed in the CRM.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit defines a process for documenting changes in primary contact qualifications, ensuring that any updates are formally recorded in the CRM system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not contain a clear and testable fact for documenting changes in qualifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies how changes in primary contact qualifications will be documented in the CRM, ensuring that a formal process is established for managing these updates.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This definition provides a clear and testable fact on how changes in qualifications are documented. Fact: Changes in primary contact qualifications are documented through a formal process requiring notification to designated users after approval from a government liaison officer or compliance officer. Evidence: \"Any changes in qualifications will be documented through a formal process that requires notification to designated users following approval by a government liaison officer or designated compliance officer, and these changes will be recorded in the CRM system to ensure accurate and updated qualifications are maintained.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C12": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal states that only regional coordinators and project managers from the same region can view primary contacts, but it does not define how access is managed when users change roles or leave.",
+      "failure_scenario": "If a regional coordinator transitions to a different role within the organization, their access to primary contact information may not be properly revoked, potentially allowing unauthorized access to sensitive data.",
+      "resolution_test": "What process is in place to revoke access to primary contact information when a designated user changes roles or leaves the organization?",
+      "id": "C12",
+      "round_raised": 6,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal states that only regional coordinators and project managers from the same region can view primary contacts, but it does not define how access is managed when users change roles or leave.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit establishes a clear process for managing access to primary contact information, ensuring that users who no longer have authorization will no longer have access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies how access is managed when users change roles or leave. Fact: Access to primary contact information is revoked automatically via the role management system. Evidence: \"access to the primary contact information will be automatically revoked through the role management system.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C13": {
+      "targets": [
+        "S6"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The periodic review process for primary contact details does not define the criteria or metrics for determining if a contact is accurate or outdated.",
+      "failure_scenario": "During the quarterly review, if unclear criteria for accuracy exist, users may incorrectly validate outdated contacts, leading to ongoing miscommunication with country representatives.",
+      "resolution_test": "What specific criteria or metrics will users use to verify the accuracy of primary contact information during quarterly reviews?",
+      "id": "C13",
+      "round_raised": 6,
+      "status": "UNRESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The periodic review process for primary contact details does not define the criteria or metrics for determining if a contact is accurate or outdated.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the criteria users will follow to verify the accuracy of primary contact information, thereby ensuring a more structured review process.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This defines clear criteria for contact accuracy verification. [Not counted as settled: the sentence you quote leans on 'designated users', which names no role, number or rule.]",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (consensus).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C14": {
+      "targets": [
+        "D1",
+        "D5"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The ownership and responsibility for maintaining the accuracy of the primary contacts is unclear. The proposal does not specify if designated users are held accountable for the accuracy of their assigned contacts after they are updated in the CRM.",
+      "failure_scenario": "If users are not held accountable for maintaining accurate contact information, updates may be made without proper verification, leading to potential diplomatic errors and lack of trust with country representatives.",
+      "resolution_test": "Who is ultimately accountable for the accuracy of primary contact information once it is updated in the system?",
+      "id": "C14",
+      "round_raised": 6,
+      "status": "UNRESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The ownership and responsibility for maintaining the accuracy of the primary contacts is unclear. The proposal does not specify if designated users are held accountable for the accuracy of their assigned contacts after they are updated in the CRM.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits clarify that designated users are responsible for the accuracy of the primary contacts once updated, improving accountability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1",
+            "D5"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While there is accountability, the definition lacks specificity on enforcement measures after updates.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (consensus).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C15": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposed logging mechanism for tracking changes to primary contacts does not specify how long the logs will be retained, potentially causing compliance risks.",
+      "failure_scenario": "If change logs are not retained for an appropriate period, the organization may fail to meet compliance obligations regarding data retention and auditing.",
+      "resolution_test": "What is the retention period for logs tracking changes to primary contact information?",
+      "id": "C15",
+      "round_raised": 6,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposed logging mechanism for tracking changes to primary contacts does not specify how long the logs will be retained, potentially causing compliance risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Clarifying the retention period for logs addresses compliance concerns and sets a clear expectation for how long records are maintained.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This specifies the retention period for logs, addressing compliance. Fact: Change logs will be retained for at least five years. Evidence: \"These logs will be retained for a minimum of five years, ensuring compliance with data retention standards.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C16": {
+      "targets": [
+        "X1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "By not providing historical records of changes, there's a lack of clarity on how accountability is tracked over time, especially concerning the designated users who made changes.",
+      "failure_scenario": "If errors arise, there will be no historical record to identify who made the incorrect changes to primary contacts, complicating accountability and remediation efforts.",
+      "resolution_test": "How will accountability be managed if there is no historical record of changes to primary contact designations?",
+      "id": "C16",
+      "round_raised": 6,
+      "status": "UNRESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "By not providing historical records of changes, there's a lack of clarity on how accountability is tracked over time, especially concerning the designated users who made changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a notification system for updates that supports accountability despite the lack of historical records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X1"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This establishes a mechanism for accountability but lacks detail on how accountability is reinforced without historical records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (consensus).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C17": {
+      "targets": [
+        "D4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal lacks a comprehensive retention policy for primary contact information that aligns with legal and regulatory compliance.",
+      "failure_scenario": "Without a clear retention policy, the organization risks storing sensitive data longer than permitted, potentially incurring legal penalties.",
+      "resolution_test": "What legal and regulatory timeframe will be established for the retention of primary contact records?",
+      "id": "C17",
+      "round_raised": 6,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a comprehensive retention policy for primary contact information that aligns with legal and regulatory compliance.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Extending the retention period aligns the policy with compliance needs, mitigating legal risks.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The retention policy now supports compliance needs. Fact: Primary contact records will be retained for at least five years. Evidence: \"set to a minimum of five years from the last modification date.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring that users actually utilize the new feature to keep contact information updated.",
+      "critic_worry": "Unauthorized users may access and alter sensitive contact information, causing significant miscommunication.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 3,
+      "resolved": 4,
+      "escalated": 0,
+      "disagreement": 0.4,
+      "proposer_confidence": 80,
+      "critic_confidence": 50,
+      "proposer_worry": "The verification and access control measures might still not be robust enough to prevent unauthorized changes to sensitive contact information.",
+      "critic_worry": "Exclusion of multiple contact functionalities may lead to operational inefficiencies during critical communications.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 1,
+      "resolved": 6,
+      "escalated": 0,
+      "disagreement": 0.13,
+      "proposer_confidence": 75,
+      "critic_confidence": 80,
+      "proposer_worry": "The reliance on users to correctly identify and maintain accurate primary contact information still poses a significant risk.",
+      "critic_worry": "The lack of clarity on how accuracy will be verified for contact details presents a significant risk.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 11,
+      "open": 4,
+      "resolved": 7,
+      "escalated": 0,
+      "disagreement": 0.4,
+      "proposer_confidence": 80,
+      "critic_confidence": 65,
+      "proposer_worry": "Ensuring that the validation process effectively reduces the risk of outdated or incorrect contact information remains a concern.",
+      "critic_worry": "Unclear authority and verification processes could lead to unauthorized updates and severe diplomatic miscommunications.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 11,
+      "open": 1,
+      "resolved": 10,
+      "escalated": 0,
+      "disagreement": 0.08,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring that new definitions and processes are implemented correctly and consistently across all users.",
+      "critic_worry": "The potential for unauthorized updates still exists if user roles and responsibilities are not rigorously enforced.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 6,
+      "raised": 17,
+      "open": 6,
+      "resolved": 11,
+      "escalated": 0,
+      "disagreement": 0.34,
+      "proposer_confidence": 70,
+      "critic_confidence": 75,
+      "proposer_worry": "The success of the release relies heavily on user compliance with the established processes for maintaining accurate contact data.",
+      "critic_worry": "Multiple major challenges regarding data ownership, confidentiality, and compliance remain unresolved.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 7,
+      "raised": 17,
+      "open": 3,
+      "resolved": 14,
+      "escalated": 0,
+      "disagreement": 0.16,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring all users uphold accountability for contact information updates may still prove challenging.",
+      "critic_worry": "The effectiveness of primary contact updates hinges on user accountability and the adequacy of review processes.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": [
+    "R7: Critic's ACCEPT of C13 was refused (the sentence you quote leans on 'designated users', which names no role, number or rule); recorded as MAINTAIN."
+  ]
+}

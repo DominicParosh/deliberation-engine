@@ -1,0 +1,654 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "pre_mortem": "A year after launch, the influence scoring system inadvertently caused a diplomatic incident by exposing a list of contacts deemed influential to unauthorized parties. This led to misunderstandings and tensions with certain country representatives who felt misrepresented or unfairly scored, damaging relationships that the organization had built over time. As a result, the organization faced widespread criticism for its data handling practices, leading to a loss of trust among crucial stakeholders.",
+  "gaps": [
+    "Which roles are allowed to see the influence scores for contacts from other regions?",
+    "What specific criteria determine the influence scoring to avoid bias or inconsistency?",
+    "How will data retention and deletion policies apply to the influence scores generated?",
+    "What safeguards are in place to prevent the influence scoring system from being manipulated?",
+    "What happens to the influence scores when a contact changes roles or leaves the organization?",
+    "How do we ensure compliance with data protection policies when calculating and displaying influence scores?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will implement a contact influence scoring system to identify and rank the most influential contacts within our CRM. It is designed for regional coordinators and project managers to better prioritize engagement efforts based on influence level.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Identify the top 20 influential contacts based on a scoring mechanism."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an accessible interface for users to view and filter influential contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Define 'influence' means a score that incorporates multiple factors such as the contact's position, historical engagement level, and outcomes achieved."
+        },
+        {
+          "id": "S2",
+          "text": "Implement an influence scoring system that calculates an influence score for each contact based on the defined criteria."
+        },
+        {
+          "id": "S3",
+          "text": "Display the top 20 contacts by influence score on a dedicated dashboard for regional coordinators and project managers."
+        },
+        {
+          "id": "S4",
+          "text": "Allow filtering options by role, country, and mission status to refine visible contact lists."
+        },
+        {
+          "id": "S5",
+          "text": "Create user documentation detailing how influence scores are calculated and how to use the interface effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a detailed breakdown of how the influence score is calculated to prevent manipulation or bias."
+        },
+        {
+          "id": "X2",
+          "text": "Long-term management of influence score data beyond the initial calculation will not be included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external data sources for influence scoring will not be implemented in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "There exists sufficient historical engagement data to assess contact influence levels without overwhelming data volume."
+        },
+        {
+          "id": "A2",
+          "text": "Users will need training on how to interpret influence scores appropriately to take action."
+        },
+        {
+          "id": "A3",
+          "text": "Scoring methodology will comply with existing data protection policies to ensure sensitive information is handled safely."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects."
+        },
+        {
+          "id": "D2",
+          "text": "'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism."
+        },
+        {
+          "id": "D3",
+          "text": "'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a contact influence scoring system to identify and rank the most influential contacts within our CRM, with specific definitions for authorized users, scoring criteria, and data ownership processes. It is designed for regional coordinators and project managers to better prioritize engagement efforts based on influence level.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Identify the top 20 influential contacts based on a scoring mechanism."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an accessible interface for users to view and filter influential contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Define 'influence' means a score that incorporates multiple factors such as the contact's position (weight: 50%), historical engagement level (weight: 30%), and outcomes achieved (weight: 20%), on a scale of 1 to 100."
+        },
+        {
+          "id": "S2",
+          "text": "Implement an influence scoring system that calculates an influence score for each contact based on the defined criteria."
+        },
+        {
+          "id": "S3",
+          "text": "Display the top 20 contacts by influence score on a dedicated dashboard for regional coordinators and project managers."
+        },
+        {
+          "id": "S4",
+          "text": "Allow filtering options by role, country, and mission status to refine visible contact lists."
+        },
+        {
+          "id": "S5",
+          "text": "Create user documentation detailing how influence scores are calculated and how to use the interface effectively."
+        },
+        {
+          "id": "S6",
+          "text": "Define 'Authorized Users' means regional coordinators, project managers, and executive staff who are granted access to view influence scores based on clearance levels determined by organizational policy."
+        },
+        {
+          "id": "S7",
+          "text": "Designate the responsibility for maintaining and updating influence scores to the data management team, who will review and adjust scores on a quarterly basis to ensure accuracy."
+        },
+        {
+          "id": "S8",
+          "text": "Define the retention policy for influence scores as: scores will be retained for a period of two years after the last engagement with the contact, followed by deletion unless there is a specific extension request based on ongoing engagements."
+        },
+        {
+          "id": "S9",
+          "text": "Establish a review process whereby the scoring criteria will be evaluated annually by a committee consisting of representatives from regional coordinators, project managers, and data management to ensure transparency and trust in the scoring mechanism."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a detailed breakdown of how the influence score is calculated to prevent manipulation or bias."
+        },
+        {
+          "id": "X2",
+          "text": "Long-term management of influence score data beyond the initial calculation will not be included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external data sources for influence scoring will not be implemented in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "There exists sufficient historical engagement data to assess contact influence levels without overwhelming data volume."
+        },
+        {
+          "id": "A2",
+          "text": "Users will need training on how to interpret influence scores appropriately to take action."
+        },
+        {
+          "id": "A3",
+          "text": "Scoring methodology will comply with existing data protection policies to ensure sensitive information is handled safely."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects."
+        },
+        {
+          "id": "D2",
+          "text": "'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism."
+        },
+        {
+          "id": "D3",
+          "text": "'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a contact influence scoring system to identify and rank the most influential contacts within our CRM, targeting regional coordinators and project managers for engagement prioritization based on influence level. Specific historical engagement data and its quality must be confirmed by organizational teams for accurate scoring.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Identify the top 20 influential contacts based on a scoring mechanism."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an accessible interface for users to view and filter influential contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Define 'influence' means a score that incorporates multiple factors such as the contact's position (weight: 50%), historical engagement level (weight: 30%), and outcomes achieved (weight: 20%), on a scale of 1 to 100."
+        },
+        {
+          "id": "S2",
+          "text": "Implement an influence scoring system that calculates an influence score for each contact based on the defined criteria."
+        },
+        {
+          "id": "S3",
+          "text": "Display the top 20 contacts by influence score on a dedicated dashboard for regional coordinators and project managers."
+        },
+        {
+          "id": "S4",
+          "text": "Allow filtering options by role, country, and mission status to refine visible contact lists."
+        },
+        {
+          "id": "S5",
+          "text": "Create user documentation detailing how influence scores are calculated and how to use the interface effectively."
+        },
+        {
+          "id": "S6",
+          "text": "Define 'Authorized Users' means regional coordinators, project managers, and executive staff who are granted access to view influence scores based on clearance levels determined by organizational policy."
+        },
+        {
+          "id": "S7",
+          "text": "Designate the responsibility for maintaining and updating influence scores to the data management team, who will review and adjust scores on a quarterly basis to ensure accuracy."
+        },
+        {
+          "id": "S8",
+          "text": "Define the retention policy for influence scores as: scores will be retained for a period of two years after the last engagement with the contact, followed by deletion unless there is a specific extension request based on ongoing engagements."
+        },
+        {
+          "id": "S9",
+          "text": "Establish a review process whereby the scoring criteria will be evaluated annually by a committee consisting of representatives from regional coordinators, project managers, and data management to ensure transparency and trust in the scoring mechanism."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a detailed breakdown of how the influence score is calculated to prevent manipulation or bias."
+        },
+        {
+          "id": "X2",
+          "text": "Long-term management of influence score data beyond the initial calculation will not be included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external data sources for influence scoring will not be implemented in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "There exists sufficient historical engagement data to assess contact influence levels without overwhelming data volume."
+        },
+        {
+          "id": "A2",
+          "text": "Users will need training on how to interpret influence scores appropriately to take action."
+        },
+        {
+          "id": "A3",
+          "text": "Scoring methodology will comply with existing data protection policies to ensure sensitive information is handled safely."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects."
+        },
+        {
+          "id": "D2",
+          "text": "'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism."
+        },
+        {
+          "id": "D3",
+          "text": "'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1",
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not address who is authorized to view the influence scores, potentially leading to unauthorized access to sensitive information about contacts.",
+      "failure_scenario": "A regional coordinator accesses the influence scores of contacts in another region without the proper clearance, resulting in the exposure of sensitive diplomatic relationships.",
+      "resolution_test": "Which roles can access influence scores for contacts from other regions?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address who is authorized to view the influence scores, potentially leading to unauthorized access to sensitive information about contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit provides a specific definition of authorized users who can view influence scores, reducing the risk of unauthorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now clearly defines who can access influence scores, addressing confidentiality concerns. Fact: Authorized Users include regional coordinators, project managers, and executive staff. Evidence: \"S6: Define 'Authorized Users' means regional coordinators, project managers, and executive staff who are granted access to view influence scores based on clearance levels determined by organizational policy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The criteria for determining 'influence' are broadly defined, risking subjective interpretations and inconsistency in scoring.",
+      "failure_scenario": "Users interpret influence based on personal biases, leading to flawed prioritization of contacts and potential diplomatic missteps.",
+      "resolution_test": "What specific factors are weighted in the influence scoring to ensure objectivity?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The criteria for determining 'influence' are broadly defined, risking subjective interpretations and inconsistency in scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies the specific factors that contribute to influence scoring and their respective weights, reducing subjectivity and ensuring consistency.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised definition clarifies how influence scoring is determined, reducing subjectivity. Fact: Influence is calculated using defined factors and weights, providing objective scoring criteria. Evidence: \"S1: Define 'influence' means a score that incorporates multiple factors such as the contact's position (weight: 50%), historical engagement level (weight: 30%), and outcomes achieved (weight: 20%), on a scale of 1 to 100.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S3",
+        "S5"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no clarity on how influence scores are maintained, updated, or who owns the data once calculated, risking outdated or inaccurate data being displayed.",
+      "failure_scenario": "A project manager relies on outdated influence scores leading to incorrect prioritization, which not only wastes resources but also impacts diplomatic relations.",
+      "resolution_test": "Who is responsible for regularly reviewing and updating the influence scores once calculated?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clarity on how influence scores are maintained, updated, or who owns the data once calculated, risking outdated or inaccurate data being displayed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This clarifies ownership over the maintenance of influence scores, ensuring they are updated regularly and thereby reducing the risk of outdated data affecting decision-making.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Responsibilities for score maintenance are now clearly outlined, ensuring data is kept accurate. Fact: The data management team is responsible for maintaining and updating influence scores quarterly. Evidence: \"S7: Designate the responsibility for maintaining and updating influence scores to the data management team, who will review and adjust scores on a quarterly basis to ensure accuracy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks details on how influence scores will be retained or deleted, which is essential for compliance with data protection regulations.",
+      "failure_scenario": "Influence scores remain in the system longer than legally permissible, leading to potential data breaches or fines.",
+      "resolution_test": "What are the retention and deletion policies for influence scores?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details on how influence scores will be retained or deleted, which is essential for compliance with data protection regulations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This specifies the retention and deletion policy for influence scores, ensuring compliance with data protection regulations and reducing the risk of unintentional data breaches.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S8"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes a clear retention and deletion policy, ensuring compliance with data protection regulations. Fact: Influence scores will be retained for two years after the last engagement, then deleted unless extended. Evidence: \"S8: Define the retention policy for influence scores as: scores will be retained for a period of two years after the last engagement with the contact, followed by deletion unless there is a specific extension request based on ongoing engagements.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "X1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MINOR",
+      "challenge": "The decision to withhold detailed scoring criteria could be seen as an issue of transparency and ownership, as stakeholders may question the fairness of results.",
+      "failure_scenario": "Stakeholders challenge the fairness of the scoring system when they cannot see details, leading to distrust in the results.",
+      "resolution_test": "What process is in place for reviewing the scoring criteria to ensure transparency and build trust?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The decision to withhold detailed scoring criteria could be seen as an issue of transparency and ownership, as stakeholders may question the fairness of results.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This provides a structured process for reviewing the scoring criteria, addressing concerns about transparency and ownership, and building trust among stakeholders.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S9"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision now outlines a process to ensure transparency and stakeholder trust regarding scoring. Fact: An annual review of scoring criteria will involve multiple stakeholders to ensure transparency. Evidence: \"S9: Establish a review process whereby the scoring criteria will be evaluated annually by a committee consisting of representatives from regional coordinators, project managers, and data management to ensure transparency and trust in the scoring mechanism.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MAJOR",
+      "challenge": "The assumption of having sufficient historical data to assess influence presupposes clarity on data sources and timelines, which are unanswered.",
+      "failure_scenario": "There is not enough historical engagement data, resulting in an unreliable scoring that fails to reflect actual influence.",
+      "resolution_test": "What specific historical engagement data is available and how will it be utilized to calculate influence?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption of having sufficient historical data to assess influence presupposes clarity on data sources and timelines, which are unanswered.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While the assumption of sufficient data may seem risky, it is acceptable in this release as historical engagement data has typically been collected consistently over the years.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While influence is defined, the adequacy of historical data for calculating influence is still unresolved.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The specific sources of historical engagement data and their timelines are dependent on existing organizational data structures and must be verified by the relevant internal teams.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal relies on human verification of data sources, which prevents acceptance.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify the quality or sources of historical engagement data needed for accurate influence scoring.",
+      "failure_scenario": "A project manager uses influence scores calculated from incomplete or inaccurate historical engagement data, leading to misprioritized diplomatic engagements and potential conflicts.",
+      "resolution_test": "What sources of historical engagement data are used for calculating influence scores, and how is data quality validated?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify the quality or sources of historical engagement data needed for accurate influence scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal cannot define the quality or sources of historical engagement data without input from the teams responsible for data management and quality assurance.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The reliance on certain teams for input on data quality and sources needs human decision.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The scoring system may not capture influence appropriately, leading users to misprioritize engagements.",
+      "critic_worry": "The lack of clarity around access to sensitive influence scores poses a significant risk to sensitive diplomatic relationships.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.29,
+      "proposer_confidence": 80,
+      "critic_confidence": 60,
+      "proposer_worry": "Ensuring accurate and timely updating of influence scores remains a critical concern.",
+      "critic_worry": "The reliability of influence scoring depends on the quality and completeness of historical engagement data, which is not sufficiently defined.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 2,
+      "disagreement": 0.29,
+      "proposer_confidence": 70,
+      "critic_confidence": 50,
+      "proposer_worry": "We face significant dependencies on confirming data sources and quality from the internal organization, which could delay the project.",
+      "critic_worry": "The feature risks unauthorized exposure of sensitive influence scores and relies entirely on human verification of data quality.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

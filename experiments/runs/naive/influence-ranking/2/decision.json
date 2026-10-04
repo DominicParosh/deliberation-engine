@@ -1,0 +1,454 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "meta": {
+    "request_id": "influence-ranking",
+    "policy": "naive",
+    "rounds": 2,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 7,
+    "repairs": 2,
+    "input_tokens": 26581,
+    "output_tokens": 4516,
+    "cost_usd": 0.0067,
+    "seconds": 53.7,
+    "warnings": []
+  },
+  "executive_summary": "This release will implement a contact prioritization feature that allows users to categorize contacts based on their influence levels with specified permissions and guidelines. Automated influence determination, external integrations, and changes to existing user permissions are not included in this release. Human decision-makers must ensure that the approval processes for permissions are adequately managed to prevent unauthorized changes.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Enable users to categorize contacts based on their influence level.",
+      "note": "Users will be able to categorize contacts based on their influence level, a core component of the proposal that addresses the need for prioritization.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Provide users with a visual representation of contact influence levels for prioritization.",
+      "note": "A visual representation of contact influence levels will be provided, helping users quickly assess and prioritize engagement with contacts.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Create a new field in the contact record called 'Influence Level' that allows designated users (regional coordinators and project managers with approved permissions) to assign a value (e.g., Low, Medium, High) to each contact.",
+      "note": "A new field for 'Influence Level' was created to allow designated users to assign values, addressing the need for a systematic way to categorize influence.",
+      "refs": [
+        "C1"
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "Develop a simple interface for regional coordinators and project managers with approved permissions to update the Influence Level of contacts, accompanied by a review mechanism where a designated administrator checks for consistency and correctness of updates.",
+      "note": "A simple interface for updating 'Influence Level' has been established, including a review mechanism, ensuring accuracy and consistency in data.",
+      "refs": [
+        "C4"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Implement a filter in the contacts list that allows users to sort contacts by Influence Level.",
+      "note": "Implementing a filter to sort contacts by Influence Level contributes directly to the prioritization goal by allowing for quick access to categorized contacts.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "Add tooltips or help text with standardized guidelines outlining specific criteria and examples for determining Influence Level for contacts.",
+      "note": "Standardized guidelines have been established to accompany tooltips, ensuring consistent categorization among users.",
+      "refs": [
+        "C5"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "Include a process for auditing 'Influence Level' data retention, ensuring that sensitive categorizations are reviewed annually and retained only as long as necessary for operational needs.",
+      "note": "A data retention auditing process was instituted to maintain continuity and compliance, thereby preventing unauthorized or indefinite retention of sensitive classifications.",
+      "refs": [
+        "C3",
+        "C6"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release does not include automated tools or algorithms to determine a contact's Influence Level.",
+      "note": "Automated tools for determining Influence Level are out of scope to prevent reliance on potentially misleading automation.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not encompass any external integrations with third-party systems for influence analytics.",
+      "note": "External integrations with third-party systems are not included to keep the current system self-contained and secure.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "No changes will be made to existing user permissions in the CRM system regarding contact detail visibility.",
+      "note": "No changes to existing user permissions were made to maintain the current structure and avoid complications with data access.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users have the knowledge and criteria to manually assess the Influence Level of their contacts based on established protocols.",
+      "note": "The assumption that users can manually assess Influence Levels remains, as it ensures that users adhere to established protocols.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "All users of this CRM have the necessary permissions to edit contact details.",
+      "note": "User permission editing is assumed necessary to allow updates to contact details by appropriate users, ensuring operational effectiveness.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "Data integrity is maintained; users will not misuse the Influence Level categorization.",
+      "note": "Data integrity is assumed to be upheld by the users and will be critical for the success of the influence categorization.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Influence Level' means an assigned categorical value (Low, Medium, High) to indicate the importance of a contact in decision-making or project engagement, with specific criteria: 'Low' is for contacts with minimal impact, 'Medium' for contacts that can influence but are not central to decisions, and 'High' for contacts who are critical in decision-making processes.",
+      "note": "Definitions of influence levels were clarified with specific criteria to prevent subjective interpretations and ensure consistency.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "'Visual representation' means a graphical or tabular display that allows users to quickly understand the influence status of their contacts at a glance.",
+      "note": "The definition of visual representation was established to clearly communicate how influence levels will be displayed for user convenience.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 75% of users report satisfaction with the new contact categorization feature through a follow-up survey conducted one month after release.",
+      "note": "Success criteria of 75% satisfaction among users will gauge the feature's acceptance and functional success post-release.",
+      "refs": []
+    }
+  ],
+  "open_questions": [],
+  "tension": {
+    "summary": "The primary disagreement centered around the management of 'Influence Level' data and access permissions. The Proposer and Critic eventually reached a consensus on defining clear roles and procedures to address confidentiality risks, ensuring that only authorized users can modify sensitive categorizations.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 6,
+        "open": 0,
+        "resolved": 6,
+        "escalated": 0,
+        "disagreement": 0.0,
+        "proposer_confidence": 80,
+        "critic_confidence": 85,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "The successful implementation of defined user roles and permissions may be complex and require thorough testing."
+      },
+      "critic": {
+        "confidence": 85,
+        "worry": "The potential for subjective assessments remains, but current revisions significantly mitigate risks."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S1",
+        "S2",
+        "D1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify who can see or modify the 'Influence Level' of contacts, creating a risk that unauthorized users may alter sensitive categorizations, particularly of diplomatic contacts.",
+      "failure_scenario": "A project manager without proper clearance alters the influence level of a critical diplomatic contact, leading to strategic decisions being made based on incorrect information.",
+      "resolution_test": "What user roles are permitted to view and modify the 'Influence Level' of contacts?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who can see or modify the 'Influence Level' of contacts, creating a risk that unauthorized users may alter sensitive categorizations, particularly of diplomatic contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies that only users with approved permissions, namely regional coordinators and project managers, can view and modify the 'Influence Level' to mitigate risks associated with sensitive data alteration.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1",
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines the roles with access, mitigating the risks of unauthorized changes. Fact: Only designated users, specifically regional coordinators and project managers with approved permissions, can view and modify the 'Influence Level'. Evidence: \"...allows designated users (regional coordinators and project managers with approved permissions) to assign a value...\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definitions of 'Low', 'Medium', and 'High' influence levels are not clearly established, leading to subjective interpretations that could vary between users and introduce inconsistencies.",
+      "failure_scenario": "Two regional coordinators categorize the same contact differently based on their own interpretation of influence, leading to conflicting engagement strategies.",
+      "resolution_test": "What explicit criteria must users follow to classify a contact's 'Influence Level' as Low, Medium, or High?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions of 'Low', 'Medium', and 'High' influence levels are not clearly established, leading to subjective interpretations that could vary between users and introduce inconsistencies.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds clear criteria for categorizing the influence levels to reduce ambiguity and ensure consistent application among users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The criteria provided in D1 clarify the definition and will aid in consistent application across users. Fact: 'Low', 'Medium', and 'High' are specific criteria established for categorizing influence levels. Evidence: \"...with specific criteria: 'Low' is for contacts with minimal impact, 'Medium' for contacts that can influence but are not central to decisions, and 'High' for contacts who are critical in decision-making processes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify how 'Influence Level' data will be managed or updated when users leave or change roles, risking loss of context and continuity in the CRM.",
+      "failure_scenario": "A regional coordinator leaves, and their assigned influence levels remain, leading to outdated categorizations and potential miscommunication with key contacts.",
+      "resolution_test": "What process is established for transferring or maintaining 'Influence Level' data when users change roles or leave the organization?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how 'Influence Level' data will be managed or updated when users leave or change roles, risking loss of context and continuity in the CRM.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This addition ensures continuity and accuracy of the 'Influence Level' data by instituting a procedure for managing changes in user roles.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses continuity and data retention effectively, ensuring updates align with user roles. Fact: There is a defined process for auditing and retaining 'Influence Level' data. Evidence: \"...include a process for auditing 'Influence Level' data retention, ensuring that sensitive categorizations are reviewed annually and retained only as long as necessary for operational needs.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not detail how data quality and accuracy of the 'Influence Level' assessments will be ensured, leading to potential inaccuracies.",
+      "failure_scenario": "Inaccurate manual assessments lead to significant diplomatic missteps, as contacts deemed influential do not receive necessary levels of engagement.",
+      "resolution_test": "What mechanisms are in place to ensure the accuracy of manually assigned 'Influence Level' data?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not detail how data quality and accuracy of the 'Influence Level' assessments will be ensured, leading to potential inaccuracies.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By incorporating a review mechanism, we guarantee that the accuracy and consistency of 'Influence Level' assessments are maintained.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This mechanism ensures data quality and accuracy of the categorization process. Fact: A designated administrator will check the consistency and correctness of updates to 'Influence Level'. Evidence: \"...accompanied by a review mechanism where a designated administrator checks for consistency and correctness of updates.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "Tooltips or help text explaining how to determine the Influence Level of contacts are insufficient without clear guidelines, potentially leading to varying assessments of influence.",
+      "failure_scenario": "Users interpret the help text differently, resulting in inconsistent categorization of key contacts across the organization.",
+      "resolution_test": "What standardized guidelines accompany the tooltip or help text for categorizing Influence Levels?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Tooltips or help text explaining how to determine the Influence Level of contacts are insufficient without clear guidelines, potentially leading to varying assessments of influence.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The inclusion of standardized guidelines will ensure that all users have a clear reference point for consistent categorization.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This will provide users a clear reference point to ensure consistent categorization. Fact: There will be standardized guidelines for the categorization of Influence Levels. Evidence: \"...standardized guidelines outlining specific criteria and examples for determining Influence Level for contacts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "There is no mention of how the 'Influence Level' data will be retained or audited for compliance purposes, risking unauthorized retention of sensitive classifications.",
+      "failure_scenario": "Sensitive influence categorizations are retained indefinitely without proper audit, leading to potential breaches of protocol and confidentiality.",
+      "resolution_test": "What retention policy is established for the 'Influence Level' data, including how long it is stored and when it is reviewed?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of how the 'Influence Level' data will be retained or audited for compliance purposes, risking unauthorized retention of sensitive classifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision allows for proper auditing of retention and ensures compliance with data handling policies.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This ensures compliance with data retention policies, reducing risk of unauthorized retention. Fact: Sensitive categorizations will be reviewed annually and retained appropriately. Evidence: \"...ensuring that sensitive categorizations are reviewed annually and retained only as long as necessary for operational needs.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

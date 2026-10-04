@@ -1,0 +1,1077 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "meta": {
+    "request_id": "engagement-history",
+    "policy": "naive",
+    "rounds": 5,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 17,
+    "repairs": 6,
+    "input_tokens": 76457,
+    "output_tokens": 11449,
+    "cost_usd": 0.0182,
+    "seconds": 112.8,
+    "warnings": []
+  },
+  "executive_summary": "Project managers will gain access to a detailed engagement history for each country, enhancing mission preparation. However, records marked as confidential will remain inaccessible, and no analytics on engagement effectiveness will be provided. Key organizational decisions are still needed regarding the oversight of clearance monitoring protocols.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Project managers will have access to a detailed engagement history for each country.",
+      "note": "Project managers will have access to a detailed engagement history for each country, ensuring they are better equipped for new missions.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "The system will display the engagement history, which includes all recorded contact interactions, project affiliations, and mission details for each country in a user-friendly format, with a monthly review to ensure data accuracy by the Data Management Team.",
+      "note": "The system will display engagement history, reviewed monthly for accuracy, which supports data integrity and management oversight.",
+      "refs": [
+        "C6"
+      ]
+    },
+    {
+      "id": "S2",
+      "text": "The engagement history access permissions will be managed by the Data Governance Team, which will conduct quarterly audits of user access rights, logging all access attempts and authorization changes to ensure only authorized users can access sensitive records.",
+      "note": "Access permissions will be managed by the Data Governance Team with quarterly audits to prevent unauthorized access, addressing accountability.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "The engagement history will include data from the last five years, or all available data if fewer than five years exist, with a process established for retrieving older engagement records based on project relevance determined by the Data Governance Team.",
+      "note": "Engagement history will include data from the last five years or all available data, allowing for a clear understanding of historical context in missions.",
+      "refs": [
+        "C4"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "The system will implement security features that prevent any references to confidential records from being displayed in search results or engagement history views, ensuring no inadvertent exposure occurs.",
+      "note": "The system will actively prevent the display of confidential records, which helps to protect sensitive information from inadvertent exposure.",
+      "refs": [
+        "C13"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "The system will implement a procedure for notifying project managers of any changes to engagement history data, including updates in contact information and project statuses, ensuring that the data is current and accurate between the monthly reviews.",
+      "note": "Project managers will be notified of any changes in engagement data, ensuring that they have access to the most current information available.",
+      "refs": [
+        "C8"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "The release will not include any data from countries or engagements that have been marked as confidential or diplomatic under existing data protection policies.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "The system will not provide analytics or insights regarding engagement effectiveness; it will only display raw engagement history.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "The system will maintain retention policies for confidential engagement records and implement audit trails that log the retention of any confidential data, ensuring accountability in data management practices.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "It is assumed that engagement data is being collected and stored accurately in the CRM system, as the display of this data relies on its existence.",
+      "note": "It is assumed that engagement data is accurately stored, as this is foundational for displaying information in the system.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "It is assumed that project managers have the appropriate clearance and permissions to access the engagement history, in line with organizational data protection policies.",
+      "note": "It is assumed that project managers possess the necessary clearance to access engagement history, which is vital for compliance but requires monitoring.",
+      "refs": [
+        "C7"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C5",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C7",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C9",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C12",
+          "outcome": "ESCALATED"
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "text": "It is assumed that the existing database structure can support extended historical data display without performance issues, which is necessary for the UI implementation.",
+      "note": "It is assumed that the current database structure can handle the display of extended historical data without affecting performance.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Engagement history' means the record of all interactions, communications, projects, and missions involving a country, stored in the CRM and retrievable by project managers.",
+      "note": "'Engagement history' is defined to include all interactions and communications related to a country, making it clear what project managers can access.",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "'Confidential record' means any engagement history record that meets the following specific criteria: (1) it contains sensitive diplomatic information as defined by the organization's data protection policies, (2) it has been explicitly marked as confidential by authorized personnel in writing with documented approval from a manager, or (3) it pertains to ongoing negotiations or engagements which have been designated as confidential by leadership with specific visibility restrictions.",
+      "note": "The definition of 'Confidential record' now includes specific criteria for marking records to reduce subjectivity and the risk of unauthorized access.",
+      "refs": [
+        "C11"
+      ]
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 80% of project managers can successfully access and retrieve engagement history for countries they manage, with success measured by system usage analytics tracking number of access attempts and completed records retrieved within three months of the release.",
+      "note": "Success criteria will track specific metrics like access attempts, ensuring a clear evaluation of project managers' ability to use engagement history effectively.",
+      "refs": [
+        "C14"
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C1",
+      "question": "What specific criteria are to be used for classifying engagement history records as confidential or diplomatic?",
+      "why_it_matters": "This clarity is crucial to prevent unauthorized access to sensitive data by project managers.",
+      "decision_owner": "Head of Data Protection",
+      "options": [
+        "Establish objective criteria",
+        "Maintain current definitions with monitoring",
+        "No changes needed"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C12",
+      "question": "What specific processes ensure that project managers' clearance is revoked or reviewed following a change in roles?",
+      "why_it_matters": "To ensure accountability and protect sensitive information from exposure after personnel changes.",
+      "decision_owner": "Data Governance Team",
+      "options": [
+        "Define a clear clearance process",
+        "Maintain existing processes",
+        "No changes needed"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C5",
+      "question": "What processes ensure that project managers' clearances are regularly reviewed and updated concerning sensitive data access?",
+      "why_it_matters": "To prevent unauthorized access after personnel changes, clear processes need to be defined.",
+      "decision_owner": "Chief Information Officer",
+      "options": [
+        "Implement regular access review processes",
+        "Define a new policy for clearance monitoring",
+        "No changes needed"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C7",
+      "question": "What processes are in place to maintain and review project managers' clearance for engagement history access post-role changes?",
+      "why_it_matters": "It's vital to ensure that access rights are updated to prevent sensitive data exposure.",
+      "decision_owner": "Chief Information Officer",
+      "options": [
+        "Develop a clear monitoring process",
+        "Rely on current clearance processes",
+        "No changes needed"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C9",
+      "question": "What processes are in place to maintain and review project managers' clearance for engagement history access after role changes?",
+      "why_it_matters": "Defining this is essential to uphold data protection protocols and prevent unauthorized access.",
+      "decision_owner": "Data Governance Team",
+      "options": [
+        "Create a procedure for reviewing access rights",
+        "Maintain current monitoring processes",
+        "No changes needed"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C10",
+      "question": "What audit processes are in place to monitor and manage role permissions for accessing engagement histories?",
+      "why_it_matters": "Lack of defined audit processes could lead to unauthorized data access, which presents significant risks.",
+      "decision_owner": "Head of Data Governance",
+      "options": [
+        "Implement regular audit practices",
+        "Continue current auditing methods",
+        "No changes needed"
+      ],
+      "severity": "MAJOR",
+      "status": "UNRESOLVED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The primary disagreement centered on how to effectively monitor and enforce confidentiality measures for sensitive data access. The Proposer expressed confidence in the overall structure, yet highlighted concerns regarding incomplete clarity in enforcement, while the Critic raised critical worries about potential unauthorized access due to vagueness in role clearance review processes.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 30,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 8,
+        "open": 3,
+        "resolved": 4,
+        "escalated": 1,
+        "disagreement": 0.53,
+        "proposer_confidence": 85,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 10,
+        "open": 3,
+        "resolved": 5,
+        "escalated": 2,
+        "disagreement": 0.52,
+        "proposer_confidence": 75,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 4,
+        "raised": 16,
+        "open": 7,
+        "resolved": 5,
+        "escalated": 4,
+        "disagreement": 0.71,
+        "proposer_confidence": 75,
+        "critic_confidence": 35,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 5,
+        "raised": 16,
+        "open": 1,
+        "resolved": 10,
+        "escalated": 5,
+        "disagreement": 0.4,
+        "proposer_confidence": 82,
+        "critic_confidence": 70,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 82,
+        "worry": "Incomplete clarity on the enforcement of confidentiality measures could expose sensitive information."
+      },
+      "critic": {
+        "confidence": 70,
+        "worry": "The monitoring of user access rights might still lead to unauthorized access if processes for tracking changes in role assignments are not clearly defined."
+      }
+    },
+    "flags": [
+      "Proposer reported 82/100 confidence while blocker(s) C1, C12 remain unsettled."
+    ]
+  },
+  "issues": [
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clearly define the criteria that determine if an engagement history record is marked as confidential, which could lead to unauthorized access to sensitive data.",
+      "failure_scenario": "A project manager accesses a country's engagement history that includes confidential diplomatic records, leading to the unauthorized disclosure of sensitive information during a public briefing.",
+      "resolution_test": "What specific criteria are used to classify an engagement record as confidential or diplomatic?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clearly define the criteria that determine if an engagement history record is marked as confidential, which could lead to unauthorized access to sensitive data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By defining 'Confidential record' clearly, we can create a consistent approach to protect sensitive information and prevent unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "Lacks specific, clear cut criteria for determining what constitutes a confidential record.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By defining specific criteria for what constitutes a confidential record, we can prevent unauthorized access to sensitive data and provide consistent guidelines for handling these records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The definition does not clearly establish the criteria that authorized personnel must follow, leaving the potential for subjective judgment.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised definition for 'Confidential record' now includes clear, specific guidelines for authorized personnel, reducing subjectivity in determining confidentiality and protecting against unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The definition still does not clearly establish the specific criteria authorized personnel must follow, leaving room for potential subjectivity.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify who oversees and manages the role permissions related to accessing engagement history, potentially leading to unauthorized access by users without adequate clearance.",
+      "failure_scenario": "A regional coordinator mistakenly requests the engagement history of a country and receives access due to unclear role permissions, resulting in a breach of data protection protocols.",
+      "resolution_test": "Who is responsible for managing access rights and permissions related to engagement history data?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who oversees and manages the role permissions related to accessing engagement history, potentially leading to unauthorized access by users without adequate clearance.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Specifying that the Data Governance Team manages role permissions establishes clear accountability in handling sensitive data access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies who is responsible for managing access rights, addressing the challenge. Fact: The Data Governance Team manages role permissions for accessing engagement history. Evidence: \"role permissions will be managed by the Data Governance Team under the oversight of the Chief Information Officer.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how the system will prevent project managers from seeing or being alerted about records flagged as confidential, risking unauthorized exposure.",
+      "failure_scenario": "A project manager receives an alert about an engagement flagged as confidential, leading to the potential mismanagement of sensitive relations with that country.",
+      "resolution_test": "What safety mechanisms will be implemented to ensure project managers do not receive alerts regarding confidential records?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how the system will prevent project managers from seeing or being alerted about records flagged as confidential, risking unauthorized exposure.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This measure ensures project managers are not inadvertently exposed to confidential records, thus protecting sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The specification ensures project managers are protected from viewing confidential records, addressing the challenge. Fact: Project managers will not see alerts or records flagged as confidential. Evidence: \"The system will not display or alert project managers to any engagement history records marked as confidential. Any engagement flagged as confidential will have restricted visibility and will not be included in search results.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'last five years' is vague as it does not clarify how historical data is chosen or what happens if older engagements need to be retrieved for context.",
+      "failure_scenario": "A project manager attempts to reference an important engagement from six years ago that is not included, leading to uninformed decisions in a new mission.",
+      "resolution_test": "What are the specific criteria used to define which engagements from the last five years are displayed to project managers?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'last five years' is vague as it does not clarify how historical data is chosen or what happens if older engagements need to be retrieved for context.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Clarifying how to handle engagements based on available data while establishing a protocol for limited historical records avoids confusion about context in missions.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses the vagueness around historical data availability, clarifying limits on what can be displayed. Fact: Engagement history data is limited to the last five years unless less data is available. Evidence: \"The engagement history will include data from the last five years, or all available data if fewer than five years exist, excluding any records flagged as confidential.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The assumption that project managers will have appropriate clearance does not clarify how clearance for sensitive data is managed or monitored after personnel changes.",
+      "failure_scenario": "A project manager who is granted access to the engagement history after a clearance change uses confidential information without proper authorization, leading to a security incident.",
+      "resolution_test": "What processes ensure that project managers' clearances are regularly reviewed and updated concerning sensitive data access?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that project managers will have appropriate clearance does not clarify how clearance for sensitive data is managed or monitored after personnel changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While the assumption regarding clearance checks is valid, updating the processes for monitoring clearance requires human oversight and policy decisions at the organizational level.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This requires organizational policy regarding clearance checks, which is outside the scope of the proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks details about how the system will ensure the accuracy and quality of the engagement data being displayed.",
+      "failure_scenario": "Project managers make decisions based on inaccurate or outdated engagement records, resulting in miscommunication and failed missions with government counterparts.",
+      "resolution_test": "What specific measures are in place to ensure the engagement data displayed to project managers is accurate and up-to-date?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details about how the system will ensure the accuracy and quality of the engagement data being displayed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Implementing monthly reviews by the Data Management Team adds a layer of accountability to maintain the quality and accuracy of displayed engagement data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This specifies a method for ensuring data quality, addressing the challenge. Fact: Monthly reviews by the Data Management Team ensure data accuracy. Evidence: \"with a monthly review to ensure data accuracy by the Data Management Team.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The assumption that project managers have appropriate clearance for engaging with the data lacks clarity on how clearance is monitored post-personnel changes.",
+      "failure_scenario": "A project manager who no longer has clearance accesses confidential records, inadvertently leaking sensitive information.",
+      "resolution_test": "What processes are in place to review and update project managers' access rights and clearance related to sensitive data?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that project managers have appropriate clearance for engaging with the data lacks clarity on how clearance is monitored post-personnel changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "This is a key organizational process that must be defined by the Data Governance Team and Chief Information Officer, as it pertains to compliance and security within existing policies.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal relies on a process that requires human authority for definition; this remains unresolved.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify how the engagement data will be kept up to date beyond the monthly review, particularly when there are changes in projects or contacts.",
+      "failure_scenario": "A project manager retrieves outdated data from the system, leading to ineffective engagement with government counterparts due to previous contact information or project status.",
+      "resolution_test": "What specific procedures will be implemented to ensure the engagement data stays current between monthly reviews?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how the engagement data will be kept up to date beyond the monthly review, particularly when there are changes in projects or contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "By making a decision to implement a notification procedure for data updates, we address how the engagement data will be kept up to date, ensuring that project managers have access to accurate information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The addition of a notification procedure addresses the concern regarding data currency adequately. Fact: There is a notification procedure implemented for updates to engagement history data. Evidence: \"The system will implement a procedure for notifying project managers of any changes to engagement history data, including updates in contact information and project statuses, ensuring that the data is current and accurate between the monthly reviews.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal assumes project managers have appropriate clearance, yet does not clarify how access rights are reviewed after role changes.",
+      "failure_scenario": "After being reassigned to a different project, a previous project manager retains access to sensitive engagement histories, resulting in unauthorized data access.",
+      "resolution_test": "What processes are in place to maintain and review project managers' clearance for engagement history access post-role changes?",
+      "id": "C9",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal assumes project managers have appropriate clearance, yet does not clarify how access rights are reviewed after role changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must define its processes for reviewing and updating access rights for project managers following any role changes, as this involves compliance with security and governance policies that are outside of our control.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Specific processes for maintaining and reviewing clearance after role changes need to be defined as they involve compliance with governance policies.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on how role permissions will be audited to ensure only authorized users access sensitive records.",
+      "failure_scenario": "A project manager without required clearance inadvertently accesses confidential engagement records due to inadequate permission management, leading to a breach.",
+      "resolution_test": "What audit processes are in place to monitor and manage role permissions for accessing engagement histories?",
+      "id": "C10",
+      "round_raised": 3,
+      "status": "UNRESOLVED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on how role permissions will be audited to ensure only authorized users access sensitive records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision introduces a specific audit process for monitoring engagement history access permissions, providing clarity on how to ensure that only authorized users have access and preventing potential breaches.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "However, it does not clarify how permissions will specifically be monitored or enforced, which could lead to unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies that the Data Governance Team is responsible for quarterly audits of user access rights, detailing the logging process for access attempts to prevent unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While quarterly audits are mentioned, the evidence does not specify how active monitoring and enforcement of role permissions will be managed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (consensus).",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "UNRESOLVED"
+    },
+    {
+      "targets": [
+        "D2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The definition of 'Confidential record' remains subjective as it relies on interpretation by authorized personnel, leading to potential unauthorized access.",
+      "failure_scenario": "A project manager accesses sensitive data based on their interpretation of confidentiality criteria, which leads to a significant data breach and diplomatic fallout.",
+      "resolution_test": "What objective and clear criteria are established for personnel to determine if a record should be marked confidential?",
+      "id": "C11",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'Confidential record' remains subjective as it relies on interpretation by authorized personnel, leading to potential unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies that confidentiality marking requires documented approval from a manager, providing clearer and more objective criteria for determining what constitutes a confidential record.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised definition provides clearer criteria that decreases subjectivity for marking records as confidential. Fact: Confidential records require documented approval to be marked, providing a clearer standard than previously stated. Evidence: \"'Confidential record' means any engagement history record that meets the following specific criteria: (1) it contains sensitive diplomatic information as defined by the organization's data protection policies, (2) it has been explicitly marked as confidential by authorized personnel in writing with documented approval from a manager,...\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal assumes project managers have appropriate clearance without specifying how clearance is monitored after role changes, risking unauthorized access to sensitive information.",
+      "failure_scenario": "A project manager who is reassigned retains access to confidential engagement histories, exposing sensitive information and leading to a security incident.",
+      "resolution_test": "What specific processes are in place to ensure that project managers' clearance is revoked or reviewed following a change in roles?",
+      "id": "C12",
+      "round_raised": 4,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal assumes project managers have appropriate clearance without specifying how clearance is monitored after role changes, risking unauthorized access to sensitive information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The access clearance for project managers is dependent on organizational policies and human decisions, particularly regarding monitoring and revoking access after role changes, which must be clarified within the organization.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The assumption about project manager clearance lacks a defined process for monitoring access rights after role changes.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The out-of-scope exclusion of confidential records does not ensure that project managers will not encounter flagged records inadvertently.",
+      "failure_scenario": "Despite the exclusion process, a project manager sees references to engagements flagged as confidential due to poor record-keeping, leading to confusion and potential data breaches.",
+      "resolution_test": "How will the system prevent any inadvertent access to or display of even referenced confidential records to project managers?",
+      "id": "C13",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The out-of-scope exclusion of confidential records does not ensure that project managers will not encounter flagged records inadvertently.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies that the system will actively prevent any references to confidential records from appearing, enhancing data security by eliminating the potential for confusion or accidental access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The system has a mechanism to prevent inadvertent exposure, addressing the concern sufficiently. Fact: The system will actively prevent unauthorized exposure of confidential records from appearing in views or searches. Evidence: \"The system will implement security features that prevent any references to confidential records from being displayed in search results or engagement history views, ensuring no inadvertent exposure occurs.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The success criteria rely on user feedback without defining how usage analytics will measure successful access to the engagement history, leaving ambiguity in how effectiveness is evaluated.",
+      "failure_scenario": "Without defined metrics, the organization cannot determine if project managers have effectively accessed and used the engagement history, leading to reliance on anecdotal evidence and unmeasured risks.",
+      "resolution_test": "What specific usage metrics will be tracked to evaluate the success of engagement history access for project managers?",
+      "id": "C14",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The success criteria rely on user feedback without defining how usage analytics will measure successful access to the engagement history, leaving ambiguity in how effectiveness is evaluated.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies that success will be measured by tracking specific usage metrics, including the number of access attempts and successful record retrievals.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Defined success criteria clarify usage metrics that will be tracked to evaluate access. Fact: Success is defined with a threshold of 80% access success to engagement histories based on usage analytics. Evidence: \"At least 80% of project managers can successfully access and retrieve engagement history for countries they manage, with success measured by system usage analytics tracking number of access attempts and completed records retrieved within three months of the release.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "'Last five years' is not clearly defined in terms of data retrieval criteria, posing risks when older engagements are needed for decision-making.",
+      "failure_scenario": "A project manager is unable to access critical engagement history older than five years, preventing informed decision-making on a sensitive mission, leading to operational failures.",
+      "resolution_test": "What specific process is in place to retrieve engagement histories that extend beyond the defined five-year limit?",
+      "id": "C15",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "'Last five years' is not clearly defined in terms of data retrieval criteria, posing risks when older engagements are needed for decision-making.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision establishes a clear process for retrieving engagement histories beyond the five-year limit based on its relevance, thus allowing for better decision-making.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The criteria for accessing older data is now established to allow for informed decision-making. Fact: Engagement history data from the last five years can be retrieved, with a process for accessing older data based on relevance to projects. Evidence: \"The engagement history will include data from the last five years, or all available data if fewer than five years exist, with a process established for retrieving older engagement records based on project relevance determined by the Data Governance Team.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "X3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The out-of-scope statement does not address whether there are any retention policies or audit trails for sensitive engagement records that might be exempt from visibility rules.",
+      "failure_scenario": "Engagements marked as confidential might remain in the system indefinitely without the necessary audit trails for accountability, risking continuity problems in management oversight.",
+      "resolution_test": "What retention and audit trail policies are in place for any data that is retained in the CRM?",
+      "id": "C16",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The out-of-scope statement does not address whether there are any retention policies or audit trails for sensitive engagement records that might be exempt from visibility rules.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision addresses retention policies explicitly, ensuring there is a clear mechanism for accountability regarding sensitive engagement records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Defined retention and audit trail policies enhance compliance with accountability measures. Fact: The system will log retention of confidential engagement records to ensure accountability. Evidence: \"The system will maintain retention policies for confidential engagement records and implement audit trails that log the retention of any confidential data, ensuring accountability in data management practices.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "naive",
+    "rounds": 2,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 5,
+    "repairs": 0,
+    "input_tokens": 17216,
+    "output_tokens": 3449,
+    "cost_usd": 0.0047,
+    "seconds": 47.1,
+    "warnings": []
+  },
+  "executive_summary": "An alert system will be built to notify users when their engagement with a country representative is inactive for a specified duration. This release will allow users to customize the thresholds for when engagements are considered 'cold', but will not include any functionality for automatically re-engaging with such countries. Concerns remain about user access to sensitive information and the potential for misconfigured roles that may lead to inappropriate alerts.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Implement an alert system to notify users when engagement records are inactive for a period of time.",
+      "note": "An alert system will inform users about inactive engagement records to enhance awareness of relationship status.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Allow users to customize the duration that defines 'cold' relationships.",
+      "note": "Users will customize alert durations to suit their needs, thus improving the relevance of notifications.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Users will receive an email notification if no engagement has been recorded for a specified duration of 90 days.",
+      "note": "Email notifications will be sent if no engagement is recorded for 90 days, providing clear thresholds for alerting users.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "Regional coordinators and project managers will have the ability to set the 'inactive duration' for alerts between 30 to 120 days.",
+      "note": "Role-specific customization of alert durations between 30 to 120 days ensures that users can tailor notifications to their engagement practices.",
+      "refs": []
+    },
+    {
+      "id": "S3",
+      "text": "An 'engagement record' will be defined as any update made to a country contact's record in the CRM, including emails, project updates, or meeting minutes.",
+      "note": "Defining 'engagement record' allows the system to precisely track relevant updates, ensuring accurate assessment of relationship status.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "The system will have a dashboard view for users to see a list of 'cold' relationships based on their customizable thresholds.",
+      "note": "The dashboard view for 'cold' relationships empowers users to monitor their engagements visually based on personal thresholds.",
+      "refs": []
+    },
+    {
+      "id": "S5",
+      "text": "Users with roles of 'executive-level staff' and 'other project managers' will not receive alerts about cold relationships from teams outside their own. Only regional coordinators will receive alerts pertaining to their direct country responsibilities.",
+      "note": "This item specifies role restrictions to prevent unauthorized access, addressing previous confidentiality concerns.",
+      "refs": [
+        "C1"
+      ]
+    },
+    {
+      "id": "S6",
+      "text": "The CRM will include a system prompt to remind users to update engagement records if no updates have been made for 30 days. Failure to update records will flag users for a review process by their supervisor every quarter.",
+      "note": "Structured oversight of engagement updates is implemented to ensure accountability, minimizing reliance on self-reporting.",
+      "refs": [
+        "C3"
+      ]
+    },
+    {
+      "id": "S7",
+      "text": "Alerts will be governed by a threshold management mechanism in the system, which will track user engagement frequency to limit alerts to once per week for any individual user, to minimize alert fatigue.",
+      "note": "A strategy to limit alert frequency will help manage user experience, reducing the risk of alert fatigue.",
+      "refs": [
+        "C4"
+      ]
+    },
+    {
+      "id": "S8",
+      "text": "Email alerts will only contain the country name, the date of the most recent engagement update, and a reminder to check the CRM for further details. No sensitive content from the engagement records will be included.",
+      "note": "By limiting email alerts to basic information, the system ensures protection of sensitive diplomatic data, addressing confidentiality issues.",
+      "refs": [
+        "C5"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include historical data analytics or thresholds beyond 120 days.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "The system will not track communication methods outside the CRM (e.g., personal emails or calls).",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "No functionality will be provided to automatically re-engage with 'cold' countries, only notifications.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users will regularly update engagement records within the CRM to ensure accurate tracking of relationships.",
+      "note": "The assumption focuses on user behavior regarding engagement record maintenance, which is crucial for the system's effectiveness.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "Users have access to email notifications and check their inbox for alerts regarding cold relationships.",
+      "note": "This assumption ensures all users can receive notifications, essential for implementation success.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "Engagement records include updates to projects or meetings with country contacts; this is necessary to define cold relationships.",
+      "note": "Clarifying the types of engagement records integral to determining 'cold' relationships is critical for accurate tracking.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A4",
+      "text": "The users' roles allow them to set alert durations but not to modify system-level settings.",
+      "note": "This assumption defines user role limitations, which are important for maintaining proper access and permissions in the system.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Cold' means a lack of engagement record updates for a specified duration of 90 days, and at least one documented interaction must occur every 30 days to prevent a relationship from being deemed cold.",
+      "note": "The definition of 'cold' relationships now incorporates both time and interaction criteria, improving clarity.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "'Engagement record' means any documented interaction, update, or note added to the contact's record in the CRM.",
+      "note": "Clarifies that any recorded interaction qualifies as an engagement record, which is vital for accurate relationship assessment.",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "'Engagement record' means any documented interaction, such as email correspondence, meeting notes, project updates, or any formal record that reflects a discussion or negotiation with a country contact added to the CRM, excluding non-official communications.",
+      "note": "This expanded definition eliminates ambiguity about engagement records to prevent misclassification of cold relationships.",
+      "refs": [
+        "C6"
+      ]
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 75% of users report that they received timely alerts for cold relationships within the first month after implementation, measured by user feedback surveys.",
+      "note": "Success will be measured through user feedback to ensure the effectiveness of the alerts, confirming user satisfaction with the notification system.",
+      "refs": []
+    }
+  ],
+  "open_questions": [],
+  "tension": {
+    "summary": "The main disagreement centered around the clarity of role restrictions regarding alert visibility and the definitions of engagement records and cold relationships. The Proposer expressed concern about potential user complexity introduced by these changes, while the Critic emphasized the importance of role configuration to prevent notifications being sent to unauthorized users.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 6,
+        "open": 0,
+        "resolved": 6,
+        "escalated": 0,
+        "disagreement": 0.0,
+        "proposer_confidence": 85,
+        "critic_confidence": 90,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 85,
+        "worry": "Changes to alerts and record definitions may introduce complexity that users might find challenging to navigate."
+      },
+      "critic": {
+        "confidence": 90,
+        "worry": "While clarity has improved, any role misconfiguration could still cause the system to alert inappropriate users."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify which roles are restricted from seeing alerts about each other's engagements, creating the risk of sensitive information being exposed to unauthorized users.",
+      "failure_scenario": "A regional coordinator receives alerts for cold relationships regarding countries outside their responsibility, leading to potential diplomatic breaches as they contact counterparts without proper context or authority.",
+      "resolution_test": "Which roles are restricted from seeing alerts about other project teams' engagement records?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify which roles are restricted from seeing alerts about each other's engagements, creating the risk of sensitive information being exposed to unauthorized users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the restriction on alert visibility, preventing unauthorized users from accessing sensitive information about engagements.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies which roles will receive alerts, addressing the challenge. Fact: Only regional coordinators will receive alerts pertaining to their direct country responsibilities, preventing unauthorized access to sensitive information. Evidence: \"S5: Users with roles of 'executive-level staff' and 'other project managers' will not receive alerts about cold relationships from teams outside their own. Only regional coordinators will receive alerts pertaining to their direct country responsibilities.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'cold' relationship is ambiguous and only time-based. There is no mention of the types or significance of engagements needed, nor how they relate to ongoing projects or diplomatic status.",
+      "failure_scenario": "A country could be categorized as 'cold' despite active diplomatic discussions that do not produce formal updates, leading to a false sense of urgency in engagement.",
+      "resolution_test": "What specific engagement activities must occur to prevent a relationship from being deemed 'cold'?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'cold' relationship is ambiguous and only time-based. There is no mention of the types or significance of engagements needed, nor how they relate to ongoing projects or diplomatic status.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies that not only is the time period a factor in determining a 'cold' relationship, but regular engagements are also required to maintain an active status.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition of 'cold' now includes both time and interaction criteria, thereby clarifying the determination of cold relationships. Fact: A relationship can be deemed 'cold' if no engagement records are updated for 90 days without at least one documented interaction every 30 days. Evidence: \"D1: 'Cold' means a lack of engagement record updates for a specified duration of 90 days, and at least one documented interaction must occur every 30 days to prevent a relationship from being deemed cold.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on accountability for users who fail to update engagement records, leading to reliance on users to self-report their engagement activities without oversight.",
+      "failure_scenario": "A project manager neglects to update records, resulting in multiple false alerts. Other team members are confused about whether the relationship is indeed cold, damaging collaboration efforts.",
+      "resolution_test": "What actions will be taken if users do not update their engagement records regularly?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on accountability for users who fail to update engagement records, leading to reliance on users to self-report their engagement activities without oversight.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This new item introduces a structured oversight mechanism to ensure users maintain engagement records and sets a protocol for escalation in cases of neglect.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The addition of a review process ensures accountability for record maintenance. Fact: Users who do not update their engagement records regularly will be flagged for a review process by their supervisor every quarter. Evidence: \"S6: The CRM will include a system prompt to remind users to update engagement records if no updates have been made for 30 days. Failure to update records will flag users for a review process by their supervisor every quarter.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The impact of false alerts has not been considered, particularly regarding alert fatigue among users, which could lead to missed important notifications.",
+      "failure_scenario": "Users become desensitized to alerts because of frequent false notifications of cold relationships, missing actual alerts for significant engagement failures.",
+      "resolution_test": "What procedures are in place to minimize false alerts and manage user alert fatigue?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The impact of false alerts has not been considered, particularly regarding alert fatigue among users, which could lead to missed important notifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This measure puts in place a strategy to mitigate false alerts and manage user alert fatigue by controlling how often notifications can be sent.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This limit on alert frequency appropriately addresses the concern about alert fatigue. Fact: Alerts will be limited to once per week for each individual user. Evidence: \"S7: Alerts will be governed by a threshold management mechanism in the system, which will track user engagement frequency to limit alerts to once per week for any individual user, to minimize alert fatigue.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how alerts will protect sensitive diplomatic data especially when communicated via email notifications.",
+      "failure_scenario": "An alert containing sensitive information is sent to the wrong user due to misconfigured permissions, leading to a leak of confidential information.",
+      "resolution_test": "What specific items are included in the email alerts, and how are sensitive details excluded from notifications?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how alerts will protect sensitive diplomatic data especially when communicated via email notifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies what information will be shared in the alerts while ensuring that no sensitive details are included, thus safeguarding diplomatic data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S8"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This adequately addresses confidentiality concerns around email notifications. Fact: Email alerts will not include sensitive content, only basic information about the country and last engagement date. Evidence: \"S8: Email alerts will only contain the country name, the date of the most recent engagement update, and a reminder to check the CRM for further details. No sensitive content from the engagement records will be included.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The term 'engagement record' is broad and could lead to misinterpretation. Specific examples of what constitutes valid engagement are needed.",
+      "failure_scenario": "A user updates a record incorrectly, marking it as engagement, while crucial interactions go unrecorded, leading to misclassifying a relationship as cold.",
+      "resolution_test": "What specific types of documentation count as valid engagement records for the purposes of this alert system?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'engagement record' is broad and could lead to misinterpretation. Specific examples of what constitutes valid engagement are needed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This definition provides clear guidelines on what can be classified as an engagement record to eliminate ambiguity and prevent misclassifications.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarification helps to eliminate ambiguity around what constitutes an engagement record. Fact: Valid engagement records include formal documented interactions. Evidence: \"D3: 'Engagement record' means any documented interaction, such as email correspondence, meeting notes, project updates, or any formal record that reflects a discussion or negotiation with a country contact added to the CRM, excluding non-official communications.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

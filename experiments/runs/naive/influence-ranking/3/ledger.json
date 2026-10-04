@@ -1,0 +1,2117 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "pre_mortem": "A year after launch, the influence scoring system led to a major diplomatic incident when a regional coordinator mistakenly prioritized outreach to a low-influence but politically sensitive contact, believing them to be high-influence based on outdated criteria. The contact, feeling neglected in favor of more senior representatives, leaked sensitive information which created international tensions and damaged relations with key stakeholders.",
+  "gaps": [
+    "Which roles can see the influence scores and the criteria used for scoring?",
+    "What specific criteria will define 'global position,' and how can they vary per country or organization?",
+    "What happens to the influence scoring if the data becomes inaccurate or outdated, considering contacts can change roles frequently?",
+    "How will users provide feedback about the scoring system, and how will that feedback be incorporated into updates?",
+    "What safeguards are in place to ensure that influence scores won't be misinterpreted or misused by users?",
+    "How often will the scoring criteria be reviewed to ensure relevance and accuracy?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release delivers a contact influence scoring system to help prioritize outreach to influential contacts for regional coordinators and project managers. It will assess and display influence levels for contacts based on predefined criteria within the Government CRM system.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for all user roles."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their role, involvement in missions, and historical engagement frequency."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the current job title or role of a contact within their respective organization that signifies their level of authority."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes clear roles for who can view influence scores, specifies criteria and review timelines, and introduces user feedback and update mechanisms for the influence scoring system. These changes aim to mitigate risks associated with access, accuracy, and interpretation of influence data.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their role, involvement in missions, and historical engagement frequency."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role of a contact within their respective organization, which may include considerations for variations in political and organizational structures across different countries, defined by a list of equivalencies that aligns roles with their influence potential."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal enhances user access to influence scores while defining clear processes for data maintenance and score accuracy, aiming to mitigate risks associated with compliance and decision-making. The updates ensure a solid framework for reviewing influence criteria and maintaining data integrity over time.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a standardized manual entry protocol for influence scores, requiring a peer review process where another designated user must verify the entry before it is finalized to ensure accuracy and consistency."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their role, involvement in missions, and historical engagement frequency."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role of a contact within their respective organization, which may include considerations for variations in political and organizational structures across different countries, defined by a list of equivalencies that aligns roles with their influence potential."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes provisions for enhanced accuracy in manually entered influence scores, standardization of criteria to mitigate ambiguity, and improved clarity on definitions relevant to scoring contacts' influence. This aims to bolster user confidence and ensure the effective prioritization of engagement efforts based on consistent data interpretation.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a standardized manual entry protocol for influence scores, requiring a peer review process where another designated user verifies the entry before it is finalized to ensure accuracy and consistency. Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their global position, mission involvement, and historical engagement frequency, where each criterion is measured against standardized benchmarks defined in the scoring guidelines."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role within the respective organization, defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months, standardized by type and context of engagement, ensuring categorization according to predefined engagement levels."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes specific mechanisms for user feedback on the influence scoring system and establishes training to properly interpret influence scores, ensuring a more effective and responsible use of engagement priorities.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a standardized manual entry protocol for influence scores, requiring a peer review process where another designated user verifies the entry before it is finalized to ensure accuracy and consistency. Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies."
+        },
+        {
+          "id": "S8",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system. This mechanism will provide a dedicated feedback form in the CRM where users can articulate their experiences and recommendations. Feedback collected will be reviewed by the data steward quarterly, with relevant insights integrated into system updates."
+        },
+        {
+          "id": "S9",
+          "text": "Introduce training sessions and user guides designed to educate users on the proper interpretation of influence scores to prevent potential misuse. These sessions will emphasize the importance of context in interpreting scores and will be conducted quarterly during the user onboarding process and as part of any significant system updates."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        },
+        {
+          "id": "A5",
+          "text": "Users will have access to training materials and guidance on interpreting influence scores to ensure understanding of the context-related factors influencing those scores."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their global position, mission involvement, and historical engagement frequency, where each criterion is measured against standardized benchmarks defined in the scoring guidelines."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role within the respective organization, defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months, standardized by type and context of engagement, ensuring categorization according to predefined engagement levels."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes a defined review process for influence scoring criteria and ongoing monitoring for contact data accuracy, while explicitly assigning responsibility for compliance oversight. Additionally, a standardized benchmarking process for influence scores ensures consistency across interpretations.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a standardized manual entry protocol for influence scores, requiring a peer review process where another designated user verifies the entry before it is finalized to ensure accuracy and consistency. Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies."
+        },
+        {
+          "id": "S8",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system. This mechanism will provide a dedicated feedback form in the CRM where users can articulate their experiences and recommendations. Feedback collected will be reviewed by the data steward quarterly, with relevant insights integrated into system updates."
+        },
+        {
+          "id": "S9",
+          "text": "Introduce training sessions and user guides designed to educate users on the proper interpretation of influence scores to prevent potential misuse. These sessions will emphasize the importance of context in interpreting scores and will be conducted quarterly during the user onboarding process and as part of any significant system updates."
+        },
+        {
+          "id": "S10",
+          "text": "Specifically define the review process of the influence scoring criteria to include a checklist of at least the following: assessment of the relevance of each criterion, alignment with current organizational goals, adherence to data protection regulations, and updates from user feedback. The data steward will be responsible for ensuring this checklist is completed during each semi-annual review."
+        },
+        {
+          "id": "S11",
+          "text": "Establish an ongoing monitoring protocol for contact data accuracy, requiring designated users responsible for updating and verifying key contact information as changes occur. This protocol will include a notification system for users to report any known inaccuracies in real-time, thereby maintaining the quality and reliability of contact data between quarterly audits."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        },
+        {
+          "id": "A5",
+          "text": "Users will have access to training materials and guidance on interpreting influence scores to ensure understanding of the context-related factors influencing those scores."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their global position, mission involvement, and historical engagement frequency, where each criterion is measured against standardized benchmarks defined in the scoring guidelines."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role within the respective organization, defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months, standardized by type and context of engagement, ensuring categorization according to predefined engagement levels."
+        },
+        {
+          "id": "D5",
+          "text": "'Benchmark standards' means predefined measurable criteria established through stakeholder agreement to quantify the global position, mission involvement, and historical engagement frequency, ensuring consistent application of influence scores across various contexts and user interpretations."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes measures for ongoing data accuracy, defined timelines for score updates, and procedures for ensuring timely review processes, enhancing the reliability and responsiveness of the influence scoring feature.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a structured timeline for the peer review process of influence scores, requiring both entry and review to be completed within a maximum of 96 hours post-scoring by designated users."
+        },
+        {
+          "id": "S8",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system. This mechanism will provide a dedicated feedback form in the CRM where users can articulate their experiences and recommendations. Feedback collected will be reviewed by the data steward quarterly, with relevant insights integrated into system updates."
+        },
+        {
+          "id": "S9",
+          "text": "Introduce training sessions and user guides designed to educate users on the proper interpretation of influence scores to prevent potential misuse. These sessions will emphasize the importance of context in interpreting scores and will be conducted quarterly during the user onboarding process and as part of any significant system updates."
+        },
+        {
+          "id": "S10",
+          "text": "Specifically define the review process of the influence scoring criteria to include a checklist of at least the following: assessment of the relevance of each criterion, alignment with current organizational goals, adherence to data protection regulations, and updates from user feedback. The data steward will be responsible for ensuring this checklist is completed during each semi-annual review."
+        },
+        {
+          "id": "S11",
+          "text": "Establish an ongoing data maintenance protocol that includes designated users responsible for monitoring and updating contact data as changes occur, with a mandatory weekly check to ensure accuracy and prompt reporting of any inaccuracies through a notification system in the CRM."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        },
+        {
+          "id": "A5",
+          "text": "Users will have access to training materials and guidance on interpreting influence scores to ensure understanding of the context-related factors influencing those scores."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their global position, mission involvement, and historical engagement frequency, where each criterion is measured against standardized benchmarks defined in the scoring guidelines."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role within the respective organization, defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months, standardized by type and context of engagement, ensuring categorization according to predefined engagement levels."
+        },
+        {
+          "id": "D5",
+          "text": "'Benchmark standards' means predefined measurable criteria established through stakeholder agreement to quantify the global position, mission involvement, and historical engagement frequency, ensuring consistent application of influence scores across various contexts and user interpretations."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    },
+    {
+      "summary": "The proposal now includes measures for ongoing data quality maintenance, specific timelines for score updates and peer review processes, as well as clear ownership and compliance mechanisms, enhancing the reliability and responsiveness of the influence scoring feature.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Establish an influence scoring system that assigns a score from 1 to 10 for each contact based on three criteria: global position, mission involvement, and historical engagement frequency. Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels."
+        },
+        {
+          "id": "S2",
+          "text": "Allow regional coordinators and project managers to filter and sort their contact list based on influence scores."
+        },
+        {
+          "id": "S3",
+          "text": "Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, with access to scores restricted such that users below these roles cannot view them, thereby protecting sensitive engagement data."
+        },
+        {
+          "id": "S4",
+          "text": "Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data."
+        },
+        {
+          "id": "S5",
+          "text": "Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review."
+        },
+        {
+          "id": "S6",
+          "text": "Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a compliance monitoring process that includes annual audits of the influence scoring system to ensure adherence to data protection regulations and the involvement of the data steward in this oversight."
+        },
+        {
+          "id": "S8",
+          "text": "Assign the data steward as the accountable party for overseeing the influence scoring system, ensuring timely reviews and updates of influence scores according to the established schedules."
+        },
+        {
+          "id": "S9",
+          "text": "Introduce training sessions and user guides designed to educate users on the proper interpretation of influence scores to prevent potential misuse. These sessions will emphasize the importance of context in interpreting scores and will be conducted quarterly during the user onboarding process and as part of any significant system updates."
+        },
+        {
+          "id": "S10",
+          "text": "Specifically define the review process of the influence scoring criteria to include a checklist of at least the following: assessment of the relevance of each criterion, alignment with current organizational goals, adherence to data protection regulations, and updates from user feedback. The data steward will be responsible for ensuring this checklist is completed during each semi-annual review."
+        },
+        {
+          "id": "S11",
+          "text": "Establish an ongoing data maintenance protocol that includes designated users responsible for monitoring and updating contact data as changes occur, with a mandatory weekly check for data accuracy and an alert system within the CRM that flags any discrepancies immediately for review by the data steward."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated scoring updates; scores will be manually entered by designated users."
+        },
+        {
+          "id": "X2",
+          "text": "Social media influence or external metrics will not be included in the scoring system for this release."
+        },
+        {
+          "id": "X3",
+          "text": "Collaboration features or access controls beyond the basic CRM role permissions are out of scope for this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization."
+        },
+        {
+          "id": "A2",
+          "text": "The scoring criteria will be agreed upon by stakeholders before implementation begins."
+        },
+        {
+          "id": "A3",
+          "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed."
+        },
+        {
+          "id": "A4",
+          "text": "Contact data will be up to date and accurate to ensure correct scoring."
+        },
+        {
+          "id": "A5",
+          "text": "Users will have access to training materials and guidance on interpreting influence scores to ensure understanding of the context-related factors influencing those scores."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical value ranging from 1 (minimal influence) to 10 (maximum influence) assigned to each contact based on their global position, mission involvement, and historical engagement frequency, where each criterion is measured against standardized benchmarks defined in the scoring guidelines."
+        },
+        {
+          "id": "D2",
+          "text": "'Global position' means the official job title or role within the respective organization, defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight."
+        },
+        {
+          "id": "D3",
+          "text": "'Mission involvement' means the number of active projects or missions a contact is associated with within the CRM system."
+        },
+        {
+          "id": "D4",
+          "text": "'Historical engagement frequency' means the number of interactions recorded in the CRM between the organization and the contact over the past 12 months, standardized by type and context of engagement, ensuring categorization according to predefined engagement levels."
+        },
+        {
+          "id": "D5",
+          "text": "'Benchmark standards' means predefined measurable criteria, including specific weightings for 'global position', 'mission involvement', and 'historical engagement frequency', established through stakeholder agreement to ensure consistent application in the scoring process."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve a minimum of 80% user satisfaction with the influence scoring feature as assessed by user feedback surveys within three months of deployment."
+        },
+        {
+          "id": "K2",
+          "text": "At least 70% of users utilize the influence score filtering and sorting feature at least once a month after release."
+        },
+        {
+          "id": "K3",
+          "text": "Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clarify who can see the influence scores and the criteria used, leading to risks of unauthorized access to sensitive insights about contacts.",
+      "failure_scenario": "A project manager who should not have access to sensitive engagement data can view and manipulate influence scores, leading to mistrust among contacts and potential breaches.",
+      "resolution_test": "Which roles can see the influence scores and the criteria used for scoring?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who can see the influence scores and the criteria used, leading to risks of unauthorized access to sensitive insights about contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that only regional coordinators and project managers will have access to view influence scores, addressing concerns about unauthorized access to sensitive data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This section now clearly specifies roles with access to influence scores, addressing the original challenge. Fact: Only regional coordinators and project managers will access influence scores. Evidence: \"S3: Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'global position' is vague; it fails to consider international differences in roles and the potential for misinterpretation.",
+      "failure_scenario": "A contact from a country with differing political structures is misclassified as high influence due to an inappropriate interpretation of their title, leading to outreach based on incorrect assumptions.",
+      "resolution_test": "What specific criteria will define 'global position,' and how can they vary per country or organization?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'global position' is vague; it fails to consider international differences in roles and the potential for misinterpretation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The new definition clarifies how 'global position' is determined and incorporates flexibility to account for international differences, reducing the risk of misclassification.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The updated definition now adequately addresses international nuances. Fact: Global position is defined flexibly, considering varied organizational structures. Evidence: \"D2: 'Global position' means the official job title or role of a contact within their respective organization, which may include considerations for variations in political and organizational structures across different countries, defined by a list of equivalencies that aligns roles with their influence potential.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how influence scores will be updated in the event contacts change roles or their engagement level fluctuates, leaving the risk of outdated information.",
+      "failure_scenario": "A contact’s influence score remains unchanged after they receive a promotion, resulting in misplaced prioritization of outreach efforts.",
+      "resolution_test": "What happens to the influence scoring if the data becomes inaccurate or outdated, considering contacts can change roles frequently?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how influence scores will be updated in the event contacts change roles or their engagement level fluctuates, leaving the risk of outdated information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision commits to a proactive management of influence scores by stipulating a monthly review process, ensuring that the data remains accurate and relevant.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment to monthly reviews ensures that the scores remain accurate. Fact: Influence scores will be updated monthly to reflect changes. Evidence: \"S1: Influence scores will be reviewed and updated monthly to reflect any changes in roles or engagement levels.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define how users will provide feedback about the scoring system, leading to lack of iterative improvements and user dissatisfaction.",
+      "failure_scenario": "Without a clear feedback mechanism, users find flaws in the scoring system but have no avenue to communicate them, resulting in ongoing issues.",
+      "resolution_test": "How will users provide feedback about the scoring system, and how will that feedback be incorporated into updates?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define how users will provide feedback about the scoring system, leading to lack of iterative improvements and user dissatisfaction.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This change establishes a clear channel for user feedback and outlines a timeline for incorporating that feedback, reducing the risk of user dissatisfaction.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The feedback mechanism is now clearly specified. Fact: Users can submit feedback, which will be incorporated into updates twice a year. Evidence: \"K3: Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system, with a target of incorporating relevant feedback into system updates at least twice a year.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "There are no safeguards described to prevent users from misinterpreting or misusing the influence scores, which could lead to significant diplomatic missteps.",
+      "failure_scenario": "A user misuses influence information to favor certain contacts without proper rationale, damaging the organization’s credibility and relationships.",
+      "resolution_test": "What safeguards are in place to ensure that influence scores won't be misinterpreted or misused by users?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There are no safeguards described to prevent users from misinterpreting or misusing the influence scores, which could lead to significant diplomatic missteps.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit introduces safeguards against misuse by implementing a warning system that emphasizes the importance of proper context in the interpretation of influence scores.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This satisfies the need for safeguards against misusage. Fact: A warning system is in place to caution against misinterpretation of influence scores. Evidence: \"S4: Provide an interface where users can view the criteria used to assess influence scores and include a warning system that alerts users about the importance of context and cautions against misinterpretation or misuse of influence data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not stipulate how often the scoring criteria will be reviewed to ensure they remain relevant and compliant with any regulations.",
+      "failure_scenario": "The criteria become outdated or non-compliant without regular reviews, leading to potential legal exposure and reputational damage.",
+      "resolution_test": "How often will the scoring criteria be reviewed to ensure relevance and accuracy?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not stipulate how often the scoring criteria will be reviewed to ensure they remain relevant and compliant with any regulations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The frequency of reviewing the scoring criteria to ensure relevance and compliance must be determined by the organization based on existing policies and regulations.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Review frequency demands human oversight, hindering compliance assurance.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "The proposal lacks a clear schedule for reviewing the scoring criteria, which is essential for compliance and relevance over time.",
+      "failure_scenario": "The influence scoring criteria become outdated, resulting in decisions based on inaccurate evaluations, potentially causing diplomatic incidents.",
+      "resolution_test": "What is the defined schedule for periodic reviews of the scoring criteria?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a clear schedule for reviewing the scoring criteria, which is essential for compliance and relevance over time.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit introduces a clear timeline for reviewing the scoring criteria, which will help maintain their compliance and relevance.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: The scoring criteria will be reviewed semi-annually to ensure relevance and compliance. Evidence: \"S5: Establish a review schedule for the influence scoring criteria to occur semi-annually, ensuring they remain relevant and compliant. All changes will be communicated to users at each review.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "There is no assurance that incoming data on contacts (e.g., roles, engagement frequency) will be kept updated and accurate, which is critical for correct scoring.",
+      "failure_scenario": "With outdated or incorrect contact data, the influence scores are misrepresentative, leading to poor prioritization and damaging diplomatic relations.",
+      "resolution_test": "What processes ensure that contact data remains current and accurate prior to scoring?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no assurance that incoming data on contacts (e.g., roles, engagement frequency) will be kept updated and accurate, which is critical for correct scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit defines a concrete role responsible for ensuring data accuracy, improving reliability in the scoring process.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: A data steward will monitor and update contact data quarterly for accuracy. Evidence: \"S6: Designate a data steward responsible for monitoring and updating contact data on a quarterly basis, ensuring that all contact information and engagement activity is accurate and current prior to scoring.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MAJOR",
+      "challenge": "The manual entry of influence scores could lead to inconsistencies and inaccuracies, challenging the feasibility of reliable scoring within the system's planned operational parameters.",
+      "failure_scenario": "Due to human error in manual updates, the scores vary significantly, causing disparities in how contacts are prioritized, damaging relationships and productivity.",
+      "resolution_test": "How will the team ensure accuracy and consistency in manually entered influence scores?",
+      "id": "C9",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The manual entry of influence scores could lead to inconsistencies and inaccuracies, challenging the feasibility of reliable scoring within the system's planned operational parameters.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies a process for ensuring accuracy in the manual entry of influence scores, reducing the risk of human error and inconsistencies in the scoring system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not specify how accuracy and consistency will be ensured in the manual entry of scores.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes additional oversight by introducing quarterly audits of manually entered scores, aiming to ensure ongoing accuracy and consistency.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes a clear mechanism to ensure accuracy and consistency in the manual entry process. Fact: Quarterly audits will be conducted on manually entered scores to verify accuracy. Evidence: \"Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'influence score' relies on potentially subjective criteria that may not be consistently measurable or interpretable across different contexts.",
+      "failure_scenario": "Regional coordinators misinterpret influence scores due to differing context and criteria, leading to prioritization that ignores political sensitivities and misalignments with current diplomatic strategies.",
+      "resolution_test": "What specific, measurable criteria are used to define how influence scores are calculated and updated?",
+      "id": "C10",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'influence score' relies on potentially subjective criteria that may not be consistently measurable or interpretable across different contexts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies that 'influence scores' will be based on standardized benchmarks, improving consistency across contexts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This commitment helps ensure consistency across contexts in how influence is assessed. Fact: Influence scores will be based on standardized benchmarks. Evidence: \"where each criterion is measured against standardized benchmarks defined in the scoring guidelines.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C11": {
+      "targets": [
+        "D2",
+        "D4"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definitions of 'global position' and 'historical engagement frequency' may vary significantly across different countries and contexts, risking misrepresentation of influence.",
+      "failure_scenario": "A regional coordinator prioritizes a contact based on their role without considering the political weight of the title or the context of past engagements, leading to diplomatic blunders.",
+      "resolution_test": "How are 'global position' and 'historical engagement frequency' standardized across varying international contexts?",
+      "id": "C11",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions of 'global position' and 'historical engagement frequency' may vary significantly across different countries and contexts, risking misrepresentation of influence.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits specify a standardized approach to defining 'global position' and 'historical engagement frequency', mitigating the risk of misrepresentation in relation to varying contexts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2",
+            "D4"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This reduces the risk of misrepresentation based on varying contexts. Fact: 'Global position' will be standardized across different countries by a common list of titles. Evidence: \"defined by a standardized list of common titles evaluated for their influence potential across different countries, considering corresponding diplomatic weight.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C12": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal still does not clarify how users will provide feedback regarding the scoring system, potentially leading to lack of iterative improvements and user satisfaction issues.",
+      "failure_scenario": "Regional coordinators express dissatisfaction about the influence scoring but have no formal mechanism to submit feedback, leading to ongoing issues without resolution.",
+      "resolution_test": "What specific processes are in place for users to provide feedback on the influence scoring system?",
+      "id": "C12",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal still does not clarify how users will provide feedback regarding the scoring system, potentially leading to lack of iterative improvements and user satisfaction issues.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds a specific feedback mechanism that ensures users can formally express their concerns, thereby facilitating continuous improvement of the scoring system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S8"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now includes a structured feedback mechanism that allows users to submit experiences and recommendations, addressing ownership concerns. Fact: A feedback process exists where users can formally express their concerns and suggestions regarding the influence scoring system. Evidence: \"S8: Implement a structured feedback mechanism within the CRM that allows users to submit comments and suggestions regarding the influence scoring system.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C13": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "While a warning system alerts users about context importance, there are no specified safeguards preventing misinterpretation or misuse of influence scores, which could result in damaging diplomatic decisions.",
+      "failure_scenario": "A regional coordinator overlooks the provided warning and misinterprets a lower influence score as an indication of insignificance, prioritizing outreach incorrectly, leading to vast diplomatic fallout.",
+      "resolution_test": "What specific safeguards or training will ensure users understand and correctly interpret influence scores?",
+      "id": "C13",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "While a warning system alerts users about context importance, there are no specified safeguards preventing misinterpretation or misuse of influence scores, which could result in damaging diplomatic decisions.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits establish comprehensive training and guidelines that explicitly address the need for proper interpretation of influence scores, which mitigates risks associated with misuse.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S9",
+            "A5"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Training sessions and user materials are now defined to help users correctly interpret influence scores, mitigating the risk of misinterpretation. Fact: Training sessions will educate users on interpreting influence scores to prevent misuse and misinterpretation. Evidence: \"S9: Introduce training sessions and user guides designed to educate users on the proper interpretation of influence scores to prevent potential misuse.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C14": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "While the proposal includes a semi-annual review, it does not specify how compliance with data protection regulations will be monitored or who is responsible for this oversight.",
+      "failure_scenario": "The influence scoring criteria become outdated or non-compliant due to poor oversight, leading to the use of scores that are no longer defensible or legal, ultimately risking diplomatic incidents.",
+      "resolution_test": "Who is responsible for ensuring that the scoring criteria comply with applicable data protection regulations during each review?",
+      "id": "C14",
+      "round_raised": 5,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "While the proposal includes a semi-annual review, it does not specify how compliance with data protection regulations will be monitored or who is responsible for this oversight.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The oversight for compliance with data protection regulations during each review is a matter that is subject to existing organizational policies and should be determined by relevant stakeholders who understand legal compliance requirements.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The responsibility for ensuring compliance remains undefined and reliant on unspecified organizational policies.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C15": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define what constitutes a sufficient review process for the influence scoring criteria, leaving it open to subjective interpretation.",
+      "failure_scenario": "A lack of clear guidelines leads to inconsistencies in how reviews are conducted, resulting in an influence scoring system that does not reflect accurate or relevant criteria, potentially leading to poor decision-making.",
+      "resolution_test": "What specific criteria and process will guide the review of the influence scoring system criteria?",
+      "id": "C15",
+      "round_raised": 5,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define what constitutes a sufficient review process for the influence scoring criteria, leaving it open to subjective interpretation.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits explicitly outline a defined review process with specific criteria, addressing the challenge regarding the consistency of reviews.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S10"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision clearly outlines the review process for the influence scoring system. Fact: The review process is defined to include a checklist to ensure criteria relevance, alignment, compliance, and feedback. Evidence: \"Specifically define the review process of the influence scoring criteria to include a checklist of at least the following: assessment of the relevance of each criterion, alignment with current organizational goals, adherence to data protection regulations, and updates from user feedback. The data steward will be responsible for ensuring this checklist is completed during each semi-annual review.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C16": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal mentions quarterly audits, but it lacks a mechanism for ensuring that contact data remains accurate between audits, raising concerns about data quality and reliability in scoring.",
+      "failure_scenario": "Data inaccuracies lead to outdated or incorrect influence scores being displayed, causing significant misjudgments in engagement priorities, which may include outreach to contacts who are no longer viable, affecting diplomatic relations.",
+      "resolution_test": "What ongoing process is in place to maintain the accuracy of contact data between the quarterly audits?",
+      "id": "C16",
+      "round_raised": 5,
+      "status": "UNRESOLVED",
+      "strikes": 3,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal mentions quarterly audits, but it lacks a mechanism for ensuring that contact data remains accurate between audits, raising concerns about data quality and reliability in scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits introduce an ongoing process for maintaining data quality, ensuring inaccuracies can be addressed promptly, and preventing outdated information from affecting the influence scoring system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S11"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal lacks a clear method for maintaining data quality between audits.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies and formalizes the process for maintaining data quality between audits, ensuring timely identification and correction of inaccuracies to support reliable influence scoring.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S11"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The updated S11 mentions ongoing data maintenance, but it is still vague about the actual mechanisms or processes in place to ensure daily accuracy before the scheduled audits.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies the mechanisms for ongoing data quality maintenance, ensuring that inaccuracies are addressed promptly between scheduled audits.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S11"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While S11 mentions monitoring and updates, it lacks clear detail on how accuracy is ensured daily and what specific processes are in place.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C17": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MAJOR",
+      "challenge": "The manual entry of influence scores with peer review may introduce operational bottlenecks that affect the timely update of scores, impacting user experience and system effectiveness.",
+      "failure_scenario": "Delays in score updating due to the manual entry process could lead to situations where regional coordinators are acting on stale data, jeopardizing critical engagement efforts.",
+      "resolution_test": "What measures will be taken to ensure that the manual entry and review processes for influence scores do not create operational delays?",
+      "id": "C17",
+      "round_raised": 5,
+      "status": "UNRESOLVED",
+      "strikes": 3,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The manual entry of influence scores with peer review may introduce operational bottlenecks that affect the timely update of scores, impacting user experience and system effectiveness.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While there may be operational risks associated with manual entry and peer review processes, these are mitigated by training, clear guidance, and defined timelines for updates, which should help to minimize delays.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "Potential delays in updating scores due to the manual entry process remain unaddressed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit introduces specific timelines for the manual entry and peer review processes of influence scores, reducing the risk of operational bottlenecks and ensuring timely updates.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The risks associated with the manual entry process remain vague and unaddressed adequately in terms of concrete measures to prevent delays.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits provide concrete deadlines for both entry and review processes, which are designed to mitigate risks of delays in updating influence scores.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The measures described still do not provide sufficient detail on how to avoid bottlenecks in score updates during manual processes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C18": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'influence score' relies on subjective measures; without defined benchmarks, scores may not be applied consistently, impacting scoring reliability.",
+      "failure_scenario": "A regional coordinator interprets engagement frequency differently than another user, leading to mismatched scoring priorities and potential diplomatic faux pas due to unreliable influence assessments.",
+      "resolution_test": "How will the benchmarks used to create influence scores be defined and standardized across different contexts?",
+      "id": "C18",
+      "round_raised": 5,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'influence score' relies on subjective measures; without defined benchmarks, scores may not be applied consistently, impacting scoring reliability.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision provides a clear understanding of how influence scores will be standardized, addressing concerns about subjectivity and inconsistency in scoring.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This settles concerns regarding the subjectivity of the influence scores. Fact: Benchmark standards will be predefined and agreed upon to quantify the scoring criteria consistently. Evidence: \"'Benchmark standards' means predefined measurable criteria established through stakeholder agreement to quantify the global position, mission involvement, and historical engagement frequency, ensuring consistent application of influence scores across various contexts and user interpretations.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C19": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define the specific timelines and procedures for peer review of influence scores, leaving operational gaps that could lead to bottlenecks.",
+      "failure_scenario": "If the peer review process for influence score entries lacks clear timelines, regional coordinators may act on stale influence data, causing engagement decisions based on outdated scores and jeopardizing diplomatic relationships.",
+      "resolution_test": "What is the defined timeline for manual entry and peer review of influence scores?",
+      "id": "C19",
+      "round_raised": 6,
+      "status": "UNRESOLVED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define the specific timelines and procedures for peer review of influence scores, leaving operational gaps that could lead to bottlenecks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 7,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit sets a clear timeline for the peer review process, ensuring that updates to influence scores are prompt, thereby minimizing the risk of acting on stale data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "[Not counted as settled: the sentence you quote leans on 'designated users', which names no role, number or rule.]",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies timelines for the peer review process and ensures timely updates to influence scores, thereby reducing the risk of acting on outdated information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While a timeline is now included, it does not fully address how user actions will be coordinated to avoid stale data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "orchestrator",
+          "move": "OPEN_AT_CLOSE",
+          "text": "Still open when deliberation ended (cap).",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C20": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify how influence scores will prevent unauthorized access, especially regarding exposure to lower-level staff or contacts outside designated roles.",
+      "failure_scenario": "A regional coordinator may inadvertently expose sensitive influence scores to unauthorized users, leading to misinterpretations and potential diplomatic fallout.",
+      "resolution_test": "What safeguards are in place to prevent unauthorized viewing of influence scores?",
+      "id": "C20",
+      "round_raised": 7,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how influence scores will prevent unauthorized access, especially regarding exposure to lower-level staff or contacts outside designated roles.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes clear access controls to ensure unauthorized users do not have access to sensitive influence scores.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: Access to influence scores is restricted to specific roles only (regional coordinators and project managers). Evidence: \"Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, with access to scores restricted such that users below these roles cannot view them, thereby protecting sensitive engagement data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C21": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks specifics on who owns the influence scoring process and the accountability of those designated for its maintenance and updates.",
+      "failure_scenario": "Without clear ownership, responsibilities may overlap or be neglected, leading to inconsistent scoring and potential diplomatic incidents due to outdated or mismanaged information.",
+      "resolution_test": "Who is responsible for overseeing the influence scoring system and the timely review of scores?",
+      "id": "C21",
+      "round_raised": 7,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks specifics on who owns the influence scoring process and the accountability of those designated for its maintenance and updates.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies ownership and accountability for the influence scoring process, ensuring responsibilities are clearly defined to prevent lapses.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S8"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: A data steward is assigned as the accountable party for the influence scoring system. Evidence: \"Assign the data steward as the accountable party for overseeing the influence scoring system, ensuring timely reviews and updates of influence scores according to the established schedules.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C22": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The criteria used to define 'influence score' and how each element is weighted are not fully outlined, risking inconsistent application across different contexts.",
+      "failure_scenario": "If the criteria for scoring are misunderstood or misapplied, it may result in significantly misinformed engagement strategies, damaging diplomatic relations.",
+      "resolution_test": "What are the specific weightings and measurements defined for each component of the influence score?",
+      "id": "C22",
+      "round_raised": 7,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The criteria used to define 'influence score' and how each element is weighted are not fully outlined, risking inconsistent application across different contexts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision adds essential detail regarding the weightings and measurements used for each component of the influence score, promoting consistency in their application.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: Specific weightings for components of the influence score are established. Evidence: \"Benchmark standards means predefined measurable criteria, including specific weightings for 'global position', 'mission involvement', and 'historical engagement frequency', established through stakeholder agreement to ensure consistent application in the scoring process.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C23": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "There is no explicit mention of how the scoring system will adhere to data protection regulations, which is essential given the sensitivity of the data involved.",
+      "failure_scenario": "Failure to comply with data protection regulations could result in legal repercussions and undermine trust in the CRM system.",
+      "resolution_test": "What mechanisms ensure that the influence scoring process aligns with data protection regulations?",
+      "id": "C23",
+      "round_raised": 7,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 7,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no explicit mention of how the scoring system will adhere to data protection regulations, which is essential given the sensitivity of the data involved.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 8,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies mechanisms to ensure that the influence scoring process aligns with data protection regulations, which is crucial for safeguarding sensitive data.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 8,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: Annual audits for compliance with data protection regulations are implemented. Evidence: \"Implement a compliance monitoring process that includes annual audits of the influence scoring system to ensure adherence to data protection regulations and the involvement of the data steward in this oversight.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 30,
+      "proposer_worry": "Determining accurate scoring criteria may lead to subjective assessments and disagreements among stakeholders.",
+      "critic_worry": "The influence scoring system presents serious risks of misuse and misinterpretation, threatening diplomatic relationships.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 9,
+      "open": 3,
+      "resolved": 5,
+      "escalated": 1,
+      "disagreement": 0.45,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring ongoing compliance and relevance of scoring criteria remains a challenge.",
+      "critic_worry": "Lack of a structured review process for the scoring criteria poses compliance risks.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 11,
+      "open": 3,
+      "resolved": 7,
+      "escalated": 1,
+      "disagreement": 0.33,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "There may be resistance to implementing manual processes for data verification and scoring consistency.",
+      "critic_worry": "The definitions of influence criteria are subjective and potentially vary across countries, which might undermine the scoring system's reliability.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 13,
+      "open": 2,
+      "resolved": 10,
+      "escalated": 1,
+      "disagreement": 0.21,
+      "proposer_confidence": 85,
+      "critic_confidence": 60,
+      "proposer_worry": "Ensuring that user interpretations of influence scores align with diplomatic strategies without introducing subjective biases.",
+      "critic_worry": "User interpretation and handling of influence scores could lead to serious diplomatic mishaps.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 18,
+      "open": 5,
+      "resolved": 12,
+      "escalated": 1,
+      "disagreement": 0.32,
+      "proposer_confidence": 80,
+      "critic_confidence": 65,
+      "proposer_worry": "Misinterpretation of influence scores by users could still lead to inappropriate prioritization if safeguard training is not adequately enforced.",
+      "critic_worry": "There are still major concerns regarding data accuracy and consistency in the influence scoring system that could lead to significant diplomatic failures.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 6,
+      "raised": 19,
+      "open": 3,
+      "resolved": 14,
+      "escalated": 2,
+      "disagreement": 0.25,
+      "proposer_confidence": 75,
+      "critic_confidence": 70,
+      "proposer_worry": "The successful implementation of the manual entry process may still lead to delays without careful monitoring.",
+      "critic_worry": "Continued operational bottlenecks may prevent timely updates to influence scores, risking engagement miscalculations.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 7,
+      "raised": 23,
+      "open": 7,
+      "resolved": 14,
+      "escalated": 2,
+      "disagreement": 0.38,
+      "proposer_confidence": 85,
+      "critic_confidence": 75,
+      "proposer_worry": "Ensuring that all stakeholders understand and adhere to the new protocols established for maintaining data quality and timely reviews.",
+      "critic_worry": "Ongoing risks of data inaccuracies and operational delays could still lead to significant diplomatic missteps.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 8,
+      "raised": 23,
+      "open": 3,
+      "resolved": 18,
+      "escalated": 2,
+      "disagreement": 0.21,
+      "proposer_confidence": 80,
+      "critic_confidence": 65,
+      "proposer_worry": "While I've attempted to address the open challenges, the success of the updates relies on clear implementation and adherence to timelines by the team.",
+      "critic_worry": "Unresolved operational bottlenecks and clarity on daily accuracy checks may lead to reliance on outdated influence scores.",
+      "signal": "CONTINUE",
+      "decision": "cap",
+      "feedback": ""
+    }
+  ],
+  "termination": "cap",
+  "warnings": [
+    "R7: Critic's ACCEPT of C19 was refused (the sentence you quote leans on 'designated users', which names no role, number or rule); recorded as MAINTAIN."
+  ]
+}

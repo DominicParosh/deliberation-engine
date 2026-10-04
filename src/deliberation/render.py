@@ -3,11 +3,13 @@ prompts, the live console (through rich.markdown) and trace.md, so what the agen
 was printed and what was saved cannot drift apart. The decision document's structure comes
 from the ledger; the summarizer only supplies the prose around it."""
 
+from collections import Counter
+
 from rich.console import Console
 from rich.markdown import Markdown
 
 from .ledger import Issue, Ledger
-from .schemas import WEIGHT, Proposal
+from .schemas import BLOCKING, WEIGHT, Proposal
 
 TITLES = {"core_commitments": "Core commitments", "in_scope": "In scope", "out_of_scope": "Out of scope",
           "assumptions": "Assumptions", "definitions": "Definitions", "success_criteria": "Success criteria"}
@@ -101,10 +103,13 @@ def decision(run) -> dict:
     assumptions = [{**item(a), "kept": True, "challenges": challenges(a.id)} for a in final.assumptions]
     assumptions += [{"id": k, "text": text, "note": "", "refs": [], "kept": False, "challenges": challenges(k)}
                     for k, text in L.dropped().items() if k.startswith("A")]
-    questions = sorted(
-        ({**q.model_dump(), "severity": L.issues[q.issue_id].severity, "status": L.issues[q.issue_id].status}
-         for q in S.open_questions if q.issue_id in L.issues),
-        key=lambda q: (not q["blocks_build"], -WEIGHT[q["severity"]]))
+    def question(q) -> dict:
+        # Whether it blocks the build follows from the Critic's severity, which defines exactly that (MINOR: "won't
+        # sink the release"). It is a decision, so it comes from the ledger, not from the summarizer's prose.
+        issue = L.issues[q.issue_id]
+        return {**q.model_dump(), "severity": issue.severity, "status": issue.status, "blocks_build": issue.severity in BLOCKING}
+
+    questions = sorted((question(q) for q in S.open_questions if q.issue_id in L.issues), key=lambda q: -WEIGHT[q["severity"]])
     last = L.rounds[-1]
     unsettled = [i.id for i in L.issues.values() if i.severity == "BLOCKER" and i.status in ("ESCALATED", "UNRESOLVED")]
     flags = [f"{role.title()} reported {conf}/100 confidence while blocker(s) {', '.join(unsettled)} remain unsettled."
@@ -144,8 +149,11 @@ def decision_md(doc: dict) -> str:
     def challenged(cs) -> str:
         return "; ".join(f"{c['id']} → {c['outcome'].lower()}" for c in cs) or "never challenged"
 
+    status = Counter(i["status"] for i in doc["issues"])
     out = [f"# Decision record: {m['request_id']}", "", f"> {doc['request']}", "",
            f"Deliberation ended **{m['termination']}** after {m['rounds']} rounds (policy `{m['policy']}`){cost}.", "",
+           f"Challenges: {len(doc['issues'])} raised · {status['RESOLVED']} settled between the agents · "
+           f"{status['ESCALATED']} handed to humans · {status['UNRESOLVED']} still open when it ended.", "",
            "## Summary", "", doc["executive_summary"], "", "## What this release will do", "",
            "**Core commitments** (only the stakeholder can drop these)", "", *items(doc["core_commitments"]), "",
            "**In scope**", "", *items(doc["in_scope"]), "", "## What it will not do", "",

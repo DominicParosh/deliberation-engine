@@ -1,0 +1,556 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 9,
+    "repairs": 2,
+    "input_tokens": 32118,
+    "output_tokens": 5300,
+    "cost_usd": 0.0081,
+    "seconds": 54.9,
+    "warnings": []
+  },
+  "executive_summary": "This release will implement an alert system to notify users when engagement with a country decreases, indicating a 'cold' relationship, specifically when there is no recorded engagement activity for over six months. Additional features for re-engagement strategies or visualization of engagement metrics will not be included in this release. However, open questions regarding accountability for logging engagements and ensuring compliance with legal guidelines for email alerts remain unresolved and need to be addressed.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Users will receive alerts when there is no engagement recorded with a country for over six months.",
+      "note": "Users will receive alerts when there is no engagement recorded with a country for over six months, providing timely informational support while maintaining confidentiality with non-sensitive details.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "An alert system will be built to notify regional coordinators and project managers via email when there is no engagement activity logged in the CRM for a country over a period of six months.",
+      "note": "An alert system will be built to notify regional coordinators and project managers via email when there is no engagement activity logged in the CRM for a country over a period of six months, focusing on critical relationship management.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "The alert will include the country name, last engagement date, and a suggestion to re-engage.",
+      "note": "The alert will include the country name, last engagement date, and a suggestion to re-engage, ensuring users have the relevant information needed for follow-ups.",
+      "refs": []
+    },
+    {
+      "id": "S3",
+      "text": "Users will be able to set preferences for receiving alerts weekly or monthly.",
+      "note": "Users will be able to set preferences for receiving alerts weekly or monthly, enhancing user control over their notifications and engagement processes.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "Only users with access to government contact records will receive these alerts, and email alerts will only include non-sensitive information such as country name and last engagement date, ensuring confidentiality is maintained.",
+      "note": "Only non-sensitive information will be included in the alerts to maintain confidentiality, addressing concerns about data exposure and unauthorized access.",
+      "refs": [
+        "C1"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include any additional features for re-engagement strategies or monitoring user interactions as part of the alert system.",
+      "note": "This release will not include any additional features for re-engagement strategies or monitoring user interactions as part of the alert system, focusing instead on the primary alert functionality.",
+      "refs": [
+        "C5"
+      ]
+    },
+    {
+      "id": "X2",
+      "text": "Historical engagement records prior to the implementation of this alert system will not be included.",
+      "note": "Historical engagement records prior to the implementation of this alert system will not be included to streamline the process and focus on future engagements.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "Development of a dashboard for visualizing engagement metrics will not be considered in this release.",
+      "note": "Development of a dashboard for visualizing engagement metrics will not be considered in this release, as it complicates the primary objective of the alert system.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users are trained to log engagement activities accurately in the CRM, which the alert system depends on.",
+      "note": "This assumption highlights that users are expected to log engagement accurately, but accountability for this is still in question and needs clarification.",
+      "refs": [
+        "C3"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C3",
+          "outcome": "ESCALATED"
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "text": "All engaged users possess an email account registered with their CRM profile, as the alert system relies on this.",
+      "note": "The alert system relies on users having registered email accounts, ensuring notifications can be effectively communicated.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "The CRM can access and process engagement data without performance issues, which is necessary for a timely alert system.",
+      "note": "The system's ability to process engagement data without performance issues is assumed, establishing a foundation for timely alerting.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A4",
+      "text": "There are no legal restrictions on sending email alerts based on engagement activity, ensuring compliance with privacy standards.",
+      "note": "This assumption remains open as legal confirmation regarding compliance with data protection standards for sending alerts is still required.",
+      "refs": [
+        "C6",
+        "C7"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C6",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C7",
+          "outcome": "ESCALATED"
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'Cold relationship' means a lack of recorded engagement activity for a period exceeding six months.",
+      "note": "The definition of a 'cold relationship' indicates a lack of recorded engagement for over six months, ensuring clarity for users regarding the alert conditions.",
+      "refs": [
+        "C4"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "'Engagement activity' means any logged interaction between the users and the government contacts in the CRM, including meetings, emails, official communications, and other documented interactions relevant to the relationship.",
+      "note": "Engagement activity is defined to include all logged interactions, minimizing ambiguity about what should be recorded to maintain relationship quality.",
+      "refs": [
+        "C2"
+      ]
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 80% of users receive the alerts successfully without any technical failures, measured by system logs and user feedback within the first month after launch.",
+      "note": "Success will be measured by ensuring that at least 80% of users receive alerts successfully without any technical failures in the first month after launch, establishing a clear performance benchmark for the system.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C6",
+      "question": "What specific legal guidelines exist regarding email alerts based on engagement activity, and how are these being adhered to?",
+      "why_it_matters": "Defining legal compliance is crucial to avoid potential legal risks associated with the alert system.",
+      "decision_owner": "Legal Compliance Officer",
+      "options": [
+        "Conduct a legal review of the alert system",
+        "Incorporate existing data protection policies",
+        "Seek external legal consultation"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C7",
+      "question": "What specific legal guidelines exist regarding the email alerts sent based on engagement activity, and how will compliance be ensured?",
+      "why_it_matters": "Clarifying compliance protocols is vital to prevent breaches of privacy laws and potential legal issues.",
+      "decision_owner": "Data Protection Officer",
+      "options": [
+        "Develop a compliance framework for alerts",
+        "Provide user consent documentation",
+        "Set up a legal review process for future updates"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C3",
+      "question": "What processes or roles exist to ensure that engagement logging is monitored and enforced?",
+      "why_it_matters": "Clear accountability is essential to ensure the effectiveness of the alert system and avoid inaccurate alerts.",
+      "decision_owner": "Operations Manager",
+      "options": [
+        "Establish regular audits of engagement logs",
+        "Implement user training sessions",
+        "Designate accountability roles for logging"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The primary disagreement centered on ensuring proper accountability for logging engagement activities and establishing compliance with legal guidelines for sending alerts. While the Proposer advocated for proceeding with the implementation pending clarification, the Critic raised significant concerns about potential compliance risks that require resolution before moving forward.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 7,
+        "open": 1,
+        "resolved": 4,
+        "escalated": 2,
+        "disagreement": 0.53,
+        "proposer_confidence": 80,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 7,
+        "open": 0,
+        "resolved": 4,
+        "escalated": 3,
+        "disagreement": 0.53,
+        "proposer_confidence": 85,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 85,
+        "worry": "Unclear legal guidelines for sending email alerts could lead to compliance risks."
+      },
+      "critic": {
+        "confidence": 60,
+        "worry": "The proposal lacks clear legal guidelines and compliance measures for the alert system, posing significant risks."
+      }
+    },
+    "flags": [
+      "Proposer reported 85/100 confidence while blocker(s) C6, C7 remain unsettled."
+    ]
+  },
+  "issues": [
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S4 states only users with access to government contact records will receive alerts, but it does not specify how sensitive data is protected in the email alerts.",
+      "failure_scenario": "An alert detailing a cold relationship is emailed to a former regional coordinator who has access to sensitive government records, exposing confidential information to the wrong recipient.",
+      "resolution_test": "What measures are in place to ensure that alerts do not expose sensitive data to unauthorized users?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S4 states only users with access to government contact records will receive alerts, but it does not specify how sensitive data is protected in the email alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that only non-sensitive information will be included in the alerts, addressing potential confidentiality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This assurance satisfies the confidentiality concern raised. Fact: Alerts will only include non-sensitive information, ensuring confidentiality is maintained. Evidence: \"only users with access to government contact records will receive these alerts, and email alerts will only include non-sensitive information such as country name and last engagement date, ensuring confidentiality is maintained.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "S1 triggers alerts after six months of no recorded engagement, but it does not define what constitutes engagement logging, potentially leading to ambiguity.",
+      "failure_scenario": "A regional coordinator misinterprets an informal phone call as engagement while neglecting to log formal emails, resulting in missed alerts and consequences for diplomatic relations.",
+      "resolution_test": "What specific actions need to be logged as engagement activity to avoid false alerts?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S1 triggers alerts after six months of no recorded engagement, but it does not define what constitutes engagement logging, potentially leading to ambiguity.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clearly defines engagement activity to include all relevant interactions, reducing ambiguity and ensuring users know what to log.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition eliminates ambiguity regarding what needs to be logged as engagement. Fact: Engagement logging includes all relevant interactions such as meetings and emails. Evidence: \"'Engagement activity' means any logged interaction between the users and the government contacts in the CRM, including meetings, emails, official communications, and other documented interactions relevant to the relationship.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "A1 assumes users will log engagement activities accurately but does not address accountability if they fail to do so, which could lead to inaccurate alerts.",
+      "failure_scenario": "A project manager forgets to log an important engagement, receiving a cold relationship alert incorrectly, and fails to follow up on a critical government contact due to the inaccurate impression that engagement is lacking.",
+      "resolution_test": "What processes or roles exist to ensure logging of engagement activities is monitored and enforced?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A1 assumes users will log engagement activities accurately but does not address accountability if they fail to do so, which could lead to inaccurate alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must specify the processes in place to ensure that engagement logging is monitored and enforced, as accountability for logging is crucial for the system's effectiveness.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal does not define how to ensure users log activities, leaving it open to human decision-making.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "D1 specifies that 'cold relationship' refers to a lack of recorded engagement for over six months but does not clarify what 'engagement' includes (just logging or also other activities).",
+      "failure_scenario": "If the system does not count certain informal engagements (like phone conversations), alerts will be missed, leading to wrong assumptions about the level of relationship with a country.",
+      "resolution_test": "Does engagement activity include all types of logged interactions, such as informal communications and meetings?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D1 specifies that 'cold relationship' refers to a lack of recorded engagement for over six months but does not clarify what 'engagement' includes (just logging or also other activities).",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The definition provided in D2 already covers the types of engagements that count towards 'engagement activity', addressing this concern.",
+          "grounds": "ALREADY_COVERED",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition in D2 suffices for the requirements. Fact: 'Cold relationship' is defined but does not address informal interactions. Evidence: \"'Cold relationship' means a lack of recorded engagement activity for a period exceeding six months.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "DEFENDED"
+    },
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "X1 excludes features for re-engagement strategies which could help mitigate cold relationships initiated by alerts, potentially overloading project managers with follow-up responsibilities.",
+      "failure_scenario": "Project managers receive alerts but have no guidance or tools to effectively re-engage with the government contacts, leading to frustration and a strained workflow on top of managing existing duties.",
+      "resolution_test": "What alternative measures are in place to assist project managers with re-engagement after receiving an alert?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "X1 excludes features for re-engagement strategies which could help mitigate cold relationships initiated by alerts, potentially overloading project managers with follow-up responsibilities.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "CONCEDE",
+          "text": "While helpful, re-engagement strategies distract from the core functionality of the alert system and could complicate this initial release.",
+          "grounds": "SHOULD_NOT_BUILD",
+          "changed": [
+            "X1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses the concern but acknowledges the limitations of the current proposal. Fact: Re-engagement strategies are excluded from this release. Evidence: \"This release will not include any additional features for re-engagement strategies or monitoring user interactions as part of the alert system.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "CONCEDED"
+    },
+    {
+      "targets": [
+        "A4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "A4 states there are no legal restrictions on sending email alerts based on engagement activity, but this is not substantiated and could pose legal risks if not properly vetted.",
+      "failure_scenario": "An alert breaches privacy laws due to a lack of consent from the government representatives being contacted, resulting in legal action against the organization.",
+      "resolution_test": "What specific legal guidelines exist regarding email alerts based on engagement activity and how are these being adhered to?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A4 states there are no legal restrictions on sending email alerts based on engagement activity, but this is not substantiated and could pose legal risks if not properly vetted.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must specify the legal guidelines and processes to ensure compliance with privacy and data protection standards for sending email alerts.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal did not provide sufficient compliance details, necessitating human input.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "A4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "A4 does not specify how the organization will ensure compliance with privacy standards, leaving the process ambiguous and potentially non-compliant.",
+      "failure_scenario": "An alert about cold diplomatic relations is sent without legal clearance, causing legal ramifications for the organization due to breach of privacy laws.",
+      "resolution_test": "What specific legal guidelines exist regarding the email alerts sent based on engagement activity, and how will compliance be ensured?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A4 does not specify how the organization will ensure compliance with privacy standards, leaving the process ambiguous and potentially non-compliant.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must clarify the specific legal guidelines regarding email alerts triggered by engagement activity to ensure compliance. Since ensuring compliance with privacy standards depends on organizational policies and laws, this is not something the proposal can decide.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The lack of specific legal guidelines leaves compliance ambiguous and requires clarification from a human decision-maker.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    }
+  ]
+}

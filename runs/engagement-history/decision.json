@@ -1,0 +1,490 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "meta": {
+    "request_id": "engagement-history",
+    "policy": "gated",
+    "rounds": 2,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 7,
+    "repairs": 3,
+    "input_tokens": 26663,
+    "output_tokens": 4941,
+    "cost_usd": 0.0071,
+    "seconds": 46.8,
+    "warnings": [
+      "R2: dropped new challenge(s) that repeated an open question: #1 (C3)."
+    ]
+  },
+  "executive_summary": "This release will allow project managers to view a comprehensive engagement history with each country, ensuring they have essential data for new mission planning while excluding sensitive information. The features outlined include restricted access based on role and various filtering capabilities. However, uncertainty remains regarding existing organizational policies on project manager access permissions, which needs to be resolved before development begins.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Project managers will have access to a comprehensive engagement history of each country.",
+      "note": "Project managers will have access to a comprehensive engagement history of each country, addressing the need for better data access for planning new missions.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "The system will display past project affiliations and associated contacts for each country.",
+      "note": "The system will display past project affiliations and associated contacts for each country, providing context and continuity for project managers.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Engagement history means all recorded interactions with a country, including meetings, communications, project details, and mission specifics.",
+      "note": "Engagement history is defined to include all recorded interactions with a country, ensuring project managers have complete insights into past engagements.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "The feature will be accessible only to users with the role of project manager and will have enforced permission settings to ensure they can access engagement history relevant to their clearance level.",
+      "note": "The feature restricts access to authorized project managers only, ensuring sensitive information is protected according to permission settings.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "The history will include data from the last five years of engagement with the country.",
+      "note": "Limiting the history to data from the last five years ensures relevance and manageability of the information provided to project managers.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "The data displayed will include the names of relevant contacts, general notes from engagements, and project outcomes; it will explicitly exclude sensitive diplomatic notes, internal assessments, and security-related information.",
+      "note": "The data will explicitly exclude sensitive diplomatic notes, internal assessments, and security-related information to maintain confidentiality and protect sensitive content.",
+      "refs": [
+        "C1"
+      ]
+    },
+    {
+      "id": "S5",
+      "text": "Project managers will be able to filter the engagement history by date, type of engagement (meeting, email, etc.), and involved contacts.",
+      "note": "Filtering capabilities allow project managers to efficiently navigate through historical data, focusing on specific types of interactions and timeframes.",
+      "refs": []
+    },
+    {
+      "id": "S6",
+      "text": "The proposal includes a user interface that allows project managers to easily navigate and read the engagement history.",
+      "note": "A user-friendly interface is included to enhance usability, making it easier for project managers to access the engagement history.",
+      "refs": []
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include the ability to edit or delete engagement history records.",
+      "note": "Editing or deleting records is not included to prevent potential data integrity issues in future iterations, ensuring current safeguarded restrictions remain effective.",
+      "refs": [
+        "C6"
+      ]
+    },
+    {
+      "id": "X2",
+      "text": "The feature will not integrate with external systems or databases that provide historical data outside of the current CRM records.",
+      "note": "The decision not to integrate with external systems is made to maintain focus on the current CRM records and streamline project management functions.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "The display of engagement history will not include sensitive data points that require higher security clearance.",
+      "note": "Exclusion of sensitive data points is vital for compliance and user security, addressing significant confidentiality concerns raised during discussions.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Project managers have the required permissions to view engagement data as per existing organizational policies.",
+      "note": "The assumption regarding project managers' permissions to view engagement data needs to be validated against current organizational policies, which remains unconfirmed and poses a compliance risk.",
+      "refs": [
+        "C3"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C3",
+          "outcome": "ESCALATED"
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "text": "All relevant engagement history data is currently being recorded and maintained within the Government CRM.",
+      "note": "Assuming all engagement data is appropriately recorded ensures that the feature has a comprehensive database to work with.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "User interface elements for the engagement history feature can be developed within the timeframe of this release.",
+      "note": "The technical feasibility of developing the user interface within the required timeframe aligns with project goals and resource capabilities.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A4",
+      "text": "The technical infrastructure can support the filtering and display requirements outlined in this proposal.",
+      "note": "Technical infrastructure supporting the filtering and display requirements is presumed adequate to meet the outlined expectations of this feature.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "\"Engagement history\" means all documented interactions and engagements with a specific country, including meetings, communications, project details, and outcomes, but excluding sensitive diplomatic notes and internal assessments.",
+      "note": "The refined definition of 'engagement history' clarifies what interactions are included and ensures consistency and usability for project managers.",
+      "refs": [
+        "C4"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "\"Project manager\" means a user role that consists of personnel responsible for overseeing projects and missions within the Government CRM.",
+      "note": "Defining 'project manager' helps outline user roles clearly within the system and aligns with operational structure.",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "\"Filter\" means the capability to sort and display specific engagement records based on user-selected criteria, which includes date, type of engagement (meeting, email, report), and involved contacts.",
+      "note": "Clarifying the definition of 'filter' minimizes potential confusion and establishes clear expectations for project managers on how to access historical data.",
+      "refs": [
+        "C5"
+      ]
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "By the end of the quarter, 80% of project managers will successfully access and review a country's full engagement history within the system, as measured by user feedback surveys.",
+      "note": "The success criterion ensures that the implementation of the feature meets user needs and gauges its acceptance and functionality by measuring access and reviews from project managers.",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C3",
+      "question": "Do existing organizational policies grant project managers permission to access engagement history?",
+      "why_it_matters": "Clarifying this question will ensure compliance with organizational standards and prevent unauthorized access to sensitive data.",
+      "decision_owner": "Compliance Personnel",
+      "options": [
+        "Confirm existing permissions",
+        "Revise permissions accordingly",
+        "Retain current policy until review is complete"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The primary disagreement centered around the assumption of existing organizational policies on project manager permissions, which remains unconfirmed. While the proposer felt confident about proceeding with access for project managers, the critic emphasized the need for compliance verification, leading to the issue being escalated rather than resolved.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 85,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 6,
+        "open": 0,
+        "resolved": 5,
+        "escalated": 1,
+        "disagreement": 0.2,
+        "proposer_confidence": 85,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 85,
+        "worry": "There's still uncertainty regarding existing organizational policies on access permissions."
+      },
+      "critic": {
+        "confidence": 70,
+        "worry": "The adequacy of existing organizational policies regarding access permissions remains unconfirmed, leaving room for potential compliance risks."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify which sensitive data points have been excluded from the engagement history display.",
+      "failure_scenario": "A project manager views engagement history for a country, which includes sensitive diplomatic notes rather than just general engagement records, leading to unauthorized information disclosure to individuals without clearance.",
+      "resolution_test": "What specific sensitive data points will not be included in the engagement history?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify which sensitive data points have been excluded from the engagement history display.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies which sensitive data points will be excluded from the engagement history display, thereby addressing the concerns about confidentiality.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This directly addresses the concern and specifies what sensitive information is excluded. Fact: Sensitive diplomatic notes, internal assessments, and security-related information are excluded from the engagement history. Evidence: \"The data displayed will include the names of relevant contacts, general notes from engagements, and project outcomes; it will explicitly exclude sensitive diplomatic notes, internal assessments, and security-related information.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify how permissions are enforced to ensure that only authorized project managers can access sensitive parts of the engagement history.",
+      "failure_scenario": "A newly appointed project manager inadvertently accesses records from engagements requiring higher security clearance due to inadequate permission settings, leading to a potential leak of confidential information.",
+      "resolution_test": "Which roles are explicitly authorized to access engagement history?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how permissions are enforced to ensure that only authorized project managers can access sensitive parts of the engagement history.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit clarifies that access is enforced as per permission settings, ensuring that only authorized project managers can access the relevant engagement history.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment clarifies that access is restricted appropriately. Fact: Access is restricted to project managers with appropriate permissions according to their clearance level. Evidence: \"The feature will be accessible only to users with the role of project manager and will have enforced permission settings to ensure they can access engagement history relevant to their clearance level.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A1"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "Assumption A1 about project managers having required permissions is unsubstantiated, posing a risk if current policies do not align with the proposal.",
+      "failure_scenario": "Permissions granted to project managers are inconsistent with existing organizational policies, allowing unauthorized access to sensitive engagement details, leading to compliance failure.",
+      "resolution_test": "Do existing organizational policies grant project managers permission to access engagement history?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Assumption A1 about project managers having required permissions is unsubstantiated, posing a risk if current policies do not align with the proposal.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The existing organizational policies regarding access permissions need to be reviewed by compliance personnel to confirm that project managers have the necessary access.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Compliance confirmation requires a review of existing policies by relevant personnel, which is not within the proposal's current scope.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The definition of 'engagement history' is broad and may lead to inconsistencies in what data is included in the engagement history.",
+      "failure_scenario": "An ambiguity in what constitutes 'engagement history' leads to the inclusion of irrelevant data or important records being omitted, impacting the usability of the feature for project managers.",
+      "resolution_test": "What types of engagement data are defined as part of 'engagement history'?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'engagement history' is broad and may lead to inconsistencies in what data is included in the engagement history.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit refines the definition of 'engagement history,' reducing ambiguity about what data is included, thereby enhancing the clarity for development and usability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Clarifying what constitutes engagement history resolves the ambiguity. Fact: Engagement history includes specific documented interactions and excludes certain sensitive data. Evidence: \"\"Engagement history\" means all documented interactions and engagements with a specific country, including meetings, communications, project details, and outcomes, but excluding sensitive diplomatic notes and internal assessments.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The term 'filter' is not clearly defined, potentially causing confusion on how users can filter their results in the engagement history.",
+      "failure_scenario": "Project managers misunderstand filtering capabilities and fail to retrieve the information they need about past engagements due to an unclear definition of what filtering entails.",
+      "resolution_test": "What filtering criteria can users apply when accessing engagement history?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'filter' is not clearly defined, potentially causing confusion on how users can filter their results in the engagement history.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit provides a detailed definition of 'filter' that clarifies the filtering capabilities available to project managers, minimizing user confusion.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Clarification of filtering capabilities minimizes potential user confusion. Fact: Filtering criteria for engagement history include date and type of engagement. Evidence: \"\"Filter\" means the capability to sort and display specific engagement records based on user-selected criteria, which includes date, type of engagement (meeting, email, report), and involved contacts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "The proposal does not explain how engagement records will be safeguarded against user actions like editing or deleting sensitive information in the future.",
+      "failure_scenario": "In the event that editing capabilities are mistakenly included in future iterations, project managers could unintentionally alter or erase critical engagement history, compromising data integrity.",
+      "resolution_test": "Are there technical safeguards to prevent modifications to engagement history records?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not explain how engagement records will be safeguarded against user actions like editing or deleting sensitive information in the future.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While future iterations may introduce issues related to editing or deleting records, current scope explicitly prohibits these actions, which serves as a technical safeguard against potential modifications.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The current scope safeguards against alterations to existing records. Fact: Editing or deleting engagement records is prohibited in this release. Evidence: \"This release will not include the ability to edit or delete engagement history records.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "DEFENDED"
+    }
+  ]
+}

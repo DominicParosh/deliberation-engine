@@ -62,18 +62,30 @@ Environment (updated 2026-10-04 06:55):
 - [x] Independent review; fixed ordering, routing, weak-phrase precision and trim-resistance; fuzzed coercion clean
 - [x] v7 live batch run and analysed: most balanced so far; one weak-phrase false positive, re-raised escalations
 - [x] v7.1: role-aware weak phrases, follow-up targets, question-form tests, no re-asking escalated questions
-- [ ] Prompts frozen. Comparison batch (Domi): `uv run python experiments/ablate.py run --runs 3`
+- [x] Prompts frozen. Comparison batch (Domi): `uv run python experiments/ablate.py run --runs 3`
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B
 - [x] Generic-prompt variant for the prompt comparison
 - [x] `experiments/ablate.py` — 5 inputs × 3 runs per arm → metrics table
-- [ ] Run comparisons: policy (naive vs gated), prompts (generic vs opposed)
-- [ ] Final traces for all 5 inputs under `runs/`
-- [ ] README (setup, run, replay, results table)
-- [ ] DECISIONS.md outline + data pack (Domi writes the final text)
+- [x] Run comparisons: policy (naive vs gated), prompts (generic vs opposed): 45 runs, `experiments/results.md`
+- [x] Final traces for all 5 inputs under `runs/` (one gated run each, picked by a read-through audit)
+- [x] README (setup, run, replay, results table, traces, iteration story, limitations)
+- [x] DECISIONS.md outline + data pack (Domi writes the final text; pack delivered outside the repo)
 - [ ] Fresh-agent review against the brief's rubric; fix findings
 - [ ] Clean-checkout check: `uv sync` → tests → one live run → replay
+
+## Comparison batch and evidence (2026-10-04)
+- [x] Imported the 45 runs from the Mac (md5 of all 225 files identical); `ablate.py report` reproduces Domi's table
+- [x] Deep-dive: naive concludes over its own MAINTAINs (3 runs) and re-asks escalated questions; gated's gate never had
+      to fire (convergence pressure emptied the ledger); opposed prompts change the Proposer (15 vs 1 merit defenses),
+      not the Critic (84% of revisions accepted in both)
+- [x] Audited all 15 gated decision documents; red flags recorded as README limitations
+- [x] Fix found in the audit: "blocks the build" now follows the Critic's severity (the Rapporteur had marked 14 of 16
+      MINOR questions as blocking); field removed from the Rapporteur's schema and prompt; counts line in the header
+- [x] Replayed all 45 runs through the new code: ledgers, traces, events and meta byte-identical; decision documents
+      changed only as intended; the five published runs replay identically through the CLI
+- [x] Fixed `ablate.py`'s claim that each configuration differs in one thing (naive swaps the whole policy)
 
 ## Review
 _(filled in at the end)_

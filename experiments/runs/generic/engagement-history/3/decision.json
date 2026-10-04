@@ -1,0 +1,616 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "meta": {
+    "request_id": "engagement-history",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "consensus",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 10,
+    "repairs": 3,
+    "input_tokens": 40639,
+    "output_tokens": 6746,
+    "cost_usd": 0.0101,
+    "seconds": 77.6,
+    "warnings": []
+  },
+  "executive_summary": "This release will provide project managers access to the full engagement history with a country, ensuring informed decision-making prior to starting new missions. Enhancements will clarify controls around access, data quality, and compliance, establishing accountability structures and security measures for sensitive information. No features for editing or deleting engagement history or providing additional analytics are included in this release; the implementation of security and compliance measures remains an area of concern for human decision-makers.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Project managers can view the complete engagement history with each country.",
+      "note": "Project managers can view the complete engagement history with each country, addressing the need for informed decision-making as outlined in the initial feature request.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Provide project managers with a feature to access and view the engagement history of a selected country.",
+      "note": "Project managers will have a feature to access and view the engagement history of a selected country, directly supporting their need for full visibility before mission planning.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "Display engagement history that includes contact dates, involved personnel, and summary of activities. Data quality will be maintained through a tiered auditing process, where a designated data quality officer will validate information before access is granted to project managers, ensuring accuracy and consistency.",
+      "note": "Engagement history will include validated contact details and summaries, with a data quality officer designated to maintain accuracy and consistency before access is granted to project managers.",
+      "refs": [
+        "C2"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Limit access to engagement history to only project managers and authorized regional coordinators. The Data Steward will implement access control measures that include authentication protocols, logging of access attempts, and a notification system for unauthorized access attempts.",
+      "note": "Access is limited to project managers and authorized coordinators, with the Data Steward implementing strict authentication and monitoring measures to prevent unauthorized access and ensure compliance.",
+      "refs": [
+        "C1",
+        "C4",
+        "C7"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "Ensure that engagement history complies with data privacy and sensitivity protocols, including adherence to GDPR, national confidentiality laws, and organizational policies. All access will require justification and will be documented, maintaining a compliance check process.",
+      "note": "Engagement history will comply with GDPR and national confidentiality laws, outlining specific data privacy protocols to avoid legal breaches and maintain compliance, which is critical for handling sensitive information.",
+      "refs": [
+        "C3",
+        "C8"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include features for editing or deleting engagement history.",
+      "note": "Editing or deleting engagement histories is excluded to maintain data integrity and protect sensitive information.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not provide additional analytics or insights into engagement history beyond what is displayed.",
+      "note": "Additional analytics beyond the displayed engagement history are not included to keep the focus on essential access features for project managers.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "This release will not allow access to engagement history for users other than project managers and authorized coordinators.",
+      "note": "Access restrictions are firmly set, with no allowance for users outside the specified project managers and authorized regional coordinators, ensuring the security of sensitive data.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "It is assumed that project managers need the engagement history to make informed decisions before new missions, which is the basis for this feature request.",
+      "note": "The assumption is that project managers require access to the engagement history for informed decision-making, forming the basis for the feature request.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "It is assumed that engagement histories are stored in the CRM system and are up to date.",
+      "note": "Assuming engagement histories are stored in the system and kept up to date supports the reliability of the new access feature for users.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "It is assumed that there are no existing legal or organizational barriers preventing project managers from accessing historical engagement data.",
+      "note": "Assuming no legal barriers exist allows for the proposed access to engagement histories to proceed as planned without hindrances.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "\"engagement history\" means a record of all interactions between the organization and the government counterpart, including dates of contact, participants, and summaries of discussions or activities.",
+      "note": "The definition of 'engagement history' has been clarified to delineate what information will be available to project managers regarding interactions with government counterparts.",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "\"project managers\" means designated personnel responsible for overseeing specific missions or projects within the organization.",
+      "note": "The definition of 'project managers' ensures clarity on who will have access, aligning with expectations of personnel responsible for missions.",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "\"relevant authorized regional coordinators\" means regional coordinators designated by the Data Steward based on their involvement in or necessity for accessing a specific country’s engagement history.",
+      "note": "This definition formalizes criteria for 'relevant authorized regional coordinators', reducing ambiguity in access rights and responsibilities.",
+      "refs": [
+        "C5"
+      ]
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "Successfully providing access to engagement history to 100% of project managers as measured by system access logs within one month of the release.",
+      "note": "The success criterion emphasizes that 100% of project managers must access the engagement history within a month, focusing on monitoring system access logs as a measure of success.",
+      "refs": []
+    }
+  ],
+  "open_questions": [],
+  "tension": {
+    "summary": "The primary tension revolved around the clarity and robustness of access controls and compliance measures related to sensitive data. While the Proposer was confident in the defined mechanisms, the Critic remained concerned about the possibility of mishandling sensitive information despite improvements in monitoring and compliance protocols.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 8,
+        "open": 6,
+        "resolved": 2,
+        "escalated": 0,
+        "disagreement": 0.88,
+        "proposer_confidence": 80,
+        "critic_confidence": 50,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 8,
+        "open": 0,
+        "resolved": 8,
+        "escalated": 0,
+        "disagreement": 0.0,
+        "proposer_confidence": 65,
+        "critic_confidence": 80,
+        "signal": "CONCLUDE",
+        "decision": "consensus",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 65,
+        "worry": "Ensuring effective implementation of security and compliance measures in a timely manner."
+      },
+      "critic": {
+        "confidence": 80,
+        "worry": "Despite clarifying mechanisms for access and monitoring, there remains a concern about the potential for mishandling of sensitive data."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S3 limits access to engagement history to project managers and relevant authorized regional coordinators but does not define how unauthorized access is prevented, nor how to ensure those designated as authorized are appropriate.",
+      "failure_scenario": "A project manager mistakenly shares sensitive data that was accessed due to a flaw in access control, allowing individuals without proper clearance to view confidential engagement history.",
+      "resolution_test": "What mechanisms are in place to monitor and prevent unauthorized access to engagement histories?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S3 limits access to engagement history to project managers and relevant authorized regional coordinators but does not define how unauthorized access is prevented, nor how to ensure those designated as authorized are appropriate.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies how access is limited and monitored, establishing specific mechanisms to prevent unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While access is limited, the proposal does not detail mechanisms to prevent unauthorized access or monitor those granted access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clarifies how access to engagement history is monitored and provides mechanisms for preventing unauthorized access, addressing both the security of sensitive information and compliance with data governance.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The mechanisms for access control are now specified and adequately address the concerns of unauthorized access. Fact: The Data Steward will manage access control with specific measures in place. Evidence: \"The Data Steward will implement access control measures that include authentication protocols, logging of access attempts, and a notification system for unauthorized access attempts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "S2 states the engagement history will display contact dates, involved personnel, and summaries of activities but does not confirm how the quality, accuracy, and consistency of this data will be maintained.",
+      "failure_scenario": "Inaccurate or incomplete engagement history leads project managers to make uninformed decisions, resulting in operational failures or diplomatic missteps.",
+      "resolution_test": "How will the data quality of engagement histories be ensured before allowing access to project managers?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 states the engagement history will display contact dates, involved personnel, and summaries of activities but does not confirm how the quality, accuracy, and consistency of this data will be maintained.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit introduces a commitment to maintain the quality and accuracy of the data displayed, minimizing the risk of misinformation.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While a commitment to data quality has been introduced, specific mechanisms for ensuring accuracy and consistency before access are still not defined.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit introduces a specific role for ensuring data quality, detailing a validation process for the engagement history before it is shown to project managers, helping to prevent misinformation.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies a role for ensuring data quality before project managers access engagement histories. Fact: A designated data quality officer will ensure data quality prior to access. Evidence: \"Data quality will be maintained through a tiered auditing process, where a designated data quality officer will validate information before access is granted to project managers.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "S4 mentions compliance with data privacy and sensitivity protocols, but does not specify what those protocols are or outline the necessary steps to comply with legal requirements for accessing personal data.",
+      "failure_scenario": "Sensitive data is accessed and shared in violation of legal requirements, resulting in regulatory penalties and loss of trust.",
+      "resolution_test": "What specific data privacy and sensitivity protocols will be implemented to ensure compliance?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S4 mentions compliance with data privacy and sensitivity protocols, but does not specify what those protocols are or outline the necessary steps to comply with legal requirements for accessing personal data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies the compliance measures and frameworks required, ensuring that legal requirements are followed.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The compliance protocols are still not specified, raising concerns about adherence to legal data handling requirements.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies adherence to GDPR and organizational data protection policies, clarifying compliance measures to be taken when handling sensitive engagement histories.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revisions clarify the necessary compliance measures required for handling sensitive data. Fact: Engagement history will comply with GDPR and national confidentiality laws. Evidence: \"Ensure that engagement history complies with data privacy and sensitivity protocols, including adherence to GDPR, national confidentiality laws, and organizational policies.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no clear ownership delineation for the engagement history data among project managers and regional coordinators, raising concerns about data maintenance and access governance.",
+      "failure_scenario": "When a project manager leaves, there is confusion about who holds accountability for maintaining access and security of their engagement history, resulting in unclear data governance and oversight.",
+      "resolution_test": "Who is responsible for maintaining the engagement history data and overseeing who has access?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clear ownership delineation for the engagement history data among project managers and regional coordinators, raising concerns about data maintenance and access governance.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit introduces a responsible role for data governance that clarifies ownership and accountability for data management.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not specify how the Data Steward will manage governance and accountability, leaving ownership unclear.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Revising S3 specifies the role of the Data Steward in managing access rights and clarifies responsibilities related to maintaining governance and accountability, addressing ownership concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Ownership and accountability for data management are now adequately clarified. Fact: The Data Steward is responsible for managing access rights and data governance. Evidence: \"The Data Steward will implement access control measures...\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The term 'relevant authorized regional coordinators' is vague and lacks definition, leading to uncertainty about access rights.",
+      "failure_scenario": "A regional coordinator accesses sensitive data without proper clearance due to poorly defined access parameters, leading to data breaches.",
+      "resolution_test": "What criteria define a 'relevant authorized regional coordinator' who should have access?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'relevant authorized regional coordinators' is vague and lacks definition, leading to uncertainty about access rights.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This definition formalizes the criteria for who qualifies as a 'relevant authorized regional coordinator', reducing ambiguities.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition clarifies access rights and removes ambiguity. Fact: Defined criteria for relevant authorized regional coordinators. Evidence: \"regional coordinators designated by the Data Steward based on their involvement in or necessity for accessing a specific country’s engagement history.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "It is unclear how long engagement histories will be kept accessible to project managers and if there are any limitations or guidelines post-access.",
+      "failure_scenario": "Without clear retention policies, project managers continue accessing outdated or irrelevant engagement histories, causing confusion and inefficiencies.",
+      "resolution_test": "What will be the policy for the retention of engagement history data and how frequently will it be reviewed or updated?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "It is unclear how long engagement histories will be kept accessible to project managers and if there are any limitations or guidelines post-access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This ensures clarity on how long engagement histories will be accessible and emphasizes the importance of maintaining current and relevant information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The updated retention policy provides clarity on the accessibility of engagement history. Fact: Engagement histories have a defined retention period of three years, reviewed yearly for relevance. Evidence: \"Ensure that engagement history complies with data privacy and sensitivity protocols, with a retention policy stating engagement histories will be accessible for a period of three years from the last engagement, subject to yearly reviews for relevance and compliance.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "There is no indication of the specific protocols or mechanisms in place to prevent unauthorized access to sensitive engagement histories.",
+      "failure_scenario": "A project manager can access sensitive negotiation history that should be restricted and inadvertently shares it, causing a diplomatic breach.",
+      "resolution_test": "What specific mechanisms ensure that unauthorized access is prevented and monitored?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no indication of the specific protocols or mechanisms in place to prevent unauthorized access to sensitive engagement histories.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The wording now includes specific access control measures that will be implemented by the Data Steward, enhancing security against unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now includes clear mechanisms for monitoring and preventing unauthorized access. Fact: Mechanisms are in place to monitor access, including logging of attempts and notification of unauthorized access. Evidence: \"The Data Steward will implement access control measures that include authentication protocols, logging of access attempts, and a notification system for unauthorized access attempts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clear definitions of the existing data privacy and sensitivity protocols which are critical to ensuring compliance with legal requirements.",
+      "failure_scenario": "Sensitive engagement history is accessed without understanding the necessary legal protocols, resulting in breaches of compliance and potential legal penalties.",
+      "resolution_test": "What are the specific data privacy and sensitivity protocols that will be adhered to for engaging with historical data?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clear definitions of the existing data privacy and sensitivity protocols which are critical to ensuring compliance with legal requirements.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies adherence to GDPR and various national laws, along with a compliance check process that helps to clarify the necessary protocols for accessing sensitive engagement history.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The compliance measures now specify adherence to relevant laws, addressing the concerns raised. Fact: Engagement history will comply with GDPR and national confidentiality laws, providing a framework for legal compliance. Evidence: \"Ensure that engagement history complies with data privacy and sensitivity protocols, including adherence to GDPR, national confidentiality laws, and organizational policies.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

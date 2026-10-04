@@ -1,0 +1,772 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "pre_mortem": "A year after launch, the influence categorization feature resulted in significant backlash when a sensitive government contact with a potentially low influence score was mistakenly categorized as low by a team member. This led to the neglect of their requests and relationship deterioration, exacerbated by the fact that this contact was privy to confidential information crucial to the organization, causing diplomatic tensions.",
+  "gaps": [
+    "What process ensures that influence levels are accurate and reflect true relationships?",
+    "What safeguards are in place to prevent unauthorized users from viewing or assigning influence levels?",
+    "What happens when a designated team member who assigns influence levels leaves or changes roles?",
+    "How is influence level maintained and updated over time, considering the dynamic nature of relationships?",
+    "What specific criteria define 'High', 'Medium', and 'Low' influence, and who is responsible for defining them?",
+    "How will users be alerted about potential changes in a contact's influence status?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will introduce a feature to categorize government contacts by their level of influence, allowing users to prioritize interactions accordingly. It is aimed at regional coordinators, project managers, and executive-level staff who engage with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view the influence level of each contact in the Government CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Users are able to sort and filter contacts based on their influence level."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "A new field called 'Influence Level' will be added to each contact record in the Government CRM."
+        },
+        {
+          "id": "S2",
+          "text": "Influence Level will be categorized into three levels: 'High', 'Medium', and 'Low'."
+        },
+        {
+          "id": "S3",
+          "text": "Users will be able to filter the contacts list to show only those with 'High' influence."
+        },
+        {
+          "id": "S4",
+          "text": "Training materials will be developed to guide users on how to utilize the influence categorization feature."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view the influence status directly on the contact detail pages."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic determination of influence levels; these will be manually assigned by designated team members."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not add any predictive analytics or algorithms to determine future influence."
+        },
+        {
+          "id": "X3",
+          "text": "The feature will not include influence tracking over time; it will focus solely on current influence levels."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that designated team members will have the authority to classify influence levels, based on their knowledge of contacts."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that users will have adequate training to understand how to use the new influence categorization feature."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that there are existing procedures for updating contact information, which will include the new influence level field."
+        },
+        {
+          "id": "A4",
+          "text": "It is assumed that existing security and privacy regulations on sensitive data handling will be adhered to in the feature deployment."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities."
+        },
+        {
+          "id": "D2",
+          "text": "'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce a feature to categorize government contacts by their level of influence, allowing users to prioritize interactions accordingly, while ensuring training and process clarity for maintaining influence assessments. It is aimed at regional coordinators, project managers, and executive-level staff who engage with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view the influence level of each contact in the Government CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Users are able to sort and filter contacts based on their influence level."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "A new field called 'Influence Level' will be added to each contact record in the Government CRM."
+        },
+        {
+          "id": "S2",
+          "text": "Influence Level will be categorized into three levels: 'High', 'Medium', and 'Low'."
+        },
+        {
+          "id": "S3",
+          "text": "Users will be able to filter the contacts list to show only those with 'High' influence."
+        },
+        {
+          "id": "S4",
+          "text": "Training materials will be developed and include assessments to ensure all users demonstrate understanding of the influence categorization process."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view the influence status directly on the contact detail pages."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic determination of influence levels; these will be manually assigned by designated team members."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not add any predictive analytics or algorithms to determine future influence."
+        },
+        {
+          "id": "X3",
+          "text": "The feature will not include influence tracking over time; it will focus solely on current influence levels."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that designated team members will have the authority to classify influence levels, based on their knowledge of contacts."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that users will have adequate training to understand how to use the new influence categorization feature."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that there are existing procedures for updating contact information, which will include the new influence level field."
+        },
+        {
+          "id": "A4",
+          "text": "It is assumed that existing security and privacy regulations on sensitive data handling will be adhered to in the feature deployment."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities."
+        },
+        {
+          "id": "D2",
+          "text": "'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce a feature to categorize government contacts by their level of influence, allowing users to prioritize interactions accordingly, while ensuring training and process clarity for maintaining influence assessments. It is aimed at regional coordinators, project managers, and executive-level staff who engage with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view the influence level of each contact in the Government CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Users are able to sort and filter contacts based on their influence level."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "A new field called 'Influence Level' will be added to each contact record in the Government CRM."
+        },
+        {
+          "id": "S2",
+          "text": "Influence Level will be categorized into three levels: 'High', 'Medium', and 'Low'."
+        },
+        {
+          "id": "S3",
+          "text": "Users will be able to filter the contacts list to show only those with 'High' influence."
+        },
+        {
+          "id": "S4",
+          "text": "Training materials will be developed and must include clear guidelines, practical examples, and assessments that require users to demonstrate their understanding and application of the influence categorization process."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view the influence status directly on the contact detail pages."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic determination of influence levels; these will be manually assigned by designated team members."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not add any predictive analytics or algorithms to determine future influence."
+        },
+        {
+          "id": "X3",
+          "text": "The feature will not include influence tracking over time; it will focus solely on current influence levels."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that designated team members will have the authority to classify influence levels, based on their knowledge of contacts."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that users will have adequate training to understand how to use the new influence categorization feature."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that there are existing procedures for updating contact information, which will include the new influence level field."
+        },
+        {
+          "id": "A4",
+          "text": "It is assumed that existing security and privacy regulations on sensitive data handling will be adhered to in the feature deployment."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities."
+        },
+        {
+          "id": "D2",
+          "text": "'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce a feature to categorize government contacts by their level of influence, allowing users to prioritize interactions accordingly, while ensuring training and process clarity for maintaining influence assessments. It is aimed at regional coordinators, project managers, and executive-level staff who engage with government counterparts, with clear authorization and criteria established for assigning influence levels.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view the influence level of each contact in the Government CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Users are able to sort and filter contacts based on their influence level."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "A new field called 'Influence Level' will be added to each contact record in the Government CRM."
+        },
+        {
+          "id": "S2",
+          "text": "Influence Level will be categorized into three levels: 'High', 'Medium', and 'Low'."
+        },
+        {
+          "id": "S3",
+          "text": "Users will be able to filter the contacts list to show only those with 'High' influence."
+        },
+        {
+          "id": "S4",
+          "text": "Training materials will be developed and must include clear guidelines, practical examples, and assessments that require users to demonstrate their understanding and application of the influence categorization process."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view the influence status directly on the contact detail pages."
+        },
+        {
+          "id": "S6",
+          "text": "Only designated team members, such as regional coordinators and project managers, will have the authority to assign and alter the 'Influence Level' for contacts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic determination of influence levels; these will be manually assigned by designated team members."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not add any predictive analytics or algorithms to determine future influence."
+        },
+        {
+          "id": "X3",
+          "text": "The feature will not include influence tracking over time; it will focus solely on current influence levels."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "It is assumed that designated team members will have the authority to classify influence levels, based on their knowledge of contacts."
+        },
+        {
+          "id": "A2",
+          "text": "It is assumed that users will have adequate training to understand how to use the new influence categorization feature."
+        },
+        {
+          "id": "A3",
+          "text": "It is assumed that there are existing procedures for updating contact information, which will include the new influence level field."
+        },
+        {
+          "id": "A4",
+          "text": "It is assumed that existing security and privacy regulations on sensitive data handling will be adhered to in the feature deployment."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities."
+        },
+        {
+          "id": "D2",
+          "text": "'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making."
+        },
+        {
+          "id": "D3",
+          "text": "The criteria for assigning 'Influence Level' will be based on the contact's role, previous engagement history, and demonstrated ability to influence decisions related to the organization's activities."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The influence categorization could lead to decisions being made on outdated or incorrect influence assessments, especially as relationships change over time.",
+      "failure_scenario": "A project manager disregards a contact categorized as 'Low' influence when they could have provided critical support for a sensitive project, damaging the project's success and relationships.",
+      "resolution_test": "What process is in place to ensure that influence levels are regularly reviewed and updated?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The influence categorization could lead to decisions being made on outdated or incorrect influence assessments, especially as relationships change over time.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The process for regularly reviewing and updating influence levels must be determined by the organization to ensure data accuracy and responsiveness to changing relationships.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal needs a specific process for regularly updating influence levels, which requires organizational input.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The terms 'High', 'Medium', and 'Low' for influence are vague without established criteria, potentially leading to inconsistent or subjective assignments.",
+      "failure_scenario": "A regional coordinator assigns a 'High' influence level to a contact based on personal bias rather than objective criteria, leading to misplaced prioritization of interactions.",
+      "resolution_test": "What specific criteria define 'High', 'Medium', and 'Low' influence, and who is responsible for defining them?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The terms 'High', 'Medium', and 'Low' for influence are vague without established criteria, potentially leading to inconsistent or subjective assignments.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The establishment of specific criteria for 'High', 'Medium', and 'Low' influence and the appointment of responsible parties must be defined by the organization to avoid subjective bias.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Criteria for 'High', 'Medium', and 'Low' influence assignments must be specified by the organization.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The assumption that there are existing procedures for updating contact information must include explicit ownership for maintaining the accuracy of the influence level.",
+      "failure_scenario": "When a designated team member leaves, there is no clear process or person responsible for updating or maintaining the influenced levels, leading to outdated and potentially harmful data.",
+      "resolution_test": "Who is explicitly responsible for maintaining and updating the influence levels in contacts?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that there are existing procedures for updating contact information must include explicit ownership for maintaining the accuracy of the influence level.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Explicit ownership for maintaining and updating the influence levels must be assigned by the organization to prevent outdated data following personnel changes.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "There needs to be clear ownership defined for updating and maintaining influence levels.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "The effectiveness of training materials is uncertain; how will it ensure all users understand the influence categorization process?",
+      "failure_scenario": "Users struggle to utilize the new influence categories effectively due to inadequate training, leading to inconsistent communication with contacts based on misinterpretation of influence levels.",
+      "resolution_test": "What measures will be taken to ensure that users are adequately trained to understand and apply influence classifications?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The effectiveness of training materials is uncertain; how will it ensure all users understand the influence categorization process?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The proposal now commits to implementing assessments in the training materials to ensure effective understanding and application of the influence classifications.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The effectiveness of training materials in ensuring understanding remains unclear.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised training requirement ensures that users must actively demonstrate their understanding of the influence levels, enhancing the effectiveness of the training materials.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the proposal commits to assessments in the training materials, it remains unclear how effective these measures will be in truly ensuring user understanding and application of influence classifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "X1"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MINOR",
+      "challenge": "If the influence levels are to be manually assigned, what is the fallback process if designated team members are unavailable?",
+      "failure_scenario": "A key contact needs an urgent update to their influence status but the designated team member is on leave, resulting in delays that affect important negotiations.",
+      "resolution_test": "What is the procedure if a designated team member responsible for assigning influence levels is unavailable?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "If the influence levels are to be manually assigned, what is the fallback process if designated team members are unavailable?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The organization must define a fallback process for when designated team members are unavailable to assign or update influence levels.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "A clear fallback process needs to be defined for absent team members who assign influence levels.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "A4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The assumption about adhering to existing security and privacy regulations does not specify which regulations apply to the data being handled, particularly in terms of influence categorization.",
+      "failure_scenario": "Sensitive information about contacts is mishandled due to a lack of clarity on privacy regulations, leading to breaches of confidentiality agreements and potential legal repercussions.",
+      "resolution_test": "Which specific security and privacy regulations will govern the handling of influence level data?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption about adhering to existing security and privacy regulations does not specify which regulations apply to the data being handled, particularly in terms of influence categorization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Specific security and privacy regulations impacting the handling of influence level data need to be clarified by the organization to ensure compliance.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The applicable regulations regarding data handling are not specified and need human decision.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clear guidelines on who can assign and alter the 'Influence Level' for contacts, raising risks of unauthorized or inconsistent changes to sensitive contact information.",
+      "failure_scenario": "A regional coordinator wrongly assigns a low influence to a sensitive contact without proper authority, leading to diplomatic friction due to the mismanagement of sensitive relationships.",
+      "resolution_test": "Who is authorized to categorize and update the influence levels of contacts?",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clear guidelines on who can assign and alter the 'Influence Level' for contacts, raising risks of unauthorized or inconsistent changes to sensitive contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit defines who is authorized to categorize and update influence levels, addressing the concern of unauthorized or inconsistent changes.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines who can authorize changes in influence levels, addressing the original concern. Fact: Designated team members (regional coordinators and project managers) have authority to assign and alter influence levels. Evidence: \"S6: Only designated team members, such as regional coordinators and project managers, will have the authority to assign and alter the 'Influence Level' for contacts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not define the criteria or process by which influence levels are assigned, leading to potential inconsistencies and subjective judgments.",
+      "failure_scenario": "Two team members categorize a contact differently due to lack of clear definitions, resulting in conflicting engagement strategies and damage to relationships.",
+      "resolution_test": "What specific criteria must be used to assign each 'Influence Level'?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define the criteria or process by which influence levels are assigned, leading to potential inconsistencies and subjective judgments.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the process by which influence levels are assigned, ensuring a consistent and objective framework for classification.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The specific criteria provided help ensure a consistent and objective framework for influence categorization. Fact: The criteria for assigning influence levels will include role, engagement history, and demonstrated ability to influence decisions. Evidence: \"D3: The criteria for assigning 'Influence Level' will be based on the contact's role, previous engagement history, and demonstrated ability to influence decisions related to the organization's activities.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 40,
+      "proposer_worry": "The manual classification of influence levels may lead to inconsistencies if not managed properly.",
+      "critic_worry": "Lack of clear definitions and ownership for influence levels raises serious risks for miscommunication and mismanagement of sensitive relationships.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 6,
+      "open": 1,
+      "resolved": 0,
+      "escalated": 5,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 20,
+      "proposer_worry": "The clarity of ownership and processes for maintaining accurate influence assessments remains uncertain.",
+      "critic_worry": "The inability to define clear criteria and processes for influence assignment could lead to a breakdown in relationships with sensitive contacts.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 2,
+      "resolved": 0,
+      "escalated": 6,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 35,
+      "proposer_worry": "Users may still misinterpret influence levels despite training, leading to inconsistent engagement.",
+      "critic_worry": "The categorization of influence levels may be inconsistent without proper definitions and controls, risking diplomatic relationships.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 8,
+      "open": 0,
+      "resolved": 2,
+      "escalated": 6,
+      "disagreement": 0.69,
+      "proposer_confidence": 80,
+      "critic_confidence": 85,
+      "proposer_worry": "There may still be ambiguity in how influence levels are maintained and updated over time.",
+      "critic_worry": "Inaccurate influence assessments could still arise from subjective evaluations despite clearer criteria.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

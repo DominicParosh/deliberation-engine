@@ -1,0 +1,458 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "pre_mortem": "A year after launch, a project manager accidentally accessed a sensitive engagement history for a country they should not have had visibility into, exposing confidential diplomatic interactions. This breach resulted in diplomatic tensions and damaged trust between the organization and that country, leading to a formal complaint and a government investigation into data security practices.",
+  "gaps": [
+    "Which specific records are filtered based on the project manager's access level?",
+    "What thresholds determine which past engagements a project manager can see?",
+    "What happens when a project manager's role changes or they leave the organization?",
+    "What safeguards prevent unauthorized access to sensitive engagement histories?",
+    "How will the data quality of historical engagement records be ensured and maintained?",
+    "What steps will be taken if project managers accidentally receive records that they should not have access to?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will allow project managers to view the full engagement history with a specified country, including all past missions and engagement details. The feature will help project managers make informed decisions before initiating new missions with that country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide project managers with a detailed engagement history for selected countries."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure the engagement history includes all relevant records such as previous missions, key contacts, and engagement dates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a user interface for project managers to select a country from the CRM."
+        },
+        {
+          "id": "S2",
+          "text": "Display the full engagement history for the selected country, including dates, types of engagement, and involved personnel."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that engagement history is filtered to show only interactions relevant to the requesting project manager's access level."
+        },
+        {
+          "id": "S4",
+          "text": "Include an export option for the engagement history in a PDF format for offline reference."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include real-time updates or notifications for ongoing engagements."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not integrate with external data sources or CRMs beyond the current system."
+        },
+        {
+          "id": "X3",
+          "text": "User roles outside project managers will not be able to access engagement history in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "There is an existing database of engagement records and countries that project managers can access."
+        },
+        {
+          "id": "A2",
+          "text": "Project managers who use this feature have the necessary permissions to access engagement histories."
+        },
+        {
+          "id": "A3",
+          "text": "The structure of engagement data is consistent and complete for all member countries."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Full engagement history' means all records of interactions with a country, including past missions, contact details, engagement dates, and engagement types."
+        },
+        {
+          "id": "D2",
+          "text": "'Project managers' means users designated with the role of project managers in the CRM system, who have permission to view project-related data."
+        },
+        {
+          "id": "D3",
+          "text": "'Country' means a member nation represented in the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of project managers can successfully access and view the full engagement history for their selected countries, measured through user feedback after the release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will allow project managers to view the full engagement history with a specified country, ensuring accurate data presentation while maintaining confidentiality and defining access roles. It includes a user-friendly interface for selecting countries, filtering access based on data sensitivity, and provides a clear method for measuring user satisfaction.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide project managers with a detailed engagement history for selected countries."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure the engagement history includes all relevant records such as previous missions, key contacts, and engagement dates."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a user interface that allows project managers to select one country at a time from a dropdown list, with a search functionality for easier retrieval."
+        },
+        {
+          "id": "S2",
+          "text": "Display the full engagement history for the selected country, including dates, types of engagement, and involved personnel."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that engagement history is filtered to show only interactions relevant to the requesting project manager's access level, which is determined by their assigned roles and the sensitivity of the engagement data."
+        },
+        {
+          "id": "S4",
+          "text": "Include an export option for the engagement history in a PDF format for offline reference."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include real-time updates or notifications for ongoing engagements."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not integrate with external data sources or CRMs beyond the current system."
+        },
+        {
+          "id": "X3",
+          "text": "User roles outside project managers will not have access to engagement history in this release, defined explicitly as users without the 'project manager' designation in the CRM, with no exceptions."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "There is an existing database of engagement records and countries that project managers can access."
+        },
+        {
+          "id": "A2",
+          "text": "Project managers who use this feature have the necessary permissions to access engagement histories."
+        },
+        {
+          "id": "A3",
+          "text": "The structure of engagement data is consistent and complete for all member countries."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Full engagement history' means all records of interactions with a country, including past missions, contact details, engagement dates, and engagement types, and must be verified for accuracy and completeness before display."
+        },
+        {
+          "id": "D2",
+          "text": "'Project managers' means users designated with the role of project managers in the CRM system, who have permission to view project-related data."
+        },
+        {
+          "id": "D3",
+          "text": "'Country' means a member nation represented in the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of project managers can successfully access and view the full engagement history for their selected countries, with success measured through a two-part survey assessing both access success and perceived relevance of the data."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S3 states that engagement history will be filtered based on the project manager's access level, but it does not specify the criteria or rules used to determine these access levels, leading to potential breaches of confidentiality.",
+      "failure_scenario": "A project manager inadvertently views sensitive records of past engagements which they should not be privy to, resulting in the exposure of confidential data.",
+      "resolution_test": "What are the specific criteria used to determine which engagement records a project manager can access?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S3 states that engagement history will be filtered based on the project manager's access level, but it does not specify the criteria or rules used to determine these access levels, leading to potential breaches of confidentiality.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised S3 item specifies that filtering is based on assigned roles and data sensitivity, addressing confidentiality concerns and preventing unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This revision specifies the basis for filtering engagement history, which addresses the confidentiality concern. Fact: Filtering is based on assigned roles and data sensitivity. Evidence: \"S3: Ensure that engagement history is filtered to show only interactions relevant to the requesting project manager's access level, which is determined by their assigned roles and the sensitivity of the engagement data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify what happens to the engagement history data when a project manager changes roles or leaves the organization, raising concerns about data ownership and access continuity.",
+      "failure_scenario": "After a project manager leaves, a new manager inherits their responsibilities but cannot access the necessary engagement history, impacting mission initiation and planning.",
+      "resolution_test": "What is the policy for transferring access rights to engagement histories when a project manager leaves or changes roles?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify what happens to the engagement history data when a project manager changes roles or leaves the organization, raising concerns about data ownership and access continuity.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The transfer of access rights when project managers leave or change roles involves organizational policy, which we cannot define in our proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This challenge cannot be settled as it relies on human decision-making related to organizational policy.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "S1 mentions implementing a user interface for selecting a country, but does not define how many countries can be selected at once or the process for retrieval, potentially leading to user confusion.",
+      "failure_scenario": "A project manager believes they are selecting a specific country but accidentally retrieves data for multiple countries, leading to errors in mission planning.",
+      "resolution_test": "How many countries can a project manager select at one time, and what is the process for retrieving that data?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S1 mentions implementing a user interface for selecting a country, but does not define how many countries can be selected at once or the process for retrieval, potentially leading to user confusion.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies that only one country can be selected, addressing potential confusion during data retrieval and ensuring accurate access to information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This revision clarifies the selection process for countries, addressing potential user confusion. Fact: Only one country can be selected for retrieval. Evidence: \"S1: Implement a user interface that allows project managers to select one country at a time from a dropdown list, with a search functionality for easier retrieval.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "D1 defines 'full engagement history' but does not specify how data quality, such as duplicates or incomplete records, will be managed, risking the reliability of the engagement history presented to project managers.",
+      "failure_scenario": "A project manager starts a new mission based on outdated or duplicate engagement records, which could lead to miscommunication and project failure.",
+      "resolution_test": "What procedures are in place to ensure the engagement history data is accurate and free of duplicates?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D1 defines 'full engagement history' but does not specify how data quality, such as duplicates or incomplete records, will be managed, risking the reliability of the engagement history presented to project managers.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The update to D1 includes a requirement for verifying the accuracy and completeness of engagement data, thus mitigating the risk of presenting duplicate or incomplete records.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The update addresses the concern regarding data quality, ensuring only accurate records are presented. Fact: Engagement history data must be verified for accuracy and completeness before display. Evidence: \"D1: 'Full engagement history' means all records of interactions with a country, including past missions, contact details, engagement dates, and engagement types, and must be verified for accuracy and completeness before display.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MINOR",
+      "challenge": "K1's success criteria of 80% of project managers accessing engagement histories lacks detail on how success will be measured and whether this includes user feedback on data accuracy and relevance.",
+      "failure_scenario": "At the success measurement stage, it is found that many project managers accessed histories without confirming their relevance, leading to misleading data decisions.",
+      "resolution_test": "How will access and user satisfaction with the engagement history be measured among project managers?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "K1's success criteria of 80% of project managers accessing engagement histories lacks detail on how success will be measured and whether this includes user feedback on data accuracy and relevance.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised K1 now specifies that success will be measured through a survey evaluating both access and data relevance, providing a clearer picture of the release's effectiveness.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This revision provides clarity on how success will be assessed, addressing the challenge. Fact: Success will be measured via a two-part survey. Evidence: \"K1: At least 80% of project managers can successfully access and view the full engagement history for their selected countries, with success measured through a two-part survey assessing both access success and perceived relevance of the data.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "X3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "X3 specifies that user roles outside project managers will not access engagement history, but does not clarify how these roles are defined or if any exceptions exist, leading to potential exposure risks.",
+      "failure_scenario": "A user with an unclear role or temporary access gains entry to sensitive engagement histories during a transition phase, causing an unintentional data breach.",
+      "resolution_test": "What specific roles are classified as 'project managers,' and what criteria determine access for exceptions?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "X3 specifies that user roles outside project managers will not access engagement history, but does not clarify how these roles are defined or if any exceptions exist, leading to potential exposure risks.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies that 'project managers' is a clearly defined role without exceptions, enhancing data confidentiality by outlining precise access restrictions.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This revision clarifies the access restrictions, enhancing the confidentiality of engagement history. Fact: Access to engagement history is limited to users designated as project managers, with no exceptions allowed. Evidence: \"X3: User roles outside project managers will not have access to engagement history in this release, defined explicitly as users without the 'project manager' designation in the CRM, with no exceptions.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The definition of engagement history may vary among users, impacting how it is implemented and perceived.",
+      "critic_worry": "The proposal lacks clarity on how access control will prevent unauthorized viewings of sensitive engagement histories.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 6,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 1,
+      "disagreement": 0.18,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "The definition of access rights could still lead to ambiguities if organizational policies change.",
+      "critic_worry": "The challenge regarding data ownership and access continuity remains unresolved due to reliance on human decision-making.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

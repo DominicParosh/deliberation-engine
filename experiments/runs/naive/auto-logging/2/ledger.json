@@ -1,0 +1,756 @@
+{
+  "request": "Meetings with government officials should be logged automatically so we stop losing engagement history.",
+  "pre_mortem": "A year after launch, there was a data breach when sensitive records of meetings with government officials were mistakenly shared with unauthorized personnel. The automatic logging feature failed to verify user permissions, allowing a project manager to access and edit meetings that occurred in other departments, leading to inappropriate sharing of sensitive details.",
+  "gaps": [
+    "How are permission levels structured to ensure only authorized users can view and edit logged meetings?",
+    "What data from the meetings is included in the automatically logged entries and how is sensitive information handled?",
+    "What happens if a user's role changes or they leave the organization; who retains access to their logged meetings?",
+    "What measures are in place to verify the accuracy of logged meeting details?",
+    "How will a logged meeting be defined in terms of its necessity for automatic logging (e.g., must it be scheduled via the CRM, or can ad-hoc meetings be logged)?",
+    "What are the safeguards against the system inaccurately logging meetings or including users not present during the meetings?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will introduce an automatic logging feature for meetings with government officials, ensuring that engagement history is consistently recorded. It will be targeted towards regional coordinators and project managers who engage with these officials.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automatically log meetings with government officials in the CRM system."
+        },
+        {
+          "id": "V2",
+          "text": "Provide notifications to the relevant users when meetings are logged."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature."
+        },
+        {
+          "id": "S2",
+          "text": "Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to manually edit the automatically logged meeting entries if needed."
+        },
+        {
+          "id": "S4",
+          "text": "Provide access to these logged meetings for regional coordinators and project managers."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Manual logging of meetings; this feature will focus solely on automation."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar systems other than the CRM's internal calendar."
+        },
+        {
+          "id": "X3",
+          "text": "Tracking of informal or non-scheduled conversations with government officials."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have access to the CRM and use its calendar feature to schedule meetings, as the logging relies on this functionality."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has the capability to send email notifications to users based on meeting entries."
+        },
+        {
+          "id": "A3",
+          "text": "Users trust the automatic logging feature and will accurately represent their meetings in any necessary follow-up actions."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Automatically log meetings\" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar."
+        },
+        {
+          "id": "D2",
+          "text": "\"Engagement history\" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs."
+        },
+        {
+          "id": "K2",
+          "text": "User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce an automatic logging feature for meetings with government officials, ensuring that engagement history is consistently recorded. Newly clarified access roles, eligibility criteria for logging, and safeguards against inaccuracies will improve the overall effectiveness and security of this feature.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automatically log meetings with government officials in the CRM system."
+        },
+        {
+          "id": "V2",
+          "text": "Provide notifications to the relevant users when meetings are logged."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature."
+        },
+        {
+          "id": "S2",
+          "text": "Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to manually edit the automatically logged meeting entries if needed."
+        },
+        {
+          "id": "S4",
+          "text": "Provide access to these logged meetings for regional coordinators and project managers."
+        },
+        {
+          "id": "S5",
+          "text": "Establish role-based access controls where access to logged meetings is restricted to users with the roles of regional coordinators and project managers; other roles cannot view or edit these logs."
+        },
+        {
+          "id": "S6",
+          "text": "Retain logged meetings within the individual user's profile, but set access restrictions so if a user changes roles, their access to these logs is limited to their new role; if they leave the organization, access is removed completely."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Manual logging of meetings; this feature will focus solely on automation."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar systems other than the CRM's internal calendar."
+        },
+        {
+          "id": "X3",
+          "text": "Tracking of informal or non-scheduled conversations with government officials."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have access to the CRM and use its calendar feature to schedule meetings, as the logging relies on this functionality."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has the capability to send email notifications to users based on meeting entries."
+        },
+        {
+          "id": "A3",
+          "text": "Users trust the automatic logging feature and will accurately represent their meetings in any necessary follow-up actions."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Automatically log meetings\" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar."
+        },
+        {
+          "id": "D2",
+          "text": "\"Engagement history\" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials."
+        },
+        {
+          "id": "D3",
+          "text": "\"Logged meeting entries\" means the automatically created records will include the date, time, participants, and key discussion points; confidential information must be marked and encrypted to restrict access."
+        },
+        {
+          "id": "D4",
+          "text": "\"Eligible meetings for automatic logging\" means any meeting with government officials that is scheduled using the CRM calendar feature; ad-hoc meetings without prior scheduling are not included."
+        },
+        {
+          "id": "D5",
+          "text": "\"Safeguards against inaccurate logging\" means the system will implement confirmation of attendance through pre-meeting notifications where participants must acknowledge their attendance."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs."
+        },
+        {
+          "id": "K2",
+          "text": "User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce an automatic logging feature for meetings with government officials, ensuring that engagement history is consistently recorded. Newly clarified access roles, eligibility criteria for logging, and safeguards against inaccuracies will improve the overall effectiveness and security of this feature.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automatically log meetings with government officials in the CRM system."
+        },
+        {
+          "id": "V2",
+          "text": "Provide notifications to the relevant users when meetings are logged."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature."
+        },
+        {
+          "id": "S2",
+          "text": "Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to manually edit the automatically logged meeting entries if needed."
+        },
+        {
+          "id": "S4",
+          "text": "Provide access to these logged meetings for regional coordinators and project managers."
+        },
+        {
+          "id": "S5",
+          "text": "Establish role-based access controls where access to logged meetings is restricted to users with the roles of regional coordinators and project managers; other roles cannot view or edit these logs."
+        },
+        {
+          "id": "S6",
+          "text": "Retain logged meetings within the individual user's profile, but set access restrictions so if a user changes roles, their access to these logs is limited to their new role; if they leave the organization, access is removed completely."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a verification process for automatically logged meetings requiring users to review meeting details and confirm their accuracy within 24 hours of logging; if no confirmation is received, automatically flag the entry for review by a regional coordinator or project manager."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Manual logging of meetings; this feature will focus solely on automation."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar systems other than the CRM's internal calendar."
+        },
+        {
+          "id": "X3",
+          "text": "Tracking of informal or non-scheduled conversations with government officials."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have access to the CRM and use its calendar feature to schedule meetings, as the logging relies on this functionality."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has the capability to send email notifications to users based on meeting entries."
+        },
+        {
+          "id": "A3",
+          "text": "Users trust the automatic logging feature and will accurately represent their meetings in any necessary follow-up actions."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Automatically log meetings\" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar."
+        },
+        {
+          "id": "D2",
+          "text": "\"Engagement history\" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials."
+        },
+        {
+          "id": "D3",
+          "text": "\"Logged meeting entries\" means the automatically created records will include the date, time, participants, and key discussion points; confidential information must be marked and encrypted to restrict access."
+        },
+        {
+          "id": "D4",
+          "text": "\"Eligible meetings for automatic logging\" means any meeting with government officials that is scheduled using the CRM calendar feature; ad-hoc meetings without prior scheduling are not included."
+        },
+        {
+          "id": "D5",
+          "text": "\"Safeguards against inaccurate logging\" means the system will implement confirmation of attendance through pre-meeting notifications where participants must acknowledge their attendance."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs."
+        },
+        {
+          "id": "K2",
+          "text": "User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will introduce an automatic logging feature for meetings with government officials, ensuring that engagement history is consistently recorded. Newly clarified access roles, eligibility criteria for logging, and safeguards against inaccuracies will improve the overall effectiveness and security of this feature.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automatically log meetings with government officials in the CRM system."
+        },
+        {
+          "id": "V2",
+          "text": "Provide notifications to the relevant users when meetings are logged."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature."
+        },
+        {
+          "id": "S2",
+          "text": "Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to manually edit the automatically logged meeting entries if needed."
+        },
+        {
+          "id": "S4",
+          "text": "Provide access to these logged meetings for regional coordinators and project managers."
+        },
+        {
+          "id": "S5",
+          "text": "Establish role-based access controls where access to logged meetings is restricted to users with the roles of regional coordinators and project managers; other roles cannot view or edit these logs."
+        },
+        {
+          "id": "S6",
+          "text": "Retain logged meetings within the individual user's profile, but set access restrictions so if a user changes roles, their access to these logs is limited to their new role; if they leave the organization, access is removed completely."
+        },
+        {
+          "id": "S7",
+          "text": "Implement a verification process for automatically logged meetings requiring users to review meeting details and confirm their accuracy within 24 hours of logging; if no confirmation is received, automatically flag the entry for review by a regional coordinator or project manager."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Manual logging of meetings; this feature will focus solely on automation."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar systems other than the CRM's internal calendar."
+        },
+        {
+          "id": "X3",
+          "text": "Tracking of informal or non-scheduled conversations with government officials."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have access to the CRM and use its calendar feature to schedule meetings, as the logging relies on this functionality."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has the capability to send email notifications to users based on meeting entries."
+        },
+        {
+          "id": "A3",
+          "text": "Users trust the automatic logging feature and will accurately represent their meetings in any necessary follow-up actions."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Automatically log meetings\" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar."
+        },
+        {
+          "id": "D2",
+          "text": "\"Engagement history\" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials."
+        },
+        {
+          "id": "D3",
+          "text": "\"Logged meeting entries\" means the automatically created records will include the date, time, participants, and key discussion points; confidential information must be marked and encrypted to restrict access."
+        },
+        {
+          "id": "D4",
+          "text": "\"Eligible meetings for automatic logging\" means any meeting with government officials that is scheduled using the CRM calendar feature; ad-hoc meetings without prior scheduling are not included."
+        },
+        {
+          "id": "D5",
+          "text": "\"Safeguards against inaccurate logging\" means the system will implement confirmation of attendance through pre-meeting notifications where participants must acknowledge their attendance."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs."
+        },
+        {
+          "id": "K2",
+          "text": "User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "How are permission levels structured to ensure only authorized users can view and edit logged meetings?",
+      "failure_scenario": "A project manager is able to access meeting records of other portfolios, which contain sensitive information discussed during meetings with government officials, leading to an information leak.",
+      "resolution_test": "What roles are authorized to view and edit logged meetings?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "How are permission levels structured to ensure only authorized users can view and edit logged meetings?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify role-based access controls for viewing and editing logged meetings, ensuring that only authorized users can access sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes clear role-based access controls for viewing and editing logged meetings. Fact: Access to logged meetings is restricted to regional coordinators and project managers, and others cannot view or edit these logs. Evidence: \"S5: Establish role-based access controls where access to logged meetings is restricted to users with the roles of regional coordinators and project managers; other roles cannot view or edit these logs.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "What data from the meetings is included in the automatically logged entries and how is sensitive information handled?",
+      "failure_scenario": "The system logs confidential discussions without encryption, leading to risk of exposure to unauthorized personnel inadvertently included in logs.",
+      "resolution_test": "Which specific data points are captured in the automatically logged meeting entries?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "What data from the meetings is included in the automatically logged entries and how is sensitive information handled?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit provides clarity about what data is captured, including measures for handling confidential details, ensuring users understand the sensitivity of logged information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This defines sensitive data handling and logging details for automatically logged meetings. Fact: Automatically logged meetings will include date, time, participants, key points, and confidential information must be marked and encrypted. Evidence: \"D3: 'Logged meeting entries' means the automatically created records will include the date, time, participants, and key discussion points; confidential information must be marked and encrypted to restrict access.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "What happens if a user's role changes or they leave the organization; who retains access to their logged meetings?",
+      "failure_scenario": "When a regional coordinator leaves, their logged meetings are still accessible to untrained personnel within the organization, muddying accountability and risking sensitive information.",
+      "resolution_test": "What is the access policy for logged meetings when personnel change roles or exit the organization?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "What happens if a user's role changes or they leave the organization; who retains access to their logged meetings?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes clear access policies for logged meetings when personnel changes occur, addressing concerns about accountability and information security.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies access policies for logged meetings when personnel change. Fact: Access to logged meetings is removed if a user leaves the organization or changes roles, limiting access to relevant personnel only. Evidence: \"S6: Retain logged meetings within the individual user's profile, but set access restrictions so if a user changes roles, their access to these logs is limited to their new role; if they leave the organization, access is removed completely.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MINOR",
+      "challenge": "What measures are in place to verify the accuracy of logged meeting details?",
+      "failure_scenario": "Logged meetings inaccurately reflect discussions, leading to poor follow-ups and weakened relationships with government officials.",
+      "resolution_test": "How will the system ensure the accuracy of automatically logged meeting details?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "What measures are in place to verify the accuracy of logged meeting details?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Ensuring the accuracy of logged meeting details may require user involvement or validation processes that are best determined by organizational policy, thus can't be mandated here.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Without defined measures for verifying accuracy, potential inaccuracies might lead to poor decision-making.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "How will a logged meeting be defined in terms of its necessity for automatic logging (e.g., must it be scheduled via the CRM, or can ad-hoc meetings be logged)?",
+      "failure_scenario": "Ad-hoc informal meetings are logged inaccurately, contributing to potential misunderstandings about the organization’s official engagements.",
+      "resolution_test": "What criteria must a meeting meet to be eligible for automatic logging?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "How will a logged meeting be defined in terms of its necessity for automatic logging (e.g., must it be scheduled via the CRM, or can ad-hoc meetings be logged)?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies the criteria for meetings to be automatically logged, helping to prevent misunderstandings regarding informal engagements.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly outlines the criteria for meetings that qualify for automatic logging. Fact: Only scheduled meetings via the CRM calendar are automatically logged; ad-hoc meetings are excluded. Evidence: \"D4: 'Eligible meetings for automatic logging' means any meeting with government officials that is scheduled using the CRM calendar feature; ad-hoc meetings without prior scheduling are not included.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MINOR",
+      "challenge": "What are the safeguards against the system inaccurately logging meetings or including users not present during the meetings?",
+      "failure_scenario": "The system logs a meeting that never occurred or includes users who were not present, leading to false records and possible reputational damage.",
+      "resolution_test": "What process is in place to validate the accuracy of participants in logged meetings?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "What are the safeguards against the system inaccurately logging meetings or including users not present during the meetings?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit introduces a safeguard mechanism that validates participant attendance, reducing the chances of inaccuracies in logged meetings.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This introduces a safeguard for validating attendance at logged meetings. Fact: Meetings will be validated through acknowledgment of attendance via pre-meeting notifications. Evidence: \"D5: 'Safeguards against inaccurate logging' means the system will implement confirmation of attendance through pre-meeting notifications where participants must acknowledge their attendance.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "What specific measures will be established to ensure the accuracy of logged meeting details since relying on organizational policy can lead to inconsistencies?",
+      "failure_scenario": "If meeting details are inaccurately logged, it can lead to misunderstandings and strained relationships with government officials, as decisions may be based on incorrect information.",
+      "resolution_test": "What are the processes in place for verifying the accuracy of automatically logged meeting entries?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "What specific measures will be established to ensure the accuracy of logged meeting details since relying on organizational policy can lead to inconsistencies?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision establishes a specific verification process for ensuring logged meeting accuracy, where users confirm details shortly after meetings and flag inaccuracies for further review by authorized personnel.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposed verification process directly addresses the accuracy of logged meeting details, resolving the challenge. Fact: A verification process for ensuring logged meeting accuracy will be implemented, requiring user confirmation within 24 hours. Evidence: \"Implement a verification process for automatically logged meetings requiring users to review meeting details and confirm their accuracy within 24 hours of logging; if no confirmation is received, automatically flag the entry for review by a regional coordinator or project manager.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 30,
+      "proposer_worry": "The reliance on the CRM's calendar feature may limit the automatic logging to only those meetings that are scheduled through the system.",
+      "critic_worry": "The automatic logging feature could lead to unauthorized access to sensitive meeting records.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 1,
+      "resolved": 5,
+      "escalated": 1,
+      "disagreement": 0.25,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring compliance with data sensitivity standards and user trust in automated logging.",
+      "critic_worry": "Without clear measures to ensure the accuracy of logged meetings, potential misinformation could arise, impacting relationships with government officials.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 0,
+      "resolved": 6,
+      "escalated": 1,
+      "disagreement": 0.08,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring that users consistently confirm the accuracy of logged meetings may be challenging.",
+      "critic_worry": "The proposal still leaves open how to handle sensitive information during logging.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 7,
+      "open": 0,
+      "resolved": 6,
+      "escalated": 1,
+      "disagreement": 0.08,
+      "proposer_confidence": 80,
+      "critic_confidence": 95,
+      "proposer_worry": "Ensuring users comply with the verification process for logged meetings.",
+      "critic_worry": "The proposal relies heavily on user confirmation and role-based access, which could still be bypassed or mismanaged.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

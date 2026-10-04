@@ -1,0 +1,535 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "meta": {
+    "request_id": "cold-relationship",
+    "policy": "gated",
+    "rounds": 5,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 13,
+    "repairs": 3,
+    "input_tokens": 48739,
+    "output_tokens": 4556,
+    "cost_usd": 0.0101,
+    "seconds": 51.0,
+    "warnings": [
+      "R3: Critic's ACCEPT of C1 was refused (you marked it settled, so `evidence` must be copied from the item text shown under the challenge (or, for a defense or concession, from the Proposer's answer), and \"...alerts will not go to users on leave or have left the organization...\" is not there); recorded as MAINTAIN."
+    ]
+  },
+  "executive_summary": "This release will implement an alert system notifying users when engagement with a country drops below a specified activity threshold. However, the precise exclusion criteria for alert recipients to safeguard sensitive communications remain unresolved and will need further clarification. Thus, while the core functionality will proceed, the specification around who receives alerts is an open question that must be resolved before building can start.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Implement an alert system for users when engagement with a country is considered 'cold.'",
+      "note": "An alert system for users will be implemented to signal when engagement with a country is considered 'cold', allowing for a better response to declining interactions.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Define 'cold' engagement as a lack of recorded communication or updates for 90 days.",
+      "note": "'Cold' engagement is defined as lack of recorded communication or updates for 90 days to provide a clear threshold for alerts.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "Develop a notification system that sends alerts to regional coordinators and project managers, excluding users who do not have the 'engagement management' role and those who are on leave or have left the organization. Alerts will be reassigned to users actively maintaining the relationship when someone changes roles.",
+      "note": "The notification system will include specific criteria excluding alert recipients, addressing confidentiality concerns that arose during discussions.",
+      "refs": [
+        "C1",
+        "C6"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Alerts will be sent via email to the primary user responsible for the country contact in the CRM, determined by the role assigned to that contact. If the primary user is on leave or has left the organization, the alert will be directed to an alternate user specified as a backup, based on the organizational hierarchy or prior assignment protocols.",
+      "note": "Alerts will be sent to the primary user responsible for the country contact and can be reassigned to ensure timely engagement management without compromising accountability.",
+      "refs": [
+        "C2",
+        "C4"
+      ]
+    },
+    {
+      "id": "S4",
+      "text": "Incorporate a dashboard feature that displays a list of countries with 'cold' engagements for easier monitoring.",
+      "note": "Incorporating a dashboard feature will facilitate monitoring of 'cold' engagements for users, which is essential for managing communications effectively.",
+      "refs": []
+    },
+    {
+      "id": "S5",
+      "text": "Allow users to customize their alert settings for engagement thresholds (e.g., 30, 60, 90 days) within the system.",
+      "note": "Customization of alert settings will empower users to adjust thresholds according to their needs, enhancing user engagement with the system.",
+      "refs": []
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include automated outreach strategies or templates for re-engaging 'cold' contacts.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "The feature will not incorporate user history analysis beyond the defined threshold for engagement.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "No alerts will be generated for historical data on engagements prior to the implementation of this feature.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users will have access to the engagement history and contact records required to determine if the engagement is 'cold,' as this relies on current data.",
+      "note": "",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "All users are trained in how to update engagement records to ensure the alert system remains accurate.",
+      "note": "",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "The organization will allow email communications for alerts as a preferred form of notification.",
+      "note": "",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "'cold' engagement means there have been no recorded communications or valid engagements, as defined by logged interactions within the CRM, for a period of 90 days.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "D2",
+      "text": "'engagement' means any logged interactions between the organization and the government counterparts within the CRM.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "D3",
+      "text": "'alert' means a notification sent via email to designated users when 'cold' engagement is detected.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "Achieve a 75% user satisfaction rate regarding the timely and relevance of alerts, measured through a user survey within one month of implementation.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "K2",
+      "text": "Ensure at least 80% of alerts generated lead to users logging one of the following actions to qualify as 'taking action': 1) sending an email, 2) scheduling a meeting, or 3) documenting a phone call with the cold contact, all within 30 days of receiving the alert, measured by follow-up interactions logged in the CRM.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C1",
+      "question": "What specific criteria will clearly define which users are excluded from receiving alerts about 'cold' engagements?",
+      "why_it_matters": "Clarifying who receives alerts is crucial to prevent unauthorized disclosures and ensure sensitive communications are managed appropriately.",
+      "decision_owner": "Head of Data Protection",
+      "options": [
+        "Define users excluded based on role",
+        "Specify criteria for recipients based on clearance or context"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The main disagreement centered around the sender list for alerts regarding 'cold' engagements, particularly around clarity for role exclusions to protect sensitive information. The Proposer sought a system that prevented unauthorized access, but the Critic maintained that the definitions and re-assignment processes needed further specification, particularly in regards to roles involved.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 3,
+        "open": 3,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 50,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 3,
+        "open": 1,
+        "resolved": 2,
+        "escalated": 0,
+        "disagreement": 0.43,
+        "proposer_confidence": 80,
+        "critic_confidence": 80,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 5,
+        "open": 2,
+        "resolved": 2,
+        "escalated": 1,
+        "disagreement": 0.64,
+        "proposer_confidence": 85,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 4,
+        "raised": 6,
+        "open": 1,
+        "resolved": 4,
+        "escalated": 1,
+        "disagreement": 0.43,
+        "proposer_confidence": 75,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 5,
+        "raised": 6,
+        "open": 0,
+        "resolved": 5,
+        "escalated": 1,
+        "disagreement": 0.21,
+        "proposer_confidence": 80,
+        "critic_confidence": 75,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "Ensuring that clarity around role-based access to alerts prevents unauthorized disclosures."
+      },
+      "critic": {
+        "confidence": 75,
+        "worry": "The definition of 'cold' engagement may lead to misclassification due to a lack of context in interactions."
+      }
+    },
+    "flags": [
+      "Proposer reported 80/100 confidence while blocker(s) C1 remain unsettled."
+    ]
+  },
+  "issues": [
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal fails to specify who is excluded from receiving alerts about 'cold' engagements, risking sensitive communications reaching unauthorized personnel.",
+      "failure_scenario": "A project manager receives an alert about cold engagement with a specific country they oversee, despite being on leave. The alert instead goes to a regional coordinator who lacks context, complicating the diplomatic engagement.",
+      "resolution_test": "Who is excluded from the email alerts regarding 'cold' engagement to avoid unauthorized disclosures?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal fails to specify who is excluded from receiving alerts about 'cold' engagements, risking sensitive communications reaching unauthorized personnel.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify that alerts will not be sent to users who are on leave or have left the organization, which mitigates the risk of unauthorized disclosures.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the response clarifies re-assignment of alerts, it does not specify the exclusion criteria for recipients.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that alerts will not go to users on leave or have left the organization, addressing the risk of unauthorized disclosures about 'cold' engagements.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "[Not counted as settled: you marked it settled, so `evidence` must be copied from the item text shown under the challenge (or, for a defense or concession, from the Proposer's answer), and \"...alerts will not go to users on leave or have left the organization...\" is not there.]",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify what happens when users change roles or leave the organization regarding alert notifications, which could compromise accountability.",
+      "failure_scenario": "A regional coordinator leaves the organization, but their alerts continue to be sent to their account, leading to another user being improperly notified about a cold engagement that they don't manage.",
+      "resolution_test": "How will alerts be re-assigned to ensure they go to the correct individuals when someone leaves or changes roles?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify what happens when users change roles or leave the organization regarding alert notifications, which could compromise accountability.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that alerts will be re-assigned to ensure they go to the correct individuals, addressing the accountability concern when users change roles.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal specifies the re-assignment process for alerts, clarifying ownership and accountability. Fact: Alerts are re-assigned to ensure they go to the correct individuals when users change roles or leave. Evidence: \"ensuring re-assignment of alerts to the current responsible user when a user changes roles or leaves the organization\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "Defining 'cold' engagement as simply a lack of communication for 90 days is insufficient and does not account for the nature of interactions, leading to potential incorrect classifications.",
+      "failure_scenario": "Engagement logs show one-off interactions or informal updates, but these do not prevent an alert about 'cold' engagement, leading to unnecessary alerts.",
+      "resolution_test": "What specific activities count as valid engagements to avoid being classified as 'cold'?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Defining 'cold' engagement as simply a lack of communication for 90 days is insufficient and does not account for the nature of interactions, leading to potential incorrect classifications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised definition for 'cold' engagement includes the qualification of valid engagements, which prevents unnecessary alerts triggered by insignificant interactions.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised definition prevents unnecessary alerts triggered by insignificant interactions. Fact: A 'cold' engagement is defined as no recorded communications or valid engagements for 90 days. Evidence: \"no recorded communications or valid engagements, as defined by logged interactions within the CRM, for a period of 90 days\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address who processes alerts if multiple users oversee the same country or if re-assignment fails, which could lead to critical engagement gaps.",
+      "failure_scenario": "A country with multiple project managers receives an alert about a 'cold' engagement, but due to unclear assignment, no one responds in time, risking diplomatic relations.",
+      "resolution_test": "What is the process for determining who is responsible for responding to alerts in shared country engagements?",
+      "id": "C4",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address who processes alerts if multiple users oversee the same country or if re-assignment fails, which could lead to critical engagement gaps.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that alerts will be assigned to a primary owner based on defined roles and provide a fallback mechanism for coverage, ensuring accountability in responding to alerts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This specifies how alerts are managed in case of user changes or multiple managers, addressing the challenge. Fact: Alerts are sent to a primary user and a backup if necessary, ensuring coverage. Evidence: \"If the primary user is on leave or has left the organization, the alert will be directed to an alternate user specified as a backup, based on the organizational hierarchy or prior assignment protocols.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "K2"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The success criteria's definition of 'taking action' is vague and lacks measurable parameters for what constitutes an action taken by the user to re-engage.",
+      "failure_scenario": "Users may log minimal interactions as 'taking action,' failing to adequately address the underlying issue of cold engagement, thereby reducing the effectiveness of the alerts.",
+      "resolution_test": "What specific actions must be logged to qualify as re-engagement with 'cold' contacts?",
+      "id": "C5",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The success criteria's definition of 'taking action' is vague and lacks measurable parameters for what constitutes an action taken by the user to re-engage.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies measurable actions that users must take to qualify as re-engagement, thereby enhancing clarity and ensuring the effectiveness of the engagement alert system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K2"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The resolution test is answered with clear, measurable actions for users to qualify as re-engaged. Fact: Users must log specific actions (sending an email, scheduling a meeting, documenting a phone call) to qualify as 'taking action'. Evidence: \"Ensure at least 80% of alerts generated lead to users logging one of the following actions to qualify as 'taking action': 1) sending an email, 2) scheduling a meeting, or 3) documenting a phone call with the cold contact, all within 30 days of receiving the alert, measured by follow-up interactions logged in the CRM.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify which users are excluded from receiving alerts about 'cold' engagements, risking sensitive communications reaching unauthorized personnel.",
+      "failure_scenario": "An alert regarding a cold engagement is sent to a senior official who lacks clearance or context, leading to inappropriate responses or diplomatic confusion.",
+      "resolution_test": "What are the defined roles or criteria for excluding users from receiving alerts about 'cold' engagements?",
+      "id": "C6",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify which users are excluded from receiving alerts about 'cold' engagements, risking sensitive communications reaching unauthorized personnel.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify that alerts will only be sent to users with the 'engagement management' role, ensuring sensitive communications do not reach unauthorized personnel.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This evidence satisfactorily specifies the roles that will receive alerts, addressing the concern. Fact: Alerts will only be sent to users with the 'engagement management' role, excluding others. Evidence: \"S2: Develop a notification system that sends alerts to regional coordinators and project managers, excluding users who do not have the 'engagement management' role and those who are on leave or have left the organization.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}

@@ -189,7 +189,7 @@ def coerce_synthesis(s: Synthesis, ledger: Ledger) -> Synthesis:
     questions = [q for q in s.open_questions if ledger.issues.get(q.issue_id) and ledger.issues[q.issue_id].status in ("ESCALATED", "UNRESOLVED")]
     asked = {q.issue_id for q in questions}
     questions += [OpenQuestion(issue_id=i.id, question=i.challenge, why_it_matters=i.failure_scenario,
-                               decision_owner="To be assigned", options=[i.resolution_test], blocks_build=i.severity == "BLOCKER")
+                               decision_owner="To be assigned", options=[i.resolution_test])
                   for i in ledger.issues.values() if i.status in ("ESCALATED", "UNRESOLVED") and i.id not in asked]
     ledger.warnings.append("Summarizer output needed coercion after a failed repair; see events.jsonl.")
     return s.model_copy(update={"item_notes": notes, "rejected": rejected, "open_questions": questions})

@@ -1,0 +1,1018 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, a major breach occurred when sensitive diplomatic records containing contact details of primary contacts were inadvertently exposed to unauthorized users. This happened because the access control settings allowed certain project managers to view confidential contact records meant only for regional coordinators, leading to significant diplomatic fallout and damaging relationships with key government partners.",
+  "gaps": [
+    "What specific role permissions apply to each type of user, and how will unauthorized access be prevented?",
+    "How will the CRM handle situations when a primary contact person changes, or leaves their position?",
+    "What kinds of data integrity checks will be implemented to validate the accuracy of contact information provided by users?",
+    "How will the system manage and notify users of important changes to contact records, especially in relation to diplomatic sensitivity?",
+    "What processes are in place to ensure that shared contact records do not expose sensitive information or diplomatic relationships across different teams?",
+    "How do we define and ensure the confidentiality of diplomatic contact details, especially when considering different levels of user access?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will improve the tracking of contact persons for each member country by creating a dedicated contact management section in the Government CRM. Users will be able to input, update, and view detailed information about the primary contact person for various government organizations across member countries.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to track and manage primary contact persons for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an intuitive interface for users to update and view contact information easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Country Contacts' section within the CRM that allows users to record the name, title, email, phone number, and organization of the primary contact person for each of the ~100 member countries."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles with access controls, allowing regional coordinators and project managers to view and edit contact records, while executive-level staff can only view."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to filter and search for country contacts by country name, contact name, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Set up a version history for contact records to track changes made by users, ensuring data integrity."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any integration with external databases or API connections to pull in contact information."
+        },
+        {
+          "id": "X2",
+          "text": "Advanced user analytics or reporting features based on contact data are not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Any functionality related to automatic alerts or notifications regarding contact updates is excluded from this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the Government CRM with appropriate role-based permissions, which affects how and what they can view and edit."
+        },
+        {
+          "id": "A2",
+          "text": "Existing contact information is currently stored in the CRM or accessible in a manner that allows users to accurately populate the new 'Country Contacts' section."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with using CRM systems, thus enabling faster adoption of the new features."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of contact for each government organization in a country, responsible for all communications and engagements."
+        },
+        {
+          "id": "D2",
+          "text": "'Intuitive interface' means a user-friendly design that allows individuals to navigate, input, and retrieve information easily without extensive training."
+        },
+        {
+          "id": "D3",
+          "text": "'User roles' means defined access levels within the CRM, indicating who can view, edit, or manage contact information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of Q1, at least 80% of users report improved satisfaction with contact tracking capabilities through a user survey."
+        },
+        {
+          "id": "K2",
+          "text": "At least 95% of primary contact records are accurately filled within the first month of release, as verified by user input."
+        }
+      ]
+    },
+    {
+      "summary": "This release will improve the tracking of contact persons for each member country by creating a dedicated contact management section in the Government CRM with defined access controls for different user roles. Users will be able to input, update, and view detailed information about the primary contact person for various government organizations across member countries, while ensuring the protection of sensitive information.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to track and manage primary contact persons for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an intuitive interface for users to update and view contact information easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Country Contacts' section within the CRM that allows users to record the name, title, email, phone number, and organization of the primary contact person for each of the ~100 member countries, with mandatory fields for name and organization to ensure data accuracy and validation rules in place to check for correct formatting of email and phone number fields."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles with access controls, allowing regional coordinators to view and edit all contact records, while project managers can view but only edit non-sensitive contact records, and executive-level staff can only view. Sensitive diplomatic contact records will only be editable by authorized personnel defined by the user roles."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to filter and search for country contacts by country name, contact name, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Set up a version history for contact records to track changes made by users, ensuring data integrity."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any integration with external databases or API connections to pull in contact information."
+        },
+        {
+          "id": "X2",
+          "text": "Advanced user analytics or reporting features based on contact data are not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Any functionality related to automatic alerts or notifications regarding contact updates is excluded from this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the Government CRM with appropriate role-based permissions, which affects how and what they can view and edit."
+        },
+        {
+          "id": "A2",
+          "text": "Existing contact information is currently stored in the CRM or accessible in a manner that allows users to accurately populate the new 'Country Contacts' section."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with using CRM systems, thus enabling faster adoption of the new features."
+        },
+        {
+          "id": "A4",
+          "text": "Sensitive diplomatic contact records are those marked as classified by the organization's policies, including records involving sensitive communications or engagements."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of contact for each government organization in a country, responsible for all communications and engagements."
+        },
+        {
+          "id": "D2",
+          "text": "'Intuitive interface' means a user-friendly design that allows individuals to navigate, input, and retrieve information easily without extensive training."
+        },
+        {
+          "id": "D3",
+          "text": "'User roles' means defined access levels within the CRM, indicating who can view, edit, or manage contact information. Authorized users who can edit contact records include regional coordinators and specific project managers based on defined criteria."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of Q1, at least 80% of users report improved satisfaction with contact tracking capabilities through a user survey."
+        },
+        {
+          "id": "K2",
+          "text": "At least 95% of primary contact records are accurately filled within the first month of release, as verified by user input."
+        }
+      ]
+    },
+    {
+      "summary": "This release will improve the tracking and management of primary contact persons for each member country, providing defined roles and protections for sensitive information, while implementing notifications for regular reviews to maintain data accuracy.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to track and manage primary contact persons for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an intuitive interface for users to update and view contact information easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Country Contacts' section within the CRM that allows users to record the name, title, email, phone number, and organization of the primary contact person for each of the ~100 member countries. Users must provide mandatory fields for name and organization to ensure data accuracy, and a notification system will remind users at least every six months to review and confirm the accuracy of contact information. Validation rules will check for correct formatting of email and phone number fields."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles with access controls, allowing regional coordinators to view and edit all contact records, while project managers can view but only edit non-sensitive contact records, and executive-level staff can only view. Sensitive diplomatic contact records will only be editable by regional coordinators and designated project managers who have received additional authorization."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to filter and search for country contacts by country name, contact name, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Set up a version history for contact records to track changes made by users, ensuring data integrity."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any integration with external databases or API connections to pull in contact information."
+        },
+        {
+          "id": "X2",
+          "text": "Advanced user analytics or reporting features based on contact data are not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Any functionality related to automatic alerts or notifications regarding contact updates is excluded from this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the Government CRM with appropriate role-based permissions, which affects how and what they can view and edit."
+        },
+        {
+          "id": "A2",
+          "text": "Existing contact information is currently stored in the CRM or accessible in a manner that allows users to accurately populate the new 'Country Contacts' section."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with using CRM systems, thus enabling faster adoption of the new features."
+        },
+        {
+          "id": "A4",
+          "text": "Sensitive diplomatic contact records are defined as those contacts involving classified engagements, communications with embassies, or individuals who require a higher level of access due to confidentiality. Records falling under this definition will include those flagged by the organization's policies."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of contact for each government organization in a country, responsible for all communications and engagements."
+        },
+        {
+          "id": "D2",
+          "text": "'Intuitive interface' means a user-friendly design that allows individuals to navigate, input, and retrieve information easily without extensive training."
+        },
+        {
+          "id": "D3",
+          "text": "'User roles' means defined access levels within the CRM, indicating who can view, edit, or manage contact information. Authorized users who can edit contact records include regional coordinators and specific project managers based on defined criteria."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of Q1, at least 80% of users report improved satisfaction with contact tracking capabilities through a user survey."
+        },
+        {
+          "id": "K2",
+          "text": "At least 95% of primary contact records are accurately filled within the first month of release, as verified by user input."
+        }
+      ]
+    },
+    {
+      "summary": "This release will improve the tracking and management of primary contact persons for each member country, providing defined roles and protections for sensitive information while implementing notifications for regular reviews and updates to maintain data accuracy.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to track and manage primary contact persons for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an intuitive interface for users to update and view contact information easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Country Contacts' section within the CRM that allows users to record the name, title, email, phone number, and organization of the primary contact person for each of the ~100 member countries. Users must provide mandatory fields for name and organization to ensure data accuracy, and a notification system will remind users at least every six months to review and confirm the accuracy of contact information. Additionally, an automatic email notification will be sent to users when any changes are made to contact records, ensuring they are informed and up-to-date. Validation rules will check for correct formatting of email and phone number fields."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles with access controls, allowing regional coordinators to view and edit all contact records, while project managers can view but only edit non-sensitive contact records, and executive-level staff can only view. Sensitive diplomatic contact records will only be editable by regional coordinators and designated project managers who have received additional authorization. All sensitive records will also be subject to audit logging to track any access or modifications made, and sensitive data will be encrypted at rest and in transit to prevent unauthorized access."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to filter and search for country contacts by country name, contact name, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Set up a version history for contact records to track changes made by users, ensuring data integrity."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any integration with external databases or API connections to pull in contact information."
+        },
+        {
+          "id": "X2",
+          "text": "Advanced user analytics or reporting features based on contact data are not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Any functionality related to automatic alerts or notifications regarding contact updates is excluded from this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the Government CRM with appropriate role-based permissions, which affects how and what they can view and edit."
+        },
+        {
+          "id": "A2",
+          "text": "Existing contact information is currently stored in the CRM or accessible in a manner that allows users to accurately populate the new 'Country Contacts' section."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with using CRM systems, thus enabling faster adoption of the new features."
+        },
+        {
+          "id": "A4",
+          "text": "Sensitive diplomatic contact records are defined as those contacts involving classified engagements, communications with embassies, or individuals who require a higher level of access due to confidentiality. Records falling under this definition will include those flagged by the organization's policies."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of contact for each government organization in a country, responsible for all communications and engagements."
+        },
+        {
+          "id": "D2",
+          "text": "'Intuitive interface' means a user-friendly design that allows individuals to navigate, input, and retrieve information easily without extensive training."
+        },
+        {
+          "id": "D3",
+          "text": "'User roles' means defined access levels within the CRM, indicating who can view, edit, or manage contact information. Authorized users who can edit contact records include regional coordinators and specific project managers based on defined criteria."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of Q1, at least 80% of users report improved satisfaction with contact tracking capabilities through a user survey."
+        },
+        {
+          "id": "K2",
+          "text": "At least 95% of primary contact records are accurately filled within the first month of release, as verified by user input."
+        }
+      ]
+    },
+    {
+      "summary": "This release will improve the tracking and management of primary contact persons for each member country, providing defined roles and protections for sensitive information while implementing notifications for regular reviews and updates to maintain data accuracy, and process continuity when contacts change.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to track and manage primary contact persons for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide an intuitive interface for users to update and view contact information easily."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Country Contacts' section within the CRM that allows users to record the name, title, email, phone number, and organization of the primary contact person for each of the ~100 member countries. Users must provide mandatory fields for name and organization to ensure data accuracy, and a notification system will remind users at least every six months to review and confirm the accuracy of contact information. If a primary contact changes, an automated workflow will assign a current user to review and update the contact record within two weeks of being notified of the change. Additionally, an automatic email notification will be sent to users when any changes are made to contact records, ensuring they are informed and up-to-date. Validation rules will check for correct formatting of email and phone number fields."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles with access controls, allowing regional coordinators to view and edit all contact records, while project managers can view but only edit non-sensitive contact records, and executive-level staff can only view. Sensitive diplomatic contact records will only be editable by regional coordinators and designated project managers who have received additional authorization. All sensitive records will also be subject to audit logging to track any access or modifications made, and sensitive data will be encrypted at rest and in transit to prevent unauthorized access."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to filter and search for country contacts by country name, contact name, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Set up a version history for contact records to track changes made by users, ensuring data integrity."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any integration with external databases or API connections to pull in contact information."
+        },
+        {
+          "id": "X2",
+          "text": "Advanced user analytics or reporting features based on contact data are not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "Any functionality related to automatic alerts or notifications regarding contact updates is excluded from this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the Government CRM with appropriate role-based permissions, which affects how and what they can view and edit."
+        },
+        {
+          "id": "A2",
+          "text": "Existing contact information is currently stored in the CRM or accessible in a manner that allows users to accurately populate the new 'Country Contacts' section."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with using CRM systems, thus enabling faster adoption of the new features."
+        },
+        {
+          "id": "A4",
+          "text": "Sensitive diplomatic contact records are defined as those contacts involving classified engagements, communications with embassies, or individuals who require a higher level of access due to confidentiality. Records falling under this definition will include those flagged by the organization's policies."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Primary contact person' means the individual identified as the main point of contact for each government organization in a country, responsible for all communications and engagements."
+        },
+        {
+          "id": "D2",
+          "text": "'Intuitive interface' means a user-friendly design that allows individuals to navigate, input, and retrieve information easily without extensive training."
+        },
+        {
+          "id": "D3",
+          "text": "'User roles' means defined access levels within the CRM, indicating who can view, edit, or manage contact information. Authorized users who can edit contact records include regional coordinators and specific project managers based on defined criteria."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of Q1, at least 80% of users report improved satisfaction with contact tracking capabilities through a user survey."
+        },
+        {
+          "id": "K2",
+          "text": "At least 95% of primary contact records are accurately filled within the first month of release, as verified by user input."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S2 allows project managers to view and edit contact records, but does not clarify how sensitive records are protected against unauthorized access.",
+      "failure_scenario": "A project manager inadvertently edits or exposes sensitive diplomatic contact information, leading to leaks and negative diplomatic consequences.",
+      "resolution_test": "What specific roles or conditions restrict project managers from accessing sensitive contact records?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 allows project managers to view and edit contact records, but does not clarify how sensitive records are protected against unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision clearly defines the access levels for project managers and restricts their ability to edit sensitive contact records, thus protecting sensitive information from unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines access levels for different user roles, protecting against unauthorized access. Fact: User roles with access controls are implemented to restrict access based on sensitivity of contact records. Evidence: \"Implement user roles with access controls, allowing regional coordinators to view and edit all contact records, while project managers can view but only edit non-sensitive contact records, and executive-level staff can only view.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how contact records are managed when a primary contact changes, potentially leading to outdated or incorrect information being used.",
+      "failure_scenario": "A regional coordinator continues to contact a primary person who has left, resulting in ineffective communication and missed opportunities.",
+      "resolution_test": "What is the process for updating and managing primary contact records when contacts change?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how contact records are managed when a primary contact changes, potentially leading to outdated or incorrect information being used.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Updating contact records will require users to manually update information to ensure records are current, recognizing that this is a process that involves user diligence over automation.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The absence of an automated process may lead to outdated contact information, which is a risk in effectiveness.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While the absence of an automated process for updating contact records does create some risk, we believe that manual updates will rely on users' diligence and the training they receive. Regular training sessions will be scheduled to ensure users understand the importance of keeping contact details current.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The existing process of manual updates increases the risk of outdated information leading to ineffective communication.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "S1 does not specify how data accuracy and integrity will be ensured in the new 'Country Contacts' section, risking outdated or incorrect records being stored.",
+      "failure_scenario": "Users enter incorrect information which then propagates through other systems, leading to misinformation about key governmental contacts.",
+      "resolution_test": "What data validation mechanisms will be in place to ensure the accuracy of contact information input by users?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S1 does not specify how data accuracy and integrity will be ensured in the new 'Country Contacts' section, risking outdated or incorrect records being stored.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision adds specific data validation requirements for the contact information being entered, enhancing the accuracy and integrity of the records stored.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This ensures that the input data has a basic level of accuracy. Fact: Mandatory fields are enforced, and validation rules for data formatting are established. Evidence: \"...with mandatory fields for name and organization to ensure data accuracy and validation rules in place to check for correct formatting of email and phone number fields.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal fails to define how sensitive diplomatic information will be treated differently from non-sensitive contact information.",
+      "failure_scenario": "Sensitive diplomatic contacts are erroneously accessible to all users, causing diplomatic breaches and privacy violations.",
+      "resolution_test": "What definitions clarify which contact records are classified as sensitive, and what measures will be in place to control access to these records?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal fails to define how sensitive diplomatic information will be treated differently from non-sensitive contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The new assumption defines what 'sensitive diplomatic contact records' entails, and the edits to S2 clarify how access is controlled based on the sensitivity of contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "A4",
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "This does not clearly define what roles these 'authorized personnel' are, leaving ambiguity.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised assumption clarifies what constitutes sensitive diplomatic contact records, and the edits to S2 specify which roles are authorized to manage such records, thereby minimizing ambiguity around confidentiality.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "A4",
+            "S2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While user roles are defined, it remains unclear who qualifies as a 'designated project manager' and the process for determining this.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "The proposal does not specify how users will be notified of changes to contact records, which is essential for maintaining operational effectiveness across teams.",
+      "failure_scenario": "Users in the field are unaware of changes to primary contacts and attempt to reach out to individuals who are no longer the point of contact, hindering operations.",
+      "resolution_test": "What formal process is established to notify users of updates or changes to contact records?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how users will be notified of changes to contact records, which is essential for maintaining operational effectiveness across teams.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The process for notification of changes to contact records must be defined by organizational policies or determined by existing operational practices, which should be clarified beyond this scope.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This relies on outside rules or decisions that are not specified.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The definitions provided in the proposal do not clarify who is considered authorized to manage contact records, leading to potential overreach or misuse of access.",
+      "failure_scenario": "A user, misunderstanding the definition of 'user roles,' edits contact records without proper authority, resulting in inaccurate data being propagated.",
+      "resolution_test": "Which roles are explicitly defined as authorized to manage contact records?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions provided in the proposal do not clarify who is considered authorized to manage contact records, leading to potential overreach or misuse of access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit explicitly states which roles are authorized to manage contact records, mitigating the risk of unauthorized access or data manipulation.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This explicitly states who is authorized to manage contact records. Fact: Only defined user roles can edit the contact records. Evidence: \"Authorized users who can edit contact records include regional coordinators and specific project managers based on defined criteria.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The manual updating of contact records could lead to inaccuracies over time, especially if users neglect their duty to update them.",
+      "failure_scenario": "A regional coordinator relies on incorrect contact details for a key government contact, leading to failed communications and missed opportunities.",
+      "resolution_test": "What is the proposed strategy to ensure contact records are regularly reviewed and updated?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The manual updating of contact records could lead to inaccuracies over time, especially if users neglect their duty to update them.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The proposed strategy includes a notification system to remind users to review and confirm the accuracy of contact information, adding a layer of accountability to reduce potential inaccuracies that arise from manual updates.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While a notification system is specified, its reliance on user action still leaves the likelihood of inaccuracies in the records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While the concern over manual updates is valid, the notification system will still enforce accountability. Regular reviews will encourage users to maintain the accuracy of the records, thus balancing the risk of inaccuracies.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the notification system seeks to mitigate inaccuracies, it still places the onus on users to take action, leaving room for potential lapses in updates.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify how users will be notified about changes to contact records.",
+      "failure_scenario": "A regional coordinator believes they are contacting the right government representative, but the contact information has changed and they have not been informed, leading to miscommunication.",
+      "resolution_test": "What procedures will be in place to ensure users are notified when contact records are updated?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how users will be notified about changes to contact records.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The added clause ensures that all users are automatically notified by email of any changes made to contact records, helping to minimize miscommunication caused by outdated information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses the challenge directly and provides a clear procedure for notifying users. Fact: Users will be automatically notified by email of changes to contact records. Evidence: \"an automatic email notification will be sent to users when any changes are made to contact records\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S2 does not clarify how sensitive records are protected against unauthorized access, which could lead to a security breach.",
+      "failure_scenario": "A project manager attempts to access a sensitive diplomatic contact record due to vague access control policies, potentially exposing classified information.",
+      "resolution_test": "What specific measures are in place to protect sensitive records from unauthorized access?",
+      "id": "C9",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 does not clarify how sensitive records are protected against unauthorized access, which could lead to a security breach.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that sensitive records will be audited, encrypted, and restricted to authorized users, addressing confidentiality concerns and ensuring compliance with security protocols.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This outlines specific measures in place to protect sensitive records from unauthorized access. Fact: Sensitive records are protected through limited editing rights, audit logging, and encryption. Evidence: \"Sensitive diplomatic contact records will only be editable by regional coordinators and designated project managers who have received additional authorization. All sensitive records will also be subject to audit logging to track any access or modifications made, and sensitive data will be encrypted at rest and in transit to prevent unauthorized access.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clarify how contact records will be managed when a primary contact changes, leaving process gaps regarding ownership and continuity of information.",
+      "failure_scenario": "A key government representative resigns or changes their role, yet the organization fails to update the contact records promptly, leading to confusion and communication breakdown with the new representative.",
+      "resolution_test": "What is the process for updating contact records to reflect changes in primary contacts?",
+      "id": "C10",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how contact records will be managed when a primary contact changes, leaving process gaps regarding ownership and continuity of information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies the process for managing contact records when a primary contact changes by introducing an automated workflow to ensure timely updates.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes a clear process for updating contacts when changes occur. Fact: An automated workflow will update records within two weeks. Evidence: \"If a primary contact changes, an automated workflow will assign a current user to review and update the contact record within two weeks of being notified of the change.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 85,
+      "critic_confidence": 50,
+      "proposer_worry": "The existing data accuracy may hinder the effectiveness of the new tracking feature.",
+      "critic_worry": "The proposal could lead to unauthorized access and management of sensitive diplomatic contact information.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 3,
+      "resolved": 3,
+      "escalated": 1,
+      "disagreement": 0.54,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring data quality and the protection of sensitive information is crucial for this feature's success.",
+      "critic_worry": "The reliance on manual updating processes may lead to outdated information and operational inefficiencies.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 9,
+      "open": 3,
+      "resolved": 3,
+      "escalated": 3,
+      "disagreement": 0.67,
+      "proposer_confidence": 80,
+      "critic_confidence": 50,
+      "proposer_worry": "Ensuring user diligence in updating contact records may still lead to outdated information.",
+      "critic_worry": "The risk of confidential contact records being accessed by unauthorized users remains high.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 10,
+      "open": 1,
+      "resolved": 5,
+      "escalated": 4,
+      "disagreement": 0.48,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "The reliance on users to update information may still lead to some inaccuracies despite notifications.",
+      "critic_worry": "The reliance on user diligence to maintain the accuracy of sensitive contact records leaves room for critical inaccuracies.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 10,
+      "open": 0,
+      "resolved": 6,
+      "escalated": 4,
+      "disagreement": 0.33,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring timely updates of contact information remains a challenge without user diligence.",
+      "critic_worry": "There are still unresolved challenges regarding the protection of sensitive data and differences in treatment between sensitive and non-sensitive records.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

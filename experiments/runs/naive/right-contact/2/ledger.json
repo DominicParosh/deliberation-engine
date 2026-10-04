@@ -1,0 +1,636 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "pre_mortem": "A year after launch, the 'Primary Contacts' feature causes a serious incident when an email meant for a sensitive diplomatic contact is inadvertently sent to the wrong person. This happens because the system lacks adequate permissions, allowing someone with a lower role to access and modify the primary contacts. As a result, this contact information is incorrectly altered, leading to a breach of confidentiality and requiring an internal investigation.",
+  "gaps": [
+    "Who can always modify primary contacts and what prevents unauthorized changes?",
+    "What safeguards are in place to ensure only the correct person receives notifications about updates to primary contacts?",
+    "How will the system prevent duplicates or incorrect entries for primary contacts?",
+    "What will happen to the records of primary contacts when a regional coordinator or project manager leaves the organization?",
+    "How will the system handle changes in roles for users to ensure appropriate permissions for modifications?",
+    "What measures are in place to ensure compliance with data protection regulations during the updates?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will introduce a 'Primary Contacts' feature that allows users to identify and maintain up-to-date records of the appropriate contact person for each member country. The feature will enable regional coordinators and project managers to efficiently manage and retrieve contact information tailored to their engagement needs.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Establish a user interface to define and modify primary contacts for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a search and filter functionality to enable users to quickly find relevant contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Primary Contacts' section within the Government CRM for each country, allowing designated users to input and update contact details."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles for regional coordinators and project managers with permission to modify contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Include essential contact information fields: name, role, email, phone number, and organization."
+        },
+        {
+          "id": "S4",
+          "text": "Integrate search functionality to enable users to find contacts by name or country."
+        },
+        {
+          "id": "S5",
+          "text": "Develop a notification system to alert users when a contact's information has been updated."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases or third-party applications for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement advanced analytics or reporting features related to contact interactions."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover the historical engagement data of contacts."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users of the Government CRM have the necessary permissions to modify primary contacts as defined in this release."
+        },
+        {
+          "id": "A2",
+          "text": "Contact information being recorded for primary contacts is sensitive and will adhere to existing data protection regulations."
+        },
+        {
+          "id": "A3",
+          "text": "This feature will rely on a stable user interface design that is consistent with existing CRM components."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary Contact\" means the individual designated as the primary point of contact for a specific country within the Government CRM system."
+        },
+        {
+          "id": "D2",
+          "text": "\"User Roles\" means the permissions and access levels assigned to individuals within the Government CRM based on their job functions, specifically defined for regional coordinators and project managers."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve at least an 80% user engagement rate with the new Primary Contacts feature within three months of deployment, measured by the number of user interactions with the feature."
+        }
+      ]
+    },
+    {
+      "summary": "This release will establish a 'Primary Contacts' feature to define and maintain records of appropriate contact persons for each member country with added safeguards for data protection. It will enhance user functionality with search capabilities while ensuring sensitive information is managed properly through appropriate roles and notifications.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Establish a user interface to define and modify primary contacts for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a search and filter functionality to enable users to quickly find relevant contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Primary Contacts' section within the Government CRM for each country, detailing that when a user leaves or changes roles, their contact responsibilities will be reassigned to a designated senior user to maintain the records."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles for regional coordinators and project managers with permission to modify contacts, including safeguards such as role-based access controls and audit logs to track changes made to primary contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Include essential contact information fields: name, role, email, phone number, organization, and implement a validation system to prevent duplicate entries and flag incorrect information for review."
+        },
+        {
+          "id": "S4",
+          "text": "Integrate search functionality to enable users to find contacts by name or country."
+        },
+        {
+          "id": "S5",
+          "text": "Develop a notification system to alert designated users, specifically regional coordinators and project managers, when a contact's information has been updated, ensuring that only those with the appropriate access receive notifications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases or third-party applications for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement advanced analytics or reporting features related to contact interactions."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover the historical engagement data of contacts."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users of the Government CRM have the necessary permissions to modify primary contacts as defined in this release."
+        },
+        {
+          "id": "A2",
+          "text": "Contact information being recorded for primary contacts is sensitive and will adhere to existing data protection regulations."
+        },
+        {
+          "id": "A3",
+          "text": "This feature will rely on a stable user interface design that is consistent with existing CRM components."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary Contact\" means the individual designated with explicit approval by the relevant regional coordinator for a specific country within the Government CRM system, and conflicts will be resolved by a defined escalation process involving senior leadership."
+        },
+        {
+          "id": "D2",
+          "text": "\"User Roles\" means the permissions and access levels assigned to individuals within the Government CRM based on their job functions, specifically defined for regional coordinators and project managers."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve at least an 80% user engagement rate with the new Primary Contacts feature within three months of deployment, measured by the number of user interactions with the feature."
+        }
+      ]
+    },
+    {
+      "summary": "This release will establish a 'Primary Contacts' feature to define and maintain records of appropriate contact persons for each member country with added safeguards for data protection, including two-factor authentication and a quarterly review process for data accuracy. It will enhance user functionality with search capabilities while ensuring sensitive information is managed properly through appropriate roles and notifications.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Establish a user interface to define and modify primary contacts for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a search and filter functionality to enable users to quickly find relevant contacts."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a 'Primary Contacts' section within the Government CRM for each country, detailing that when a user leaves or changes roles, their contact responsibilities will be reassigned to a designated senior user to maintain the records, and implement a quarterly review process to update and verify contact information."
+        },
+        {
+          "id": "S2",
+          "text": "Implement user roles for regional coordinators and project managers with permission to modify contacts, including safeguards such as two-factor authentication for updates, role-based access controls, and audit logs to track changes made to primary contacts, ensuring compliance with data protection regulations."
+        },
+        {
+          "id": "S3",
+          "text": "Include essential contact information fields: name, role, email, phone number, organization, and implement a validation system to prevent duplicate entries and flag incorrect information for review."
+        },
+        {
+          "id": "S4",
+          "text": "Integrate search functionality to enable users to find contacts by name or country."
+        },
+        {
+          "id": "S5",
+          "text": "Develop a notification system to alert designated users, specifically regional coordinators and project managers, when a contact's information has been updated, ensuring that only those with the appropriate access receive notifications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external databases or third-party applications for contact information."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not implement advanced analytics or reporting features related to contact interactions."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover the historical engagement data of contacts."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users of the Government CRM have the necessary permissions to modify primary contacts as defined in this release."
+        },
+        {
+          "id": "A2",
+          "text": "Contact information being recorded for primary contacts is sensitive and will adhere to existing data protection regulations."
+        },
+        {
+          "id": "A3",
+          "text": "This feature will rely on a stable user interface design that is consistent with existing CRM components."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"Primary Contact\" means the individual designated with explicit approval by the relevant regional coordinator for a specific country within the Government CRM system, and conflicts will be resolved by a defined escalation process involving senior leadership."
+        },
+        {
+          "id": "D2",
+          "text": "\"User Roles\" means the permissions and access levels assigned to individuals within the Government CRM based on their job functions, specifically defined for regional coordinators and project managers."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve at least an 80% user engagement rate with the new Primary Contacts feature within three months of deployment, measured by the number of user interactions with the feature."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S2 allows regional coordinators and project managers to modify contacts, but it doesn't specify what safeguards are in place to prevent unauthorized changes by those with insufficient permissions.",
+      "failure_scenario": "An unauthorized user with a lower access level modifies a primary contact's details, leading to sensitive information being sent to the wrong person.",
+      "resolution_test": "What specific user roles and permissions are required to modify primary contacts, and what safeguards prevent unauthorized changes?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 allows regional coordinators and project managers to modify contacts, but it doesn't specify what safeguards are in place to prevent unauthorized changes by those with insufficient permissions.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify safeguards, such as role-based access controls and audit logs, ensuring that only authorized users can modify contact details.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This adequately specifies the safeguards preventing unauthorized changes. Fact: Role-based access controls and audit logs for modifying contacts are in place. Evidence: \"S2: Implement user roles for regional coordinators and project managers with permission to modify contacts, including safeguards such as role-based access controls and audit logs to track changes made to primary contacts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "S5 includes a notification system to alert users when a primary contact is updated, but it doesn't clarify who receives these notifications and whether it can result in sensitive information being shared with the wrong personnel.",
+      "failure_scenario": "An unwanted recipient receives an alert that a sensitive contact's details were changed, raising security concerns about information leakage.",
+      "resolution_test": "Who receives notifications when primary contacts are updated, and what criteria determine this?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S5 includes a notification system to alert users when a primary contact is updated, but it doesn't clarify who receives these notifications and whether it can result in sensitive information being shared with the wrong personnel.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This provides clarity on who receives notifications, focusing only on users with the appropriate roles, thus preventing unauthorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly defines who receives notifications, addressing the concern of unauthorized access. Fact: Notifications will be sent only to authorized users, specifically regional coordinators and project managers. Evidence: \"S5: Develop a notification system to alert designated users, specifically regional coordinators and project managers, when a contact's information has been updated, ensuring that only those with the appropriate access receive notifications.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'Primary Contact' (D1) is too vague; it does not specify who officially determines or approves the designation of primary contacts or how conflicts are resolved.",
+      "failure_scenario": "Two users independently designate different individuals as the primary contact for the same country, leading to confusion and inconsistent communications.",
+      "resolution_test": "Who is responsible for determining and approving the primary contact for each country, and how is this process managed?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'Primary Contact' (D1) is too vague; it does not specify who officially determines or approves the designation of primary contacts or how conflicts are resolved.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The definition is made specific to include the approval process and escalation for conflicts, ensuring clarity around the designation of primary contacts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clarifies both the determination process and conflict resolution. Fact: The approval of primary contacts is done explicitly by the relevant regional coordinator with a defined escalation process for conflicts. Evidence: \"D1: 'Primary Contact' means the individual designated with explicit approval by the relevant regional coordinator for a specific country within the Government CRM system, and conflicts will be resolved by a defined escalation process involving senior leadership.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not outline what happens to primary contacts when users leave or change roles, leaving the management of these records unclear.",
+      "failure_scenario": "When a project manager leaves, there is no clear authority on who assumes the responsibility for updating and maintaining the primary contacts, leading to a lapse in communication.",
+      "resolution_test": "What process is in place to transfer ownership of primary contacts when users change roles or leave the organization, and who is responsible for it?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline what happens to primary contacts when users leave or change roles, leaving the management of these records unclear.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This outlines the process for transferring contact responsibilities, addressing management continuity when users change roles.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This provides a clear ownership transfer process. Fact: Contact responsibilities will transfer to a designated senior user when someone leaves or changes roles. Evidence: \"S1: Create a 'Primary Contacts' section within the Government CRM for each country, detailing that when a user leaves or changes roles, their contact responsibilities will be reassigned to a designated senior user to maintain the records.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "S3 does not address how duplicates or incorrect entries are handled, risking the integrity and quality of contact information.",
+      "failure_scenario": "A user enters duplicate contact records for the same individual, resulting in communication errors and confusion among project teams.",
+      "resolution_test": "What measures do you have in place to prevent duplicate entries and ensure the accuracy of primary contact information?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S3 does not address how duplicates or incorrect entries are handled, risking the integrity and quality of contact information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This update establishes a system to ensure data integrity and manages duplicates, enhancing the overall quality of contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses data integrity and the quality of entries. Fact: A validation system will be in place to prevent duplicate entries and flag incorrect information for review. Evidence: \"S3: Include essential contact information fields: name, role, email, phone number, organization, and implement a validation system to prevent duplicate entries and flag incorrect information for review.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "A2 asserts contact information will adhere to data protection regulations, but does not detail how compliance will be ensured during record updates.",
+      "failure_scenario": "During contact updates, insufficient safeguarding leads to unauthorized access to sensitive personal data, resulting in a data protection violation.",
+      "resolution_test": "What specific actions will be implemented to ensure compliance with data protection regulations while updating primary contacts?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A2 asserts contact information will adhere to data protection regulations, but does not detail how compliance will be ensured during record updates.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Ensuring compliance with existing data protection regulations during record updates requires a decision from the organization's data protection team regarding specific measures.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This depends on a human decision from the data protection team to establish specific compliance measures.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks detail on specific compliance measures for data protection during record updates.",
+      "failure_scenario": "A project manager updates sensitive contact information without adequate safeguards in place, leading to unauthorized access and a breach of confidentiality.",
+      "resolution_test": "What specific safeguards will ensure compliance with data protection regulations during updates to primary contact information?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks detail on specific compliance measures for data protection during record updates.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits specify two-factor authentication for updates as a safeguard to ensure compliance with data protection regulations when sensitive information is modified.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The safeguards now specified adequately address the compliance concerns surrounding record updates. Fact: two-factor authentication and role-based access controls are safeguards for compliance. Evidence: \"safeguards such as two-factor authentication for updates, role-based access controls, and audit logs to track changes made to primary contacts, ensuring compliance with data protection regulations.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "There is no mention of a process for regularly reviewing and updating contact information, which can lead to outdated or incorrect data remaining in the system.",
+      "failure_scenario": "Over time, outdated contact information remains uncorrected, leading to failed communications and loss of trust with diplomatic contacts.",
+      "resolution_test": "What process will be implemented to regularly review and update primary contact information to maintain accuracy?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of a process for regularly reviewing and updating contact information, which can lead to outdated or incorrect data remaining in the system.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits introduce a quarterly review process for primary contact information, which will help maintain accuracy and prevent outdated data from remaining in the system.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The quarterly review process satisfies the need for regular updates to contact information. Fact: a quarterly review process is established for maintaining contact accuracy. Evidence: \"implement a quarterly review process to update and verify contact information.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring that the sensitive data of primary contacts is adequately protected and complies with data protection regulations.",
+      "critic_worry": "The proposal lacks critical safeguards and definitions regarding permissions and updates, risking data integrity and confidentiality.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 8,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 1,
+      "disagreement": 0.35,
+      "proposer_confidence": 85,
+      "critic_confidence": 65,
+      "proposer_worry": "The complexity of roles and permissions may lead to confusion among users regarding who can modify contact information.",
+      "critic_worry": "Overall compliance with data protection regulations is still reliant on human decisions, which increases risk.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 0,
+      "resolved": 7,
+      "escalated": 1,
+      "disagreement": 0.12,
+      "proposer_confidence": 75,
+      "critic_confidence": 85,
+      "proposer_worry": "Ensuring user adherence to the new safeguards and processes once implemented.",
+      "critic_worry": "There may still be issues with user role clarity and management of contact updates.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

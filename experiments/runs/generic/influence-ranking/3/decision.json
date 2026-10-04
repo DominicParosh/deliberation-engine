@@ -1,0 +1,583 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "meta": {
+    "request_id": "influence-ranking",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 10,
+    "repairs": 3,
+    "input_tokens": 35755,
+    "output_tokens": 5329,
+    "cost_usd": 0.0087,
+    "seconds": 60.2,
+    "warnings": []
+  },
+  "executive_summary": "This release will implement a feature that allows users to categorize and identify influential contacts using a manual influence scoring system, while putting in place strict permissions and training protocols. However, it will not include an automated influence scoring system, nor will it alter existing contact record fields outside of the new scoring feature. There remain critical questions regarding the definition of 'influence' and the responsibilities for maintaining influence scores that need resolution before build can begin.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Users will be able to assign an influence score to each contact within the Government CRM.",
+      "note": "Users will be able to assign influence scores to contacts to prioritize engagements based on defined permissions and training protocols.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Users will see a prioritized list of contacts based on their influence scores.",
+      "note": "A prioritized list of contacts based on influence scores will be displayed to help users identify key contacts quickly.",
+      "refs": []
+    },
+    {
+      "id": "V3",
+      "text": "There will be a standard set of criteria established by the organization to define 'influence' for consistent scoring across all users.",
+      "note": "Establishing a set of criteria to define 'influence' ensures consistent application among users of influence scoring.",
+      "refs": [
+        "C1"
+      ]
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Regional coordinators, project managers, and executive-level staff will be able to assign influence scores to contacts on a scale of 1-5, where 1 means low influence and 5 means high influence.",
+      "note": "Users, specifically regional coordinators and executive-level staff, will score contacts on a scale of 1-5, allowing for prioritized engagement.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "The contact list will display the assigned influence scores alongside contact names to help users quickly identify influential contacts.",
+      "note": "The assigned influence scores will be displayed to assist in quickly determining which contacts are most important to engage with.",
+      "refs": []
+    },
+    {
+      "id": "S3",
+      "text": "Users will have the ability to filter the contact list based on influence scores to prioritize engagements.",
+      "note": "Filtering options enable users to prioritize their engagements based on the influence scores assigned.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "The feature will include permissions: only regional coordinators and executive-level staff will be authorized to assign influence scores; project managers will be permitted to view but not assign these scores.",
+      "note": "Clear permissions will be implemented so that only certain users can assign scores, reducing the risk of unauthorized access to sensitive information.",
+      "refs": [
+        "C2"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include a manual influence scoring system; the feature will instead be developed as a foundational capability without an automated influence assessment.",
+      "note": "The decision to exclude a manual influence scoring system aims to prevent subjective bias and ensure foundational capabilities are prioritized.",
+      "refs": [
+        "C6"
+      ]
+    },
+    {
+      "id": "X2",
+      "text": "This release will not change existing contact record fields outside the influence scoring.",
+      "note": "This release will not change existing contact record fields, focusing solely on introducing the influence scoring feature.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users are familiar with the concept of influence scoring and understand how to use a scoring system; this knowledge is required for effective use of the feature.",
+      "note": "Users need to be familiar with influence scoring to effectively utilize the feature, ensuring proper engagement prioritization.",
+      "refs": [
+        "C4"
+      ],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "Contact information is accurate and up-to-date in the system, allowing for meaningful influence assessments.",
+      "note": "Accurate and up-to-date contact information is assumed, which is crucial for reliable influence assessments.",
+      "refs": [
+        "C5"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C5",
+          "outcome": "ESCALATED"
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "text": "There is a clear understanding of what constitutes 'influence' among users; this understanding is needed to create consistent scoring.",
+      "note": "A clear understanding of 'influence' among users is crucial for consistent scoring, which needs to be established through adequate training.",
+      "refs": [
+        "C4"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C4",
+          "outcome": "ESCALATED"
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "\"influence score\" means a numerical value assigned to a contact that represents their level of influence, rated on a scale of 1 (low influence) to 5 (high influence).",
+      "note": "'Influence score' is defined as a rating from 1 to 5 that reflects a contact's level of influence, which must be consistently applied.",
+      "refs": [
+        "C1"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "\"prioritized list\" means an ordered list of contacts displayed in the Government CRM that reflects their influence scores, with the highest scores appearing first.",
+      "note": "'Prioritized list' is defined as an ordered listing of contacts based on influence scores in the CRM, promoting effective engagement strategies.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "At least 75% of users assign influence scores to their contacts within the first month of release, measured by system usage analytics.",
+      "note": "",
+      "refs": []
+    },
+    {
+      "id": "K2",
+      "text": "Users report a satisfaction rating of 80% or higher in a post-release survey regarding the usefulness of the influence feature for contact prioritization.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C1",
+      "question": "What specific criteria will be established by the organization to define 'influence' for consistent scoring?",
+      "why_it_matters": "This definition is crucial to avoid biased or inconsistent scores that could mislead engagement priorities.",
+      "decision_owner": "Head of Operations",
+      "options": [
+        "Define criteria collaboratively within the organization",
+        "Allow users to define criteria individually",
+        "Establish a task force to create a standard definition"
+      ],
+      "severity": "BLOCKER",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C3",
+      "question": "Who will be responsible for regularly reviewing and updating influence scores based on changes in contact relationships?",
+      "why_it_matters": "Clear ownership is needed to ensure that influence scores reflect current realities and remain actionable.",
+      "decision_owner": "Regional Coordinators",
+      "options": [
+        "Assign responsibility to regional coordinators",
+        "Create a rotating responsibility among team members",
+        "Leave it to individual user discretion"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C4",
+      "question": "What specific training or resources will enhance users' understanding of what constitutes 'influence'?",
+      "why_it_matters": "Consistent training is essential to ensure all users apply the scoring uniformly, enabling effective prioritization of engagements.",
+      "decision_owner": "Training Coordinator",
+      "options": [
+        "Develop a standardized training module",
+        "Rely on individual managers to train their teams",
+        "Utilize existing materials without changes"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C5",
+      "question": "What mechanisms will be implemented to ensure contact information remains accurate and current within the CRM?",
+      "why_it_matters": "Up-to-date contact information is vital for accurate influence scoring and effective engagement.",
+      "decision_owner": "Data Management Team",
+      "options": [
+        "Regular audits of contact information",
+        "User responsibility for updates",
+        "Implement automatic data validation processes"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C7",
+      "question": "What specific training protocols and resources will be established to ensure consistent application of the influence scoring system?",
+      "why_it_matters": "Without clear protocols, there may be inconsistencies in how influence scoring is applied, leading to ineffective prioritization.",
+      "decision_owner": "Training Coordinator",
+      "options": [
+        "Develop a formalized training program",
+        "Rely on informal training methods",
+        "Encourage self-guided learning without materials"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    }
+  ],
+  "tension": {
+    "summary": "The primary contention arose over the definition of 'influence,' impacting the consistency of scoring across users; the Proposer argued for a need for clarity and organizational input, whereas the Critic emphasized the necessity of a defined responsibility for maintaining the accuracy of scores. The disagreement over these issues led to several open questions that remain unresolved.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 75,
+        "critic_confidence": 30,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 7,
+        "open": 1,
+        "resolved": 2,
+        "escalated": 4,
+        "disagreement": 0.69,
+        "proposer_confidence": 75,
+        "critic_confidence": 60,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 7,
+        "open": 0,
+        "resolved": 2,
+        "escalated": 5,
+        "disagreement": 0.69,
+        "proposer_confidence": 75,
+        "critic_confidence": 30,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 75,
+        "worry": "Ensuring every user applies the influence scoring consistently despite individual interpretations of influence."
+      },
+      "critic": {
+        "confidence": 30,
+        "worry": "The influence scoring system's reliance on subjective assessments and training leaves significant room for inconsistency and inaccuracy."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The term 'influence' is not adequately defined or standardized, leading to inconsistent application among users, which could result in significant errors in engagement prioritization.",
+      "failure_scenario": "A regional coordinator defines 'influence' based on personal biases, assigning high scores to personal contacts rather than those who are strategically important, leading to misprioritized engagement efforts.",
+      "resolution_test": "What specific criteria will be established to define 'influence' for consistent scoring across all users?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'influence' is not adequately defined or standardized, leading to inconsistent application among users, which could result in significant errors in engagement prioritization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "To ensure accuracy in influence scoring, a clear organizational framework or guidelines defining 'influence' must be developed by the organization, which is outside the current scope of this release.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The criteria defining 'influence' need to be established by the organization, which is outside the current proposal's scope.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clearly define the permissions associated with viewing, editing, or assigning influence scores, raising potential risks around data exposure and confidentiality.",
+      "failure_scenario": "A project manager accidentally gains access to sensitive influence score information assigned by a regional coordinator, leading to confidential data being shared improperly with third parties.",
+      "resolution_test": "What specific roles are authorized to assign and view influence scores, and how are these permissions enforced?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clearly define the permissions associated with viewing, editing, or assigning influence scores, raising potential risks around data exposure and confidentiality.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies which roles are allowed to assign and view influence scores, clarifying access permissions to mitigate confidentiality risks.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: Only regional coordinators and executive-level staff can assign scores; project managers can only view. Evidence: \"The feature will include permissions: only regional coordinators and executive-level staff will be authorized to assign influence scores; project managers will be permitted to view but not assign these scores.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no clarity on who is responsible for verifying and updating influence scores as relationships change over time, which could lead to outdated or inaccurate scores being used for prioritization.",
+      "failure_scenario": "An influential contact leaves their government position, but the assigned high influence score remains unchanged, leading project teams to waste time engaging with an unresponsive contact.",
+      "resolution_test": "Who is responsible for regularly reviewing and updating influence scores based on changes in contact relationships?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clarity on who is responsible for verifying and updating influence scores as relationships change over time, which could lead to outdated or inaccurate scores being used for prioritization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Responsibility for reviewing and updating influence scores based on evolving relationships needs to be defined by the organization and should not be specified in this proposal.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Responsibility for maintaining updated influence scores must be defined and is outside this proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The assumption that users understand what constitutes 'influence' lacks clarity in practice, which could lead to subjective and unreliable scoring outcomes.",
+      "failure_scenario": "Different users believe different attributes constitute influence; one user scores based on past engagement, while another scores based on personal connection, leading to conflicting priorities.",
+      "resolution_test": "What specific training or resources will be provided to ensure all users have a uniform understanding of influence when scoring contacts?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that users understand what constitutes 'influence' lacks clarity in practice, which could lead to subjective and unreliable scoring outcomes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit formalizes that the organization will establish clear criteria for influence, ensuring consistent scoring practices among users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "V3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The specific training or resources needed to ensure users have a uniform understanding of influence must be determined by the organization.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "A2"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The assumption that contact information is accurate may not be true, causing potentially misleading influence assignments based on outdated or incorrect data.",
+      "failure_scenario": "A contact's influence score is based on inaccurate information about their current role or responsibilities, leading to a misjudged engagement strategy and wasted effort.",
+      "resolution_test": "What mechanisms are in place to ensure that contact information is kept current and accurate within the CRM?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that contact information is accurate may not be true, causing potentially misleading influence assignments based on outdated or incorrect data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "While ensuring data accuracy is critical, current processes will rely on user diligence and periodic reviews, as no immediate mechanisms are established within this proposal to enforce data accuracy.",
+          "grounds": "ACCEPTABLE_RISK",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The mechanisms to ensure accurate data must be clarified and established by the organization.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "X1"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "BLOCKER",
+      "challenge": "The lack of an automated scoring system means influence scores are entirely subjective and may not be scalable to all users across the 100 member countries.",
+      "failure_scenario": "Users across different regions are assigning wildly different scores due to lack of standardization, rendering the prioritization list ineffective.",
+      "resolution_test": "What plans exist to prevent subjective bias and ensure influence scores are consistently and reliably applied across all regions?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The lack of an automated scoring system means influence scores are entirely subjective and may not be scalable to all users across the 100 member countries.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "CONCEDE",
+          "text": "The decision to exclude a manual scoring system prevents potential subjective bias and ensures that foundational capabilities are prioritized in this release.",
+          "grounds": "SHOULD_NOT_BUILD",
+          "changed": [
+            "X1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Fact: The release will not include a manual influence scoring system. Evidence: \"The decision to exclude a manual scoring system prevents potential subjective bias and ensures that foundational capabilities are prioritized in this release.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "CONCEDED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify how users will be trained to consistently apply the influence scoring system, potentially leading to arbitrary and inconsistent scoring.",
+      "failure_scenario": "Users lack proper training and apply their subjective definitions of influence; one user assigns high scores based on personal relationships while another ranks based on past work engagement, resulting in a confused prioritization of contacts.",
+      "resolution_test": "What specific training protocols and resources will be established to ensure consistent scoring practices across all users?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how users will be trained to consistently apply the influence scoring system, potentially leading to arbitrary and inconsistent scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal includes training protocols and resources, which requires organizational decisions on specific training content and methods to ensure consistent user application; thus, it remains as written.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The answer indicates that the training protocols are dependent on organizational decisions, which means it cannot be accepted as it stands.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    }
+  ]
+}

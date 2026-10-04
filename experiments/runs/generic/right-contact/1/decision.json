@@ -1,0 +1,590 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "meta": {
+    "request_id": "right-contact",
+    "policy": "gated",
+    "rounds": 3,
+    "termination": "converged",
+    "models": {
+      "proposer": "gpt-4o-mini",
+      "critic": "gpt-4o-mini",
+      "summarizer": "gpt-4o-mini"
+    },
+    "llm_calls": 7,
+    "repairs": 0,
+    "input_tokens": 23592,
+    "output_tokens": 4054,
+    "cost_usd": 0.0059,
+    "seconds": 52.3,
+    "warnings": []
+  },
+  "executive_summary": "A contact tracking feature will be built to assist regional coordinators and project managers in identifying primary contacts in member countries, accompanied by engagement history and a process for reevaluating contact roles. Automatic alerts for role changes, integration with external systems, and changes to security protocols will not be included. Decisions are still needed on how confidentiality policies are enforced and to clarify ambiguous assumptions about those policies.",
+  "core_commitments": [
+    {
+      "id": "V1",
+      "text": "Enable tracking of primary contacts for each member country.",
+      "note": "Core commitment to track primary contacts is essential for effective communication and coordination within member countries.",
+      "refs": []
+    },
+    {
+      "id": "V2",
+      "text": "Provide engagement history linked to identified contacts.",
+      "note": "Providing engagement history linked to contacts is vital to ensure users have context for each interaction.",
+      "refs": []
+    }
+  ],
+  "in_scope": [
+    {
+      "id": "S1",
+      "text": "Implement a searchable contact list feature that allows users to filter contacts by country, role, and project affiliation.",
+      "note": "The searchable contact list feature improves usability by allowing filtering based on key criteria, enhancing efficiency.",
+      "refs": []
+    },
+    {
+      "id": "S2",
+      "text": "Establish a database schema modification to include fields for 'primary contact' designation per country, with a defined process for updating primary contact designations immediately upon personnel changes, handled by regional coordinators.",
+      "note": "This scope item details who is responsible for maintaining currency in primary contact designations, addressing critical ownership concerns.",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "S3",
+      "text": "Ensure that engagement history is accessible for each contact displayed in the system.",
+      "note": "Ensuring accessibility of engagement history for each contact aligns with the core objectives of the feature.",
+      "refs": []
+    },
+    {
+      "id": "S4",
+      "text": "Provide user training materials to regional coordinators and project managers on using the new contact tracking features.",
+      "note": "User training materials will help ensure effective adoption of the new features by users.",
+      "refs": []
+    },
+    {
+      "id": "S5",
+      "text": "Develop a user interface that highlights the primary contact whenever a country profile is viewed, incorporating role-based access controls to restrict views of sensitive engagement information based on user roles and responsibilities.",
+      "note": "Highlighting primary contacts with role-based access controls is a necessary measure to maintain data confidentiality.",
+      "refs": [
+        "C4"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    {
+      "id": "X1",
+      "text": "This release will not include automatic alerts or notifications for changes in contact roles.",
+      "note": "Automatic alerts for changes in contact roles are considered out of scope to keep the initial implementation focused and manageable.",
+      "refs": []
+    },
+    {
+      "id": "X2",
+      "text": "This release will not incorporate direct integration with external databases or CRM systems.",
+      "note": "Integration with external systems is deemed unnecessary for this specific enhancement and complicating factors may arise.",
+      "refs": []
+    },
+    {
+      "id": "X3",
+      "text": "This release will not change the underlying security protocols governing data access.",
+      "note": "No alterations to security protocols are planned to maintain stability during the implementation phase.",
+      "refs": []
+    }
+  ],
+  "rejected": [],
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "Users will have the necessary permissions to access and modify contact information based on their roles in the organization.",
+      "note": "It is assumed this permission structure will be adequate for role-based access, enabling appropriate data handling by users.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A2",
+      "text": "It is assumed that current user training on existing processes will be sufficient for using the new features.",
+      "note": "Assuming existing user training is sufficient allows for a streamlined rollout instead of developing new training materials from scratch.",
+      "refs": [],
+      "kept": true,
+      "challenges": []
+    },
+    {
+      "id": "A3",
+      "text": "The organization will maintain the policy of confidentiality regarding sensitive contact information.",
+      "note": "This assumption regarding confidentiality policy is subject to verification despite requiring clarity on enforcement measures.",
+      "refs": [
+        "C5",
+        "C7"
+      ],
+      "kept": true,
+      "challenges": [
+        {
+          "id": "C5",
+          "outcome": "ESCALATED"
+        },
+        {
+          "id": "C7",
+          "outcome": "ESCALATED"
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "D1",
+      "text": "‘primary contact’ means the designated individual in a member country responsible for communication regarding specific projects or engagements, who must hold a role within the organization that involves oversight or direct involvement with relevant projects. The process for reevaluating a primary contact's status includes an annual review by regional coordinators or upon notification of role changes, and these changes must be documented in the system to maintain transparency.",
+      "note": "Defining 'primary contact' ensures that only those with appropriate oversight roles can be designated, minimizing confidentiality risks.",
+      "refs": [
+        "C3",
+        "C8"
+      ]
+    },
+    {
+      "id": "D2",
+      "text": "'engagement history' means a record of interactions, communications, and transactions with the contact related to the organization's projects, specifically including email correspondence, meeting notes, and project updates.",
+      "note": "Clarifying 'engagement history' helps ensure consistency in how interactions are recorded and documented.",
+      "refs": [
+        "C6"
+      ]
+    },
+    {
+      "id": "D3",
+      "text": "'searchable contact list' means a feature that allows users to filter and locate contacts based on specific criteria such as country, role, or project.",
+      "note": "The definition of 'searchable contact list' solidifies expectations around this feature's capabilities, aiding design principles.",
+      "refs": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "K1",
+      "text": "Achieve a user satisfaction score of 80% or higher in post-release user feedback surveys regarding the contact tracking feature.",
+      "note": "",
+      "refs": []
+    }
+  ],
+  "open_questions": [
+    {
+      "issue_id": "C7",
+      "question": "What specific measures are defined to enforce confidentiality policies regarding sensitive contact information?",
+      "why_it_matters": "Ensuring that measures for enforcement are in place will protect sensitive information from unauthorized access, addressing a major concern.",
+      "decision_owner": "Head of Compliance",
+      "options": [
+        "Develop a defined enforcement strategy",
+        "Continue without specific enforcement measures"
+      ],
+      "severity": "MAJOR",
+      "status": "ESCALATED",
+      "blocks_build": true
+    },
+    {
+      "issue_id": "C5",
+      "question": "What specific policies are in place regarding confidentiality of sensitive contact information and how are they enforced?",
+      "why_it_matters": "Clarification of confidentiality policies will ensure consistent handling of sensitive information, reducing the risk of unintentional breaches.",
+      "decision_owner": "Head of Compliance",
+      "options": [
+        "Define clear confidentiality policies",
+        "Maintain current ambiguity in policies"
+      ],
+      "severity": "MINOR",
+      "status": "ESCALATED",
+      "blocks_build": false
+    }
+  ],
+  "tension": {
+    "summary": "The key disagreement focused on the clarity and enforceability of confidentiality policies. The proposer believes that current provisions allow for sufficient compliance, while the critic expresses significant concern over potential exposure of sensitive information without explicit enforcement mechanisms.",
+    "by_round": [
+      {
+        "round": 1,
+        "raised": 6,
+        "open": 6,
+        "resolved": 0,
+        "escalated": 0,
+        "disagreement": 1.0,
+        "proposer_confidence": 70,
+        "critic_confidence": 40,
+        "signal": "-",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 2,
+        "raised": 8,
+        "open": 2,
+        "resolved": 5,
+        "escalated": 1,
+        "disagreement": 0.33,
+        "proposer_confidence": 80,
+        "critic_confidence": 70,
+        "signal": "CONTINUE",
+        "decision": "continue",
+        "feedback": ""
+      },
+      {
+        "round": 3,
+        "raised": 8,
+        "open": 0,
+        "resolved": 6,
+        "escalated": 2,
+        "disagreement": 0.2,
+        "proposer_confidence": 80,
+        "critic_confidence": 50,
+        "signal": "CONTINUE",
+        "decision": "converged",
+        "feedback": ""
+      }
+    ],
+    "final_positions": {
+      "proposer": {
+        "confidence": 80,
+        "worry": "The implementation of appropriate enforcement measures for confidentiality policies needs clarification to ensure compliance."
+      },
+      "critic": {
+        "confidence": 50,
+        "worry": "The proposal lacks a concrete mechanism for enforcing confidentiality, risking exposure to sensitive diplomatic information."
+      }
+    },
+    "flags": []
+  },
+  "issues": [
+    {
+      "targets": [
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify who is responsible for maintaining the accuracy and currency of the primary contact information, which is critical to avoid future miscommunication.",
+      "failure_scenario": "If a primary contact leaves and their information is not updated, a project manager might contact someone who is no longer in that role, leading to project delays and diplomatic issues.",
+      "resolution_test": "Who is responsible for updating and maintaining the accuracy of primary contact information?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who is responsible for maintaining the accuracy and currency of the primary contact information, which is critical to avoid future miscommunication.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that regional coordinators and project managers are responsible for verifying and maintaining the accuracy of primary contact information, which directly addresses the challenge.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly states who is responsible for maintaining the accuracy of primary contact information. Fact: Regional coordinators and project managers are responsible for updating primary contact information. Evidence: \"...a defined process for updating primary contact designations immediately upon personnel changes, handled by regional coordinators.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no clear process outlined for how primary contact designations will be managed when an individual changes roles or leaves the organization.",
+      "failure_scenario": "A primary contact may change roles, but if their replacement is not promptly designated, users may continue to reach out to the old contact, disrupting workflows.",
+      "resolution_test": "What is the procedure for updating primary contact designations when personnel changes occur?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clear process outlined for how primary contact designations will be managed when an individual changes roles or leaves the organization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clarifies the procedure for updating primary contact designations, ensuring that changes are documented promptly, mitigating the risk of outdated contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision adequately specifies the procedure for managing primary contact designations after personnel changes. Fact: Changes to primary contact designations will be documented promptly by regional coordinators. Evidence: \"...a defined process for updating primary contact designations immediately upon personnel changes, handled by regional coordinators.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The criteria for determining who qualifies as a primary contact are not defined, risking the inclusion of individuals who should not have sensitive information accessible.",
+      "failure_scenario": "An individual who is not authorized to have access to sensitive engagement history may be designated as a primary contact, inadvertently leaking confidential information.",
+      "resolution_test": "What criteria are used to determine who qualifies as a primary contact?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The criteria for determining who qualifies as a primary contact are not defined, risking the inclusion of individuals who should not have sensitive information accessible.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised definition establishes criteria that restrict primary contact designation to individuals with relevant roles, helping to ensure that only authorized personnel have access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition adequately restricts primary contact designation to authorized personnel. Fact: Only individuals with relevant roles can be designated as primary contacts. Evidence: \"...who must hold a role within the organization that involves oversight or direct involvement with relevant projects.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "There are no safeguards outlined to prevent unauthorized access to sensitive contact information, risking exposure of diplomatic information.",
+      "failure_scenario": "A regional coordinator might gain access to sensitive contact records that they are not authorized to view, leading to data breaches or diplomatic conflicts.",
+      "resolution_test": "What measures are in place to restrict access to sensitive contact information based on user roles?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There are no safeguards outlined to prevent unauthorized access to sensitive contact information, risking exposure of diplomatic information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds necessary safeguards by specifying that role-based access controls will be in place, which addresses the risk of unauthorized access to sensitive contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies safeguards to prevent unauthorized access to sensitive contact information. Fact: Role-based access controls will be implemented to protect sensitive information. Evidence: \"...incorporating role-based access controls to restrict views of sensitive engagement information based on user roles and responsibilities.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MINOR",
+      "challenge": "The assumption regarding the organization's policy on confidentiality is vague and could lead to inconsistencies in how contacts are managed across the system.",
+      "failure_scenario": "If there are lapses in following the confidentiality policy, users may inadvertently share sensitive information without proper clearance, resulting in diplomatic repercussions.",
+      "resolution_test": "What specific policies are in place regarding confidentiality of sensitive contact information and how are they enforced?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption regarding the organization's policy on confidentiality is vague and could lead to inconsistencies in how contacts are managed across the system.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Organizational confidentiality policies and their enforcement are not under the purview of this proposal and must be defined by the organization.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This issue requires input from human decision-makers regarding organizational policies.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "D2"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The term 'engagement history' is not clearly defined in terms of what specific information it includes, which may lead to inconsistent data entry and expectations.",
+      "failure_scenario": "If different users interpret engagement history differently, some may record important interactions while others may leave out critical information, leading to incomplete records.",
+      "resolution_test": "What specific interactions and communications are included in the definition of 'engagement history'?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'engagement history' is not clearly defined in terms of what specific information it includes, which may lead to inconsistent data entry and expectations.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies what constitutes engagement history, helping ensure consistency in data entry and expectations among users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition is now clear and helps ensure consistent data entry. Fact: Engagement history includes specific types of records, such as email correspondence and meeting notes. Evidence: \"...a record of interactions, communications, and transactions with the contact related to the organization's projects, specifically including email correspondence, meeting notes, and project updates.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    },
+    {
+      "targets": [
+        "A3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The lack of clarity around enforcement of confidentiality policies may lead to unintentional breaches of sensitive information.",
+      "failure_scenario": "If users continue to access sensitive contact information without awareness of clear enforcement mechanisms, the organization may face diplomatic fallout and loss of trust.",
+      "resolution_test": "What specific measures are in place to enforce confidentiality policies regarding sensitive contact information?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The lack of clarity around enforcement of confidentiality policies may lead to unintentional breaches of sensitive information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The enforcement of confidentiality policies is an organizational matter that requires input from compliance and legal teams. The specifics of these measures are not our decision to make, so we should maintain this assumption until clarified.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The specifics of confidentiality enforcement measures depend on external policies and the compliance/legal teams, leaving this unresolved.",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "ESCALATED"
+    },
+    {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "While D1 defines 'primary contact', it does not clarify the process for reevaluating this status when project roles change or upon unsatisfactory performance.",
+      "failure_scenario": "If an ineffective primary contact remains designated without a process for reevaluation, important communications may be compromised, leading to project delays.",
+      "resolution_test": "What is the process for reviewing and potentially changing an individual's status as a primary contact?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "While D1 defines 'primary contact', it does not clarify the process for reevaluating this status when project roles change or upon unsatisfactory performance.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit clarifies the reevaluation process for primary contacts when project roles or performance issues arise, ensuring better communication flow and accountability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This definition clarifies how primary contacts will be reevaluated, sufficiently addressing the concern. Fact: annual review by regional coordinators upon notification of role changes. Evidence: \"The process for reevaluating a primary contact's status includes an annual review by regional coordinators or upon notification of role changes, and these changes must be documented in the system to maintain transparency.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ],
+      "outcome": "REVISED"
+    }
+  ]
+}
