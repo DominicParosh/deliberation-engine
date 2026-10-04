@@ -61,6 +61,7 @@ class RoundStats(BaseModel):
 
 class Ledger(BaseModel):
     request: str
+    gaps: list[str] = []  # the Critic's opening list of questions the request leaves open
     proposals: list[Proposal] = []
     issues: dict[str, Issue] = {}
     rounds: list[RoundStats] = []
@@ -134,7 +135,20 @@ class Ledger(BaseModel):
         for n, c in enumerate(new, 1):
             if not c.targets or set(c.targets) - valid:
                 problems.append(f"New challenge #{n}: targets must be current item IDs or GAP; got {c.targets}.")
+        for v in getattr(turn, "verdicts", []):
+            if v.ruling == "ACCEPT" and v.challenge_id in self.issues and not self.supported(v):
+                problems.append(f"{v.challenge_id}: an ACCEPT needs `evidence` copied word for word from the current proposal "
+                                f"or the Proposer's answer, and \"{v.evidence[:80]}\" is not there. Quote the text that meets "
+                                f"your resolution test, or MAINTAIN if nothing does.")
         return problems
+
+    def supported(self, verdict: Verdict) -> bool:
+        """Is the ACCEPT's evidence really in the proposal or the Proposer's latest answer? Tolerates elisions (...)."""
+        answer = [e.text for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
+        haystack = _norm(" ".join(_strings(self.proposal.model_dump()) + answer))
+        quote = re.sub(r"^[a-z]\d+\s*[:\-–—]\s*", "", _norm(verdict.evidence))
+        parts = [p.strip(" .,;") for p in re.split(r"\.\.\.|…", quote) if len(p.strip(" .,;")) >= 10]
+        return bool(parts) and all(p in haystack for p in parts)
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
@@ -165,6 +179,11 @@ class Ledger(BaseModel):
             for cid in [c for c in open_ids if c not in {v.challenge_id for v in verdicts}]:
                 verdicts.append(Verdict(challenge_id=cid, ruling="MAINTAIN", rationale="(No ruling given.)"))
                 self.warnings.append(f"R{rnd}: Critic did not rule on {cid}; recorded as MAINTAIN.")
+            for n, v in enumerate(verdicts):
+                if v.ruling == "ACCEPT" and not self.supported(v):
+                    verdicts[n] = v.model_copy(update={"ruling": "MAINTAIN", "rationale": v.rationale +
+                                                       " [Counted as MAINTAIN: the quoted evidence is not in the proposal.]"})
+                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without evidence; recorded as MAINTAIN.")
             update["verdicts"] = verdicts
         return turn.model_copy(update=update)
 
@@ -177,9 +196,11 @@ class Ledger(BaseModel):
         self.proposals.append(turn.proposal)
 
     def apply_critic(self, rnd: int, turn: CriticOpening | CriticTurn, strike_limit: int | None) -> None:
+        self.gaps += getattr(turn, "gaps", [])
         for v in getattr(turn, "verdicts", []):
             issue = self.issues[v.challenge_id]
-            issue.history.append(Event(round=rnd, actor="critic", move=v.ruling, text=v.rationale))
+            evidence = f' Evidence: "{v.evidence}"' if v.ruling == "ACCEPT" else ""
+            issue.history.append(Event(round=rnd, actor="critic", move=v.ruling, text=v.rationale + evidence))
             if v.ruling == "ACCEPT":
                 issue.status = "RESOLVED"
             elif v.ruling == "ESCALATE":
@@ -225,6 +246,18 @@ def _coverage(got: list[str], expected: list[str], verb: str) -> list[str]:
     if dupes := sorted({g for g in got if got.count(g) > 1}):
         problems.append(f"Answered more than once: {', '.join(dupes)}.")
     return problems
+
+
+def _norm(text: str) -> str:
+    text = text.lower().translate(str.maketrans("“”‘’—–", "\"\"''--"))
+    return re.sub(r"\s+", " ", text).strip(" .\"'")
+
+
+def _strings(value) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    items = value.values() if isinstance(value, dict) else value if isinstance(value, list) else []
+    return [s for v in items for s in _strings(v)]
 
 
 def _dedupe(moves: list, allowed: list[str], key) -> list:

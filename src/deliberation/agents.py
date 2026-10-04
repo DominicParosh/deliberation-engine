@@ -52,17 +52,20 @@ class Agents:
         proposal = f"## Current proposal (version {rnd})\n{proposal_md(ledger.proposal)}"
         if rnd == 1:
             schema, state = CriticOpening, proposal
-            task = (f"Raise between 3 and {budget} challenges covering at least 2 lenses, most material first. "
-                    "You cannot conclude in round 1.")
+            task = ("First list the questions the request leaves open (`gaps`). Then raise between 3 and "
+                    f"{budget} challenges covering at least 2 lenses, most material first. You cannot conclude in round 1.")
         else:
             schema = CriticTurn
             changes = "; ".join(f"{k}: {', '.join(v)}" for k, v in ledger.changes().items() if v) or "none"
             state = (f"{proposal}\n\nChanges since last round: {changes}\n\n## Challenges the Proposer just answered\n"
                      + "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger))
+            if ledger.gaps:
+                state += "\n\n## Open questions you noted in round 1\n" + "\n".join(f"- {g}" for g in ledger.gaps)
             if feedback:
                 state += f"\n\n## Note from the moderator\n{feedback}"
             uncovered = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined([])]
-            task = (f"Rule on every answered challenge exactly once (ACCEPT, MAINTAIN or ESCALATE). "
+            task = (f"Rule on every answered challenge exactly once (ACCEPT, MAINTAIN or ESCALATE); every ACCEPT quotes "
+                    f"its evidence word for word. "
                     f"Then raise at most {budget} new challenge(s), only for material problems (none is fine). "
                     f"Then signal CONCLUDE or CONTINUE. Mandatory lenses with no challenge so far: "
                     f"{', '.join(uncovered) or 'none'}; if you conclude, add a lens_coverage note for each of them.")
@@ -136,11 +139,11 @@ def _known_ids(ledger: Ledger) -> set[str]:
 
 
 def check_synthesis(s: Synthesis, ledger: Ledger) -> list[str]:
-    known, final = _known_ids(ledger), {k for k in ledger.proposal.items() if k[0] in "VSXA"}
+    known, final = _known_ids(ledger), set(ledger.proposal.items())
     needing = {i.id for i in ledger.issues.values() if i.status in ("ESCALATED", "UNRESOLVED")}
     problems = []
     if bad := sorted({n.id for n in s.item_notes} - final):
-        problems.append(f"item_notes may only use final V/S/X/A IDs; unknown: {', '.join(bad)}.")
+        problems.append(f"item_notes may only use IDs of items in the final proposal; unknown: {', '.join(bad)}.")
     refs = [r for n in s.item_notes for r in n.refs] + [r for x in s.rejected for r in x.refs]
     if bad := sorted(set(refs) - known):
         problems.append(f"These refs are not in the record: {', '.join(bad)}.")
@@ -157,7 +160,7 @@ def check_synthesis(s: Synthesis, ledger: Ledger) -> list[str]:
 def coerce_synthesis(s: Synthesis, ledger: Ledger) -> Synthesis:
     from .schemas import OpenQuestion, Rejected
 
-    known, final = _known_ids(ledger), {k for k in ledger.proposal.items() if k[0] in "VSXA"}
+    known, final = _known_ids(ledger), set(ledger.proposal.items())
     notes = [n.model_copy(update={"refs": [r for r in n.refs if r in known]}) for n in s.item_notes if n.id in final]
     rejected = [x.model_copy(update={"refs": [r for r in x.refs if r in known]}) for x in s.rejected]
     covered = {r for x in rejected for r in x.refs}

@@ -48,6 +48,8 @@ def round_md(ledger: Ledger, rnd: int) -> str:
         out += [f"- {k} now reads: {items[k]}" for k in changes.get("added", []) + changes.get("edited", [])]
     signal = f" · {s.signal}" if s.signal != "-" else ""
     out += ["", f"Biggest worry: {s.proposer_worry}", "", f"### Critic · confidence {s.critic_confidence}{signal}", ""]
+    if rnd == 1 and ledger.gaps:
+        out += ["Questions the request leaves open:", *[f"- {g}" for g in ledger.gaps], ""]
     if rulings := _moves(ledger, rnd, "critic", "orchestrator"):
         out += ["Rulings:", *rulings, ""]
     if new := [i for i in ledger.issues.values() if i.round_raised == rnd]:
@@ -111,8 +113,8 @@ def decision(run) -> dict:
         "out_of_scope": [item(x) for x in final.out_of_scope],
         "rejected": [r.model_dump() for r in S.rejected],
         "assumptions": assumptions,
-        "definitions": [d.model_dump() for d in final.definitions],
-        "success_criteria": [k.model_dump() for k in final.success_criteria],
+        "definitions": [{**d.model_dump(), "note": notes[d.id].note if d.id in notes else ""} for d in final.definitions],
+        "success_criteria": [{**k.model_dump(), "note": notes[k.id].note if k.id in notes else ""} for k in final.success_criteria],
         "open_questions": questions,
         "tension": {
             "summary": S.tension_summary,
@@ -146,8 +148,9 @@ def decision_md(doc: dict) -> str:
         or ["- Nothing was dropped."]
     out += ["", "## Assumptions", "", "| ID | Assumption | Why it was implicit | Challenged? |", "|---|---|---|---|"]
     out += [f"| {a['id']} | {a['text']} | {a['why_implicit'] or '—'} | {challenged(a['challenges'])} |" for a in doc["assumptions"]]
-    out += ["", "## Definitions", ""] + [f'- **{d["id"]}** "{d["term"]}": {d["definition"]}' for d in doc["definitions"]]
-    out += ["", "## Success criteria", ""] + [f"- **{k['id']}** {k['metric']}: target {k['target']} ({k['measurement']})"
+    note = lambda e: f"  \n  {e['note']}" if e.get("note") else ""  # noqa: E731
+    out += ["", "## Definitions", ""] + [f'- **{d["id"]}** "{d["term"]}": {d["definition"]}{note(d)}' for d in doc["definitions"]]
+    out += ["", "## Success criteria", ""] + [f"- **{k['id']}** {k['metric']}: target {k['target']} ({k['measurement']}){note(k)}"
                                              for k in doc["success_criteria"]]
     out += ["", "## Open questions for humans", ""]
     if not doc["open_questions"]:

@@ -1,0 +1,360 @@
+{
+  "request": "Project managers should be able to see the full history of engagement with a country before starting a new mission.",
+  "proposals": [
+    {
+      "summary": "This release enables project managers to view the complete engagement history with a selected country, ensuring informed decision-making before initiating new missions. It will provide an accessible and user-friendly interface to present engagement records, including past projects and communications related to the country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable project managers to access the full engagement history for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Enhance decision-making by providing historical context for mission planning."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a user interface in the Government CRM for project managers to select a country."
+        },
+        {
+          "id": "S2",
+          "text": "Retrieve and display engagement history for the selected country, including all past missions and communications."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that the displayed information includes a timeline of engagements, project details, and relevant communication notes."
+        },
+        {
+          "id": "S4",
+          "text": "Enable filters to sort engagement history by date, type of engagement (e.g., meeting, email), and project affiliation."
+        },
+        {
+          "id": "S5",
+          "text": "Implement user access controls to ensure that only authorized personnel can view sensitive engagement information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include edits or deletions of engagement records."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not involve changes to the existing data structure or database schema."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include integration with external data sources for additional insights."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Project managers will have access to the Government CRM system and the required permissions to view engagement histories.",
+          "why_implicit": "The request implies that project managers are users of the system."
+        },
+        {
+          "id": "A2",
+          "text": "The existing data infrastructure can support querying historical engagement records without extensive redesign.",
+          "why_implicit": "The feature relies on the availability of prior engagement data."
+        },
+        {
+          "id": "A3",
+          "text": "The organization intends to maintain confidentiality over sensitive engagement data while allowing project managers access to pertinent historical information.",
+          "why_implicit": "Access controls are necessary to manage sensitive data according to regulations."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "full history of engagement",
+          "definition": "All records of interactions between the organization and the country's representatives, including meetings, correspondence, and project updates, displayed in chronological order."
+        },
+        {
+          "id": "D2",
+          "term": "engagement history",
+          "definition": "A complete list comprising all past missions, communications, and outcomes associated with a specific country."
+        },
+        {
+          "id": "D3",
+          "term": "project managers",
+          "definition": "Designated personnel responsible for overseeing and managing missions and projects within the government CRM system."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User Engagement",
+          "target": "80%",
+          "measurement": "Measured by tracking the percentage of project managers who access and utilize the engagement history feature within the first month of deployment."
+        }
+      ]
+    },
+    {
+      "summary": "This release enables project managers to view the complete engagement history with a selected country, ensuring informed decision-making before initiating new missions. It will provide an accessible and user-friendly interface to present engagement records, including past projects and communications related to the country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable project managers to access the full engagement history for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Enhance decision-making by providing historical context for mission planning."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a user interface in the Government CRM for project managers to select a country."
+        },
+        {
+          "id": "S2",
+          "text": "Retrieve and display engagement history for the selected country, including all past missions and communications. This will include details on record owners who are responsible for maintaining the engagement logs."
+        },
+        {
+          "id": "S3",
+          "text": "Ensure that the displayed information includes a timeline of engagements, project details, and relevant communication notes."
+        },
+        {
+          "id": "S4",
+          "text": "Enable filters to sort engagement history by date, type of engagement (e.g., meeting, email), and project affiliation."
+        },
+        {
+          "id": "S5",
+          "text": "Implement user access controls to ensure that only authorized personnel, defined as those with appropriate clearance levels (e.g., diplomatic, security), can view sensitive engagement information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include edits or deletions of engagement records."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not involve changes to the existing data structure or database schema."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not include integration with external data sources for additional insights."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Project managers will have access to the Government CRM system and the required permissions to view engagement histories.",
+          "why_implicit": "The request implies that project managers are users of the system."
+        },
+        {
+          "id": "A2",
+          "text": "The existing data infrastructure can support querying historical engagement records without extensive redesign.",
+          "why_implicit": "The feature relies on the availability of prior engagement data."
+        },
+        {
+          "id": "A3",
+          "text": "The organization intends to maintain confidentiality over sensitive engagement data while allowing project managers access to pertinent historical information.",
+          "why_implicit": "Access controls are necessary to manage sensitive data according to regulations."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "full history of engagement",
+          "definition": "All records of interactions between the organization and the country's representatives, including meetings, correspondence, and project updates, displayed in chronological order. This includes informal communications when directly relevant to mission planning."
+        },
+        {
+          "id": "D2",
+          "term": "engagement history",
+          "definition": "A complete list comprising all past missions, communications, and outcomes associated with a specific country, including relevant informal interactions."
+        },
+        {
+          "id": "D3",
+          "term": "project managers",
+          "definition": "Designated personnel responsible for overseeing and managing missions and projects within the government CRM system."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of project managers engaging with the feature",
+          "target": "80%",
+          "measurement": "Measured by tracking the unique number of project managers who access the engagement history feature at least once and the frequency of their access within the first month of deployment."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The access control implementation needs explicit details on how sensitive information will be protected and who qualifies as 'authorized personnel.'",
+      "failure_scenario": "A project manager without diplomatic clearance requests access, mistakenly retrieves sensitive engagement history, leading to potential breaches of confidentiality and trust with foreign entities.",
+      "resolution_test": "S5 specifies the roles and criteria that define 'authorized personnel' and the logic behind the access control mechanism.",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The access control implementation needs explicit details on how sensitive information will be protected and who qualifies as 'authorized personnel.'"
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will clarify the access control mechanism and specify the roles that qualify as 'authorized personnel'. This ensures sensitive information is protected and only accessible to those who legitimately require it. [changed: S5]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "S5 now specifies how sensitive information will be protected and who qualifies as 'authorized personnel,' addressing the confidentiality concern."
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1",
+        "D2"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definitions of 'full history of engagement' and 'engagement history' lack clarity on the criteria for what records are included or excluded.",
+      "failure_scenario": "A project manager retrieves engagement history and finds it incomplete because informal communications ('casual discussions') are excluded, missing crucial context for decision-making.",
+      "resolution_test": "D1 and D2 are revised to clarify the criteria for what constitutes a 'full history,' including a defined scope of informal interactions.",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions of 'full history of engagement' and 'engagement history' lack clarity on the criteria for what records are included or excluded."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will revise the definitions to clarify the criteria for what records are included in the engagement history, ensuring that project managers have all necessary context for decision-making. [changed: D1, D2]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "D1 and D2 have been revised to clarify the criteria for what records are included in the engagement history, ensuring completeness of information."
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There should be clarity on who maintains the engagement history records, especially regarding the accuracy and updates of these records over time.",
+      "failure_scenario": "If a project manager accesses outdated or incorrect engagement history, they might base critical decisions on false premises, leading to failed missions.",
+      "resolution_test": "S2 provides an ownership structure detailing how engagement records are maintained, updated, and the responsibility assigned for ensuring data quality.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There should be clarity on who maintains the engagement history records, especially regarding the accuracy and updates of these records over time."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will include details in S2 about the ownership structure responsible for maintaining and updating engagement records, which will help ensure their accuracy and currency. [changed: S2]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "S2 will now include details about the ownership structure responsible for maintaining and updating engagement records, ensuring data quality."
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MINOR",
+      "challenge": "The success criteria defined in K1 regarding user engagement does not specify how 'engagement' is measured in a quantifiable way.",
+      "failure_scenario": "The percentage of project managers accessing the history feature might be misleadingly reported, as 'engagement' is vague and could include minimal interactions.",
+      "resolution_test": "K1 refines what counts as engagement, perhaps defining it as a combination of the number of unique project managers accessing the feature and the frequency of access.",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The success criteria defined in K1 regarding user engagement does not specify how 'engagement' is measured in a quantifiable way."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will refine the success criteria to specify how 'engagement' is measured, ensuring clear tracking of meaningful usage of the feature by project managers. [changed: K1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "K1 has been refined to specify how 'engagement' is measured, ensuring clarity in usage tracking."
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 4,
+      "open": 4,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring data access and permissions are correctly managed to protect sensitive engagement information.",
+      "critic_worry": "Lack of clarity around sensitive data access and definitions may lead to critical failures in data handling.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 4,
+      "open": 0,
+      "resolved": 4,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 85,
+      "proposer_worry": "Ensuring the updated access control mechanism effectively protects sensitive data while allowing necessary access for project managers.",
+      "critic_worry": "There could still be ambiguity in the user access controls affecting sensitive data protection.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

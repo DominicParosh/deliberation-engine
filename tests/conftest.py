@@ -53,12 +53,17 @@ def challenge(severity="MAJOR", lens="CONFIDENTIALITY", targets=("S1",)) -> dict
 
 
 def opening_json(*challenges) -> str:
-    return json.dumps({"new_challenges": list(challenges), "confidence": 30, "biggest_worry": "Leaks."})
+    return json.dumps({"gaps": ["Who decides who the right person is?"], "new_challenges": list(challenges),
+                       "confidence": 30, "biggest_worry": "Leaks."})
 
 
-def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", coverage=(), confidence=60) -> str:
+EVIDENCE = "Know who to call."  # appears in every fake proposal, so an ACCEPT quoting it is supported
+
+
+def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", coverage=(), confidence=60, evidence=EVIDENCE) -> str:
     return json.dumps({
-        "verdicts": [{"challenge_id": c, "ruling": r, "rationale": "Considered."} for c, r in rulings.items()],
+        "verdicts": [{"challenge_id": c, "ruling": r, "rationale": "Considered.", "evidence": evidence if r == "ACCEPT" else ""}
+                     for c, r in rulings.items()],
         "new_challenges": list(new), "signal": signal, "confidence": confidence, "biggest_worry": "Leaks.",
         "lens_coverage": [{"lens": lens, "note": "No material risk."} for lens in coverage]})
 

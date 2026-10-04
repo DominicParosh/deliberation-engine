@@ -1,0 +1,913 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "proposals": [
+    {
+      "summary": "This release will implement a notification system to alert users when engagement with a country has significantly decreased over a predefined period. The goal is to help project managers and regional coordinators proactively manage relationships with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users receive timely alerts when engagement with a country has decreased."
+        },
+        {
+          "id": "V2",
+          "text": "Users can track and view engagement history for all countries in the CRM."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a monitoring system to define and track 'engagement' based on frequency of interactions."
+        },
+        {
+          "id": "S2",
+          "text": "Set predefined thresholds for what constitutes a decrease in engagement (e.g., no contact in the last six months)."
+        },
+        {
+          "id": "S3",
+          "text": "Implement a notification system that alerts users (email or in-app) when engagement goes below the threshold."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to customize notification settings (frequency, types of countries, etc.)."
+        },
+        {
+          "id": "S5",
+          "text": "Create an engagement history view in the CRM that shows last contact dates and types of interactions for each country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "The release will not include any machine learning or advanced predictive analytics for engagement forecasting."
+        },
+        {
+          "id": "X2",
+          "text": "Historical data analysis beyond the last two years will not be included."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external communication platforms for tracking engagement (such as emails or calls) is not part of this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have a standard definition of what 'cold' means in terms of engagement, assuming that no contact for the last six months indicates a cold relationship.",
+          "why_implicit": "The request implies there is a consensus on the timeframe that defines cold relationships."
+        },
+        {
+          "id": "A2",
+          "text": "Users will actively use the alert system and value notifications regarding country engagement.",
+          "why_implicit": "The request indicates a need for alerts, suggesting users will find this feature beneficial."
+        },
+        {
+          "id": "A3",
+          "text": "The CRM users have access to or regular interaction with the relevant data about engagement.",
+          "why_implicit": "The request relies on the assumption that users will utilize the engagement history to manage relationships."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "goes cold",
+          "definition": "Engagement is considered 'cold' if there has been no contact for a period of six months."
+        },
+        {
+          "id": "D2",
+          "term": "alert",
+          "definition": "A notification sent via email or in-app message informing users of the decreased engagement status."
+        },
+        {
+          "id": "D3",
+          "term": "engagement history",
+          "definition": "A record of all interactions with a country, including dates and types of communication (meetings, emails, reports, etc.)."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of users receiving alerts",
+          "target": "At least 80% of users configured for notifications receive alerts within 24 hours of the engagement going cold.",
+          "measurement": "Count of alerts sent and confirmed received by users in the first month after launch."
+        },
+        {
+          "id": "K2",
+          "metric": "User satisfaction with the alert system",
+          "target": "At least 75% user satisfaction rating on the effectiveness of alerts in a post-deployment survey.",
+          "measurement": "User feedback survey conducted 6 weeks after rollout."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a notification system to alert users when engagement with a country has significantly decreased over a predefined period. The goal is to help project managers and regional coordinators proactively manage relationships with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users receive timely alerts when engagement with a country has decreased."
+        },
+        {
+          "id": "V2",
+          "text": "Users can track and view engagement history for all countries in the CRM."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a monitoring system to define and track 'engagement' based on frequency of interactions."
+        },
+        {
+          "id": "S2",
+          "text": "Set predefined thresholds for what constitutes a decrease in engagement (e.g., no contact in the last six months), and notify only project managers and regional coordinators."
+        },
+        {
+          "id": "S3",
+          "text": "Implement a notification system that alerts users (email or in-app) when engagement goes below the threshold."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to customize notification settings (frequency, types of countries, etc.)."
+        },
+        {
+          "id": "S5",
+          "text": "Create an engagement history view in the CRM that shows last contact dates and types of interactions for each country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "The release will not include any machine learning or advanced predictive analytics for engagement forecasting."
+        },
+        {
+          "id": "X2",
+          "text": "Historical data analysis beyond the last two years will not be included."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external communication platforms for tracking engagement (such as emails or calls) is not part of this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users may have different thresholds for defining 'cold' relationships, and a nominated group will manage and interpret this across contexts.",
+          "why_implicit": "The request assumes consensus on a cold engagement definition but does not specify how this will be managed or communicated."
+        },
+        {
+          "id": "A2",
+          "text": "Users will actively use the alert system and value notifications regarding country engagement.",
+          "why_implicit": "The request indicates a need for alerts, suggesting users will benefit from this feature."
+        },
+        {
+          "id": "A3",
+          "text": "The CRM users have access to or regular interaction with the relevant data about engagement.",
+          "why_implicit": "The request relies on the assumption that users will utilize the engagement history to manage relationships."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "\"goes cold\"",
+          "definition": "Engagement is considered 'cold' if there has been no contact for a period of six months, but will also consider the frequency of various engagement types (e.g., meetings, reports)."
+        },
+        {
+          "id": "D2",
+          "term": "\"alert\"",
+          "definition": "A notification sent via email or in-app message informing users of the decreased engagement status."
+        },
+        {
+          "id": "D3",
+          "term": "\"engagement history\"",
+          "definition": "A record of all interactions with a country, including dates and types of communication (meetings, emails, reports, etc.) and who is responsible for updating this information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of users receiving alerts",
+          "target": "At least 80% of users configured for notifications receive alerts within 24 hours of the engagement going cold.",
+          "measurement": "Count of alerts sent and confirmed received by users in the first month after launch, using validated engagement data."
+        },
+        {
+          "id": "K2",
+          "metric": "User satisfaction with the alert system",
+          "target": "At least 75% user satisfaction rating on the effectiveness of alerts in a post-deployment survey.",
+          "measurement": "User feedback survey conducted 6 weeks after rollout."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a notification system to alert users when engagement with a country has significantly decreased over a predefined period. The goal is to help project managers and regional coordinators proactively manage relationships with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users receive timely alerts when engagement with a country has decreased."
+        },
+        {
+          "id": "V2",
+          "text": "Users can track and view engagement history for all countries in the CRM."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a monitoring system to define and track 'engagement' based on frequency of interactions."
+        },
+        {
+          "id": "S2",
+          "text": "Set predefined thresholds for what constitutes a decrease in engagement (e.g., no contact in the last six months), and notify only project managers and regional coordinators."
+        },
+        {
+          "id": "S3",
+          "text": "Implement a notification system that alerts users (email or in-app) when engagement goes below the threshold."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to customize notification settings (frequency, types of countries, etc.)."
+        },
+        {
+          "id": "S5",
+          "text": "Create an engagement history view in the CRM that shows last contact dates and types of interactions for each country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "The release will not include any machine learning or advanced predictive analytics for engagement forecasting."
+        },
+        {
+          "id": "X2",
+          "text": "Historical data analysis beyond the last two years will not be included."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external communication platforms for tracking engagement (such as emails or calls) is not part of this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users may have different thresholds for defining 'cold' relationships, and a nominated group will manage and interpret this across contexts.",
+          "why_implicit": "The request assumes consensus on a cold engagement definition but does not specify how this will be managed or communicated."
+        },
+        {
+          "id": "A2",
+          "text": "Users will actively use the alert system and value notifications regarding country engagement.",
+          "why_implicit": "The request indicates a need for alerts, suggesting users will benefit from this feature."
+        },
+        {
+          "id": "A3",
+          "text": "The CRM users have access to or regular interaction with the relevant data about engagement.",
+          "why_implicit": "The request relies on the assumption that users will utilize the engagement history to manage relationships."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "\"goes cold\"",
+          "definition": "Engagement is considered 'cold' if there has been no contact for a period of six months, but will also consider the frequency of various engagement types (e.g., meetings, reports)."
+        },
+        {
+          "id": "D2",
+          "term": "\"alert\"",
+          "definition": "A notification sent via email or in-app message informing users of the decreased engagement status."
+        },
+        {
+          "id": "D3",
+          "term": "\"engagement history\"",
+          "definition": "A record of all interactions with a country, including dates and types of communication (meetings, emails, reports, etc.) and who is responsible for updating this information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of alerts sent",
+          "target": "At least 80% of users configured for notifications receive alerts within 24 hours of the engagement going cold.",
+          "measurement": "Count of alerts sent and confirmed received by users in the first month after launch, using validated engagement data and regular updates."
+        },
+        {
+          "id": "K2",
+          "metric": "User satisfaction with the alert system",
+          "target": "At least 75% user satisfaction rating on the effectiveness of alerts in a post-deployment survey.",
+          "measurement": "User feedback survey conducted 6 weeks after rollout."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a notification system to alert users when engagement with a country has significantly decreased over a predefined period. The goal is to help project managers and regional coordinators proactively manage relationships with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users receive timely alerts when engagement with a country has decreased."
+        },
+        {
+          "id": "V2",
+          "text": "Users can track and view engagement history for all countries in the CRM."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a monitoring system to define and track 'engagement' based on frequency of interactions, with clear ownership assigned to the Regional Coordinator."
+        },
+        {
+          "id": "S2",
+          "text": "Set predefined thresholds for what constitutes a decrease in engagement (e.g., no contact in the last six months), and notify only project managers and regional coordinators."
+        },
+        {
+          "id": "S3",
+          "text": "Implement a notification system that alerts users (email or in-app) when engagement goes below the threshold, including details such as last contact date and type of communication."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to customize notification settings (frequency, types of countries, etc.)."
+        },
+        {
+          "id": "S5",
+          "text": "Create an engagement history view in the CRM that shows last contact dates and types of interactions for each country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "The release will not include any machine learning or advanced predictive analytics for engagement forecasting."
+        },
+        {
+          "id": "X2",
+          "text": "Historical data analysis beyond the last two years will not be included."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external communication platforms for tracking engagement (such as emails or calls) is not part of this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users may have different thresholds for defining 'cold' relationships, and a nominated group will manage and interpret this across contexts.",
+          "why_implicit": "The request assumes consensus on a cold engagement definition but does not specify how this will be managed or communicated."
+        },
+        {
+          "id": "A2",
+          "text": "Users will actively use the alert system and value notifications regarding country engagement.",
+          "why_implicit": "The request indicates a need for alerts, suggesting users will benefit from this feature."
+        },
+        {
+          "id": "A3",
+          "text": "The CRM users have access to or regular interaction with the relevant data about engagement.",
+          "why_implicit": "The request relies on the assumption that users will utilize the engagement history to manage relationships."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "\"goes cold\"",
+          "definition": "Engagement is considered 'cold' if there has been no contact for a period of six months, but will also consider the frequency of various engagement types (e.g., meetings, reports)."
+        },
+        {
+          "id": "D2",
+          "term": "\"alert\"",
+          "definition": "A notification sent via email or in-app message informing users of the decreased engagement status, including details such as last contact date, type of communication, and a recommended follow-up action."
+        },
+        {
+          "id": "D3",
+          "term": "\"engagement history\"",
+          "definition": "A record of all interactions with a country, including dates and types of communication (meetings, emails, reports, etc.) and who is responsible for updating this information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of alerts sent;",
+          "target": "At least 80% of users configured for notifications receive alerts within 24 hours of the engagement going cold.",
+          "measurement": "Count of alerts sent and confirmed received by users in the first month after launch, using validated engagement data and regular updates based on checks conducted by data managers."
+        },
+        {
+          "id": "K2",
+          "metric": "User satisfaction with the alert system;",
+          "target": "At least 75% user satisfaction rating on the effectiveness of alerts in a post-deployment survey.",
+          "measurement": "User feedback survey conducted 6 weeks after rollout."
+        }
+      ]
+    },
+    {
+      "summary": "This release will implement a notification system to alert users when engagement with a country has significantly decreased over a predefined period. The goal is to help project managers and regional coordinators proactively manage relationships with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users receive timely alerts when engagement with a country has decreased."
+        },
+        {
+          "id": "V2",
+          "text": "Users can track and view engagement history for all countries in the CRM."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Develop a monitoring system to define and track 'engagement' based on frequency of interactions, with clear ownership assigned to the Regional Coordinator."
+        },
+        {
+          "id": "S2",
+          "text": "Set predefined thresholds for what constitutes a decrease in engagement (e.g., no contact in the last six months), and notify only project managers and regional coordinators with limited summary information that does not disclose confidential details."
+        },
+        {
+          "id": "S3",
+          "text": "Implement a notification system that alerts users (email or in-app) when engagement goes below the threshold, including details such as last contact date and type of communication."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to customize notification settings (frequency, types of countries, etc.)."
+        },
+        {
+          "id": "S5",
+          "text": "Create an engagement history view in the CRM that shows last contact dates and types of interactions for each country."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "The release will not include any machine learning or advanced predictive analytics for engagement forecasting."
+        },
+        {
+          "id": "X2",
+          "text": "Historical data analysis beyond the last two years will not be included."
+        },
+        {
+          "id": "X3",
+          "text": "Integration with external communication platforms for tracking engagement (such as emails or calls) is not part of this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users may have different thresholds for defining 'cold' relationships, and a nominated group will manage and interpret this across contexts.",
+          "why_implicit": "The request assumes consensus on a cold engagement definition but does not specify how this will be managed or communicated."
+        },
+        {
+          "id": "A2",
+          "text": "Users will actively use the alert system and value notifications regarding country engagement.",
+          "why_implicit": "The request indicates a need for alerts, suggesting users will benefit from this feature."
+        },
+        {
+          "id": "A3",
+          "text": "The CRM users have access to or regular interaction with the relevant data about engagement.",
+          "why_implicit": "The request relies on the assumption that users will utilize the engagement history to manage relationships."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "\"goes cold\"",
+          "definition": "Engagement is considered 'cold' if there has been no contact for a period of six months, but will also consider the frequency of various engagement types (e.g., meetings, reports)."
+        },
+        {
+          "id": "D2",
+          "term": "\"alert\"",
+          "definition": "A notification sent via email or in-app message informing users of the decreased engagement status, including details such as last contact date, type of communication, and a recommended follow-up action."
+        },
+        {
+          "id": "D3",
+          "term": "\"engagement history\"",
+          "definition": "A record of all interactions with a country, including dates and types of communication (meetings, emails, reports, etc.) and who is responsible for updating this information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of alerts sent",
+          "target": "At least 80% of users configured for notifications receive alerts within 24 hours of the engagement going cold.",
+          "measurement": "Count of alerts sent and confirmed received by users in the first month after launch, using validated engagement data and regular updates based on checks conducted by data managers."
+        },
+        {
+          "id": "K2",
+          "metric": "User satisfaction with the alert system",
+          "target": "At least 75% user satisfaction rating on the effectiveness of alerts in a post-deployment survey.",
+          "measurement": "User feedback survey conducted 6 weeks after rollout."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "S2 states that a decrease in engagement is defined as no contact in the last six months, but it doesn’t specify who is notified of this engagement drop.",
+      "failure_scenario": "A project manager receives an alert about a country going cold, but they inadvertently share this sensitive information with an external stakeholder, leading to diplomatic tensions.",
+      "resolution_test": "Proposer must detail which roles will receive alerts and how notifications are restricted to ensure only authorized personnel are informed.",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S2 states that a decrease in engagement is defined as no contact in the last six months, but it doesn’t specify who is notified of this engagement drop."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will clarify which roles specifically receive alerts and implement access restrictions to ensure sensitivity is upheld. [changed: S2]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer clarified that only project managers and regional coordinators will receive alerts, ensuring sensitivity in notifications."
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "D1 defines 'goes cold' without considering variations in engagement types or communication among countries, which could lead to confusion in applying this threshold.",
+      "failure_scenario": "A country with mostly sporadic, informal communication may register as 'going cold' despite having a continuous supportive relationship, ultimately affecting resource allocation or focus.",
+      "resolution_test": "Proposer must revise the definition of 'goes cold' to include alternative engagement metrics and provide clarity on how this will be implemented.",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D1 defines 'goes cold' without considering variations in engagement types or communication among countries, which could lead to confusion in applying this threshold."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will redefine 'goes cold' to include metrics such as frequency of different types of engagement, adding clarity on its application. [changed: D1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer revised the definition of 'goes cold' to include different engagement metrics, providing clearer guidelines."
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MINOR",
+      "challenge": "A1 assumes a standard definition of cold relationships without identifying WHO interprets and manages variations in that definition across different users and contexts.",
+      "failure_scenario": "A regional coordinator applies a different threshold for 'cold' leading to inconsistent alerts and disengagement efforts, wasting resources on unnecessary outreach.",
+      "resolution_test": "Proposer must clarify who owns the definition of 'cold' and how variations will be managed in practice to avoid confusion.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A1 assumes a standard definition of cold relationships without identifying WHO interprets and manages variations in that definition across different users and contexts."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will establish who owns the definition of 'cold' and how variations across users will be managed to maintain consistency. [changed: A1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer established responsibility for interpreting and managing the definition of 'cold', which will enhance consistency."
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "K1's success criteria do not account for the accuracy or completeness of engagement data used to trigger alerts, which is critical for effectiveness.",
+      "failure_scenario": "If inaccurate or outdated records are considered for alerts, relevant project managers might receive false alerts, leading to unnecessary outreach efforts or ignored engagements.",
+      "resolution_test": "Proposer must demonstrate how engagement data will be validated and maintained to ensure accuracy before alerts are triggered.",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "K1's success criteria do not account for the accuracy or completeness of engagement data used to trigger alerts, which is critical for effectiveness."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will include a process for validating and maintaining engagement data to ensure accuracy before alerts are triggered. [changed: K1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the proposer stated they will include a process for validating engagement data, the lack of detail on how this validation will occur leaves critical gaps."
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "To ensure accuracy in alerts, I will specify a detailed process for validating engagement data that includes regular reviews and updates by designated users, ensuring that alerts are based on reliable information. [changed: K1]"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the proposer stated a desire to include a process for validating engagement data, the methodology and specifics of the validation process remain unclear."
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers."
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "D3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MINOR",
+      "challenge": "D3 does not clarify who is responsible for maintaining the engagement history or how it will be updated to ensure ongoing accuracy.",
+      "failure_scenario": "If engagement history records are not consistently updated, project managers operate with outdated information, which leads to ineffective relationship management.",
+      "resolution_test": "Proposer must specify the process and role responsible for maintaining and updating the engagement history within the CRM.",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "D3 does not clarify who is responsible for maintaining the engagement history or how it will be updated to ensure ongoing accuracy."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will specify the role responsible for maintaining and updating the engagement history to ensure ongoing accuracy. [changed: D3]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer specified the role responsible for maintaining engagement history, ensuring ongoing accuracy."
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "K1 does not specify how the engagement data will be validated and kept up-to-date regularly, which is critical for alert effectiveness.",
+      "failure_scenario": "If the engagement data is not routinely validated, alerts may be sent based on incorrect or outdated data, leading to project managers misallocating their resources.",
+      "resolution_test": "Proposer must detail the process for regular validation and updating of engagement data to ensure accuracy before alerts are sent.",
+      "id": "C6",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "K1 does not specify how the engagement data will be validated and kept up-to-date regularly, which is critical for alert effectiveness."
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will outline a systematic approach for the routine validation and updating of engagement data, including assigning responsibility to specific roles within the team to ensure data accuracy before alerts are triggered. [changed: K1]"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal outlines a systematic approach for validation but lacks detail on what specific processes will be implemented and how consistency will be ensured."
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will specify the validation process for engagement data, including routine checks and maintaining data completeness, which will be the responsibility of designated data managers. This ensures that data is accurate and updated before triggering alerts. [changed: K1]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal outlines a validation process but does not detail the specific methods or checks to be implemented, and how consistently this will occur, leaving room for inaccuracies in engagement data."
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers."
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'alerts' in K1 lacks specificity regarding the content and clarity of the information communicated to users.",
+      "failure_scenario": "If the alert messages are vague or confusing, project managers may misinterpret the level of urgency or the necessary actions in response to the alert, leading to inadequate engagement follow-up with key diplomatic contacts.",
+      "resolution_test": "Proposer must define what information and level of detail each alert will include to ensure clarity for users.",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'alerts' in K1 lacks specificity regarding the content and clarity of the information communicated to users."
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will define the content of alerts to include specific details such as the last contact date, type of communication, and a recommendation for follow-up actions, ensuring clarity for users. [changed: K1, D2]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer has defined the content of alerts to include specific details, ensuring clarity and addressing the previous challenge."
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "S1 does not specify who is responsible for tracking and defining 'engagement' metrics, which raises questions about ongoing ownership and accountability.",
+      "failure_scenario": "If there is no clear ownership of defining 'engagement', different users may apply inconsistent criteria or neglect monitoring altogether, causing operational chaos as project managers receive inconsistent alerts.",
+      "resolution_test": "Proposer must designate specific roles responsible for establishing, tracking, and updating engagement definitions.",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S1 does not specify who is responsible for tracking and defining 'engagement' metrics, which raises questions about ongoing ownership and accountability."
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will assign specific roles, such as the Regional Coordinator, to own the tracking and definition of engagement metrics, ensuring accountability and consistency in monitoring. [changed: S1]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer has designated specific roles for tracking and defining engagement metrics, addressing the ownership issue."
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on how sensitive diplomatic information will be handled to ensure that alerts do not inadvertently expose confidential engagement information to unauthorized users.",
+      "failure_scenario": "If the alert system sends out details about diplomatic contacts to individuals without a proper need-to-know basis, sensitive information could be leaked, damaging relations and endangering operations.",
+      "resolution_test": "Proposer must outline measures to ensure alerts are only sent to authorized users based on their roles and clearance levels.",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on how sensitive diplomatic information will be handled to ensure that alerts do not inadvertently expose confidential engagement information to unauthorized users."
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "To address the concern about confidentiality, we will specify that alerts will include only summary information regarding engagement decreases without disclosing sensitive diplomatic details, and access to alerts will be restricted to authorized users based on role-based permissions. [changed: S2]"
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies that alerts will include only summary information and will be restricted to authorized users based on role-based permissions."
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 5,
+      "open": 5,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 40,
+      "proposer_worry": "The definition of 'cold' may vary significantly among users, leading to frustration if thresholds do not meet user expectations.",
+      "critic_worry": "The proposal lacks clarity on user permissions for sensitive alerts and key definitions that could lead to miscommunication.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 6,
+      "open": 2,
+      "resolved": 4,
+      "escalated": 0,
+      "disagreement": 0.4,
+      "proposer_confidence": 80,
+      "critic_confidence": 65,
+      "proposer_worry": "Ensuring all teams interpret and implement the definition of 'cold' engagement consistently across various contexts.",
+      "critic_worry": "Ongoing validation of engagement data remains undefined, risking the effectiveness of the alert system.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 3,
+      "resolved": 4,
+      "escalated": 1,
+      "disagreement": 0.57,
+      "proposer_confidence": 75,
+      "critic_confidence": 60,
+      "proposer_worry": "I am concerned that despite the revisions, the details may not be sufficiently comprehensive to ensure rigorous data validation processes.",
+      "critic_worry": "Lack of detail on the alert clarity and ownership structure could lead to ineffective notifications and confusion.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 9,
+      "open": 1,
+      "resolved": 6,
+      "escalated": 2,
+      "disagreement": 0.38,
+      "proposer_confidence": 75,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring data quality and regular updates to engagement metrics is crucial for the effectiveness of the alert system.",
+      "critic_worry": "The proposal does not address how to protect sensitive diplomatic information when sending alerts.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 9,
+      "open": 0,
+      "resolved": 7,
+      "escalated": 2,
+      "disagreement": 0.25,
+      "proposer_confidence": 80,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring that only authorized users receive alerts without compromising sensitive information.",
+      "critic_worry": "Ensuring the accuracy and completeness of engagement data remains unaddressed, which impacts overall alert effectiveness.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

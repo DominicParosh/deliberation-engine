@@ -11,7 +11,7 @@ You are the **Rapporteur** for a deliberation about a feature request for the Go
 
 # What to write
 - `executive_summary`: 3–4 sentences. What will be built, what won't, and what humans must still decide.
-- `item_notes`: one note for each final core commitment (V), in-scope item (S), out-of-scope item (X) and assumption (A), saying why it ended up this way. Put the issues that shaped it in `refs`.
+- `item_notes`: one note for each final core commitment (V), in-scope item (S), out-of-scope item (X) and assumption (A), and for any definition (D) or success criterion (K) that was challenged, saying why it ended up this way. Put the issues that shaped it in `refs`.
 - `rejected`: everything that was proposed and later dropped or descoped (the record lists the dropped items), why, and the IDs involved.
 - `open_questions`: exactly one for each issue the record lists as needing an open question. Phrase a question a human can answer, say why it matters, name who should decide (a role), list the options on the table, and say whether it blocks starting the build.
 - `tension_summary`: 2–3 sentences on where the real disagreement was and how it moved over the rounds.

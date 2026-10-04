@@ -15,6 +15,10 @@ def _upper(value: object) -> object:
     return value.strip().upper().replace(" ", "_") if isinstance(value, str) else value
 
 
+def _unquote(value: object) -> object:
+    return value.strip().strip("\"'“”‘’").strip() if isinstance(value, str) else value
+
+
 def Choice(*values: str):  # noqa: N802 - used like a type
     return Annotated[Literal[values], BeforeValidator(_upper)]
 
@@ -45,7 +49,7 @@ class Assumption(BaseModel):
 
 class Definition(BaseModel):
     id: str = Field(description="D1, D2, ...")
-    term: str = Field(description="The vague phrase, quoted from the request.")
+    term: Annotated[str, BeforeValidator(_unquote)] = Field(description="The vague phrase from the request.")
     definition: str = Field(description="An operational definition an engineer can build and a tester can check.")
 
 
@@ -102,6 +106,8 @@ class NewChallenge(BaseModel):
 
 class Verdict(BaseModel):
     challenge_id: str
+    evidence: str = Field(description="Words copied exactly from the current proposal or the Proposer's answer that meet "
+                                      "your resolution test. Empty if nothing meets it, in which case you cannot ACCEPT.")
     ruling: Ruling
     rationale: str = Field(description="1-2 sentences. For MAINTAIN, give a new argument, not a repeat.")
 
@@ -114,6 +120,8 @@ class LensNote(BaseModel):
 class CriticOpening(BaseModel):
     """Round 1. There is deliberately no signal field: concluding in round 1 is impossible, not just forbidden."""
 
+    gaps: list[str] = Field(description="Questions the original request leaves open that a buildable release must answer, "
+                                        "one short question each. Write these before your challenges.")
     new_challenges: list[NewChallenge]
     confidence: int = Field(description="0-100: how ready this proposal is to build as written.")
     biggest_worry: str = Field(description="One sentence.")
@@ -132,7 +140,7 @@ class CriticTurn(BaseModel):
 
 
 class ItemNote(BaseModel):
-    id: str = Field(description="A final item ID (V, S, X or A).")
+    id: str = Field(description="A final item ID (V, S, X, A, D or K).")
     note: str = Field(description="One or two sentences on why it ended up this way.")
     refs: list[str] = Field(description="Issue IDs (C...) that shaped it; empty if it was never challenged.")
 

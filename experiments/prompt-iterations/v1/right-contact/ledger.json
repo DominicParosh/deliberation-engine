@@ -1,0 +1,395 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "proposals": [
+    {
+      "summary": "This release provides a clearer method for identifying and tracking primary contacts in each country based on specific roles. It will enable users to efficiently manage and navigate the government relationships by having a dedicated contact person for each ministry or project.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can identify the primary contact for each country based on their role in the organization."
+        },
+        {
+          "id": "V2",
+          "text": "Users can access and modify details of the primary contacts including their responsibilities and affiliation."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new contact type labeled 'Primary Contact' for each country."
+        },
+        {
+          "id": "S2",
+          "text": "Develop a user interface that displays primary contacts for each country alongside the existing contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to assign roles to contacts, indicating their responsibilities (e.g., Project Lead, Ministry Contact)."
+        },
+        {
+          "id": "S4",
+          "text": "Implement a search filter that allows users to find primary contacts by country and role."
+        },
+        {
+          "id": "S5",
+          "text": "Enable users to edit and update details of primary contacts, including contact information and assigned role."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide historical engagement data linked to primary contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not include additional permissions for viewing contact information beyond current user roles."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have necessary permissions to access and modify contact information.",
+          "why_implicit": "The request assumes that users are currently allowed to manage contact details."
+        },
+        {
+          "id": "A2",
+          "text": "There is a clear distinction between primary contacts and other types of contacts.",
+          "why_implicit": "The purpose of the feature hinges on being able to categorize contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Every ministry or project will have at least one primary contact designated.",
+          "why_implicit": "To make the system meaningful, there must be a standard process for assigning contacts."
+        },
+        {
+          "id": "A4",
+          "text": "Users are trained and comfortable with navigating the updated interface.",
+          "why_implicit": "The change in tracking will require users to adapt to a new way of accessing contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "An improved method of tracking which includes the ability to categorize contacts and easily access their information."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary point of contact for each specific role or project within a country."
+        },
+        {
+          "id": "D3",
+          "term": "track",
+          "definition": "The ability to view, modify, and search for contact information within the CRM system."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users able to successfully locate the primary contact for their designated countries",
+          "target": "85% of users should be able to locate the correct primary contact within 2 minutes",
+          "measurement": "User testing before release and feedback gathering post-release."
+        }
+      ]
+    },
+    {
+      "summary": "This release provides a clearer method for identifying and tracking primary contacts in each country based on specific roles. It will enable users to efficiently manage and navigate the government relationships by having a dedicated contact person for each ministry or project.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can identify the primary contact for each country based on their role in the organization."
+        },
+        {
+          "id": "V2",
+          "text": "Users can access and modify details of the primary contacts including their responsibilities and affiliation."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create a new contact type labeled 'Primary Contact' for each country."
+        },
+        {
+          "id": "S2",
+          "text": "Develop a user interface that displays primary contacts for each country alongside the existing contacts."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to assign roles to contacts, indicating their responsibilities with validated permissions (e.g., Project Lead, Ministry Contact)."
+        },
+        {
+          "id": "S4",
+          "text": "Implement a search filter that allows users to find primary contacts by country and role."
+        },
+        {
+          "id": "S5",
+          "text": "Enable users to edit and update details of primary contacts, including contact information and assigned role."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not provide historical engagement data linked to primary contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not include additional permissions for viewing contact information beyond current user roles."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have necessary permissions to access and modify contact information.",
+          "why_implicit": "The request assumes that users are currently allowed to manage contact details."
+        },
+        {
+          "id": "A2",
+          "text": "There is a defined ownership process for contact data updates, clarifying who is responsible for data integrity and how discrepancies will be resolved.",
+          "why_implicit": "The request assumes that roles and responsibilities for managing primary contacts are well understood and documented."
+        },
+        {
+          "id": "A3",
+          "text": "There are mechanisms in place to ensure every ministry or project has at least one designated primary contact before the implementation.",
+          "why_implicit": "To ensure the effectiveness of primary contacts, it must be validated that no ministries are left without designated contacts."
+        },
+        {
+          "id": "A4",
+          "text": "Users are trained and comfortable with navigating the updated interface.",
+          "why_implicit": "The change in tracking will require users to adapt to a new way of accessing contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "An improved method of tracking which includes the ability to categorize contacts efficiently, access their information quickly, and prioritize contacts based on their roles compared to the previous method."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary point of contact for each specific role or project within a country."
+        },
+        {
+          "id": "D3",
+          "term": "track",
+          "definition": "The ability to view, modify, and search for contact information within the CRM system."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users able to successfully locate the primary contact for their designated countries with accurate information.",
+          "target": "85% of users should be able to locate the correct primary contact within 2 minutes.",
+          "measurement": "User testing before release and feedback gathering post-release, with an additional check on data accuracy and freshness."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'better way' is vague and does not specify what improvements are being made compared to the existing tracking method.",
+      "failure_scenario": "A regional coordinator searches for primary contacts but is unclear on what enhancements were made, leading to inconsistency in how contacts are categorized or accessed.",
+      "resolution_test": "Provide a detailed comparison of the current contact tracking method versus the proposed method, with clear metrics on expected improvements.",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'better way' is vague and does not specify what improvements are being made compared to the existing tracking method."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will clarify the definition of 'better way' to explicitly state the specific improvements compared to the existing method and add metrics for tracking those improvements. [changed: D1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer clarified the definition of 'better way', providing specific improvements over the existing method."
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "Assuming a clear distinction between primary contacts and other types of contacts requires defined ownership of data updates and responsibilities.",
+      "failure_scenario": "If roles are not distinctly defined, a project manager may incorrectly designate primary contacts, leading to confusion and miscommunication across teams.",
+      "resolution_test": "Clearly outline the ownership of contact data, who is responsible for maintaining and updating the contact classifications, and how discrepancies will be handled.",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Assuming a clear distinction between primary contacts and other types of contacts requires defined ownership of data updates and responsibilities."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will define the ownership responsibilities for primary contacts, who updates this information, and how discrepancies are managed, ensuring clarity in data management. [changed: A2]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer provided a clear outline of ownership responsibilities for maintaining and updating contact data."
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The assumption that every ministry or project will have a designated primary contact is risky; without ensuring proper data validation, confidential records may inadvertently expose sensitive information.",
+      "failure_scenario": "If a ministry does not have a primary contact assigned, others may default to less secure contacts, creating potential leaks of sensitive diplomatic information.",
+      "resolution_test": "Demonstrate a mechanism ensuring that each ministry or project has a designated primary contact before implementation, including checks to prevent exposure of sensitive data.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that every ministry or project will have a designated primary contact is risky; without ensuring proper data validation, confidential records may inadvertently expose sensitive information."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will include a mechanism to validate that each ministry or project has a designated primary contact, reducing the risk of exposure of sensitive information. [changed: A3]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer included a mechanism to validate the assignment of primary contacts for each ministry or project."
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how roles assigned to contacts will be controlled or verified, which could lead to unauthorized access to sensitive information.",
+      "failure_scenario": "A user may assign themselves or a colleague a role that involves sensitive government interactions without appropriate permissions, jeopardizing confidentiality.",
+      "resolution_test": "Clarify the permission model for assigning roles and ensure that role assignments are validated based on user access levels.",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how roles assigned to contacts will be controlled or verified, which could lead to unauthorized access to sensitive information."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will clarify the permission model and validation requirements for assigning roles to contacts to ensure confidentiality is maintained. [changed: S3]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer clarified the permission model and validation requirements for assigning roles to contacts."
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The success criterion regarding the ability to locate primary contacts within 2 minutes does not account for data freshness or accuracy, which are critical for identifying the right contacts.",
+      "failure_scenario": "An executive attempts to reach a primary contact based on outdated information, leading to wasted time and potentially harming diplomatic relations due to an incorrect point of contact.",
+      "resolution_test": "Implement a method to measure and ensure data quality (freshness and accuracy) before evaluating the success criteria.",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The success criterion regarding the ability to locate primary contacts within 2 minutes does not account for data freshness or accuracy, which are critical for identifying the right contacts."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I will enhance the success criteria to include data freshness and accuracy measurements to ensure the right contacts are identified. [changed: K1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposer enhanced the success criteria to include measurements for data freshness and accuracy."
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 5,
+      "open": 5,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring users adopt the new feature effectively given existing workflows.",
+      "critic_worry": "Vague definitions and assumptions pose risks related to data sensitivity and ownership.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 5,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 90,
+      "proposer_worry": "The success of the proposal heavily relies on clear ownership and validation processes for contact information.",
+      "critic_worry": "Ensuring ongoing data validation as roles and responsibilities change.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}
