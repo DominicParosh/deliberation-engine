@@ -1,0 +1,23 @@
+# Feature requests to deliberate. The first three are the brief's examples; the last two were
+# added to stress axes the brief's examples don't: automated ingestion of sensitive data, and a
+# request whose most likely correct outcome includes saying no.
+requests:
+  - id: right-contact
+    origin: brief, example 1
+    text: We need a better way to track who is the right person to contact in each country.
+
+  - id: engagement-history
+    origin: brief, example 2
+    text: Project managers should be able to see the full history of engagement with a country before starting a new mission.
+
+  - id: cold-relationship
+    origin: brief, example 3
+    text: The CRM should alert us when our relationship with a country goes cold.
+
+  - id: auto-logging
+    origin: added (automation × confidentiality)
+    text: Meetings with government officials should be logged automatically so we stop losing engagement history.
+
+  - id: influence-ranking
+    origin: added (ethics and sensitivity; tests the "rejected" path)
+    text: We should know which of our contacts are most influential so we can prioritize them.
