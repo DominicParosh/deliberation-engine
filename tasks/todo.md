@@ -72,8 +72,8 @@ Environment (updated 2026-10-04 06:55):
 - [x] Final traces for all 5 inputs under `runs/` (one gated run each, picked by a read-through audit)
 - [x] README (setup, run, replay, results table, traces, iteration story, limitations)
 - [x] DECISIONS.md outline + data pack (Domi writes the final text; pack delivered outside the repo)
-- [ ] Fresh-agent review against the brief's rubric; fix findings
-- [ ] Clean-checkout check: `uv sync` → tests → one live run → replay
+- [x] Fresh-agent review against the brief's rubric; fix findings (see the iteration log)
+- [x] Clean-checkout check: `uv sync` → tests → replay (live run: Domi, after the sync)
 
 ## Comparison batch and evidence (2026-10-04)
 - [x] Imported the 45 runs from the Mac (md5 of all 225 files identical); `ablate.py report` reproduces Domi's table

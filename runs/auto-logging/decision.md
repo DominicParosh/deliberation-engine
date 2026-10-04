@@ -78,6 +78,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: This will ensure that meetings are logged based on the most accurate and current classification to avoid operational risks.
 - Decision owner: Data Governance Lead
 - Options: Establish a protocol for regular updates to contact classifications / Allow users to flag changes that require review / Create an automated system for classification updates based on user input
+- Proposer's last word (R2, defend, needs human decision): Only the organization can determine how the classification of contacts is maintained and updated as individuals' statuses change, which is outside the scope of this release.
+- Critic's last word (R2, escalate): The system's management and updating of contact classifications need clarification.
 
 ### C7 · MAJOR · blocks the build
 
@@ -86,6 +88,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Clarifying this process is crucial to ensure accurate logging and the protection of sensitive information.
 - Decision owner: CRM Administrator
 - Options: Regular review by the data management team / User notifications for classification changes / Automated updates based on external factors
+- Proposer's last word (R3, defend, needs human decision): The classification of contacts as government officials and the process of maintaining that classification is dependent on organizational policies and procedures, which must be established by the organization responsible for the CRM.
+- Critic's last word (R3, escalate): The proposal does not specify how updates are handled for contact classifications, which could lead to outdated information being used.
 
 ### C8 · MAJOR · blocks the build
 
@@ -94,6 +98,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Understanding these processes will inform how sensitive information is safeguarded within the system.
 - Decision owner: IT Security Manager
 - Options: Conduct user access reviews periodically / Assign clear responsibilities for permission management / Create a detailed user access log
+- Proposer's last word (R3, defend, needs human decision): Managing user permissions related to accessing meeting logs is contingent upon existing organizational policies regarding role-based access control and user management, which need to be defined by the organization.
+- Critic's last word (R3, escalate): There is no detail in the proposal regarding how user permissions will be managed or what safeguards will prevent unauthorized access.
 
 ### C5 · MINOR · does not block the build
 
@@ -102,6 +108,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Clear processes are essential to prevent unauthorized access and ensure sensitive information is protected.
 - Decision owner: Head of Data Protection
 - Options: Implement regular audits of user access / Create role-based access controls / Establish a protocol for revoking access immediately after role changes
+- Proposer's last word (R2, defend, needs human decision): Only the organization can decide how user permissions are managed and monitored to comply with data protection standards, which is outside the scope of this release.
+- Critic's last word (R2, escalate): Details about managing and auditing user permissions are still needed.
 
 ## Tension report
 

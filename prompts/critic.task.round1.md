@@ -1,0 +1,1 @@
+Write your pre-mortem. Then list in `gaps` the questions the request leaves open that the proposal answers badly or not at all, and raise one challenge for each, up to {{budget}}, most material first and covering at least 2 lenses: if the proposal doesn't prevent your pre-mortem, start there. You cannot conclude in round 1.

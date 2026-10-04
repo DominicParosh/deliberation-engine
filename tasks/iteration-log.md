@@ -386,7 +386,7 @@ What it shows:
    lists those questions, under a "consensus" header.
 2. **naive's extra challenges are mostly re-asks.** right-contact/1 asked the data-protection-compliance question four
    times (C10, C11, C20, C22) and ended with 7 BLOCKERs open, 6 raised in round 8; influence-ranking/3 maintained C16
-   three rounds running while S11 grew. Proposals grew 77% in words (gated 35%).
+   three rounds running while S11 was rewritten each time. Proposals grew 77% in words (gated 35%).
 3. **gated's gate never fired.** The Critic concluded twice, both with nothing open; 13 runs ended `converged`. The
    shrinking budget and the two-strike rule emptied the ledger before the Critic could conclude over an open issue.
 4. **The opposed prompts change the Proposer, not the Critic.** Same accept rate for revisions; 15 merit defenses vs 1;
@@ -416,3 +416,31 @@ the agents' to decide; scope never shrinks (no "should this exist?"); a self-con
   the originals in `experiments/runs/`.
 - Published `runs/` (one gated run per request): right-contact/1, engagement-history/2, cold-relationship/3,
   auto-logging/1, influence-ranking/1, chosen for the fewest red flags in the audit; each replays identically.
+
+## Independent review after the batch (2026-10-04 ~15:50)
+
+Two fresh reviewers: one graded the repo against the brief's rubric (about 61/90 before DECISIONS.md), one
+fact-checked every claim in the README against the files (about 150 verified, 12 corrected). Changed:
+- **`converged` also requires every mandatory lens to be examined.** A CONTINUE with nothing open used to end the run
+  without the lens check that a CONCLUDE must pass. Now the Critic gets one more round, once, to examine the lens or
+  write a coverage note, and the record keeps the moderator's note if it doesn't. Replaying all 45 runs shows no
+  recorded run changes: every run that converged had each lens covered by a challenge or a note (right-contact/1's
+  DEFINITIONS note is vacuous: "No challenges were raised under this lens.").
+- **Per-round task text moved from agents.py into prompts/** (`*.task.round1.md`, `*.task.md`), so every instruction
+  is in the prompts folder. Every message the agents receive in all 45 replays is byte-identical before and after.
+- **The decision document shows more of the ledger:** each side's last word under every open question, challenges
+  the Proposer declined on their merits (accepted defenses), and settlements a later edit undid. The last check uses
+  the evidence rule itself (85% of the quote's words in order in one item): gated 2, generic 4, naive 44 (9 of 15 runs)
+  settlements had their accepted wording edited away by a later answer. Example: right-contact/1, where C9's edit to
+  S4 removed the sentence that settled C8.
+- Tests for the two exits that had none (gated cap after CONTINUE, naive cap) and for every new behaviour (54 tests).
+- Live runs write to `out/` by default, so they no longer overwrite the published runs in `runs/`.
+- README: twelve claims corrected (cost ratio 1.9, not 1.8; "twice as many rounds" by median; S11 rewritten, not grown;
+  out-of-scope lists grew in four non-gated runs; v7 figures labelled v7; "unconfirmed" only when the Critic flags it;
+  what the Rapporteur writes vs what the ledger decides; …), and new limitations with verified numbers: the Critic
+  marked 32 of 192 gated answers unconfirmed but never one it judged settled; 52 of 111 resolution tests still ask
+  for a process; 37% of gated challenges end with humans.
+
+Kept as stated limitations rather than changed, because they need the deliberation prompts or semantic checks: paraphrased
+repeats, invented roles accepted as fact, vacuous coverage notes, no "should this exist?" challenge, and contradictions
+inside a document (auto-logging S1 vs X2; cold-relationship D1 vs S4).

@@ -73,6 +73,8 @@ The upcoming release will enable project managers to view the complete engagemen
 - Why it matters: This is crucial to maintain compliance with evolving data protection standards and avoid potential violations that could arise from policy changes.
 - Decision owner: Head of Data Protection
 - Options: Implement stricter access controls based on new policies / Conduct regular reviews of access protocols / Remain static until polices are explicitly outlined
+- Proposer's last word (R2, defend, needs human decision): Changes to data protection policies are determined by the organization, and it is not within our ability to define how these will affect access protocols.
+- Critic's last word (R2, escalate): This challenge is escalated as it relies on organizational decisions regarding data protection policies.
 
 ## Tension report
 

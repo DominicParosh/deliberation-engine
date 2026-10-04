@@ -48,6 +48,7 @@ The proposal to enhance contact management by designating primary contacts for c
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C4** (MAJOR · CONFIDENTIALITY): What alternative solutions will be provided for situations requiring multiple contacts in a country? The Proposer's answer, which the Critic accepted: The limitation on having multiple contacts is acknowledged, but the team's existing communication policies will allow for workarounds, such as having users reference additional contacts in project metadata when necessary.
 
 ## Assumptions
 
@@ -83,6 +84,8 @@ The proposal to enhance contact management by designating primary contacts for c
 - Why it matters: Without clear criteria, users may incorrectly validate outdated contacts, impacting communication.
 - Decision owner: Project Manager
 - Options: Define clear criteria / Maintain current approach without changes
+- Proposer's last word (R7, revise, missing decision): This edit specifies the criteria users will follow to verify the accuracy of primary contact information, thereby ensuring a more structured review process.
+- Critic's last word (R7, maintain): This defines clear criteria for contact accuracy verification. [Not counted as settled: the sentence you quote leans on 'designated users', which names no role, number or rule.]
 
 ### C14 · MAJOR · blocks the build
 
@@ -91,6 +94,8 @@ The proposal to enhance contact management by designating primary contacts for c
 - Why it matters: Unclear accountability may lead to miscommunication if updates are not verified.
 - Decision owner: Head of Country Engagement
 - Options: Designated users are accountable / Accountability rests with department heads
+- Proposer's last word (R7, revise, missing decision): These edits clarify that designated users are responsible for the accuracy of the primary contacts once updated, improving accountability.
+- Critic's last word (R7, maintain): While there is accountability, the definition lacks specificity on enforcement measures after updates.
 
 ### C16 · MAJOR · blocks the build
 
@@ -99,6 +104,8 @@ The proposal to enhance contact management by designating primary contacts for c
 - Why it matters: Lack of historical records can complicate remediation efforts in case of errors.
 - Decision owner: Data Governance Officer
 - Options: Implement alternative accountability measures / Accept the limitation as is
+- Proposer's last word (R7, revise, missing decision): This edit establishes a notification system for updates that supports accountability despite the lack of historical records.
+- Critic's last word (R7, maintain): This establishes a mechanism for accountability but lacks detail on how accountability is reinforced without historical records.
 
 ## Tension report
 
@@ -116,6 +123,11 @@ The primary tension revolved around user accountability for maintaining accurate
 
 - Proposer's remaining worry (85/100): Ensuring all users uphold accountability for contact information updates may still prove challenging.
 - Critic's remaining worry (80/100): The effectiveness of primary contact updates hinges on user accountability and the adequacy of review processes.
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions."
+- ⚠ C3 was settled by wording a later edit removed; the final proposal no longer says: "Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted."
+- ⚠ C5 was settled by wording a later edit removed; the final proposal no longer says: "'Primary contact qualifications' means the criteria that must be met for an individual to be designated as a primary contact, including relevant experience in diplomatic communications and recognition by the organization as a point of contact."
+- ⚠ C9 was settled by wording a later edit removed; the final proposal no longer says: "Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. Users from other regions will have no access to this information."
+- ⚠ C11 was settled by wording a later edit removed; the final proposal no longer says: "Any changes in qualifications will be documented through a formal process that requires notification to designated users following approval by a government liaison officer or designated compliance officer, and these changes will be recorded in the CRM system to ensure accurate and updated qualifications are maintained."
 
 ## Appendix: issue ledger
 

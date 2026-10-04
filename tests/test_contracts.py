@@ -10,7 +10,8 @@ from deliberation import render
 from deliberation.engine import deliberate, replay
 from deliberation.ledger import Event, Issue, Ledger
 from deliberation.llm import AnthropicLLM, OpenAILLM
-from deliberation.schemas import Edit, Proposal, ProposerTurn, Response, Verdict
+from deliberation.schemas import (CriticOpening, CriticTurn, Edit, Proposal, ProposerOpening, ProposerTurn, Response,
+                                  Synthesis, Verdict)
 from deliberation.termination import GATED
 
 THREE = (challenge("BLOCKER", "CONFIDENTIALITY"), challenge("MAJOR", "DEFINITIONS"), challenge("MINOR", "OWNERSHIP"))
@@ -93,6 +94,39 @@ def test_what_blocks_the_build_follows_from_severity_and_older_records_still_loa
     assert "Challenges: 3 raised · 0 settled between the agents · 3 handed to humans · 0 still open when it ended." in md
 
 
+def test_the_record_shows_where_each_side_stood_on_open_questions_and_which_challenges_were_declined():
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        return critic_json({"C1": "ESCALATE", "C2": "ACCEPT", "C3": "ACCEPT"}, signal="CONCLUDE")  # all three were defended
+
+    md = render.decision_md(render.decision(deliberate("Request.", "ctx", agents(critic=critic), GATED)))
+    assert "- Proposer's last word (R2, defend, acceptable risk): Because." in md
+    assert "- Critic's last word (R2, escalate): Considered." in md
+    assert "- Declined **C2** (MAJOR · DEFINITIONS):" in md and "- Declined **C3** (MINOR · OWNERSHIP):" in md
+
+
+def test_a_settlement_that_a_later_edit_removed_is_flagged():
+    first, later = "Only regional coordinators see confidential notes.", "Contacts are reviewed every 30 days by their coordinator."
+
+    def proposer(prompt, _):  # round 3 rewrites S1 for C2 and drops the sentence that settled C1 in round 2
+        moves = {2: {"C1": ("MISSING_DECISION", [("S1", first)])}, 3: {"C2": ("MISSING_DECISION", [("S1", later)])}}
+        return proposer_json(prompt, moves=moves.get(round_of(prompt)))
+
+    def critic(prompt, _):
+        rnd = round_of(prompt)
+        if rnd == 1:
+            return opening_json(*THREE)
+        if rnd == 2:
+            return critic_json({"C1": "ACCEPT", "C2": "MAINTAIN", "C3": "MAINTAIN"}, evidence=first)
+        return critic_json({"C2": "ACCEPT", "C3": "ACCEPT"}, evidence=later)
+
+    result = deliberate("Request.", "ctx", agents(proposer=proposer, critic=critic), GATED)
+    assert result.ledger.lost_settlements() == {"C1": first}
+    assert f'C1 was settled by wording a later edit removed; the final proposal no longer says: "{first}"' in \
+        render.decision_md(render.decision(result))
+
+
 def test_dropped_items_must_be_explained():
     def proposer(prompt, _):
         return proposer_json(prompt, moves={"C1": ("SHOULD_NOT_BUILD", [("S2", "")])})
@@ -119,6 +153,23 @@ def test_disagreement_index_weights_by_severity():
     for cid, severity, status in (("C1", "BLOCKER", "ESCALATED"), ("C2", "MAJOR", "RESOLVED"), ("C3", "MINOR", "OPEN")):
         ledger.issues[cid] = Issue(id=cid, round_raised=1, status=status, **challenge(severity))
     assert ledger.disagreement() == round((3 + 1) / (3 + 2 + 1), 2)
+
+
+def test_every_output_field_is_required_so_both_providers_accept_the_schema_in_strict_mode():
+    def loose(node, path="$"):  # an optional field or a default breaks strict structured outputs at request time
+        if isinstance(node, dict):
+            if "properties" in node and set(node["properties"]) != set(node.get("required", [])):
+                yield path
+            if "default" in node:
+                yield f"{path} has a default"
+            for key, value in node.items():
+                yield from loose(value, f"{path}.{key}")
+        elif isinstance(node, list):
+            for n, value in enumerate(node):
+                yield from loose(value, f"{path}[{n}]")
+
+    for model in (ProposerOpening, ProposerTurn, CriticOpening, CriticTurn, Synthesis):
+        assert not list(loose(model.model_json_schema())), model.__name__
 
 
 def test_anthropic_adapter_sends_a_json_schema_and_returns_raw_text():

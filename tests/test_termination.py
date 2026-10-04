@@ -87,6 +87,53 @@ def test_conclude_without_mandatory_lens_coverage_is_rejected():
     assert result.ledger.termination == "consensus" and len(result.ledger.rounds) == 3
 
 
+def test_converging_before_every_mandatory_lens_is_examined_buys_the_critic_one_more_round():
+    ops = [challenge("MAJOR", lens) for lens in ("OPERATIONS", "DATA_QUALITY", "FEASIBILITY")]
+
+    def critic(final_signal, coverage=()):
+        def turn(prompt, _):
+            rnd = round_of(prompt)
+            if rnd == 1:
+                return opening_json(*ops)
+            if rnd == 2:  # everything settled, nothing new, but no mandatory lens was ever examined
+                return critic_json({c: "ACCEPT" for c in open_ids(prompt)}, signal="CONTINUE")
+            return critic_json({}, signal=final_signal, coverage=coverage)
+        return turn
+
+    noted = run(critic("CONCLUDE", coverage=("CONFIDENTIALITY", "DEFINITIONS", "OWNERSHIP")))
+    assert noted.ledger.rounds[1].decision == "continue" and "DEFINITIONS" in noted.ledger.rounds[1].feedback
+    assert noted.ledger.termination == "consensus" and len(noted.ledger.rounds) == 3
+
+    silent = run(critic("CONTINUE"))  # asked once, still silent: it ends, and the record says what was never examined
+    assert silent.ledger.termination == "converged" and len(silent.ledger.rounds) == 3
+    assert "CONFIDENTIALITY, DEFINITIONS, OWNERSHIP" in silent.ledger.rounds[2].feedback
+
+
+def test_cap_ends_a_gated_run_whose_challenges_stay_open():
+    from dataclasses import replace
+
+    def critic(prompt, _):  # keeps maintaining and never concludes; with no strike limit nothing is escalated
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        return critic_json({c: "MAINTAIN" for c in open_ids(prompt)}, signal="CONTINUE")
+
+    result = run(critic, policy=replace(GATED, strike_limit=None, max_rounds=3))
+    assert result.ledger.termination == "cap" and len(result.ledger.rounds) == 3
+    assert all(i.status == "UNRESOLVED" for i in result.ledger.issues.values())
+
+
+def test_naive_policy_stops_at_the_cap_when_the_critic_never_concludes():
+    from dataclasses import replace
+
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        return critic_json({c: "MAINTAIN" for c in open_ids(prompt)}, signal="CONTINUE")
+
+    result = run(critic, policy=replace(NAIVE, max_rounds=3))
+    assert result.ledger.termination == "cap" and len(result.ledger.rounds) == 3
+
+
 def test_naive_policy_takes_the_critics_word_even_with_a_blocker_open():
     def critic(prompt, _):
         if round_of(prompt) == 1:

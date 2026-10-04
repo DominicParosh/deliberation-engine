@@ -1,0 +1,1 @@
+Answer every open challenge exactly once and name its `grounds`, which decide your move. For a revision or concession, `edits` holds the complete new wording of each item you change (empty text removes an item); for a defense it is empty. Items you don't edit stay exactly as they are.

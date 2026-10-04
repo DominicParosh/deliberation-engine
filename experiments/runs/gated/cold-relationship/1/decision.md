@@ -70,6 +70,8 @@ This release will implement an alert system notifying users when engagement with
 - Why it matters: Clarifying who receives alerts is crucial to prevent unauthorized disclosures and ensure sensitive communications are managed appropriately.
 - Decision owner: Head of Data Protection
 - Options: Define users excluded based on role / Specify criteria for recipients based on clearance or context
+- Proposer's last word (R3, revise, missing decision): The edit specifies that alerts will not go to users on leave or have left the organization, addressing the risk of unauthorized disclosures about 'cold' engagements.
+- Critic's last word (R3, maintain): [Not counted as settled: you marked it settled, so `evidence` must be copied from the item text shown under the challenge (or, for a defense or concession, from the Proposer's answer), and "...alerts will not go to users on leave or have left the organization..." is not there.]
 
 ## Tension report
 
@@ -86,6 +88,7 @@ The main disagreement centered around the sender list for alerts regarding 'cold
 - Proposer's remaining worry (80/100): Ensuring that clarity around role-based access to alerts prevents unauthorized disclosures.
 - Critic's remaining worry (75/100): The definition of 'cold' engagement may lead to misclassification due to a lack of context in interactions.
 - ⚠ Proposer reported 80/100 confidence while blocker(s) C1 remain unsettled.
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "ensuring re-assignment of alerts to the current responsible user when a user changes roles or leaves the organization"
 
 ## Appendix: issue ledger
 

@@ -80,6 +80,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -163,7 +164,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The assumption that users will input accurate contact information needs a structured process for verification and correction, which requires organizational decisions on establishing such a process."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not clarify how the organization will define this process, which is a significant oversight."
+        }
+      }
     }
   ],
   "tension": {

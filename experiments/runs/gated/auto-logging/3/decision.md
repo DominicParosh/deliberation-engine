@@ -75,6 +75,8 @@ This release will implement an automated system for logging meetings with govern
 - Why it matters: This is critical to ensure that any logged sensitive information complies with applicable laws and regulations.
 - Decision owner: Head of Data Protection
 - Options: Define protocols now / Delay protocol definition
+- Proposer's last word (R3, defend, needs human decision): The data protection compliance protocols that govern the handling of sensitive information need to be defined by the relevant organizational authorities. This item must remain as is to allow for adherence to established compliance protocols.
+- Critic's last word (R3, escalate): The proposal does not specify how compliance will be achieved, relying instead on human-defined protocols.
 
 ### C8 · BLOCKER · blocks the build
 
@@ -83,6 +85,8 @@ This release will implement an automated system for logging meetings with govern
 - Why it matters: Establishing these processes is vital to ensure only qualified personnel log sensitive information.
 - Decision owner: Project Management Office
 - Options: Define training and authorization / Do not implement a training requirement
+- Proposer's last word (R3, defend, needs human decision): The training and authorization processes for users must be established by the organization to ensure that all personnel are adequately prepared to log meeting details. This remains open for the organization to address.
+- Critic's last word (R3, escalate): The specifics of training and authorization processes are not defined, and they must be established by the organization.
 
 ### C4 · MAJOR · blocks the build
 
@@ -91,6 +95,8 @@ This release will implement an automated system for logging meetings with govern
 - Why it matters: Clarifying data protection measures is critical to avoid legal violations and ensure sensitive information is handled appropriately.
 - Decision owner: Head of Data Protection
 - Options: Define security protocols now / Establish protocols later
+- Proposer's last word (R2, defend, needs human decision): The specifics of data protection compliance protocols must be determined by the organization according to legal requirements and best practices.
+- Critic's last word (R2, escalate): The specifics of data protection protocols require an organizational decision.
 
 ### C6 · MAJOR · blocks the build
 
@@ -99,6 +105,8 @@ This release will implement an automated system for logging meetings with govern
 - Why it matters: Defining training processes is essential for ensuring data integrity and accountability across the system.
 - Decision owner: Project Management Office
 - Options: Establish specific training programs / Require no additional training
+- Proposer's last word (R2, defend, needs human decision): The specifics of mandatory training and authorization processes for users logging meetings must be established by the organization as part of their compliance and operational procedures.
+- Critic's last word (R2, escalate): The specifics of training and authorization processes must be established by the organization.
 
 ## Tension report
 

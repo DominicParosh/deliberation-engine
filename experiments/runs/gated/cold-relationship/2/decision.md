@@ -42,6 +42,7 @@ This release will implement an alert system to notify users when engagement with
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C4** (MINOR · DEFINITIONS): Does engagement activity include all types of logged interactions, such as informal communications and meetings? The Proposer's answer, which the Critic accepted: The definition provided in D2 already covers the types of engagements that count towards 'engagement activity', addressing this concern.
 
 ## Assumptions
 
@@ -73,6 +74,8 @@ This release will implement an alert system to notify users when engagement with
 - Why it matters: Defining legal compliance is crucial to avoid potential legal risks associated with the alert system.
 - Decision owner: Legal Compliance Officer
 - Options: Conduct a legal review of the alert system / Incorporate existing data protection policies / Seek external legal consultation
+- Proposer's last word (R2, defend, needs human decision): The organization must specify the legal guidelines and processes to ensure compliance with privacy and data protection standards for sending email alerts.
+- Critic's last word (R2, escalate): The proposal did not provide sufficient compliance details, necessitating human input.
 
 ### C7 · BLOCKER · blocks the build
 
@@ -81,6 +84,8 @@ This release will implement an alert system to notify users when engagement with
 - Why it matters: Clarifying compliance protocols is vital to prevent breaches of privacy laws and potential legal issues.
 - Decision owner: Data Protection Officer
 - Options: Develop a compliance framework for alerts / Provide user consent documentation / Set up a legal review process for future updates
+- Proposer's last word (R3, defend, needs human decision): The organization must clarify the specific legal guidelines regarding email alerts triggered by engagement activity to ensure compliance. Since ensuring compliance with privacy standards depends on organizational policies and laws, this is not something the proposal can decide.
+- Critic's last word (R3, escalate): The lack of specific legal guidelines leaves compliance ambiguous and requires clarification from a human decision-maker.
 
 ### C3 · MAJOR · blocks the build
 
@@ -89,6 +94,8 @@ This release will implement an alert system to notify users when engagement with
 - Why it matters: Clear accountability is essential to ensure the effectiveness of the alert system and avoid inaccurate alerts.
 - Decision owner: Operations Manager
 - Options: Establish regular audits of engagement logs / Implement user training sessions / Designate accountability roles for logging
+- Proposer's last word (R2, defend, needs human decision): The organization must specify the processes in place to ensure that engagement logging is monitored and enforced, as accountability for logging is crucial for the system's effectiveness.
+- Critic's last word (R2, escalate): The proposal does not define how to ensure users log activities, leaving it open to human decision-making.
 
 ## Tension report
 

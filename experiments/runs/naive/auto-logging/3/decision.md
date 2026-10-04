@@ -73,6 +73,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Clarifying ownership is essential for accountability regarding data integrity.
 - Decision owner: Head of Data Protection
 - Options: Designate a data manager / Create a training committee / No specific oversight role
+- Proposer's last word (R2, defend, needs human decision): The responsibility for verifying data quality requires decisions beyond the product scope and must be established by the organization.
+- Critic's last word (R2, escalate): Determining who is responsible for maintaining the accuracy of logged data requires authority beyond the product scope.
 
 ### C8 · MAJOR · blocks the build
 
@@ -81,6 +83,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: To safeguard against potential leaks and ensure adherence to confidentiality measures.
 - Decision owner: Head of Data Protection
 - Options: Implement strict access protocols / Train users on confidentiality / Regular compliance audits
+- Proposer's last word (R3, defend, needs human decision): The specifications for handling sensitive information and ensuring confidentiality must comply with existing organizational policies and legal frameworks, which need to be established by the responsible authorities.
+- Critic's last word (R3, escalate): The proposal requires human decision-making to establish confidentiality protocols, which are critical for data protection.
 
 ### C11 · MAJOR · blocks the build
 
@@ -89,6 +93,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Clear accountability is crucial to build trust in the system.
 - Decision owner: Head of Data Protection
 - Options: Assign responsibilities to a specific role / Delegate to the logging users / No specific role designated
+- Proposer's last word (R4, defend, needs human decision): This edit outlines a decision about who will ensure the accuracy of logged meetings, but the precise roles must be determined by the organization.
+- Critic's last word (R4, escalate): The proposal lacks a defined ownership structure for maintaining logging accuracy, which needs further decision.
 
 ### C16 · MAJOR · blocks the build
 
@@ -97,6 +103,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Ensuring appropriate access control measures will mitigate the risk of unauthorized information access.
 - Decision owner: Head of Data Protection
 - Options: Automated flagging system / Manual logging review process / No specific flagging mechanism
+- Proposer's last word (R6, revise, missing decision): This revision clarifies that meetings involving sensitive topics will be flagged and restricts access, thereby providing a strategy for confidentiality.
+- Critic's last word (R6, maintain): The proposal does not specify the exact mechanisms for how meetings will be flagged or who is responsible for the flagging.
 
 ## Tension report
 
@@ -113,6 +121,9 @@ The main disagreement centered around ownership and accountability for data inte
 
 - Proposer's remaining worry (85/100): Potential misunderstandings regarding the defined roles may still impact data integrity if not embraced by all users.
 - Critic's remaining worry (85/100): While the proposal addresses previous challenges adequately, the effectiveness of the logging feature in preventing incorrect attribution remains a concern.
+- ⚠ C6 was settled by wording a later edit removed; the final proposal no longer says: "K1: At least 90% of logged meetings are correctly captured in the system, measured by user feedback and a review process involving audit checks to confirm the presence and accuracy of logged meeting records."
+- ⚠ C9 was settled by wording a later edit removed; the final proposal no longer says: "...will be flagged in the system, requiring additional authorization for access to the logged record."
+- ⚠ C10 was settled by wording a later edit removed; the final proposal no longer says: "...confirmed the presence, accuracy, and completeness of logged meeting records, specifically that they include all required fields (date, participants, summary, follow-up actions)."
 
 ## Appendix: issue ledger
 

@@ -81,6 +81,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: Regular updates are critical to maintain the accuracy and relevance of influence assessments as relationships evolve.
 - Decision owner: Head of Operations
 - Options: Define a regular review cycle / Assign specific individuals for periodic evaluations / Outline a process for user feedback on influence levels
+- Proposer's last word (R2, defend, needs human decision): The process for regularly reviewing and updating influence levels must be determined by the organization to ensure data accuracy and responsiveness to changing relationships.
+- Critic's last word (R2, escalate): The proposal needs a specific process for regularly updating influence levels, which requires organizational input.
 
 ### C2 · MAJOR · blocks the build
 
@@ -89,6 +91,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: Clearly defined criteria are essential for consistent and objective influence level assignments, reducing bias.
 - Decision owner: Head of Data Governance
 - Options: Create a committee to define criteria / Use existing data relationships as a guide / Develop criteria based on user-feedback
+- Proposer's last word (R2, defend, needs human decision): The establishment of specific criteria for 'High', 'Medium', and 'Low' influence and the appointment of responsible parties must be defined by the organization to avoid subjective bias.
+- Critic's last word (R2, escalate): Criteria for 'High', 'Medium', and 'Low' influence assignments must be specified by the organization.
 
 ### C3 · MAJOR · blocks the build
 
@@ -97,6 +101,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: Clarifying ownership prevents data inaccuracies that could arise following personnel changes.
 - Decision owner: Executive Management
 - Options: Assign a specific role to manage updates / Establish a collaborative process for updating influenced levels / Define a fallback process for absent team members
+- Proposer's last word (R2, defend, needs human decision): Explicit ownership for maintaining and updating the influence levels must be assigned by the organization to prevent outdated data following personnel changes.
+- Critic's last word (R2, escalate): There needs to be clear ownership defined for updating and maintaining influence levels.
 
 ### C6 · MAJOR · blocks the build
 
@@ -105,6 +111,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: Clarity on applicable regulations is essential for ensuring compliance and protecting sensitive information throughout the categorization process.
 - Decision owner: Head of Data Protection
 - Options: Consult legal for detailed compliance requirements / Review existing GDPR and data protection guidelines / Align with current organizational policies
+- Proposer's last word (R2, defend, needs human decision): Specific security and privacy regulations impacting the handling of influence level data need to be clarified by the organization to ensure compliance.
+- Critic's last word (R2, escalate): The applicable regulations regarding data handling are not specified and need human decision.
 
 ### C4 · MINOR · does not block the build
 
@@ -113,6 +121,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: Effective training is crucial to ensure accurate use of the influence categorization feature and improve engagement efforts with contacts.
 - Decision owner: Training Coordinator
 - Options: Implement a comprehensive training program / Use assessments with real scenarios / Follow-up training sessions to reinforce knowledge
+- Proposer's last word (R3, revise, missing decision): The revised training requirement ensures that users must actively demonstrate their understanding of the influence levels, enhancing the effectiveness of the training materials.
+- Critic's last word (R3, maintain): While the proposal commits to assessments in the training materials, it remains unclear how effective these measures will be in truly ensuring user understanding and application of influence classifications.
 
 ### C5 · MINOR · does not block the build
 
@@ -121,6 +131,8 @@ This release will introduce a feature to categorize government contacts by their
 - Why it matters: A fallback process is essential to maintain workflow and responsiveness to urgent needs despite personnel absences.
 - Decision owner: Head of Project Management
 - Options: Create a backup designation process / Implement a temporary authority delegation / Develop alternative access for influence assignment
+- Proposer's last word (R2, defend, needs human decision): The organization must define a fallback process for when designated team members are unavailable to assign or update influence levels.
+- Critic's last word (R2, escalate): A clear fallback process needs to be defined for absent team members who assign influence levels.
 
 ## Tension report
 

@@ -74,6 +74,8 @@ This release will implement a feature that allows users to categorize and identi
 - Why it matters: This definition is crucial to avoid biased or inconsistent scores that could mislead engagement priorities.
 - Decision owner: Head of Operations
 - Options: Define criteria collaboratively within the organization / Allow users to define criteria individually / Establish a task force to create a standard definition
+- Proposer's last word (R2, defend, needs human decision): To ensure accuracy in influence scoring, a clear organizational framework or guidelines defining 'influence' must be developed by the organization, which is outside the current scope of this release.
+- Critic's last word (R2, escalate): The criteria defining 'influence' need to be established by the organization, which is outside the current proposal's scope.
 
 ### C3 · MAJOR · blocks the build
 
@@ -82,6 +84,8 @@ This release will implement a feature that allows users to categorize and identi
 - Why it matters: Clear ownership is needed to ensure that influence scores reflect current realities and remain actionable.
 - Decision owner: Regional Coordinators
 - Options: Assign responsibility to regional coordinators / Create a rotating responsibility among team members / Leave it to individual user discretion
+- Proposer's last word (R2, defend, needs human decision): Responsibility for reviewing and updating influence scores based on evolving relationships needs to be defined by the organization and should not be specified in this proposal.
+- Critic's last word (R2, escalate): Responsibility for maintaining updated influence scores must be defined and is outside this proposal.
 
 ### C4 · MAJOR · blocks the build
 
@@ -90,6 +94,8 @@ This release will implement a feature that allows users to categorize and identi
 - Why it matters: Consistent training is essential to ensure all users apply the scoring uniformly, enabling effective prioritization of engagements.
 - Decision owner: Training Coordinator
 - Options: Develop a standardized training module / Rely on individual managers to train their teams / Utilize existing materials without changes
+- Proposer's last word (R2, revise, missing decision): This edit formalizes that the organization will establish clear criteria for influence, ensuring consistent scoring practices among users.
+- Critic's last word (R2, escalate): The specific training or resources needed to ensure users have a uniform understanding of influence must be determined by the organization.
 
 ### C5 · MAJOR · blocks the build
 
@@ -98,6 +104,8 @@ This release will implement a feature that allows users to categorize and identi
 - Why it matters: Up-to-date contact information is vital for accurate influence scoring and effective engagement.
 - Decision owner: Data Management Team
 - Options: Regular audits of contact information / User responsibility for updates / Implement automatic data validation processes
+- Proposer's last word (R2, defend, acceptable risk): While ensuring data accuracy is critical, current processes will rely on user diligence and periodic reviews, as no immediate mechanisms are established within this proposal to enforce data accuracy.
+- Critic's last word (R2, escalate): The mechanisms to ensure accurate data must be clarified and established by the organization.
 
 ### C7 · MAJOR · blocks the build
 
@@ -106,6 +114,8 @@ This release will implement a feature that allows users to categorize and identi
 - Why it matters: Without clear protocols, there may be inconsistencies in how influence scoring is applied, leading to ineffective prioritization.
 - Decision owner: Training Coordinator
 - Options: Develop a formalized training program / Rely on informal training methods / Encourage self-guided learning without materials
+- Proposer's last word (R3, defend, needs human decision): The proposal includes training protocols and resources, which requires organizational decisions on specific training content and methods to ensure consistent user application; thus, it remains as written.
+- Critic's last word (R3, escalate): The answer indicates that the training protocols are dependent on organizational decisions, which means it cannot be accepted as it stands.
 
 ## Tension report
 

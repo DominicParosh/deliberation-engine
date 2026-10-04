@@ -81,6 +81,8 @@ This release will implement an automated logging feature for meetings with gover
 - Why it matters: Clarifying this process will ensure continuity in engagement history and prevent data loss.
 - Decision owner: Project Management Team
 - Options: Establish a designated role for ownership transfer / Create automatic notifications for transfers / Require confirmation from new role holders
+- Proposer's last word (R3, defend, needs human decision): The proposal currently requires a decision on the maintenance and ownership of meeting logs if a user changes roles or leaves the organization. This is beyond the scope of the proposal and needs to be clarified by the organization.
+- Critic's last word (R3, escalate): The proposal defers a decision on ownership to the organization, which requires human input.
 
 ### C9 · MAJOR · blocks the build
 
@@ -89,6 +91,8 @@ This release will implement an automated logging feature for meetings with gover
 - Why it matters: This impacts the clarity and effectiveness of maintaining engagement history post-user transitions.
 - Decision owner: Human Resources
 - Options: Based on seniority / By team consensus / Random assignment
+- Proposer's last word (R6, revise, missing decision): This edit specifies the exact process for transferring ownership of logged meeting records, ensuring accountability and continuity in engagement history.
+- Critic's last word (R6, maintain): While the process for transferring ownership is defined, the specific steps and criteria for how designated personnel are chosen remain unclear.
 
 ## Tension report
 
@@ -107,6 +111,8 @@ The primary disagreement centered on the ownership and accountability for logged
 - Critic's remaining worry (80/100): Insufficient clarity in user access may still pose risks of unauthorized information access.
 - ⚠ Proposer reported 85/100 confidence while blocker(s) C2 remain unsettled.
 - ⚠ Critic reported 80/100 confidence while blocker(s) C2 remain unsettled.
+- ⚠ C5 was settled by wording a later edit removed; the final proposal no longer says: "Implement data validation to ensure only correctly formatted entries for meeting logs are accepted, with specific criteria such as mandatory fields for date, time, participants, and agenda being validated before submission."
+- ⚠ C6 was settled by wording a later edit removed; the final proposal no longer says: "specific criteria such as mandatory fields for date, time, participants, and agenda being validated before submission."
 
 ## Appendix: issue ledger
 

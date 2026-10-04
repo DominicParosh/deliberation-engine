@@ -90,6 +90,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -177,7 +178,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The accuracy and completeness of contact records will require input from the organization to define the validation process."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not specify a definitive process for validating existing contact records, relying on undefined input from the organization."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -191,7 +206,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The definition of user permissions for editing contact information must be established by organizational policies and cannot be decided in this proposal."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not provide established user permissions for editing contact information, depending on policies outside this proposal."
+        }
+      }
     },
     {
       "issue_id": "C3",
@@ -205,7 +234,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The accuracy and completeness of existing contact records require validation that must be conducted according to the organization's policies and procedures before implementing this feature."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The reliance on human decision for validation of existing records leaves a gap in assurance for data quality."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -219,7 +262,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Establishing and enforcing user permissions regarding the editing of contact information must be determined by the organization's existing policies."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "User permissions require a clear rule from organizational policy, which remains unconfirmed."
+        }
+      }
     }
   ],
   "tension": {

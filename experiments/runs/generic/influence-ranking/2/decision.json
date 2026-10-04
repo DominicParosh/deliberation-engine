@@ -102,6 +102,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -185,7 +186,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "This edit assigns the development of training and guidelines to the organization, as it needs to decide how to ensure consistent ratings from users."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal still relies on unconfirmed organizational decisions on training and guidelines."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -199,7 +214,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "This revision indicates that the organization is responsible for creating a definition of influence, which is essential for consistency in ratings."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal still lacks a definitive framework for understanding 'influence'."
+        }
+      }
     }
   ],
   "tension": {

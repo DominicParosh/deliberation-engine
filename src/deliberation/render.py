@@ -103,18 +103,29 @@ def decision(run) -> dict:
     assumptions = [{**item(a), "kept": True, "challenges": challenges(a.id)} for a in final.assumptions]
     assumptions += [{"id": k, "text": text, "note": "", "refs": [], "kept": False, "challenges": challenges(k)}
                     for k, text in L.dropped().items() if k.startswith("A")]
+
+    def last_word(issue: Issue, actor: str) -> dict | None:  # where each side stood when the issue left the agents
+        e = next((e for e in reversed(issue.history) if e.actor == actor and e.move != "RAISE"), None)
+        return {"round": e.round, "move": e.move, "grounds": e.grounds, "text": e.text} if e else None
+
     def question(q) -> dict:
         # Whether it blocks the build follows from the Critic's severity, which defines exactly that (MINOR: "won't
         # sink the release"). It is a decision, so it comes from the ledger, not from the summarizer's prose.
         issue = L.issues[q.issue_id]
-        return {**q.model_dump(), "severity": issue.severity, "status": issue.status, "blocks_build": issue.severity in BLOCKING}
+        return {**q.model_dump(), "severity": issue.severity, "status": issue.status, "blocks_build": issue.severity in BLOCKING,
+                "positions": {"proposer": last_word(issue, "proposer"), "critic": last_word(issue, "critic")}}
 
     questions = sorted((question(q) for q in S.open_questions if q.issue_id in L.issues), key=lambda q: -WEIGHT[q["severity"]])
+    declined = [{"id": i.id, "severity": i.severity, "lens": i.lens, "test": i.resolution_test,
+                 "answer": last_word(i, "proposer")["text"]} for i in L.issues.values() if i.outcome == "DEFENDED"]
     last = L.rounds[-1]
     unsettled = [i.id for i in L.issues.values() if i.severity == "BLOCKER" and i.status in ("ESCALATED", "UNRESOLVED")]
     flags = [f"{role.title()} reported {conf}/100 confidence while blocker(s) {', '.join(unsettled)} remain unsettled."
              for role, conf in (("proposer", last.proposer_confidence), ("critic", last.critic_confidence))
              if conf >= 80 and unsettled]
+    flags += [f"{cid} was settled by wording a later edit removed; the final proposal no longer says: \"{quote}\""
+              for cid, quote in L.lost_settlements().items()]
+    flags += [f"Moderator: {last.feedback}"] if last.feedback else []
     return {
         "request": L.request,
         "meta": run.meta,
@@ -123,6 +134,7 @@ def decision(run) -> dict:
         "in_scope": [item(s) for s in final.in_scope],
         "out_of_scope": [item(x) for x in final.out_of_scope],
         "rejected": [r.model_dump() for r in S.rejected],
+        "declined": declined,
         "assumptions": assumptions,
         "definitions": [item(d) for d in final.definitions],
         "success_criteria": [item(k) for k in final.success_criteria],
@@ -160,6 +172,8 @@ def decision_md(doc: dict) -> str:
            "**Out of scope for this release**", "", *items(doc["out_of_scope"]), "", "**Rejected during deliberation**", ""]
     out += [f"- {r['what']}: {r['why']}" + (f" _({', '.join(r['refs'])})_" if r["refs"] else "") for r in doc["rejected"]] \
         or ["- Nothing was dropped."]
+    out += [f"- Declined **{d['id']}** ({d['severity']} · {d['lens']}): {d['test']} The Proposer's answer, which the Critic "
+            f"accepted: {d['answer']}" for d in doc["declined"]]
     out += ["", "## Assumptions", "", "| ID | Assumption | Status | Challenges |", "|---|---|---|---|"]
     out += [f"| {a['id']} | {a['text']} | {'Kept' if a['kept'] else 'Dropped'} | {challenged(a['challenges'])} |"
             for a in doc["assumptions"]]
@@ -171,7 +185,12 @@ def decision_md(doc: dict) -> str:
         block = "blocks the build" if q["blocks_build"] else "does not block the build"
         out += [f"### {q['issue_id']} · {q['severity']} · {block}", "", f"**{q['question']}**", "",
                 f"- Why it matters: {q['why_it_matters']}", f"- Decision owner: {q['decision_owner']}",
-                "- Options: " + " / ".join(q["options"]), ""]
+                "- Options: " + " / ".join(q["options"])]
+        for role, p in q["positions"].items():
+            if p:
+                how = p["move"].lower() + (f", {p['grounds'].lower().replace('_', ' ')}" if p["grounds"] else "")
+                out.append(f"- {role.title()}'s last word (R{p['round']}, {how}): {p['text']}")
+        out.append("")
     out += ["## Tension report", "", t["summary"], "",
             "| Round | Raised | Open | Resolved | Escalated | Disagreement | Proposer conf. | Critic conf. | Critic signal | Outcome |",
             "|---|---|---|---|---|---|---|---|---|---|"]

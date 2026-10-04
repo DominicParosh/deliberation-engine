@@ -76,6 +76,8 @@ This release will enable users to track key contacts in each of the ~100 member 
 - Why it matters: Lack of clarity can lead to mishandling of sensitive data and legal repercussions.
 - Decision owner: Head of Data Protection
 - Options: Define specific protocols for sensitive data management / Train users on data protection practices / Implement regular audits for compliance
+- Proposer's last word (R2, defend, needs human decision): The specific data protection policies must be established by the organization, as they vary based on regulatory requirements and existing frameworks.
+- Critic's last word (R2, escalate): The specifics of data protection policies are still unspecified, and thus the challenge remains open.
 
 ### C4 · MAJOR · blocks the build
 
@@ -84,6 +86,8 @@ This release will enable users to track key contacts in each of the ~100 member 
 - Why it matters: If not addressed, key contact information may become unmanaged, leading to confusion and ineffective outreach.
 - Decision owner: Organizational Policy Maker
 - Options: Establish a formal handover process for outgoing personnel / Allow team members to assume responsibility / Implement a centralized system to reassign contacts
+- Proposer's last word (R2, defend, needs human decision): The specific process for transitioning ownership of contact data when users leave must be determined by the organization, as it depends on existing protocols and policies.
+- Critic's last word (R2, escalate): The challenge regarding transitioning ownership remains open as it requires a human decision.
 
 ### C7 · MAJOR · blocks the build
 
@@ -92,6 +96,8 @@ This release will enable users to track key contacts in each of the ~100 member 
 - Why it matters: Ensuring data continuity is crucial to maintain effective communication and operations.
 - Decision owner: Organizational Policy Maker
 - Options: Create a formal transition procedure for departing personnel / Assign a deputy to manage contact data / Document contact data protocols within teams
+- Proposer's last word (R4, defend, needs human decision): The responsibility for data continuity and management during personnel changes must be established by organizational policies and cannot be assumed in this proposal.
+- Critic's last word (R4, escalate): The proposal lacks clarity on established processes for managing data continuity during personnel changes, requiring organizational input.
 
 ### C6 · MINOR · does not block the build
 
@@ -100,6 +106,8 @@ This release will enable users to track key contacts in each of the ~100 member 
 - Why it matters: Preventing unauthorized access to changes in sensitive information is critical for maintaining confidentiality.
 - Decision owner: Data Privacy Officer
 - Options: Restrict access to the history log based on user roles / Encrypt sensitive data changes in the log / Limit retention of sensitive updates in the log
+- Proposer's last word (R3, defend, acceptable risk): The risk of sensitive updates being exposed in the history log is acknowledged as acceptable for this release, as access is restricted to authorized users only. This access control mitigates potential risks, although further steps can be considered in future updates.
+- Critic's last word (R3, maintain): While access is restricted to authorized users, the potential exposure of sensitive updates in the history log remains a concern that needs addressing.
 
 ## Tension report
 
@@ -116,6 +124,7 @@ The major disagreement centered on the management of sensitive data access and t
 - Proposer's remaining worry (80/100): Ensuring that all authorized access privileges are effectively managed and audited to avoid unauthorized exposure.
 - Critic's remaining worry (70/100): There is still a lack of clarity on what happens to contact data when key personnel leave, increasing the potential for gaps in management.
 - ⚠ Proposer reported 80/100 confidence while blocker(s) C5 remain unsettled.
+- ⚠ C8 was settled by wording a later edit removed; the final proposal no longer says: "Data protection compliance will be ensured through regular audits conducted by the compliance team to confirm access privileges and the secure handling of sensitive data."
 
 ## Appendix: issue ledger
 

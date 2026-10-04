@@ -82,6 +82,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Ensures compliance with legal mandates regarding data retention and prevents violations.
 - Decision owner: Data Governance Officer
 - Options: Establish a retention policy / Align with legal requirements
+- Proposer's last word (R4, defend, needs human decision): Determining data retention policies is outside the proposal's scope, as it requires alignment with legal and organizational guidelines that must be decided by relevant authorities.
+- Critic's last word (R4, escalate): The proposal lacks clarity on data retention policies, necessitating a human decision.
 
 ### C20 · BLOCKER · blocks the build
 
@@ -90,6 +92,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Ongoing validation is necessary to maintain data integrity and service effectiveness.
 - Decision owner: Data Quality Supervisor
 - Options: Implement scheduled audits / Create a validation team
+- Proposer's last word (R6, revise, missing decision): This revision introduces a structured auditing process every six months, ensuring influence scores are regularly validated and updated to maintain data quality.
+- Critic's last word (R6, escalate): While compliance checks are introduced, a concrete plan for maintaining accuracy and relevance of scores is still needed.
 
 ### C21 · BLOCKER · blocks the build
 
@@ -98,6 +102,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Compliance is critical to avoid legal issues related to data handling.
 - Decision owner: Compliance Officer
 - Options: Draft new compliance protocols / Review current practices
+- Proposer's last word (R6, revise, missing decision): This revision introduces compliance checks as part of the review process, ensuring that data processing adheres to legal requirements.
+- Critic's last word (R6, escalate): Compliance measures are included, but details on individual data privacy protocols required for influence scores are still unclear.
 
 ### C22 · BLOCKER · blocks the build
 
@@ -106,6 +112,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: A clear protocol is needed to maintain continuity and accuracy in influence score management.
 - Decision owner: Project Manager Coordinator
 - Options: Document ownership transfer processes / Establish a transition timeline
+- Proposer's last word (R6, revise, missing decision): This revision clarifies the protocol for transferring responsibilities when project managers change roles or leave, ensuring continuity in influence score management.
+- Critic's last word (R6, escalate): The continuity in ownership is noted, yet specific protocols for maintaining score integrity through transitions remains vague.
 
 ### C6 · MAJOR · blocks the build
 
@@ -114,6 +122,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: It determines whether current safeguards are sufficient to prevent unauthorized access and breaches.
 - Decision owner: Head of Data Protection
 - Options: Review existing settings for adequacy / Maintain current settings
+- Proposer's last word (R2, defend, needs human decision): The existing privacy settings need to be evaluated by legal and compliance teams to ensure they adequately protect sensitive influence scores and criteria.
+- Critic's last word (R2, escalate): The evaluation of existing privacy settings needs human decision for compliance.
 
 ### C9 · MAJOR · blocks the build
 
@@ -122,6 +132,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: This is crucial for compliance with data protection laws and preventing legal repercussions.
 - Decision owner: Legal Compliance Officer
 - Options: Clarify data handling regulations / Establish new compliance protocols
+- Proposer's last word (R3, defend, needs human decision): The legal basis for processing personal data for influence scoring is determined by organizational policies and relevant regulations, which must be clarified by those responsible for compliance.
+- Critic's last word (R3, escalate): The proposal does not specify the exact legal framework for processing personal data, and depends on external policies that are not clarified.
 
 ### C16 · MAJOR · blocks the build
 
@@ -130,6 +142,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Training is fundamental to avoid disruptions and inaccuracies during role transitions.
 - Decision owner: Human Resources Manager
 - Options: Create a comprehensive training program / Develop an onboarding checklist
+- Proposer's last word (R6, revise, missing decision): This revision adds a comprehensive onboarding checklist to ensure incoming project managers receive specialized training on managing influence scores, mitigating the risk of gaps in ownership.
+- Critic's last word (R6, escalate): Although transfer protocols are noted, the clarity on the specific training steps is still lacking.
 
 ### C18 · MAJOR · blocks the build
 
@@ -138,6 +152,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Lack of a clear consensus process could lead to inconsistent scoring and interpretations.
 - Decision owner: Project Management Office Leader
 - Options: Establish regular consensus meetings / Define a formal voting process
+- Proposer's last word (R5, defend, needs human decision): The consensus on the definition of 'influence' relies on regional coordinators and project managers, requiring their input and agreement. This should be formally established in the process.
+- Critic's last word (R5, escalate): While it states a need for consensus, the process itself remains undefined, relying on future actions rather than built mechanisms.
 
 ### C19 · MAJOR · blocks the build
 
@@ -146,6 +162,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Clear criteria are vital to maintain objectivity and fairness in scoring.
 - Decision owner: Chief Data Officer
 - Options: Develop a standard scoring rubric / Solicit input from regional coordinators
+- Proposer's last word (R5, defend, needs human decision): Detailing specific criteria for determining the influence score will require input from project managers and regional coordinators to establish a fair and standardized method.
+- Critic's last word (R5, escalate): The reliance on input without a concrete decision-making framework leaves room for bias or inconsistency.
 
 ### C23 · MAJOR · blocks the build
 
@@ -154,6 +172,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Defined procedures are necessary to ensure feedback relevance and effectiveness.
 - Decision owner: Feedback Process Administrator
 - Options: Outline integration workflows / Schedule regular feedback review sessions
+- Proposer's last word (R6, revise, missing decision): This revision specifies operational procedures for feedback integration, ensuring that regional coordinators' input is consistently documented and incorporated into influence scores.
+- Critic's last word (R6, escalate): The operational procedures are set but require more detail to ensure effective integration of feedback.
 
 ### C10 · MINOR · does not block the build
 
@@ -162,6 +182,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 - Why it matters: Clear operational support is essential to ensure timely and reliable updates of influence scores.
 - Decision owner: Operational Manager
 - Options: Define specific workflows / Implement training sessions
+- Proposer's last word (R6, revise, missing decision): The revision specifies that project managers must establish a documented process that includes methodologies for data validation and feedback processing to ensure timely reviews of influence scores.
+- Critic's last word (R6, escalate): The specification of methodologies needs to be clarified further to ensure operational effectiveness.
 
 ## Tension report
 
@@ -181,6 +203,13 @@ The primary disagreement involved the definitions related to 'influence' and 'in
 - Critic's remaining worry (85/100): Continued risk of vague definitions and potential misunderstandings regarding influence and influence scores may still lead to unintended outcomes.
 - ⚠ Proposer reported 85/100 confidence while blocker(s) C15, C20, C21, C22 remain unsettled.
 - ⚠ Critic reported 85/100 confidence while blocker(s) C15, C20, C21, C22 remain unsettled.
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "Assign ownership of influence score accuracy to designated project managers, who must review and update scores every six months, or immediately upon known role changes."
+- ⚠ C7 was settled by wording a later edit removed; the final proposal no longer says: "Establish a secure communication protocol requiring project managers to document sharing instances of influence scores to external parties, ensuring that only finalized and vetted scores are shared and communicated through encrypted channels."
+- ⚠ C8 was settled by wording a later edit removed; the final proposal no longer says: "Implement an ongoing data verification process that includes quarterly reviews of influence scores and criteria by project managers, utilizing feedback from regional coordinators and updated engagement outcome data to ensure accuracy of scores."
+- ⚠ C11 was settled by wording a later edit removed; the final proposal no longer says: "Implement a review process for influence scores that includes guidelines restricting use to specific purposes related to enhancing engagement strategies, alongside an approval requirement for communicating scores externally."
+- ⚠ C13 was settled by wording a later edit removed; the final proposal no longer says: "...upon role changes or departures, a transition process is executed within one month to review and verify ongoing scores, assigning responsibility to a new project manager."
+- ⚠ C14 was settled by wording a later edit removed; the final proposal no longer says: "...project managers required to review and document how this feedback is incorporated into score updates."
+- ⚠ C17 was settled by wording a later edit removed; the final proposal no longer says: "All communications involving influence scores must be logged and authorized by at least two project managers to ensure confidentiality."
 
 ## Appendix: issue ledger
 

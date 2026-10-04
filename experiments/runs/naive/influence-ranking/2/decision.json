@@ -95,6 +95,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",

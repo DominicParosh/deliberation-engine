@@ -98,6 +98,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -174,7 +175,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Access to the alert system and the criteria for role designation must be defined by organizational policies regarding user permissions and data security. The organization must address who qualifies for alerts and what confidential information is protected."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The criteria for who else can access alerts must be defined by organizational policies, which are not addressed in the proposal."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -187,7 +202,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The criteria for filtering sensitive contacts from alerts must be determined based on existing organizational privacy policies and practices. These decisions should be made by the organization to ensure compliance with confidentiality standards."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Human decision-makers will need to establish filtering criteria for sensitive contacts, which is critical to prevent breaches."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -200,7 +229,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "While it is crucial to ensure compliance with data protection laws, the specifics of those measures must be determined by the organization, which is outside the scope of this proposal."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "While the importance of compliance is acknowledged, the lack of specifics leaves the proposal vulnerable without human decision-making."
+        }
+      }
     }
   ],
   "tension": {

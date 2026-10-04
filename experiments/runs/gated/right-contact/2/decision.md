@@ -66,6 +66,8 @@ This release will improve the tracking and management of primary contact persons
 - Why it matters: Understanding ownership of record updates is crucial to prevent outdated information.
 - Decision owner: Project Manager
 - Options: Define a specific role for updates / Leave it to user diligence / Implement an automated tracking system
+- Proposer's last word (R3, defend, acceptable risk): While the absence of an automated process for updating contact records does create some risk, we believe that manual updates will rely on users' diligence and the training they receive. Regular training sessions will be scheduled to ensure users understand the importance of keeping contact details current.
+- Critic's last word (R3, maintain): The existing process of manual updates increases the risk of outdated information leading to ineffective communication.
 
 ### C4 · MAJOR · blocks the build
 
@@ -74,6 +76,8 @@ This release will improve the tracking and management of primary contact persons
 - Why it matters: Clarifying roles will help protect sensitive information effectively while ensuring proper management and oversight.
 - Decision owner: Head of Data Protection
 - Options: Define a list of authorized project managers / Implement a training program to certify managers / Create a review process for authorization
+- Proposer's last word (R3, revise, missing decision): The revised assumption clarifies what constitutes sensitive diplomatic contact records, and the edits to S2 specify which roles are authorized to manage such records, thereby minimizing ambiguity around confidentiality.
+- Critic's last word (R3, maintain): While user roles are defined, it remains unclear who qualifies as a 'designated project manager' and the process for determining this.
 
 ### C7 · MAJOR · blocks the build
 
@@ -82,6 +86,8 @@ This release will improve the tracking and management of primary contact persons
 - Why it matters: Maintaining accurate contact information is vital for effective communication, and regular review processes can mitigate risks.
 - Decision owner: Project Manager
 - Options: Automated reminders for users / Mandatory quarterly reviews / User-led review sessions
+- Proposer's last word (R4, defend, acceptable risk): While the concern over manual updates is valid, the notification system will still enforce accountability. Regular reviews will encourage users to maintain the accuracy of the records, thus balancing the risk of inaccuracies.
+- Critic's last word (R4, maintain): While the notification system seeks to mitigate inaccuracies, it still places the onus on users to take action, leaving room for potential lapses in updates.
 
 ### C5 · MINOR · does not block the build
 
@@ -90,6 +96,8 @@ This release will improve the tracking and management of primary contact persons
 - Why it matters: Clear notification processes are essential to maintain effective communication and operations across teams.
 - Decision owner: Operations Manager
 - Options: Define standard communication protocols / Use email alerts for updates / Regular team meetings to discuss updates
+- Proposer's last word (R2, defend, needs human decision): The process for notification of changes to contact records must be defined by organizational policies or determined by existing operational practices, which should be clarified beyond this scope.
+- Critic's last word (R2, escalate): This relies on outside rules or decisions that are not specified.
 
 ## Tension report
 

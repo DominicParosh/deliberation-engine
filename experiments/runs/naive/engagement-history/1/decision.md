@@ -71,6 +71,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: This clarity is crucial to prevent unauthorized access to sensitive data by project managers.
 - Decision owner: Head of Data Protection
 - Options: Establish objective criteria / Maintain current definitions with monitoring / No changes needed
+- Proposer's last word (R4, revise, missing decision): The revised definition for 'Confidential record' now includes clear, specific guidelines for authorized personnel, reducing subjectivity in determining confidentiality and protecting against unauthorized access.
+- Critic's last word (R4, escalate): The definition still does not clearly establish the specific criteria authorized personnel must follow, leaving room for potential subjectivity.
 
 ### C12 · BLOCKER · blocks the build
 
@@ -79,6 +81,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: To ensure accountability and protect sensitive information from exposure after personnel changes.
 - Decision owner: Data Governance Team
 - Options: Define a clear clearance process / Maintain existing processes / No changes needed
+- Proposer's last word (R5, defend, needs human decision): The access clearance for project managers is dependent on organizational policies and human decisions, particularly regarding monitoring and revoking access after role changes, which must be clarified within the organization.
+- Critic's last word (R5, escalate): The assumption about project manager clearance lacks a defined process for monitoring access rights after role changes.
 
 ### C5 · MAJOR · blocks the build
 
@@ -87,6 +91,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: To prevent unauthorized access after personnel changes, clear processes need to be defined.
 - Decision owner: Chief Information Officer
 - Options: Implement regular access review processes / Define a new policy for clearance monitoring / No changes needed
+- Proposer's last word (R2, defend, needs human decision): While the assumption regarding clearance checks is valid, updating the processes for monitoring clearance requires human oversight and policy decisions at the organizational level.
+- Critic's last word (R2, escalate): This requires organizational policy regarding clearance checks, which is outside the scope of the proposal.
 
 ### C7 · MAJOR · blocks the build
 
@@ -95,6 +101,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: It's vital to ensure that access rights are updated to prevent sensitive data exposure.
 - Decision owner: Chief Information Officer
 - Options: Develop a clear monitoring process / Rely on current clearance processes / No changes needed
+- Proposer's last word (R3, defend, needs human decision): This is a key organizational process that must be defined by the Data Governance Team and Chief Information Officer, as it pertains to compliance and security within existing policies.
+- Critic's last word (R3, escalate): The proposal relies on a process that requires human authority for definition; this remains unresolved.
 
 ### C9 · MAJOR · blocks the build
 
@@ -103,6 +111,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: Defining this is essential to uphold data protection protocols and prevent unauthorized access.
 - Decision owner: Data Governance Team
 - Options: Create a procedure for reviewing access rights / Maintain current monitoring processes / No changes needed
+- Proposer's last word (R4, defend, needs human decision): The organization must define its processes for reviewing and updating access rights for project managers following any role changes, as this involves compliance with security and governance policies that are outside of our control.
+- Critic's last word (R4, escalate): Specific processes for maintaining and reviewing clearance after role changes need to be defined as they involve compliance with governance policies.
 
 ### C10 · MAJOR · blocks the build
 
@@ -111,6 +121,8 @@ Project managers will gain access to a detailed engagement history for each coun
 - Why it matters: Lack of defined audit processes could lead to unauthorized data access, which presents significant risks.
 - Decision owner: Head of Data Governance
 - Options: Implement regular audit practices / Continue current auditing methods / No changes needed
+- Proposer's last word (R5, revise, missing decision): The revision clarifies that the Data Governance Team is responsible for quarterly audits of user access rights, detailing the logging process for access attempts to prevent unauthorized access.
+- Critic's last word (R5, maintain): While quarterly audits are mentioned, the evidence does not specify how active monitoring and enforcement of role permissions will be managed.
 
 ## Tension report
 
@@ -127,6 +139,9 @@ The primary disagreement centered on how to effectively monitor and enforce conf
 - Proposer's remaining worry (82/100): Incomplete clarity on the enforcement of confidentiality measures could expose sensitive information.
 - Critic's remaining worry (70/100): The monitoring of user access rights might still lead to unauthorized access if processes for tracking changes in role assignments are not clearly defined.
 - ⚠ Proposer reported 82/100 confidence while blocker(s) C1, C12 remain unsettled.
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "role permissions will be managed by the Data Governance Team under the oversight of the Chief Information Officer."
+- ⚠ C3 was settled by wording a later edit removed; the final proposal no longer says: "The system will not display or alert project managers to any engagement history records marked as confidential. Any engagement flagged as confidential will have restricted visibility and will not be included in search results."
+- ⚠ C4 was settled by wording a later edit removed; the final proposal no longer says: "The engagement history will include data from the last five years, or all available data if fewer than five years exist, excluding any records flagged as confidential."
 
 ## Appendix: issue ledger
 

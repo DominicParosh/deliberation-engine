@@ -82,6 +82,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -159,7 +160,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specifics of how access permissions are granted and maintained depend on organizational procedures and practices, which must be determined by the relevant authorities."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "How access permissions are granted and revoked depends on organizational procedures, which must be clarified."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -173,7 +188,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "System performance benchmarks depend on organizational IT policies and infrastructure capabilities, which must be defined by the relevant technical teams."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Performance benchmarks are determined by organizational IT policy, requiring further clarification."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -187,7 +216,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The process for monitoring and verifying data quality must be established by the organization and is not solely determined by this feature release."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Data monitoring processes are contingent on organizational policies, which need to be defined."
+        }
+      }
     }
   ],
   "tension": {

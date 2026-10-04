@@ -79,6 +79,8 @@ The release will enable project managers to access a detailed engagement history
 - Why it matters: A defined retention policy is crucial to ensure compliance and mitigate potential legal risks associated with data mishandling.
 - Decision owner: Legal and Compliance Departments
 - Options: Set a specific time frame for data retention / Develop procedures for data destruction
+- Proposer's last word (R4, defend, needs human decision): This edit specifies that a retention policy will be established by the organization, addressing the compliance concerns raised in the challenge.
+- Critic's last word (R4, escalate): While a retention policy is mentioned, the lack of specific procedures leaves it unconfirmed and requires further authority for finalization.
 
 ### C14 · BLOCKER · blocks the build
 
@@ -87,6 +89,8 @@ The release will enable project managers to access a detailed engagement history
 - Why it matters: Clarifying retention and deletion policies is essential for compliance with legal standards and organizational data governance.
 - Decision owner: Compliance Manager
 - Options: Establish a clear policy for retention periods / Specify destruction timelines for after retention period
+- Proposer's last word (R6, defend, needs human decision): The organization must define the specific policy for the retention and deletion of engagement history records, as this involves compliance with legal requirements and organizational policies.
+- Critic's last word (R6, escalate): The retention policy requires human decision-making, which cannot be settled here; therefore, it is escalated.
 
 ### C17 · BLOCKER · blocks the build
 
@@ -95,6 +99,8 @@ The release will enable project managers to access a detailed engagement history
 - Why it matters: Having a clear timeline is crucial to ensure compliance and prevent unauthorized retention of sensitive data.
 - Decision owner: Data Compliance Officer
 - Options: Define a destruction process with deadlines / Align destruction timeline with legal requirements
+- Proposer's last word (R8, defend, needs human decision): The retention policy for engagement records must be defined by organizational policies and compliance guidelines, which are beyond our authority to determine at this stage.
+- Critic's last word (R8, escalate): The proposal cannot define the retention policy, leaving it a question for higher authorities.
 
 ### C20 · BLOCKER · blocks the build
 
@@ -111,6 +117,8 @@ The release will enable project managers to access a detailed engagement history
 - Why it matters: Determining a retention policy is essential to manage legal compliance and proper handling of sensitive data over time.
 - Decision owner: Head of Compliance
 - Options: Define a retention schedule based on legal requirements / Align with applicable laws and organizational policies
+- Proposer's last word (R2, defend, needs human decision): The retention policy for engagement records must be determined by the organization's compliance and legal teams according to applicable laws, so this needs to be decided by those authorities.
+- Critic's last word (R2, escalate): Decisions regarding the retention of records need to be made by compliance authorities, thus this challenge is escalated.
 
 ### C16 · MAJOR · blocks the build
 
@@ -119,6 +127,8 @@ The release will enable project managers to access a detailed engagement history
 - Why it matters: Clearly defining the expertise needed for personnel is essential to maintain the reliability of engagement history data.
 - Decision owner: Head of Data Management
 - Options: Set minimum experience and certifications / Define a training program for personnel
+- Proposer's last word (R8, revise, missing decision): The revision specifies the qualifications and experience required for personnel responsible for data validation, ensuring the reliability of engagement history data.
+- Critic's last word (R8, maintain): The requirement for personnel qualifications now clearly states the necessary expertise for data validation. [Not counted as settled: the sentence you quote leans on 'designated personnel', which names no role, number or rule.]
 
 ### C21 · MAJOR · blocks the build
 
@@ -146,6 +156,13 @@ The main disagreement centered around the necessity and clarity of the data rete
 - Proposer's remaining worry (85/100): The clarity and implementation of the retention policy remain unresolved and could pose compliance risks.
 - Critic's remaining worry (70/100): Lack of a defined retention policy and timeline for data destruction poses a significant legal risk.
 - ⚠ Proposer reported 85/100 confidence while blocker(s) C9, C14, C17, C20 remain unsettled.
+- ⚠ C1 was settled by wording a later edit removed; the final proposal no longer says: "Sensitive data within engagement history will be flagged with a security classification label, and access to this data will be restricted based on user security clearance."
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "Project managers must have appropriate security clearance to access sensitive engagement records, determined by predefined clearance levels defined by the organization's security policy."
+- ⚠ C3 was settled by wording a later edit removed; the final proposal no longer says: "Project managers must have appropriate security clearance to access sensitive engagement records, determined by predefined clearance levels defined by the organization's security policy."
+- ⚠ C6 was settled by wording a later edit removed; the final proposal no longer says: "Sensitive data within engagement history will be flagged with a security classification label, and access to this data will be restricted based on user security clearance."
+- ⚠ C7 was settled by wording a later edit removed; the final proposal no longer says: "S5: Project managers must have appropriate security clearance to access sensitive engagement records, determined by predefined clearance levels defined by the organization's security policy. Security clearance levels will be verified annually, and any changes to a project manager's role will prompt an immediate review of their clearance status."
+- ⚠ C8 was settled by wording a later edit removed; the final proposal no longer says: "S5: Project managers must have appropriate security clearance to access sensitive engagement records, determined by predefined clearance levels defined by the organization's security policy. Security clearance levels will be verified annually, and any changes to a project manager's role will prompt an immediate review of their clearance status."
+- ⚠ C11 was settled by wording a later edit removed; the final proposal no longer says: "All recorded interactions include specific categories such as formal meetings, written correspondence, phone calls, and any other documented communications."
 
 ## Appendix: issue ledger
 

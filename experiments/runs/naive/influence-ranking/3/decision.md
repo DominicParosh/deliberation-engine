@@ -89,6 +89,8 @@ The feature will enable users to view influence scores for each contact, aiding 
 - Why it matters: Establishing a regular review frequency is crucial to ensure the scoring system aligns with any changes in regulations and organizational goals.
 - Decision owner: Head of Compliance
 - Options: Annually / Semi-annually / Quarterly
+- Proposer's last word (R2, defend, needs human decision): The frequency of reviewing the scoring criteria to ensure relevance and compliance must be determined by the organization based on existing policies and regulations.
+- Critic's last word (R2, escalate): Review frequency demands human oversight, hindering compliance assurance.
 
 ### C14 · MAJOR · blocks the build
 
@@ -97,6 +99,8 @@ The feature will enable users to view influence scores for each contact, aiding 
 - Why it matters: Clear oversight responsibility is needed to maintain compliance with data regulations, mitigating any legal risks.
 - Decision owner: Head of Data Protection
 - Options: Designate the data steward / Assign a compliance officer / Team approach with shared responsibility
+- Proposer's last word (R6, defend, needs human decision): The oversight for compliance with data protection regulations during each review is a matter that is subject to existing organizational policies and should be determined by relevant stakeholders who understand legal compliance requirements.
+- Critic's last word (R6, escalate): The responsibility for ensuring compliance remains undefined and reliant on unspecified organizational policies.
 
 ### C16 · MAJOR · blocks the build
 
@@ -105,6 +109,8 @@ The feature will enable users to view influence scores for each contact, aiding 
 - Why it matters: Ensuring data accuracy is vital for preventing outdated scores from compromising engagement decisions.
 - Decision owner: Data Steward
 - Options: Daily checks / Weekly updates / User-reported verification
+- Proposer's last word (R8, revise, missing decision): This edit clarifies the mechanisms for ongoing data quality maintenance, ensuring that inaccuracies are addressed promptly between scheduled audits.
+- Critic's last word (R8, maintain): While S11 mentions monitoring and updates, it lacks clear detail on how accuracy is ensured daily and what specific processes are in place.
 
 ### C17 · MAJOR · blocks the build
 
@@ -113,6 +119,8 @@ The feature will enable users to view influence scores for each contact, aiding 
 - Why it matters: Operational delays could hinder timely updates, impacting the effectiveness of the influence scoring system.
 - Decision owner: Project Manager
 - Options: Clear timelines / Increased staffing / Automated systems
+- Proposer's last word (R8, revise, missing decision): These edits provide concrete deadlines for both entry and review processes, which are designed to mitigate risks of delays in updating influence scores.
+- Critic's last word (R8, maintain): The measures described still do not provide sufficient detail on how to avoid bottlenecks in score updates during manual processes.
 
 ### C19 · MAJOR · blocks the build
 
@@ -121,6 +129,8 @@ The feature will enable users to view influence scores for each contact, aiding 
 - Why it matters: Defining timelines is essential to ensure timely updates and prevent reliance on outdated data.
 - Decision owner: Project Manager
 - Options: Set weekly deadlines / Implement bi-weekly reviews / Flexible deadlines based on volume
+- Proposer's last word (R8, revise, missing decision): This revision clarifies timelines for the peer review process and ensures timely updates to influence scores, thereby reducing the risk of acting on outdated information.
+- Critic's last word (R8, maintain): While a timeline is now included, it does not fully address how user actions will be coordinated to avoid stale data.
 
 ## Tension report
 
@@ -139,6 +149,10 @@ The primary contention arose around the clarity and responsibility for ensuring 
 
 - Proposer's remaining worry (80/100): While I've attempted to address the open challenges, the success of the updates relies on clear implementation and adherence to timelines by the team.
 - Critic's remaining worry (65/100): Unresolved operational bottlenecks and clarity on daily accuracy checks may lead to reliance on outdated influence scores.
+- ⚠ C1 was settled by wording a later edit removed; the final proposal no longer says: "S3: Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff."
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "D2: 'Global position' means the official job title or role of a contact within their respective organization, which may include considerations for variations in political and organizational structures across different countries, defined by a list of equivalencies that aligns roles with their influence potential."
+- ⚠ C9 was settled by wording a later edit removed; the final proposal no longer says: "Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies."
+- ⚠ C18 was settled by wording a later edit removed; the final proposal no longer says: "'Benchmark standards' means predefined measurable criteria established through stakeholder agreement to quantify the global position, mission involvement, and historical engagement frequency, ensuring consistent application of influence scores across various contexts and user interpretations."
 
 ## Appendix: issue ledger
 

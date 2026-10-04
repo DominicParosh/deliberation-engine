@@ -4,6 +4,22 @@ Agents never touch state directly. They emit moves; the ledger checks the moves 
 (`check_*`), coerces what can safely be coerced when a repair attempt also fails (`coerce_*`),
 and applies them (`apply_*`). Termination and the decision document are both computed
 from this state, never from free text.
+
+The rules, each added for a failure seen in a live batch (tasks/iteration-log.md names the batch):
+  Proposer (`check_proposer`, `_vet`, `_edit_problem`)
+    - one answer per open challenge; the move follows from the grounds it names               v1, v3
+    - a defense edits nothing; a revision or concession must edit, and the engine applies it   v4, v5
+    - a concession drops or descopes something; a revision that only removes is a concession   v6
+    - a revision can't consist of assumption edits only                                        v7
+    - edits use real IDs, never remove a core commitment, change something, leave no section
+      empty, and give new items distinct new IDs                                               v5, v6
+  Critic (`check_critic`, `verdict_problem`)
+    - one ruling per answered challenge; new challenges within the round's budget              v1
+    - an ACCEPT quotes words really in a decided item (or in the answer to a defense or
+      concession), never an assumption, names a concrete fact and leans on no weak phrase      v2, v3, v6, v7
+    - a question the Proposer sent to humans is never accepted                                 v7
+    - resolution tests are questions; no new challenge repeats an open or escalated one;
+      round 1 raises a challenge for each gap it lists                                         v7, v7.1
 """
 
 import re
@@ -18,6 +34,7 @@ from .schemas import (SECTIONS, WEIGHT, CriticOpening, CriticTurn, Edit, Item, N
 
 Status = Literal["OPEN", "RESOLVED", "ESCALATED", "UNRESOLVED"]
 SETTLED_BY = {"DEFEND": "DEFENDED", "REVISE": "REVISED", "CONCEDE": "CONCEDED"}
+QUOTE_MATCH = 0.85  # share of a quote's words that must appear, in order, in one text for it to count as there
 
 # Phrases that sound like a decision but decide nothing: the "weak phrases" requirements-quality tools have flagged
 # since NASA's ARM tool. This is the subset the Critic accepted as evidence in the v5–v7 batches. A promise is weak
@@ -257,7 +274,22 @@ class Ledger(BaseModel):
         share = {k: _share(words, t) for k, t in texts.items()}
         rank = {k: (share[k], 0 if k == "answer" else 1 if k.startswith("A") else 2) for k in texts}
         best = max(texts, key=rank.get)
-        return best if share[best] >= 0.85 else ""
+        return best if share[best] >= QUOTE_MATCH else ""
+
+    def lost_settlements(self) -> dict[str, str]:
+        """Challenges settled by a revision whose accepted wording a later edit removed, mapped to that wording. Each
+        edit is checked when it is made, but a later answer may rewrite the same item; the record still says "settled",
+        so the decision document has to say what the final proposal no longer contains."""
+        texts, lost = list(self.proposal.items().values()), {}
+        for i in self.issues.values():
+            answer = self._last_answer(i.id)
+            accept = next((e for e in reversed(i.history) if e.actor == "critic" and e.move == "ACCEPT"), None)
+            if i.status != "RESOLVED" or not accept or not answer or answer.move != "REVISE":
+                continue  # a defense or concession may be evidenced from the answer itself, not the proposal
+            quote = accept.text.rpartition('Evidence: "')[2].removesuffix('"')
+            if not any(_share(_quote_words(quote), t) >= QUOTE_MATCH for t in texts):
+                lost[i.id] = quote
+        return lost
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
@@ -491,7 +523,7 @@ def _same_question(a: str, b: str) -> bool:
 
 def _keeps(earlier: str, later: str) -> bool:
     """Does a later wording keep (nearly) all of an earlier one's words, i.e. refine it rather than replace it?"""
-    return _share(_words(earlier).split(), later) >= 0.85
+    return _share(_words(earlier).split(), later) >= QUOTE_MATCH
 
 
 def _quote_words(evidence: str) -> list[str]:

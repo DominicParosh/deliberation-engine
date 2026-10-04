@@ -48,6 +48,7 @@ The feature will allow project managers to access a detailed engagement history 
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C20** (MAJOR · COMPLIANCE): How is access logging structured for detailed tracing in case of a compliance check? The Proposer's answer, which the Critic accepted: C12 already addresses how access logging is structured for auditing and monitoring, hence this challenge is covered.
 
 ## Assumptions
 
@@ -80,6 +81,8 @@ The feature will allow project managers to access a detailed engagement history 
 - Why it matters: Defining a retention period is essential for compliance with data protection regulations.
 - Decision owner: Head of Data Management
 - Options: Define a retention period / Maintain indefinite retention / Establish periodic review for retention
+- Proposer's last word (R2, defend, needs human decision): The retention period for engagement history and the policies governing its storage and deletion need to be defined by the organization to ensure compliance with relevant regulations.
+- Critic's last word (R2, escalate): The answer confirms that this requires a human decision, hence it remains unsettled.
 
 ### C8 · MAJOR · blocks the build
 
@@ -88,6 +91,8 @@ The feature will allow project managers to access a detailed engagement history 
 - Why it matters: Specifying a retention period is crucial for ensuring compliance and avoiding excessive data storage.
 - Decision owner: Compliance Officer
 - Options: Establish a strict retention period / Define exceptions for certain records / Review regularly for compliance
+- Proposer's last word (R3, defend, needs human decision): The retention period for engagement history is subject to organizational policy and legal requirements, which must be determined by relevant decision-makers within the organization.
+- Critic's last word (R3, escalate): The response fails to define a specific retention period or clarify enforcement, leaving compliance risks unresolved.
 
 ### C18 · MAJOR · blocks the build
 
@@ -96,6 +101,8 @@ The feature will allow project managers to access a detailed engagement history 
 - Why it matters: This will help to identify potential bottlenecks and ensure timely access for project managers.
 - Decision owner: Development Team
 - Options: Define performance metrics / Conduct stress testing / Review past performance data
+- Proposer's last word (R6, defend, needs human decision): The feasibility of the five-year record retrieval is a matter requiring input from a technical lead or development team, as it pertains to infrastructure capacity and performance under load.
+- Critic's last word (R6, maintain): The proposal outlines a design plan for efficient retrieval of data, addressing concerns about technical feasibility. [Not counted as settled: the Proposer answered that it needs a human decision, so it can't be settled here.]
 
 ### C6 · MINOR · does not block the build
 
@@ -104,6 +111,8 @@ The feature will allow project managers to access a detailed engagement history 
 - Why it matters: Understanding performance will ensure the system meets operational requirements and user expectations.
 - Decision owner: Technical Lead
 - Options: Set performance benchmarks / Conduct performance testing post-implementation / Review system capacity
+- Proposer's last word (R3, defend, acceptable risk): The risk regarding retrieval performance is recognized, and we will implement performance testing post-implementation to monitor and ensure adequate efficiency.
+- Critic's last word (R3, escalate): The answer doesn't provide specific performance metrics or a clear technical strategy, failing to address the challenge adequately.
 
 ## Tension report
 
@@ -120,6 +129,12 @@ The key disagreement revolved around the technical feasibility of retrieving his
 
 - Proposer's remaining worry (85/100): The reliance on HR for timely access revocation may introduce delays and risks if not managed efficiently.
 - Critic's remaining worry (80/100): Although there are improvements, the filtering of sensitive records and the operational efficiency of the system under heavy load still raise concerns about potential data breaches.
+- ⚠ C2 was settled by wording a later edit removed; the final proposal no longer says: "S6: Access to engagement history will automatically be revoked when a Project Manager changes roles or leaves the organization, ensuring that sensitive information is not accessible after employment."
+- ⚠ C3 was settled by wording a later edit removed; the final proposal no longer says: "S1: Engagement history means a chronological record of all interactions with contacts from the country, including meeting dates, participants, topics discussed, and action items, with a mechanism in place to verify accuracy and maintain data quality through regular audits and updates."
+- ⚠ C4 was settled by wording a later edit removed; the final proposal no longer says: "S3: ...and all access will be logged for compliance tracking, including user details, times of access, and nature of the records accessed."
+- ⚠ C9 was settled by wording a later edit removed; the final proposal no longer says: "Project managers are defined as users with a role of 'Project Manager' in the Government CRM system, and they will only gain access to engagement history that falls within the limits of their assigned permission levels, which will filter out any sensitive or confidential information through a role-based access control mechanism that ensures only non-confidential records are available based on established criteria."
+- ⚠ C10 was settled by wording a later edit removed; the final proposal no longer says: "Access to engagement history will automatically be revoked when a Project Manager changes roles or leaves the organization, with the responsibility for revocation falling to the HR department per organizational policy to ensure timely and secure handling of access changes."
+- ⚠ C12 was settled by wording a later edit removed; the final proposal no longer says: "all access will be logged for compliance tracking, including user details, times of access, nature of records accessed, and the specific engagement history records viewed, which will be monitored regularly for compliance oversight."
 
 ## Appendix: issue ledger
 

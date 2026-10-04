@@ -112,6 +112,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -201,7 +202,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "CONCEDE",
+          "grounds": "SHOULD_NOT_BUILD",
+          "text": "This edit acknowledges the compliance issue while stating that necessary adjustments will be made to align with data retention policies."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The response indicates compliance adjustments will be made, but no specifics are provided, leaving the question unresolved."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -215,7 +230,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The organization must determine what processes will be put in place to verify the accuracy and completeness of logged engagement events, as this is outside the scope of the feature development."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Verification of recorded engagement events relies on a policy beyond the scope of this feature development, meaning this challenge remains open."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -229,7 +258,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The processes for maintaining data quality and accuracy of logged engagement events, such as audits or validations, need to be defined by organizational standards and policies, which are outside the scope of this proposal."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not define how data quality will be maintained, leaving it dependent on human decisions."
+        }
+      }
     }
   ],
   "tension": {
@@ -351,7 +394,15 @@
       }
     },
     "flags": [
-      "Critic reported 85/100 confidence while blocker(s) C6 remain unsettled."
+      "Critic reported 85/100 confidence while blocker(s) C6 remain unsettled.",
+      "C1 was settled by wording a later edit removed; the final proposal no longer says: \"The alert content will only include non-sensitive engagement data and will not disclose details of specific diplomatic engagements or relationships.\"",
+      "C7 was settled by wording a later edit removed; the final proposal no longer says: \"will implement a data retention policy that automatically deletes sensitive engagement data that is not needed for compliance after 12 months, in line with the organization’s data retention policy.\"",
+      "C9 was settled by wording a later edit removed; the final proposal no longer says: \"The responsibility for maintaining the accuracy of logged engagement data will fall to the regional coordinators, who must conduct regular audits of engagement events for their respective countries at least every six months to ensure the data's integrity.\"",
+      "C11 was settled by wording a later edit removed; the final proposal no longer says: \"Additionally, a report will be generated and submitted to the compliance team bi-annually to review the completeness and accuracy of engagement logs.\"",
+      "C12 was settled by wording a later edit removed; the final proposal no longer says: \"After alerts regarding cold relationships are triggered, the system will automatically flag any corresponding sensitive engagement data for review and deletion following confirmation that no further engagement events have been logged.\"",
+      "C13 was settled by wording a later edit removed; the final proposal no longer says: \"After alerts regarding cold relationships are triggered, the system will automatically flag any corresponding sensitive engagement data for review, and it will be automatically deleted within 30 days unless further engagement events have been logged.\"",
+      "C15 was settled by wording a later edit removed; the final proposal no longer says: \"The Compliance team will have final responsibility for overseeing data accuracy and ensuring timely updates to existing records.\"",
+      "C16 was settled by wording a later edit removed; the final proposal no longer says: \"The Compliance team will have final responsibility for overseeing data accuracy and ensuring timely updates to existing records.\""
     ]
   },
   "issues": [

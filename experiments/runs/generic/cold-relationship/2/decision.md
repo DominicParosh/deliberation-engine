@@ -78,6 +78,8 @@ This release will implement an alert system to notify users when engagement with
 - Why it matters: To mitigate risks of confidentiality breaches during the review of engagement activities.
 - Decision owner: Head of Data Protection
 - Options: Implement stricter access controls / Define protocols for information handling during reviews
+- Proposer's last word (R5, revise, missing decision): The edits specify the implementation of a two-factor authentication protocol for access to sensitive logs and detail access restrictions, which provide clarity on how confidentiality is protected during the internal review process.
+- Critic's last word (R5, maintain): The specifics of which roles are considered 'authorized personnel' are not provided, leaving confidentiality protection unclear.
 
 ### C3 · MAJOR · blocks the build
 
@@ -86,6 +88,8 @@ This release will implement an alert system to notify users when engagement with
 - Why it matters: Ensuring logged engagement activities are accurate is critical for the reliability of the alert system.
 - Decision owner: Product Owner
 - Options: Define specific quality metrics / Rely on existing generic review processes
+- Proposer's last word (R3, revise, missing decision): These edits specify the internal review process and metrics for ensuring the accuracy of logged engagement activities, addressing the risk of incorrect logging affecting the alert system's reliability.
+- Critic's last word (R3, maintain): The proposal states a review process but does not specify which metrics or quality checks will ensure the accuracy of logged engagement activities, leaving the potential for errors in logging unaddressed.
 
 ## Tension report
 

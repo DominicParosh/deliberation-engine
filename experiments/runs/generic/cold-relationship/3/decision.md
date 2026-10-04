@@ -80,6 +80,8 @@ This release will implement an alert system in the Government CRM to notify user
 - Why it matters: This is crucial to prevent unauthorized access to sensitive information, which could lead to potential confidentiality breaches.
 - Decision owner: Head of User Access Management
 - Options: Define access criteria for additional roles / Limit access to only designated roles
+- Proposer's last word (R2, defend, needs human decision): Access to the alert system and the criteria for role designation must be defined by organizational policies regarding user permissions and data security. The organization must address who qualifies for alerts and what confidential information is protected.
+- Critic's last word (R2, escalate): The criteria for who else can access alerts must be defined by organizational policies, which are not addressed in the proposal.
 
 ### C4 · MAJOR · blocks the build
 
@@ -88,6 +90,8 @@ This release will implement an alert system in the Government CRM to notify user
 - Why it matters: Establishing filtering criteria is essential to maintain confidentiality and prevent risks associated with sensitive information exposure.
 - Decision owner: Head of Data Protection
 - Options: Create a list of sensitive contacts / Implement a tagging system for sensitive interactions
+- Proposer's last word (R2, defend, needs human decision): The criteria for filtering sensitive contacts from alerts must be determined based on existing organizational privacy policies and practices. These decisions should be made by the organization to ensure compliance with confidentiality standards.
+- Critic's last word (R2, escalate): Human decision-makers will need to establish filtering criteria for sensitive contacts, which is critical to prevent breaches.
 
 ### C8 · MAJOR · blocks the build
 
@@ -96,6 +100,8 @@ This release will implement an alert system in the Government CRM to notify user
 - Why it matters: Ensuring compliance with data protection is critical to safeguard personal data and avoid legal repercussions for the organization.
 - Decision owner: Chief Compliance Officer
 - Options: Conduct a data protection impact assessment / Develop a compliance checklist for the alert system
+- Proposer's last word (R3, defend, needs human decision): While it is crucial to ensure compliance with data protection laws, the specifics of those measures must be determined by the organization, which is outside the scope of this proposal.
+- Critic's last word (R3, escalate): While the importance of compliance is acknowledged, the lack of specifics leaves the proposal vulnerable without human decision-making.
 
 ## Tension report
 

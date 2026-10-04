@@ -84,6 +84,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -174,7 +175,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The data protection compliance protocols that govern the handling of sensitive information need to be defined by the relevant organizational authorities. This item must remain as is to allow for adherence to established compliance protocols."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not specify how compliance will be achieved, relying instead on human-defined protocols."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -187,7 +202,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The training and authorization processes for users must be established by the organization to ensure that all personnel are adequately prepared to log meeting details. This remains open for the organization to address."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of training and authorization processes are not defined, and they must be established by the organization."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -200,7 +229,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specifics of data protection compliance protocols must be determined by the organization according to legal requirements and best practices."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of data protection protocols require an organizational decision."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -213,7 +256,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specifics of mandatory training and authorization processes for users logging meetings must be established by the organization as part of their compliance and operational procedures."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of training and authorization processes must be established by the organization."
+        }
+      }
     }
   ],
   "tension": {

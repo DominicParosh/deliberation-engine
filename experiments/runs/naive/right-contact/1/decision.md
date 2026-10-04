@@ -80,6 +80,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: This is crucial to mitigating risks of unauthorized access to sensitive information.
 - Decision owner: Head of Data Protection
 - Options: Define roles clearly / Establish stricter access controls / Implement role-based authentication
+- Proposer's last word (R4, revise, missing decision): The revised item now specifies that user access controls not only define the roles but also establish that access will be bounded by designated territories and responsibilities, minimizing the risk of unauthorized access to sensitive information.
+- Critic's last word (R4, escalate): The proposal specifies roles but still lacks detailed access control measures and rules for preventing unauthorized access, meaning it remains unaddressed.
 
 ### C16 · BLOCKER · blocks the build
 
@@ -88,6 +90,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Protecting sensitive information is imperative to maintaining security and diplomatic relations.
 - Decision owner: Head of Data Protection
 - Options: Define access roles / Establish monitoring systems / Implement training for users
+- Proposer's last word (R8, revise, missing decision): The edits now specify concrete measures to protect sensitive diplomatic information, including role-based authentication and regular audits, which directly address the challenge of unauthorized access.
+- Critic's last word (R8, maintain): The proposal fails to specify the roles that will be granted access, leaving ambiguity around who can actually view sensitive contact information.
 
 ### C18 · BLOCKER · blocks the build
 
@@ -112,6 +116,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Sensitive personal information regarding diplomats is mishandled due to a lack of defined procedures for data management and compliance, leading to legal repercussions.
 - Decision owner: To be assigned
 - Options: What specific procedures are in place to ensure compliance with data protection laws regarding personal information?
+- Proposer's last word (R6, defend, needs human decision): The proposal requires input from the organization to outline specific measures or procedures for compliance with data protection regulations regarding personal contact information.
+- Critic's last word (R6, escalate): The lack of clear procedures creates a significant compliance risk that necessitates human decision-making.
 
 ### C12 · BLOCKER · blocks the build
 
@@ -120,6 +126,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Diplomats' personal contact information is exposed due to inadequate protection measures, leading to potential security breaches and diplomatic fallout.
 - Decision owner: To be assigned
 - Options: What specific data protection measures are in place to safeguard the sensitive personal information of diplomatic contacts?
+- Proposer's last word (R7, defend, needs human decision): The organization must define specific data protection measures to safeguard sensitive contact information, as this requires compliance with existing legal frameworks and policies.
+- Critic's last word (R7, escalate): This is a compliance issue that needs human input.
 
 ### C19 · BLOCKER · blocks the build
 
@@ -160,6 +168,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Clear assignment of auditing responsibilities is needed to maintain data integrity.
 - Decision owner: Head of Data Management
 - Options: Regional coordinators / Project managers / Data integrity officer
+- Proposer's last word (R3, defend, needs human decision): The responsibility for regularly auditing and verifying contact information is a determination that the organization must decide, making this a question for them.
+- Critic's last word (R3, escalate): This aspect requires a decision that is beyond the current proposal.
 
 ### C10 · MAJOR · blocks the build
 
@@ -168,6 +178,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Sensitive personal information regarding diplomats or officials gets mishandled, leading to a compliance breach and potential legal repercussions for the organization.
 - Decision owner: To be assigned
 - Options: What measures are in place to ensure compliance with data protection laws regarding personal contact information?
+- Proposer's last word (R5, defend, needs human decision): This challenge requires input from legal and compliance teams regarding data protection regulations; current wording will remain as it directs attention to potential compliance issues that must be addressed.
+- Critic's last word (R5, escalate): This challenge requires a clear input from legal and compliance teams; further actions on compliance must be taken.
 
 ### C13 · MAJOR · blocks the build
 
@@ -176,6 +188,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 - Why it matters: Contact information is retained longer than necessary, risking legal exposure for not adhering to data protection regulations, leading to potential fines or legal challenges.
 - Decision owner: To be assigned
 - Options: What is the defined retention period for contact information and how is it managed?
+- Proposer's last word (R7, defend, needs human decision): The organization needs to establish a retention policy for contact information to ensure compliance with data protection laws, which is outside the scope of this proposal.
+- Critic's last word (R7, escalate): This is a compliance issue that requires human decision.
 
 ## Tension report
 
@@ -194,6 +208,7 @@ The primary disagreement arose over defining specific access controls and compli
 
 - Proposer's remaining worry (75/100): The challenge of implementing sufficient security measures while balancing user access requirements remains significant.
 - Critic's remaining worry (30/100): The proposal still lacks sufficient measures to ensure compliance and protect sensitive information, leading to significant security and legal risks.
+- ⚠ C4 was settled by wording a later edit removed; the final proposal no longer says: "S2: Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity."
 
 ## Appendix: issue ledger
 

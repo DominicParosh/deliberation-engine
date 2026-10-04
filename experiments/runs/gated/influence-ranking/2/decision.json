@@ -122,6 +122,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -192,7 +193,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specific sources of historical engagement data and their timelines are dependent on existing organizational data structures and must be verified by the relevant internal teams."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal relies on human verification of data sources, which prevents acceptance."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -205,7 +220,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The proposal cannot define the quality or sources of historical engagement data without input from the teams responsible for data management and quality assurance."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The reliance on certain teams for input on data quality and sources needs human decision."
+        }
+      }
     }
   ],
   "tension": {

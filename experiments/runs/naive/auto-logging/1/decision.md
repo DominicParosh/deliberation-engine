@@ -72,6 +72,8 @@ An automatic logging feature for meetings with government officials will be impl
 - Why it matters: This is crucial to prevent unauthorized access and maintain confidentiality within the CRM.
 - Decision owner: Head of Data Protection
 - Options: Implement role-based access control (RBAC) policies / Define clear user role scopes and permissions / Utilize logging and auditing for access
+- Proposer's last word (R2, defend, needs human decision): The mechanisms for user permissions and access to sensitive meeting logs depend on organizational policies and role definitions, which are outside the scope of this proposal.
+- Critic's last word (R2, escalate): The routing of this depends on external policies which are outside the scope of the proposal.
 
 ## Tension report
 

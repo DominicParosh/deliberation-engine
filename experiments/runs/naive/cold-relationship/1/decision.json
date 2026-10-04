@@ -89,6 +89,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -163,7 +164,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Determining appropriate thresholds may require input from diplomatic teams to understand regional contexts and nuances, which we cannot decide at this stage."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The defense highlights that thresholds require diplomatic input, making this uncertain for implementation as it cannot be decided here."
+        }
+      }
     }
   ],
   "tension": {

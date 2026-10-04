@@ -40,6 +40,7 @@ This release will implement an alert system that notifies users when engagement 
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C6** (MINOR · DATA_QUALITY): What processes will be implemented to ensure engagement activities logged in the CRM are accurate and up to date? The Proposer's answer, which the Critic accepted: While reliance on user accountability is a risk, dialogue with stakeholders post-release will establish a basis for refining data accuracy measures based on user experience.
 
 ## Assumptions
 
@@ -70,6 +71,8 @@ This release will implement an alert system that notifies users when engagement 
 - Why it matters: Identifying ways to effectively manage alert volume is crucial to ensure that important alerts aren't overlooked.
 - Decision owner: Product Owner
 - Options: Establish stricter thresholds for alerts / Offer more granular alert customization options / Incorporate monitoring tools for alert frequency
+- Proposer's last word (R3, defend, acceptable risk): The risk of alert fatigue is acknowledged but managed with customization options for alerts, enabling users to filter out less relevant notifications.
+- Critic's last word (R3, maintain): While there is user customization, the concern of alert fatigue remains significant and was not fully mitigated.
 
 ## Tension report
 

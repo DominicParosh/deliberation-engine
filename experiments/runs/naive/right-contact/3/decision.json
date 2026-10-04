@@ -96,6 +96,15 @@
     }
   ],
   "rejected": [],
+  "declined": [
+    {
+      "id": "C4",
+      "severity": "MAJOR",
+      "lens": "CONFIDENTIALITY",
+      "test": "What alternative solutions will be provided for situations requiring multiple contacts in a country?",
+      "answer": "The limitation on having multiple contacts is acknowledged, but the team's existing communication policies will allow for workarounds, such as having users reference additional contacts in project metadata when necessary."
+    }
+  ],
   "assumptions": [
     {
       "id": "A1",
@@ -183,7 +192,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 7,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This edit specifies the criteria users will follow to verify the accuracy of primary contact information, thereby ensuring a more structured review process."
+        },
+        "critic": {
+          "round": 7,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "This defines clear criteria for contact accuracy verification. [Not counted as settled: the sentence you quote leans on 'designated users', which names no role, number or rule.]"
+        }
+      }
     },
     {
       "issue_id": "C14",
@@ -196,7 +219,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 7,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "These edits clarify that designated users are responsible for the accuracy of the primary contacts once updated, improving accountability."
+        },
+        "critic": {
+          "round": 7,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While there is accountability, the definition lacks specificity on enforcement measures after updates."
+        }
+      }
     },
     {
       "issue_id": "C16",
@@ -209,7 +246,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 7,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This edit establishes a notification system for updates that supports accountability despite the lack of historical records."
+        },
+        "critic": {
+          "round": 7,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "This establishes a mechanism for accountability but lacks detail on how accountability is reinforced without historical records."
+        }
+      }
     }
   ],
   "tension": {
@@ -317,7 +368,13 @@
         "worry": "The effectiveness of primary contact updates hinges on user accountability and the adequacy of review processes."
       }
     },
-    "flags": []
+    "flags": [
+      "C2 was settled by wording a later edit removed; the final proposal no longer says: \"allowing only regional coordinators and project managers from the same region to view primary contacts, while restricting access for users from other regions.\"",
+      "C3 was settled by wording a later edit removed; the final proposal no longer says: \"Additionally, introduce a data validation process during updates that checks for inconsistencies or errors based on predefined rules, ensuring that only complete and validated contact entries are accepted.\"",
+      "C5 was settled by wording a later edit removed; the final proposal no longer says: \"'Primary contact qualifications' means the criteria that must be met for an individual to be designated as a primary contact, including relevant experience in diplomatic communications and recognition by the organization as a point of contact.\"",
+      "C9 was settled by wording a later edit removed; the final proposal no longer says: \"Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. Users from other regions will have no access to this information.\"",
+      "C11 was settled by wording a later edit removed; the final proposal no longer says: \"Any changes in qualifications will be documented through a formal process that requires notification to designated users following approval by a government liaison officer or designated compliance officer, and these changes will be recorded in the CRM system to ensure accurate and updated qualifications are maintained.\""
+    ]
   },
   "issues": [
     {

@@ -86,6 +86,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -186,7 +187,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Only the organization can determine how the classification of contacts is maintained and updated as individuals' statuses change, which is outside the scope of this release."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The system's management and updating of contact classifications need clarification."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -200,7 +215,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The classification of contacts as government officials and the process of maintaining that classification is dependent on organizational policies and procedures, which must be established by the organization responsible for the CRM."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not specify how updates are handled for contact classifications, which could lead to outdated information being used."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -214,7 +243,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Managing user permissions related to accessing meeting logs is contingent upon existing organizational policies regarding role-based access control and user management, which need to be defined by the organization."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "There is no detail in the proposal regarding how user permissions will be managed or what safeguards will prevent unauthorized access."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -228,7 +271,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Only the organization can decide how user permissions are managed and monitored to comply with data protection standards, which is outside the scope of this release."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Details about managing and auditing user permissions are still needed."
+        }
+      }
     }
   ],
   "tension": {

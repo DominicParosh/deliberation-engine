@@ -72,6 +72,8 @@ This release will introduce an automated logging feature for meetings with gover
 - Why it matters: Clarifying these policies is crucial to prevent unauthorized access to sensitive information post-role transitions.
 - Decision owner: Head of Data Protection
 - Options: Define a process with clear roles and responsibilities / Allow IT department to manage access rights automatically / Review access rights on an ad-hoc basis
+- Proposer's last word (R2, defend, needs human decision): The management of access rights, especially during role changes, is dependent on organizational policies and IT procedures that must be determined by the organization.
+- Critic's last word (R2, escalate): How access rights are managed during role changes requires clarity on organizational policies that are not specified.
 
 ### C7 · MAJOR · blocks the build
 
@@ -80,6 +82,8 @@ This release will introduce an automated logging feature for meetings with gover
 - Why it matters: Without a defined process, there is a risk of unauthorized logging or access to sensitive information.
 - Decision owner: Head of Data Protection
 - Options: Create a structured role transition protocol / Implement automatic revocation of access during transitions / Regular audits of user access rights
+- Proposer's last word (R3, defend, needs human decision): The specifics regarding how access rights are assigned and managed during role transitions are determined by organizational policy and should be addressed by the appropriate decision-makers.
+- Critic's last word (R3, escalate): The proposal does not specify how access rights are managed during role transitions, relying on unspecified organizational policies.
 
 ## Tension report
 
@@ -95,6 +99,7 @@ The primary disagreement between the Proposer and Critic centered on the clarity
 
 - Proposer's remaining worry (85/100): Ensuring that user access rights are effectively managed during transitions could present operational challenges.
 - Critic's remaining worry (80/100): While safeguards have improved, there is still a risk of unauthorized access if role transitions aren't managed perfectly.
+- ⚠ C8 was settled by wording a later edit removed; the final proposal no longer says: "Access to view contact details will be restricted to only regional coordinators, project managers, and executive-level staff, where access rights will be assigned based on user roles and updated in accordance with organizational policies."
 
 ## Appendix: issue ledger
 

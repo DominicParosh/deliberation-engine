@@ -78,6 +78,8 @@ This release will implement an email alert system that notifies users when engag
 - Why it matters: Without clear compliance measures, sensitive data may remain stored beyond its retention period, risking legal repercussions.
 - Decision owner: Compliance Officer
 - Options: Create a defined retention schedule / Implement automatic deletion processes / Monitor data access and usage
+- Proposer's last word (R2, concede, should not build): This edit acknowledges the compliance issue while stating that necessary adjustments will be made to align with data retention policies.
+- Critic's last word (R2, escalate): The response indicates compliance adjustments will be made, but no specifics are provided, leaving the question unresolved.
 
 ### C5 · MAJOR · blocks the build
 
@@ -86,6 +88,8 @@ This release will implement an email alert system that notifies users when engag
 - Why it matters: Improper data recording could lead to inaccurate alerts about cold relationships, damaging diplomatic efforts.
 - Decision owner: Head of Data Protection
 - Options: Establish regular audits / Implement data verification policies / None
+- Proposer's last word (R2, defend, needs human decision): The organization must determine what processes will be put in place to verify the accuracy and completeness of logged engagement events, as this is outside the scope of the feature development.
+- Critic's last word (R2, escalate): Verification of recorded engagement events relies on a policy beyond the scope of this feature development, meaning this challenge remains open.
 
 ### C8 · MAJOR · blocks the build
 
@@ -94,6 +98,8 @@ This release will implement an email alert system that notifies users when engag
 - Why it matters: Inadequate processes could cause alert inaccuracies due to outdated or erroneous engagement data.
 - Decision owner: Data Quality Manager
 - Options: Set up regular data quality checks / Assign ongoing oversight responsibilities / Conduct ad-hoc data reviews
+- Proposer's last word (R3, defend, needs human decision): The processes for maintaining data quality and accuracy of logged engagement events, such as audits or validations, need to be defined by organizational standards and policies, which are outside the scope of this proposal.
+- Critic's last word (R3, escalate): The proposal does not define how data quality will be maintained, leaving it dependent on human decisions.
 
 ## Tension report
 
@@ -113,6 +119,14 @@ The primary disagreement revolved around the adequacy of measures to ensure data
 - Proposer's remaining worry (75/100): Maintaining consistency and clarity around engagement events across different countries may still pose challenges.
 - Critic's remaining worry (85/100): The proposal's reliance on user compliance with follow-up actions and the accuracy of recorded engagement events could lead to significant vulnerabilities.
 - ⚠ Critic reported 85/100 confidence while blocker(s) C6 remain unsettled.
+- ⚠ C1 was settled by wording a later edit removed; the final proposal no longer says: "The alert content will only include non-sensitive engagement data and will not disclose details of specific diplomatic engagements or relationships."
+- ⚠ C7 was settled by wording a later edit removed; the final proposal no longer says: "will implement a data retention policy that automatically deletes sensitive engagement data that is not needed for compliance after 12 months, in line with the organization’s data retention policy."
+- ⚠ C9 was settled by wording a later edit removed; the final proposal no longer says: "The responsibility for maintaining the accuracy of logged engagement data will fall to the regional coordinators, who must conduct regular audits of engagement events for their respective countries at least every six months to ensure the data's integrity."
+- ⚠ C11 was settled by wording a later edit removed; the final proposal no longer says: "Additionally, a report will be generated and submitted to the compliance team bi-annually to review the completeness and accuracy of engagement logs."
+- ⚠ C12 was settled by wording a later edit removed; the final proposal no longer says: "After alerts regarding cold relationships are triggered, the system will automatically flag any corresponding sensitive engagement data for review and deletion following confirmation that no further engagement events have been logged."
+- ⚠ C13 was settled by wording a later edit removed; the final proposal no longer says: "After alerts regarding cold relationships are triggered, the system will automatically flag any corresponding sensitive engagement data for review, and it will be automatically deleted within 30 days unless further engagement events have been logged."
+- ⚠ C15 was settled by wording a later edit removed; the final proposal no longer says: "The Compliance team will have final responsibility for overseeing data accuracy and ensuring timely updates to existing records."
+- ⚠ C16 was settled by wording a later edit removed; the final proposal no longer says: "The Compliance team will have final responsibility for overseeing data accuracy and ensuring timely updates to existing records."
 
 ## Appendix: issue ledger
 

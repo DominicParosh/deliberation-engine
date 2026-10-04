@@ -81,6 +81,7 @@ The primary tension revolved around the clarity and robustness of access control
 
 - Proposer's remaining worry (65/100): Ensuring effective implementation of security and compliance measures in a timely manner.
 - Critic's remaining worry (80/100): Despite clarifying mechanisms for access and monitoring, there remains a concern about the potential for mishandling of sensitive data.
+- ⚠ C6 was settled by wording a later edit removed; the final proposal no longer says: "Ensure that engagement history complies with data privacy and sensitivity protocols, with a retention policy stating engagement histories will be accessible for a period of three years from the last engagement, subject to yearly reviews for relevance and compliance."
 
 ## Appendix: issue ledger
 

@@ -102,6 +102,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -170,7 +171,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The management of meeting details for departing users depends on organizational policy and procedures, which must be defined by the organization itself. This includes what happens to records if meeting details are not input before a user leaves."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "What happens to meeting records when users leave is dependent on organizational policies that are not specified in the proposal."
+        }
+      }
     },
     {
       "issue_id": "C2",
@@ -183,7 +198,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revision clarifies the roles and access rights to meeting logs, ensuring sensitive information is protected according to defined organizational rules."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Access rights to meeting logs are tied to unspecified organizational policies on data protection that are not defined herein."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -196,7 +225,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Determining what happens to meeting logs when a user changes roles is dependent on organizational policy regarding data ownership and access rights."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Details on management of logs during role changes rely on organizational policies that are not specified."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -209,7 +252,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This edit provides a specific decision on how to address unlogged meeting details when a user leaves the organization suddenly, ensuring that there are procedures in place to capture any lost engagement history."
+        },
+        "critic": {
+          "round": 5,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "There is no specific protocol outlined for documenting unlogged details effectively when a user leaves, leaving the decision unclear."
+        }
+      }
     },
     {
       "issue_id": "C3",
@@ -222,7 +279,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revision clarifies that while the logging feature automates storage, users must always provide and confirm the details before the logging is successful, therefore reducing ambiguity around expectations."
+        },
+        "critic": {
+          "round": 3,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "The details in D2 clarify that users must provide details, but the requirement of confirming implies they might not retain input after the session ends."
+        }
+      }
     }
   ],
   "tension": {

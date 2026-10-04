@@ -44,7 +44,8 @@ Tests need no key either: `uv run pytest`.
 
 ## What a run produces
 
-Each run writes `runs/<request-id>/` (the repo ships one recorded run per request there; see [Evidence](#evidence)):
+Each run writes `out/<request-id>/` (`--out` changes that; the recorded runs this repo ships are in `runs/`, see
+[Evidence](#evidence)):
 
 | File | What it is |
 |---|---|
@@ -89,33 +90,39 @@ always schema-valid) that the orchestrator checks against the ledger before appl
   (the ledger checks the quote is really there, names a fact, and doesn't lean on a weak phrase such as "a
   process will be established"); otherwise a test that needs authority neither agent has (law, policy,
   budgets, existing teams) → **ESCALATE** to humans, and any other → **MAINTAIN**, back to the Proposer. An
-  answer that rests on a team, policy or system nobody has confirmed is never accepted.
+  answer the Critic judges to rest on a team, policy or system nobody has confirmed is never accepted.
 - An illegal move (a missing answer or ruling, an over-budget or repeated challenge, a resolution test that isn't a
   question, a defense that edits, a revision that doesn't or only touches assumptions, a concession that drops nothing, an attempt to remove a
   core commitment, an ACCEPT without a concrete fact or real evidence) gets one repair request; if that also
   fails, the orchestrator coerces it safely and records a warning.
 
-**Termination: the Critic proposes, the ledger disposes.** The Critic signals CONCLUDE or CONTINUE, but
-CONCLUDE is accepted only when the evidence agrees:
+**Termination: the Critic proposes, the ledger disposes.** The Critic signals CONCLUDE or CONTINUE every round
+from round 2 (round 1's schema has no signal field at all), and the ledger decides what the signal is worth:
 
-1. it is round 2 or later (round 1's schema has no signal field at all),
-2. no BLOCKER or MAJOR issue is open, and
-3. each mandatory lens (confidentiality, definitions, ownership) has a challenge or a coverage note.
+1. **CONCLUDE** is accepted only when no BLOCKER or MAJOR issue is open and each mandatory lens
+   (confidentiality, definitions, ownership) has a challenge or a coverage note. Otherwise it is rejected and
+   the reason goes back to the Critic as a moderator's note. Exit: `consensus`.
+2. **CONTINUE** with nothing open and nothing new raised ends the run: an objection the Critic can't state as a
+   challenge isn't one. If a mandatory lens was never examined, the Critic first gets one more round, once, to
+   examine it or say why it carries no risk. Exit: `converged`.
 
-A rejected CONCLUDE is fed back to the Critic. Two mechanisms make deliberation end by construction:
-the Critic's new-challenge budget shrinks each round (6 → 3 → 2 → 1 → 0), and an issue maintained twice
-is escalated to humans as an open question instead of looping. So every issue lives at most two rounds
-after it is raised, and the round cap (8) is a circuit breaker that should never fire. Each run records
-its exit: `consensus`, `converged` (nothing left open), or `cap`.
+Two mechanisms make deliberation end by construction: the Critic's new-challenge budget shrinks each round
+(6 → 3 → 2 → 1 → 0), and an issue maintained twice is escalated to humans as an open question instead of
+looping. So every issue lives at most two rounds after it is raised, and the round cap (8) is a circuit breaker
+that should never fire (exit: `cap`). In practice `converged` is the usual exit: in 13 of the 15 recorded gated
+runs the Critic was still saying CONTINUE when the ledger emptied (see [Evidence](#evidence)).
 
-The policy is ~40 lines in [`src/deliberation/termination.py`](src/deliberation/termination.py); every
-exit path is covered in [`tests/test_termination.py`](tests/test_termination.py).
+The policy is about 50 lines in [`src/deliberation/termination.py`](src/deliberation/termination.py); every exit
+of both policies is covered in [`tests/test_termination.py`](tests/test_termination.py).
 
-**The decision document is built from the ledger, not from a summary.** Scope, statuses, assumptions and
-open questions come straight from the ledger, and so does whether an open question blocks the build (from the
-Critic's severity). The Rapporteur only writes prose around them, and every ID it cites is checked. It also reports a **disagreement index** per round (severity-weighted share of
-issues not settled by agreement), each agent's final confidence and remaining worry, and a flag when an
-agent claims high confidence while a blocker is unsettled.
+**The decision document is built from the ledger, not from a summary.** Scope, statuses and assumptions come
+straight from the ledger, and so do which issues become open questions, whether each blocks the build (from the
+Critic's severity) and where each side stood when the question left the agents. The Rapporteur writes the prose:
+the summary, the notes on each item, and each question's wording, owner and options; every ID in its structured
+fields is checked. The document also reports a **disagreement index** per round (severity-weighted share of
+issues not settled by agreement), each agent's final confidence and remaining worry, and flags when an agent
+claims high confidence while a blocker is unsettled, or when a later edit removed the wording that settled a
+challenge.
 
 ## Where things are
 
@@ -142,12 +149,12 @@ and replay offline; [`experiments/results.md`](experiments/results.md) is regene
 ### The traces
 
 `runs/` holds one run per request: for each, the `gated` run whose decision document had the fewest problems when
-all 15 were read through (the other ten are in `experiments/runs/gated/`). Start with cold-relationship.
+all 15 were read through (all 15 are in `experiments/runs/gated/`). Start with cold-relationship.
 
 | Request | | What to look at |
 |---|---|---|
 | cold-relationship (brief) | [trace](runs/cold-relationship/trace.md) · [decision](runs/cold-relationship/decision.md) | 3 rounds. C4 is maintained ("vagueness over the specific roles") and accepted once the revision names one. Two MINOR acceptable-risk defenses: C6 is accepted after a monthly accuracy review is added; C5 (alert fatigue) is maintained twice and handed to the product owner. |
-| right-contact (brief) | [trace](runs/right-contact/trace.md) · [decision](runs/right-contact/decision.md) | 5 rounds. Access is limited to each project team's own countries (S4) and primary contacts are reviewed quarterly by regional coordinators (S1). A risk-acceptance dispute about the change log (C6) goes to humans after two strikes. |
+| right-contact (brief) | [trace](runs/right-contact/trace.md) · [decision](runs/right-contact/decision.md) | 5 rounds. Access is limited to each project team's own countries (S4) and primary contacts are reviewed quarterly by regional coordinators (S1). A risk-acceptance dispute about the change log (C6) goes to humans after two strikes. The record flags that C9's edit to S4 removed the wording that had settled C8. |
 | engagement-history (brief) | [trace](runs/engagement-history/trace.md) · [decision](runs/engagement-history/decision.md) | 2 rounds. "Full history" becomes the last five years, with diplomatic notes excluded (S3, S4). A defense wins on merit (C6: X1 already rules out editing), and the engine drops a re-asked question. |
 | auto-logging | [trace](runs/auto-logging/trace.md) · [decision](runs/auto-logging/decision.md) | 3 rounds. Who counts as a government official (D4), who sees the logs (S4), who is notified (S2). Also shows two limitations: "automatic" is never pinned down, and two questions reach humans twice in different words. |
 | influence-ranking | [trace](runs/influence-ranking/trace.md) · [decision](runs/influence-ranking/decision.md) | 5 rounds, ending in consensus (the Critic concluded and the ledger agreed): three challenges narrow "influence" to weights (50/30/20) and numeric thresholds (C1 → C7 → C10). Nobody asks whether ranking named officials should exist at all. |
@@ -165,7 +172,7 @@ the burden-of-proof guidance from the prompts.
 | Ended consensus / converged / cap | 2 / 13 / 0 | 12 / 0 / 3 | 8 / 7 / 0 |
 | Rounds, median (range) | 3 (2–5) | 6 (2–8) | 3 (2–6) |
 | Challenges raised per run | 7.4 | 15.1 | 7.9 |
-| Questions handed to humans per run | 2.7 | 2.7 | 2.3 |
+| Questions escalated to humans per run | 2.7 | 2.7 | 2.3 |
 | Proposer moves: defend / revise / concede | 37 / 62 / 1% | 15 / 84 / 1% | 22 / 77 / 1% |
 | Defenses on merit (not "humans must decide"), of which accepted | 15 (4) | 7 (2) | 1 (0) |
 | Revisions the Critic accepted | 84% | 76% | 84% |
@@ -180,20 +187,24 @@ open. In three of them the Critic concluded in the same turn in which it maintai
 > - **C10** MAINTAIN: While quarterly audits are mentioned, the evidence does not specify how active monitoring and enforcement of role permissions will be managed.
 
 A fourth concluded with a question the Proposer had sent to humans still open, and three ran into the round cap.
-Because the record is built from the ledger, those questions still reach the decision document, but under a
-header that says "consensus" ([naive right-contact/3](experiments/runs/naive/right-contact/3/decision.md) lists
-three MAJOR questions that block the build). Under `gated` no run closed over an open BLOCKER or MAJOR, and the
-gate never had to reject a CONCLUDE: the shrinking budget and the two-strike rule emptied the ledger first. The
-Critic concluded twice, both times with nothing open; the other 13 runs ended `converged`. In these runs the gate
-was a guarantee that was never tested; the naive runs show what it guards against.
+Because the record is built from the ledger, those questions still reach the decision document (4.0 open
+questions per naive run, counting the ones left open), but under a header that says "consensus"
+([naive right-contact/3](experiments/runs/naive/right-contact/3/decision.md) lists three MAJOR questions that block
+the build). Under `gated` no run closed over an open BLOCKER or MAJOR. That is partly by construction, since only
+the cap could end a gated run with one open and the cap never fired, and the gate itself never had to reject a
+CONCLUDE: the shrinking budget and the two-strike rule emptied the ledger first. The Critic concluded twice, both
+times with nothing open; the other 13 runs ended `converged`, with the Critic still saying CONTINUE. In these runs
+the gate was a guarantee that never had to act; the naive runs show what it guards against.
 
 **Convergence pressure is what ends a deliberation.** Without it the Critic keeps asking, mostly the same things
 in new words. [naive right-contact/1](experiments/runs/naive/right-contact/1/trace.md) asked whether the feature
 complies with data-protection law four times (C10, C11, C20, C22): the first two went to humans, the last two were
 still open when the cap hit, with five other BLOCKERs, all but one raised in the final round.
 [naive influence-ranking/3](experiments/runs/naive/influence-ranking/3/trace.md) maintained C16 three rounds
-running while the Proposer added words to S11 each time. Naive runs were twice as long, raised twice the
-challenges, grew the proposal by 77% (gated: 35%) and cost 1.8 times as much.
+running while the Proposer rewrote S11 each time. Naive runs took twice as many rounds (median 6 against 3),
+raised twice the challenges, grew the proposal by 77% (gated: 35%) and cost 1.9 times as much. Long runs also undo
+their own decisions: in 44 naive settlements (in 9 of the 15 runs) the accepted wording was later edited away by
+another answer (gated: 2, generic: 4), and the decision documents now flag each one.
 
 **The opposed prompts change the Proposer, not the Critic.** The Critic accepted 84% of revisions under both
 prompt sets. What changed is that the Proposer argued: 15 defenses on merit with the stakes and the burden of
@@ -225,29 +236,45 @@ defend; 0 of 46 moves were defenses).
 | v4 | The Critic classifies, the ruling is derived | First balanced batch (30 revise, 15 defend), but the Proposer described edits it never wrote |
 | v5 | The Proposer emits edits and the engine applies them | Claimed and actual changes match by construction; now the Critic accepted any related text (23 ACCEPT, 0 MAINTAIN) |
 | v6 | Quote, then fact, then judge; assumptions can't settle a challenge | MAINTAIN is back, but decisions moved into assumptions and defenses could no longer win (2 in 44 moves) |
-| v7, v7.1 | A ledger rule for each v6 failure, and a path for a defense to win | 33 revise, 12 defend, 2–5 rounds, 2–4 open questions per document. Prompts frozen here. |
+| v7 | A ledger rule for each v6 failure, and a path for a defense to win | 33 revise, 12 defend, 2–5 rounds, 2–4 open questions per document |
+| v7.1 | Small fixes from the v7 batch; prompts frozen | The comparison batch above (gated: 77 revise, 46 defend) |
 
-The decision documents in this repo were re-rendered from the recorded model outputs after one later fix: whether
-an open question blocks the build now follows from the Critic's severity instead of the Rapporteur's guess (which
-had marked 14 of 16 MINOR questions as blocking). Ledgers and traces are byte-identical to the original runs.
+After the comparison batch, three things changed, and none of them alters a recorded deliberation: replaying all
+45 runs through the final code reproduces every ledger, trace and model call byte for byte.
+- Whether an open question blocks the build follows the Critic's severity instead of the Rapporteur's guess (it
+  had marked 14 of 16 MINOR questions as blocking).
+- The decision document shows each side's last word on every open question, the challenges declined on their
+  merits, and any settlement a later edit undid.
+- `converged` also requires every mandatory lens to have been examined. Every recorded run that converged
+  already had each one covered by a challenge or a coverage note.
+
+The decision documents in this repo were re-rendered from the recorded outputs accordingly.
 
 ### Limitations
 
 - **The checks are lexical.** They catch a quote that isn't in the proposal, an assumption offered as an answer
   and listed weak phrases ("a process will be established", "authorized users" with no role named). They can't
-  tell whether real text answers the question, or whether a team or policy it names exists, so invented facts
-  still get accepted ("managed by the data privacy officer" in right-contact S4; "data management processes
-  currently in use" in influence-ranking C5). The Critic's `fact` often describes the quote ("Defines who can view
-  sensitive information") instead of stating it; the ledger checks the quote, not the paraphrase.
+  tell whether real text answers the question, or whether a team or policy it names exists. The Critic marked an
+  answer unconfirmed 32 times in 192 gated rulings, but never one it also judged settled, so invented facts still
+  get accepted ("managed by the data privacy officer" in right-contact S4; "data management processes currently
+  in use" in influence-ranking C5). The Critic's `fact` often describes the quote ("Defines who can view sensitive
+  information") instead of stating it, and a lens coverage note is taken at face value (right-contact's reads "No
+  challenges were raised under this lens."); the ledger checks quotes, not paraphrases or notes.
+- **Challenges still ask for processes.** About half the resolution tests (52 of 111 in gated runs) ask for a
+  process, measure or safeguard, which the Critic's prompt tells it not to do, and such tests invite boilerplate.
+- **Escalation is the easy exit.** 37% of gated challenges end with humans, and 31 of the Proposer's 46 defenses
+  were "needs a human decision".
 - **Paraphrased repeats get through.** The repeat check compares words in order, so the same question in new words
   is raised again. Under `gated` the budget bounds it, but some documents list one question twice (right-contact
   C4 and C7, auto-logging C2/C7 and C5/C8, influence-ranking C3 and C8).
 - **Some product rules still go to humans.** The prompts say that what happens when someone changes role or leaves
   is for the agents to decide; they sometimes escalate it anyway (right-contact C4, C7).
-- **Scope rarely shrinks.** 1% of moves were concessions and out-of-scope lists didn't grow. No run asked whether a
-  feature should exist: the influence ranking of named officials survives every run, and auto-logging never pins
-  down what makes logging automatic (its S1 logs a meeting "whenever a meeting is scheduled or completed" while X2
-  rules out calendar integration).
+- **Scope rarely shrinks.** 1% of moves were concessions, and under `gated` no out-of-scope list grew. No run asked
+  whether a feature should exist, and core commitments can only be dropped by the stakeholder, so the influence
+  ranking of named officials survives every run.
+- **Contradictions the checks can't see.** In the published auto-logging run, S1 logs a meeting "whenever a meeting
+  is scheduled or completed" while X2 rules out calendar integration; cold-relationship defines "cold" as 90 days
+  (D1) but lets users choose 30–120 (S4) without calling 90 the default.
 - **One model, small samples.** gpt-4o-mini in every role, 15 runs per configuration. `--critic-provider` runs the
   Critic on another model family; that was not measured.
-- **Some runs are short.** All three gated engagement-history runs ended after round 2.
+- **Some runs are short.** 5 of the 15 gated runs ended after round 2, among them all three engagement-history runs.

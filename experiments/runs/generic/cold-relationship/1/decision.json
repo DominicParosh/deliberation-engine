@@ -73,6 +73,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -140,7 +141,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Decisions regarding the process for transferring ownership of relationships when project managers leave or change roles must be defined by the organization."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "A process for ownership transfer relies on organizational decisions, which cannot be settled here."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -154,7 +169,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Ensuring the accuracy of engagement history to avoid false alerts is a matter that requires a decision from the organization regarding quality control measures."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Quality control measures for data accuracy require organizational decisions."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -168,7 +197,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Decisions about compliance and the retention of engagement records must be made by the organization, as they involve legal and regulatory considerations."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Retention periods for records involve legal compliance decisions that cannot be resolved in this proposal."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -182,7 +225,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The retention period for records related to cold engagements must be defined by organizational policy, and this is not within the scope of decisions that can be made in this proposal."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The answer requires a decision regarding the retention policy, which is a human decision."
+        }
+      }
     }
   ],
   "tension": {

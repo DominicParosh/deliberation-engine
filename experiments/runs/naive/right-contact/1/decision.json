@@ -99,6 +99,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -178,7 +179,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 4,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revised item now specifies that user access controls not only define the roles but also establish that access will be bounded by designated territories and responsibilities, minimizing the risk of unauthorized access to sensitive information."
+        },
+        "critic": {
+          "round": 4,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal specifies roles but still lacks detailed access control measures and rules for preventing unauthorized access, meaning it remains unaddressed."
+        }
+      }
     },
     {
       "issue_id": "C16",
@@ -192,7 +207,21 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 8,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The edits now specify concrete measures to protect sensitive diplomatic information, including role-based authentication and regular audits, which directly address the challenge of unauthorized access."
+        },
+        "critic": {
+          "round": 8,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "The proposal fails to specify the roles that will be granted access, leaving ambiguity around who can actually view sensitive contact information."
+        }
+      }
     },
     {
       "issue_id": "C18",
@@ -206,7 +235,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C23",
@@ -220,7 +253,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C11",
@@ -232,7 +269,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The proposal requires input from the organization to outline specific measures or procedures for compliance with data protection regulations regarding personal contact information."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The lack of clear procedures creates a significant compliance risk that necessitates human decision-making."
+        }
+      }
     },
     {
       "issue_id": "C12",
@@ -244,7 +295,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 7,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The organization must define specific data protection measures to safeguard sensitive contact information, as this requires compliance with existing legal frameworks and policies."
+        },
+        "critic": {
+          "round": 7,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This is a compliance issue that needs human input."
+        }
+      }
     },
     {
       "issue_id": "C19",
@@ -256,7 +321,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C20",
@@ -268,7 +337,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C21",
@@ -280,7 +353,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C22",
@@ -292,7 +369,11 @@
       ],
       "severity": "BLOCKER",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": null,
+        "critic": null
+      }
     },
     {
       "issue_id": "C7",
@@ -306,7 +387,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The responsibility for regularly auditing and verifying contact information is a determination that the organization must decide, making this a question for them."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This aspect requires a decision that is beyond the current proposal."
+        }
+      }
     },
     {
       "issue_id": "C10",
@@ -318,7 +413,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "This challenge requires input from legal and compliance teams regarding data protection regulations; current wording will remain as it directs attention to potential compliance issues that must be addressed."
+        },
+        "critic": {
+          "round": 5,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This challenge requires a clear input from legal and compliance teams; further actions on compliance must be taken."
+        }
+      }
     },
     {
       "issue_id": "C13",
@@ -330,7 +439,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 7,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The organization needs to establish a retention policy for contact information to ensure compliance with data protection laws, which is outside the scope of this proposal."
+        },
+        "critic": {
+          "round": 7,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This is a compliance issue that requires human decision."
+        }
+      }
     }
   ],
   "tension": {
@@ -451,7 +574,9 @@
         "worry": "The proposal still lacks sufficient measures to ensure compliance and protect sensitive information, leading to significant security and legal risks."
       }
     },
-    "flags": []
+    "flags": [
+      "C4 was settled by wording a later edit removed; the final proposal no longer says: \"S2: Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to update records when individuals leave or change roles, ensuring data integrity.\""
+    ]
   },
   "issues": [
     {

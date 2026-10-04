@@ -1,9 +1,12 @@
 """When does deliberation end? Two policies, both pure functions of (ledger, round, critic turn).
 
 GATED (default)  The Critic proposes, the ledger disposes. CONCLUDE is accepted only when
-                 the evidence agrees with it. Convergence pressure (shrinking challenge budget,
-                 two-strike escalation) bounds every issue's lifetime, so deliberation ends by
-                 construction; the round cap is a circuit breaker that should never fire.
+                 the evidence agrees with it, and a CONTINUE with nothing open and nothing new
+                 ends the run as converged: an objection the Critic can't state as a challenge
+                 isn't one. Either way every mandatory lens must have been examined first.
+                 Convergence pressure (shrinking challenge budget, two-strike escalation) bounds
+                 every issue's lifetime, so deliberation ends by construction; the round cap is a
+                 circuit breaker that should never fire.
 NAIVE            The pattern most frameworks ship: the Critic's word plus a round cap. Kept
                  only as the baseline for experiments/ablate.py.
 """
@@ -19,25 +22,33 @@ from .schemas import BLOCKING, MANDATORY_LENSES, CriticOpening, CriticTurn
 class Decision:
     stop: bool
     reason: str = ""    # consensus | converged | cap
-    feedback: str = ""  # shown to the Critic next round when its CONCLUDE was rejected
+    feedback: str = ""  # the moderator's note: shown to the Critic next round, or kept on the record when the run stops
+
+
+UNEXAMINED = "Nothing is open, but no challenge or coverage note covers"
 
 
 def gated(policy: "Policy", ledger: Ledger, rnd: int, turn: CriticOpening | CriticTurn) -> Decision:
     if rnd < policy.min_rounds:  # round 1's schema has no signal at all; this is belt and braces
         return Decision(False)
-    signal = getattr(turn, "signal", "CONTINUE")
-    if signal == "CONCLUDE":
+    missing = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined(getattr(turn, "lens_coverage", []))]
+    if getattr(turn, "signal", "CONTINUE") == "CONCLUDE":
         problems = []
         if blocking := [i.id for i in ledger.open_issues() if i.severity in BLOCKING]:
             problems.append(f"still open at BLOCKER/MAJOR: {', '.join(blocking)}")
-        if missing := [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined(turn.lens_coverage)]:
+        if missing:
             problems.append(f"no challenge raised and no coverage note for: {', '.join(missing)}")
         if not problems:
             return Decision(True, "consensus")
         feedback = "Your CONCLUDE was rejected: " + "; ".join(problems) + "."
         return Decision(True, "cap", feedback) if rnd >= policy.max_rounds else Decision(False, feedback=feedback)
-    if not ledger.open_issues():  # CONTINUE with nothing open and nothing new: nothing left to deliberate
-        return Decision(True, "converged")
+    if not ledger.open_issues():  # CONTINUE with nothing open and nothing new: nothing left to deliberate...
+        note = f"{UNEXAMINED}: {', '.join(missing)}."
+        if missing and rnd < policy.max_rounds and not any(r.feedback.startswith(UNEXAMINED) for r in ledger.rounds):
+            # ...unless a mandatory lens was never examined. The Critic gets one round, once, to examine it or say why not.
+            return Decision(False, feedback=f"{note} Raise a challenge under it, or conclude with a lens_coverage note "
+                                            "saying why it carries no material risk.")
+        return Decision(True, "converged", note if missing else "")
     return Decision(True, "cap") if rnd >= policy.max_rounds else Decision(False)
 
 

@@ -77,6 +77,8 @@ This release will implement a feature that enables users to categorize contacts 
 - Why it matters: This decision is critical to maintain data quality and prevent biased ratings.
 - Decision owner: Head of User Training
 - Options: Develop comprehensive training materials / Utilize existing guidelines for similar features / No additional training or guidelines
+- Proposer's last word (R2, defend, needs human decision): This edit assigns the development of training and guidelines to the organization, as it needs to decide how to ensure consistent ratings from users.
+- Critic's last word (R2, escalate): The proposal still relies on unconfirmed organizational decisions on training and guidelines.
 
 ### C6 · MINOR · does not block the build
 
@@ -85,6 +87,8 @@ This release will implement a feature that enables users to categorize contacts 
 - Why it matters: A consistent definition of influence is vital for accurate and objective ratings.
 - Decision owner: Head of Data Protection
 - Options: Create a formalized definition of influence / Conduct workshops to align understanding / Assume existing knowledge is sufficient
+- Proposer's last word (R2, defend, needs human decision): This revision indicates that the organization is responsible for creating a definition of influence, which is essential for consistency in ratings.
+- Critic's last word (R2, escalate): The proposal still lacks a definitive framework for understanding 'influence'.
 
 ## Tension report
 

@@ -76,6 +76,8 @@ This release will provide project managers with access to the full engagement hi
 - Why it matters: This policy will clarify how access continuity is maintained and prevent disruptions in project management processes.
 - Decision owner: HR or Organizational Policy Team
 - Options: Define a formal handover process / Specify restrictions based on role changes / Retain access until officially transferred
+- Proposer's last word (R2, defend, needs human decision): The transfer of access rights when project managers leave or change roles involves organizational policy, which we cannot define in our proposal.
+- Critic's last word (R2, escalate): This challenge cannot be settled as it relies on human decision-making related to organizational policy.
 
 ## Tension report
 

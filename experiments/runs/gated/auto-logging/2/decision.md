@@ -77,6 +77,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: This policy is critical to ensure that engagement history is preserved even when a user departs unexpectedly.
 - Decision owner: Head of Operations
 - Options: Establish a formal procedure for capturing unlogged details before departure / Accept the risk of lost engagement history without defined policies
+- Proposer's last word (R2, defend, needs human decision): The management of meeting details for departing users depends on organizational policy and procedures, which must be defined by the organization itself. This includes what happens to records if meeting details are not input before a user leaves.
+- Critic's last word (R2, escalate): What happens to meeting records when users leave is dependent on organizational policies that are not specified in the proposal.
 
 ### C2 · MAJOR · blocks the build
 
@@ -85,6 +87,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Defining these access rights protects sensitive information and ensures compliance with confidentiality standards.
 - Decision owner: Head of Data Protection
 - Options: Allow all senior management access / Limit access to specific authorized roles only
+- Proposer's last word (R2, revise, missing decision): The revision clarifies the roles and access rights to meeting logs, ensuring sensitive information is protected according to defined organizational rules.
+- Critic's last word (R2, escalate): Access rights to meeting logs are tied to unspecified organizational policies on data protection that are not defined herein.
 
 ### C5 · MAJOR · blocks the build
 
@@ -93,6 +97,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: This protocol is crucial for maintaining continuity in accessing engagement history during role transitions.
 - Decision owner: Head of Human Resources
 - Options: Transfer logs only if the new role has similar responsibilities / Create comprehensive access rights for all logs, regardless of role
+- Proposer's last word (R2, defend, needs human decision): Determining what happens to meeting logs when a user changes roles is dependent on organizational policy regarding data ownership and access rights.
+- Critic's last word (R2, escalate): Details on management of logs during role changes rely on organizational policies that are not specified.
 
 ### C7 · MAJOR · blocks the build
 
@@ -101,6 +107,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: This protocol is essential to ensure that crucial engagement history is not lost when a user leaves.
 - Decision owner: Head of Operations
 - Options: Implement an exit interview process to capture unlogged meetings / Document unlogged meetings without defined procedures
+- Proposer's last word (R5, revise, missing decision): This edit provides a specific decision on how to address unlogged meeting details when a user leaves the organization suddenly, ensuring that there are procedures in place to capture any lost engagement history.
+- Critic's last word (R5, maintain): There is no specific protocol outlined for documenting unlogged details effectively when a user leaves, leaving the decision unclear.
 
 ### C3 · MAJOR · blocks the build
 
@@ -109,6 +117,8 @@ This release will implement an automatic logging feature for meetings with gover
 - Why it matters: Users must know their role in the logging process to prevent ambiguity and ensure accurate records.
 - Decision owner: Head of Training and Development
 - Options: Develop comprehensive training modules on the logging feature / Provide minimal guidance to users regarding logging responsibilities
+- Proposer's last word (R3, revise, missing decision): The revision clarifies that while the logging feature automates storage, users must always provide and confirm the details before the logging is successful, therefore reducing ambiguity around expectations.
+- Critic's last word (R3, maintain): The details in D2 clarify that users must provide details, but the requirement of confirming implies they might not retain input after the session ends.
 
 ## Tension report
 

@@ -76,6 +76,8 @@ This release will implement a mechanism for tracking the primary contact person 
 - Why it matters: A defined process is crucial to ensure that the primary contact system is built on reliable information.
 - Decision owner: Data Quality Manager
 - Options: Develop a team to review current records / Create a system for user feedback on inaccuracies / Set up periodic reviews of contact information
+- Proposer's last word (R3, defend, needs human decision): The accuracy and completeness of contact records will require input from the organization to define the validation process.
+- Critic's last word (R3, escalate): The proposal does not specify a definitive process for validating existing contact records, relying on undefined input from the organization.
 
 ### C8 · BLOCKER · blocks the build
 
@@ -84,6 +86,8 @@ This release will implement a mechanism for tracking the primary contact person 
 - Why it matters: This will help establish clear rules to manage access and ensure data integrity.
 - Decision owner: Director of IT Governance
 - Options: Draft new detailed permission guidelines / Clarify current permissions with stakeholders / Define permissions based on user roles and responsibilities
+- Proposer's last word (R3, defend, needs human decision): The definition of user permissions for editing contact information must be established by organizational policies and cannot be decided in this proposal.
+- Critic's last word (R3, escalate): The proposal does not provide established user permissions for editing contact information, depending on policies outside this proposal.
 
 ### C3 · MAJOR · blocks the build
 
@@ -92,6 +96,8 @@ This release will implement a mechanism for tracking the primary contact person 
 - Why it matters: Ensuring accurate contact records is essential for preventing misinformation in diplomatic communications.
 - Decision owner: Head of Data Management
 - Options: Conduct a thorough audit of existing records / Implement a user-driven update process / Set baseline requirements for existing records
+- Proposer's last word (R2, defend, needs human decision): The accuracy and completeness of existing contact records require validation that must be conducted according to the organization's policies and procedures before implementing this feature.
+- Critic's last word (R2, escalate): The reliance on human decision for validation of existing records leaves a gap in assurance for data quality.
 
 ### C6 · MINOR · does not block the build
 
@@ -100,6 +106,8 @@ This release will implement a mechanism for tracking the primary contact person 
 - Why it matters: Clear policies are necessary to prevent unauthorized access and maintain data integrity.
 - Decision owner: Head of Data Protection
 - Options: Establish a new policy for user permissions / Reinforce existing policies with updates / Limit user access based on role-specific guidelines
+- Proposer's last word (R2, defend, needs human decision): Establishing and enforcing user permissions regarding the editing of contact information must be determined by the organization's existing policies.
+- Critic's last word (R2, escalate): User permissions require a clear rule from organizational policy, which remains unconfirmed.
 
 ## Tension report
 

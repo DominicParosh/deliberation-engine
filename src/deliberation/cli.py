@@ -40,7 +40,8 @@ def parse_args(argv):
     ap.add_argument("--context", type=Path, default=ROOT / "config/system_context.md")
     ap.add_argument("--requests", type=Path, default=ROOT / "config/requests.yaml")
     ap.add_argument("--prompts", type=Path, action="append", default=[], help="prompt directory that overrides prompts/")
-    ap.add_argument("--out", type=Path, default=ROOT / "runs", help="where run folders are written (default: runs/)")
+    ap.add_argument("--out", type=Path, default=ROOT / "out",
+                    help="where run folders are written (default: out/; runs/ holds the published runs)")
     ap.add_argument("--quiet", action="store_true", help="only print the final summary")
     return ap.parse_args(argv)
 

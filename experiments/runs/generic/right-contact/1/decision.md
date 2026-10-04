@@ -77,6 +77,8 @@ A contact tracking feature will be built to assist regional coordinators and pro
 - Why it matters: Ensuring that measures for enforcement are in place will protect sensitive information from unauthorized access, addressing a major concern.
 - Decision owner: Head of Compliance
 - Options: Develop a defined enforcement strategy / Continue without specific enforcement measures
+- Proposer's last word (R3, defend, needs human decision): The enforcement of confidentiality policies is an organizational matter that requires input from compliance and legal teams. The specifics of these measures are not our decision to make, so we should maintain this assumption until clarified.
+- Critic's last word (R3, escalate): The specifics of confidentiality enforcement measures depend on external policies and the compliance/legal teams, leaving this unresolved.
 
 ### C5 · MINOR · does not block the build
 
@@ -85,6 +87,8 @@ A contact tracking feature will be built to assist regional coordinators and pro
 - Why it matters: Clarification of confidentiality policies will ensure consistent handling of sensitive information, reducing the risk of unintentional breaches.
 - Decision owner: Head of Compliance
 - Options: Define clear confidentiality policies / Maintain current ambiguity in policies
+- Proposer's last word (R2, defend, needs human decision): Organizational confidentiality policies and their enforcement are not under the purview of this proposal and must be defined by the organization.
+- Critic's last word (R2, escalate): This issue requires input from human decision-makers regarding organizational policies.
 
 ## Tension report
 

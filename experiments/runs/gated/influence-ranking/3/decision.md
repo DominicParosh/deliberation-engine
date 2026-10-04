@@ -77,6 +77,8 @@ A contact influence scoring feature will be built to prioritize government conta
 - Why it matters: Clear responsibility is needed to maintain score integrity as personnel change.
 - Decision owner: Management Team
 - Options: Designate a specific role for score oversight / Implement a rotating review committee / Establish a shared responsibility among coordinators
+- Proposer's last word (R2, defend, needs human decision): The assignment of responsibility for regularly reviewing and updating influence scores involves organizational policies and roles that must be defined by the organization.
+- Critic's last word (R2, escalate): The ownership model remains unresolved as it requires internal decision-making.
 
 ### C4 · MAJOR · blocks the build
 
@@ -85,6 +87,8 @@ A contact influence scoring feature will be built to prioritize government conta
 - Why it matters: Dispute resolution mechanisms will prevent conflicting strategies from multiple users.
 - Decision owner: Policy Development Team
 - Options: Create a standardized mediation protocol / Establish a scoring oversight committee / Empower a designated authority for final decisions
+- Proposer's last word (R2, defend, needs human decision): Creating a formal dispute resolution process requires organizational input and is subject to existing protocols that the team should establish.
+- Critic's last word (R2, escalate): The absence of a dispute process necessitates organizational involvement.
 
 ### C5 · MAJOR · blocks the build
 
@@ -93,6 +97,8 @@ A contact influence scoring feature will be built to prioritize government conta
 - Why it matters: Regular updates are necessary to reflect changes in relationships and influence accurately.
 - Decision owner: Management Team
 - Options: Bi-annual reviews / Quarterly updates / Annual assessments
+- Proposer's last word (R2, defend, needs human decision): The frequency of reviewing and updating influence scores is governed by organizational policies and must be determined by management.
+- Critic's last word (R2, escalate): Frequency of updates is not established and requires human authority.
 
 ### C6 · MAJOR · blocks the build
 
@@ -101,6 +107,8 @@ A contact influence scoring feature will be built to prioritize government conta
 - Why it matters: Proper training is vital for effective implementation and accurate scoring across users.
 - Decision owner: Training Coordination Team
 - Options: Create a training workshop / Develop an online training module / Assign mentorship roles for new users
+- Proposer's last word (R2, defend, needs human decision): User training protocols for assigning influence scores must be developed by the organization to ensure proper implementation and adherence to guidelines.
+- Critic's last word (R2, escalate): Training protocols remain undetermined and need organizational input.
 
 ## Tension report
 

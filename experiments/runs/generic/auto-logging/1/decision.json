@@ -78,6 +78,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -161,7 +162,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The management of access rights, especially during role changes, is dependent on organizational policies and IT procedures that must be determined by the organization."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "How access rights are managed during role changes requires clarity on organizational policies that are not specified."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -175,7 +190,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specifics regarding how access rights are assigned and managed during role transitions are determined by organizational policy and should be addressed by the appropriate decision-makers."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not specify how access rights are managed during role transitions, relying on unspecified organizational policies."
+        }
+      }
     }
   ],
   "tension": {
@@ -257,7 +286,9 @@
         "worry": "While safeguards have improved, there is still a risk of unauthorized access if role transitions aren't managed perfectly."
       }
     },
-    "flags": []
+    "flags": [
+      "C8 was settled by wording a later edit removed; the final proposal no longer says: \"Access to view contact details will be restricted to only regional coordinators, project managers, and executive-level staff, where access rights will be assigned based on user roles and updated in accordance with organizational policies.\""
+    ]
   },
   "issues": [
     {

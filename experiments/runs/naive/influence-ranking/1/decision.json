@@ -110,6 +110,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -180,7 +181,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 4,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Determining data retention policies is outside the proposal's scope, as it requires alignment with legal and organizational guidelines that must be decided by relevant authorities."
+        },
+        "critic": {
+          "round": 4,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal lacks clarity on data retention policies, necessitating a human decision."
+        }
+      }
     },
     {
       "issue_id": "C20",
@@ -193,7 +208,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision introduces a structured auditing process every six months, ensuring influence scores are regularly validated and updated to maintain data quality."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "While compliance checks are introduced, a concrete plan for maintaining accuracy and relevance of scores is still needed."
+        }
+      }
     },
     {
       "issue_id": "C21",
@@ -206,7 +235,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision introduces compliance checks as part of the review process, ensuring that data processing adheres to legal requirements."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Compliance measures are included, but details on individual data privacy protocols required for influence scores are still unclear."
+        }
+      }
     },
     {
       "issue_id": "C22",
@@ -219,7 +262,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision clarifies the protocol for transferring responsibilities when project managers change roles or leave, ensuring continuity in influence score management."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The continuity in ownership is noted, yet specific protocols for maintaining score integrity through transitions remains vague."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -232,7 +289,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The existing privacy settings need to be evaluated by legal and compliance teams to ensure they adequately protect sensitive influence scores and criteria."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The evaluation of existing privacy settings needs human decision for compliance."
+        }
+      }
     },
     {
       "issue_id": "C9",
@@ -245,7 +316,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The legal basis for processing personal data for influence scoring is determined by organizational policies and relevant regulations, which must be clarified by those responsible for compliance."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal does not specify the exact legal framework for processing personal data, and depends on external policies that are not clarified."
+        }
+      }
     },
     {
       "issue_id": "C16",
@@ -258,7 +343,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision adds a comprehensive onboarding checklist to ensure incoming project managers receive specialized training on managing influence scores, mitigating the risk of gaps in ownership."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Although transfer protocols are noted, the clarity on the specific training steps is still lacking."
+        }
+      }
     },
     {
       "issue_id": "C18",
@@ -271,7 +370,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The consensus on the definition of 'influence' relies on regional coordinators and project managers, requiring their input and agreement. This should be formally established in the process."
+        },
+        "critic": {
+          "round": 5,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "While it states a need for consensus, the process itself remains undefined, relying on future actions rather than built mechanisms."
+        }
+      }
     },
     {
       "issue_id": "C19",
@@ -284,7 +397,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Detailing specific criteria for determining the influence score will require input from project managers and regional coordinators to establish a fair and standardized method."
+        },
+        "critic": {
+          "round": 5,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The reliance on input without a concrete decision-making framework leaves room for bias or inconsistency."
+        }
+      }
     },
     {
       "issue_id": "C23",
@@ -297,7 +424,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision specifies operational procedures for feedback integration, ensuring that regional coordinators' input is consistently documented and incorporated into influence scores."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The operational procedures are set but require more detail to ensure effective integration of feedback."
+        }
+      }
     },
     {
       "issue_id": "C10",
@@ -310,7 +451,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revision specifies that project managers must establish a documented process that includes methodologies for data validation and feedback processing to ensure timely reviews of influence scores."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specification of methodologies needs to be clarified further to ensure operational effectiveness."
+        }
+      }
     }
   ],
   "tension": {
@@ -420,7 +575,14 @@
     },
     "flags": [
       "Proposer reported 85/100 confidence while blocker(s) C15, C20, C21, C22 remain unsettled.",
-      "Critic reported 85/100 confidence while blocker(s) C15, C20, C21, C22 remain unsettled."
+      "Critic reported 85/100 confidence while blocker(s) C15, C20, C21, C22 remain unsettled.",
+      "C2 was settled by wording a later edit removed; the final proposal no longer says: \"Assign ownership of influence score accuracy to designated project managers, who must review and update scores every six months, or immediately upon known role changes.\"",
+      "C7 was settled by wording a later edit removed; the final proposal no longer says: \"Establish a secure communication protocol requiring project managers to document sharing instances of influence scores to external parties, ensuring that only finalized and vetted scores are shared and communicated through encrypted channels.\"",
+      "C8 was settled by wording a later edit removed; the final proposal no longer says: \"Implement an ongoing data verification process that includes quarterly reviews of influence scores and criteria by project managers, utilizing feedback from regional coordinators and updated engagement outcome data to ensure accuracy of scores.\"",
+      "C11 was settled by wording a later edit removed; the final proposal no longer says: \"Implement a review process for influence scores that includes guidelines restricting use to specific purposes related to enhancing engagement strategies, alongside an approval requirement for communicating scores externally.\"",
+      "C13 was settled by wording a later edit removed; the final proposal no longer says: \"...upon role changes or departures, a transition process is executed within one month to review and verify ongoing scores, assigning responsibility to a new project manager.\"",
+      "C14 was settled by wording a later edit removed; the final proposal no longer says: \"...project managers required to review and document how this feedback is incorporated into score updates.\"",
+      "C17 was settled by wording a later edit removed; the final proposal no longer says: \"All communications involving influence scores must be logged and authorized by at least two project managers to ensure confidentiality.\""
     ]
   },
   "issues": [

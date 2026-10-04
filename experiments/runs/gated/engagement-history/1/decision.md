@@ -74,6 +74,8 @@ This release will enable project managers to view the complete history of engage
 - Why it matters: Clarifying permission processes is essential to mitigate risks of unauthorized access and ensure data protection.
 - Decision owner: Head of Data Protection
 - Options: Define specific role-based access controls / Regularly review and update access permissions / Implement a formal access request and tracking system
+- Proposer's last word (R2, defend, needs human decision): The specifics of how access permissions are granted and maintained depend on organizational procedures and practices, which must be determined by the relevant authorities.
+- Critic's last word (R2, escalate): How access permissions are granted and revoked depends on organizational procedures, which must be clarified.
 
 ### C4 · MINOR · does not block the build
 
@@ -82,6 +84,8 @@ This release will enable project managers to view the complete history of engage
 - Why it matters: Establishing performance benchmarks is crucial to ensure the system can support multiple project managers accessing data concurrently without failure.
 - Decision owner: IT Operations Manager
 - Options: Implement load balancing technologies / Conduct stress testing before release / Set user access limits during peak times
+- Proposer's last word (R2, defend, needs human decision): System performance benchmarks depend on organizational IT policies and infrastructure capabilities, which must be defined by the relevant technical teams.
+- Critic's last word (R2, escalate): Performance benchmarks are determined by organizational IT policy, requiring further clarification.
 
 ### C5 · MINOR · does not block the build
 
@@ -90,6 +94,8 @@ This release will enable project managers to view the complete history of engage
 - Why it matters: Ensuring data accuracy is vital to prevent project managers from making decisions based on obsolete or incorrect information.
 - Decision owner: Data Quality Assurance Lead
 - Options: Schedule regular audits of engagement data / Develop a user feedback mechanism for data inaccuracies / Establish clear data entry protocols
+- Proposer's last word (R2, defend, needs human decision): The process for monitoring and verifying data quality must be established by the organization and is not solely determined by this feature release.
+- Critic's last word (R2, escalate): Data monitoring processes are contingent on organizational policies, which need to be defined.
 
 ## Tension report
 

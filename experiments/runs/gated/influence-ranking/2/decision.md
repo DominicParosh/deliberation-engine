@@ -86,6 +86,8 @@ This release will implement a contact influence scoring system that identifies a
 - Why it matters: Clarity on available data sources is critical to ensure the accuracy and reliability of influence scoring.
 - Decision owner: Data Management Team
 - Options: Confirm available historical data sources / Proceed with assumptions on historical data usage
+- Proposer's last word (R3, defend, needs human decision): The specific sources of historical engagement data and their timelines are dependent on existing organizational data structures and must be verified by the relevant internal teams.
+- Critic's last word (R3, escalate): The proposal relies on human verification of data sources, which prevents acceptance.
 
 ### C7 · MAJOR · blocks the build
 
@@ -94,6 +96,8 @@ This release will implement a contact influence scoring system that identifies a
 - Why it matters: Establishing the sources and quality of data is essential to ensure influence scores reflect actual contact influence accurately.
 - Decision owner: Data Quality Assurance Team
 - Options: Define data sources and establish quality assurance processes / Accept scoring with current unknown data sources
+- Proposer's last word (R3, defend, needs human decision): The proposal cannot define the quality or sources of historical engagement data without input from the teams responsible for data management and quality assurance.
+- Critic's last word (R3, escalate): The reliance on certain teams for input on data quality and sources needs human decision.
 
 ## Tension report
 

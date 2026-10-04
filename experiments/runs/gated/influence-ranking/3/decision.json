@@ -88,6 +88,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -159,7 +160,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The assignment of responsibility for regularly reviewing and updating influence scores involves organizational policies and roles that must be defined by the organization."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The ownership model remains unresolved as it requires internal decision-making."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -173,7 +188,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Creating a formal dispute resolution process requires organizational input and is subject to existing protocols that the team should establish."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The absence of a dispute process necessitates organizational involvement."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -187,7 +216,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The frequency of reviewing and updating influence scores is governed by organizational policies and must be determined by management."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Frequency of updates is not established and requires human authority."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -201,7 +244,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "User training protocols for assigning influence scores must be developed by the organization to ensure proper implementation and adherence to guidelines."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Training protocols remain undetermined and need organizational input."
+        }
+      }
     }
   ],
   "tension": {

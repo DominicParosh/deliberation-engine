@@ -139,6 +139,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -259,7 +260,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The frequency of reviewing the scoring criteria to ensure relevance and compliance must be determined by the organization based on existing policies and regulations."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Review frequency demands human oversight, hindering compliance assurance."
+        }
+      }
     },
     {
       "issue_id": "C14",
@@ -273,7 +288,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 6,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The oversight for compliance with data protection regulations during each review is a matter that is subject to existing organizational policies and should be determined by relevant stakeholders who understand legal compliance requirements."
+        },
+        "critic": {
+          "round": 6,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The responsibility for ensuring compliance remains undefined and reliant on unspecified organizational policies."
+        }
+      }
     },
     {
       "issue_id": "C16",
@@ -287,7 +316,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 8,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This edit clarifies the mechanisms for ongoing data quality maintenance, ensuring that inaccuracies are addressed promptly between scheduled audits."
+        },
+        "critic": {
+          "round": 8,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While S11 mentions monitoring and updates, it lacks clear detail on how accuracy is ensured daily and what specific processes are in place."
+        }
+      }
     },
     {
       "issue_id": "C17",
@@ -301,7 +344,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 8,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "These edits provide concrete deadlines for both entry and review processes, which are designed to mitigate risks of delays in updating influence scores."
+        },
+        "critic": {
+          "round": 8,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "The measures described still do not provide sufficient detail on how to avoid bottlenecks in score updates during manual processes."
+        }
+      }
     },
     {
       "issue_id": "C19",
@@ -315,7 +372,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 8,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This revision clarifies timelines for the peer review process and ensures timely updates to influence scores, thereby reducing the risk of acting on outdated information."
+        },
+        "critic": {
+          "round": 8,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While a timeline is now included, it does not fully address how user actions will be coordinated to avoid stale data."
+        }
+      }
     }
   ],
   "tension": {
@@ -436,7 +507,12 @@
         "worry": "Unresolved operational bottlenecks and clarity on daily accuracy checks may lead to reliance on outdated influence scores."
       }
     },
-    "flags": []
+    "flags": [
+      "C1 was settled by wording a later edit removed; the final proposal no longer says: \"S3: Display influence scores alongside existing contact information in the CRM for the roles of regional coordinators and project managers only, ensuring that sensitive engagement data is not visible to lower-level staff.\"",
+      "C2 was settled by wording a later edit removed; the final proposal no longer says: \"D2: 'Global position' means the official job title or role of a contact within their respective organization, which may include considerations for variations in political and organizational structures across different countries, defined by a list of equivalencies that aligns roles with their influence potential.\"",
+      "C9 was settled by wording a later edit removed; the final proposal no longer says: \"Additionally, the data steward will conduct quarterly audits of the manually entered scores to cross-verify with engagement data to minimize discrepancies.\"",
+      "C18 was settled by wording a later edit removed; the final proposal no longer says: \"'Benchmark standards' means predefined measurable criteria established through stakeholder agreement to quantify the global position, mission involvement, and historical engagement frequency, ensuring consistent application of influence scores across various contexts and user interpretations.\""
+    ]
   },
   "issues": [
     {

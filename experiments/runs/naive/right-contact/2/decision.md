@@ -64,6 +64,8 @@ A new 'Primary Contacts' feature will be implemented to define and maintain prim
 - Why it matters: Understanding the compliance measures is crucial to prevent data protection violations during record updates.
 - Decision owner: Data Protection Officer
 - Options: Specify additional safeguards for data protection during updates / Establish regular audits of compliance measures
+- Proposer's last word (R2, defend, needs human decision): Ensuring compliance with existing data protection regulations during record updates requires a decision from the organization's data protection team regarding specific measures.
+- Critic's last word (R2, escalate): This depends on a human decision from the data protection team to establish specific compliance measures.
 
 ## Tension report
 

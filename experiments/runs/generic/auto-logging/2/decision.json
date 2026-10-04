@@ -103,6 +103,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -177,7 +178,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specifics regarding how meeting confirmations will be documented for compliance and audit purposes must be defined by the organization as it involves existing policies."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This remains unresolved regarding how confirmations will be documented for audits."
+        }
+      }
     }
   ],
   "tension": {

@@ -83,6 +83,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -193,7 +194,9 @@
         "worry": "Despite clarifying mechanisms for access and monitoring, there remains a concern about the potential for mishandling of sensitive data."
       }
     },
-    "flags": []
+    "flags": [
+      "C6 was settled by wording a later edit removed; the final proposal no longer says: \"Ensure that engagement history complies with data privacy and sensitivity protocols, with a retention policy stating engagement histories will be accessible for a period of three years from the last engagement, subject to yearly reviews for relevance and compliance.\""
+    ]
   },
   "issues": [
     {

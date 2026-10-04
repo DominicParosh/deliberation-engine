@@ -94,6 +94,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -164,7 +165,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specific data protection policies must be established by the organization, as they vary based on regulatory requirements and existing frameworks."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of data protection policies are still unspecified, and thus the challenge remains open."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -178,7 +193,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The specific process for transitioning ownership of contact data when users leave must be determined by the organization, as it depends on existing protocols and policies."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The challenge regarding transitioning ownership remains open as it requires a human decision."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -192,7 +221,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 4,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The responsibility for data continuity and management during personnel changes must be established by organizational policies and cannot be assumed in this proposal."
+        },
+        "critic": {
+          "round": 4,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal lacks clarity on established processes for managing data continuity during personnel changes, requiring organizational input."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -206,7 +249,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "ACCEPTABLE_RISK",
+          "text": "The risk of sensitive updates being exposed in the history log is acknowledged as acceptable for this release, as access is restricted to authorized users only. This access control mitigates potential risks, although further steps can be considered in future updates."
+        },
+        "critic": {
+          "round": 3,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While access is restricted to authorized users, the potential exposure of sensitive updates in the history log remains a concern that needs addressing."
+        }
+      }
     }
   ],
   "tension": {
@@ -289,7 +346,8 @@
       }
     },
     "flags": [
-      "Proposer reported 80/100 confidence while blocker(s) C5 remain unsettled."
+      "Proposer reported 80/100 confidence while blocker(s) C5 remain unsettled.",
+      "C8 was settled by wording a later edit removed; the final proposal no longer says: \"Data protection compliance will be ensured through regular audits conducted by the compliance team to confirm access privileges and the secure handling of sensitive data.\""
     ]
   },
   "issues": [

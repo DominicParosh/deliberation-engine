@@ -91,6 +91,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -174,7 +175,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The enforcement of confidentiality policies is an organizational matter that requires input from compliance and legal teams. The specifics of these measures are not our decision to make, so we should maintain this assumption until clarified."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of confidentiality enforcement measures depend on external policies and the compliance/legal teams, leaving this unresolved."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -187,7 +202,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Organizational confidentiality policies and their enforcement are not under the purview of this proposal and must be defined by the organization."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This issue requires input from human decision-makers regarding organizational policies."
+        }
+      }
     }
   ],
   "tension": {

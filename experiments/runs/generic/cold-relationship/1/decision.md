@@ -72,6 +72,8 @@ This release will implement an alert system that notifies users when engagement 
 - Why it matters: This decision impacts continuity and effectiveness in managing government relationships.
 - Decision owner: Head of Operations
 - Options: Define a transfer protocol / Allow project managers to assign successors / Create an automated assignment system
+- Proposer's last word (R2, defend, needs human decision): Decisions regarding the process for transferring ownership of relationships when project managers leave or change roles must be defined by the organization.
+- Critic's last word (R2, escalate): A process for ownership transfer relies on organizational decisions, which cannot be settled here.
 
 ### C4 · MAJOR · blocks the build
 
@@ -80,6 +82,8 @@ This release will implement an alert system that notifies users when engagement 
 - Why it matters: Accurate engagement history is critical to prevent false alerts and maintain effective communications.
 - Decision owner: Head of Data Management
 - Options: Implement regular audits of engagement records / Establish user verification processes / Adjust data entry protocols
+- Proposer's last word (R2, defend, needs human decision): Ensuring the accuracy of engagement history to avoid false alerts is a matter that requires a decision from the organization regarding quality control measures.
+- Critic's last word (R2, escalate): Quality control measures for data accuracy require organizational decisions.
 
 ### C5 · MAJOR · blocks the build
 
@@ -88,6 +92,8 @@ This release will implement an alert system that notifies users when engagement 
 - Why it matters: This is essential for compliance and ensures that critical historical information is not lost.
 - Decision owner: Compliance Officer
 - Options: Set a fixed retention period (e.g., 2 years) / Adopt a rolling review process for records / Maintain indefinitely unless manually deleted
+- Proposer's last word (R2, defend, needs human decision): Decisions about compliance and the retention of engagement records must be made by the organization, as they involve legal and regulatory considerations.
+- Critic's last word (R2, escalate): Retention periods for records involve legal compliance decisions that cannot be resolved in this proposal.
 
 ### C8 · MAJOR · blocks the build
 
@@ -96,6 +102,8 @@ This release will implement an alert system that notifies users when engagement 
 - Why it matters: Retention policies directly affect compliance and operational effectiveness in managing relationships.
 - Decision owner: Head of Compliance
 - Options: 6 months / 1 year / Undefined
+- Proposer's last word (R3, defend, needs human decision): The retention period for records related to cold engagements must be defined by organizational policy, and this is not within the scope of decisions that can be made in this proposal.
+- Critic's last word (R3, escalate): The answer requires a decision regarding the retention policy, which is a human decision.
 
 ## Tension report
 

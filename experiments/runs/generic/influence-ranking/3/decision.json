@@ -86,6 +86,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -171,7 +172,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "To ensure accuracy in influence scoring, a clear organizational framework or guidelines defining 'influence' must be developed by the organization, which is outside the current scope of this release."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The criteria defining 'influence' need to be established by the organization, which is outside the current proposal's scope."
+        }
+      }
     },
     {
       "issue_id": "C3",
@@ -185,7 +200,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Responsibility for reviewing and updating influence scores based on evolving relationships needs to be defined by the organization and should not be specified in this proposal."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Responsibility for maintaining updated influence scores must be defined and is outside this proposal."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -199,7 +228,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "This edit formalizes that the organization will establish clear criteria for influence, ensuring consistent scoring practices among users."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specific training or resources needed to ensure users have a uniform understanding of influence must be determined by the organization."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -213,7 +256,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "ACCEPTABLE_RISK",
+          "text": "While ensuring data accuracy is critical, current processes will rely on user diligence and periodic reviews, as no immediate mechanisms are established within this proposal to enforce data accuracy."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The mechanisms to ensure accurate data must be clarified and established by the organization."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -227,7 +284,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The proposal includes training protocols and resources, which requires organizational decisions on specific training content and methods to ensure consistent user application; thus, it remains as written."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The answer indicates that the training protocols are dependent on organizational decisions, which means it cannot be accepted as it stands."
+        }
+      }
     }
   ],
   "tension": {

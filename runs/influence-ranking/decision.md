@@ -38,6 +38,7 @@ This release will introduce a feature that identifies and ranks contacts by infl
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C5** (MINOR · DATA_QUALITY): How will duplicates and inaccuracies in contact data be resolved to ensure reliable influence scoring? The Proposer's answer, which the Critic accepted: The system will rely on data management processes currently in use within the CRM, which includes regular checks for duplicates and accuracy of information, minimizing the risk associated with data quality.
 
 ## Assumptions
 
@@ -67,6 +68,8 @@ This release will introduce a feature that identifies and ranks contacts by infl
 - Why it matters: Clarifying compliance is crucial to protect the organization from legal repercussions due to potential violations of privacy regulations.
 - Decision owner: Head of Data Protection
 - Options: Define internal compliance controls / Consult with legal and compliance teams
+- Proposer's last word (R2, defend, needs human decision): Compliance will be determined by designated legal and data protection officers who will dictate adherence to local and international privacy laws regarding the use of influence data.
+- Critic's last word (R2, escalate): Compliance assurance relies on inputs from legal teams which are unconfirmed.
 
 ### C8 · MAJOR · blocks the build
 
@@ -75,6 +78,8 @@ This release will introduce a feature that identifies and ranks contacts by infl
 - Why it matters: Identifying specific compliance measures is essential to minimize legal risks related to data protection.
 - Decision owner: Legal and Compliance Officer
 - Options: Designate clear access roles for influence scores / Develop data sharing protocols
+- Proposer's last word (R3, defend, needs human decision): While we can establish some internal controls, the specifics of compliance with data protection laws must be determined by our legal and compliance teams to ensure we do not violate privacy regulations.
+- Critic's last word (R3, escalate): The specifics of compliance still depend on legal and compliance teams for verification.
 
 ### C6 · MINOR · does not block the build
 
@@ -83,6 +88,8 @@ This release will introduce a feature that identifies and ranks contacts by infl
 - Why it matters: Ensuring data completeness is necessary for accurate influence scoring, which directly impacts decision-making.
 - Decision owner: Data Steward
 - Options: Implement regular data audits / Establish manual data entry protocols for missing data
+- Proposer's last word (R3, defend, acceptable risk): The assumption stands that project managers will verify that all necessary data is present before engaging with influence scores, and any missing critical data will be flagged for manual entry by users.
+- Critic's last word (R3, maintain): Despite the defense, the proposal still lacks concrete measures to ensure data completeness, maintaining significant risk.
 
 ## Tension report
 

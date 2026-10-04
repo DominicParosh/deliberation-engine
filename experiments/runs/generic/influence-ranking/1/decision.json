@@ -98,6 +98,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -193,7 +194,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The process for regularly reviewing and updating influence levels must be determined by the organization to ensure data accuracy and responsiveness to changing relationships."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal needs a specific process for regularly updating influence levels, which requires organizational input."
+        }
+      }
     },
     {
       "issue_id": "C2",
@@ -207,7 +222,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The establishment of specific criteria for 'High', 'Medium', and 'Low' influence and the appointment of responsible parties must be defined by the organization to avoid subjective bias."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Criteria for 'High', 'Medium', and 'Low' influence assignments must be specified by the organization."
+        }
+      }
     },
     {
       "issue_id": "C3",
@@ -221,7 +250,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Explicit ownership for maintaining and updating the influence levels must be assigned by the organization to prevent outdated data following personnel changes."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "There needs to be clear ownership defined for updating and maintaining influence levels."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -235,7 +278,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Specific security and privacy regulations impacting the handling of influence level data need to be clarified by the organization to ensure compliance."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The applicable regulations regarding data handling are not specified and need human decision."
+        }
+      }
     },
     {
       "issue_id": "C4",
@@ -249,7 +306,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revised training requirement ensures that users must actively demonstrate their understanding of the influence levels, enhancing the effectiveness of the training materials."
+        },
+        "critic": {
+          "round": 3,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While the proposal commits to assessments in the training materials, it remains unclear how effective these measures will be in truly ensuring user understanding and application of influence classifications."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -263,7 +334,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The organization must define a fallback process for when designated team members are unavailable to assign or update influence levels."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "A clear fallback process needs to be defined for absent team members who assign influence levels."
+        }
+      }
     }
   ],
   "tension": {

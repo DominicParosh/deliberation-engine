@@ -105,6 +105,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -196,7 +197,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Ensuring the accuracy of logged meeting details may require user involvement or validation processes that are best determined by organizational policy, thus can't be mandated here."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Without defined measures for verifying accuracy, potential inaccuracies might lead to poor decision-making."
+        }
+      }
     }
   ],
   "tension": {

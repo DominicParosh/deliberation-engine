@@ -1,5 +1,5 @@
-"""The three roles. All prompt wording lives in prompts/*.md; this module fills in the blanks
-and enforces the contract on every reply: validate -> one repair attempt -> coerce."""
+"""The three roles. Every instruction lives in prompts/*.md; this module renders the ledger into
+them and enforces the contract on every reply: validate -> one repair attempt -> coerce."""
 
 import re
 from collections.abc import Callable
@@ -34,19 +34,20 @@ class Agents:
     def _load(self, name: str) -> str:
         return next(d / name for d in self.dirs if (d / name).exists()).read_text()
 
+    def _task(self, name: str, **values: str) -> str:
+        return fill(self._load(name).strip(), **values)
+
     # ---------------------------------------------------------------- roles
 
     def propose(self, ledger: Ledger, rnd: int) -> ProposerOpening | ProposerTurn:
         if rnd == 1:
-            schema, state, task = ProposerOpening, "No proposal yet.", "Write your initial proposal."
+            schema, state, task = ProposerOpening, "No proposal yet.", self._task("proposer.task.round1.md")
         else:
             schema = ProposerTurn
             ids = ", ".join(ledger.next_id(s) for s in SECTIONS)
             state = f"## Your current proposal\n{proposal_md(ledger.proposal)}\n\nIDs for new items start at: {ids}.\n\n" \
                     "## Open challenges\n" + "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger)
-            task = ("Answer every open challenge exactly once and name its `grounds`, which decide your move. For a revision "
-                    "or concession, `edits` holds the complete new wording of each item you change (empty text removes an "
-                    "item); for a defense it is empty. Items you don't edit stay exactly as they are.")
+            task = self._task("proposer.task.md")
         turn, ok = self._turn("proposer", rnd, ledger, schema, ledger.check_proposer, state, task)
         return turn if ok else ledger.coerce_proposer(turn, rnd)
 
@@ -55,10 +56,7 @@ class Agents:
         proposal = f"## Current proposal (version {rnd})\n{proposal_md(ledger.proposal)}"
         if rnd == 1:
             schema, state = CriticOpening, proposal
-            task = ("Write your pre-mortem. Then list in `gaps` the questions the request leaves open that the proposal "
-                    f"answers badly or not at all, and raise one challenge for each, up to {budget}, most material first and "
-                    "covering at least 2 lenses: if the proposal doesn't prevent your pre-mortem, start there. You cannot "
-                    "conclude in round 1.")
+            task = self._task("critic.task.round1.md", budget=str(budget))
         else:
             schema = CriticTurn
             changes = "; ".join(f"{k}: {', '.join(v)}" for k, v in ledger.changes().items() if v) or "none"
@@ -69,15 +67,7 @@ class Agents:
             if feedback:
                 state += f"\n\n## Note from the moderator\n{feedback}"
             uncovered = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined([])]
-            task = (f"Rule on every answered challenge exactly once: quote the words that come closest to settling your test, "
-                    f"name the fact they commit to, and judge whether the challenge is settled. "
-                    f"Then raise at most {budget} new challenge(s), only for material problems you haven't raised before "
-                    f"(none is fine). To keep pressing an open challenge, maintain it rather than raising it again, and don't "
-                    f"raise again what you escalate: humans will answer it. "
-                    f"Then signal CONCLUDE if no BLOCKER or MAJOR challenge stays open after your rulings and you raise no "
-                    f"new one (escalated challenges are with humans now and don't keep the deliberation open); otherwise "
-                    f"CONTINUE. Mandatory lenses with no challenge so far: {', '.join(uncovered) or 'none'}; if you conclude, "
-                    f"add a lens_coverage note for each of them.")
+            task = self._task("critic.task.md", budget=str(budget), uncovered=", ".join(uncovered) or "none")
         turn, ok = self._turn("critic", rnd, ledger, schema, lambda t: ledger.check_critic(t, rnd, budget), state, task)
         return turn if ok else ledger.coerce_critic(turn, rnd, budget)
 

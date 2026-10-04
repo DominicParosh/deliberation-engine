@@ -86,6 +86,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -157,7 +158,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The transfer of access rights when project managers leave or change roles involves organizational policy, which we cannot define in our proposal."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This challenge cannot be settled as it relies on human decision-making related to organizational policy."
+        }
+      }
     }
   ],
   "tension": {

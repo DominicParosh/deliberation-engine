@@ -82,6 +82,15 @@
     }
   ],
   "rejected": [],
+  "declined": [
+    {
+      "id": "C6",
+      "severity": "MINOR",
+      "lens": "DATA_QUALITY",
+      "test": "What processes will be implemented to ensure engagement activities logged in the CRM are accurate and up to date?",
+      "answer": "While reliance on user accountability is a risk, dialogue with stakeholders post-release will establish a basis for refining data accuracy measures based on user experience."
+    }
+  ],
   "assumptions": [
     {
       "id": "A1",
@@ -143,7 +152,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "ACCEPTABLE_RISK",
+          "text": "The risk of alert fatigue is acknowledged but managed with customization options for alerts, enabling users to filter out less relevant notifications."
+        },
+        "critic": {
+          "round": 3,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While there is user customization, the concern of alert fatigue remains significant and was not fully mitigated."
+        }
+      }
     }
   ],
   "tension": {

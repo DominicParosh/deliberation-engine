@@ -86,6 +86,15 @@
     }
   ],
   "rejected": [],
+  "declined": [
+    {
+      "id": "C5",
+      "severity": "MINOR",
+      "lens": "DATA_QUALITY",
+      "test": "How will duplicates and inaccuracies in contact data be resolved to ensure reliable influence scoring?",
+      "answer": "The system will rely on data management processes currently in use within the CRM, which includes regular checks for duplicates and accuracy of information, minimizing the risk associated with data quality."
+    }
+  ],
   "assumptions": [
     {
       "id": "A1",
@@ -172,7 +181,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Compliance will be determined by designated legal and data protection officers who will dictate adherence to local and international privacy laws regarding the use of influence data."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Compliance assurance relies on inputs from legal teams which are unconfirmed."
+        }
+      }
     },
     {
       "issue_id": "C8",
@@ -185,7 +208,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "While we can establish some internal controls, the specifics of compliance with data protection laws must be determined by our legal and compliance teams to ensure we do not violate privacy regulations."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The specifics of compliance still depend on legal and compliance teams for verification."
+        }
+      }
     },
     {
       "issue_id": "C6",
@@ -198,7 +235,21 @@
       ],
       "severity": "MINOR",
       "status": "ESCALATED",
-      "blocks_build": false
+      "blocks_build": false,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "ACCEPTABLE_RISK",
+          "text": "The assumption stands that project managers will verify that all necessary data is present before engaging with influence scores, and any missing critical data will be flagged for manual entry by users."
+        },
+        "critic": {
+          "round": 3,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "Despite the defense, the proposal still lacks concrete measures to ensure data completeness, maintaining significant risk."
+        }
+      }
     }
   ],
   "tension": {

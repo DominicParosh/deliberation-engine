@@ -48,6 +48,7 @@ This release will allow project managers to view a comprehensive engagement hist
 **Rejected during deliberation**
 
 - Nothing was dropped.
+- Declined **C6** (MINOR · CONFIDENTIALITY): Are there technical safeguards to prevent modifications to engagement history records? The Proposer's answer, which the Critic accepted: While future iterations may introduce issues related to editing or deleting records, current scope explicitly prohibits these actions, which serves as a technical safeguard against potential modifications.
 
 ## Assumptions
 
@@ -81,6 +82,8 @@ This release will allow project managers to view a comprehensive engagement hist
 - Why it matters: Clarifying this question will ensure compliance with organizational standards and prevent unauthorized access to sensitive data.
 - Decision owner: Compliance Personnel
 - Options: Confirm existing permissions / Revise permissions accordingly / Retain current policy until review is complete
+- Proposer's last word (R2, defend, needs human decision): The existing organizational policies regarding access permissions need to be reviewed by compliance personnel to confirm that project managers have the necessary access.
+- Critic's last word (R2, escalate): Compliance confirmation requires a review of existing policies by relevant personnel, which is not within the proposal's current scope.
 
 ## Tension report
 

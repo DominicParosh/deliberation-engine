@@ -75,6 +75,8 @@ An alert system will be implemented to notify users when engagement with country
 - Why it matters: Finding the right thresholds is essential for ensuring that the alert system is sensitive to the varying contexts of diplomatic relations.
 - Decision owner: Head of Operations
 - Options: Maintain current thresholds / Allow adjustments based on regional input
+- Proposer's last word (R2, defend, needs human decision): Determining appropriate thresholds may require input from diplomatic teams to understand regional contexts and nuances, which we cannot decide at this stage.
+- Critic's last word (R2, escalate): The defense highlights that thresholds require diplomatic input, making this uncertain for implementation as it cannot be decided here.
 
 ## Tension report
 

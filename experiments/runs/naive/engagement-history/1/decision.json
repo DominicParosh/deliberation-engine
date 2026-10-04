@@ -90,6 +90,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -174,7 +175,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 4,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revised definition for 'Confidential record' now includes clear, specific guidelines for authorized personnel, reducing subjectivity in determining confidentiality and protecting against unauthorized access."
+        },
+        "critic": {
+          "round": 4,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The definition still does not clearly establish the specific criteria authorized personnel must follow, leaving room for potential subjectivity."
+        }
+      }
     },
     {
       "issue_id": "C12",
@@ -188,7 +203,21 @@
       ],
       "severity": "BLOCKER",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The access clearance for project managers is dependent on organizational policies and human decisions, particularly regarding monitoring and revoking access after role changes, which must be clarified within the organization."
+        },
+        "critic": {
+          "round": 5,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The assumption about project manager clearance lacks a defined process for monitoring access rights after role changes."
+        }
+      }
     },
     {
       "issue_id": "C5",
@@ -202,7 +231,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "While the assumption regarding clearance checks is valid, updating the processes for monitoring clearance requires human oversight and policy decisions at the organizational level."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This requires organizational policy regarding clearance checks, which is outside the scope of the proposal."
+        }
+      }
     },
     {
       "issue_id": "C7",
@@ -216,7 +259,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 3,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "This is a key organizational process that must be defined by the Data Governance Team and Chief Information Officer, as it pertains to compliance and security within existing policies."
+        },
+        "critic": {
+          "round": 3,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "The proposal relies on a process that requires human authority for definition; this remains unresolved."
+        }
+      }
     },
     {
       "issue_id": "C9",
@@ -230,7 +287,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 4,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "The organization must define its processes for reviewing and updating access rights for project managers following any role changes, as this involves compliance with security and governance policies that are outside of our control."
+        },
+        "critic": {
+          "round": 4,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "Specific processes for maintaining and reviewing clearance after role changes need to be defined as they involve compliance with governance policies."
+        }
+      }
     },
     {
       "issue_id": "C10",
@@ -244,7 +315,21 @@
       ],
       "severity": "MAJOR",
       "status": "UNRESOLVED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 5,
+          "move": "REVISE",
+          "grounds": "MISSING_DECISION",
+          "text": "The revision clarifies that the Data Governance Team is responsible for quarterly audits of user access rights, detailing the logging process for access attempts to prevent unauthorized access."
+        },
+        "critic": {
+          "round": 5,
+          "move": "MAINTAIN",
+          "grounds": "",
+          "text": "While quarterly audits are mentioned, the evidence does not specify how active monitoring and enforcement of role permissions will be managed."
+        }
+      }
     }
   ],
   "tension": {
@@ -327,7 +412,10 @@
       }
     },
     "flags": [
-      "Proposer reported 82/100 confidence while blocker(s) C1, C12 remain unsettled."
+      "Proposer reported 82/100 confidence while blocker(s) C1, C12 remain unsettled.",
+      "C2 was settled by wording a later edit removed; the final proposal no longer says: \"role permissions will be managed by the Data Governance Team under the oversight of the Chief Information Officer.\"",
+      "C3 was settled by wording a later edit removed; the final proposal no longer says: \"The system will not display or alert project managers to any engagement history records marked as confidential. Any engagement flagged as confidential will have restricted visibility and will not be included in search results.\"",
+      "C4 was settled by wording a later edit removed; the final proposal no longer says: \"The engagement history will include data from the last five years, or all available data if fewer than five years exist, excluding any records flagged as confidential.\""
     ]
   },
   "issues": [

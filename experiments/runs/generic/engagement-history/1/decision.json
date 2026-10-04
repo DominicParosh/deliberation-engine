@@ -87,6 +87,7 @@
     }
   ],
   "rejected": [],
+  "declined": [],
   "assumptions": [
     {
       "id": "A1",
@@ -156,7 +157,21 @@
       ],
       "severity": "MAJOR",
       "status": "ESCALATED",
-      "blocks_build": true
+      "blocks_build": true,
+      "positions": {
+        "proposer": {
+          "round": 2,
+          "move": "DEFEND",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "text": "Changes to data protection policies are determined by the organization, and it is not within our ability to define how these will affect access protocols."
+        },
+        "critic": {
+          "round": 2,
+          "move": "ESCALATE",
+          "grounds": "",
+          "text": "This challenge is escalated as it relies on organizational decisions regarding data protection policies."
+        }
+      }
     }
   ],
   "tension": {
