@@ -22,7 +22,8 @@ def proposal_md(p: Proposal) -> str:
 
 
 def _move(e) -> str:
-    return e.move + (f" ({e.grounds.lower().replace('_', ' ')})" if e.grounds else "")
+    grounds = f" ({e.grounds.lower().replace('_', ' ')})" if e.grounds else ""
+    return e.move + grounds + (f" [changed {', '.join(e.changed)}]" if e.changed else "")
 
 
 def issue_md(i: Issue, history: bool = True) -> str:

@@ -25,7 +25,8 @@ class Event(BaseModel):
     actor: Literal["proposer", "critic", "orchestrator"]
     move: str
     text: str
-    grounds: str = ""  # the Proposer's triage of the challenge, for its moves
+    grounds: str = ""          # the Proposer's triage of the challenge, for its moves
+    changed: list[str] = []    # item IDs the Proposer changed with this move
 
 
 class Issue(NewChallenge):
@@ -120,6 +121,14 @@ class Ledger(BaseModel):
             problems.append(f"Duplicate IDs: {', '.join(dupes)}.")
         if self.proposals and (lost := self._lost_commitments(turn.proposal)):
             problems.append(f"Core commitments can't be dropped, only the stakeholder can do that: {', '.join(lost)}.")
+        if self.proposals:
+            before, after = self.proposal.items(), turn.proposal.items()
+            edited = {k for k in after if before.get(k) != after[k]} | {k for k in before if k not in after}
+            for r in turn.responses:
+                if r.action != "DEFEND" and not set(r.changed_ids) & edited:
+                    problems.append(f"{r.challenge_id}: grounds {r.grounds} mean the proposal must change, but none of the items "
+                                    f"you listed ({', '.join(r.changed_ids) or 'none'}) changed. Write the decision into the item "
+                                    f"itself, or choose other grounds.")
         return problems
 
     def check_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int) -> list[str]:
@@ -137,23 +146,24 @@ class Ledger(BaseModel):
             if not c.targets or set(c.targets) - valid:
                 problems.append(f"New challenge #{n}: targets must be current item IDs or GAP; got {c.targets}.")
         for v in getattr(turn, "verdicts", []):
-            if v.ruling == "ACCEPT" and v.challenge_id in self.issues and not self.supported(v):
-                problems.append(f"{v.challenge_id}: an ACCEPT needs `evidence` copied word for word from the current proposal "
-                                f"(or, for a defense or concession, from the Proposer's answer), and \"{v.evidence[:80]}\" is "
-                                f"not there. Quote the text that answers your question, or MAINTAIN if nothing does.")
+            if v.answered and v.challenge_id in self.issues and not self.supported(v):
+                problems.append(f"{v.challenge_id}: you marked it answered, so `evidence` must be copied from the item text shown "
+                                f"under the challenge (or, for a defense or concession, from the Proposer's answer), and "
+                                f"\"{v.evidence[:80]}\" is not there. Quote the words that answer your question, or mark it "
+                                f"not answered.")
         return problems
 
     def supported(self, verdict: Verdict) -> bool:
-        """Is the ACCEPT's evidence really there? A revision must show in the proposal itself; a defense or concession
-        may be evidenced by the Proposer's answer. Compares word sequences, so punctuation, quotes and an item-ID
-        prefix don't matter, and tolerates elisions (...)."""
+        """Is the evidence really there? A revision must show in a proposal item; a defense or concession may be
+        evidenced by the Proposer's answer. At least 85% of the quote's words must appear in one of those texts, so
+        punctuation, an ID prefix or a slipped word don't matter but a description of a change ("S1 now says...") fails."""
         answer = [e for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
-        texts = _strings(self.proposal.model_dump()) + [e.text for e in answer if e.move != "REVISE"]
-        haystack = _words(" ".join(texts))
-        parts = [_words(part) for part in re.split(r"\.\.\.|…", verdict.evidence)]
-        parts[0] = re.sub(r"^[a-z]\d+ ", "", parts[0])
-        parts = [part for part in parts if len(part) >= 12]
-        return bool(parts) and all(part in haystack for part in parts)
+        texts = list(self.proposal.items().values()) + [e.text for e in answer if e.move != "REVISE"]
+        words = _words(verdict.evidence).split()
+        words = words[1:] if words and re.fullmatch(r"[a-z]\d+", words[0]) else words
+        if len(words) < 4:
+            return False
+        return max(sum(w in set(_words(t).split()) for w in words) / len(words) for t in texts) >= 0.85
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
@@ -182,28 +192,28 @@ class Ledger(BaseModel):
             open_ids = [i.id for i in self.open_issues()]
             verdicts = _dedupe(turn.verdicts, open_ids, lambda v: v.challenge_id)
             for cid in [c for c in open_ids if c not in {v.challenge_id for v in verdicts}]:
-                verdicts.append(Verdict(challenge_id=cid, ruling="MAINTAIN", rationale="(No ruling given.)"))
+                verdicts.append(Verdict(challenge_id=cid, answered=False, evidence="", needs_human_decision=False,
+                                        rationale="(No ruling given.)"))
                 self.warnings.append(f"R{rnd}: Critic did not rule on {cid}; recorded as MAINTAIN.")
             for n, v in enumerate(verdicts):
-                if v.ruling == "ACCEPT" and not self.supported(v):
-                    verdicts[n] = v.model_copy(update={"ruling": "MAINTAIN", "rationale": v.rationale +
-                                                       " [Counted as MAINTAIN: the quoted evidence is not in the proposal.]"})
-                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without evidence; recorded as MAINTAIN.")
+                if v.answered and not self.supported(v):
+                    verdicts[n] = v.model_copy(update={"answered": False, "rationale": v.rationale +
+                                                       " [Not counted as answered: the quoted evidence is not in the proposal.]"})
+                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without evidence; recorded as not answered.")
             update["verdicts"] = verdicts
         return turn.model_copy(update=update)
 
     # ------------------------------------------------------------ transitions
 
     def apply_proposer(self, rnd: int, turn: ProposerTurn) -> None:
-        for r in turn.responses:
-            changed = f" [changed: {', '.join(r.changed_ids)}]" if r.changed_ids else ""
+        for r in _dedupe(turn.responses, [i.id for i in self.open_issues()], lambda r: r.challenge_id):
             self.issues[r.challenge_id].history.append(Event(round=rnd, actor="proposer", move=r.action, grounds=r.grounds,
-                                                             text=r.rationale + changed))
+                                                             changed=r.changed_ids, text=r.rationale))
         self.proposals.append(turn.proposal)
 
     def apply_critic(self, rnd: int, turn: CriticOpening | CriticTurn, strike_limit: int | None) -> None:
         self.gaps += getattr(turn, "gaps", [])
-        for v in getattr(turn, "verdicts", []):
+        for v in _dedupe(getattr(turn, "verdicts", []), [i.id for i in self.open_issues()], lambda v: v.challenge_id):
             issue = self.issues[v.challenge_id]
             evidence = f' Evidence: "{v.evidence}"' if v.ruling == "ACCEPT" else ""
             issue.history.append(Event(round=rnd, actor="critic", move=v.ruling, text=v.rationale + evidence))
@@ -247,8 +257,6 @@ def _coverage(got: list[str], expected: list[str], verb: str) -> list[str]:
     problems = []
     if missing := [e for e in expected if e not in got]:
         problems.append(f"You must {verb} every open challenge exactly once; missing: {', '.join(missing)}.")
-    if extra := sorted({g for g in got if g not in expected}):
-        problems.append(f"Not open challenges, remove: {', '.join(extra)}.")
     if dupes := sorted({g for g in got if got.count(g) > 1}):
         problems.append(f"Answered more than once: {', '.join(dupes)}.")
     return problems
@@ -256,13 +264,6 @@ def _coverage(got: list[str], expected: list[str], verb: str) -> list[str]:
 
 def _words(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
-
-
-def _strings(value) -> list[str]:
-    if isinstance(value, str):
-        return [value]
-    items = value.values() if isinstance(value, dict) else value if isinstance(value, list) else []
-    return [s for v in items for s in _strings(v)]
 
 
 def _dedupe(moves: list, allowed: list[str], key) -> list:

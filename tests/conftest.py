@@ -62,8 +62,8 @@ EVIDENCE = "Know who to call."  # appears in every fake proposal, so an ACCEPT q
 
 def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", coverage=(), confidence=60, evidence=EVIDENCE) -> str:
     return json.dumps({
-        "verdicts": [{"challenge_id": c, "ruling": r, "rationale": "Considered.", "evidence": evidence if r == "ACCEPT" else ""}
-                     for c, r in rulings.items()],
+        "verdicts": [{"challenge_id": c, "answered": r == "ACCEPT", "evidence": evidence if r == "ACCEPT" else "",
+                      "needs_human_decision": r == "ESCALATE", "rationale": "Considered."} for c, r in rulings.items()],
         "new_challenges": list(new), "signal": signal, "confidence": confidence, "biggest_worry": "Leaks.",
         "lens_coverage": [{"lens": lens, "note": "No material risk."} for lens in coverage]})
 

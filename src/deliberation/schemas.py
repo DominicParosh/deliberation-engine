@@ -28,7 +28,6 @@ Severity = Choice("BLOCKER", "MAJOR", "MINOR")
 Grounds = Choice("MISSING_DECISION", "SHOULD_NOT_BUILD", "ALREADY_COVERED", "DESIGN_DETAIL", "ACCEPTABLE_RISK",
                  "NEEDS_HUMAN_DECISION")
 MOVE_FOR = {"MISSING_DECISION": "REVISE", "SHOULD_NOT_BUILD": "CONCEDE"}  # every other ground is a DEFEND
-Ruling = Choice("ACCEPT", "MAINTAIN", "ESCALATE")
 Signal = Choice("CONTINUE", "CONCLUDE")
 
 MANDATORY_LENSES = ("CONFIDENTIALITY", "DEFINITIONS", "OWNERSHIP")
@@ -94,8 +93,10 @@ class Response(BaseModel):
 
 
 class ProposerTurn(BaseModel):
-    responses: list[Response] = Field(description="Exactly one per open challenge. Empty in round 1.")
-    proposal: Proposal = Field(description="The full current proposal, including unchanged items.")
+    """The proposal comes first, so the responses describe edits already written rather than edits intended."""
+
+    proposal: Proposal = Field(description="The full updated proposal, including unchanged items. Write it first.")
+    responses: list[Response] = Field(description="Exactly one per open challenge, describing the proposal you just wrote. Empty in round 1.")
     confidence: int = Field(description="0-100: how ready this proposal is to build as written.")
     biggest_worry: str = Field(description="One sentence.")
 
@@ -114,11 +115,21 @@ class NewChallenge(BaseModel):
 
 
 class Verdict(BaseModel):
+    """The Critic answers two narrow questions; the ruling follows from them, as the Proposer's move follows its grounds."""
+
     challenge_id: str
-    evidence: str = Field(description="Words copied exactly from the current proposal or the Proposer's answer that meet "
-                                      "your resolution test. Empty if nothing meets it, in which case you cannot ACCEPT.")
-    ruling: Ruling
-    rationale: str = Field(description="1-2 sentences. For MAINTAIN, give a new argument, not a repeat.")
+    answered: bool = Field(description="Is the question in your resolution test, exactly as you wrote it, now answered by the "
+                                       "proposal text (or, for a defense or concession, by the Proposer's answer)? Judge that "
+                                       "question only: a new concern is a new challenge, not a reason to say no.")
+    evidence: str = Field(description="If answered: the words that answer it, copied from the item text shown under the challenge "
+                                      "(or from the Proposer's answer for a defense or concession). Otherwise empty.")
+    needs_human_decision: bool = Field(description="If not answered: does answering it need authority neither of you has "
+                                                   "(organisational policy, law, budgets, existing teams)? Then it goes to humans.")
+    rationale: str = Field(description="1-2 sentences. If not answered and not for humans, say exactly what is still missing.")
+
+    @property
+    def ruling(self) -> str:
+        return "ACCEPT" if self.answered else "ESCALATE" if self.needs_human_decision else "MAINTAIN"
 
 
 class LensNote(BaseModel):

@@ -23,7 +23,7 @@ A **scope agreement for a first release**: what will be built, for whom, under w
 Aim for a first release a small team could ship in about a quarter: typically 1–2 V, 4–7 S, 2–4 X, 3–6 A, 2–5 D and 1–3 K.
 
 # Responding to challenges (round 2 onwards)
-Triage each open challenge first by naming its `grounds`. Your move follows from them:
+Write your updated proposal first, then one response per open challenge describing what you actually wrote. Triage each challenge by naming its `grounds`; your move follows from them:
 
 | Grounds | When | Move |
 |---|---|---|
@@ -32,11 +32,11 @@ Triage each open challenge first by naming its `grounds`. Your move follows from
 | ALREADY_COVERED | Another item already answers it | **DEFEND**: cite that item's ID |
 | DESIGN_DETAIL | It asks how to build something, not what to build | **DEFEND**: that belongs in later design work |
 | ACCEPTABLE_RISK | The risk is real but acceptable for a first release | **DEFEND**: name the mitigation |
-| NEEDS_HUMAN_DECISION | Only the organisation can answer it: policy, law, budgets, priorities, or teams and systems the description doesn't mention | **DEFEND**: keep the item, say who must decide, and let the Critic escalate it |
+| NEEDS_HUMAN_DECISION | Only the organisation can answer it: what the law requires, existing policy, budgets, or which teams and systems exist | **DEFEND**: keep the item, say who must decide, and let the Critic escalate it |
 
-**Never invent the organisation's facts to settle a challenge**: no teams, policies, laws, systems or approval processes that the system description doesn't mention. If the answer depends on one, the grounds are NEEDS_HUMAN_DECISION.
+**Know what is ours to decide.** The rules of this feature are ours: who sees what in it, who receives which alert, thresholds and defaults, what happens to access when someone changes role or leaves, what the release won't do. Decide them; a sensible default the stakeholder can change later is still a decision. Facts about the organisation are not ours: what the law requires, existing policies (retention periods, security clearances), budgets, and which teams or systems exist. Never invent those to settle a challenge. That, and only that, is NEEDS_HUMAN_DECISION.
 
-A revision must put the actual decision into the proposal itself, because the Critic checks the proposal text, not your rationale. Promises ("will clarify", "will ensure") don't count, and neither does rewriting an assumption to claim the problem is already solved. In `rationale`, say what you changed, in the past tense.
+A revision must put the actual decision into the proposal itself, because the Critic checks the item text, not your rationale, and the moderator checks that the items you list really changed. Promises ("will clarify", "will ensure") don't count, and neither does rewriting an assumption to claim the problem is already solved. In `rationale`, say what you changed, in the past tense.
 
 **The burden of proof is on the Critic.** A challenge earns a revision or a concession only if its failure scenario is plausible here and material to this release. Defend against preferences, gold-plating, requests for design detail, and hypotheticals with no realistic path. When you concede, name the specific argument that changed your mind; "good point" is not a reason. Revising is usually better than conceding: keep the value, remove the risk. Sending a question to the people who own it is better than inventing their answer.
 

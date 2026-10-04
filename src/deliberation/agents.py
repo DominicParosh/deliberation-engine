@@ -58,14 +58,14 @@ class Agents:
             schema = CriticTurn
             changes = "; ".join(f"{k}: {', '.join(v)}" for k, v in ledger.changes().items() if v) or "none"
             state = (f"{proposal}\n\nChanges since last round: {changes}\n\n## Challenges the Proposer just answered\n"
-                     + "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger))
+                     + "\n\n".join(answered_view(ledger, i) for i in ledger.open_issues()) + settled_view(ledger))
             if ledger.gaps:
                 state += "\n\n## Open questions you noted in round 1\n" + "\n".join(f"- {g}" for g in ledger.gaps)
             if feedback:
                 state += f"\n\n## Note from the moderator\n{feedback}"
             uncovered = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined([])]
-            task = (f"Rule on every answered challenge exactly once (ACCEPT, MAINTAIN or ESCALATE); every ACCEPT quotes "
-                    f"its evidence word for word. "
+            task = (f"Rule on every answered challenge exactly once: is your question answered (quote the words that answer "
+                    f"it), and if not, does it need a human decision? "
                     f"Then raise at most {budget} new challenge(s), only for material problems (none is fine). "
                     f"Then signal CONCLUDE or CONTINUE. Mandatory lenses with no challenge so far: "
                     f"{', '.join(uncovered) or 'none'}; if you conclude, add a lens_coverage note for each of them.")
@@ -106,6 +106,15 @@ class Agents:
 
 
 # -------------------------------------------------------------------- views (what each agent sees)
+
+
+def answered_view(ledger: Ledger, issue) -> str:
+    """An answered challenge plus the current text of the items it touches, so the Critic can check and quote them."""
+    items = ledger.proposal.items()
+    last = [e for e in issue.history if e.actor == "proposer"][-1:]
+    ids = list(dict.fromkeys([*(last[0].changed if last else []), *issue.targets]))
+    shown = [f"  - {k}: {items[k]}" for k in ids if k in items]
+    return issue_md(issue) + ("\n- Items as they now read:\n" + "\n".join(shown) if shown else "")
 
 
 def settled_view(ledger: Ledger) -> str:

@@ -146,7 +146,8 @@ def test_evidence_must_be_quoted_but_may_carry_an_id_or_elide_words():
     p["in_scope"][0]["text"] = "Only the regional coordinator for a country can mark a contact as its focal point."
     ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
     ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
-    check = lambda quote: ledger.supported(Verdict(challenge_id="C1", evidence=quote, ruling="ACCEPT", rationale="r"))  # noqa: E731
+    check = lambda quote: ledger.supported(Verdict(challenge_id="C1", answered=True, evidence=quote,  # noqa: E731
+                                                   needs_human_decision=False, rationale="r"))
     assert check("only the regional coordinator for a country can mark a contact")
     assert check("S1: Only the regional coordinator ... can mark a contact as its focal point")
     assert not check("Regional coordinators own focal-point assignments")  # a paraphrase is not evidence
@@ -184,5 +185,40 @@ def test_a_revision_must_show_in_the_proposal_but_a_defense_may_be_quoted_from_t
         ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
         ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
         ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move=move, text=claim))
-        verdict = Verdict(challenge_id="C1", evidence=claim, ruling="ACCEPT", rationale="r")
+        verdict = Verdict(challenge_id="C1", answered=True, evidence=claim, needs_human_decision=False, rationale="r")
         assert ledger.supported(verdict) is expected, move
+
+
+def test_the_ruling_follows_from_the_critics_two_judgements():
+    from deliberation.schemas import Verdict
+
+    rule = lambda answered, humans: Verdict(challenge_id="C1", answered=answered, evidence="",  # noqa: E731
+                                            needs_human_decision=humans, rationale="r").ruling
+    assert (rule(True, False), rule(True, True), rule(False, True), rule(False, False)) == ("ACCEPT", "ACCEPT", "ESCALATE", "MAINTAIN")
+
+
+def test_a_revision_that_changes_nothing_is_sent_back():
+    def proposer(prompt, _):
+        return proposer_json(prompt, grounds="MISSING_DECISION")  # claims revisions, returns the same proposal
+
+    llms = agents(proposer=proposer)
+    deliberate("Request.", "ctx", llms, GATED)
+    assert "none of the items you listed" in llms["proposer"].prompts[1][-1]["content"]
+
+
+def test_answers_to_closed_issues_are_ignored_without_a_repair():
+    def proposer(prompt, _):  # also answers C1 after it was escalated
+        doc = json.loads(proposer_json(prompt))
+        if round_of(prompt) == 3:
+            doc["responses"].append({"challenge_id": "C1", "grounds": "ACCEPTABLE_RISK", "rationale": "Late.", "changed_ids": []})
+        return json.dumps(doc)
+
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        rulings = {c: ("ESCALATE" if c == "C1" else "MAINTAIN") for c in open_ids(prompt)}
+        return critic_json(rulings, signal="CONTINUE")
+
+    result = deliberate("Request.", "ctx", agents(proposer=proposer, critic=critic), GATED)
+    assert result.meta["repairs"] == 0
+    assert [e.move for e in result.ledger.issues["C1"].history] == ["RAISE", "DEFEND", "ESCALATE"]

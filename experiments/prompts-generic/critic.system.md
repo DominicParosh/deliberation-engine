@@ -37,12 +37,12 @@ An example from an unrelated domain, to show the form only:
 - Strong: targets `["S3"]`, OPERATIONS, MAJOR. *Challenge:* S3 notifies library patrons when a reserved book is available but never says how long it is held. *Failure scenario:* a patron is notified on Friday, the hold lapses on Saturday, the book goes to the next patron, and the first patron arrives to an empty shelf. *Resolution test:* How many days is a reserved book held, and what happens when the hold lapses?
 
 # Ruling on answers (round 2 onwards)
-Before raising anything new, rule on every challenge the Proposer just answered. Each answer names its grounds (missing decision, should not build, already covered, design detail, acceptable risk, needs human decision):
-- **ACCEPT**: your question is answered. Copy the exact words that answer it into `evidence`; the moderator checks that they are really there. For a revision, quote the proposal itself: the Proposer's rationale doesn't count, and neither does a promise to clarify, define or ensure. For a defense or a concession, you may quote the Proposer's answer.
-- **MAINTAIN**: your question is not answered. Leave `evidence` empty and give a new argument; repeating yourself is not allowed. An issue maintained twice is escalated to human decision-makers automatically, so maintain only when it matters.
-- **ESCALATE**: the answer needs authority neither of you has, such as organisational policy, law, budgets, or an executive trade-off. When the Proposer defends with *needs human decision* and you agree, ESCALATE: that is the right outcome, not a failure.
+Before raising anything new, rule on every challenge the Proposer just answered. Each answer names its grounds, and the items it touches are shown as they now read. Decide two things; your ruling follows from them:
+- `answered`: is the question in your resolution test, exactly as you wrote it, now answered? For a revision, look at the item text shown under the challenge; the Proposer's rationale doesn't count, and neither does a promise. For a defense or a concession, the Proposer's answer can answer it. Judge your question only: if the answer raises a new concern, that is a new challenge, not a reason to say no. If it is answered, copy the words that answer it into `evidence`; the moderator checks that they are really there. **Answered means ACCEPT.**
+- `needs_human_decision`: if it is not answered, does answering it need authority neither of you has, such as what the law requires, existing policy, budgets, or which teams and systems exist? When the Proposer defends with *needs human decision* and you agree, say yes. **That means ESCALATE**, which is the right outcome, not a failure.
+- Neither: **MAINTAIN**. Say exactly what is still missing, as a new argument rather than a repeat. An issue maintained twice is escalated to human decision-makers automatically, so maintain only when it matters.
 
-An answer that rests on a team, policy, law or system the system description doesn't mention is not evidence. ESCALATE it if only the organisation can say, or MAINTAIN if the decision is ours to make.
+An answer that rests on a team, policy, law or system the system description doesn't mention is not evidence. Either it needs a human decision, or the Proposer has to decide the rule itself.
 
 Don't re-raise a settled issue unless the proposal changed in a way that creates a new problem; raise that as a new challenge.
 

@@ -91,3 +91,42 @@ What didn't:
   Matching compares word sequences, ignoring punctuation and quotes.
 - Critic: escalate NEEDS_HUMAN_DECISION defenses it agrees with; treat invented teams/policies/laws as non-evidence;
   ask whether risky items should exist at all; check the open and settled lists before raising anything.
+
+## v3 → third live batch (2026-10-04 ~11:05, code 556d603)
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions |
+|---|---|---|---|---|---|---|
+| right-contact | 6 | converged | 6 REVISE, 11 DEFEND | 16 MAINTAIN, 1 ESCALATE | 9/9 | 9 |
+| engagement-history | 6 | converged | 10 REVISE, 4 DEFEND | 10 MAINTAIN, 2 ESCALATE, 2 ACCEPT | 7/9 | 7 |
+| cold-relationship | 6 | converged | 6 REVISE, 14 DEFEND | 20 MAINTAIN | 10/10 | 10 |
+| auto-logging | 6 | converged | 4 REVISE, 10 DEFEND | 14 MAINTAIN | 7/7 | 7 |
+| influence-ranking | 6 | consensus | 2 REVISE, 14 DEFEND | 15 MAINTAIN, 1 ACCEPT | 7/8 | 7 |
+
+Triage worked on the Proposer, too well: DEFEND went from 0% to 65% of moves, but 51 of 53 defenses were
+NEEDS_HUMAN_DECISION. The Critic accepted 3 times in 81 rulings; 40 of 43 issues ended escalated; every run used
+the full 6 rounds the design allows (the cap never fired, so termination behaved; the rulings feeding it did not).
+
+Reading the traces:
+1. **The Proposer claims edits it doesn't make.** cold-relationship C1: the rationale says S1 now restricts alerts
+   to "regional coordinators and project managers"; S1's text never says so (v3 S1 only adds "visible only to
+   authorized users"). The evidence rule correctly refused the ACCEPT. Cause: responses are generated before the
+   full proposal is regenerated, and the regenerated proposal drops the change.
+2. **The Critic moves the goalposts.** C3's test asked *who* maintains records; the answer named roles; the Critic
+   then maintained because it was "unclear how this responsibility will be enforced".
+3. **NEEDS_HUMAN_DECISION is read too broadly.** "What happens to alerts when a user changes role?" is a product rule
+   we can decide, not organisational policy.
+4. Repairs for answering already-closed issues (the Proposer answered escalated C3–C6 in round 6).
+
+## v4 changes
+
+- **The Critic classifies too.** Each verdict states `answered` (is the question in my resolution test, as written,
+  answered?) and `needs_human_decision`; the ruling is derived: answered → ACCEPT, else needs humans → ESCALATE,
+  else MAINTAIN. A new concern can't block an answered question; it has to be a new challenge.
+- **A REVISE or CONCEDE must actually change the items it lists** (checked against the previous version), and the
+  Proposer now writes its updated proposal *before* its responses, so it describes what it wrote, not what it intends.
+- The Critic sees each changed item's current text right under the challenge it answers, so it can quote it.
+  Evidence matching tolerates small wording slips (85% of the quote's words found in one item), still rejecting
+  descriptions like "S1 has been revised to specify...".
+- Proposer prompt: NEEDS_HUMAN_DECISION is for organisational facts (law, policy, budgets, existing teams), not for
+  rules of this feature, which are ours to propose (who sees what, thresholds as defaults, what happens on role change).
+- Answers or rulings for issues that are no longer open are dropped silently instead of costing a repair.

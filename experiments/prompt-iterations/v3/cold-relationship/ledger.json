@@ -1,0 +1,1228 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "gaps": [
+    "What specific user roles can see and act on cold relationship alerts?",
+    "What happens to alerts when users change roles or leave the organization?",
+    "How is engagement activity tracked and recorded in the CRM?",
+    "How do we define and handle communication outside the CRM system?",
+    "What privacy measures are in place to ensure sensitive information is protected in alert notifications?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for 90 days."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "There is a standard method for tracking engagement activities and recording communication history in the CRM.",
+          "why_implicit": "The request assumes the existence of engagement history data which allows for determining inactivity."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for 90 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users who receive cold relationship alerts.",
+          "target": "80% of users report receiving timely alerts on cold relationships.",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile, ensuring compliance with data protection regulations regarding user consent and access controls."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "Regional coordinators and project managers will ensure the accuracy of engagement activity records.",
+          "why_implicit": "The successful deployment of alerts depends on accurate tracking and updating of engagement activities."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users who receive cold relationship alerts.",
+          "target": "80% of users report receiving timely alerts on cold relationships.",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for a user-defined period between 30 and 180 days, visible only to authorized users."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile, ensuring compliance with data protection regulations regarding user consent and access controls."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "Regional coordinators and project managers will ensure the accuracy of engagement activity records.",
+          "why_implicit": "The successful deployment of alerts depends on accurate tracking and updating of engagement activities."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users who receive cold relationship alerts",
+          "target": "80% of users report receiving timely alerts on cold relationships",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for a user-defined period between 30 and 180 days, visible only to authorized users."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile, ensuring compliance with data protection regulations regarding user consent and access controls."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "Regional coordinators and project managers will ensure the accuracy of engagement activity records.",
+          "why_implicit": "The successful deployment of alerts depends on accurate tracking and updating of engagement activities."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users who receive cold relationship alerts; target 80% of users report receiving timely alerts on cold relationships",
+          "target": "80%",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for a user-defined period between 30 and 180 days, visible only to authorized users."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile, ensuring compliance with data protection regulations regarding user consent and access controls."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "Regional coordinators and project managers will ensure the accuracy of engagement activity records.",
+          "why_implicit": "The successful deployment of alerts depends on accurate tracking and updating of engagement activities."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users receiving alerts",
+          "target": "80% of users report receiving timely alerts on cold relationships",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers an alerting feature that notifies users when engagement activity with a government representative is deemed 'cold'. It is intended for regional coordinators and project managers using the CRM who need timely insights on relationship health.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide alerts to users when engagement with a country representative has not occurred for a predefined period."
+        },
+        {
+          "id": "V2",
+          "text": "Enable users to configure what constitutes a 'cold' relationship based on the duration of inactivity."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement an alert that triggers if there has been no recorded communication with a country representative for a user-defined period between 30 and 180 days, visible only to authorized users."
+        },
+        {
+          "id": "S2",
+          "text": "Create a user interface setting that allows regional coordinators and project managers to customize the inactivity threshold from 30 to 180 days."
+        },
+        {
+          "id": "S3",
+          "text": "Include an email notification feature that informs users of a cold relationship when triggered."
+        },
+        {
+          "id": "S4",
+          "text": "Record and display the last engagement date on the country contact profile, ensuring compliance with data protection regulations regarding user consent and access controls."
+        },
+        {
+          "id": "S5",
+          "text": "Provide a dashboard view where users can see all relationships that are currently cold."
+        },
+        {
+          "id": "S6",
+          "text": "Ensure alerts comply with data protection regulations regarding sensitive communications."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include any predictive analytics or recommendations to improve cold relationships."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not address how to re-engage with cold relationships."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not involve tracking communications that happen outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to the CRM and sufficient permissions to receive alerts and configure settings.",
+          "why_implicit": "The request implies that users will interact with the CRM and utilize its features."
+        },
+        {
+          "id": "A2",
+          "text": "Regional coordinators and project managers will ensure the accuracy of engagement activity records.",
+          "why_implicit": "The successful deployment of alerts depends on accurate tracking and updating of engagement activities."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with how to interpret 'cold' status and take necessary actions based on alerts.",
+          "why_implicit": "The request assumes users will know what to do when alerted about a cold relationship."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Cold relationship",
+          "definition": "A relationship where there has been no recorded engagement activity or communication for a user-defined period between 30 and 180 days."
+        },
+        {
+          "id": "D2",
+          "term": "Engagement activity",
+          "definition": "Any recorded communication or interaction with a country representative documented within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Percentage of users receiving alerts",
+          "target": "80% of users report receiving timely alerts on cold relationships",
+          "measurement": "Measured through user feedback surveys within 30 days of release."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify who can see the alert notifications for cold relationships, potentially exposing sensitive information to unauthorized users.",
+      "failure_scenario": "A regional coordinator receives an alert about a cold relationship with a sensitive contact, but the information is also visible to a project manager who has no clearance to approach that contact, leading to diplomatic issues.",
+      "resolution_test": "Who can see the alert notifications for cold relationships?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who can see the alert notifications for cold relationships, potentially exposing sensitive information to unauthorized users.",
+          "grounds": ""
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I clarified that only users with appropriate permissions, specifically regional coordinators and project managers, will receive alerts about cold relationships. This ensures sensitive information is only visible to authorized personnel. [changed: S1]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer's response does not explicitly state how alerts are restricted to appropriate users, leaving ambiguity about sensitive information exposure.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised the scope item S1 to clearly specify that only users with appropriate permissions—regional coordinators and project managers—will receive alerts about cold relationships. This ensures that sensitive information is restricted to authorized personnel only. [changed: S1]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer's response does not explicitly specify how alerts are restricted to appropriate users, leaving ambiguity about sensitive information exposure.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The definition of 'cold relationship' is too rigid and lacks clarity, as it only specifies 90 days without engagement, which might not apply to every scenario.",
+      "failure_scenario": "A country representative may have a valid reason for lack of communication beyond 90 days, yet the system alerts users indiscriminately, causing unnecessary concern or miscommunication regarding that relationship.",
+      "resolution_test": "What alternative definitions or criteria for 'cold relationships' can be applied, and how will they be documented?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'cold relationship' is too rigid and lacks clarity, as it only specifies 90 days without engagement, which might not apply to every scenario.",
+          "grounds": ""
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised the definition of 'cold relationship' to a more flexible approach, enabling users to define inactivity criteria ranging from 30 to 180 days based on individual contexts. This allows for nuanced engagement strategies. [changed: D1]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the Proposer indicated a more flexible approach to the definition of 'cold relationship', the exact wording that reflects this is absent from the proposal.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised the definition of 'cold relationship' to explicitly require that users can define inactivity criteria, ensuring a flexible approach that reflects varying contexts and situations. The definition now articulates this flexibility more clearly. [changed: D1]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the Proposer indicated a more flexible approach to the definition of 'cold relationship', the exact wording that reflects this is absent from the proposal.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A2"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify who maintains the engagement activity records or ensures their accuracy, risking outdated or incorrect data being used to trigger alerts.",
+      "failure_scenario": "The CRM shows a cold relationship due to missing engagement records, but no one is responsible for updating or correcting these records, leading to false alerts and wasted efforts on re-engaging.",
+      "resolution_test": "Who is responsible for maintaining and updating engagement activity records in the CRM?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who maintains the engagement activity records or ensures their accuracy, risking outdated or incorrect data being used to trigger alerts.",
+          "grounds": ""
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I clarified that the responsibility for maintaining engagement activity records will lie with the regional coordinators and project managers. However, since the specifics of the data maintenance processes may fall under organizational policies, those should be established by the organization.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the Proposer states who is responsible for maintaining records, it remains unclear how this responsibility will be enforced or monitored.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I defended the item by stating that while the regional coordinators and project managers are responsible for maintaining engagement activity records, the specifics of how this is monitored should fall under organizational policies that need to be established by relevant management.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "While the Proposer states who is responsible for maintaining records, it remains unclear how this responsibility will be enforced or monitored.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MINOR",
+      "challenge": "The proposal mentions compliance with data protection regulations but does not specify how user consent or data privacy will be managed in the context of storing and displaying engagement records.",
+      "failure_scenario": "A user accesses engagement data that should be confidential as part of the cold relationship alert, but there are no safeguards in place, violating privacy regulations.",
+      "resolution_test": "What measures are in place to ensure compliance with data protection regulations for storing and displaying engagement records?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal mentions compliance with data protection regulations but does not specify how user consent or data privacy will be managed in the context of storing and displaying engagement records.",
+          "grounds": ""
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I added specifics on ensuring compliance by implementing user consent protocols and access controls to safeguard engagement records. This addresses privacy concerns while still allowing users to view necessary data. [changed: S4]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer did not provide specific text demonstrating how compliance will be achieved in practice, particularly regarding user consent protocols and access measures.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised scope item S4 to detail that user consent protocols and access restrictions are implemented to manage data privacy and ensure compliance with regulations. This clarifies how sensitive data is protected in the context of alerts. [changed: S4]",
+          "grounds": "MISSING_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer did not provide specific text demonstrating how compliance will be achieved in practice, particularly regarding user consent protocols and access measures.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks a clear process for how engagement activity records will be maintained and updated to ensure their accuracy over time.",
+      "failure_scenario": "A regional coordinator relies on outdated engagement records which lead to sending alerts for cold relationships that are actually active, resulting in miscommunication and wasted diplomatic efforts.",
+      "resolution_test": "What is the process for maintaining and updating engagement activity records in the CRM?",
+      "id": "C5",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a clear process for how engagement activity records will be maintained and updated to ensure their accuracy over time.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I defended this challenge by reiterating that the process for maintaining engagement activity records should be established by the organization itself and is not strictly defined within this feature release. This remains subject to their internal policies.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer's defense highlighted the need for organizational policy input but did not provide a specific process for maintaining engagement records.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal remains unchanged as the specifics regarding the process for maintaining engagement activity records should be determined by the organization through its internal policies and standards. This challenge emphasizes the need for explicit definitions to ensure accurate and updated records, which should come from organizational input.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer has not provided a clear process for how engagement activity records will be maintained and updated, leaving the challenge open.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define how alerts will be managed when users change roles or leave the organization, which could potentially expose sensitive information to unauthorized users.",
+      "failure_scenario": "When a project manager leaves and their access is not appropriately revoked, they may still receive alerts about cold relationships, risking leaks of sensitive diplomatic information.",
+      "resolution_test": "What safeguards are in place to ensure that alerts are adjusted or revoked when users change roles or leave the organization?",
+      "id": "C6",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define how alerts will be managed when users change roles or leave the organization, which could potentially expose sensitive information to unauthorized users.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I defended this challenge by explaining that it's essential for the organization to define specific protocols for revoking alerts and access to information when users change roles or leave. Addressing this requires organizational input.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer's defense discusses the need for organizational protocols, but there is no specific inclusion on how alert management would be handled during role changes.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal continues to rely on organizational protocols for managing alerts when users change roles or leave the organization. This decision must be made at the organizational level to ensure sensitive information remains protected and access is appropriately revoked.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not include specific safeguards for alert management when users change roles or leave, maintaining the challenge.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify how engagement activity will be accurately tracked within the CRM, leading to potential discrepancies between actual and recorded communication.",
+      "failure_scenario": "If engagement activities are improperly recorded due to user error, alerts for cold relationships may trigger incorrectly, prompting unnecessary outreach and stress.",
+      "resolution_test": "What specific mechanisms are in place for tracking and verifying engagement activity within the CRM?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how engagement activity will be accurately tracked within the CRM, leading to potential discrepancies between actual and recorded communication.",
+          "grounds": ""
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I defended this challenge by stating that the mechanisms for tracking and verifying engagement activity within the CRM should also be established based on organizational practices, which may vary and need input from relevant teams.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer indicated that tracking mechanisms should be defined by organizational policies, which is insufficient as a standard solution.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The need for explicit tracking mechanisms remains dependent on the organization’s policies and practices, which need to involve input from relevant teams. The proposal simply states that accurate tracking should be aligned with established procedures.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer's defense reiterates dependency on organizational practices for tracking engagement activity but does not offer a specific solution, leaving the challenge unresolved.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks an explicit process for systematic monitoring and enforcement of maintaining engagement records, risking future inconsistencies and inaccuracies.",
+      "failure_scenario": "A critical engagement record is either missing or outdated, leading a user to receive a false alert about a cold relationship, prompting unnecessary diplomatic outreach and wasting resources.",
+      "resolution_test": "What explicit processes and protocols exist for systematically monitoring and ensuring accurate maintenance of engagement activity records?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks an explicit process for systematic monitoring and enforcement of maintaining engagement records, risking future inconsistencies and inaccuracies.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "This challenge highlights a critical need for systematic monitoring and enforcement processes that should be defined by the organization, ensuring engagement records are maintained accurately to avoid false alerts. The response asserts that explicit processes are subject to organizational input.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The response indicates that systematic monitoring needs to be established by the organization, but does not define explicit processes and protocols, resulting in maintenance of the challenge.",
+          "grounds": ""
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The proposal requires the organization to determine explicit processes for systematically monitoring and ensuring the accuracy of engagement activity records. This involves input from relevant stakeholders to establish necessary protocols and procedures that are currently undefined.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal still does not define explicit processes and protocols for systematically monitoring and ensuring accurate maintenance of engagement activity records.",
+          "grounds": ""
+        },
+        {
+          "round": 5,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "There is no defined policy for managing access to alerts for users who were previously involved but have changed roles or left the organization, risking sensitive information exposure.",
+      "failure_scenario": "A user who has left the organization still receives cold relationship alerts about sensitive contacts, leading to potential exposure of confidential diplomatic information.",
+      "resolution_test": "What specific procedures are established to ensure access to alerts is revoked for users who change roles or leave the organization?",
+      "id": "C9",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no defined policy for managing access to alerts for users who were previously involved but have changed roles or left the organization, risking sensitive information exposure.",
+          "grounds": ""
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The management of access to alerts for users changing roles or leaving the organization must be established by the organization itself, ensuring sensitive information is safeguarded. This decision should involve clear internal procedures that the proposal currently identifies as needing organizational input.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer has not specified procedures for ensuring access to alerts is revoked for users who change roles or leave, thus the challenge remains.",
+          "grounds": ""
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The management of access to alerts for users changing roles or leaving the organization is a decision that needs to be made by the organization. The proposal highlights the necessity of internal procedures to protect sensitive information, which should involve organizational input to define these processes.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The Proposer has not specified procedures for ensuring access to alerts is revoked for users who change roles or leave, thus the challenge remains.",
+          "grounds": ""
+        },
+        {
+          "round": 5,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify how access to cold relationship alerts will be managed to prevent unauthorized exposure, especially when users change roles or leave the organization.",
+      "failure_scenario": "If an employee who previously handled sensitive diplomatic relationships leaves the organization but retains access to their alerts, they could receive confidential alerts about cold relationships, risking leakage of sensitive information.",
+      "resolution_test": "What specific protocols are in place to revoke access to cold relationship alerts for users who change roles or leave the organization?",
+      "id": "C10",
+      "round_raised": 4,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how access to cold relationship alerts will be managed to prevent unauthorized exposure, especially when users change roles or leave the organization.",
+          "grounds": ""
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The specifics of how access to cold relationship alerts will be managed, including revocation procedures for users changing roles or leaving the organization, must be established by the organization itself. Clear protocols need to be defined to safeguard sensitive information, requiring organizational determination.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The specifics of how access to cold relationship alerts will be managed, including revocation procedures for users changing roles or leaving, are still undefined.",
+          "grounds": ""
+        },
+        {
+          "round": 6,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The specifics of protocols for managing access to cold relationship alerts, including handling user role changes or departures, must be defined by the organization. This decision requires organizational approval and oversight to ensure data security and confidentiality protocols are in place.",
+          "grounds": "NEEDS_HUMAN_DECISION"
+        },
+        {
+          "round": 6,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal still does not clarify specific protocols for managing access to cold relationship alerts, including revocation procedures for users changing roles or leaving the organization.",
+          "grounds": ""
+        },
+        {
+          "round": 6,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": ""
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 4,
+      "open": 4,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 60,
+      "proposer_worry": "The criteria for defining 'cold' relationships may need to be adjusted to best fit user needs.",
+      "critic_worry": "There is significant risk regarding user access to sensitive information and undefined engagement activity management.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 7,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 65,
+      "proposer_worry": "The success of the release largely depends on organizational clarity regarding data management protocols.",
+      "critic_worry": "Lack of clarity on processes for maintaining accurate engagement records and managing user access when roles change.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 9,
+      "open": 5,
+      "resolved": 0,
+      "escalated": 4,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 50,
+      "proposer_worry": "The dependency on organizational policies for maintaining accurate engagement records and access management poses a risk of miscommunication.",
+      "critic_worry": "The lack of clear processes for monitoring and enforcing engagement record accuracy poses a risk for operational effectiveness.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 10,
+      "open": 3,
+      "resolved": 0,
+      "escalated": 7,
+      "disagreement": 1.0,
+      "proposer_confidence": 40,
+      "critic_confidence": 15,
+      "proposer_worry": "The proposal relies heavily on organizational policies and procedures that are currently undefined.",
+      "critic_worry": "The continued lack of defined processes for managing user access to sensitive alert notifications poses a serious risk of information exposure.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 10,
+      "open": 1,
+      "resolved": 0,
+      "escalated": 9,
+      "disagreement": 1.0,
+      "proposer_confidence": 60,
+      "critic_confidence": 30,
+      "proposer_worry": "The lack of defined organizational procedures for maintaining accurate engagement records could lead to false alerts.",
+      "critic_worry": "Multiple major uncertainties related to confidentiality and ownership protocols remain unaddressed.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 6,
+      "raised": 10,
+      "open": 0,
+      "resolved": 0,
+      "escalated": 10,
+      "disagreement": 1.0,
+      "proposer_confidence": 60,
+      "critic_confidence": 50,
+      "proposer_worry": "The organization must define specific access protocols to ensure the secure management of sensitive information in cold relationship alerts.",
+      "critic_worry": "Undefined protocols for access management may lead to unauthorized exposure of sensitive information.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}
