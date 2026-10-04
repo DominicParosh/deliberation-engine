@@ -5,6 +5,7 @@ below do prompt work. They are kept short and deliberate, like the files in prom
 Every field is required (no defaults) to stay inside both providers' strict-schema rules.
 """
 
+import re
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, BeforeValidator, Field
@@ -13,10 +14,6 @@ from pydantic import BaseModel, BeforeValidator, Field
 def _upper(value: object) -> object:
     # Structured outputs don't guarantee enum casing, so normalise before validating.
     return value.strip().upper().replace(" ", "_") if isinstance(value, str) else value
-
-
-def _unquote(value: object) -> object:
-    return value.strip().strip("\"'“”‘’").strip() if isinstance(value, str) else value
 
 
 def Choice(*values: str):  # noqa: N802 - used like a type
@@ -33,71 +30,90 @@ Signal = Choice("CONTINUE", "CONCLUDE")
 MANDATORY_LENSES = ("CONFIDENTIALITY", "DEFINITIONS", "OWNERSHIP")
 BLOCKING = ("BLOCKER", "MAJOR")
 WEIGHT = {"BLOCKER": 3, "MAJOR": 2, "MINOR": 1}
+SECTIONS = {"core_commitments": "V", "in_scope": "S", "out_of_scope": "X",
+            "assumptions": "A", "definitions": "D", "success_criteria": "K"}
+
+
+def section_of(item_id: str) -> str | None:
+    """The proposal section an item ID belongs to (S3 -> in_scope), or None if it is not an item ID."""
+    return next((s for s, prefix in SECTIONS.items() if re.fullmatch(prefix + r"[1-9]\d*", item_id)), None)
+
 
 # ---------------------------------------------------------------- Proposer output
 
 
 class Item(BaseModel):
-    id: str = Field(description="Stable ID with the section prefix, e.g. S1. Keep it when the item is edited.")
+    id: str = Field(description="Stable ID with the section prefix, e.g. S1.")
     text: str
 
 
-class Assumption(BaseModel):
-    id: str = Field(description="A1, A2, ...")
-    text: str
-    why_implicit: str = Field(description="What in the request silently depends on this assumption.")
-
-
-class Definition(BaseModel):
-    id: str = Field(description="D1, D2, ...")
-    term: Annotated[str, BeforeValidator(_unquote)] = Field(description="The vague phrase from the request.")
-    definition: str = Field(description="An operational definition an engineer can build and a tester can check.")
-
-
-class Criterion(BaseModel):
-    id: str = Field(description="K1, K2, ...")
-    metric: str
-    target: str
-    measurement: str = Field(description="How and when it is measured.")
+class Edit(BaseModel):
+    id: str = Field(description="The item to change, e.g. S3. A new item takes the next number its section has never used.")
+    text: str = Field(description="The item's complete new wording, exactly as it should read in the proposal. "
+                                  "Empty removes it.")
 
 
 class Proposal(BaseModel):
+    """Every item is an ID and a sentence, so edits, diffs, quotes and rendering work the same way for all sections."""
+
     summary: str = Field(description="Two sentences: what this release delivers and for whom.")
-    core_commitments: list[Item] = Field(description="V-items: the 1-2 outcomes the stakeholder actually needs.")
-    in_scope: list[Item] = Field(description="S-items: concrete, testable things this release does.")
-    out_of_scope: list[Item] = Field(description="X-items: what this release deliberately does not do.")
-    assumptions: list[Assumption]
-    definitions: list[Definition]
-    success_criteria: list[Criterion]
+    core_commitments: list[Item] = Field(description="V: the 1-2 outcomes the stakeholder actually needs.")
+    in_scope: list[Item] = Field(description="S: concrete, testable things this release does, naming the roles, rules, "
+                                             "limits and data.")
+    out_of_scope: list[Item] = Field(description="X: what this release deliberately does not do.")
+    assumptions: list[Item] = Field(description="A: what the request silently depends on; each ends with what in the "
+                                                "request depends on it.")
+    definitions: list[Item] = Field(description='D: one per vague term, worded "<term>" means <a definition an engineer '
+                                                'can build and a tester can check>.')
+    success_criteria: list[Item] = Field(description="K: a metric, a target and how it is measured.")
 
     def items(self) -> dict[str, str]:
-        """Every item ID mapped to a one-line text, across all sections."""
-        out = {i.id: i.text for i in self.core_commitments + self.in_scope + self.out_of_scope}
-        out |= {a.id: a.text for a in self.assumptions}
-        out |= {d.id: f'"{d.term}": {d.definition}' for d in self.definitions}
-        out |= {k.id: f"{k.metric} — target {k.target} ({k.measurement})" for k in self.success_criteria}
-        return out
+        """Every item's ID mapped to its wording, across all sections."""
+        return {i.id: i.text for section in SECTIONS for i in getattr(self, section)}
+
+    def edited(self, edits: list[Edit]) -> "Proposal":
+        """The next version. Each edit, in order, rewrites an item in place, appends a new ID to its section,
+        or (with empty text) removes the item. IDs that aren't item IDs are ignored; the ledger refuses them first."""
+        sections = {s: list(getattr(self, s)) for s in SECTIONS}
+        for e in edits:
+            if (section := section_of(e.id)) is None:
+                continue
+            items, text = sections[section], e.text.strip()
+            at = next((n for n, i in enumerate(items) if i.id == e.id), len(items))
+            items[at:at + 1] = [Item(id=e.id, text=text)] if text else []
+        return self.model_copy(update=sections)
 
 
 class Response(BaseModel):
     challenge_id: str
     grounds: Grounds = Field(description="What kind of challenge this is. It decides your move: MISSING_DECISION means "
                                          "REVISE, SHOULD_NOT_BUILD means CONCEDE, anything else means DEFEND.")
-    rationale: str = Field(description="1-3 sentences. For a revision, what you changed, in the past tense. "
-                                       "For a defense, why the item stands. For a concession, the argument that convinced you.")
-    changed_ids: list[str] = Field(description="IDs you added, edited or removed for this response; empty for a defense.")
+    edits: list[Edit] = Field(description="REVISE or CONCEDE: each item you rewrite, add or remove to settle the challenge, "
+                                           "with its complete new wording. DEFEND: empty, the proposal stays as it is.")
+    rationale: str = Field(description="1-3 sentences. For a revision, what your edits decide. For a defense, why the item "
+                                       "stands. For a concession, the argument that convinced you.")
 
     @property
     def action(self) -> str:
         return MOVE_FOR.get(self.grounds, "DEFEND")
 
 
-class ProposerTurn(BaseModel):
-    """The proposal comes first, so the responses describe edits already written rather than edits intended."""
+class ProposerOpening(BaseModel):
+    """Round 1: the full proposal."""
 
-    proposal: Proposal = Field(description="The full updated proposal, including unchanged items. Write it first.")
-    responses: list[Response] = Field(description="Exactly one per open challenge, describing the proposal you just wrote. Empty in round 1.")
+    proposal: Proposal
     confidence: int = Field(description="0-100: how ready this proposal is to build as written.")
+    biggest_worry: str = Field(description="One sentence.")
+
+
+class ProposerTurn(BaseModel):
+    """Round 2 onwards. The Proposer never rewrites the whole proposal: the engine applies its edits, so what it
+    says it changed and what changed are the same thing."""
+
+    responses: list[Response] = Field(description="Exactly one per open challenge.")
+    summary: str = Field(description="The proposal's two-sentence summary, updated if your edits changed what the "
+                                     "release delivers.")
+    confidence: int = Field(description="0-100: how ready the proposal is to build as written, with your edits.")
     biggest_worry: str = Field(description="One sentence.")
 
 
@@ -140,9 +156,12 @@ class LensNote(BaseModel):
 class CriticOpening(BaseModel):
     """Round 1. There is deliberately no signal field: concluding in round 1 is impossible, not just forbidden."""
 
+    pre_mortem: str = Field(description="A year after launch, this feature has caused a serious incident. In 2-3 sentences, "
+                                        "what happened? Write this first.")
     gaps: list[str] = Field(description="Questions the original request leaves open that a buildable release must answer, "
-                                        "one short question each. Write these before your challenges.")
-    new_challenges: list[NewChallenge]
+                                        "one short question each.")
+    new_challenges: list[NewChallenge] = Field(description="Most material first. If the proposal as written does not prevent "
+                                                           "your pre-mortem, the first challenge is about that.")
     confidence: int = Field(description="0-100: how ready this proposal is to build as written.")
     biggest_worry: str = Field(description="One sentence.")
 

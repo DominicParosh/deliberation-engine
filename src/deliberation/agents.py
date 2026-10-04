@@ -10,7 +10,7 @@ from pydantic import BaseModel, ValidationError
 from .ledger import Ledger
 from .llm import LLM
 from .render import issue_md, proposal_md
-from .schemas import MANDATORY_LENSES, CriticOpening, CriticTurn, ProposerTurn, Synthesis
+from .schemas import MANDATORY_LENSES, SECTIONS, CriticOpening, CriticTurn, ProposerOpening, ProposerTurn, Synthesis, section_of
 from .termination import Policy
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,15 +36,18 @@ class Agents:
 
     # ---------------------------------------------------------------- roles
 
-    def propose(self, ledger: Ledger, rnd: int) -> ProposerTurn:
+    def propose(self, ledger: Ledger, rnd: int) -> ProposerOpening | ProposerTurn:
         if rnd == 1:
-            state, task = "No proposal yet.", "Write your initial proposal. There are no challenges yet, so `responses` is empty."
+            schema, state, task = ProposerOpening, "No proposal yet.", "Write your initial proposal."
         else:
-            state = f"## Your current proposal\n{proposal_md(ledger.proposal)}\n\n## Open challenges\n" + \
-                    "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger)
-            task = ("Answer every open challenge exactly once: name its `grounds`, which decide your move, and give your "
-                    "rationale. Then return your full updated proposal, keeping IDs stable.")
-        turn, ok = self._turn("proposer", rnd, ledger, ProposerTurn, ledger.check_proposer, state, task)
+            schema = ProposerTurn
+            ids = ", ".join(ledger.next_id(s) for s in SECTIONS)
+            state = f"## Your current proposal\n{proposal_md(ledger.proposal)}\n\nIDs for new items start at: {ids}.\n\n" \
+                    "## Open challenges\n" + "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger)
+            task = ("Answer every open challenge exactly once and name its `grounds`, which decide your move. For a revision "
+                    "or concession, `edits` holds the complete new wording of each item you change (empty text removes an "
+                    "item); for a defense it is empty. Items you don't edit stay exactly as they are.")
+        turn, ok = self._turn("proposer", rnd, ledger, schema, ledger.check_proposer, state, task)
         return turn if ok else ledger.coerce_proposer(turn, rnd)
 
     def critique(self, ledger: Ledger, rnd: int, policy: Policy, feedback: str) -> CriticOpening | CriticTurn:
@@ -52,13 +55,16 @@ class Agents:
         proposal = f"## Current proposal (version {rnd})\n{proposal_md(ledger.proposal)}"
         if rnd == 1:
             schema, state = CriticOpening, proposal
-            task = ("First list the questions the request leaves open (`gaps`). Then raise between 3 and "
-                    f"{budget} challenges covering at least 2 lenses, most material first. You cannot conclude in round 1.")
+            task = ("Write your pre-mortem, then list the questions the request leaves open (`gaps`). Then raise between 3 "
+                    f"and {budget} challenges covering at least 2 lenses, most material first: if the proposal doesn't prevent "
+                    "your pre-mortem, start there. You cannot conclude in round 1.")
         else:
             schema = CriticTurn
             changes = "; ".join(f"{k}: {', '.join(v)}" for k, v in ledger.changes().items() if v) or "none"
             state = (f"{proposal}\n\nChanges since last round: {changes}\n\n## Challenges the Proposer just answered\n"
                      + "\n\n".join(answered_view(ledger, i) for i in ledger.open_issues()) + settled_view(ledger))
+            if ledger.pre_mortem:
+                state += f"\n\n## Your pre-mortem from round 1\n{ledger.pre_mortem}"
             if ledger.gaps:
                 state += "\n\n## Open questions you noted in round 1\n" + "\n".join(f"- {g}" for g in ledger.gaps)
             if feedback:
@@ -67,8 +73,10 @@ class Agents:
             task = (f"Rule on every answered challenge exactly once: is your question answered (quote the words that answer "
                     f"it), and if not, does it need a human decision? "
                     f"Then raise at most {budget} new challenge(s), only for material problems (none is fine). "
-                    f"Then signal CONCLUDE or CONTINUE. Mandatory lenses with no challenge so far: "
-                    f"{', '.join(uncovered) or 'none'}; if you conclude, add a lens_coverage note for each of them.")
+                    f"Then signal CONCLUDE if no BLOCKER or MAJOR challenge stays open after your rulings and you raise no "
+                    f"new one (escalated challenges are with humans now and don't keep the deliberation open); otherwise "
+                    f"CONTINUE. Mandatory lenses with no challenge so far: {', '.join(uncovered) or 'none'}; if you conclude, "
+                    f"add a lens_coverage note for each of them.")
         turn, ok = self._turn("critic", rnd, ledger, schema, lambda t: ledger.check_critic(t, rnd, budget), state, task)
         return turn if ok else ledger.coerce_critic(turn, rnd, budget)
 
@@ -98,8 +106,9 @@ class Agents:
             if not problems:
                 return value, True
             self.log({"kind": "violation", "role": role, "round": rnd, "attempt": attempt, "problems": problems})
-            messages += [{"role": "assistant", "content": out.raw},
-                         {"role": "user", "content": fill(self._load("repair.md"), problems="\n".join(f"- {p}" for p in problems))}]
+            if attempt == 1:
+                messages += [{"role": "assistant", "content": out.raw},
+                             {"role": "user", "content": fill(self._load("repair.md"), problems="\n".join(f"- {p}" for p in problems))}]
         if value is None:
             raise RuntimeError(f"{role} returned invalid JSON twice in round {rnd}: {problems}")
         return value, False
@@ -112,8 +121,8 @@ def answered_view(ledger: Ledger, issue) -> str:
     """An answered challenge plus the current text of the items it touches, so the Critic can check and quote them."""
     items = ledger.proposal.items()
     last = [e for e in issue.history if e.actor == "proposer"][-1:]
-    ids = list(dict.fromkeys([*(last[0].changed if last else []), *issue.targets]))
-    shown = [f"  - {k}: {items[k]}" for k in ids if k in items]
+    ids = [k for k in dict.fromkeys([*(last[0].changed if last else []), *issue.targets]) if section_of(k)]
+    shown = [f"  - {k}: {items.get(k, '(removed)')}" for k in ids]
     return issue_md(issue) + ("\n- Items as they now read:\n" + "\n".join(shown) if shown else "")
 
 

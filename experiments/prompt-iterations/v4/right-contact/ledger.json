@@ -1,0 +1,1034 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "gaps": [
+    "Who can view and manage contact information for each country?",
+    "What happens to the contacts when users leave or change roles?",
+    "How will the system handle duplicates or stale contact information?",
+    "What specific data points will be required to designate a primary contact?",
+    "How will engagement history be linked to primary contacts?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will enhance the CRM by implementing a Contact Management feature that allows users to effectively track the primary contacts for each member country. Users will be able to add, edit, and view contact details, engagement history, and designate specific individuals as primary contacts for each country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to identify and manage primary contacts for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure users can view contact details, engagement history, and project affiliations for each primary contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Users can add new contacts with details including name, title, email, phone number, and country affiliation."
+        },
+        {
+          "id": "S2",
+          "text": "Users can designate a contact as the primary contact for a specific country."
+        },
+        {
+          "id": "S3",
+          "text": "Users can edit existing contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Users can view a list of contacts with filtering options for each country."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view engagement history associated with each contact."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not implement any automated notifications for changing contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not include integration with other systems or external databases."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enforce role-based access control for contact viewing."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to manage contacts and their information in the CRM.",
+          "why_implicit": "The request assumes that users will need access to edit and view contact information."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM system contains current and relevant data regarding country representatives and contact details.",
+          "why_implicit": "The request implies that users need to track contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with navigating the CRM interface to add, edit, and view contact information.",
+          "why_implicit": "The ability to track contacts assumes that users will know how to use the system effectively."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary contact for each country, indicated in the system and associated with that country."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of primary contacts recorded in the system.",
+          "target": "At least 80% of member countries have a designated primary contact after one month of implementation.",
+          "measurement": "Count of primary contacts logged in the database at the end of the month."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the CRM by implementing a Contact Management feature that allows users to effectively track the primary contacts for each member country. Users will be able to add, edit, and view contact details, engagement history, and designate specific individuals as primary contacts for each country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to identify and manage primary contacts for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure users can view contact details, engagement history, and project affiliations for each primary contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Users can add new contacts with details including name, title, email, phone number, and country affiliation."
+        },
+        {
+          "id": "S2",
+          "text": "Users can designate a contact as the primary contact for a specific country."
+        },
+        {
+          "id": "S3",
+          "text": "Users can edit existing contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Users can view a list of contacts with filtering options for each country."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view engagement history associated with each contact."
+        },
+        {
+          "id": "S6",
+          "text": "Access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not implement any automated notifications for changing contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not include integration with other systems or external databases."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enforce role-based access control for contact viewing beyond the designated 'Contact Manager' role."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to manage contacts and their information in the CRM.",
+          "why_implicit": "The request assumes that users will need access to edit and view contact information."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM system contains current and relevant data regarding country representatives and contact details.",
+          "why_implicit": "The request implies that users need to track contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with navigating the CRM interface to add, edit, and view contact information.",
+          "why_implicit": "The ability to track contacts assumes that users will know how to use the system effectively."
+        },
+        {
+          "id": "A4",
+          "text": "There is a defined process for transferring ownership of contact information when users change roles or leave.",
+          "why_implicit": "This proposal assumes that there is a clear method to manage contacts effectively over changes in personnel."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently with measurable outcomes."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary contact for each country, indicated in the system and associated with that country."
+        },
+        {
+          "id": "D3",
+          "term": "measures of better way",
+          "definition": "Measurable indicators such as user adoption rate, user satisfaction scores, and the percentage of primary contacts correctly designated compared to intended contacts."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of primary contacts recorded in the system.",
+          "target": "At least 80% of member countries have a designated primary contact after one month of implementation.",
+          "measurement": "Count of primary contacts logged in the database at the end of the month."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the CRM by implementing a Contact Management feature that allows users to effectively track the primary contacts for each member country. Users will be able to add, edit, and view contact details, engagement history, and designate specific individuals as primary contacts for each country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to identify and manage primary contacts for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure users can view contact details, engagement history, and project affiliations for each primary contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Users can add new contacts with details including name, title, email, phone number, and country affiliation."
+        },
+        {
+          "id": "S2",
+          "text": "Users can designate a contact as the primary contact for a specific country, requiring the completion of specified fields."
+        },
+        {
+          "id": "S3",
+          "text": "Users can edit existing contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Users can view a list of contacts with filtering options for each country."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view engagement history associated with each contact, ensuring it is automatically linked to the designated primary contact."
+        },
+        {
+          "id": "S6",
+          "text": "Access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not implement any automated notifications for changing contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not include integration with other systems or external databases."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enforce role-based access control for contact viewing beyond the designated 'Contact Manager' role."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to manage contacts and their information in the CRM.",
+          "why_implicit": "The request assumes that users will need access to edit and view contact information."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM system contains current and relevant data regarding country representatives and contact details.",
+          "why_implicit": "The request implies that users need to track contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with navigating the CRM interface to add, edit, and view contact information.",
+          "why_implicit": "The ability to track contacts assumes that users will know how to use the system effectively."
+        },
+        {
+          "id": "A4",
+          "text": "There is a defined process for transferring ownership of contact information when users change roles or leave.",
+          "why_implicit": "This proposal assumes that there is a clear method to manage contacts effectively over changes in personnel."
+        },
+        {
+          "id": "A5",
+          "text": "Users will utilize a prescribed set of data points when designating a primary contact.",
+          "why_implicit": "The designation of a primary contact entails standardization of data entries across users."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently with measurable outcomes."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary contact for each country, indicated in the system and associated with that country."
+        },
+        {
+          "id": "D3",
+          "term": "measures of better way",
+          "definition": "Measurable indicators such as user adoption rate, user satisfaction scores, and the percentage of primary contacts correctly designated compared to intended contacts."
+        },
+        {
+          "id": "D4",
+          "term": "primary contact designation data points",
+          "definition": "The required fields to designate a primary contact, which must include name, title, email, and phone number."
+        },
+        {
+          "id": "D5",
+          "term": "engagement history linkage",
+          "definition": "The process where engagement history is automatically associated with the designated primary contact of a country in the system."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of primary contacts recorded in the system.",
+          "target": "At least 80% of member countries have a designated primary contact after one month of implementation.",
+          "measurement": "Count of primary contacts logged in the database at the end of the month."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the CRM by implementing a Contact Management feature that allows users to effectively track the primary contacts for each member country. Users will be able to add, edit, and view contact details, engagement history, and designate specific individuals as primary contacts for each country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to identify and manage primary contacts for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure users can view contact details, engagement history, and project affiliations for each primary contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Users can add new contacts with details including name, title, email, phone number, and country affiliation."
+        },
+        {
+          "id": "S2",
+          "text": "Users can designate a contact as the primary contact for a specific country, requiring the completion of specified fields."
+        },
+        {
+          "id": "S3",
+          "text": "Users can edit existing contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Users can view a list of contacts with filtering options for each country."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view engagement history associated with each contact, ensuring it is automatically linked to the designated primary contact."
+        },
+        {
+          "id": "S6",
+          "text": "Access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation."
+        },
+        {
+          "id": "S7",
+          "text": "Users will receive prompts to check for existing contacts before adding new entries to minimize duplicates."
+        },
+        {
+          "id": "S8",
+          "text": "Administrative users can review and merge duplicate contacts identified by users or the system."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not implement any automated notifications for changing contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not include integration with other systems or external databases."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enforce role-based access control for contact viewing beyond the designated 'Contact Manager' role."
+        },
+        {
+          "id": "X4",
+          "text": "This release will not provide extensive training materials for users beyond existing CRM documentation."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to manage contacts and their information in the CRM. ",
+          "why_implicit": "The request assumes that users will need access to edit and view contact information."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM system contains current and relevant data regarding country representatives and contact details. ",
+          "why_implicit": "The request implies that users need to track contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with navigating the CRM interface to add, edit, and view contact information. ",
+          "why_implicit": "The ability to track contacts assumes that users will know how to use the system effectively."
+        },
+        {
+          "id": "A4",
+          "text": "There is a defined process for transferring ownership of contact information when users change roles or leave. ",
+          "why_implicit": "This proposal assumes that there is a clear method to manage contacts effectively over changes in personnel."
+        },
+        {
+          "id": "A5",
+          "text": "Users will utilize a prescribed set of data points when designating a primary contact. ",
+          "why_implicit": "The designation of a primary contact entails standardization of data entries across users."
+        },
+        {
+          "id": "A6",
+          "text": "Users will understand the importance of informing system administrators about changes in primary contact responsibility. ",
+          "why_implicit": "Effective tracking assumes users are proactive about contact management."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently with measurable outcomes."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary contact for each country, indicated in the system and associated with that country."
+        },
+        {
+          "id": "D3",
+          "term": "measures of better way",
+          "definition": "Measurable indicators such as user adoption rate, user satisfaction scores, and the percentage of primary contacts correctly designated compared to intended contacts."
+        },
+        {
+          "id": "D4",
+          "term": "primary contact designation data points",
+          "definition": "The required fields to designate a primary contact, which must include name, title, email, and phone number."
+        },
+        {
+          "id": "D5",
+          "term": "engagement history linkage",
+          "definition": "The process where engagement history is automatically associated with the designated primary contact of a country in the system."
+        },
+        {
+          "id": "D6",
+          "term": "duplicate contact management",
+          "definition": "The processes including user prompts for duplicates during entry and an administrative review process to merge duplicate contacts."
+        },
+        {
+          "id": "D7",
+          "term": "ownership transfer process",
+          "definition": "The defined method by which responsibility for primary contacts and associated engagement history is passed on when users change roles or leave."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of primary contacts recorded in the system.",
+          "target": "At least 80% of member countries have a designated primary contact after one month of implementation.",
+          "measurement": "Count of primary contacts logged in the database at the end of the month."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enhance the CRM by implementing a Contact Management feature that allows users to effectively track the primary contacts for each member country. Users will be able to add, edit, and view contact details, engagement history, and designate specific individuals as primary contacts for each country.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to identify and manage primary contacts for each country."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure users can view contact details, engagement history, and project affiliations for each primary contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Users can add new contacts with details including name, title, email, phone number, and country affiliation."
+        },
+        {
+          "id": "S2",
+          "text": "Users can designate a contact as the primary contact for a specific country, requiring the completion of specified fields."
+        },
+        {
+          "id": "S3",
+          "text": "Users can edit existing contact information."
+        },
+        {
+          "id": "S4",
+          "text": "Users can view a list of contacts with filtering options for each country."
+        },
+        {
+          "id": "S5",
+          "text": "Users can view engagement history associated with each contact, ensuring it is automatically linked to the designated primary contact."
+        },
+        {
+          "id": "S6",
+          "text": "Access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation."
+        },
+        {
+          "id": "S7",
+          "text": "Users will receive prompts to check for existing contacts before adding new entries to minimize duplicates."
+        },
+        {
+          "id": "S8",
+          "text": "Administrative users can review and merge duplicate contacts identified by users or the system, following a defined process for monitoring duplicate contacts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not implement any automated notifications for changing contacts."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not include integration with other systems or external databases."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enforce role-based access control for contact viewing beyond the designated 'Contact Manager' role."
+        },
+        {
+          "id": "X4",
+          "text": "This release will not provide extensive training materials for users beyond existing CRM documentation."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the necessary permissions to manage contacts and their information in the CRM.",
+          "why_implicit": "The request assumes that users will need access to edit and view contact information."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM system contains current and relevant data regarding country representatives and contact details.",
+          "why_implicit": "The request implies that users need to track contacts accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Users are familiar with navigating the CRM interface to add, edit, and view contact information.",
+          "why_implicit": "The ability to track contacts assumes that users will know how to use the system effectively."
+        },
+        {
+          "id": "A4",
+          "text": "There is a defined process for transferring ownership of contact information when users change roles or leave.",
+          "why_implicit": "This proposal assumes that there is a clear method to manage contacts effectively over changes in personnel."
+        },
+        {
+          "id": "A5",
+          "text": "Users will utilize a prescribed set of data points when designating a primary contact.",
+          "why_implicit": "The designation of a primary contact entails standardization of data entries across users."
+        },
+        {
+          "id": "A6",
+          "text": "Users will understand the importance of informing system administrators about changes in primary contact responsibility.",
+          "why_implicit": "Effective tracking assumes users are proactive about contact management."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "better way",
+          "definition": "A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently with measurable outcomes."
+        },
+        {
+          "id": "D2",
+          "term": "right person to contact",
+          "definition": "The individual designated as the primary contact for each country, indicated in the system and associated with that country."
+        },
+        {
+          "id": "D3",
+          "term": "measures of better way",
+          "definition": "Measurable indicators such as user adoption rate, user satisfaction scores, and the percentage of primary contacts correctly designated compared to intended contacts."
+        },
+        {
+          "id": "D4",
+          "term": "primary contact designation data points",
+          "definition": "The required fields to designate a primary contact, which must include name, title, email, and phone number."
+        },
+        {
+          "id": "D5",
+          "term": "engagement history linkage",
+          "definition": "The process where engagement history is automatically associated with the designated primary contact of a country in the system."
+        },
+        {
+          "id": "D6",
+          "term": "duplicate contact management",
+          "definition": "The processes including user prompts for duplicates during entry and an administrative review process to merge duplicate contacts."
+        },
+        {
+          "id": "D7",
+          "term": "ownership transfer process",
+          "definition": "The defined method by which responsibility for primary contacts and associated engagement history is passed on when users change roles or leave."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of primary contacts recorded in the system.",
+          "target": "At least 80% of member countries have a designated primary contact after one month of implementation.",
+          "measurement": "Count of primary contacts logged in the database at the end of the month."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clarify who can see and modify the primary contacts for each country.",
+      "failure_scenario": "A project manager mistakenly alters the primary contact for a sensitive country, leading to diplomatic communication failures and exposing confidential information to unauthorized personnel.",
+      "resolution_test": "Who can see and manage the primary contacts for each country?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who can see and modify the primary contacts for each country.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I clarified that access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation, ensuring that unauthorized personnel cannot modify primary contacts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"Access to add, edit, and manage contacts will be limited to users with 'Contact Manager' role designation.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "A1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal fails to address what happens to contact information when users leave or change roles, risking loss of data ownership and responsibility.",
+      "failure_scenario": "When a regional coordinator who maintained country contact details leaves, their contacts become unmanaged, leading to confusion and missed communications with key diplomatic figures.",
+      "resolution_test": "What is the process for transferring contact management when a user changes roles or leaves?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal fails to address what happens to contact information when users leave or change roles, risking loss of data ownership and responsibility.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I included an assumption now that acknowledges the need for a defined process for transferring ownership of contact information when users change roles or leave, as this must be defined by the organization or a relevant team.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": [
+            "A4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The process for transferring ownership of contact information when users change roles or leave must be defined by the organization or a relevant team.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'better way' is vague and unbounded, making it difficult to measure the success of the feature.",
+      "failure_scenario": "If the new method of managing contacts is deemed 'better,' but lacks concrete indicators, users may feel the tool does not meet their needs, leading to poor adoption and potential diplomatic missteps.",
+      "resolution_test": "What specific measures are used to define and assess a 'better way' to track contacts?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'better way' is vague and unbounded, making it difficult to measure the success of the feature.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised the definition of 'better way' to include measurable indicators to provide clarity on the expectations and ensure evaluation can be based on specific outcomes.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1",
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"A method that simplifies the tracking process for contacts, allowing users to add, edit, view, and designate contacts efficiently with measurable outcomes.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address how the system will handle duplicates or stale contact information, risking inaccuracies and confusion during operational use.",
+      "failure_scenario": "If duplicate contacts are entered for the same country due to lack of a defined process, users may contact the wrong individual and create diplomatic miscommunication.",
+      "resolution_test": "What is the process for identifying and managing duplicate or stale contacts in the CRM?",
+      "id": "C4",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how the system will handle duplicates or stale contact information, risking inaccuracies and confusion during operational use.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I added assumption A5, which acknowledges that entering primary contacts should follow a prescribed set of data points to maintain consistency and accuracy. Ultimately, establishing how duplicates and stale contacts will be handled is a decision that will require scrutiny from the operational side to determine policy.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal acknowledges the need for a decision on how duplicates and stale contacts will be handled, but does not provide a definitive process.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify what specific data points are required to designate a primary contact, which could lead to inconsistencies in data entry.",
+      "failure_scenario": "Different users might designate a primary contact without standard information, resulting in miscommunication or incorrect contact designations in sensitive diplomatic situations.",
+      "resolution_test": "What specific data points must be filled out to designate a contact as the primary contact in the system?",
+      "id": "C5",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify what specific data points are required to designate a primary contact, which could lead to inconsistencies in data entry.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I introduced definition D4, specifying the required data points to designate a primary contact. This ensures standardization of input across users and outlines what needs to be filled out during the designation process.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"D4: \"primary contact designation data points\": The required fields to designate a primary contact, which must include name, title, email, and phone number.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no mention of how the engagement history will be linked to primary contacts, which is crucial for maintaining context in diplomatic communications.",
+      "failure_scenario": "If engagement history is not accurately linked to the designated primary contacts, users may fail to follow up appropriately, leading to missed diplomatic opportunities.",
+      "resolution_test": "What process will ensure that engagement history is accurately captured and associated with the primary contacts in the system?",
+      "id": "C6",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of how the engagement history will be linked to primary contacts, which is crucial for maintaining context in diplomatic communications.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I added definition D5 to clarify the established process for linking engagement history to the primary contacts automatically. This defines how users will be able to connect historical data to the primary contacts, ensuring contextual integrity in communications.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D5"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"D5: \"engagement history linkage\": The process where engagement history is automatically associated with the designated primary contact of a country in the system.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define the specific process for monitoring and managing duplicate or stale contact information in the CRM.",
+      "failure_scenario": "If users enter duplicate contacts for the same country, diplomatic communications may incorrectly reference multiple contacts, leading to confusion and mismanagement of relationships.",
+      "resolution_test": "What process will be put in place to monitor and manage duplicate or stale contact information in the CRM?",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define the specific process for monitoring and managing duplicate or stale contact information in the CRM.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Added concrete processes for managing duplicate contacts, including user prompts and an administrative merge process to clarify how duplicates will be handled.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7",
+            "S8"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal states that 'Users will receive prompts to check for existing contacts before adding new entries to minimize duplicates' and 'Administrative users can review and merge duplicate contacts identified by users or the system', but it does not detail the specific process for monitoring duplicate or stale contact information in the CRM.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The definition of the process for monitoring duplicate or stale contact information has now been clarified by detailing the handling of duplicates, including user prompts for checking existing entries and an administrative process for review and merging of duplicates. Additionally, a committed process has been established to ensure data hygiene.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7",
+            "S8"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal provides some information about managing duplicates but lacks the detail on the specific process for monitoring duplicate or stale contact information.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no defined process for data ownership transfer for primary contacts when users leave or change roles, risking a loss of context and management responsibility.",
+      "failure_scenario": "If a regional coordinator leaves and no process exists for transferring responsibility for contact data, critical engagement history could be lost or mismanaged, affecting diplomatic relations.",
+      "resolution_test": "What specific process exists for transferring ownership of primary contacts when users change roles or leave?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no defined process for data ownership transfer for primary contacts when users leave or change roles, risking a loss of context and management responsibility.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Defined a specific process for ownership transfer of primary contacts when users leave or change roles, to address potential context loss and management responsibility.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "A4",
+            "D7"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"The defined method by which responsibility for primary contacts and associated engagement history is passed on when users change roles or leave.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 3,
+      "open": 3,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 30,
+      "proposer_worry": "Determining whether users have the necessary permissions to manage contact information may lead to complications.",
+      "critic_worry": "Unclear access controls and ownership processes may expose sensitive contact information.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 6,
+      "open": 3,
+      "resolved": 2,
+      "escalated": 1,
+      "disagreement": 0.62,
+      "proposer_confidence": 80,
+      "critic_confidence": 60,
+      "proposer_worry": "Ensuring that the process for transferring contact ownership is clearly defined and communicated to users.",
+      "critic_worry": "Data quality issues could arise without defined handling processes for duplicates, stale contacts, and linking engagement history.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 2,
+      "resolved": 4,
+      "escalated": 2,
+      "disagreement": 0.47,
+      "proposer_confidence": 85,
+      "critic_confidence": 60,
+      "proposer_worry": "The primary concern is ensuring consistent data entry and maintenance of contact records to prevent inaccuracies.",
+      "critic_worry": "The proposal lacks clarity on managing duplicates and ownership transfer, which could lead to severe issues in operational use.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 8,
+      "open": 1,
+      "resolved": 5,
+      "escalated": 2,
+      "disagreement": 0.35,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring that users adhere to new processes for duplicate management and data ownership transfer.",
+      "critic_worry": "Without clear role-based access control for managing contacts, sensitive data might be exposed to unauthorized users.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 8,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 3,
+      "disagreement": 0.35,
+      "proposer_confidence": 75,
+      "critic_confidence": 60,
+      "proposer_worry": "Ensuring users consistently follow through on prompting for duplicates and that the administrative process for merging is effectively carried out.",
+      "critic_worry": "The proposal still lacks a detailed and specific process for managing duplicate or stale contact information in the CRM.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

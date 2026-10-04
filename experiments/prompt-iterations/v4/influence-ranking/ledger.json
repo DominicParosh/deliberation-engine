@@ -1,0 +1,610 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "gaps": [
+    "Who determines the criteria for influence ratings?",
+    "What auditing measures are in place to ensure accuracy of influence scores?",
+    "What happens to influence scores when a user changes roles or leaves the organization?",
+    "How is influence defined consistently among users?",
+    "Who can view the influence scores aside from those who can assign or modify them?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release delivers a contact prioritization feature for government relations support teams, helping them identify and manage influential contacts effectively. It allows users to rate contacts based on their influence on engagements, ensuring that the focus remains on key relationships that require attention and prioritization.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can identify and prioritize influential contacts in the CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a visual representation of contact influence levels for easy reference."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a rating system that allows users to assign influence scores (1-5) to contacts."
+        },
+        {
+          "id": "S2",
+          "text": "Display a dashboard view with a list of contacts sorted by their influence score."
+        },
+        {
+          "id": "S3",
+          "text": "Include filters to view contacts based on influence levels (e.g., high, medium, low)."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to edit influence scores and provide a history of changes to this data for audit purposes."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure only users with appropriate roles (e.g., regional coordinators, project managers) can assign and modify influence scores."
+        },
+        {
+          "id": "S6",
+          "text": "Implement tooltip information or guidelines on what criteria to consider when assigning influence scores."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated algorithms to evaluate contact influence; all scoring will be manual."
+        },
+        {
+          "id": "X2",
+          "text": "The feature will not integrate with external social media platforms or third-party databases to determine influence."
+        },
+        {
+          "id": "X3",
+          "text": "Real-time alerts or notifications related to changes in contact influence will not be included in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users understand the concept of 'influence' in the context of government relations and will be able to apply it consistently while rating contacts.",
+          "why_implicit": "The request implies users will accurately rate the influence of contacts without further training."
+        },
+        {
+          "id": "A2",
+          "text": "Users are able to accurately assess and provide feedback on the influence of their contacts based on experience.",
+          "why_implicit": "The request assumes users have sufficient background knowledge to assess influence correctly."
+        },
+        {
+          "id": "A3",
+          "text": "There are no conflicting organizational policies on how to rate contacts or store influence data in the CRM.",
+          "why_implicit": "There is the assumption that such rating won't violate internal regulations."
+        },
+        {
+          "id": "A4",
+          "text": "The CRM has the ability to support data storage for influence ratings without significant performance impact.",
+          "why_implicit": "Storing additional data points about contacts is necessary to fulfill the feature's requirements."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "influence score",
+          "definition": "A numerical rating between 1 (low influence) and 5 (high influence) that users assign to a contact to reflect their importance and potential impact on engagements."
+        },
+        {
+          "id": "D2",
+          "term": "dashboard view",
+          "definition": "A visual interface that displays a list of contacts along with their assigned influence scores and allows users to sort and filter based on these scores."
+        },
+        {
+          "id": "D3",
+          "term": "roles",
+          "definition": "Defined user permissions within the CRM that determine who can view, assign, and modify influence scores."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of contacts rated",
+          "target": "At least 75% of contacts have an influence score assigned within 3 months of rollout.",
+          "measurement": "Monitor the CRM usage statistics to evaluate the percentage of contacts with assigned influence scores."
+        },
+        {
+          "id": "K2",
+          "metric": "User feedback on usability",
+          "target": "At least 80% of users find the influence rating feature useful and easy to use within 3 months of rollout.",
+          "measurement": "Conduct a user satisfaction survey after the first quarter of usage."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers a contact prioritization feature for government relations support teams, helping them identify and manage influential contacts effectively. It allows users to rate contacts based on their influence on engagements, ensuring that the focus remains on key relationships that require attention and prioritization.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can identify and prioritize influential contacts in the CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a visual representation of contact influence levels for easy reference."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a rating system that allows users to assign influence scores (1-5) to contacts."
+        },
+        {
+          "id": "S2",
+          "text": "Display a dashboard view with a list of contacts sorted by their influence score."
+        },
+        {
+          "id": "S3",
+          "text": "Include filters to view contacts based on influence levels (e.g., high, medium, low)."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to edit influence scores and provide a history of changes to this data for audit purposes, with project managers responsible for the integrity of influence scores."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure only users with appropriate roles (e.g., regional coordinators, project managers, executive roles) can assign and modify influence scores."
+        },
+        {
+          "id": "S6",
+          "text": "Implement tooltip information or guidelines on what criteria to consider when assigning influence scores."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated algorithms to evaluate contact influence; all scoring will be manual."
+        },
+        {
+          "id": "X2",
+          "text": "The feature will not integrate with external social media platforms or third-party databases to determine influence."
+        },
+        {
+          "id": "X3",
+          "text": "Real-time alerts or notifications related to changes in contact influence will not be included in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users understand the concept of 'influence' in the context of government relations and will be able to apply it consistently while rating contacts. ",
+          "why_implicit": "The request implies users will accurately rate the influence of contacts without further training."
+        },
+        {
+          "id": "A2",
+          "text": "Users are able to accurately assess and provide feedback on the influence of their contacts based on experience.",
+          "why_implicit": "The request assumes users have sufficient background knowledge to assess influence correctly."
+        },
+        {
+          "id": "A3",
+          "text": "There are no conflicting organizational policies on how to rate contacts or store influence data in the CRM.",
+          "why_implicit": "There is the assumption that such rating won't violate internal regulations."
+        },
+        {
+          "id": "A4",
+          "text": "The CRM has the ability to support data storage for influence ratings without significant performance impact.",
+          "why_implicit": "Storing additional data points about contacts is necessary to fulfill the feature's requirements."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "influence score",
+          "definition": "A numerical rating between 1 (low influence) and 5 (high influence) that users assign to a contact to reflect their importance and potential impact on engagements, based on defined criteria."
+        },
+        {
+          "id": "D2",
+          "term": "dashboard view",
+          "definition": "A visual interface that displays a list of contacts along with their assigned influence scores and allows users to sort and filter based on these scores."
+        },
+        {
+          "id": "D3",
+          "term": "roles",
+          "definition": "Defined user permissions within the CRM that determine who can view, assign, and modify influence scores."
+        },
+        {
+          "id": "D4",
+          "term": "influence assessment criteria",
+          "definition": "A list of factors that should be considered when assigning influence scores, such as previous engagement outcomes, the contact's position within the government, and feedback from other team members."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of contacts rated",
+          "target": "At least 75% of contacts have an influence score assigned within 3 months of rollout.",
+          "measurement": "Monitor the CRM usage statistics to evaluate the percentage of contacts with assigned influence scores."
+        },
+        {
+          "id": "K2",
+          "metric": "User feedback on usability",
+          "target": "At least 80% of users find the influence rating feature useful and easy to use within 3 months of rollout.",
+          "measurement": "Conduct a user satisfaction survey after the first quarter of usage."
+        }
+      ]
+    },
+    {
+      "summary": "This release delivers a contact prioritization feature for government relations support teams, helping them identify and manage influential contacts effectively. It allows users to rate contacts based on their influence on engagements, ensuring that the focus remains on key relationships that require attention and prioritization.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can identify and prioritize influential contacts in the CRM."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a visual representation of contact influence levels for easy reference."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Implement a rating system that allows users to assign influence scores (1-5) to contacts."
+        },
+        {
+          "id": "S2",
+          "text": "Display a dashboard view with a list of contacts sorted by their influence score."
+        },
+        {
+          "id": "S3",
+          "text": "Include filters to view contacts based on influence levels (e.g., high, medium, low)."
+        },
+        {
+          "id": "S4",
+          "text": "Allow users to edit influence scores and provide a history of changes to this data for audit purposes, with project managers responsible for the integrity of influence scores."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure only users with appropriate roles (e.g., regional coordinators, project managers, executive roles) can assign and modify influence scores."
+        },
+        {
+          "id": "S6",
+          "text": "Implement tooltip information or guidelines on what criteria to consider when assigning influence scores."
+        },
+        {
+          "id": "S7",
+          "text": "Establish a protocol that resets influence scores when a user changes roles or leaves the organization, ensuring the project manager or designated authority reviews the scores."
+        },
+        {
+          "id": "S8",
+          "text": "Include an audit mechanism that periodically reviews and verifies influence scores across contacts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated algorithms to evaluate contact influence; all scoring will be manual."
+        },
+        {
+          "id": "X2",
+          "text": "The feature will not integrate with external social media platforms or third-party databases to determine influence."
+        },
+        {
+          "id": "X3",
+          "text": "Real-time alerts or notifications related to changes in contact influence will not be included in this release."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users understand the concept of 'influence' in the context of government relations and will be able to apply it consistently while rating contacts. ",
+          "why_implicit": "The request implies users will accurately rate the influence of contacts without further training."
+        },
+        {
+          "id": "A2",
+          "text": "Users are able to accurately assess and provide feedback on the influence of their contacts based on experience.",
+          "why_implicit": "The request assumes users have sufficient background knowledge to assess influence correctly."
+        },
+        {
+          "id": "A3",
+          "text": "There are no conflicting organizational policies on how to rate contacts or store influence data in the CRM.",
+          "why_implicit": "There is the assumption that such rating won't violate internal regulations."
+        },
+        {
+          "id": "A4",
+          "text": "The CRM has the ability to support data storage for influence ratings without significant performance impact.",
+          "why_implicit": "Storing additional data points about contacts is necessary to fulfill the feature's requirements."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "influence score",
+          "definition": "A numerical rating between 1 (low influence) and 5 (high influence) that users assign to a contact to reflect their importance and potential impact on engagements, based on defined criteria."
+        },
+        {
+          "id": "D2",
+          "term": "dashboard view",
+          "definition": "A visual interface that displays a list of contacts along with their assigned influence scores and allows users to sort and filter based on these scores."
+        },
+        {
+          "id": "D3",
+          "term": "roles",
+          "definition": "Defined user permissions within the CRM that determine who can view, assign, and modify influence scores."
+        },
+        {
+          "id": "D4",
+          "term": "influence assessment criteria",
+          "definition": "A list of factors that should be considered when assigning influence scores, such as previous engagement outcomes, the contact's position within the government, and feedback from other team members."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "Number of contacts rated",
+          "target": "At least 75% of contacts have an influence score assigned within 3 months of rollout.",
+          "measurement": "Monitor the CRM usage statistics to evaluate the percentage of contacts with assigned influence scores."
+        },
+        {
+          "id": "K2",
+          "metric": "User feedback on usability",
+          "target": "At least 80% of users find the influence rating feature useful and easy to use within 3 months of rollout.",
+          "measurement": "Conduct a user satisfaction survey after the first quarter of usage."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1",
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'influence' is not clear enough to ensure consistent scoring across users. What specific criteria should users utilize to assign ratings?",
+      "failure_scenario": "Different users rate the same contact, leading to scores of '1' by one user and '5' by another, causing confusion in prioritizing contacts during critical engagement efforts.",
+      "resolution_test": "What are the specific criteria or guidelines that users must follow when assigning influence scores?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'influence' is not clear enough to ensure consistent scoring across users. What specific criteria should users utilize to assign ratings?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I have added a definition outlining the specific criteria that users should consider when assigning influence scores. This ensures more consistent ratings across different users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"D4: \"influence assessment criteria\": A list of factors that should be considered when assigning influence scores, such as previous engagement outcomes, the contact's position within the government, and feedback from other team members.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "Who is responsible for maintaining the integrity of influence scores over time?",
+      "failure_scenario": "Without ownership, outdated or inaccurate influence scores remain in the system, leading to misguided prioritization that affects diplomatic engagements.",
+      "resolution_test": "Outline the process for maintaining and auditing influence score accuracy over time, including any designated roles.",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Who is responsible for maintaining the integrity of influence scores over time?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised S4 to specify that project managers are responsible for maintaining the integrity of influence scores, which includes ensuring regular reviews and updates to scores as needed.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"S4: Allow users to edit influence scores and provide a history of changes to this data for audit purposes, with project managers responsible for the integrity of influence scores.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify viewing permissions for influence scores. Who beyond the assigned roles can access this information?",
+      "failure_scenario": "An executive nor only sees high influence scores which may affect engagement strategy, but also accesses scores from other projects, leading to potential breaches of confidentiality and trust.",
+      "resolution_test": "Which roles within the CRM are permitted to view the assigned influence scores of contacts?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify viewing permissions for influence scores. Who beyond the assigned roles can access this information?",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I clarified the roles responsible for viewing influence scores, specifying that project managers, regional coordinators, and executives will have access, ensuring confidentiality and primarily focusing on authorized users only.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"S5: Ensure only users with appropriate roles (e.g., regional coordinators, project managers, executive roles) can assign and modify influence scores.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify what happens to influence scores when a user changes roles or leaves the organization.",
+      "failure_scenario": "A project manager who changes roles does not have their influence scores reviewed or updated, leading to outdated or incorrect data remaining accessible within the CRM, which could affect strategic decisions.",
+      "resolution_test": "What process is in place to handle influence scores when users change roles or leave the organization?",
+      "id": "C4",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify what happens to influence scores when a user changes roles or leaves the organization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I added S7, which describes a protocol for resetting influence scores when a user changes roles or leaves the organization, ensuring that scores are reviewed by the project manager or designated authority. This ensures integrity without imposing ambiguity on action responsibility.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"S7: Establish a protocol that resets influence scores when a user changes roles or leaves the organization, ensuring the project manager or designated authority reviews the scores.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "No audits or measures are defined for verifying the influence scores assigned to contacts, risking inaccuracies.",
+      "failure_scenario": "Users may assign influence scores inconsistently or based on bias, and there is no regular audit to verify these scores, leading to prioritization based on skewed or false data.",
+      "resolution_test": "What auditing measures are in place to ensure the accuracy of influence scores over time?",
+      "id": "C5",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "No audits or measures are defined for verifying the influence scores assigned to contacts, risking inaccuracies.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "I added S8 to establish an auditing mechanism that periodically reviews and verifies influence scores. This addresses the need for a process to ensure data integrity, while still allowing organizational policies and constraints to dictate the specific implementation details.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": [
+            "S8"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"S8: Include an audit mechanism that periodically reviews and verifies influence scores across contacts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 3,
+      "open": 3,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 45,
+      "proposer_worry": "The rating process may not be uniformly applied by all users, leading to inconsistent data.",
+      "critic_worry": "The lack of clear definitions and criteria for influence ratings could lead to inconsistent scoring and misuse of the prioritization feature.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 5,
+      "open": 2,
+      "resolved": 3,
+      "escalated": 0,
+      "disagreement": 0.4,
+      "proposer_confidence": 85,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring consistent understanding of influence criteria among users will be crucial for the success of this feature.",
+      "critic_worry": "Material issues remain unresolved regarding the handling of influence scores when users change roles or leave the organization.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 5,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 80,
+      "proposer_worry": "There may be resistance from users in applying influence ratings consistently across different contexts.",
+      "critic_worry": "The influence scoring could lead to misprioritization without clear definitions of 'influence' and 'criteria'.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

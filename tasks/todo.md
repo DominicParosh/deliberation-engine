@@ -33,7 +33,17 @@ Environment (updated 2026-10-04 06:55):
 - [x] `cli.py` — `--request` / `--request-id` / `--request-file` / env var / `--all` / `--replay` / `--policy` / `--provider`
 - [x] Tests — every termination exit path with scripted agents (no API)
 - [x] Prompts v1 — proposer, critic, summarizer (+ turn templates)
-- [ ] First live runs on the 3 brief inputs (Domi runs; gpt-4o-mini); iterate prompts; log every change in `tasks/iteration-log.md`
+- [x] First live runs on the 3 brief inputs (Domi runs; gpt-4o-mini); iterate prompts; log every change in `tasks/iteration-log.md`
+  (v1–v4 done; evidence in `experiments/prompt-iterations/`)
+
+## Prompt iteration v5 (2026-10-04)
+- [x] Engine-applied edits: `ProposerOpening` in round 1, `ProposerTurn` with per-answer `edits` after; ledger vets every edit
+- [x] Uniform `{id, text}` items for all six sections
+- [x] Critic pre-mortem in round 1, shown again later; clearer concluding rule (escalated = closed for the deliberation)
+- [x] Tests for every edit rule; strict-schema check for both providers; replay round-trip; rendered trace + decision read
+- [x] Independent review of the diff; fixed: new-item ID clashes, coerced revisions that changed nothing, next unused IDs
+      shown to the Proposer, section emptiness checked on the result, dropped assumptions rendered as dropped
+- [ ] v5 live batch (Domi: `uv run deliberate --provider openai --all`), then analyse and log
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B

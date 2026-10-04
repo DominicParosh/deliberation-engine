@@ -14,7 +14,7 @@ class Fake:
         self.respond, self.model, self.prompts = respond, model, []
 
     def complete(self, system, messages, schema):
-        self.prompts.append(messages)
+        self.prompts.append(list(messages))  # a copy: the caller extends its list for the repair attempt
         return Completion(self.respond(messages[0]["content"], messages), 0, 0, self.model)
 
 
@@ -30,21 +30,29 @@ def budget_of(prompt: str) -> int:
     return int(re.search(r"(?:at most|and) (\d+) (?:new )?challenge", prompt).group(1))
 
 
-def proposal(drop_core=False, scope=("S1", "S2")) -> dict:
+def proposal() -> dict:
     return {
         "summary": "A first release.",
-        "core_commitments": [] if drop_core else [{"id": "V1", "text": "Know who to call."}],
-        "in_scope": [{"id": s, "text": f"Scope item {s}."} for s in scope],
+        "core_commitments": [{"id": "V1", "text": "Know who to call."}],
+        "in_scope": [{"id": "S1", "text": "Scope item S1."}, {"id": "S2", "text": "Scope item S2."}],
         "out_of_scope": [{"id": "X1", "text": "No mobile app."}],
-        "assumptions": [{"id": "A1", "text": "Contacts have one country.", "why_implicit": "'each country' implies it."}],
-        "definitions": [{"id": "D1", "term": "right person", "definition": "Most recently assigned focal point."}],
-        "success_criteria": [{"id": "K1", "metric": "Lookup time", "target": "< 1 min", "measurement": "Survey"}],
+        "assumptions": [{"id": "A1", "text": "Each contact has one country, which 'each country' depends on."}],
+        "definitions": [{"id": "D1", "text": '"right person" means the most recently assigned focal point.'}],
+        "success_criteria": [{"id": "K1", "text": "Median lookup time under 1 minute, measured in a quarterly survey."}],
     }
 
 
-def proposer_json(prompt: str, _messages=None, *, grounds="ACCEPTABLE_RISK", **kw) -> str:
-    responses = [{"challenge_id": c, "grounds": grounds, "rationale": "Because.", "changed_ids": []} for c in open_ids(prompt)]
-    return json.dumps({"responses": responses, "proposal": proposal(**kw), "confidence": 70, "biggest_worry": "Adoption."})
+def answer(cid: str, grounds="ACCEPTABLE_RISK", edits=()) -> dict:
+    return {"challenge_id": cid, "grounds": grounds, "edits": [{"id": i, "text": t} for i, t in edits], "rationale": "Because."}
+
+
+def proposer_json(prompt: str, _messages=None, *, moves=None) -> str:
+    """Round 1: the proposal above. Later rounds: one answer per open challenge, where `moves` maps a challenge ID
+    to (grounds, edits) and every other challenge is defended as an acceptable risk."""
+    if round_of(prompt) == 1:
+        return json.dumps({"proposal": proposal(), "confidence": 70, "biggest_worry": "Adoption."})
+    responses = [answer(c, *(moves or {}).get(c, ())) for c in open_ids(prompt)]
+    return json.dumps({"responses": responses, "summary": "A first release.", "confidence": 70, "biggest_worry": "Adoption."})
 
 
 def challenge(severity="MAJOR", lens="CONFIDENTIALITY", targets=("S1",)) -> dict:
@@ -53,8 +61,9 @@ def challenge(severity="MAJOR", lens="CONFIDENTIALITY", targets=("S1",)) -> dict
 
 
 def opening_json(*challenges) -> str:
-    return json.dumps({"gaps": ["Who decides who the right person is?"], "new_challenges": list(challenges),
-                       "confidence": 30, "biggest_worry": "Leaks."})
+    return json.dumps({"pre_mortem": "A coordinator exported a confidential note.",
+                       "gaps": ["Who decides who the right person is?"],
+                       "new_challenges": list(challenges), "confidence": 30, "biggest_worry": "Leaks."})
 
 
 EVIDENCE = "Know who to call."  # appears in every fake proposal, so an ACCEPT quoting it is supported

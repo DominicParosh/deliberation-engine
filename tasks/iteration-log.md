@@ -130,3 +130,57 @@ Reading the traces:
 - Proposer prompt: NEEDS_HUMAN_DECISION is for organisational facts (law, policy, budgets, existing teams), not for
   rules of this feature, which are ours to propose (who sees what, thresholds as defaults, what happens on role change).
 - Answers or rulings for issues that are no longer open are dropped silently instead of costing a repair.
+
+## v4 → fourth live batch (2026-10-04 ~11:30, code dc9e895)
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions | Repairs |
+|---|---|---|---|---|---|---|---|
+| right-contact | 5 | converged | 7 REVISE, 2 DEFEND | 5 ACCEPT, 3 ESCALATE, 1 MAINTAIN | 3/8 | 3 | 1 |
+| engagement-history | 5 | converged | 6 REVISE, 2 DEFEND | 2 ACCEPT, 4 ESCALATE, 2 MAINTAIN | 4/6 | 4 | 2 |
+| cold-relationship | 5 | converged | 12 REVISE, 2 DEFEND | 5 ACCEPT, 1 ESCALATE, 8 MAINTAIN | 4/9 | 4 | 9 |
+| auto-logging | 5 | converged | 2 REVISE, 7 DEFEND | 4 ACCEPT, 5 ESCALATE | 5/9 | 5 | 2 |
+| influence-ranking | 3 | consensus | 3 REVISE, 2 DEFEND | 5 ACCEPT | 0/5 | 0 | 1 |
+
+First balanced batch: 30 REVISE / 15 DEFEND; the Critic accepts (21), escalates directly (13) and maintains (11);
+0–5 open questions per document.
+
+Remaining problems:
+1. **The Proposer still describes edits it doesn't write**, even with the proposal first. cold-relationship round 3:
+   five revisions claimed, one item (S6) actually changed; after the repair, two. The integrity checks did their job
+   (the Critic's quotes of the rationale were refused; the one real edit, S3, was accepted), but the gap costs
+   repairs and turns fixable issues into escalations. Regenerating a long document with targeted changes is
+   exactly what a small model is bad at.
+2. **Defenses that edit.** influence-ranking C4/C5 were labelled NEEDS_HUMAN_DECISION but added S7/S8.
+3. **No "should this exist?"** influence-ranking kept 1–5 ratings of named officials; no challenge questioned
+   holding them at all, and nothing was conceded in any run.
+4. **The Critic rarely concludes.** 4/5 runs ended `converged` (nothing open, Critic still saying CONTINUE):
+   it seems to treat escalated issues as unfinished business.
+5. Evidence can be real text that doesn't answer the question (C3 asked who may *view* scores; the quoted S5 is
+   about who may *assign* them). A lexical check can't catch that; it's a stated limitation.
+
+## v5 changes (code: see the commit after dc9e895)
+
+- **The Proposer emits edits, the engine applies them.** Round 1 returns the full proposal (`ProposerOpening`);
+  afterwards each response carries `edits` (item ID + complete new wording; empty text removes the item) and the
+  turn restates the two-sentence summary. `Proposal.edited()` applies them in order, so claimed and actual changes
+  are the same by construction. The ledger refuses, with one repair: a defense with edits, a revision or concession
+  without them, an ID that isn't an item ID, removing a core commitment, removing an item that doesn't exist, an edit
+  that changes nothing, reusing the ID of an item removed earlier, two answers giving one item different wordings
+  (1 of 15 revising rounds in v4 had two answers touching one item, so repeating the same wording costs little), two
+  new items with the same ID, and a turn that would leave a section empty. The Proposer is shown the next unused ID
+  per section. After a failed repair the illegal edits are dropped, and an answer whose claimed change is then empty
+  is recorded as a defense, so the ledger never shows a revision or concession that changed nothing.
+- **Every proposal item is `{id, text}`.** Definitions read '"right person" means...', assumptions end with what in
+  the request depends on them, success criteria state metric, target and measurement in one sentence. Edits, diffs,
+  quoting and rendering now work the same way for every section; the per-section models and the quote-stripping
+  validator are gone.
+- **Pre-mortem.** The Critic's opening starts with `pre_mortem`: a year after launch this feature caused a serious
+  incident; what happened? If the proposal doesn't prevent it, that is the first challenge. Later rounds show the
+  Critic its pre-mortem next to its round-1 gaps.
+- **Concluding.** The prompt and the task line now say escalated challenges are closed for this deliberation (humans
+  decide them, the record lists them as open questions), and spell out when to conclude: no BLOCKER or MAJOR still
+  open after the rulings and nothing new raised.
+- Found by an independent review of the v5 diff and fixed before the batch: the cases above about new-item IDs, emptied
+  sections (checked on the result, not edit by edit) and coerced revisions; dropped assumptions now show as dropped in
+  the decision record, linked to the challenge whose answer removed them; test doubles now record each call's
+  messages separately, so repair tests read the repair that was really sent.

@@ -69,14 +69,24 @@ request + system context
 **The agents don't chat; they make moves.** Each turn returns JSON (structured outputs, so it is
 always schema-valid) that the orchestrator checks against the ledger before applying it:
 
-- The Proposer answers every open challenge with **DEFEND**, **REVISE** or **CONCEDE**, and returns its
-  full proposal: core commitments (V), in-scope (S), out-of-scope (X), assumptions (A), definitions of every
-  vague term (D) and success criteria (K), all with stable IDs.
-- The Critic rules on every answered challenge (**ACCEPT**, **MAINTAIN**, **ESCALATE**), then may raise new
-  ones. A challenge must name the IDs it targets, a lens, a severity, a concrete failure scenario and a
-  resolution test. Generic pushback cannot be expressed in the schema.
-- An illegal move (a missing ruling, an over-budget challenge, a dropped core commitment) gets one repair
-  request; if that also fails, the orchestrator coerces it safely and records a warning.
+- The Proposer writes the proposal once, in round 1: core commitments (V), in-scope (S), out-of-scope (X),
+  assumptions (A), definitions of every vague term (D) and success criteria (K), each an ID and one sentence.
+  From round 2 it answers every open challenge by naming its grounds (a missing decision, something that
+  shouldn't be built, already covered, design detail, acceptable risk, needs a human decision). The move
+  follows from the grounds (**REVISE**, **CONCEDE** or **DEFEND**), and a revision or concession carries
+  **edits**: the new wording of each item it changes. The engine applies the edits, so what the Proposer
+  says it changed is exactly what changed.
+- The Critic opens with a pre-mortem (a year after launch, this feature caused an incident: what happened?)
+  and the questions the request leaves open, then raises challenges. Each must name the IDs it targets, a
+  lens, a severity, a concrete failure scenario and a resolution test phrased as a question with a concrete
+  answer. Generic pushback cannot be expressed in the schema. From round 2 it rules on every answered
+  challenge by judging two things, and the ruling follows: answered → **ACCEPT**, with the words that answer
+  it quoted from the proposal, or from the Proposer's answer to a defense or concession (the ledger checks
+  the quote is really there); needs authority neither agent
+  has → **ESCALATE** to humans; otherwise **MAINTAIN**.
+- An illegal move (a missing answer or ruling, an over-budget challenge, a defense that edits, a revision
+  that doesn't, an attempt to remove a core commitment, an ACCEPT without evidence) gets one repair request;
+  if that also fails, the orchestrator coerces it safely and records a warning.
 
 **Termination: the Critic proposes, the ledger disposes.** The Critic signals CONCLUDE or CONTINUE, but
 CONCLUDE is accepted only when the evidence agrees:

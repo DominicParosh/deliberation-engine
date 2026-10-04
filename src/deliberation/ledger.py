@@ -12,11 +12,10 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from .schemas import WEIGHT, CriticOpening, CriticTurn, NewChallenge, Proposal, ProposerTurn, Response, Verdict
+from .schemas import (SECTIONS, WEIGHT, CriticOpening, CriticTurn, Edit, Item, NewChallenge, Proposal, ProposerOpening,
+                      ProposerTurn, Response, Verdict, section_of)
 
 Status = Literal["OPEN", "RESOLVED", "ESCALATED", "UNRESOLVED"]
-SECTIONS = {"core_commitments": "V", "in_scope": "S", "out_of_scope": "X",
-            "assumptions": "A", "definitions": "D", "success_criteria": "K"}
 SETTLED_BY = {"DEFEND": "DEFENDED", "REVISE": "REVISED", "CONCEDE": "CONCEDED"}
 
 
@@ -26,7 +25,7 @@ class Event(BaseModel):
     move: str
     text: str
     grounds: str = ""          # the Proposer's triage of the challenge, for its moves
-    changed: list[str] = []    # item IDs the Proposer changed with this move
+    changed: list[str] = []    # item IDs the Proposer's edits changed with this move
 
 
 class Issue(NewChallenge):
@@ -63,7 +62,8 @@ class RoundStats(BaseModel):
 
 class Ledger(BaseModel):
     request: str
-    gaps: list[str] = []  # the Critic's opening list of questions the request leaves open
+    pre_mortem: str = ""   # the Critic's opening: the incident this feature could cause a year after launch
+    gaps: list[str] = []   # the Critic's opening: questions the request leaves open
     proposals: list[Proposal] = []
     issues: dict[str, Issue] = {}
     rounds: list[RoundStats] = []
@@ -98,6 +98,11 @@ class Ledger(BaseModel):
                 "edited": [k for k in after if k in before and after[k] != before[k]],
                 "removed": [k for k in before if k not in after]}
 
+    def next_id(self, section: str, *also: Proposal) -> str:
+        """The next number a section has never used, across every version (and any proposal passed in)."""
+        used = [int(k[1:]) for v in [*self.proposals, *also] for k in v.items() if section_of(k) == section]
+        return f"{SECTIONS[section]}{max(used, default=0) + 1}"
+
     def dropped(self) -> dict[str, str]:
         """Items that existed in an earlier version but not in the final one, with their last wording."""
         final, out = self.proposal.items(), {}
@@ -107,29 +112,12 @@ class Ledger(BaseModel):
 
     # ------------------------------------------------------------ legality checks
 
-    def check_proposer(self, turn: ProposerTurn) -> list[str]:
-        problems = _coverage([r.challenge_id for r in turn.responses], [i.id for i in self.open_issues()], "respond to")
-        ids = []
-        for section, prefix in SECTIONS.items():
-            items = getattr(turn.proposal, section)
-            ids += [i.id for i in items]
-            if not items:
-                problems.append(f"'{section}' is empty; every section needs at least one item.")
-            if bad := [i.id for i in items if not re.fullmatch(prefix + r"\d+", i.id)]:
-                problems.append(f"IDs in '{section}' must look like {prefix}1, {prefix}2; got {', '.join(bad)}.")
-        if dupes := sorted({i for i in ids if ids.count(i) > 1}):
-            problems.append(f"Duplicate IDs: {', '.join(dupes)}.")
-        if self.proposals and (lost := self._lost_commitments(turn.proposal)):
-            problems.append(f"Core commitments can't be dropped, only the stakeholder can do that: {', '.join(lost)}.")
-        if self.proposals:
-            before, after = self.proposal.items(), turn.proposal.items()
-            edited = {k for k in after if before.get(k) != after[k]} | {k for k in before if k not in after}
-            for r in turn.responses:
-                if r.action != "DEFEND" and not set(r.changed_ids) & edited:
-                    problems.append(f"{r.challenge_id}: grounds {r.grounds} mean the proposal must change, but none of the items "
-                                    f"you listed ({', '.join(r.changed_ids) or 'none'}) changed. Write the decision into the item "
-                                    f"itself, or choose other grounds.")
-        return problems
+    def check_proposer(self, turn: ProposerOpening | ProposerTurn) -> list[str]:
+        if isinstance(turn, ProposerOpening):
+            return _section_problems(turn.proposal)
+        open_ids = [i.id for i in self.open_issues()]
+        problems = _coverage([r.challenge_id for r in turn.responses], open_ids, "respond to")
+        return problems + self._vet(_dedupe(turn.responses, open_ids, lambda r: r.challenge_id))[1]
 
     def check_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int) -> list[str]:
         new = turn.new_challenges
@@ -167,18 +155,79 @@ class Ledger(BaseModel):
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
-    def coerce_proposer(self, turn: ProposerTurn, rnd: int) -> ProposerTurn:
-        responses = _dedupe(turn.responses, [i.id for i in self.open_issues()], lambda r: r.challenge_id)
-        for cid in [i.id for i in self.open_issues() if i.id not in {r.challenge_id for r in responses}]:
-            responses.append(Response(challenge_id=cid, grounds="ACCEPTABLE_RISK", changed_ids=[],
+    def coerce_proposer(self, turn: ProposerOpening | ProposerTurn, rnd: int) -> ProposerOpening | ProposerTurn:
+        if isinstance(turn, ProposerOpening):  # nothing refers to its IDs yet, so they can safely be renumbered
+            problems = " ".join(_section_problems(turn.proposal))
+            renumbered = {s: [Item(id=f"{prefix}{n}", text=t) for n, t in enumerate(
+                [i.text for i in getattr(turn.proposal, s) if i.text.strip()], 1)] for s, prefix in SECTIONS.items()}
+            self.warnings.append(f"R{rnd}: the opening proposal still broke these rules after a repair: {problems} "
+                                 f"Blank items were dropped and the rest renumbered by section.")
+            return turn.model_copy(update={"proposal": turn.proposal.model_copy(update=renumbered)})
+        open_ids = [i.id for i in self.open_issues()]
+        responses = _dedupe(turn.responses, open_ids, lambda r: r.challenge_id)
+        for cid in [c for c in open_ids if c not in {r.challenge_id for r in responses}]:
+            responses.append(Response(challenge_id=cid, grounds="ACCEPTABLE_RISK", edits=[],
                                       rationale="(No response given; the current proposal stands.)"))
             self.warnings.append(f"R{rnd}: Proposer did not answer {cid}; recorded as DEFEND.")
-        proposal = turn.proposal
-        if self.proposals and (lost := self._lost_commitments(proposal)):
-            restored = [v for v in self.proposal.core_commitments if v.id in lost]
-            proposal = proposal.model_copy(update={"core_commitments": proposal.core_commitments + restored})
-            self.warnings.append(f"R{rnd}: Proposer dropped core commitments {', '.join(lost)}; restored.")
-        return turn.model_copy(update={"responses": responses, "proposal": proposal})
+        responses, problems = self._vet(responses)
+        if problems:
+            self.warnings.append(f"R{rnd}: after a failed repair, edits breaking these rules were dropped: " + " ".join(problems))
+        for n, r in enumerate(responses):  # a revision or concession with no legal edit left changed nothing
+            if r.action != "DEFEND" and not r.edits:
+                responses[n] = Response(challenge_id=r.challenge_id, grounds="ACCEPTABLE_RISK", edits=[],
+                                        rationale="(No usable answer: its edits broke the rules twice; the proposal stands.)")
+                self.warnings.append(f"R{rnd}: Proposer's {r.action} of {r.challenge_id} had no legal edit; recorded as DEFEND.")
+        return turn.model_copy(update={"responses": responses})
+
+    def _vet(self, responses: list[Response]) -> tuple[list[Response], list[str]]:
+        """The responses with only their legal edits, plus one problem per broken rule. A defense leaves the proposal
+        as it is; a revision or concession must change at least one item; each edit must pass `_edit_problem`."""
+        after, wording, problems, vetted = self.proposal, {}, [], []
+        for r in responses:
+            defend = r.action == "DEFEND"
+            if defend and r.edits:
+                problems.append(f"{r.challenge_id}: grounds {r.grounds} mean DEFEND, which leaves the proposal as it is, so "
+                                f"`edits` must be empty. If an item has to change, the grounds are MISSING_DECISION or "
+                                f"SHOULD_NOT_BUILD.")
+            if not defend and not r.edits:
+                problems.append(f"{r.challenge_id}: grounds {r.grounds} mean {r.action}, so `edits` must change at least one "
+                                f"item. Write the decision into the item itself, or choose other grounds.")
+            kept = []
+            for e in [] if defend else r.edits:
+                if problem := self._edit_problem(e, after, wording):
+                    problems.append(f"{r.challenge_id}: {problem}.")
+                else:
+                    kept.append(e)
+                    wording[e.id], after = e.text.strip(), after.edited([e])
+            vetted.append(r.model_copy(update={"edits": kept}))
+        if emptied := [s for s in SECTIONS if getattr(self.proposal, s) and not getattr(after, s)]:
+            gone = {e.id for r in vetted for e in r.edits if not e.text.strip() and section_of(e.id) in emptied}
+            problems += [f"Removing {', '.join(sorted(k for k in gone if section_of(k) == s))} would leave '{s}' empty; every "
+                         f"section keeps at least one item." for s in emptied]
+            vetted = [r.model_copy(update={"edits": [e for e in r.edits if e.id not in gone]}) for r in vetted]
+        return vetted, problems
+
+    def _edit_problem(self, e: Edit, after: Proposal, wording: dict[str, str]) -> str:
+        """Why an edit is illegal, or "" if it is fine. `after` is the proposal with this turn's earlier legal edits
+        applied, and `wording` the text those edits gave each item. Emptied sections are checked once, in `_vet`."""
+        before, text, section = self.proposal.items(), e.text.strip(), section_of(e.id)
+        if section is None:
+            return f"'{e.id}' is not an item ID; use a section letter (V, S, X, A, D or K) and a number"
+        if not text and section == "core_commitments":
+            return f"core commitments can't be removed; only the stakeholder can drop {e.id}"
+        if not text and e.id not in before:
+            return f"there is no {e.id} to remove"
+        if e.id in self.dropped():
+            return (f"{e.id} belonged to an item removed earlier; a new item takes a number its section has never used "
+                    f"({self.next_id(section, after)})")
+        if text == before.get(e.id, "").strip():
+            return f"the edit leaves {e.id} exactly as it was"
+        if wording.get(e.id, text) != text and e.id not in before:
+            return f"{e.id} is already the ID of a different new item in this turn; give this one {self.next_id(section, after)}"
+        if wording.get(e.id, text) != text:
+            return (f"{e.id} is given two different wordings in this turn. An item has one wording: give its complete final "
+                    f"wording, with every change, in each answer that edits it")
+        return ""
 
     def coerce_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int):
         new = turn.new_challenges
@@ -205,14 +254,20 @@ class Ledger(BaseModel):
 
     # ------------------------------------------------------------ transitions
 
-    def apply_proposer(self, rnd: int, turn: ProposerTurn) -> None:
-        for r in _dedupe(turn.responses, [i.id for i in self.open_issues()], lambda r: r.challenge_id):
+    def apply_proposer(self, rnd: int, turn: ProposerOpening | ProposerTurn) -> None:
+        if isinstance(turn, ProposerOpening):
+            self.proposals.append(turn.proposal)
+            return
+        responses = _dedupe(turn.responses, [i.id for i in self.open_issues()], lambda r: r.challenge_id)
+        for r in responses:
             self.issues[r.challenge_id].history.append(Event(round=rnd, actor="proposer", move=r.action, grounds=r.grounds,
-                                                             changed=r.changed_ids, text=r.rationale))
-        self.proposals.append(turn.proposal)
+                                                             changed=[e.id for e in r.edits], text=r.rationale))
+        version = self.proposal.edited([e for r in responses for e in r.edits])
+        self.proposals.append(version.model_copy(update={"summary": turn.summary.strip() or self.proposal.summary}))
 
     def apply_critic(self, rnd: int, turn: CriticOpening | CriticTurn, strike_limit: int | None) -> None:
-        self.gaps += getattr(turn, "gaps", [])
+        if isinstance(turn, CriticOpening):
+            self.pre_mortem, self.gaps = turn.pre_mortem, turn.gaps
         for v in _dedupe(getattr(turn, "verdicts", []), [i.id for i in self.open_issues()], lambda v: v.challenge_id):
             issue = self.issues[v.challenge_id]
             evidence = f' Evidence: "{v.evidence}"' if v.ruling == "ACCEPT" else ""
@@ -232,7 +287,8 @@ class Ledger(BaseModel):
             self.issues[cid] = Issue(id=cid, round_raised=rnd, **c.model_dump(),
                                      history=[Event(round=rnd, actor="critic", move="RAISE", text=c.challenge)])
 
-    def record(self, rnd: int, proposer: ProposerTurn, critic: CriticOpening | CriticTurn, reason: str, feedback: str) -> None:
+    def record(self, rnd: int, proposer: ProposerOpening | ProposerTurn, critic: CriticOpening | CriticTurn,
+               reason: str, feedback: str) -> None:
         count = Counter(i.status for i in self.issues.values())
         self.rounds.append(RoundStats(
             round=rnd, raised=len(self.issues), open=count["OPEN"], resolved=count["RESOLVED"], escalated=count["ESCALATED"],
@@ -248,17 +304,28 @@ class Ledger(BaseModel):
             issue.history.append(Event(round=last, actor="orchestrator", move="OPEN_AT_CLOSE",
                                        text=f"Still open when deliberation ended ({reason})."))
 
-    def _lost_commitments(self, proposal: Proposal) -> list[str]:
-        kept = {v.id for v in proposal.core_commitments}
-        return [v.id for v in self.proposal.core_commitments if v.id not in kept]
-
 
 def _coverage(got: list[str], expected: list[str], verb: str) -> list[str]:
     problems = []
     if missing := [e for e in expected if e not in got]:
         problems.append(f"You must {verb} every open challenge exactly once; missing: {', '.join(missing)}.")
-    if dupes := sorted({g for g in got if got.count(g) > 1}):
+    if dupes := sorted({g for g in got if got.count(g) > 1 and g in expected}):
         problems.append(f"Answered more than once: {', '.join(dupes)}.")
+    return problems
+
+
+def _section_problems(p: Proposal) -> list[str]:
+    problems, ids = [], [i.id for section in SECTIONS for i in getattr(p, section)]
+    for section, prefix in SECTIONS.items():
+        items = getattr(p, section)
+        if not items:
+            problems.append(f"'{section}' is empty; every section needs at least one item.")
+        if bad := [i.id for i in items if section_of(i.id) != section]:
+            problems.append(f"IDs in '{section}' must look like {prefix}1, {prefix}2; got {', '.join(bad)}.")
+        if blank := [i.id for i in items if not i.text.strip()]:
+            problems.append(f"Items need text: {', '.join(blank)}.")
+    if dupes := sorted({i for i in ids if ids.count(i) > 1}):
+        problems.append(f"Duplicate IDs: {', '.join(dupes)}.")
     return problems
 
 

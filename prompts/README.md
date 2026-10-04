@@ -13,6 +13,11 @@ Every word the agents read lives in this folder, plus the field descriptions in
 | `summarizer.turn.md` | Rapporteur user turn, once | `{{request}}`, `{{record}}` |
 | `repair.md` | Follow-up when a reply breaks a rule | `{{problems}}` |
 
+Round 1 and later rounds use different output schemas. In round 1 the Proposer returns the full proposal and the
+Critic adds a pre-mortem and the request's open questions (`ProposerOpening`, `CriticOpening`). From round 2 the
+Proposer returns answers with edits, which the engine applies, and the Critic returns rulings and a signal
+(`ProposerTurn`, `CriticTurn`).
+
 `{{state}}` is rendered from the ledger by the view functions at the bottom of `src/deliberation/agents.py`:
 the current proposal, the open challenges with their history, and the settled ones. Each agent sees the
 original request and the current ledger every turn, not the whole transcript, which keeps them anchored to
