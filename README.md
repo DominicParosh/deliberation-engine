@@ -7,6 +7,8 @@ document: what will be built, what won't, what was assumed, and what humans stil
 - The **Critic** is the principal architect who also owns data-protection sign-off. It is judged on what breaks.
 - A **Rapporteur** writes the prose of the decision record afterwards. It cannot change any decision.
 
+Why it is built this way, what else was considered, and what I'd change: [DECISIONS.md](DECISIONS.md).
+
 ## Run it
 
 Needs Python 3.11+ and [uv](https://docs.astral.sh/uv/).
@@ -128,6 +130,7 @@ challenge.
 
 | Path | |
 |---|---|
+| `DECISIONS.md` | Design decisions, the alternatives considered and their trade-offs |
 | `prompts/` | Every prompt, as Markdown ([guide](prompts/README.md)) |
 | `config/system_context.md`, `config/requests.yaml` | The CRM description and the five requests |
 | `src/deliberation/termination.py` | Both termination policies |
@@ -210,7 +213,7 @@ another answer (gated: 2, generic: 4), and the decision documents now flag each 
 prompt sets. What changed is that the Proposer argued: 15 defenses on merit with the stakes and the burden of
 proof, 1 without. With the generic prompts its only pushback was "a human must decide" (28 of 29 defenses), and in
 4 of 15 runs it never defended at all. Arguing is not winning: the Critic accepted 4 of the 15, all on MINOR
-challenges. The typical outcome is a disagreement about risk appetite (is user customisation enough against alert
+challenges. The typical outcome is a disagreement about risk appetite (is user customization enough against alert
 fatigue, in cold-relationship C5) that the two-strike rule hands to a named human owner instead of looping. The
 stakes show in the Critic's signal too: it declared itself satisfied in 2 gated runs against 8 generic ones,
 although both sets ended with nothing open.
@@ -223,7 +226,7 @@ Fifteen runs per configuration on one model: these are directions, not significa
 
 ### How the prompts got here
 
-Seven live batches, each kept in [`experiments/prompt-iterations/`](experiments/prompt-iterations/) and analysed
+Seven live batches, each kept in [`experiments/prompt-iterations/`](experiments/prompt-iterations/) and analyzed
 in [`tasks/iteration-log.md`](tasks/iteration-log.md). The pattern: every failure was fixed by making the bad move
 impossible to express or checkable by the ledger. Asking more nicely did nothing (v2 explained in prose when to
 defend; 0 of 46 moves were defenses).

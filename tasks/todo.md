@@ -94,4 +94,5 @@ Environment (updated 2026-10-04 06:55):
   in `prompts/`, a decision record that shows both sides' last word, declined challenges and undone settlements,
   twelve README corrections, and 54 tests. Replaying all 45 recorded runs through the final code reproduces every
   ledger, trace and model call.
-- Open: DECISIONS.md (Domi writes it), one live smoke run of the final code (Domi), and the sync to the Mac.
+- DECISIONS.md drafted from the data pack at Domi's request (989 words, every figure from the runs); the repo, with
+  its history, synced to the Mac and verified there (54 tests). Open: one optional live smoke run of the final code.
