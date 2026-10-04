@@ -4,3 +4,21 @@ __pycache__/
 .env
 runs/*/replay/
 out/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Mac
+.DS_Store
+
+# Generated files
+.pytest_cache/
