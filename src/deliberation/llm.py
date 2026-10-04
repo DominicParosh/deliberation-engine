@@ -10,8 +10,9 @@ from pydantic import BaseModel
 
 MAX_TOKENS = 8000
 DEFAULT_MODELS = {"anthropic": "claude-haiku-4-5-20251001", "openai": "gpt-4o-mini"}
-# USD per million input/output tokens (platform.claude.com/docs/en/about-claude/pricing, Oct 2026).
-PRICES = {"claude-haiku-4-5": (1.0, 5.0)}
+# USD per million input/output tokens, from each provider's pricing page (Oct 2026).
+PRICES = {"claude-haiku-4-5": (1.0, 5.0), "gpt-4o-mini": (0.15, 0.60)}
+KEYS = {"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY"}
 
 
 @dataclass
@@ -93,5 +94,19 @@ def cost(model: str, input_tokens: int, output_tokens: int) -> float | None:
     return round((input_tokens * price[0] + output_tokens * price[1]) / 1e6, 4) if price else None
 
 
+def load_env(path) -> None:
+    """Read KEY=VALUE lines from a .env file into the environment, without overriding real variables."""
+    if path.exists():
+        for line in path.read_text().splitlines():
+            key, sep, value = line.strip().partition("=")
+            if sep and key and not key.startswith("#"):
+                os.environ.setdefault(key.strip(), value.strip().strip("'\""))
+
+
+def default_provider() -> str | None:
+    """Anthropic if its key is set, otherwise OpenAI if its key is set."""
+    return next((p for p, key in KEYS.items() if os.environ.get(key)), None)
+
+
 def has_key(provider: str) -> bool:
-    return bool(os.environ.get({"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY"}[provider]))
+    return bool(os.environ.get(KEYS[provider]))

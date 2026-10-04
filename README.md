@@ -13,12 +13,14 @@ Needs Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync
-export ANTHROPIC_API_KEY=sk-ant-...
+cp .env.example .env        # then fill in OPENAI_API_KEY or ANTHROPIC_API_KEY (either works)
 
 uv run deliberate --request-id cold-relationship     # one request from config/requests.yaml
 uv run deliberate --all                              # all five
 uv run deliberate --request "Executives want a dashboard of relationship health."
 ```
+
+Exported environment variables work too and take precedence over `.env`.
 
 No API key? Every committed run can be replayed from its recorded model outputs, with no API calls:
 
@@ -32,9 +34,9 @@ Tests need no key either: `uv run pytest`.
 
 | Flag | Default | |
 |---|---|---|
-| `--request` / `--request-file` / `--request-id` / `--all` | `$DELIBERATION_REQUEST` | Where the request comes from |
+| `--request` / `--request-file` / `--request-id ID...` / `--all` | `$DELIBERATION_REQUEST` | Where the request comes from |
 | `--policy` | `gated` | `naive` runs the baseline termination policy (Critic's word + round cap) |
-| `--provider`, `--model` | `anthropic`, `claude-haiku-4-5-20251001` | `--provider openai` uses `gpt-4o-mini` and `OPENAI_API_KEY` |
+| `--provider`, `--model` | whichever key is set | `anthropic` → `claude-haiku-4-5-20251001`, `openai` → `gpt-4o-mini` |
 | `--critic-provider`, `--critic-model` | same as Proposer | Run the Critic on a different model family |
 | `--context` | `config/system_context.md` | The system description both agents reason about |
 | `--prompts DIR` | — | Override prompt files by name |

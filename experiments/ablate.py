@@ -21,7 +21,7 @@ from pathlib import Path
 import yaml
 
 from deliberation.engine import deliberate
-from deliberation.llm import make_llm
+from deliberation.llm import default_provider, load_env, make_llm
 from deliberation.termination import POLICIES
 
 HERE = Path(__file__).resolve().parent
@@ -106,15 +106,18 @@ def main() -> None:
     ap.add_argument("command", choices=["run", "report"])
     ap.add_argument("--runs", type=int, default=3)
     ap.add_argument("--configs", nargs="+", default=list(CONFIGS), choices=list(CONFIGS))
-    ap.add_argument("--provider", default="anthropic")
+    ap.add_argument("--provider", choices=["anthropic", "openai"], help="default: whichever API key is set")
     ap.add_argument("--model")
     ap.add_argument("--workers", type=int, default=4)
+    load_env(ROOT / ".env")
     args = ap.parse_args()
     if args.command == "report":
         return report()
+    if not (provider := args.provider or default_provider()):
+        raise SystemExit("No API key found: set ANTHROPIC_API_KEY or OPENAI_API_KEY (or put it in .env).")
     context = (ROOT / "config/system_context.md").read_text()
     requests = yaml.safe_load((ROOT / "config/requests.yaml").read_text())["requests"]
-    jobs = [(c, r["id"], r["text"], i, context, args.provider, args.model)
+    jobs = [(c, r["id"], r["text"], i, context, provider, args.model)
             for c in args.configs for r in requests for i in range(1, args.runs + 1)]
     with ThreadPoolExecutor(args.workers) as pool:
         for future in as_completed([pool.submit(run_one, *job) for job in jobs]):

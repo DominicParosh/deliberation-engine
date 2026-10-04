@@ -13,11 +13,13 @@ Locked decisions:
 - Inputs: 3 from the brief + A (auto-logging) + B (influence ranking).
 - Bonuses: summarizer as neutral clerk (ID-validated), Disagreement Index + self-reported confidence with overconfidence flag.
 
-Environment constraints (found while scaffolding):
-- No API key in this workspace yet → live runs blocked until one is provided.
-- api.openai.com is blocked by the workspace egress policy → OpenAI adapter is tested against a fake client here;
-  one live check has to run on Domi's machine.
-- ANTHROPIC_BASE_URL is set by the workspace harness → run the project with `env -u ANTHROPIC_BASE_URL`.
+Environment (updated 2026-10-04 06:55):
+- Live runs use OpenAI gpt-4o-mini, run by Domi in his own terminal (his choice; no Anthropic key).
+- api.openai.com is blocked both in the cloud workspace and in the desktop VM, so Claude can't run live calls.
+- Project lives at ~/code/assessments/deliberation-engine on Domi's Mac (new folder; government_crm_deliberation untouched).
+  Source of truth stays in the cloud repo; changed files are synced over with device_commit_files, and run outputs
+  are read back from runs/ in that folder.
+- Synced copy verified: 18/18 tests pass on the Mac workspace.
 
 ## Day 1 — engine
 - [x] Scaffold (uv project; anthropic, openai, pydantic, rich, pyyaml; pytest)
@@ -31,7 +33,7 @@ Environment constraints (found while scaffolding):
 - [x] `cli.py` — `--request` / `--request-id` / `--request-file` / env var / `--all` / `--replay` / `--policy` / `--provider`
 - [x] Tests — every termination exit path with scripted agents (no API)
 - [x] Prompts v1 — proposer, critic, summarizer (+ turn templates)
-- [ ] First live runs on the 3 brief inputs; iterate prompts; log every change in `tasks/iteration-log.md`
+- [ ] First live runs on the 3 brief inputs (Domi runs; gpt-4o-mini); iterate prompts; log every change in `tasks/iteration-log.md`
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B
