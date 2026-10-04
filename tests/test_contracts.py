@@ -26,8 +26,8 @@ def agents(proposer=proposer_json, critic=accept_then_conclude, summarizer=summa
 
 def test_enum_casing_is_normalised():
     turn = json.loads(proposer_json("**C1** · MAJOR · OPERATIONS · targets S1"))
-    turn["responses"][0]["action"] = "Defend"
-    assert ProposerTurn.model_validate(turn).responses[0].action == "DEFEND"
+    turn["responses"][0]["grounds"] = "needs human decision"
+    assert ProposerTurn.model_validate(turn).responses[0].grounds == "NEEDS_HUMAN_DECISION"
 
 
 def test_over_budget_critic_gets_one_repair_then_keeps_the_most_severe():
@@ -163,3 +163,26 @@ def test_the_critics_opening_gaps_are_kept_and_shown_again():
     critic_fake = Fake(accept_then_conclude)
     deliberate("Request.", "ctx", {"proposer": Fake(proposer_json), "critic": critic_fake, "summarizer": Fake(summarizer_json)}, GATED)
     assert "Who decides who the right person is?" in critic_fake.prompts[1][0]["content"]
+
+
+def test_the_move_follows_from_the_grounds():
+    from deliberation.schemas import Response
+
+    move = lambda grounds: Response(challenge_id="C1", grounds=grounds, rationale="r", changed_ids=[]).action  # noqa: E731
+    assert move("MISSING_DECISION") == "REVISE" and move("SHOULD_NOT_BUILD") == "CONCEDE"
+    assert {move(g) for g in ("ALREADY_COVERED", "DESIGN_DETAIL", "ACCEPTABLE_RISK", "NEEDS_HUMAN_DECISION")} == {"DEFEND"}
+
+
+def test_a_revision_must_show_in_the_proposal_but_a_defense_may_be_quoted_from_the_answer():
+    from conftest import proposal
+
+    from deliberation.ledger import Event
+    from deliberation.schemas import Proposal, Verdict
+
+    claim = "Exports are limited to regional coordinators for their own region."
+    for move, expected in (("REVISE", False), ("DEFEND", True)):
+        ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
+        ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
+        ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move=move, text=claim))
+        verdict = Verdict(challenge_id="C1", evidence=claim, ruling="ACCEPT", rationale="r")
+        assert ledger.supported(verdict) is expected, move

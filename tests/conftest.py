@@ -42,8 +42,8 @@ def proposal(drop_core=False, scope=("S1", "S2")) -> dict:
     }
 
 
-def proposer_json(prompt: str, _messages=None, *, action="DEFEND", **kw) -> str:
-    responses = [{"challenge_id": c, "action": action, "rationale": "Because.", "changed_ids": []} for c in open_ids(prompt)]
+def proposer_json(prompt: str, _messages=None, *, grounds="ACCEPTABLE_RISK", **kw) -> str:
+    responses = [{"challenge_id": c, "grounds": grounds, "rationale": "Because.", "changed_ids": []} for c in open_ids(prompt)]
     return json.dumps({"responses": responses, "proposal": proposal(**kw), "confidence": 70, "biggest_worry": "Adoption."})
 
 

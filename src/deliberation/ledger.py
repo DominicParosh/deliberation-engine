@@ -25,6 +25,7 @@ class Event(BaseModel):
     actor: Literal["proposer", "critic", "orchestrator"]
     move: str
     text: str
+    grounds: str = ""  # the Proposer's triage of the challenge, for its moves
 
 
 class Issue(NewChallenge):
@@ -138,24 +139,28 @@ class Ledger(BaseModel):
         for v in getattr(turn, "verdicts", []):
             if v.ruling == "ACCEPT" and v.challenge_id in self.issues and not self.supported(v):
                 problems.append(f"{v.challenge_id}: an ACCEPT needs `evidence` copied word for word from the current proposal "
-                                f"or the Proposer's answer, and \"{v.evidence[:80]}\" is not there. Quote the text that meets "
-                                f"your resolution test, or MAINTAIN if nothing does.")
+                                f"(or, for a defense or concession, from the Proposer's answer), and \"{v.evidence[:80]}\" is "
+                                f"not there. Quote the text that answers your question, or MAINTAIN if nothing does.")
         return problems
 
     def supported(self, verdict: Verdict) -> bool:
-        """Is the ACCEPT's evidence really in the proposal or the Proposer's latest answer? Tolerates elisions (...)."""
-        answer = [e.text for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
-        haystack = _norm(" ".join(_strings(self.proposal.model_dump()) + answer))
-        quote = re.sub(r"^[a-z]\d+\s*[:\-–—]\s*", "", _norm(verdict.evidence))
-        parts = [p.strip(" .,;") for p in re.split(r"\.\.\.|…", quote) if len(p.strip(" .,;")) >= 10]
-        return bool(parts) and all(p in haystack for p in parts)
+        """Is the ACCEPT's evidence really there? A revision must show in the proposal itself; a defense or concession
+        may be evidenced by the Proposer's answer. Compares word sequences, so punctuation, quotes and an item-ID
+        prefix don't matter, and tolerates elisions (...)."""
+        answer = [e for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
+        texts = _strings(self.proposal.model_dump()) + [e.text for e in answer if e.move != "REVISE"]
+        haystack = _words(" ".join(texts))
+        parts = [_words(part) for part in re.split(r"\.\.\.|…", verdict.evidence)]
+        parts[0] = re.sub(r"^[a-z]\d+ ", "", parts[0])
+        parts = [part for part in parts if len(part) >= 12]
+        return bool(parts) and all(part in haystack for part in parts)
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
     def coerce_proposer(self, turn: ProposerTurn, rnd: int) -> ProposerTurn:
         responses = _dedupe(turn.responses, [i.id for i in self.open_issues()], lambda r: r.challenge_id)
         for cid in [i.id for i in self.open_issues() if i.id not in {r.challenge_id for r in responses}]:
-            responses.append(Response(challenge_id=cid, action="DEFEND", changed_ids=[],
+            responses.append(Response(challenge_id=cid, grounds="ACCEPTABLE_RISK", changed_ids=[],
                                       rationale="(No response given; the current proposal stands.)"))
             self.warnings.append(f"R{rnd}: Proposer did not answer {cid}; recorded as DEFEND.")
         proposal = turn.proposal
@@ -192,7 +197,8 @@ class Ledger(BaseModel):
     def apply_proposer(self, rnd: int, turn: ProposerTurn) -> None:
         for r in turn.responses:
             changed = f" [changed: {', '.join(r.changed_ids)}]" if r.changed_ids else ""
-            self.issues[r.challenge_id].history.append(Event(round=rnd, actor="proposer", move=r.action, text=r.rationale + changed))
+            self.issues[r.challenge_id].history.append(Event(round=rnd, actor="proposer", move=r.action, grounds=r.grounds,
+                                                             text=r.rationale + changed))
         self.proposals.append(turn.proposal)
 
     def apply_critic(self, rnd: int, turn: CriticOpening | CriticTurn, strike_limit: int | None) -> None:
@@ -248,9 +254,8 @@ def _coverage(got: list[str], expected: list[str], verb: str) -> list[str]:
     return problems
 
 
-def _norm(text: str) -> str:
-    text = text.lower().translate(str.maketrans("“”‘’—–", "\"\"''--"))
-    return re.sub(r"\s+", " ", text).strip(" .\"'")
+def _words(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
 def _strings(value) -> list[str]:

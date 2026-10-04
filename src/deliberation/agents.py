@@ -42,8 +42,8 @@ class Agents:
         else:
             state = f"## Your current proposal\n{proposal_md(ledger.proposal)}\n\n## Open challenges\n" + \
                     "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger)
-            task = ("Answer every open challenge exactly once (DEFEND, REVISE or CONCEDE). "
-                    "Then return your full updated proposal, keeping IDs stable.")
+            task = ("Answer every open challenge exactly once: name its `grounds`, which decide your move, and give your "
+                    "rationale. Then return your full updated proposal, keeping IDs stable.")
         turn, ok = self._turn("proposer", rnd, ledger, ProposerTurn, ledger.check_proposer, state, task)
         return turn if ok else ledger.coerce_proposer(turn, rnd)
 
@@ -143,7 +143,8 @@ def check_synthesis(s: Synthesis, ledger: Ledger) -> list[str]:
     needing = {i.id for i in ledger.issues.values() if i.status in ("ESCALATED", "UNRESOLVED")}
     problems = []
     if bad := sorted({n.id for n in s.item_notes} - final):
-        problems.append(f"item_notes may only use IDs of items in the final proposal; unknown: {', '.join(bad)}.")
+        problems.append(f"item_notes may only use IDs of items in the final proposal (explain dropped items under "
+                        f"`rejected` instead); not in the final proposal: {', '.join(bad)}.")
     refs = [r for n in s.item_notes for r in n.refs] + [r for x in s.rejected for r in x.refs]
     if bad := sorted(set(refs) - known):
         problems.append(f"These refs are not in the record: {', '.join(bad)}.")

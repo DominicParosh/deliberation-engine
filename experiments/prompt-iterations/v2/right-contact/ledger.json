@@ -1,0 +1,877 @@
+{
+  "request": "We need a better way to track who is the right person to contact in each country.",
+  "gaps": [
+    "Who should have access to view and modify the 'Primary Contact Person' field?",
+    "What specific data privacy regulations must be followed regarding contact information?",
+    "What will be done when a primary contact changes, leaves, or is reassigned?",
+    "How will the accuracy of the contact information be verified or maintained?",
+    "What happens if a user without permission attempts to access or modify contact information?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release introduces a contact management feature to identify and record the appropriate contact person in each member country. It is designed for regional coordinators and project managers to ensure accurate communication with relevant government representatives.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to assign and update primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface to search and filter country contacts efficiently."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Add a new 'Primary Contact Person' field in the contact record for each country."
+        },
+        {
+          "id": "S2",
+          "text": "Allow users to update, delete, and view contact details for the assigned primary contact."
+        },
+        {
+          "id": "S3",
+          "text": "Implement search functionality based on country and name to easily find the right contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Enable data entry validations to ensure correct formatting of contact information."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials and user guidelines for effective use of the new feature."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Integration with external contact databases or services."
+        },
+        {
+          "id": "X2",
+          "text": "Tracking historical changes of contact assignments."
+        },
+        {
+          "id": "X3",
+          "text": "Advanced analytics on contact effectiveness or engagement history."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the appropriate permissions to access and modify contact information.",
+          "why_implicit": "The feature assumes that roles such as regional coordinators and project managers can manage contacts."
+        },
+        {
+          "id": "A2",
+          "text": "Data entries will be accurate and maintained by users.",
+          "why_implicit": "The system relies on users to enter and update contact details accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Contact data privacy regulations are being followed.",
+          "why_implicit": "The system will handle sensitive data related to diplomatic contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Primary Contact Person",
+          "definition": "The individual designated as the primary point of communication for each government entity, including their name, title, email, and phone number."
+        },
+        {
+          "id": "D2",
+          "term": "Search Functionality",
+          "definition": "A feature that allows users to input specific criteria (such as country or name) to retrieve corresponding contact records."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User satisfaction rating",
+          "target": "80% or higher",
+          "measurement": "Gather feedback through a user survey conducted one month after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release introduces a contact management feature to identify and record the appropriate contact person in each member country. It is designed for regional coordinators and project managers to ensure accurate communication with relevant government representatives.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to assign and update primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface to search and filter country contacts efficiently."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Add a new 'Primary Contact Person' field in the contact record for each country, accessible only to regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Allow users (regional coordinators and project managers) to update, delete, and view contact details for the assigned primary contact."
+        },
+        {
+          "id": "S3",
+          "text": "Implement search functionality based on country and name to easily find the right contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Enable data entry validations to ensure correct formatting of contact information."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials and user guidelines for effective use of the new feature."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Integration with external contact databases or services."
+        },
+        {
+          "id": "X2",
+          "text": "Tracking historical changes of contact assignments."
+        },
+        {
+          "id": "X3",
+          "text": "Advanced analytics on contact effectiveness or engagement history."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the appropriate permissions to access and modify contact information, specifically regional coordinators and project managers.",
+          "why_implicit": "The feature assumes that roles such as regional coordinators and project managers can manage contacts."
+        },
+        {
+          "id": "A2",
+          "text": "Data entries will be accurate and maintained by users.",
+          "why_implicit": "The system relies on users to enter and update contact details accurately."
+        },
+        {
+          "id": "A3",
+          "text": "Contact data privacy regulations, specifically GDPR, are being followed by obtaining user consent and maintaining data security protocols.",
+          "why_implicit": "The system will handle sensitive data related to diplomatic contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Primary Contact Person",
+          "definition": "The individual designated as the primary point of communication for each government entity, which must be a government official or designated representative officially communicated by the respective government, including their name, title, email, and phone number."
+        },
+        {
+          "id": "D2",
+          "term": "Search Functionality",
+          "definition": "A feature that allows users to input specific criteria (such as country or name) to retrieve corresponding contact records."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User satisfaction rating",
+          "target": "80% or higher",
+          "measurement": "Gather feedback through a user survey conducted one month after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release introduces a contact management feature to identify and record the appropriate contact person in each member country. It is designed for regional coordinators and project managers to ensure accurate communication with relevant government representatives.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to assign and update primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface to search and filter country contacts efficiently."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Add a new 'Primary Contact Person' field in the contact record for each country, accessible to regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Allow users (regional coordinators and project managers) to update, delete, and view contact details for the assigned primary contact, including notification of changes to the contact."
+        },
+        {
+          "id": "S3",
+          "text": "Implement search functionality based on country and name to easily find the right contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Enable data entry validations to ensure correct formatting of contact information."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials and user guidelines for effective use of the new feature."
+        },
+        {
+          "id": "S6",
+          "text": "Incorporate a periodic review process for validating the accuracy of contact data."
+        },
+        {
+          "id": "S7",
+          "text": "Define security measures including access controls and audit logs to prevent unauthorized access to sensitive contact information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Integration with external contact databases or services."
+        },
+        {
+          "id": "X2",
+          "text": "Tracking historical changes of contact assignments."
+        },
+        {
+          "id": "X3",
+          "text": "Advanced analytics on contact effectiveness or engagement history."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the appropriate permissions to access and modify contact information, specifically regional coordinators and project managers.",
+          "why_implicit": "The feature assumes that roles such as regional coordinators and project managers can manage contacts."
+        },
+        {
+          "id": "A2",
+          "text": "Contact data will be maintained by users through periodic validation processes and updates.",
+          "why_implicit": "The system relies on users to enter and update contact details accurately, and regular verification of this data will ensure correctness."
+        },
+        {
+          "id": "A3",
+          "text": "Contact data privacy regulations, specifically GDPR, are being followed by obtaining user consent and maintaining data security protocols.",
+          "why_implicit": "The system will handle sensitive data related to diplomatic contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Primary Contact Person",
+          "definition": "The individual designated as the primary point of communication for each government entity, which must be a government official or designated representative officially communicated by the respective government, including their name, title, email, and phone number."
+        },
+        {
+          "id": "D2",
+          "term": "Search Functionality",
+          "definition": "A feature that allows users to input specific criteria (such as country or name) to retrieve corresponding contact records."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User satisfaction rating",
+          "target": "80% or higher",
+          "measurement": "Gather feedback through a user survey conducted one month after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release introduces a contact management feature to identify and record the appropriate contact person in each member country. It is designed for regional coordinators and project managers to ensure accurate communication with relevant government representatives.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to assign and update primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface to search and filter country contacts efficiently."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Add a new 'Primary Contact Person' field in the contact record for each country, accessible to regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Allow users (regional coordinators and project managers) to update, delete, and view contact details for the assigned primary contact, including email notifications sent when the contact is updated."
+        },
+        {
+          "id": "S3",
+          "text": "Implement search functionality based on country and name to easily find the right contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Enable data entry validations to ensure correct formatting of contact information."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials and user guidelines for effective use of the new feature."
+        },
+        {
+          "id": "S6",
+          "text": "Incorporate a periodic review process, occurring bi-annually, to validate the accuracy of contact data based on specific criteria including active representation and completeness."
+        },
+        {
+          "id": "S7",
+          "text": "Define security measures including access controls and audit logs to prevent unauthorized access to sensitive contact information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Integration with external contact databases or services."
+        },
+        {
+          "id": "X2",
+          "text": "Tracking historical changes of contact assignments."
+        },
+        {
+          "id": "X3",
+          "text": "Advanced analytics on contact effectiveness or engagement history."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the appropriate permissions to access and modify contact information, specifically regional coordinators and project managers.",
+          "why_implicit": "The feature assumes that roles such as regional coordinators and project managers can manage contacts."
+        },
+        {
+          "id": "A2",
+          "text": "Contact data will be maintained by users through periodic validation processes and updates, with regional coordinators and designated data managers responsible for accuracy.",
+          "why_implicit": "The system relies on users to enter and update contact details accurately; ownership must be established to ensure data is kept current."
+        },
+        {
+          "id": "A3",
+          "text": "Contact data privacy regulations, specifically GDPR, are being followed by obtaining user consent and maintaining data security protocols.",
+          "why_implicit": "The system will handle sensitive data related to diplomatic contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Primary Contact Person",
+          "definition": "The individual designated as the primary point of communication for each government entity, which must be a government official or designated representative officially communicated by the respective government, including their name, title, email, and phone number."
+        },
+        {
+          "id": "D2",
+          "term": "Search Functionality",
+          "definition": "A feature that allows users to input specific criteria (such as country or name) to retrieve corresponding contact records."
+        },
+        {
+          "id": "D3",
+          "term": "Periodic Review Process",
+          "definition": "A scheduled process that occurs bi-annually for reviewing and confirming the accuracy of contact data based on criteria such as active representation and completeness of information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User satisfaction rating",
+          "target": "80% or higher",
+          "measurement": "Gather feedback through a user survey conducted one month after implementation."
+        }
+      ]
+    },
+    {
+      "summary": "This release introduces a contact management feature to identify and record the appropriate contact person in each member country. It is designed for regional coordinators and project managers to ensure accurate communication with relevant government representatives.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to assign and update primary contact persons for each member country."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a user-friendly interface to search and filter country contacts efficiently."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Add a new 'Primary Contact Person' field in the contact record for each country, accessible to regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Allow users (regional coordinators and project managers) to update, delete, and view contact details for the assigned primary contact, including email notifications sent when the contact is updated."
+        },
+        {
+          "id": "S3",
+          "text": "Implement search functionality based on country and name to easily find the right contacts."
+        },
+        {
+          "id": "S4",
+          "text": "Enable data entry validations to ensure correct formatting of contact information."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials and user guidelines for effective use of the new feature."
+        },
+        {
+          "id": "S6",
+          "text": "Incorporate a periodic review process, occurring bi-annually, to validate the accuracy of contact data based on specific criteria including active representation and completeness."
+        },
+        {
+          "id": "S7",
+          "text": "Define security measures including access controls and audit logs allowing only regional coordinators and project managers to view or modify the 'Primary Contact Person' field, thereby preventing unauthorized access to sensitive contact information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "Integration with external contact databases or services."
+        },
+        {
+          "id": "X2",
+          "text": "Tracking historical changes of contact assignments."
+        },
+        {
+          "id": "X3",
+          "text": "Advanced analytics on contact effectiveness or engagement history."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have the appropriate permissions to access and modify contact information, specifically regional coordinators and project managers.",
+          "why_implicit": "The feature assumes that roles such as regional coordinators and project managers can manage contacts."
+        },
+        {
+          "id": "A2",
+          "text": "Contact data will be maintained by users through periodic validation processes and updates, with regional coordinators and designated data managers responsible for accuracy.",
+          "why_implicit": "The system relies on users to enter and update contact details accurately; ownership must be established to ensure data is kept current."
+        },
+        {
+          "id": "A3",
+          "text": "Contact data privacy regulations, specifically GDPR, are being followed by obtaining user consent and maintaining data security protocols.",
+          "why_implicit": "The system will handle sensitive data related to diplomatic contacts."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "term": "Primary Contact Person",
+          "definition": "The individual designated as the primary point of communication for each government entity, which must be a government official or designated representative officially communicated by the respective government, including their name, title, email, and phone number."
+        },
+        {
+          "id": "D2",
+          "term": "Search Functionality",
+          "definition": "A feature that allows users to input specific criteria (such as country or name) to retrieve corresponding contact records."
+        },
+        {
+          "id": "D3",
+          "term": "Periodic Review Process",
+          "definition": "A scheduled process that occurs bi-annually for reviewing and confirming the accuracy of contact data based on criteria such as active representation and completeness of information."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "metric": "User satisfaction rating",
+          "target": "80% or higher",
+          "measurement": "Gather feedback through a user survey conducted one month after implementation."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1",
+        "S2",
+        "A1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not define who has access to view and modify the 'Primary Contact Person' field, which raises confidentiality concerns regarding sensitive diplomatic contacts.",
+      "failure_scenario": "A regional coordinator inadvertently exposes sensitive contact details of a diplomatic representative to unauthorized personnel, leading to potential diplomatic fallout.",
+      "resolution_test": "The proposal explicitly states which user roles have access to view and modify the 'Primary Contact Person' field.",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define who has access to view and modify the 'Primary Contact Person' field, which raises confidentiality concerns regarding sensitive diplomatic contacts."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I have added specific roles to clarify access to the 'Primary Contact Person' field, ensuring only authorized users can view and modify this information. Now, only regional coordinators and project managers will have access, addressing confidentiality concerns. [changed: S1, S2]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now explicitly states which user roles have access to view and modify the 'Primary Contact Person' field. Evidence: \"only regional coordinators and project managers will have access\""
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definition of 'Primary Contact Person' is too broad and does not clarify any limits or specific criteria, making it difficult to enforce consistently.",
+      "failure_scenario": "Different users interpret 'Primary Contact Person' differently, leading to inconsistencies and potential miscommunication with government entities due to unqualified individuals being designated as primary contacts.",
+      "resolution_test": "The proposal outlines clear criteria or limitations for what qualifies as a 'Primary Contact Person', including title or role requirements.",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definition of 'Primary Contact Person' is too broad and does not clarify any limits or specific criteria, making it difficult to enforce consistently."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I revised the definition of 'Primary Contact Person' to include specific criteria such as being a government official or a designated representative that has been officially communicated by the respective government entity. [changed: D1]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition of 'Primary Contact Person' now includes specific criteria, addressing the ambiguity in previous drafts. Evidence: \"being a government official or a designated representative that has been officially communicated by the respective government entity\""
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "The assumption that contact data privacy regulations are being followed is too vague without specifying which regulations apply, risking non-compliance.",
+      "failure_scenario": "The system inadvertently exposes personal data without proper consent, violating GDPR regulations and leading to legal repercussions.",
+      "resolution_test": "The proposal specifies which data privacy regulations apply to contact information management and outlines how compliance will be ensured.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumption that contact data privacy regulations are being followed is too vague without specifying which regulations apply, risking non-compliance."
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I have specified that compliance with GDPR regulations will be ensured by obtaining user consent for contact data entry and maintaining data security protocols. This updates the assumption to be more specific about compliance. [changed: A3]"
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now specifies compliance with GDPR, addressing the earlier vagueness. Evidence: \"compliance with GDPR regulations will be ensured by obtaining user consent for contact data entry and maintaining data security protocols\""
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify what process will be followed when a primary contact changes, leaves, or is reassigned, risking confusion and outdated contact information.",
+      "failure_scenario": "A regional coordinator remains unaware of a change in the primary contact due to poor tracking, leading them to contact the wrong individual, damaging relationships with diplomatic entities.",
+      "resolution_test": "The proposal outlines a clear process for handling changes to the primary contact, detailing how updates will be communicated and who is responsible for maintaining this information.",
+      "id": "C4",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify what process will be followed when a primary contact changes, leaves, or is reassigned, risking confusion and outdated contact information."
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The proposal now includes a process for notifying users when a primary contact changes, including responsibilities for maintaining data accuracy and tracking updates that ensures users receive timely information regarding contact changes. [changed: S2, A2]"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal states that users will be notified when the primary contact changes but does not clarify the specific process for how this notification will be achieved or who is ultimately responsible for maintaining this information."
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The process for notifying users about changes to the primary contact will include automatic email notifications sent to the relevant regional coordinators and project managers whenever the primary contact is updated. The responsibility for maintaining this information will fall to designated data managers, who will also oversee the accuracy of the contact details between periodic reviews. [changed: S2, A2]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now clearly outlines the notification process involving automatic emails to relevant users. Evidence: \"The process for notifying users about changes to the primary contact will include automatic email notifications sent to the relevant regional coordinators and project managers whenever the primary contact is updated.\""
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks a clear mechanism for verifying the accuracy of the contact information which could lead to outdated or incorrect data being used.",
+      "failure_scenario": "Inaccurate or outdated contact information remains in the system, causing regional coordinators to rely on incorrect data when engaging with government contacts, potentially harming diplomatic efforts.",
+      "resolution_test": "The proposal includes a systematic approach for verifying and maintaining the accuracy of contact information, including periodic reviews or updates.",
+      "id": "C5",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a clear mechanism for verifying the accuracy of the contact information which could lead to outdated or incorrect data being used."
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The scope now incorporates a mechanism for validating contact information accuracy through periodic reviews, involving regional coordinators who will be responsible for confirming the validity of contact details at set intervals. [changed: A2, S2]"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"The scope now incorporates a mechanism for validating contact information accuracy through periodic reviews, involving regional coordinators who will be responsible for confirming the validity of contact details at set intervals.\""
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address what will happen if a user without permission attempts to access or modify contact information, leaving a security gap.",
+      "failure_scenario": "An unauthorized user attempts to access the contact information for a sensitive diplomatic representative, leading to the risk of data exposure or misuse.",
+      "resolution_test": "The proposal specifies the security measures, including audit logs or alerts for unauthorized access attempts and actions taken against such attempts.",
+      "id": "C6",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address what will happen if a user without permission attempts to access or modify contact information, leaving a security gap."
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The proposal now outlines specific security measures, including access controls, audit logs, and protocols for handling unauthorized access attempts to ensure data confidentiality and integrity. [changed: S1, S2, A1]"
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"The proposal now outlines specific security measures, including access controls, audit logs, and protocols for handling unauthorized access attempts to ensure data confidentiality and integrity.\""
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify who is responsible for maintaining the accuracy of the contact information outside of the reviews, creating a gap in ownership.",
+      "failure_scenario": "If ownership of maintaining the contact records is unclear, regional coordinators may assume updates are handled by someone else, leading to stale data and miscommunication with diplomatic contacts.",
+      "resolution_test": "The proposal identifies who is responsible for maintaining and updating the contact information between periodic reviews.",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify who is responsible for maintaining the accuracy of the contact information outside of the reviews, creating a gap in ownership."
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The proposal now specifies that regional coordinators will be primarily responsible for maintaining the accuracy of contact information, ensuring regular updates are documented and reviewed. Additionally, a designated data manager will oversee this process to ensure accountability. [changed: S2]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal clarifies the ownership of maintaining contact information and the roles involved. Evidence: \"Regional coordinators will be primarily responsible for maintaining the accuracy of contact information, ensuring regular updates are documented and reviewed. Additionally, a designated data manager will oversee this process to ensure accountability.\""
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "Terms like 'periodic review process' lack definition—how often will reviews occur, and what will be the specific criteria for maintaining contact data?",
+      "failure_scenario": "If reviews are not defined in frequency and criteria, there could be inconsistencies in how up-to-date contact records are handled, potentially leading to diplomatic errors due to outdated contacts being used.",
+      "resolution_test": "The proposal specifies the frequency of the periodic review process and the criteria for determining the validity of contact information.",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "Terms like 'periodic review process' lack definition—how often will reviews occur, and what will be the specific criteria for maintaining contact data?"
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The periodic review process will occur bi-annually, and the criteria for maintaining contact data will include verifying that contacts are actively representing their respective government entities and that their information is both current and complete. This will include checking for changes in roles or contact details every six months. [changed: S6]"
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now defines the frequency and criteria for the periodic review process. Evidence: \"The periodic review process will occur bi-annually, and the criteria for maintaining contact data will include verifying that contacts are actively representing their respective government entities and that their information is both current and complete.\""
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks detail on what specific access controls are in place to ensure that only authorized users can view or modify sensitive contact information, raising potential confidentiality risks.",
+      "failure_scenario": "If access controls are not clearly defined, a regional coordinator might accidentally expose sensitive contact data to unauthorized personnel, leading to potential diplomatic conflicts.",
+      "resolution_test": "The proposal details specific access controls and roles defined for viewing and modifying the 'Primary Contact Person' field.",
+      "id": "C9",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks detail on what specific access controls are in place to ensure that only authorized users can view or modify sensitive contact information, raising potential confidentiality risks."
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "I have added specific access control measures to ensure that only authorized users such as regional coordinators and project managers can access, view, and modify the 'Primary Contact Person' field. This also includes roles and permissions that restrict access based on user classifications. [changed: S7]"
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The proposal now details specific access controls ensuring only authorized users have access, addressing confidentiality concerns. Evidence: \"specific access control measures to ensure that only authorized users such as regional coordinators and project managers can access, view, and modify the 'Primary Contact Person' field. This also includes roles and permissions that restrict access based on user classifications.\""
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 3,
+      "open": 3,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring compliance with data privacy regulations as we implement this contact management feature.",
+      "critic_worry": "Undefined access permissions and vague definitions could lead to unauthorized data exposure and inconsistency in contact management.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 6,
+      "open": 3,
+      "resolved": 3,
+      "escalated": 0,
+      "disagreement": 0.46,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring compliance with GDPR while managing sensitive contact data.",
+      "critic_worry": "There are significant gaps in process management for contact updates that could lead to significant diplomatic miscommunications.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 3,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.35,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring users accurately maintain contact information and follow the outlined processes will be critical to the feature's success.",
+      "critic_worry": "Unclear ownership of data updates may result in stale contact information used in diplomatic communications.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 9,
+      "open": 1,
+      "resolved": 8,
+      "escalated": 0,
+      "disagreement": 0.11,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring that users consistently update and maintain contact information accurately, despite the added processes.",
+      "critic_worry": "There's still a lack of clarity on confidentiality measures and access controls for sensitive data.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 9,
+      "open": 0,
+      "resolved": 9,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 85,
+      "proposer_worry": "There may still be gaps in the specifications for the access controls that could lead to potential security issues.",
+      "critic_worry": "The proposal still lacks clarity on the process for handling changes to primary contacts, which could lead to confusion and outdated contact information.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

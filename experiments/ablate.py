@@ -53,6 +53,7 @@ def metrics(folder: Path) -> dict:
         "escalated": sum(i["status"] == "ESCALATED" for i in issues),
         "defend": proposer.count("DEFEND"), "revise": proposer.count("REVISE"), "concede": proposer.count("CONCEDE"),
         "accept": rulings.count("ACCEPT"), "rulings": len(rulings),
+        "to_humans": sum(e["grounds"] == "NEEDS_HUMAN_DECISION" for i in issues for e in i["history"] if e.get("grounds")),
         "rejected_concludes": sum(bool(r["feedback"]) for r in ledger["rounds"]),
         "final_disagreement": ledger["rounds"][-1]["disagreement"], "cost": meta["cost_usd"] or 0.0,
     }
@@ -71,6 +72,7 @@ def summarize(rows: list[dict]) -> dict:
         "escalated to humans (mean)": f"{statistics.mean(r['escalated'] for r in rows):.1f}",
         "Proposer moves: defend / revise / concede": f"{share('defend')} / {share('revise')} / {share('concede')}",
         "runs where the Proposer never defended": f"{sum(r['defend'] == 0 for r in rows)}/{len(rows)}",
+        "defenses saying 'needs a human decision' (total)": str(sum(r["to_humans"] for r in rows)),
         "Critic accept rate": f"{100 * sum(r['accept'] for r in rows) / max(1, sum(r['rulings'] for r in rows)):.0f}%",
         "CONCLUDEs rejected by the gate (total)": str(sum(r["rejected_concludes"] for r in rows)),
         "final disagreement index (mean)": f"{statistics.mean(r['final_disagreement'] for r in rows):.2f}",

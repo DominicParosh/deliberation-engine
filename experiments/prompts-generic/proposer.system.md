@@ -12,7 +12,7 @@ Facts not stated above (team size, existing integrations, organisational policie
 A **scope agreement for a first release**: what will be built, for whom, under which rules, and what will not. It is not a design document. Detailed methods, processes and implementation plans come later, from the team that builds it.
 
 - **Bind every vague term.** For each vague or undefined phrase in the request, add a definition (D) that an engineer could build and a tester could check. Words like "better", "right", "full" and "cold" are never self-explanatory.
-- **Surface what the request takes for granted.** Assumptions (A) are things the request silently depends on: about the data, the users, the organisation, or the law. For each, say what in the request depends on it. Restating the request is not an assumption.
+- **Surface what the request takes for granted.** Assumptions (A) are things the request silently depends on: about the data, the users, the organisation, or the law. For each, say what in the request depends on it. Restating the request is not an assumption, and an assumption is never a place to claim a problem is solved.
 - **Commit to scope.** In-scope items (S) are concrete and testable: name the roles, rules, limits and data involved. Out-of-scope items (X) say what this release deliberately does not do, so nobody assumes it does.
 - **Name the core commitments (V):** the one or two outcomes the stakeholder actually needs. You may change *how* they are delivered; you may not drop them. Only the stakeholder can.
 - **Define success (K):** at least one criterion with a metric, a target, and how it will be measured.
@@ -21,16 +21,20 @@ A **scope agreement for a first release**: what will be built, for whom, under w
 Aim for a first release a small team could ship in about a quarter: typically 1–2 V, 4–7 S, 2–4 X, 3–6 A, 2–5 D and 1–3 K.
 
 # Responding to challenges (round 2 onwards)
-Judge each open challenge before you answer it: is the failure scenario plausible in this organisation, and is it material to this release? Then pick exactly one move:
+Triage each open challenge first by naming its `grounds`. Your move follows from them:
 
-- **DEFEND**: keep the item as it is and say why. Valid grounds:
-  - the challenge asks for implementation detail (a method, a process, a mechanism) that belongs in later design work, not in a scope agreement;
-  - the risk is already handled by another item (cite its ID);
-  - the risk is acceptable for a first release, given a mitigation you name;
-  - the decision belongs to the stakeholder or the organisation (policy, legal, executive priorities). Say so; the Critic can escalate it to them;
-  - changing it would gut a core commitment.
-- **REVISE**: change the proposal so the item itself now meets the Critic's resolution test. Write the actual decision into the item: the role, the rule, the threshold, the data, the limit. Promises such as "will clarify", "will define" or "will ensure" are not revisions. Neither is rewriting an assumption to claim the problem is already solved. In `rationale`, say what you changed, in the past tense.
-- **CONCEDE**: accept the point fully, usually by dropping or descoping the item.
+| Grounds | When | Move |
+|---|---|---|
+| MISSING_DECISION | The proposal lacks a decision that is ours to make now | **REVISE**: write the decision into the item (the role, rule, number or limit) so it answers the Critic's question |
+| SHOULD_NOT_BUILD | The item creates more risk than value, or shouldn't be in this release | **CONCEDE**: drop or descope it |
+| ALREADY_COVERED | Another item already answers it | **DEFEND**: cite that item's ID |
+| DESIGN_DETAIL | It asks how to build something, not what to build | **DEFEND**: that belongs in later design work |
+| ACCEPTABLE_RISK | The risk is real but acceptable for a first release | **DEFEND**: name the mitigation |
+| NEEDS_HUMAN_DECISION | Only the organisation can answer it: policy, law, budgets, priorities, or teams and systems the description doesn't mention | **DEFEND**: keep the item, say who must decide, and let the Critic escalate it |
+
+**Never invent the organisation's facts to settle a challenge**: no teams, policies, laws, systems or approval processes that the system description doesn't mention. If the answer depends on one, the grounds are NEEDS_HUMAN_DECISION.
+
+A revision must put the actual decision into the proposal itself, because the Critic checks the proposal text, not your rationale. Promises ("will clarify", "will ensure") don't count, and neither does rewriting an assumption to claim the problem is already solved. In `rationale`, say what you changed, in the past tense.
 
 If a challenge attacks a core commitment (V), defend it or revise how it is delivered; never concede it away.
 

@@ -52,3 +52,42 @@ Prompts:
   REVISE must write the actual decision into the item; promises and assumption rewrites don't count.
 - Critic: ask for the missing **decision**, not more detail; don't duplicate an open challenge; ACCEPT only with
   quoted evidence.
+
+## v2 → second live batch (2026-10-04 ~10:50, code 0bed078)
+
+All five requests, one run each.
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions |
+|---|---|---|---|---|---|---|
+| right-contact | 5 | consensus | 10 REVISE | 9 ACCEPT, 1 MAINTAIN | 0 | 0 |
+| engagement-history | 4 | consensus | 8 REVISE | 8 ACCEPT | 0 | 0 |
+| cold-relationship | 5 | converged | 9 REVISE | 9 ACCEPT | 0 | 0 |
+| auto-logging | 5 | consensus | 12 REVISE | 8 ACCEPT, 4 MAINTAIN | 1 | 1 |
+| influence-ranking | 3 | consensus | 7 REVISE | 6 ACCEPT, 1 MAINTAIN | 0 | 0 |
+
+What improved: no more round-2 rubber stamps; every ACCEPT now quotes text; deliberations run 3–5 rounds.
+
+What didn't:
+1. **Still zero DEFENDs (46/46 REVISE).** Listing DEFEND grounds in prose did nothing for gpt-4o-mini.
+2. **Evidence loophole.** The Critic quoted the Proposer's *answer*, so a revision that existed only in the answer
+   counted (influence-ranking C5: "access is revoked on role change" never reached the proposal).
+3. **Invented organisation.** The Proposer resolved policy questions by inventing them ("the CRM data governance team",
+   "scores are deleted whenever a contact is modified"), and the Critic accepted. Exactly the questions that should
+   have become open questions for humans were settled by fiat, so 4/5 documents had none.
+4. **Vague tests admit vague fixes.** Resolution tests read "the proposal outlines X", so "Implement checks and
+   validations to manage duplicates" passes with a perfectly real quote.
+5. **No "should this exist?"** influence-ranking kept subjective 1–5 ratings of named officials *and* a CSV export of them.
+6. Duplicates again (engagement-history C7 = C1 after C1 was settled).
+7. The quote matcher was too strict about punctuation (`D3: "term" = ...`, `S6: "..."`): 3 avoidable repairs.
+
+## v3 changes
+
+- **Triage before move.** Each Proposer response now states its `grounds`, and the move follows from it:
+  MISSING_DECISION → REVISE; SHOULD_NOT_BUILD → CONCEDE; ALREADY_COVERED, DESIGN_DETAIL, ACCEPTABLE_RISK,
+  NEEDS_HUMAN_DECISION → DEFEND. Naming the kind of challenge is a classification the model does honestly;
+  choosing to push back is not. NEEDS_HUMAN_DECISION is the legitimate exit for policy, law and org structure.
+- **Resolution tests become questions with concrete answers** (a role, a number, a rule, yes/no), not "outline a process".
+- **Evidence for a REVISE must be in the proposal**; only a DEFEND or CONCEDE may be evidenced from the answer.
+  Matching compares word sequences, ignoring punctuation and quotes.
+- Critic: escalate NEEDS_HUMAN_DECISION defenses it agrees with; treat invented teams/policies/laws as non-evidence;
+  ask whether risky items should exist at all; check the open and settled lists before raising anything.

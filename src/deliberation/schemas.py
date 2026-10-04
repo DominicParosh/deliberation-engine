@@ -25,7 +25,9 @@ def Choice(*values: str):  # noqa: N802 - used like a type
 
 Lens = Choice("CONFIDENTIALITY", "DEFINITIONS", "OWNERSHIP", "DATA_QUALITY", "OPERATIONS", "COMPLIANCE", "FEASIBILITY")
 Severity = Choice("BLOCKER", "MAJOR", "MINOR")
-Action = Choice("DEFEND", "REVISE", "CONCEDE")
+Grounds = Choice("MISSING_DECISION", "SHOULD_NOT_BUILD", "ALREADY_COVERED", "DESIGN_DETAIL", "ACCEPTABLE_RISK",
+                 "NEEDS_HUMAN_DECISION")
+MOVE_FOR = {"MISSING_DECISION": "REVISE", "SHOULD_NOT_BUILD": "CONCEDE"}  # every other ground is a DEFEND
 Ruling = Choice("ACCEPT", "MAINTAIN", "ESCALATE")
 Signal = Choice("CONTINUE", "CONCLUDE")
 
@@ -80,9 +82,15 @@ class Proposal(BaseModel):
 
 class Response(BaseModel):
     challenge_id: str
-    action: Action
-    rationale: str = Field(description="1-3 sentences. For CONCEDE, name the argument that changed your mind.")
-    changed_ids: list[str] = Field(description="IDs you added, edited or removed for this response; empty for DEFEND.")
+    grounds: Grounds = Field(description="What kind of challenge this is. It decides your move: MISSING_DECISION means "
+                                         "REVISE, SHOULD_NOT_BUILD means CONCEDE, anything else means DEFEND.")
+    rationale: str = Field(description="1-3 sentences. For a revision, what you changed, in the past tense. "
+                                       "For a defense, why the item stands. For a concession, the argument that convinced you.")
+    changed_ids: list[str] = Field(description="IDs you added, edited or removed for this response; empty for a defense.")
+
+    @property
+    def action(self) -> str:
+        return MOVE_FOR.get(self.grounds, "DEFEND")
 
 
 class ProposerTurn(BaseModel):
@@ -101,7 +109,8 @@ class NewChallenge(BaseModel):
     severity: Severity
     challenge: str = Field(description="The objection or question, in one or two sentences.")
     failure_scenario: str = Field(description="A concrete story of how this goes wrong, using the CRM's real actors and data.")
-    resolution_test: str = Field(description="What the Proposer must show or change for you to accept.")
+    resolution_test: str = Field(description="The question the proposal must answer for you to accept, answerable with a "
+                                             "concrete fact: a role, a number, a rule or yes/no.")
 
 
 class Verdict(BaseModel):

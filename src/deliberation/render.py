@@ -21,18 +21,22 @@ def proposal_md(p: Proposal) -> str:
     return "\n".join(out)
 
 
+def _move(e) -> str:
+    return e.move + (f" ({e.grounds.lower().replace('_', ' ')})" if e.grounds else "")
+
+
 def issue_md(i: Issue, history: bool = True) -> str:
     out = [f"**{i.id}** · {i.severity} · {i.lens} · targets {', '.join(i.targets)}",
            f"- Challenge: {i.challenge}", f"- Failure scenario: {i.failure_scenario}", f"- Resolution test: {i.resolution_test}"]
     if history:
-        out += [f"- R{e.round} {e.actor} {e.move}: {e.text}" for e in i.history if e.move != "RAISE"]
+        out += [f"- R{e.round} {e.actor} {_move(e)}: {e.text}" for e in i.history if e.move != "RAISE"]
         if i.strikes and i.status == "OPEN":
             out.append(f"- Maintained {i.strikes} time(s) so far; a second MAINTAIN hands it to humans.")
     return "\n".join(out)
 
 
 def _moves(ledger: Ledger, rnd: int, *actors: str) -> list[str]:
-    return [f"- **{i.id}** {e.move}: {e.text}" for i in ledger.issues.values() for e in i.history
+    return [f"- **{i.id}** {_move(e)}: {e.text}" for i in ledger.issues.values() for e in i.history
             if e.round == rnd and e.actor in actors and e.move != "RAISE"]
 
 
