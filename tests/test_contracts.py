@@ -254,6 +254,47 @@ def test_weak_phrases_are_only_the_ones_that_never_name_anything():
         assert ledger.verdict_problem(verdict(evidence=text)) == "", text
 
 
+def test_an_unnamed_role_is_weak_only_when_no_role_is_named():
+    from deliberation.ledger import weak_phrase
+
+    # v7 auto-logging C8: a concrete answer that a role-blind check refused twice, auto-escalating it
+    assert weak_phrase("access controls limited to authorized users based on their role, specifically the roles of "
+                       "regional coordinators and project managers") == ""
+    assert weak_phrase("a designated manager will be assigned to maintain the records") == "designated manager"
+    assert weak_phrase("only authorized users can access sensitive information") == "authorized users"
+    assert weak_phrase("project managers with appropriate clearance will be established later") == "will be established"
+
+
+def test_a_follow_up_challenge_may_name_the_challenge_it_follows():
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        if round_of(prompt) == 2:
+            follow_up = {**challenge("MAJOR", "OWNERSHIP", ("C1",)), "resolution_test": "Who revokes access when a coordinator leaves?"}
+            return critic_json({c: "ACCEPT" for c in open_ids(prompt)}, new=[follow_up])
+        return critic_json({c: "ACCEPT" for c in open_ids(prompt)}, signal="CONCLUDE")
+
+    llms = agents(critic=critic)
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert result.meta["repairs"] == 0 and result.ledger.issues["C4"].targets == THREE[0]["targets"]
+
+
+def test_a_resolution_test_must_be_a_question_and_an_escalated_one_cannot_be_asked_again():
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, status="ESCALATED", **{**challenge(), "resolution_test":
+                                "How long are logged meetings kept?"})
+    opening = lambda *tests: ledger.check_critic(CriticTurnStub(tests), 2, budget=3)  # noqa: E731
+    assert any("ending with '?'" in p for p in opening("Outline the retention process."))
+    assert any("with human decision-makers now" in p for p in opening("How long are logged meetings kept?"))
+
+
+def CriticTurnStub(tests):  # noqa: N802 - a CriticTurn with no rulings and the given new questions
+    from deliberation.schemas import CriticTurn, NewChallenge
+
+    return CriticTurn(verdicts=[], signal="CONTINUE", lens_coverage=[], confidence=50, biggest_worry="w",
+                      new_challenges=[NewChallenge(**{**challenge(), "resolution_test": t}) for t in tests])
+
+
 def test_repeated_questions_are_caught_but_different_ones_are_not():
     ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
     ledger.issues["C1"] = Issue(id="C1", round_raised=1, **{**challenge(), "resolution_test":

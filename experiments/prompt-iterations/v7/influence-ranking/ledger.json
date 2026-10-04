@@ -1,0 +1,963 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "pre_mortem": "A year after launch, the 'Influence Rating' feature resulted in a major incident where sensitive diplomatic contacts were mistakenly categorized as 'High' based on misleading engagement history. This led to incorrect prioritization of outreach efforts, resulting in confidential communications being sent to inappropriate contacts. The oversight caused diplomatic tensions and reputational harm to the organization.",
+  "gaps": [
+    "Who decides the predefined criteria for influence ratings, and what safeguards ensure they respect confidentiality?",
+    "What guidelines exist for regional coordinators to ensure consistent and accurate input of data related to engagement?",
+    "What happens if a user disagrees with an influence rating, and how is this addressed without altering sensitive records?",
+    "How will influence ratings be communicated or exported to ensure confidential records are not exposed?",
+    "What specific process ensures that the data protection officer's review of influence ratings sufficiently protects sensitive information?",
+    "What is the procedure for re-evaluating influence ratings if contacts change roles or if there are changes in the political landscape?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will deliver an 'Influence Rating' feature that categorizes government contacts based on their influence level and engagement history, aimed at regional coordinators and project managers. This feature will enable users to prioritize their outreach efforts effectively.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence rating for each government contact."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a way to prioritize outreach based on influence rating."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a dashboard view for regional coordinators to see a list of contacts sorted by influence rating."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to adjust the influence ratings based on additional qualitative factors such as engagement history and project involvement."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure the influence rating mechanism is reviewed by the data protection officer to comply with sensitivity standards."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials for users on how to interpret and use the influence ratings effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a feature for users to edit or comment on the influence ratings."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not directly track or analyze the reasons behind each influence rating."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not provide automated influence ratings based on external data sources."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The influence of contacts can be reliably categorized into 'High', 'Medium', or 'Low', which allows for effective prioritization."
+        },
+        {
+          "id": "A2",
+          "text": "Users require a clear method to understand and utilize influence ratings for effective engagement."
+        },
+        {
+          "id": "A3",
+          "text": "Regional coordinators and project managers have the ability to consistently input data related to engagement that influences ratings."
+        },
+        {
+          "id": "A4",
+          "text": "Data protection regulations allow the use of influence ratings without overriding confidentiality concerns."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as 'High' for contacts who are key decision-makers, 'Medium' for those with notable involvement, and 'Low' for contacts with minimal influence."
+        },
+        {
+          "id": "D2",
+          "text": "'Predefined criteria' means set standards based on a combination of the contact's role, history of engagement, and their position within the government structure."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve an influence rating definition acceptance by at least 75% of users in the first month of rollout, measured through user feedback surveys."
+        },
+        {
+          "id": "K2",
+          "text": "80% of regional coordinators find the influence rating useful for prioritizing outreach actions, assessed via a follow-up survey within three months."
+        }
+      ]
+    },
+    {
+      "summary": "This release will deliver an 'Influence Rating' feature that categorizes government contacts based on their influence level and engagement history, aimed at regional coordinators and project managers. The feature now includes safeguards for confidentiality and clearer definitions to enhance consistency in deployment and use by users.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence rating for each government contact."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a way to prioritize outreach based on influence rating."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria that include the contact's seniority level within the government, their role in decision-making processes, and documented engagement history, while ensuring compliance with data privacy standards."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a dashboard view for regional coordinators to see a list of contacts sorted by influence rating."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to qualitatively adjust the influence ratings based on additional factors, while requiring a justification for each adjustment documented in a secure manner to protect sensitive opinions and ensure transparency."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure the influence rating mechanism is reviewed by the data protection officer to comply with sensitivity standards."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials for users on how to interpret and use the influence ratings effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a feature for users to edit or comment on the influence ratings."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not directly track or analyze the reasons behind each influence rating."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not provide automated influence ratings based on external data sources."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The influence of contacts can be reliably categorized into 'High', 'Medium', or 'Low', which allows for effective prioritization."
+        },
+        {
+          "id": "A2",
+          "text": "Users require a clear method to understand and utilize influence ratings for effective engagement."
+        },
+        {
+          "id": "A3",
+          "text": "Regional coordinators and project managers have the ability to consistently input data related to engagement that influences ratings."
+        },
+        {
+          "id": "A4",
+          "text": "Data protection regulations allow the use of influence ratings without overriding confidentiality concerns."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as follows: 'High' for contacts influencing major policy decisions, 'Medium' for contacts with significant involvement in relevant projects, and 'Low' for contacts with limited or no decision-making authority."
+        },
+        {
+          "id": "D2",
+          "text": "'Predefined criteria' means set standards based on the contact's role within governmental structures, their historical engagement frequency in relevant projects, and their access to critical information regarding policy developments."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve an influence rating definition acceptance by at least 75% of users in the first month of rollout, measured through user feedback surveys."
+        },
+        {
+          "id": "K2",
+          "text": "80% of regional coordinators find the influence rating useful for prioritizing outreach actions, assessed via a follow-up survey within three months."
+        }
+      ]
+    },
+    {
+      "summary": "This release will deliver an 'Influence Rating' feature that categorizes government contacts based on their influence level and engagement history, aimed at regional coordinators and project managers. The feature now includes safeguards for confidentiality and clearer definitions to enhance consistency in deployment and use by users.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence rating for each government contact."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a way to prioritize outreach based on influence rating."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria that include the contact's seniority level within the government, their role in decision-making processes, and documented engagement history, while ensuring compliance with data privacy standards."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a dashboard view for regional coordinators to see a list of contacts sorted by influence rating."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to qualitatively adjust the influence ratings based on additional factors, while requiring a justification for each adjustment documented in a secure manner to protect sensitive opinions and ensure transparency."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure the influence rating mechanism is reviewed by the data protection officer to comply with sensitivity standards."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials for users on how to interpret and use the influence ratings effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a feature for users to edit or comment on the influence ratings."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not directly track or analyze the reasons behind each influence rating."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not provide automated influence ratings based on external data sources."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The influence of contacts can be reliably categorized into 'High', 'Medium', or 'Low', which allows for effective prioritization."
+        },
+        {
+          "id": "A2",
+          "text": "Users require a clear method to understand and utilize influence ratings for effective engagement."
+        },
+        {
+          "id": "A3",
+          "text": "Regional coordinators and project managers have the ability to consistently input data related to engagement that influences ratings."
+        },
+        {
+          "id": "A4",
+          "text": "Data protection regulations allow the use of influence ratings without overriding confidentiality concerns."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as follows: 'High' for contacts influencing major policy decisions, 'Medium' for contacts with significant involvement in relevant projects, and 'Low' for contacts with limited or no decision-making authority."
+        },
+        {
+          "id": "D2",
+          "text": "'Predefined criteria' means set standards based on the contact's role within governmental structures, their historical engagement frequency in relevant projects, and their access to critical information regarding policy developments."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve an influence rating definition acceptance by at least 75% of users in the first month of rollout, measured through user feedback surveys."
+        },
+        {
+          "id": "K2",
+          "text": "80% of regional coordinators find the influence rating useful for prioritizing outreach actions, assessed via a follow-up survey within three months."
+        }
+      ]
+    },
+    {
+      "summary": "This release will deliver an 'Influence Rating' feature that categorizes government contacts based on their influence level and engagement history, aimed at regional coordinators and project managers. The feature now includes safeguards for confidentiality and clearer definitions to enhance consistency in deployment and use by users.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence rating for each government contact."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a way to prioritize outreach based on influence rating."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria that include; seniority level (not less than department head or equivalent for 'High'), their role in decision-making processes related to our projects, and documented engagement history (at least three engagements for 'High', two for 'Medium', and one for 'Low') while additionally requiring a confidentiality review of sensitive contacts by designated personnel before finalizing influence ratings to ensure compliance with data privacy standards."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a dashboard view for regional coordinators to see a list of contacts sorted by influence rating."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to qualitatively adjust the influence ratings based on additional factors, while requiring a justification for each adjustment documented in a secure manner to protect sensitive opinions and ensure transparency."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure the influence rating mechanism is reviewed by the data protection officer to comply with sensitivity standards."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials for users on how to interpret and use the influence ratings effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a feature for users to edit or comment on the influence ratings."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not directly track or analyze the reasons behind each influence rating."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not provide automated influence ratings based on external data sources."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The influence of contacts can be reliably categorized into 'High', 'Medium', or 'Low', which allows for effective prioritization."
+        },
+        {
+          "id": "A2",
+          "text": "Users require a clear method to understand and utilize influence ratings for effective engagement."
+        },
+        {
+          "id": "A3",
+          "text": "Regional coordinators and project managers have the ability to consistently input data related to engagement that influences ratings."
+        },
+        {
+          "id": "A4",
+          "text": "Data protection regulations allow the use of influence ratings without overriding confidentiality concerns."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as follows: 'High' for contacts influencing major policy decisions (requires documented evidence of participation in at least two major initiatives), 'Medium' for contacts with significant involvement in relevant projects (must have contributed to at least one project decision), and 'Low' for contacts with limited or no decision-making authority (historical engagement record must be noted)."
+        },
+        {
+          "id": "D2",
+          "text": "'Predefined criteria' means set standards based on the contact's role within governmental structures, their historical engagement frequency in relevant projects, and their access to critical information regarding policy developments."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve an influence rating definition acceptance by at least 75% of users in the first month of rollout, measured through user feedback surveys."
+        },
+        {
+          "id": "K2",
+          "text": "80% of regional coordinators find the influence rating useful for prioritizing outreach actions, assessed via a follow-up survey within three months."
+        }
+      ]
+    },
+    {
+      "summary": "This release will deliver an 'Influence Rating' feature that categorizes government contacts based on their influence level and engagement history, aimed at regional coordinators and project managers. The feature now includes safeguards for confidentiality and clearer definitions to enhance consistency in deployment and use by users, along with measures to ensure data accuracy.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Enable users to view an influence rating for each government contact."
+        },
+        {
+          "id": "V2",
+          "text": "Provide a way to prioritize outreach based on influence rating."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria that include; seniority level (not less than department head or equivalent for 'High'), their role in decision-making processes related to our projects, and documented engagement history (at least three engagements for 'High', two for 'Medium', and one for 'Low'). Additionally, each engagement record must be verified by a regional coordinator for accuracy before categorization, with quarterly reviews of engagement data conducted by a designated manager to ensure ongoing reliability and address discrepancies."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a dashboard view for regional coordinators to see a list of contacts sorted by influence rating."
+        },
+        {
+          "id": "S3",
+          "text": "Allow users to qualitatively adjust the influence ratings based on additional factors, while requiring a justification for each adjustment documented in a secure manner to protect sensitive opinions and ensure transparency."
+        },
+        {
+          "id": "S4",
+          "text": "Ensure the influence rating mechanism is reviewed by the data protection officer to comply with sensitivity standards."
+        },
+        {
+          "id": "S5",
+          "text": "Provide training materials for users on how to interpret and use the influence ratings effectively."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include a feature for users to edit or comment on the influence ratings."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not directly track or analyze the reasons behind each influence rating."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not provide automated influence ratings based on external data sources."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The influence of contacts can be reliably categorized into 'High', 'Medium', or 'Low', which allows for effective prioritization."
+        },
+        {
+          "id": "A2",
+          "text": "Users require a clear method to understand and utilize influence ratings for effective engagement."
+        },
+        {
+          "id": "A3",
+          "text": "Regional coordinators and project managers have the ability to consistently input data related to engagement that influences ratings."
+        },
+        {
+          "id": "A4",
+          "text": "Data protection regulations allow the use of influence ratings without overriding confidentiality concerns."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as follows: 'High' for contacts influencing major policy decisions (requires documented evidence of participation in at least two major initiatives), 'Medium' for contacts with significant involvement in relevant projects (must have contributed to at least one project decision), and 'Low' for contacts with limited or no decision-making authority (historical engagement record must be noted)."
+        },
+        {
+          "id": "D2",
+          "text": "'Predefined criteria' means set standards based on the contact's role within governmental structures, their historical engagement frequency in relevant projects, and their access to critical information regarding policy developments."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "Achieve an influence rating definition acceptance by at least 75% of users in the first month of rollout, measured through user feedback surveys."
+        },
+        {
+          "id": "K2",
+          "text": "80% of regional coordinators find the influence rating useful for prioritizing outreach actions, assessed via a follow-up survey within three months."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not specify how the predefined criteria for influence ratings will respect the confidentiality of sensitive diplomatic contacts.",
+      "failure_scenario": "A regional coordinator accesses the influence rating of a confidential contact and uses the information recklessly, leading to a security breach and exposure of sensitive diplomatic details.",
+      "resolution_test": "What are the specific criteria for assigning 'High', 'Medium', or 'Low' influence ratings, and how are they validated for confidentiality?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify how the predefined criteria for influence ratings will respect the confidentiality of sensitive diplomatic contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits clarify the specific criteria employed when assigning influence ratings, which are sensitive to confidentiality and privacy standards.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1",
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised S1 provides details on the predefined criteria and mentions compliance with data privacy, which directly addresses the confidentiality concern. Fact: Criteria include seniority level, role in decision-making, and engagement history; compliance with data privacy is ensured. Evidence: \"Create an 'Influence Rating' field that categorizes contacts as 'High', 'Medium', or 'Low' based on predefined criteria that include the contact's seniority level within the government, their role in decision-making processes, and documented engagement history, while ensuring compliance with data privacy standards.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is insufficient clarity on who is responsible for ensuring the accuracy and consistency of the data used in determining influence ratings.",
+      "failure_scenario": "A project manager inputs outdated or incorrect engagement history for a contact, leading to an inaccurate influence rating that misguides outreach efforts.",
+      "resolution_test": "Who will be accountable for monitoring the accuracy of input data related to engagement that influences ratings?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is insufficient clarity on who is responsible for ensuring the accuracy and consistency of the data used in determining influence ratings.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The responsibility for ensuring the accuracy and consistency of the data used in determining influence ratings needs to be established by organizational policy, as it depends on existing roles and accountability structures that are not defined here.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The response indicates that the accountability structure is not defined and requires organizational input, leaving the challenge unaddressed.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not clarify how qualitative adjustments made by users to influence ratings will be protected, potentially exposing sensitive opinions or biases.",
+      "failure_scenario": "A regional coordinator qualitatively adjusts a contact's influence rating based on subjective criteria, which then influences outreach priority negatively or unfairly, leading to backlash.",
+      "resolution_test": "What controls are in place to ensure that qualitative adjustments to influence ratings do not compromise confidentiality or expose sensitive opinions?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how qualitative adjustments made by users to influence ratings will be protected, potentially exposing sensitive opinions or biases.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit introduces safeguards for qualitative adjustments by requiring documentation to protect confidentiality and minimize biases.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised S3 clarifies that justifications for qualitative adjustments are secure, addressing confidentiality. Fact: Qualitative adjustments require justifications documented securely to protect sensitive opinions. Evidence: \"Allow users to qualitatively adjust the influence ratings based on additional factors, while requiring a justification for each adjustment documented in a secure manner to protect sensitive opinions and ensure transparency.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "D1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definitions provided regarding influence ratings are subjective and lack clear, measurable criteria that can be tested or evaluated objectively.",
+      "failure_scenario": "Regional coordinators misinterprete 'High' influence due to differing subjective opinions, causing inconsistencies in outreach prioritization.",
+      "resolution_test": "What are the exact and measurable definitions of 'High', 'Medium', and 'Low' influence that can be uniformly applied by all users?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions provided regarding influence ratings are subjective and lack clear, measurable criteria that can be tested or evaluated objectively.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit provides clear, measurable definitions for determining influence ratings, helping to standardize evaluations across users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Revised D1 provides clear definitions, addressing the challenge raised. Fact: Definitions of influence ratings are clearly laid out and categorized. Evidence: \"'Influence Rating' means a categorized assessment of a contact's potential impact on decisions, defined as follows: 'High' for contacts influencing major policy decisions, 'Medium' for contacts with significant involvement in relevant projects, and 'Low' for contacts with limited or no decision-making authority.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "D2"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'predefined criteria' is not sufficiently defined, leading to potential inconsistencies in how different users apply these criteria without a standard framework.",
+      "failure_scenario": "Different regional coordinators apply their interpretations of 'predefined criteria', leading to inflated ratings for some contacts and deflated ratings for others, jeopardizing outreach accuracy.",
+      "resolution_test": "What specific standards constitute the 'predefined criteria' for influence ratings that are universally applicable?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'predefined criteria' is not sufficiently defined, leading to potential inconsistencies in how different users apply these criteria without a standard framework.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a clearer, agreed-upon framework for the criteria used in influence ratings, promoting consistency across users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Revised D2 defines the 'predefined criteria', resolving the challenge. Fact: Specific standards are set for determining 'predefined criteria' for influence ratings. Evidence: \"'Predefined criteria' means set standards based on the contact's role within governmental structures, their historical engagement frequency in relevant projects, and their access to critical information regarding policy developments.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "X1"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MINOR",
+      "challenge": "The proposal does not outline how conflicts arising from disagreements over influence ratings will be handled, leading to potential disputes among users.",
+      "failure_scenario": "Two project managers disagree on the influence rating of a key contact, leading to confusion and ineffective outreach strategies.",
+      "resolution_test": "What process is in place for resolving disputes over influence ratings among users?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not outline how conflicts arising from disagreements over influence ratings will be handled, leading to potential disputes among users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The current proposal states that qualitative adjustments will have documentation requirements, but it is a design detail best examined in subsequent development discussions.",
+          "grounds": "DESIGN_DETAIL",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The response maintains the design decision to not include an editing feature, which addresses the challenge but lacks a resolution process. Fact: No feature for editing or commenting on influence ratings is included. Evidence: \"This release will not include a feature for users to edit or comment on the influence ratings.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "A process for monitoring and ensuring the accuracy of the engagement data necessary for influence ratings is undefined, risking incorrect prioritization.",
+      "failure_scenario": "A project manager inputs outdated engagement history due to a lack of defined ownership, resulting in inaccurate influence ratings that misguide outreach efforts.",
+      "resolution_test": "What specific policies will be put in place to designate responsibility for ensuring the accuracy of engagement data?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "A process for monitoring and ensuring the accuracy of the engagement data necessary for influence ratings is undefined, risking incorrect prioritization.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Establishing a process for monitoring and ensuring the accuracy of engagement data requires input from the organization regarding who will hold responsibility for data accuracy and what specific policies will be put in place.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposer does not provide specific policies or designate responsibility for ensuring data accuracy, which remains undefined.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clarify how the predefined criteria for influence ratings will respect the confidentiality of sensitive diplomatic contacts, risking exposure of sensitive information.",
+      "failure_scenario": "A regional coordinator inadvertently marks a sensitive diplomatic contact as 'High' influence based on vague criteria, leading to confidential information being communicated without proper clearance.",
+      "resolution_test": "What specific precautions will be implemented to ensure confidentiality is upheld during the categorization process?",
+      "id": "C8",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify how the predefined criteria for influence ratings will respect the confidentiality of sensitive diplomatic contacts, risking exposure of sensitive information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits provide specific thresholds for categorizing influence ratings and add a mandated confidentiality review process to mitigate risks around sensitive diplomatic contacts.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not contain a specific statement regarding the role or process involved in upholding confidentiality during the categorization of sensitive contacts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify the role of the designated data protection officer in the confidentiality review process for sensitive contacts to mitigate risks around the exposure of sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This evidence specifies that engagement records require verification, addressing the confidentiality concern related to sensitive contacts. Fact: Engagement records must be verified for accuracy before the categorization of influence ratings. Evidence: \"each engagement record must be verified by a regional coordinator for accuracy before categorization\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C9": {
+      "targets": [
+        "S1"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The criteria for influence ratings are still too vague and subjective, which could lead to inconsistent application across different users.",
+      "failure_scenario": "Two different regional coordinators apply conflicting interpretations of influence ratings due to the lack of clear definitions, resulting in mismanaged outreach efforts.",
+      "resolution_test": "What is the exact, defined process for categorizing contacts into High, Medium, and Low influence ratings?",
+      "id": "C9",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The criteria for influence ratings are still too vague and subjective, which could lead to inconsistent application across different users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revised definition establishes clear, measurable criteria that govern how influence ratings are categorized, reducing subjectivity and inconsistency between users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revised definition establishes clear, measurable criteria that govern how influence ratings are categorized, reducing subjectivity and inconsistency. Fact: influence ratings are defined with clear, measurable criteria based on specific requirements for each rating level. Evidence: \"defined as follows: 'High' for contacts influencing major policy decisions (requires documented evidence of participation in at least two major initiatives), 'Medium' for contacts with significant involvement in relevant projects (must have contributed to at least one project decision), and 'Low' for contacts with limited or no decision-making authority\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C10": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not define how discrepancies in engagement history data are handled, risking incorrect influence ratings if engagement data is inaccurate or incomplete.",
+      "failure_scenario": "If a regional coordinator relies on inaccurate engagement records, they may classify a sensitive diplomatic contact as 'High' without the necessary engagement history, resulting in poorly targeted outreach efforts and potential diplomatic incidents.",
+      "resolution_test": "What specific processes or checks will ensure the accuracy and reliability of engagement data used for influence ratings?",
+      "id": "C10",
+      "round_raised": 4,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define how discrepancies in engagement history data are handled, risking incorrect influence ratings if engagement data is inaccurate or incomplete.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 5,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits introduce a verification step for engagement records to ensure data accuracy and reliability in the influence rating process, addressing risks associated with incorrect engagement history.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 5,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The verification requirement for engagement records addresses the concern about data quality in determining influence ratings. Fact: Engagement records must be verified for accuracy before the categorization of influence ratings. Evidence: \"each engagement record must be verified by a regional coordinator for accuracy before categorization\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 30,
+      "proposer_worry": "There may be resistance from users regarding how influence is measured and perceived.",
+      "critic_worry": "The influence rating feature could lead to incorrect categorizations that breach confidentiality and harm diplomatic relations.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 1,
+      "resolved": 5,
+      "escalated": 1,
+      "disagreement": 0.29,
+      "proposer_confidence": 85,
+      "critic_confidence": 60,
+      "proposer_worry": "There may still be risks associated with how qualitative adjustments are managed and documented.",
+      "critic_worry": "Without clear accountability for data accuracy, the influence ratings could remain misleading, leading to serious operational failures.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 9,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 2,
+      "disagreement": 0.47,
+      "proposer_confidence": 80,
+      "critic_confidence": 30,
+      "proposer_worry": "The commitment to ensuring data accuracy and its enforcement may still rely on organizational oversight.",
+      "critic_worry": "Lack of clear responsibility and insufficient precautions for confidentiality continue to pose significant risks.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 10,
+      "open": 2,
+      "resolved": 6,
+      "escalated": 2,
+      "disagreement": 0.43,
+      "proposer_confidence": 75,
+      "critic_confidence": 60,
+      "proposer_worry": "Potential inconsistencies in how influence ratings are applied across different users if definitions are not adhered to.",
+      "critic_worry": "There is still a risk of inaccurate or incomplete data leading to improper influence ratings, which could have serious diplomatic consequences.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 5,
+      "raised": 10,
+      "open": 0,
+      "resolved": 8,
+      "escalated": 2,
+      "disagreement": 0.19,
+      "proposer_confidence": 80,
+      "critic_confidence": 85,
+      "proposer_worry": "Ensuring that engagement data remains accurate and confidential throughout the process.",
+      "critic_worry": "The process for ensuring the accuracy and reliability of the engagement history is still heavily reliant on regional coordinators, which can introduce variability.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

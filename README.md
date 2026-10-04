@@ -90,8 +90,8 @@ always schema-valid) that the orchestrator checks against the ledger before appl
   process will be established"); otherwise a test that needs authority neither agent has (law, policy,
   budgets, existing teams) → **ESCALATE** to humans, and any other → **MAINTAIN**, back to the Proposer. An
   answer that rests on a team, policy or system nobody has confirmed is never accepted.
-- An illegal move (a missing answer or ruling, an over-budget or repeated challenge, a defense that edits, a
-  revision that doesn't or only touches assumptions, a concession that drops nothing, an attempt to remove a
+- An illegal move (a missing answer or ruling, an over-budget or repeated challenge, a resolution test that isn't a
+  question, a defense that edits, a revision that doesn't or only touches assumptions, a concession that drops nothing, an attempt to remove a
   core commitment, an ACCEPT without a concrete fact or real evidence) gets one repair request; if that also
   fails, the orchestrator coerces it safely and records a warning.
 

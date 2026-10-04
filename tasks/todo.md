@@ -60,7 +60,9 @@ Environment (updated 2026-10-04 06:55):
       `settled` with a defense path, NEEDS_HUMAN answers never accepted, round 1 covers its gaps
 - [x] Replayed the 43 v5–v6 ACCEPTs through the new checks (18/28 vague refused, 1/15 concrete)
 - [x] Independent review; fixed ordering, routing, weak-phrase precision and trim-resistance; fuzzed coercion clean
-- [ ] v7 live batch (Domi), then analyse; if acceptable, freeze prompts and run the comparisons
+- [x] v7 live batch run and analysed: most balanced so far; one weak-phrase false positive, re-raised escalations
+- [x] v7.1: role-aware weak phrases, follow-up targets, question-form tests, no re-asking escalated questions
+- [ ] Prompts frozen. Comparison batch (Domi): `uv run python experiments/ablate.py run --runs 3`
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B

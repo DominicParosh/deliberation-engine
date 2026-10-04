@@ -19,20 +19,31 @@ from .schemas import (SECTIONS, WEIGHT, CriticOpening, CriticTurn, Edit, Item, N
 Status = Literal["OPEN", "RESOLVED", "ESCALATED", "UNRESOLVED"]
 SETTLED_BY = {"DEFEND": "DEFENDED", "REVISE": "REVISED", "CONCEDE": "CONCEDED"}
 
-# Phrases that sound like a decision but name no role, number or rule: the "weak phrases" requirements-quality tools
-# have flagged since NASA's ARM tool. This is the subset the Critic accepted as evidence in the v5 and v6 batches, kept
-# to phrases that are vague wherever they appear: "protocol", "mechanism" or "periodic" alone are left out because real
-# answers use them ("the protocol officer", "a periodic digest every Monday"), and "will be determined by <rule>",
-# "will be developed in a later release" or "authorized users including <roles>" say something after all.
-WEAK = re.compile(r"\b(?:" + "|".join([
+# Phrases that sound like a decision but decide nothing: the "weak phrases" requirements-quality tools have flagged
+# since NASA's ARM tool. This is the subset the Critic accepted as evidence in the v5–v7 batches. A promise is weak
+# wherever it appears, except where it goes on to say what or when ("will be determined by <rule>", "will be developed
+# in a later release", "a periodic digest every Monday"). An unnamed role is weak unless the same words name a role
+# after all ("authorized users, specifically regional coordinators and project managers"). "Protocol", "mechanism" or
+# "periodic" alone are left out: real answers use them ("the protocol officer").
+PROMISE = re.compile(r"\b(?:" + "|".join([
     r"will be (?:established|developed|defined|determined|agreed|put in place|set up|clarified)"
     r"(?!\s+(?:by|as|in\s+(?:a\s+|the\s+)?(?:later|future|subsequent|next))\b)",
-    r"periodic (?:audits?|reviews?|checks?)(?!\s+every\b)",
-    r"appropriate(?:ly)?", r"designated (?:teams?|managers?|committees?|staff|personnel|users?|roles?|oversight)",
-    r"authori[sz]ed (?:users|personnel|recipients|staff|individuals)(?!\s+(?:including|such as|namely)\b)",
-    r"clearly defined", r"defined consistently", r"(?:safeguards|measures|controls|processes|procedures) (?:are |will be )?in place",
-    r"measures to", r"including but not limited to",
+    r"periodic (?:audits?|reviews?|checks?)(?!\s+every\b)", r"clearly defined", r"defined consistently",
+    r"(?:safeguards|measures|controls|processes|procedures) (?:are |will be )?in place", r"measures to",
+    r"including but not limited to",
 ]) + r")\b", re.I)
+UNNAMED = re.compile(r"\b(?:appropriate(?:ly)?|designated (?:teams?|managers?|committees?|staff|personnel|users?|roles?|"
+                     r"oversight)|authori[sz]ed (?:users|personnel|recipients|staff|individuals))\b", re.I)
+ROLE = re.compile(r"\b(?:coordinator|manager|executive|officer|director|representative|delegate|administrator|head|lead)s?\b",
+                  re.I)
+
+
+def weak_phrase(words: str) -> str:
+    """The weak phrase these words lean on, or ""."""
+    if promise := PROMISE.search(words):
+        return promise.group(0)
+    unnamed = UNNAMED.search(words)
+    return unnamed.group(0) if unnamed and not ROLE.search(UNNAMED.sub(" ", words)) else ""
 
 
 class Event(BaseModel):
@@ -149,13 +160,20 @@ class Ledger(BaseModel):
             problems = _coverage([v.challenge_id for v in turn.verdicts], [i.id for i in self.open_issues()], "rule on")
         if len(new) > budget:
             problems.append(f"You raised {len(new)} new challenges; the budget this round is {budget}. Keep the most material.")
-        valid = set(self.proposal.items()) | {"GAP"}
+        valid = set(self.proposal.items()) | {"GAP"} | set(self.issues)  # a follow-up may name the challenge it follows
         for n, c in enumerate(new, 1):
             if not c.targets or set(c.targets) - valid:
                 problems.append(f"New challenge #{n}: targets must be current item IDs or GAP; got {c.targets}.")
+            if not c.resolution_test.strip().endswith("?"):
+                problems.append(f"New challenge #{n}: the resolution test must be a question with a concrete answer (a role, "
+                                f"a number, a rule or yes/no), ending with '?'; got \"{c.resolution_test[:70]}\".")
         for n, earlier in self._repeats(new):
-            problems.append(f"New challenge #{n} asks the same question as {earlier}. To keep pressing it, rule MAINTAIN on "
-                            f"it; a new challenge must ask something else.")
+            if earlier in self.issues and self.issues[earlier].status == "ESCALATED":
+                problems.append(f"New challenge #{n} asks the same question as {earlier}, which is with human decision-makers "
+                                f"now; a new challenge must ask something else.")
+            else:
+                problems.append(f"New challenge #{n} asks the same question as {earlier}. To keep pressing it, rule MAINTAIN "
+                                f"on it; a new challenge must ask something else.")
         open_ids = {i.id for i in self.open_issues()}  # rulings on closed issues are ignored, so they cost no repair
         problems += [p for v in getattr(turn, "verdicts", []) if v.challenge_id in open_ids and (p := self.verdict_problem(v))]
         return problems
@@ -208,17 +226,17 @@ class Ledger(BaseModel):
             return ""
         start, end = blocks[0].b, blocks[-1].b + blocks[-1].size
         start = max(start - 6, max(s for s in sentence_starts if s <= start))
-        weak = WEAK.search(" ".join(text_words[start:end]))
-        return weak.group(0) if weak else ""
+        return weak_phrase(" ".join(text_words[start:end]))
 
     def _last_answer(self, cid: str) -> Event | None:
         answers = [e for e in self.issues[cid].history if e.actor == "proposer"]
         return answers[-1] if answers else None
 
     def _repeats(self, new: list) -> list[tuple[int, str]]:
-        """New challenges (by number) whose resolution test repeats an open issue's or an earlier new one's. A closed
-        issue may be raised again: the proposal can change in a way that reopens it."""
-        tests, out = [(i.id, i.resolution_test) for i in self.open_issues()], []
+        """New challenges (by number) whose resolution test repeats an open or escalated issue's, or an earlier new one's.
+        A resolved issue may be raised again: the proposal can change in a way that reopens it."""
+        tests = [(i.id, i.resolution_test) for i in self.issues.values() if i.status in ("OPEN", "ESCALATED")]
+        out = []
         for n, c in enumerate(new, 1):
             if earlier := next((k for k, t in tests if _same_question(c.resolution_test, t)), None):
                 out.append((n, earlier))
@@ -351,8 +369,13 @@ class Ledger(BaseModel):
         if len(new) > budget:
             new = sorted(new, key=lambda c: -WEIGHT[c.severity])[:budget]
             self.warnings.append(f"R{rnd}: Critic exceeded its budget; kept the {budget} most severe challenge(s).")
-        valid = set(self.proposal.items()) | {"GAP"}
+        valid = set(self.proposal.items()) | {"GAP"} | set(self.issues)
         new = [c.model_copy(update={"targets": [t for t in c.targets if t in valid] or ["GAP"]}) for c in new]
+        if unasked := [n for n, c in enumerate(new, 1) if not c.resolution_test.strip().endswith("?")]:
+            new = [c.model_copy(update={"resolution_test": c.resolution_test.strip().rstrip(".") + "?"})
+                   if n in unasked else c for n, c in enumerate(new, 1)]
+            self.warnings.append(f"R{rnd}: resolution test(s) of new challenge(s) {', '.join(f'#{n}' for n in unasked)} "
+                                 f"were not phrased as questions; kept as written.")
         update = {"new_challenges": new}
         if rnd > 1:
             open_ids = [i.id for i in self.open_issues()]
@@ -403,7 +426,8 @@ class Ledger(BaseModel):
                                                text=f"Maintained {issue.strikes} times without agreement; handed to human decision-makers."))
         for c in turn.new_challenges:
             cid = f"C{len(self.issues) + 1}"
-            self.issues[cid] = Issue(id=cid, round_raised=rnd, **c.model_dump(),
+            targets = [t for target in c.targets for t in (self.issues[target].targets if target in self.issues else [target])]
+            self.issues[cid] = Issue(id=cid, round_raised=rnd, **{**c.model_dump(), "targets": list(dict.fromkeys(targets))},
                                      history=[Event(round=rnd, actor="critic", move="RAISE", text=c.challenge)])
 
     def record(self, rnd: int, proposer: ProposerOpening | ProposerTurn, critic: CriticOpening | CriticTurn,

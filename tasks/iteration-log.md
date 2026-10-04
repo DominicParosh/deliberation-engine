@@ -325,3 +325,40 @@ and is then coerced.
   alter the ruling; the first weak-phrase list refused real roles ("protocol officer") and was dodged by trimming the
   quote; repeats were checked against closed issues; and coercion left assumption-only revisions failing the check.
   Coerced rulings now carry the real refusal reason, so the Proposer and the record see which phrase failed.
+
+## v7 → seventh live batch (2026-10-04 ~13:45, code 8be7379)
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions | Repairs |
+|---|---|---|---|---|---|---|---|
+| right-contact | 4 | consensus | 6 REVISE, 3 DEFEND | 6 ACCEPT, 3 ESCALATE | 3/9 | 3 | 6 |
+| engagement-history | 4 | converged | 7 REVISE, 3 DEFEND | 6 ACCEPT, 4 ESCALATE | 4/10 | 4 | 4 |
+| cold-relationship | 2 | converged | 5 REVISE, 1 DEFEND | 4 ACCEPT, 2 ESCALATE | 2/6 | 2 | 1 |
+| auto-logging | 4 | converged | 7 REVISE, 2 DEFEND | 5 ACCEPT, 2 ESCALATE, 2 MAINTAIN (1 auto) | 3/8 | 3 | 5 |
+| influence-ranking | 5 | consensus | 8 REVISE, 3 DEFEND | 8 ACCEPT, 2 ESCALATE, 1 MAINTAIN | 2/10 | 2 | 7 |
+
+The most balanced batch so far: 33 REVISE / 12 DEFEND (v6: 2 DEFEND), every run 2–5 rounds, 2–4 open questions per
+document, no assumption loops (the assumption-only rule fired 9 times and the repair worked in all but one). The
+influence ranking moved from subjective High/Medium/Low to auditable thresholds (seniority, at least three engagements
+for High). Remaining problems:
+1. **A weak-phrase false positive cost a real decision.** auto-logging C8: the Proposer wrote "access controls limited
+   to authorized users based on their role, specifically the roles of regional coordinators and project managers";
+   the Critic accepted it, the check refused "authorized users", the Critic then reversed itself, and C8 was
+   auto-escalated. A list can't tell an unnamed role from one that is named a few words later.
+2. **The Critic re-raises what it just escalated**, in other words (engagement C7/C9 restate escalated C2; auto-logging
+   C7/C8 restate escalated C2/C6), and the Proposer then answers it again.
+3. **New challenges target earlier challenges** ("targets: C2"): 6 repairs across 4 runs.
+4. Resolution tests that aren't questions still appear ("Specify...", "Define...", "Detail..."): 3 in auto-logging.
+5. Known limits, unchanged: invented facts are sometimes accepted ("the CRM Data Steward", "retains data for five years
+   complying with GDPR"); vague answers that avoid the listed phrases pass ("implement a process for identifying and
+   managing duplicates"); no "should this exist?" challenge, and auto-logging still never asks how logging is automatic.
+
+## v7.1 changes (small; prompts frozen after this)
+
+- **Unnamed roles are weak only when no role is named.** Weak phrases split into promises ("will be established",
+  "safeguards in place", ...), weak wherever they appear, and unnamed roles ("authorized users", "a designated manager",
+  "appropriate"), weak unless the quoted words name a role after all. Replayed on v5–v6, this refuses 17 of the 28
+  vague accepts and none of the 15 concrete ones; it would have kept auto-logging C8.
+- **A new challenge may name the challenge it follows up**; it takes over that challenge's targets.
+- **A resolution test must be a question** (ends with "?"); the repair asks for one with a concrete answer.
+- **A question that is with humans can't be asked again** (word for word, give or take two words); the task line says
+  not to re-raise what was just escalated.

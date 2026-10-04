@@ -1,0 +1,788 @@
+{
+  "request": "Meetings with government officials should be logged automatically so we stop losing engagement history.",
+  "pre_mortem": "A year after launch, the automated logging feature led to a serious incident where sensitive diplomatic meeting details were erroneously logged under the wrong official, reaching an unauthorized project manager. This resulted in the leak of confidential information, causing diplomatic tensions and a significant reputational impact on the organization.",
+  "gaps": [
+    "Who has access to view the logged engagement history of other users?",
+    "What safeguards are in place to ensure that sensitive meeting information is not accessible by unauthorized personnel?",
+    "What happens when a regional coordinator or project manager changes roles or leaves the organization? Will their logged meetings remain accessible?",
+    "How is 'user confirmation' defined and tracked for the success criteria?",
+    "What security measures will be in place to protect sensitive data during automatic logging?",
+    "What specific legal frameworks govern the data retention practices in this feature?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will automate the logging of meetings with government officials for regional coordinators and project managers within the Government CRM. This aims to enhance the accuracy of engagement history records by ensuring all relevant meetings are captured and accessible.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide an automated logging feature for meetings between users and government officials."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure secure storage and access to engagement history that is in compliance with applicable data protection laws."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable automatic logging of meetings for designated roles: regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Log meetings when a user schedules them in the CRM calendar with the associated government official's contact."
+        },
+        {
+          "id": "S3",
+          "text": "Capture details of each meeting including date, time, participants, and agenda as part of engagement history."
+        },
+        {
+          "id": "S4",
+          "text": "Provide a user interface for users to view logged meetings in their engagement history."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure that the logging feature retains data for a minimum of five years, complying with government record retention policies."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include notifications or alerts for users when meetings are logged."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar applications (e.g., Google Calendar, Outlook) is not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not provide support for logging meetings retroactively."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have the necessary permissions to log meetings; this affects who can utilize the feature."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM can access the contact details of government officials to associate them with logged meetings."
+        },
+        {
+          "id": "A3",
+          "text": "Compliance measures for sensitive data storage and handling are in place according to existing organizational data protection policies."
+        },
+        {
+          "id": "A4",
+          "text": "The users are familiar with using the CRM calendar functionality to schedule meetings."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"automatic logging\" means the system will record meeting information without requiring manual input from users at the time of scheduling."
+        },
+        {
+          "id": "D2",
+          "text": "\"engagement history\" means the compiled record of interactions (meetings, communications) with government officials, stored within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 90% of scheduled meetings with government officials are logged correctly within the system as measured by user confirmation within the first three months post-release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will automate the logging of meetings with government officials for regional coordinators and project managers within the Government CRM. This aims to enhance the accuracy of engagement history records by ensuring all relevant meetings are captured and accessible, with defined roles for data access and compliance measures in place.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide an automated logging feature for meetings between users and government officials."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure secure storage and access to engagement history that is in compliance with applicable data protection laws."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable automatic logging of meetings for designated roles: regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Log meetings when a user schedules them in the CRM calendar with the associated government official's contact."
+        },
+        {
+          "id": "S3",
+          "text": "Capture details of each meeting including date, time, participants, agenda, and key outcomes as part of engagement history."
+        },
+        {
+          "id": "S4",
+          "text": "Provide a user interface for users with the role of regional coordinators and project managers to view logged meetings in their engagement history, while ensuring that each user can only access their own logs and those of their direct team members."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure that the logging feature retains data for a minimum of five years, complying with government record retention policies and applicable data protection laws, specifically GDPR and national data protection regulations."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include notifications or alerts for users when meetings are logged."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar applications (e.g., Google Calendar, Outlook) is not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not provide support for logging meetings retroactively."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have the necessary permissions to log meetings; this affects who can utilize the feature."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM can access the contact details of government officials to associate them with logged meetings."
+        },
+        {
+          "id": "A3",
+          "text": "Compliance measures for sensitive data storage and handling are in place according to existing organizational data protection policies."
+        },
+        {
+          "id": "A4",
+          "text": "The users are familiar with using the CRM calendar functionality to schedule meetings."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"automatic logging\" means the system will record meeting information without requiring manual input from users at the time of scheduling."
+        },
+        {
+          "id": "D2",
+          "text": "\"engagement history\" means the compiled record of interactions (meetings, communications) with government officials, stored within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 90% of scheduled meetings with government officials are logged correctly within the system, as determined by reviewing entries for completeness and accuracy, measured through user feedback within the first three months post-release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will automate the logging of meetings with government officials for regional coordinators and project managers within the Government CRM, ensuring secure access and compliance with data protection laws. Key details about data handling when users change roles or leave, as well as specific compliance measures for safeguarding sensitive meeting data, have been clarified.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide an automated logging feature for meetings between users and government officials."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure secure storage and access to engagement history that is in compliance with applicable data protection laws."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable automatic logging of meetings for designated roles: regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Log meetings when a user schedules them in the CRM calendar with the associated government official's contact."
+        },
+        {
+          "id": "S3",
+          "text": "Capture details of each meeting including date, time, participants, agenda, and key outcomes as part of engagement history."
+        },
+        {
+          "id": "S4",
+          "text": "Provide a user interface for users with the role of regional coordinators and project managers to view logged meetings in their engagement history, while ensuring that each user can only access their own logs and those of their direct team members."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure that the logging feature retains data for a minimum of five years, complying with government record retention policies and applicable data protection laws, specifically GDPR and national data protection regulations."
+        },
+        {
+          "id": "S6",
+          "text": "When a user leaves the organization, their logged meetings will be archived and access will be removed immediately. If a user changes roles, access to their logged meetings will be revoked, and the meetings will be reassigned to the new direct manager."
+        },
+        {
+          "id": "S7",
+          "text": "Compliance measures for the logged meeting data will include encryption during storage and transmission, access controls limited to authorized users based on their role, and routine audits of access logs to ensure adherence to data protection standards."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include notifications or alerts for users when meetings are logged."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar applications (e.g., Google Calendar, Outlook) is not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not provide support for logging meetings retroactively."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have the necessary permissions to log meetings; this affects who can utilize the feature."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM can access the contact details of government officials to associate them with logged meetings."
+        },
+        {
+          "id": "A3",
+          "text": "Compliance measures for sensitive data storage and handling are in place according to existing organizational data protection policies."
+        },
+        {
+          "id": "A4",
+          "text": "The users are familiar with using the CRM calendar functionality to schedule meetings."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"automatic logging\" means the system will record meeting information without requiring manual input from users at the time of scheduling."
+        },
+        {
+          "id": "D2",
+          "text": "\"engagement history\" means the compiled record of interactions (meetings, communications) with government officials, stored within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 90% of scheduled meetings with government officials are logged correctly within the system, as determined by reviewing entries for completeness and accuracy, measured through user feedback within the first three months post-release."
+        }
+      ]
+    },
+    {
+      "summary": "This release will automate the logging of meetings with government officials for regional coordinators and project managers within the Government CRM, ensuring secure access and compliance with data protection laws. Key details about data handling when users change roles or leave, as well as specific compliance measures for safeguarding sensitive meeting data, have been clarified.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Provide an automated logging feature for meetings between users and government officials."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure secure storage and access to engagement history that is in compliance with applicable data protection laws."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Enable automatic logging of meetings for designated roles: regional coordinators and project managers."
+        },
+        {
+          "id": "S2",
+          "text": "Log meetings when a user schedules them in the CRM calendar with the associated government official's contact."
+        },
+        {
+          "id": "S3",
+          "text": "Capture details of each meeting including date, time, participants, agenda, and key outcomes as part of engagement history."
+        },
+        {
+          "id": "S4",
+          "text": "Provide a user interface for users with the role of regional coordinators and project managers to view logged meetings in their engagement history, while ensuring that each user can only access their own logs and those of their direct team members."
+        },
+        {
+          "id": "S5",
+          "text": "Ensure that the logging feature retains data for a minimum of five years, complying with government record retention policies and applicable data protection laws, specifically GDPR and national data protection regulations."
+        },
+        {
+          "id": "S6",
+          "text": "When a user leaves the organization, their logged meetings will be archived and access will be removed immediately. If a user changes roles, access to their logged meetings will be revoked, and the meetings will be reassigned to the new direct manager."
+        },
+        {
+          "id": "S7",
+          "text": "Compliance measures for the logged meeting data will include encryption during storage and transmission, access controls limited to authorized users based on their role, specifically the roles of regional coordinators and project managers, and routine audits of access logs to ensure adherence to data protection standards."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include notifications or alerts for users when meetings are logged."
+        },
+        {
+          "id": "X2",
+          "text": "Integration with external calendar applications (e.g., Google Calendar, Outlook) is not included in this release."
+        },
+        {
+          "id": "X3",
+          "text": "The release will not provide support for logging meetings retroactively."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will have the necessary permissions to log meetings; this affects who can utilize the feature."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM can access the contact details of government officials to associate them with logged meetings."
+        },
+        {
+          "id": "A3",
+          "text": "Compliance measures for sensitive data storage and handling are in place according to existing organizational data protection policies."
+        },
+        {
+          "id": "A4",
+          "text": "The users are familiar with using the CRM calendar functionality to schedule meetings."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"automatic logging\" means the system will record meeting information without requiring manual input from users at the time of scheduling."
+        },
+        {
+          "id": "D2",
+          "text": "\"engagement history\" means the compiled record of interactions (meetings, communications) with government officials, stored within the CRM."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 90% of scheduled meetings with government officials are logged correctly within the system, as determined by reviewing entries for completeness and accuracy, measured through user feedback within the first three months post-release."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not clarify who can see the logged engagement history across different user roles. This lack of clarity risks unauthorized access to sensitive meeting information.",
+      "failure_scenario": "A project manager inadvertently accesses engagement history from a regional coordinator that contains confidential diplomatic meeting details, leading to a breach of privacy and trust with the government officials involved.",
+      "resolution_test": "Which user roles can view the engagement history of other users?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not clarify who can see the logged engagement history across different user roles. This lack of clarity risks unauthorized access to sensitive meeting information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit clarifies that only regional coordinators and project managers can view engagement histories, with restrictions to ensure confidentiality and appropriate access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This clearly specifies who can access engagement histories and ensures confidentiality. Fact: Regional coordinators and project managers can view their own logs and their direct team members' logs. Evidence: \"S4: Provide a user interface for users with the role of regional coordinators and project managers to view logged meetings in their engagement history, while ensuring that each user can only access their own logs and those of their direct team members.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks details about maintaining the logged data when a user changes roles or leaves, which could lead to confusion and improper access to sensitive information post-transition.",
+      "failure_scenario": "When a project manager transitions to a different role, their logged meetings remain accessible inappropriately to their replacement, who does not have the same clearance level, exposing sensitive details to unauthorized personnel.",
+      "resolution_test": "What happens to the logged meetings of users who change roles or leave?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks details about maintaining the logged data when a user changes roles or leaves, which could lead to confusion and improper access to sensitive information post-transition.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The edit specifies what happens to logged meetings when users change roles, ensuring proper management of access based on organizational decisions.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "Details on how access will be managed when users change roles or leave are still unconfirmed and rely on organizational decisions.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The term 'automatic logging' is undefined and unbounded, risking potential issues with how meetings are captured and what essential details might be missed.",
+      "failure_scenario": "Meetings are logged without critical details like context or outcomes, leading to incomplete engagement history that fails to serve its intended purpose.",
+      "resolution_test": "Specify what constitutes 'details of each meeting' being captured and ensure it includes all necessary elements.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The term 'automatic logging' is undefined and unbounded, risking potential issues with how meetings are captured and what essential details might be missed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit defines what essential details must be captured in the logging process to ensure a complete and useful engagement history.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The definition now specifies essential captured details, thus clarifying the definition. Fact: Details captured include date, time, participants, agenda, and key outcomes. Evidence: \"S3: Capture details of each meeting including date, time, participants, agenda, and key outcomes as part of engagement history.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "K1"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MINOR",
+      "challenge": "The success criteria based on '90% of scheduled meetings logged correctly' lacks clarity on how 'correctly' is measured and what constitutes a failure.",
+      "failure_scenario": "The measurement of 'correctly' is too vague, and users believe meetings have been logged when they haven't, resulting in loss of engagement history.",
+      "resolution_test": "Define how the system will measure the correctness of logged meetings and what metrics are used for evaluation.",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The success criteria based on '90% of scheduled meetings logged correctly' lacks clarity on how 'correctly' is measured and what constitutes a failure.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "Clarifying how 'correctly' is measured will ensure that users have a clear understanding of the criteria for successful logging.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "K1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The criteria for measuring correctness has been sufficiently defined. Fact: At least 90% of meetings will be reviewed for accuracy based on user feedback. Evidence: \"K1: At least 90% of scheduled meetings with government officials are logged correctly within the system, as determined by reviewing entries for completeness and accuracy, measured through user feedback within the first three months post-release.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "S5"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MINOR",
+      "challenge": "The minimum retention period of five years does not specify compliance with specific data protection laws or policies governing sensitive data.",
+      "failure_scenario": "The organization retains sensitive meeting data beyond necessary periods, exposing itself to legal risks under data protection regulations.",
+      "resolution_test": "Detail the data retention policies referenced, specifically identifying applicable laws and regulations.",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The minimum retention period of five years does not specify compliance with specific data protection laws or policies governing sensitive data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies the data retention policies and laws to clarify compliance expectations.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The edit specifies compliance requirements, thus addressing the challenge. Fact: Data will be retained for five years in compliance with GDPR and national laws. Evidence: \"S5: Ensure that the logging feature retains data for a minimum of five years, complying with government record retention policies and applicable data protection laws, specifically GDPR and national data protection regulations.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "A3"
+      ],
+      "lens": "FEASIBILITY",
+      "severity": "MINOR",
+      "challenge": "The assumptions state that compliance measures for sensitive data are in place, but there are no specifics provided regarding for what conditions these measures apply.",
+      "failure_scenario": "Assumed data protection measures fail at launch, leading to unauthorized access to sensitive meeting logs that breach compliance standards.",
+      "resolution_test": "What specific compliance measures will be in place to protect sensitive data during automatic logging?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The assumptions state that compliance measures for sensitive data are in place, but there are no specifics provided regarding for what conditions these measures apply.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "Determining specific compliance measures for sensitive data handling must be established by the organization based on existing guidelines and regulations.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "This requires further clarification from the organization regarding compliance measures.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal still lacks details on how logged meetings will be maintained when users change roles or leave, which can lead to unauthorized access.",
+      "failure_scenario": "A project manager leaves the organization, but their logged meetings are still accessible to anyone in their previous role, potentially exposing sensitive information.",
+      "resolution_test": "What are the rules for handling data of users who leave or change roles?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal still lacks details on how logged meetings will be maintained when users change roles or leave, which can lead to unauthorized access.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes clear rules for handling logged meeting data when users transition due to changing roles or leaving the organization, thereby mitigating risks of unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S6"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The updated S6 now establishes rules for handling logged meetings when users change roles or leave, specifying that access is revoked and data reassigned. Fact: Meetings are archived and access removed upon user transition. Evidence: \"S6: When a user leaves the organization, their logged meetings will be archived and access will be removed immediately. If a user changes roles, access to their logged meetings will be revoked, and the meetings will be reassigned to the new direct manager.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C8": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MAJOR",
+      "challenge": "There is still no clarity on what specific compliance measures are in place to ensure data protection for logged meetings, which creates risk.",
+      "failure_scenario": "During an audit, it is discovered that sensitive meeting logs were not adequately protected, resulting in a violation of data protection regulations.",
+      "resolution_test": "What are the specific compliance measures that will be implemented for handling sensitive data?",
+      "id": "C8",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 2,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is still no clarity on what specific compliance measures are in place to ensure data protection for logged meetings, which creates risk.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit provides specific compliance measures, ensuring the proper protection of sensitive data associated with logged meetings and addressing the risk of non-compliance.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The updated S7 provides a general framework for compliance but does not specify which roles are considered 'authorized users', leaving it unresolved.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edits clarify that 'authorized users' includes only regional coordinators and project managers, ensuring specific compliance measurement and reduced risk of data protection violations.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S7"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The evidence does not clarify which specific roles are classified as 'authorized users', leaving security measures incomplete.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "orchestrator",
+          "move": "AUTO_ESCALATE",
+          "text": "Maintained 2 times without agreement; handed to human decision-makers.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring compliance with data protection regulations while automating the logging process.",
+      "critic_worry": "The lack of clear access controls could lead to unauthorized exposure of highly sensitive diplomatic information during and after meeting logging.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 8,
+      "open": 2,
+      "resolved": 4,
+      "escalated": 2,
+      "disagreement": 0.5,
+      "proposer_confidence": 80,
+      "critic_confidence": 70,
+      "proposer_worry": "Ensuring proper compliance with data protection laws while maintaining user accessibility could pose challenges.",
+      "critic_worry": "The handling of sensitive data and ensuring proper access levels during role changes presents material risks that are still not settled.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 8,
+      "open": 1,
+      "resolved": 5,
+      "escalated": 2,
+      "disagreement": 0.36,
+      "proposer_confidence": 75,
+      "critic_confidence": 75,
+      "proposer_worry": "Ensuring compliance with data protection regulations while implementing automatic logging features.",
+      "critic_worry": "The potential for sensitive meeting details to be logged incorrectly remains a risk, as automatic logging specifics are still ambiguous.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 8,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 3,
+      "disagreement": 0.36,
+      "proposer_confidence": 85,
+      "critic_confidence": 75,
+      "proposer_worry": "There may still be aspects of data access and handling that require further clarification.",
+      "critic_worry": "The failure to clearly define authorized users may lead to improper access control and potential data leaks.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": [
+    "R2: the Proposer's turn still broke these rules after a repair (illegal edits dropped, mislabelled moves corrected, the rest recorded as given): C2: grounds NEEDS_HUMAN_DECISION mean DEFEND, which leaves the proposal as it is, so `edits` must be empty. If an item has to change, the grounds are MISSING_DECISION or SHOULD_NOT_BUILD."
+  ]
+}
