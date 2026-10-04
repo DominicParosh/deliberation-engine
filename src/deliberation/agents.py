@@ -61,9 +61,11 @@ class Agents:
                      + "\n\n".join(issue_md(i) for i in ledger.open_issues()) + settled_view(ledger))
             if feedback:
                 state += f"\n\n## Note from the moderator\n{feedback}"
+            uncovered = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined([])]
             task = (f"Rule on every answered challenge exactly once (ACCEPT, MAINTAIN or ESCALATE). "
                     f"Then raise at most {budget} new challenge(s), only for material problems (none is fine). "
-                    f"Then signal CONCLUDE or CONTINUE. Mandatory lenses: {', '.join(MANDATORY_LENSES)}.")
+                    f"Then signal CONCLUDE or CONTINUE. Mandatory lenses with no challenge so far: "
+                    f"{', '.join(uncovered) or 'none'}; if you conclude, add a lens_coverage note for each of them.")
         turn, ok = self._turn("critic", rnd, ledger, schema, lambda t: ledger.check_critic(t, rnd, budget), state, task)
         return turn if ok else ledger.coerce_critic(turn, rnd, budget)
 
