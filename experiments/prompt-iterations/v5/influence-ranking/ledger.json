@@ -1,0 +1,712 @@
+{
+  "request": "We should know which of our contacts are most influential so we can prioritize them.",
+  "pre_mortem": "A year after launch, the influence scoring feature caused significant issues when an incorrect influence score led to a regional coordinator prioritizing a contact with low relevance to ongoing diplomatic projects. This resulted in wasted engagement resources, and the wrong contact was contacted, exposing sensitive project information. The failure to define and regulate the influence criteria allowed subjective assessments to misguide key decisions, damaging relationships with government counterparts and leading to a public relations incident.",
+  "gaps": [
+    "Which roles can view the influence scores and associated criteria for a contact?",
+    "How is the influence score calculated and what specific weightings are applied to each criterion?",
+    "What happens if a user evaluates a contact after a significant role change (e.g., a minister changes positions)?",
+    "What processes are in place to ensure the quality and trustworthiness of the information used to assess influence?",
+    "Who is responsible for maintaining the definitions of 'high', 'medium', and 'low' for each criterion?",
+    "What are the data security measures to protect potentially sensitive information when sharing influence scores?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will enable users to identify and prioritize their most influential contacts in the Government CRM based on specific influence criteria. It will primarily benefit regional coordinators and project managers who need to focus their engagement efforts effectively.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view a list of contacts sorted by influence score."
+        },
+        {
+          "id": "V2",
+          "text": "Users can input and update influence criteria for each contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Regional coordinators and project managers can see a list of contacts with an assigned influence score calculated based on the criteria."
+        },
+        {
+          "id": "S2",
+          "text": "The system allows users to define 'influence' with three criteria: position in government (high, medium, low), project relevance (high, medium, low), and previous engagement level (high, medium, low)."
+        },
+        {
+          "id": "S3",
+          "text": "The influence score will be calculated using a weighted average of the chosen criteria based on user input, with default weights applied if not specified."
+        },
+        {
+          "id": "S4",
+          "text": "Users will have the ability to update their selected influence criteria for any contact at any time."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated external data sources to assess influence."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide a detailed analysis report on engagement outcomes based on influence levels."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not enable role-based access controls for viewing the influence scores."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to sufficient and up-to-date information for assessing their contacts' influence, which is critical for the scoring."
+        },
+        {
+          "id": "A2",
+          "text": "The users have at least basic knowledge of what constitutes influence in their context, which affects how they input and assess criteria."
+        },
+        {
+          "id": "A3",
+          "text": "Users are willing to regularly update and maintain the influence criteria for their contacts in order to keep the scores relevant."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical representation calculated using the defined influence criteria that allows users to rank contacts."
+        },
+        {
+          "id": "D2",
+          "text": "'Influence criteria' means the parameters used to determine a contact's influence including position, project relevance, and engagement level."
+        },
+        {
+          "id": "D3",
+          "text": "'High', 'medium', and 'low' refer to qualitative assessments of each criterion, which can be operationally defined by the users."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of targeted users can successfully input and update influence criteria within their first month of use, as measured through user feedback and training sessions."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enable users to identify and prioritize their most influential contacts in the Government CRM based on specific influence criteria. It will primarily benefit regional coordinators and project managers who need to focus their engagement efforts effectively, with enhanced definitions for influence scoring, role-based access controls, and a process for maintaining data accuracy.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view a list of contacts sorted by influence score."
+        },
+        {
+          "id": "V2",
+          "text": "Users can input and update influence criteria for each contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Regional coordinators and project managers can see a list of contacts with an assigned influence score calculated based on the criteria, while executives can only view influence scores of contacts they are directly engaged with."
+        },
+        {
+          "id": "S2",
+          "text": "The system allows users to define 'influence' with three criteria: position in government (high, medium, low), project relevance (high, medium, low), and previous engagement level (high, medium, low)."
+        },
+        {
+          "id": "S3",
+          "text": "The influence score will be calculated using a weighted average of the chosen criteria based on user input, with default weights applied if not specified."
+        },
+        {
+          "id": "S4",
+          "text": "Users will have the ability to update their selected influence criteria for any contact at any time."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated external data sources to assess influence."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide a detailed analysis report on engagement outcomes based on influence levels."
+        },
+        {
+          "id": "X3",
+          "text": "This release will include role-based access controls to limit viewing of influence scores to specifically designated roles, ensuring sensitive information is appropriately handled."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to sufficient and up-to-date information for assessing their contacts' influence, which is critical for the scoring; the organization will implement a quarterly review process to verify contact information accuracy."
+        },
+        {
+          "id": "A2",
+          "text": "The users have at least basic knowledge of what constitutes influence in their context, which affects how they input and assess criteria."
+        },
+        {
+          "id": "A3",
+          "text": "Users are willing to regularly update and maintain the influence criteria for their contacts in order to keep the scores relevant."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical representation calculated using the defined influence criteria that allows users to rank contacts, with the weightings specified as follows: position in government (40%), project relevance (30%), and previous engagement level (30%)."
+        },
+        {
+          "id": "D2",
+          "text": "'Influence criteria' means the parameters used to determine a contact's influence including position, project relevance, and engagement level."
+        },
+        {
+          "id": "D3",
+          "text": "'High', 'medium', and 'low' refer to qualitative assessments of each criterion, operationally defined as: 'High' indicates a significant influence or connection, 'Medium' indicates some influence or connection, and 'Low' indicates minimal or no influence."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of targeted users can successfully input and update influence criteria within their first month of use, as measured through user feedback and training sessions."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enable users to identify and prioritize their most influential contacts in the Government CRM based on specific influence criteria, ensuring an ownership structure for maintaining influence definitions and implementing security measures for sensitive data. It will benefit regional coordinators and project managers primarily.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view a list of contacts sorted by influence score."
+        },
+        {
+          "id": "V2",
+          "text": "Users can input and update influence criteria for each contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Regional coordinators and project managers can see a list of contacts with an assigned influence score calculated based on the criteria, while executives can only view influence scores of contacts they are directly engaged with."
+        },
+        {
+          "id": "S2",
+          "text": "The system allows users to define 'influence' with three criteria: position in government (high, medium, low), project relevance (high, medium, low), and previous engagement level (high, medium, low)."
+        },
+        {
+          "id": "S3",
+          "text": "The influence score will be calculated using a weighted average of the chosen criteria based on user input, with default weights applied if not specified."
+        },
+        {
+          "id": "S4",
+          "text": "Users will have the ability to update their selected influence criteria for any contact at any time."
+        },
+        {
+          "id": "S5",
+          "text": "S5: Access to influence scores will be secured through role-based access control mechanisms, requiring all users to authenticate via multi-factor authentication, and allowing only authorized personnel to view or share sensitive influence score information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated external data sources to assess influence."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide a detailed analysis report on engagement outcomes based on influence levels."
+        },
+        {
+          "id": "X3",
+          "text": "This release will include role-based access controls to limit viewing of influence scores to specifically designated roles, ensuring sensitive information is appropriately handled."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to sufficient and up-to-date information for assessing their contacts' influence, which is critical for the scoring; the organization will implement a quarterly review process to verify contact information accuracy."
+        },
+        {
+          "id": "A2",
+          "text": "The users have at least basic knowledge of what constitutes influence in their context, which affects how they input and assess criteria."
+        },
+        {
+          "id": "A3",
+          "text": "Users are willing to regularly update and maintain the influence criteria for their contacts in order to keep the scores relevant."
+        },
+        {
+          "id": "A4",
+          "text": "A4: A designated team within the organization, referred to as the 'Data Governance Team', is responsible for maintaining and updating the definitions of influence criteria over time to ensure they remain relevant and accurate."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical representation calculated using the defined influence criteria that allows users to rank contacts, with the weightings specified as follows: position in government (40%), project relevance (30%), and previous engagement level (30%)."
+        },
+        {
+          "id": "D2",
+          "text": "'Influence criteria' means the parameters used to determine a contact's influence including position, project relevance, and engagement level."
+        },
+        {
+          "id": "D3",
+          "text": "'High', 'medium', and 'low' refer to qualitative assessments of each criterion, operationally defined as: 'High' indicates a significant influence or connection, 'Medium' indicates some influence or connection, and 'Low' indicates minimal or no influence."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of targeted users can successfully input and update influence criteria within their first month of use, as measured through user feedback and training sessions."
+        }
+      ]
+    },
+    {
+      "summary": "This release will enable users to identify and prioritize their most influential contacts in the Government CRM based on specific influence criteria, ensuring an ownership structure for maintaining influence definitions and implementing security measures for sensitive data. It will benefit regional coordinators and project managers primarily, with improved clarity on influence score calculations and the need for organizational policy on data accuracy.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users can view a list of contacts sorted by influence score."
+        },
+        {
+          "id": "V2",
+          "text": "Users can input and update influence criteria for each contact."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Regional coordinators and project managers can see a list of contacts with an assigned influence score calculated based on the criteria, while executives can only view influence scores of contacts they are directly engaged with."
+        },
+        {
+          "id": "S2",
+          "text": "The system allows users to define 'influence' with three criteria: position in government (high, medium, low), project relevance (high, medium, low), and previous engagement level (high, medium, low)."
+        },
+        {
+          "id": "S3",
+          "text": "The influence score will be calculated using a weighted average of the chosen criteria based on user input, with default weights applied if not specified."
+        },
+        {
+          "id": "S4",
+          "text": "Users will have the ability to update their selected influence criteria for any contact at any time."
+        },
+        {
+          "id": "S5",
+          "text": "S5: Access to influence scores will be secured through role-based access control mechanisms, requiring all users to authenticate via multi-factor authentication, and allowing only authorized personnel to view or share sensitive influence score information."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automated external data sources to assess influence."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide a detailed analysis report on engagement outcomes based on influence levels."
+        },
+        {
+          "id": "X3",
+          "text": "This release will include role-based access controls to limit viewing of influence scores to specifically designated roles, ensuring sensitive information is appropriately handled."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users have access to sufficient and up-to-date information for assessing their contacts' influence, which is critical for the scoring; the organization will implement a quarterly review process to verify contact information accuracy."
+        },
+        {
+          "id": "A2",
+          "text": "The users have at least basic knowledge of what constitutes influence in their context, which affects how they input and assess criteria."
+        },
+        {
+          "id": "A3",
+          "text": "Users are willing to regularly update and maintain the influence criteria for their contacts in order to keep the scores relevant."
+        },
+        {
+          "id": "A4",
+          "text": "A4: A designated team within the organization, referred to as the 'Data Governance Team', is responsible for maintaining and updating the definitions of influence criteria over time to ensure they remain relevant and accurate."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'Influence score' means a numerical representation calculated using the defined influence criteria that allows users to rank contacts, calculated as follows: Influence Score = (Position Weight * Position Score + Project Relevance Weight * Project Relevance Score + Engagement Level Weight * Engagement Level Score) / Total Weights, with the weightings specified as follows: position in government (40%), project relevance (30%), and previous engagement level (30)."
+        },
+        {
+          "id": "D2",
+          "text": "'Influence criteria' means the parameters used to determine a contact's influence including position, project relevance, and engagement level."
+        },
+        {
+          "id": "D3",
+          "text": "'High', 'medium', and 'low' refer to qualitative assessments of each criterion, operationally defined as: 'High' indicates a significant influence or connection, 'Medium' indicates some influence or connection, and 'Low' indicates minimal or no influence."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 75% of targeted users can successfully input and update influence criteria within their first month of use, as measured through user feedback and training sessions."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S3",
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "BLOCKER",
+      "challenge": "The criteria for determining 'influence score' lacks explicit definitions, particularly the weightings of the criteria and operational definitions for high, medium, and low; these need to be standardized to avoid subjective assessments that could lead to significant misjudgments.",
+      "failure_scenario": "A project manager inputs influence scores based on gut feeling rather than standardized parameters, inadvertently causing a contact with a low influence to gain a high score and receive prioritized engagement, wasting resources.",
+      "resolution_test": "What are the defined weightings for each influence criterion and how are 'high', 'medium', and 'low' operationally defined?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The criteria for determining 'influence score' lacks explicit definitions, particularly the weightings of the criteria and operational definitions for high, medium, and low; these need to be standardized to avoid subjective assessments that could lead to significant misjudgments.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "These edits provide explicit weightings for each influence criterion to standardize assessments and operational definitions for influence levels to ensure clarity and consistency in scoring.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1",
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"the weightings specified as follows: position in government (40%), project relevance (30%), and previous engagement level (30%)\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "S1",
+        "X3"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address role-based access controls for viewing influence scores, which could lead to sensitive information being accessed by inappropriate personnel.",
+      "failure_scenario": "An executive accidentally views influence scores and detailed criteria for contacts unrelated to their projects, leading to sensitive diplomatic relations being compromised.",
+      "resolution_test": "What roles are explicitly granted access to view influence scores and how are inappropriate accesses prevented?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address role-based access controls for viewing influence scores, which could lead to sensitive information being accessed by inappropriate personnel.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revisions clarify access controls, ensuring that only designated roles can view influence scores, thereby addressing confidentiality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1",
+            "X3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"This release will include role-based access controls to limit viewing of influence scores to specifically designated roles, ensuring sensitive information is appropriately handled.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "A1",
+        "S1",
+        "S4"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal assumes users will maintain up-to-date information for assessing influence but does not outline a strategy to ensure data accuracy and mitigate risks of outdated or incorrect contact information being used for scoring.",
+      "failure_scenario": "A regional coordinator uses stale information about a key contact, leading to an inaccurate influence score and prioritizing engagement with a contact who has no current relevance, resulting in public embarrassment and wasted efforts.",
+      "resolution_test": "What process is established to verify that contact information is up-to-date and reliable for influence scoring?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal assumes users will maintain up-to-date information for assessing influence but does not outline a strategy to ensure data accuracy and mitigate risks of outdated or incorrect contact information being used for scoring.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit establishes a strategy for data accuracy by introducing a quarterly review process, helping to mitigate risks associated with outdated contact information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "A1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"the organization will implement a quarterly review process to verify contact information accuracy.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on who is responsible for maintaining the definitions of influence criteria and ensuring they remain relevant over time.",
+      "failure_scenario": "If a user updates an influence criterion based on outdated definitions, it could lead to inconsistent scoring and prioritization, resulting in resource misallocation and potential diplomatic incidents.",
+      "resolution_test": "Who is responsible for maintaining and updating the definitions of 'high', 'medium', and 'low' for each criterion?",
+      "id": "C4",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on who is responsible for maintaining the definitions of influence criteria and ensuring they remain relevant over time.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This establishes a clear ownership for maintaining the influence criteria, ensuring that updates are systematic and reliable.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "A4"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"A designated team within the organization, referred to as the 'Data Governance Team', is responsible for maintaining and updating the definitions of influence criteria over time to ensure they remain relevant and accurate.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify what measures are in place to protect the sensitive information contained in influence scores during sharing and communication of these scores.",
+      "failure_scenario": "Sensitive information related to a contact's influence score is unintentionally leaked to contacts unrelated to the project, damaging trust and diplomatic relations.",
+      "resolution_test": "What security measures are implemented to protect the influence scores and related information during sharing?",
+      "id": "C5",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify what measures are in place to protect the sensitive information contained in influence scores during sharing and communication of these scores.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This detail clarifies the approach to protecting sensitive information relating to influence scores while addressing confidentiality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S5"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"Access to influence scores will be secured through role-based access control mechanisms, requiring all users to authenticate via multi-factor authentication, and allowing only authorized personnel to view or share sensitive influence score information.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not provide clarity on how the influence score is calculated and what specific weightings are applied to each criterion beyond the initial definitions.",
+      "failure_scenario": "If the scoring method and weightings are not clearly defined, users may apply different interpretations leading to inconsistent scoring, resulting in prioritization errors and potentially diplomatic tensions.",
+      "resolution_test": "What is the exact calculation method for the influence score and the specific weightings applied to each of the defined criteria?",
+      "id": "C6",
+      "round_raised": 3,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not provide clarity on how the influence score is calculated and what specific weightings are applied to each criterion beyond the initial definitions.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies the formula for calculating the influence score, along with the weighting of each criterion. This adds clarity to how the score will be determined and ensures consistency among users.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": " Evidence: \"Influence Score = (Position Weight * Position Score + Project Relevance Weight * Project Relevance Score + Engagement Level Weight * Engagement Level Score) / Total Weights, with the weightings specified as follows: position in government (40%), project relevance (30%), and previous engagement level (30).\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks a defined process to ensure the quality and trustworthiness of the information used to assess influence, specifically how outdated or incorrect information will be managed.",
+      "failure_scenario": "If users evaluate contacts based on inaccurate or outdated information, it may lead to the prioritization of the wrong contacts, resulting in diplomatic missteps and resource misallocation.",
+      "resolution_test": "What processes will be implemented to ensure the quality and accuracy of the information used in the influence scoring?",
+      "id": "C7",
+      "round_raised": 3,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks a defined process to ensure the quality and trustworthiness of the information used to assess influence, specifically how outdated or incorrect information will be managed.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "proposer",
+          "move": "DEFEND",
+          "text": "The process for ensuring information quality and accuracy pertains to existing organizational policies and practices. This must be defined by the organization’s leadership or relevant teams, as they have the authority to implement any necessary procedures.",
+          "grounds": "NEEDS_HUMAN_DECISION",
+          "changed": []
+        },
+        {
+          "round": 4,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The proposal does not specify which organizational policies or leadership decisions will define the processes to ensure data quality and accuracy in influence scoring.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 3,
+      "open": 3,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 70,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring that the influence criteria are accurately defined and effectively utilized by users could be challenging.",
+      "critic_worry": "Undefined criteria and lack of access controls increase the risk of misjudgments and security breaches.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 5,
+      "open": 2,
+      "resolved": 3,
+      "escalated": 0,
+      "disagreement": 0.36,
+      "proposer_confidence": 85,
+      "critic_confidence": 60,
+      "proposer_worry": "The effectiveness of the implementation of role-based access controls and their adherence in practice.",
+      "critic_worry": "Lack of clarity on who is responsible for maintaining influence criteria poses a significant risk for data integrity and could lead to misleading contact prioritization.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.27,
+      "proposer_confidence": 80,
+      "critic_confidence": 50,
+      "proposer_worry": "The effectiveness of the Data Governance Team in maintaining defined criteria and their relevance over time.",
+      "critic_worry": "The lack of clarity on the calculation of influence scores may lead to subjective assessments and inconsistent prioritization.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 4,
+      "raised": 7,
+      "open": 0,
+      "resolved": 6,
+      "escalated": 1,
+      "disagreement": 0.13,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The lack of a defined quality assurance process for maintaining accurate contact information could lead to reliance on outdated data.",
+      "critic_worry": "Without a clear process to ensure data quality, outdated information may still lead to misjudgment and sensitive diplomatic issues.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

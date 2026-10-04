@@ -8,7 +8,7 @@ Every field is required (no defaults) to stay inside both providers' strict-sche
 import re
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, BeforeValidator, Field
+from pydantic import BaseModel, BeforeValidator, Field, model_validator
 
 
 def _upper(value: object) -> object:
@@ -46,11 +46,20 @@ class Item(BaseModel):
     id: str = Field(description="Stable ID with the section prefix, e.g. S1.")
     text: str
 
+    @model_validator(mode="after")
+    def _drop_repeated_id(self) -> "Item":
+        # Models often start the text with "S3:" as well, which renders as "S3: S3: ...". Only the colon form is
+        # stripped ("S1-S3 apply" and "K1.5 hours" are real text), all repeats at once so re-validation changes
+        # nothing, and never down to an empty text, which would turn an edit into a removal.
+        self.text = re.sub(rf"^(\s*{re.escape(self.id)}\s*:\s*)+", "", self.text) or self.text
+        return self
 
-class Edit(BaseModel):
+
+class Edit(Item):
     id: str = Field(description="The item to change, e.g. S3. A new item takes the next number its section has never used.")
-    text: str = Field(description="The item's complete new wording, exactly as it should read in the proposal. "
-                                  "Empty removes it.")
+    text: str = Field(description="The item's complete new wording, exactly as it should read in the proposal, naming the "
+                                  "specific role, number or rule ('authorized users' or 'a process will be established' "
+                                  "decide nothing). Empty removes the item.")
 
 
 class Proposal(BaseModel):
@@ -131,21 +140,33 @@ class NewChallenge(BaseModel):
 
 
 class Verdict(BaseModel):
-    """The Critic answers two narrow questions; the ruling follows from them, as the Proposer's move follows its grounds."""
+    """The Critic quotes, names what the quote commits to, then judges. The ruling follows from its judgements, as the
+    Proposer's move follows from its grounds."""
 
     challenge_id: str
-    answered: bool = Field(description="Is the question in your resolution test, exactly as you wrote it, now answered by the "
-                                       "proposal text (or, for a defense or concession, by the Proposer's answer)? Judge that "
-                                       "question only: a new concern is a new challenge, not a reason to say no.")
-    evidence: str = Field(description="If answered: the words that answer it, copied from the item text shown under the challenge "
-                                      "(or from the Proposer's answer for a defense or concession). Otherwise empty.")
-    needs_human_decision: bool = Field(description="If not answered: does answering it need authority neither of you has "
-                                                   "(organisational policy, law, budgets, existing teams)? Then it goes to humans.")
-    rationale: str = Field(description="1-2 sentences. If not answered and not for humans, say exactly what is still missing.")
+    evidence: str = Field(description="The words that come closest to answering your test, copied exactly from the item text "
+                                      "shown under the challenge (or from the Proposer's answer, for a defense or concession). "
+                                      "Empty if nothing comes close.")
+    fact: str = Field(description="What those words commit to, in a few words: the role, number, rule or yes/no your test asks "
+                                  "for. Write 'no fact' if they only promise ('a process will be established'), name no one "
+                                  "specific ('authorized users', 'appropriate clearance') or restate the question.")
+    answered: bool = Field(description="Does `fact` answer your test and stop your failure scenario as you described it? Judge "
+                                       "only that scenario: a new concern is a new challenge, not a reason to say no.")
+    unconfirmed: bool = Field(description="Does the answer rest on a team, policy, clearance level, law or system that the system "
+                                          "description doesn't mention? Then it can't be accepted as it stands.")
+    needs_human_decision: bool = Field(description="Does answering your test need authority neither of you has (what the law "
+                                                   "requires, existing policy, budgets, which teams exist)? Who sees what, who is "
+                                                   "alerted, thresholds, and what happens when people change roles or leave are "
+                                                   "rules you two decide, never questions for humans.")
+    rationale: str = Field(description="1-2 sentences. If you don't accept, say exactly what is still missing.")
 
     @property
     def ruling(self) -> str:
-        return "ACCEPT" if self.answered else "ESCALATE" if self.needs_human_decision else "MAINTAIN"
+        """An answered, confirmed test is accepted. Otherwise the question decides where it goes: to humans if it needs
+        authority neither agent has, back to the Proposer if it is a rule this deliberation can decide."""
+        if self.answered and not self.unconfirmed:
+            return "ACCEPT"
+        return "ESCALATE" if self.needs_human_decision else "MAINTAIN"
 
 
 class LensNote(BaseModel):
@@ -156,8 +177,8 @@ class LensNote(BaseModel):
 class CriticOpening(BaseModel):
     """Round 1. There is deliberately no signal field: concluding in round 1 is impossible, not just forbidden."""
 
-    pre_mortem: str = Field(description="A year after launch, this feature has caused a serious incident. In 2-3 sentences, "
-                                        "what happened? Write this first.")
+    pre_mortem: str = Field(description="A year after launch, something this feature created (a record, a list, a score, an "
+                                        "alert) caused a serious incident. In 2-3 sentences, what happened? Write this first.")
     gaps: list[str] = Field(description="Questions the original request leaves open that a buildable release must answer, "
                                         "one short question each.")
     new_challenges: list[NewChallenge] = Field(description="Most material first. If the proposal as written does not prevent "

@@ -184,3 +184,73 @@ Remaining problems:
   sections (checked on the result, not edit by edit) and coerced revisions; dropped assumptions now show as dropped in
   the decision record, linked to the challenge whose answer removed them; test doubles now record each call's
   messages separately, so repair tests read the repair that was really sent.
+
+## v5 → fifth live batch (2026-10-04 ~12:08, code 9d30d63)
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions | Repairs |
+|---|---|---|---|---|---|---|---|
+| right-contact | 4 | converged | 4 REVISE, 2 DEFEND | 3 ACCEPT, 3 ESCALATE | 3/6 | 3 | 3 |
+| engagement-history | 3 | converged | 3 REVISE, 3 DEFEND | 3 ACCEPT, 3 ESCALATE | 3/6 | 3 | 0 |
+| cold-relationship | 3 | consensus | 5 REVISE, 1 CONCEDE | 6 ACCEPT | 0/6 | 0 | 1 |
+| auto-logging | 3 | consensus | 5 REVISE, 1 DEFEND | 5 ACCEPT, 1 ESCALATE | 1/6 | 1 | 0 |
+| influence-ranking | 4 | converged | 6 REVISE, 1 DEFEND | 6 ACCEPT, 1 ESCALATE | 1/7 | 1 | 2 |
+
+What worked: claimed and actual edits now match by construction (no "described but not written" revisions); repairs
+fell from 15 to 6; runs are shorter (3–4 rounds, $0.005–0.009 each); the first CONCEDE appeared.
+
+What didn't:
+1. **The Critic accepts any related text: 23 ACCEPT, 9 ESCALATE, 0 MAINTAIN** (v4: 11 MAINTAIN). Accepted answers
+   include invented organisation facts ("a 'Data Governance Team'", "security clearance level 3", "retention policies
+   dictate 5 years"), answers written into assumptions (influence A1, auto-logging A4), promises ("a process will be
+   established to transfer or archive"), unnamed roles ("authorized users with appropriate clearance", "a designated
+   manager"), a circular definition ("'High' indicates a significant influence") and an untestable condition (alerts
+   only "when there are no ongoing diplomatic negotiations", which the system can't know). In v4 most revisions were
+   never written, so MAINTAIN was easy to justify; now every revision has a real edit under the challenge, and the
+   Critic reads "related text exists" as "answered".
+2. **Duplicate challenges.** Later rounds walk the round-1 gaps list in order, including gaps already settled
+   (influence C6 = C1 and C7 = C3, engagement C5 = C3, right-contact C4 = C3). In all 15 runs of v3–v5 the Critic
+   raised exactly 3 challenges in round 1, the stated minimum ("between 3 and 6"), leaving the rest for later rounds.
+3. **The one-wording rule lost a decision.** right-contact C1 and C3 both edited S1; C3's wording built on C1's (what
+   we want) but differed, failed twice, was coerced to "no usable answer", escalated, and came back as C4.
+4. Edit texts often repeat their ID ("S3: S3: ..."), 7 items.
+5. Product rules punted to humans and escalated (engagement C6: access when a project manager changes role or leaves,
+   which the Proposer prompt names as ours to decide).
+6. An out-of-scope item rewritten as an inclusion (influence X3: "This release will include role-based access...").
+7. Still no "should this exist?": the influence ranking keeps subjective ratings of named officials; auto-logging
+   defined "automatically" as manual form entry and nobody challenged it.
+8. 3/5 runs end `converged`: the Critic says CONTINUE with nothing open and nothing new.
+
+## v6 changes
+
+- **The Critic quotes, names the fact, then judges.** Each verdict runs in fixed steps: `evidence` (the words that come
+  closest to answering the test), `fact` (what they commit to: a role, number, rule or yes/no; "no fact" for a promise,
+  an unnamed role, a circular definition or something the system can't know), `answered` (does the fact answer the test
+  *and stop the failure scenario as described*), `unconfirmed` (does the answer rest on a team, policy, clearance, law
+  or system the system description doesn't mention), `needs_human_decision` (does answering the test need authority
+  neither agent has). The ruling is derived: answered and confirmed → ACCEPT; otherwise the *question* decides where
+  it goes: needs humans → ESCALATE, a rule the agents can decide → MAINTAIN. So an invented retention policy is
+  escalated, while "access on role change follows existing policy" goes back to the Proposer, because role changes
+  are ours to decide. An ACCEPT without a named fact is refused like one without evidence.
+- **Assumptions can't settle a challenge.** Evidence quoted from an A item is refused, including through a defense that
+  merely repeats the assumption: assumptions are what the release depends on, not what it decides. Quotes are credited
+  to the text they match best, in order (an order-aware match replaced the bag-of-words one; all 44 accepted quotes
+  from v4–v5 still match).
+- **Product rules are never for humans** (`needs_human_decision` says so explicitly).
+- **Round 1 isn't anchored on a minimum.** The task asks for one challenge per gap the proposal leaves unanswered (up
+  to the budget) instead of "between 3 and 6"; the ≥3 rule still applies through the check. The gaps list is no longer
+  shown again after round 1 (re-showing it produced the duplicates); the pre-mortem still is, and now asks about
+  something the feature created (a record, list, score or alert) that reached the wrong person, was wrong, or should
+  never have existed.
+- **Edits.** Several answers may edit one item; edits apply in order, so the later wording replaces the earlier (the
+  prompt says to write it to include both changes) and the Critic judges the result. A new item may be refined that
+  way, but a later wording that drops the earlier one's words is a different item and needs its own ID. An item can't
+  be removed by one answer and rewritten by another. A concession must drop or descope something, and a revision that
+  only removes items is a concession; mislabelled moves are sent back, and corrected if the repair fails. A repeated
+  "S3:" at the start of an item's text is stripped (colon form only, so "S1-S3 apply" survives).
+- Proposer prompt: an out-of-scope item never describes something the release includes; edits must name the role,
+  number or rule.
+- An independent review of the diff found, and these changes fix: Critic coercion crashed when a ruling was missing
+  (the filler verdict lacked the new fields); removing then rewriting an item in one turn resurrected it while the
+  concession still counted; the first ruling design sent "follows existing policy" punts on role changes to humans;
+  "none" was both the no-fact marker and a legitimate answer ("which roles can export? none"); the ID stripper could
+  eat "S1-S3".

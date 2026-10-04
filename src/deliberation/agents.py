@@ -55,9 +55,10 @@ class Agents:
         proposal = f"## Current proposal (version {rnd})\n{proposal_md(ledger.proposal)}"
         if rnd == 1:
             schema, state = CriticOpening, proposal
-            task = ("Write your pre-mortem, then list the questions the request leaves open (`gaps`). Then raise between 3 "
-                    f"and {budget} challenges covering at least 2 lenses, most material first: if the proposal doesn't prevent "
-                    "your pre-mortem, start there. You cannot conclude in round 1.")
+            task = ("Write your pre-mortem, then list the questions the request leaves open (`gaps`). Then raise one "
+                    f"challenge for each gap the proposal leaves unanswered or answers badly, up to {budget}, most material "
+                    "first and covering at least 2 lenses: if the proposal doesn't prevent your pre-mortem, start there. "
+                    "You cannot conclude in round 1.")
         else:
             schema = CriticTurn
             changes = "; ".join(f"{k}: {', '.join(v)}" for k, v in ledger.changes().items() if v) or "none"
@@ -65,13 +66,11 @@ class Agents:
                      + "\n\n".join(answered_view(ledger, i) for i in ledger.open_issues()) + settled_view(ledger))
             if ledger.pre_mortem:
                 state += f"\n\n## Your pre-mortem from round 1\n{ledger.pre_mortem}"
-            if ledger.gaps:
-                state += "\n\n## Open questions you noted in round 1\n" + "\n".join(f"- {g}" for g in ledger.gaps)
             if feedback:
                 state += f"\n\n## Note from the moderator\n{feedback}"
             uncovered = [lens for lens in MANDATORY_LENSES if lens not in ledger.lenses_examined([])]
-            task = (f"Rule on every answered challenge exactly once: is your question answered (quote the words that answer "
-                    f"it), and if not, does it need a human decision? "
+            task = (f"Rule on every answered challenge exactly once: quote the words that come closest to answering your test, "
+                    f"name the fact they commit to, and judge whether that answers your test and stops your failure scenario. "
                     f"Then raise at most {budget} new challenge(s), only for material problems (none is fine). "
                     f"Then signal CONCLUDE if no BLOCKER or MAJOR challenge stays open after your rulings and you raise no "
                     f"new one (escalated challenges are with humans now and don't keep the deliberation open); otherwise "

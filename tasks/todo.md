@@ -43,7 +43,17 @@ Environment (updated 2026-10-04 06:55):
 - [x] Tests for every edit rule; strict-schema check for both providers; replay round-trip; rendered trace + decision read
 - [x] Independent review of the diff; fixed: new-item ID clashes, coerced revisions that changed nothing, next unused IDs
       shown to the Proposer, section emptiness checked on the result, dropped assumptions rendered as dropped
-- [ ] v5 live batch (Domi: `uv run deliberate --provider openai --all`), then analyse and log
+- [x] v5 live batch run and analysed (`tasks/iteration-log.md`): edits fixed; the Critic became too lenient (0 MAINTAIN)
+
+## Prompt iteration v6 (2026-10-04)
+- [x] Critic verdict in steps: evidence → fact → answered (test + failure scenario) → unconfirmed → needs humans;
+      ruling derived, routed by the question (humans vs. ours); ACCEPT needs a named fact and non-assumption evidence
+- [x] Order-aware evidence matching, best match wins (all 44 accepted v4–v5 quotes still match)
+- [x] Round 1 without the "between 3 and" anchor; gaps list not re-shown; pre-mortem about what the feature creates
+- [x] Edits: sequential for one item, distinct new IDs, no remove-and-rewrite, concession/revision labels checked,
+      repeated "S3:" stripped
+- [x] Independent review of the diff; all findings fixed or deliberately kept (revert check), fuzzed coercion clean
+- [ ] v6 live batch (Domi), then analyse and log
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B

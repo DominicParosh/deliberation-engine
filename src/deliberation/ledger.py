@@ -8,6 +8,7 @@ from this state, never from free text.
 
 import re
 from collections import Counter
+from difflib import SequenceMatcher
 from typing import Literal
 
 from pydantic import BaseModel
@@ -133,25 +134,47 @@ class Ledger(BaseModel):
         for n, c in enumerate(new, 1):
             if not c.targets or set(c.targets) - valid:
                 problems.append(f"New challenge #{n}: targets must be current item IDs or GAP; got {c.targets}.")
-        for v in getattr(turn, "verdicts", []):
-            if v.answered and v.challenge_id in self.issues and not self.supported(v):
-                problems.append(f"{v.challenge_id}: you marked it answered, so `evidence` must be copied from the item text shown "
-                                f"under the challenge (or, for a defense or concession, from the Proposer's answer), and "
-                                f"\"{v.evidence[:80]}\" is not there. Quote the words that answer your question, or mark it "
-                                f"not answered.")
+        open_ids = {i.id for i in self.open_issues()}  # rulings on closed issues are ignored, so they cost no repair
+        problems += [p for v in getattr(turn, "verdicts", []) if v.challenge_id in open_ids and (p := self.verdict_problem(v))]
         return problems
 
-    def supported(self, verdict: Verdict) -> bool:
-        """Is the evidence really there? A revision must show in a proposal item; a defense or concession may be
-        evidenced by the Proposer's answer. At least 85% of the quote's words must appear in one of those texts, so
-        punctuation, an ID prefix or a slipped word don't matter but a description of a change ("S1 now says...") fails."""
+    def verdict_problem(self, v: Verdict) -> str:
+        """Why an ACCEPT can't stand, or "": it needs a concrete fact, and evidence that is really in a decided item
+        (or, for a defense or concession, in the Proposer's answer)."""
+        if v.ruling != "ACCEPT" or v.challenge_id not in self.issues:
+            return ""
+        if re.match(r"\W*(no fact\b|n/?a\W*$|$)", v.fact, flags=re.I):
+            return (f"{v.challenge_id}: you marked it answered, but `fact` is '{v.fact}'. Words that only promise or name no "
+                    f"one specific don't answer a test: name the fact they commit to, or mark it not answered.")
+        if len(_quote_words(v.evidence)) < 4:
+            return (f"{v.challenge_id}: you marked it answered, so `evidence` must quote at least four consecutive words "
+                    f"from the item text (or, for a defense or concession, from the Proposer's answer), so they can be found.")
+        source = self.evidence_source(v)
+        if not source:
+            return (f"{v.challenge_id}: you marked it answered, so `evidence` must be copied from the item text shown under "
+                    f"the challenge (or, for a defense or concession, from the Proposer's answer), and \"{v.evidence[:80]}\" "
+                    f"is not there. Quote the words that answer your test, or mark it not answered.")
+        if source.startswith("A"):
+            return (f"{v.challenge_id}: your evidence comes from assumption {source}. An assumption is what the release "
+                    f"depends on, not what it decides, so it can't answer a challenge: quote a V, S, X, D or K item, or mark "
+                    f"it not answered.")
+        return ""
+
+    def evidence_source(self, verdict: Verdict) -> str:
+        """Where the quoted evidence really is: an item ID, "answer" (the Proposer's answer to a defense or concession; a
+        revision must show in the proposal), or "" if nowhere. At least 85% of the quote's words must appear in one text,
+        in order, so punctuation, an ID prefix or a slipped word don't matter, but a paraphrase or a description of a
+        change ("S1 now says...") fails. The best match wins; on a tie a decided item beats an assumption, and an assumption beats an answer that
+        only repeats it, so an assumption can't be smuggled in through a defense."""
         answer = [e for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
-        texts = list(self.proposal.items().values()) + [e.text for e in answer if e.move != "REVISE"]
-        words = _words(verdict.evidence).split()
-        words = words[1:] if words and re.fullmatch(r"[a-z]\d+", words[0]) else words
+        texts = self.proposal.items() | {"answer": e.text for e in answer if e.move != "REVISE"}
+        words = _quote_words(verdict.evidence)
         if len(words) < 4:
-            return False
-        return max(sum(w in set(_words(t).split()) for w in words) / len(words) for t in texts) >= 0.85
+            return ""
+        share = {k: _share(words, t) for k, t in texts.items()}
+        rank = {k: (share[k], 0 if k == "answer" else 1 if k.startswith("A") else 2) for k in texts}
+        best = max(texts, key=rank.get)
+        return best if share[best] >= 0.85 else ""
 
     # ------------------------------------------------------------ coercion (after a failed repair)
 
@@ -171,12 +194,19 @@ class Ledger(BaseModel):
             self.warnings.append(f"R{rnd}: Proposer did not answer {cid}; recorded as DEFEND.")
         responses, problems = self._vet(responses)
         if problems:
-            self.warnings.append(f"R{rnd}: after a failed repair, edits breaking these rules were dropped: " + " ".join(problems))
-        for n, r in enumerate(responses):  # a revision or concession with no legal edit left changed nothing
-            if r.action != "DEFEND" and not r.edits:
+            self.warnings.append(f"R{rnd}: the Proposer's turn still broke these rules after a repair, so illegal edits were "
+                                 f"dropped and mislabelled moves corrected: " + " ".join(problems))
+        for n, r in enumerate(responses):
+            if r.action != "DEFEND" and not r.edits:  # a revision or concession with no legal edit left changed nothing
                 responses[n] = Response(challenge_id=r.challenge_id, grounds="ACCEPTABLE_RISK", edits=[],
                                         rationale="(No usable answer: its edits broke the rules twice; the proposal stands.)")
                 self.warnings.append(f"R{rnd}: Proposer's {r.action} of {r.challenge_id} had no legal edit; recorded as DEFEND.")
+            elif r.action == "CONCEDE" and not _drops(r.edits):  # it added or changed items: that is a revision
+                responses[n] = r.model_copy(update={"grounds": "MISSING_DECISION"})
+                self.warnings.append(f"R{rnd}: Proposer's CONCEDE of {r.challenge_id} dropped nothing; recorded as REVISE.")
+            elif r.action == "REVISE" and _only_removes(r.edits):  # nothing left to quote: that is a concession
+                responses[n] = r.model_copy(update={"grounds": "SHOULD_NOT_BUILD"})
+                self.warnings.append(f"R{rnd}: Proposer's REVISE of {r.challenge_id} only removed items; recorded as CONCEDE.")
         return turn.model_copy(update={"responses": responses})
 
     def _vet(self, responses: list[Response]) -> tuple[list[Response], list[str]]:
@@ -199,17 +229,27 @@ class Ledger(BaseModel):
                 else:
                     kept.append(e)
                     wording[e.id], after = e.text.strip(), after.edited([e])
+            if r.action == "CONCEDE" and kept and not _drops(kept):
+                problems.append(f"{r.challenge_id}: a concession drops or descopes something: remove an item, or add or edit an "
+                                f"out-of-scope item. If you are adding a rule, the grounds are MISSING_DECISION.")
+            if r.action == "REVISE" and _only_removes(kept):
+                problems.append(f"{r.challenge_id}: your edits only remove items, which is a concession: the grounds are "
+                                f"SHOULD_NOT_BUILD. A revision writes a decision into an item.")
             vetted.append(r.model_copy(update={"edits": kept}))
         if emptied := [s for s in SECTIONS if getattr(self.proposal, s) and not getattr(after, s)]:
             gone = {e.id for r in vetted for e in r.edits if not e.text.strip() and section_of(e.id) in emptied}
             problems += [f"Removing {', '.join(sorted(k for k in gone if section_of(k) == s))} would leave '{s}' empty; every "
                          f"section keeps at least one item." for s in emptied]
-            vetted = [r.model_copy(update={"edits": [e for e in r.edits if e.id not in gone]}) for r in vetted]
+            vetted = [r.model_copy(update={"edits": [e for e in r.edits if e.text.strip() or e.id not in gone]})
+                      for r in vetted]
         return vetted, problems
 
     def _edit_problem(self, e: Edit, after: Proposal, wording: dict[str, str]) -> str:
         """Why an edit is illegal, or "" if it is fine. `after` is the proposal with this turn's earlier legal edits
-        applied, and `wording` the text those edits gave each item. Emptied sections are checked once, in `_vet`."""
+        applied, and `wording` the text those edits gave each item. Several answers may edit one item: edits apply in
+        order, so the later wording replaces the earlier and the Critic judges the result. A new item may be refined
+        that way, but a later wording that drops the earlier one's words is a different item and needs its own ID.
+        Emptied sections are checked once, in `_vet`."""
         before, text, section = self.proposal.items(), e.text.strip(), section_of(e.id)
         if section is None:
             return f"'{e.id}' is not an item ID; use a section letter (V, S, X, A, D or K) and a number"
@@ -222,11 +262,10 @@ class Ledger(BaseModel):
                     f"({self.next_id(section, after)})")
         if text == before.get(e.id, "").strip():
             return f"the edit leaves {e.id} exactly as it was"
-        if wording.get(e.id, text) != text and e.id not in before:
+        if e.id in wording and bool(text) != bool(wording[e.id]):
+            return f"{e.id} is removed by one answer and rewritten by another in this turn; an item is either kept or removed"
+        if e.id in wording and e.id not in before and not _keeps(wording[e.id], text):
             return f"{e.id} is already the ID of a different new item in this turn; give this one {self.next_id(section, after)}"
-        if wording.get(e.id, text) != text:
-            return (f"{e.id} is given two different wordings in this turn. An item has one wording: give its complete final "
-                    f"wording, with every change, in each answer that edits it")
         return ""
 
     def coerce_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int):
@@ -241,14 +280,15 @@ class Ledger(BaseModel):
             open_ids = [i.id for i in self.open_issues()]
             verdicts = _dedupe(turn.verdicts, open_ids, lambda v: v.challenge_id)
             for cid in [c for c in open_ids if c not in {v.challenge_id for v in verdicts}]:
-                verdicts.append(Verdict(challenge_id=cid, answered=False, evidence="", needs_human_decision=False,
-                                        rationale="(No ruling given.)"))
+                verdicts.append(Verdict(challenge_id=cid, evidence="", fact="no fact", answered=False, unconfirmed=False,
+                                        needs_human_decision=False, rationale="(No ruling given.)"))
                 self.warnings.append(f"R{rnd}: Critic did not rule on {cid}; recorded as MAINTAIN.")
             for n, v in enumerate(verdicts):
-                if v.answered and not self.supported(v):
-                    verdicts[n] = v.model_copy(update={"answered": False, "rationale": v.rationale +
-                                                       " [Not counted as answered: the quoted evidence is not in the proposal.]"})
-                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without evidence; recorded as not answered.")
+                if self.verdict_problem(v):
+                    verdicts[n] = v.model_copy(update={"answered": False, "rationale": v.rationale + " [Not counted as "
+                                                       "answered: no concrete fact, or no evidence in a decided item.]"})
+                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without a concrete fact or evidence in a "
+                                         f"decided item; recorded as not accepted.")
             update["verdicts"] = verdicts
         return turn.model_copy(update=update)
 
@@ -270,8 +310,8 @@ class Ledger(BaseModel):
             self.pre_mortem, self.gaps = turn.pre_mortem, turn.gaps
         for v in _dedupe(getattr(turn, "verdicts", []), [i.id for i in self.open_issues()], lambda v: v.challenge_id):
             issue = self.issues[v.challenge_id]
-            evidence = f' Evidence: "{v.evidence}"' if v.ruling == "ACCEPT" else ""
-            issue.history.append(Event(round=rnd, actor="critic", move=v.ruling, text=v.rationale + evidence))
+            evidence = f' Fact: {v.fact.rstrip(".")}. Evidence: "{v.evidence}"' if v.ruling == "ACCEPT" else ""
+            issue.history.append(Event(round=rnd, actor="critic", move=v.ruling, text=(v.rationale + evidence).strip()))
             if v.ruling == "ACCEPT":
                 issue.status = "RESOLVED"
             elif v.ruling == "ESCALATE":
@@ -327,6 +367,31 @@ def _section_problems(p: Proposal) -> list[str]:
     if dupes := sorted({i for i in ids if ids.count(i) > 1}):
         problems.append(f"Duplicate IDs: {', '.join(dupes)}.")
     return problems
+
+
+def _only_removes(edits: list[Edit]) -> bool:
+    return bool(edits) and all(not e.text.strip() for e in edits)
+
+
+def _share(words: list[str], text: str) -> float:
+    """The share of `words` that appear in `text` in the same order, ignoring case and punctuation."""
+    blocks = SequenceMatcher(None, words, _words(text).split(), autojunk=False).get_matching_blocks()
+    return sum(b.size for b in blocks) / len(words) if words else 1.0
+
+
+def _keeps(earlier: str, later: str) -> bool:
+    """Does a later wording keep (nearly) all of an earlier one's words, i.e. refine it rather than replace it?"""
+    return _share(_words(earlier).split(), later) >= 0.85
+
+
+def _quote_words(evidence: str) -> list[str]:
+    words = _words(evidence).split()
+    return words[1:] if words and re.fullmatch(r"[a-z]\d+", words[0]) else words
+
+
+def _drops(edits: list[Edit]) -> bool:
+    """Does a set of edits drop or descope something: remove an item, or add or change an out-of-scope one?"""
+    return any(not e.text.strip() or section_of(e.id) == "out_of_scope" for e in edits)
 
 
 def _words(text: str) -> str:

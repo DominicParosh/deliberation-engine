@@ -141,7 +141,7 @@ def test_an_accept_must_quote_text_that_is_really_there():
     result = deliberate("Request.", "ctx", llms, GATED)
     assert "is not there" in llms["critic"].prompts[2][-1]["content"]  # one repair request first
     assert result.ledger.issues["C1"].strikes >= 1                      # then the unsupported ACCEPTs count as MAINTAIN
-    assert any("without evidence" in w for w in result.ledger.warnings)
+    assert any("without a concrete fact or evidence" in w for w in result.ledger.warnings)
 
 
 def test_evidence_must_be_quoted_but_may_carry_an_id_or_elide_words():
@@ -149,19 +149,52 @@ def test_evidence_must_be_quoted_but_may_carry_an_id_or_elide_words():
     p["in_scope"][0]["text"] = "Only the regional coordinator for a country can mark a contact as its focal point."
     ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
     ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
-    check = lambda quote: ledger.supported(Verdict(challenge_id="C1", answered=True, evidence=quote,  # noqa: E731
-                                                   needs_human_decision=False, rationale="r"))
-    assert check("only the regional coordinator for a country can mark a contact")
-    assert check("S1: Only the regional coordinator ... can mark a contact as its focal point")
-    assert not check("Regional coordinators own focal-point assignments")  # a paraphrase is not evidence
-    assert not check("Only the ... focal")                                  # fragments too short to check
+    check = lambda quote: ledger.evidence_source(verdict(evidence=quote))  # noqa: E731
+    assert check("only the regional coordinator for a country can mark a contact") == "S1"
+    assert check("S1: Only the regional coordinator ... can mark a contact as its focal point") == "S1"
+    assert check("Regional coordinators own focal-point assignments") == ""  # a paraphrase is not evidence
+    assert check("Only the ... focal") == ""                                  # fragments too short to check
 
 
-def test_the_critics_pre_mortem_and_gaps_are_kept_and_shown_again():
+def verdict(**kw) -> Verdict:
+    return Verdict(**{"challenge_id": "C1", "evidence": "", "fact": "regional coordinators", "answered": True,
+                      "unconfirmed": False, "needs_human_decision": False, "rationale": "r", **kw})
+
+
+def test_an_accept_needs_a_concrete_fact_and_evidence_from_a_decided_item():
+    p = proposal()
+    p["assumptions"][0]["text"] = "A data steward reviews every contact record each quarter."
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
+    steward = "A data steward reviews every contact record each quarter"
+    assert "comes from assumption A1" in ledger.verdict_problem(verdict(evidence=steward))
+    ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move="DEFEND", text=f"A1 covers it: {steward}."))
+    assert "comes from assumption A1" in ledger.verdict_problem(verdict(evidence=steward))  # not through a defense either
+    for empty in ("no fact", "`no fact`", "No fact - it only promises a process", "", "n/a"):
+        assert "`fact` is" in ledger.verdict_problem(verdict(evidence="Know who to call.", fact=empty)), empty
+    assert ledger.verdict_problem(verdict(evidence="Know who to call.", fact="none: no role can export")) == ""
+    assert "at least four consecutive words" in ledger.verdict_problem(verdict(evidence="Know who"))
+    assert ledger.verdict_problem(verdict(evidence="Know who to call.")) == ""
+    assert ledger.verdict_problem(verdict(answered=False, evidence="anything")) == ""  # only an ACCEPT needs support
+
+
+def test_evidence_is_credited_to_the_text_it_matches_best():
+    p = proposal()
+    p["in_scope"][0]["text"] = "Regional coordinators can see the focal point for their countries; project managers maintain nothing."
+    p["assumptions"][0]["text"] = "Regional coordinators maintain the focal point for their countries."
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
+    assert ledger.evidence_source(verdict(evidence="Regional coordinators maintain the focal point for their countries")) == "A1"
+
+
+def test_the_pre_mortem_is_shown_again_but_the_gaps_list_is_not():
     critic_fake = Fake(accept_then_conclude)
-    deliberate("Request.", "ctx", {"proposer": Fake(proposer_json), "critic": critic_fake, "summarizer": Fake(summarizer_json)}, GATED)
+    result = deliberate("Request.", "ctx", {"proposer": Fake(proposer_json), "critic": critic_fake,
+                                            "summarizer": Fake(summarizer_json)}, GATED)
     round2 = critic_fake.prompts[1][0]["content"]
-    assert "A coordinator exported a confidential note." in round2 and "Who decides who the right person is?" in round2
+    assert "A coordinator exported a confidential note." in round2
+    assert "Who decides who the right person is?" not in round2  # re-showing it made the Critic re-raise settled points
+    assert result.ledger.gaps == ["Who decides who the right person is?"]
 
 
 def test_the_move_follows_from_the_grounds():
@@ -176,14 +209,18 @@ def test_a_revision_must_show_in_the_proposal_but_a_defense_may_be_quoted_from_t
         ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
         ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
         ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move=move, text=claim))
-        verdict = Verdict(challenge_id="C1", answered=True, evidence=claim, needs_human_decision=False, rationale="r")
-        assert ledger.supported(verdict) is expected, move
+        assert ledger.evidence_source(verdict(evidence=claim)) == ("answer" if expected else ""), move
 
 
-def test_the_ruling_follows_from_the_critics_two_judgements():
-    rule = lambda answered, humans: Verdict(challenge_id="C1", answered=answered, evidence="",  # noqa: E731
-                                            needs_human_decision=humans, rationale="r").ruling
-    assert (rule(True, False), rule(True, True), rule(False, True), rule(False, False)) == ("ACCEPT", "ACCEPT", "ESCALATE", "MAINTAIN")
+def test_the_ruling_follows_from_the_critics_judgements():
+    rule = lambda answered, unconfirmed, humans: verdict(answered=answered, unconfirmed=unconfirmed,  # noqa: E731
+                                                         needs_human_decision=humans).ruling
+    assert rule(True, False, False) == rule(True, False, True) == "ACCEPT"
+    # an answer resting on a team or policy nobody mentioned can't be accepted; the question decides where it goes:
+    assert rule(True, True, True) == "ESCALATE"    # to humans, if answering needs their authority (e.g. retention law)
+    assert rule(True, True, False) == "MAINTAIN"   # back to the Proposer, if it is a rule we decide (e.g. role changes)
+    assert rule(False, False, True) == rule(False, True, True) == "ESCALATE"
+    assert rule(False, False, False) == rule(False, True, False) == "MAINTAIN"
 
 
 def test_the_engine_applies_the_edits_so_claimed_and_actual_changes_match():
@@ -213,7 +250,7 @@ def test_a_defense_may_not_edit_and_a_revision_must():
     repair = llms["proposer"].prompts[2][-1]["content"]
     assert "C1: grounds ALREADY_COVERED mean DEFEND" in repair and "C2: grounds MISSING_DECISION mean REVISE" in repair
     assert result.ledger.proposals[1].items() == result.ledger.proposals[0].items()  # second failure: nothing changed
-    assert any("edits breaking these rules were dropped" in w for w in result.ledger.warnings)
+    assert any("illegal edits were dropped" in w for w in result.ledger.warnings)
     c2 = [e for e in result.ledger.issues["C2"].history if e.actor == "proposer"][0]
     assert c2.move == "DEFEND" and "No usable answer" in c2.text  # a claimed revision that changed nothing isn't one
 
@@ -221,11 +258,14 @@ def test_a_defense_may_not_edit_and_a_revision_must():
 def test_each_illegal_edit_is_named():
     ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
     ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
-    cases = {("Q1", "x"): "not an item ID", ("V1", ""): "core commitments can't be removed", ("S9", ""): "no S9 to remove",
-             ("S1", "Scope item S1."): "exactly as it was", ("X1", ""): "would leave 'out_of_scope' empty",
-             ("S01", "x"): "not an item ID"}
-    for (item, text), expected in cases.items():
-        response = Response(challenge_id="C1", grounds="MISSING_DECISION", edits=[Edit(id=item, text=text)], rationale="r")
+    revise, concede = "MISSING_DECISION", "SHOULD_NOT_BUILD"
+    cases = [(revise, "Q1", "x", "not an item ID"), (revise, "S01", "x", "not an item ID"),
+             (concede, "V1", "", "core commitments can't be removed"), (concede, "S9", "", "no S9 to remove"),
+             (revise, "S1", "Scope item S1.", "exactly as it was"), (concede, "X1", "", "would leave 'out_of_scope' empty"),
+             (revise, "S2", "", "only remove items, which is a concession"),
+             (concede, "S1", "Alerts pause during negotiations.", "a concession drops or descopes")]
+    for grounds, item, text, expected in cases:
+        response = Response(challenge_id="C1", grounds=grounds, edits=[Edit(id=item, text=text)], rationale="r")
         problems = ledger.check_proposer(ProposerTurn(responses=[response], summary="s", confidence=50, biggest_worry="w"))
         assert len(problems) == 1 and expected in problems[0], (item, problems)
     for order in ([Edit(id="X1", text=""), Edit(id="X2", text="No offline mode.")], [Edit(id="X2", text="No offline mode."),
@@ -238,7 +278,7 @@ def test_each_illegal_edit_is_named():
     assert "S2 belonged to an item removed earlier" in problems[0] and "(S3)" in problems[0]
 
 
-def test_an_item_has_one_wording_per_turn():
+def test_later_edits_of_an_item_replace_earlier_ones_but_new_items_need_their_own_ids():
     ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
     for cid in ("C1", "C2"):
         ledger.issues[cid] = Issue(id=cid, round_raised=1, **challenge())
@@ -248,10 +288,56 @@ def test_an_item_has_one_wording_per_turn():
                      for c, t in (("C1", first), ("C2", second))]
         return ledger.check_proposer(ProposerTurn(responses=responses, summary="s", confidence=50, biggest_worry="w"))
 
-    assert problems("S1", "Rule A and rule B.", "Rule A and rule B.") == []
-    assert "S1 is given two different wordings" in problems("S1", "Rule A.", "Rule A and rule B.")[0]
+    assert problems("S1", "Rule A.", "Rule A and rule B.") == []
+    assert ledger.proposal.edited([Edit(id="S1", text="Rule A."), Edit(id="S1", text="Rule A and rule B.")]).items()["S1"] \
+        == "Rule A and rule B."
     assert "S3 is already the ID of a different new item in this turn; give this one S4" in \
         problems("S3", "Notes are kept 2 years.", "Exports are disabled.")[0]
+    assert problems("S3", "Notes are kept 2 years.", "Notes are kept 2 years and exports are disabled.") == []  # refined
+    for first, second in (("", "Coordinators may export the list."), ("Coordinators may export the list.", "")):
+        assert any("removed by one answer and rewritten by another" in p for p in problems("S2", first, second))
+
+
+def test_a_concession_must_drop_or_descope_something():
+    def proposer(prompt, _):  # labels as a concession what only adds a condition
+        return proposer_json(prompt, moves={"C1": ("SHOULD_NOT_BUILD", [("S1", "Alerts pause during negotiations.")])})
+
+    llms = agents(proposer=proposer)
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert "a concession drops or descopes something" in llms["proposer"].prompts[2][-1]["content"]
+    assert [e.move for e in result.ledger.issues["C1"].history if e.actor == "proposer"] == ["REVISE"]  # relabelled
+    assert result.ledger.proposal.items()["S1"] == "Alerts pause during negotiations."
+
+
+def test_items_lose_a_repeated_id_and_nothing_else():
+    assert Edit(id="S3", text="S3: Only regional coordinators.").text == "Only regional coordinators."
+    assert Edit(id="S3", text="S3: S3: Twice.").text == "Twice."
+    assert Response(challenge_id="C1", grounds="MISSING_DECISION", rationale="r",  # validating again changes nothing
+                    edits=[Edit(id="S3", text="S3: S3: Twice.")]).edits[0].text == "Twice."
+    assert Edit(id="S1", text="S1-S3 apply to every region.").text == "S1-S3 apply to every region."
+    assert Edit(id="K1", text="K1.5 hours is the median.").text == "K1.5 hours is the median."
+    assert Edit(id="S1", text="S1:").text == "S1:"  # never turns an edit into a removal
+
+
+def test_a_missing_ruling_is_recorded_as_maintain_after_a_failed_repair():
+    def critic(prompt, _):  # forgets C3 every time
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        return critic_json({c: "ACCEPT" for c in open_ids(prompt) if c != "C3"}, signal="CONCLUDE")
+
+    result = deliberate("Request.", "ctx", agents(critic=critic), GATED)
+    assert any("did not rule on C3" in w for w in result.ledger.warnings)
+    assert [e.move for e in result.ledger.issues["C3"].history if e.actor == "critic"][1] == "MAINTAIN"
+
+
+def test_a_revision_that_only_removes_items_is_a_concession():
+    def proposer(prompt, _):
+        return proposer_json(prompt, moves={"C1": ("MISSING_DECISION", [("S2", "")])})
+
+    llms = agents(proposer=proposer)
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert "which is a concession" in llms["proposer"].prompts[2][-1]["content"]
+    assert [e.move for e in result.ledger.issues["C1"].history if e.actor == "proposer"] == ["CONCEDE"]
 
 
 def test_answers_to_closed_issues_are_ignored_without_a_repair():

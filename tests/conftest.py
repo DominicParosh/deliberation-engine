@@ -27,7 +27,7 @@ def round_of(prompt: str) -> int:
 
 
 def budget_of(prompt: str) -> int:
-    return int(re.search(r"(?:at most|and) (\d+) (?:new )?challenge", prompt).group(1))
+    return int(re.search(r"(?:up to|at most) (\d+)", prompt).group(1))
 
 
 def proposal() -> dict:
@@ -69,10 +69,13 @@ def opening_json(*challenges) -> str:
 EVIDENCE = "Know who to call."  # appears in every fake proposal, so an ACCEPT quoting it is supported
 
 
-def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", coverage=(), confidence=60, evidence=EVIDENCE) -> str:
+def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", coverage=(), confidence=60, evidence=EVIDENCE,
+                fact="who to call") -> str:
+    accept = lambda r: r == "ACCEPT"  # noqa: E731
     return json.dumps({
-        "verdicts": [{"challenge_id": c, "answered": r == "ACCEPT", "evidence": evidence if r == "ACCEPT" else "",
-                      "needs_human_decision": r == "ESCALATE", "rationale": "Considered."} for c, r in rulings.items()],
+        "verdicts": [{"challenge_id": c, "evidence": evidence if accept(r) else "", "fact": fact if accept(r) else "no fact",
+                      "answered": accept(r), "unconfirmed": False, "needs_human_decision": r == "ESCALATE",
+                      "rationale": "Considered."} for c, r in rulings.items()],
         "new_challenges": list(new), "signal": signal, "confidence": confidence, "biggest_worry": "Leaks.",
         "lens_coverage": [{"lens": lens, "note": "No material risk."} for lens in coverage]})
 

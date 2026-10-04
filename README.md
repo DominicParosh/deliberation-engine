@@ -76,17 +76,21 @@ always schema-valid) that the orchestrator checks against the ledger before appl
   follows from the grounds (**REVISE**, **CONCEDE** or **DEFEND**), and a revision or concession carries
   **edits**: the new wording of each item it changes. The engine applies the edits, so what the Proposer
   says it changed is exactly what changed.
-- The Critic opens with a pre-mortem (a year after launch, this feature caused an incident: what happened?)
-  and the questions the request leaves open, then raises challenges. Each must name the IDs it targets, a
+- The Critic opens with a pre-mortem (a year after launch, something this feature created caused an
+  incident: what happened?) and the questions the request leaves open, then raises challenges. Each must name the IDs it targets, a
   lens, a severity, a concrete failure scenario and a resolution test phrased as a question with a concrete
   answer. Generic pushback cannot be expressed in the schema. From round 2 it rules on every answered
-  challenge by judging two things, and the ruling follows: answered → **ACCEPT**, with the words that answer
-  it quoted from the proposal, or from the Proposer's answer to a defense or concession (the ledger checks
-  the quote is really there); needs authority neither agent
-  has → **ESCALATE** to humans; otherwise **MAINTAIN**.
+  challenge in fixed steps: it quotes the words that come closest to answering its test (from a decided item,
+  or from the Proposer's answer to a defense or concession, never from an assumption), names the concrete fact
+  they commit to, and judges whether that answers the test and stops its failure scenario. The ruling follows:
+  answered with nothing unconfirmed → **ACCEPT** (the ledger checks the quote is really there and a fact was
+  named); otherwise a test that needs authority neither agent has (law, policy, budgets, existing teams) →
+  **ESCALATE** to humans, and any other → **MAINTAIN**, back to the Proposer. An answer that rests on a team,
+  policy or system nobody has confirmed is never accepted.
 - An illegal move (a missing answer or ruling, an over-budget challenge, a defense that edits, a revision
-  that doesn't, an attempt to remove a core commitment, an ACCEPT without evidence) gets one repair request;
-  if that also fails, the orchestrator coerces it safely and records a warning.
+  that doesn't, a concession that drops nothing, an attempt to remove a core commitment, an ACCEPT without a
+  concrete fact or real evidence) gets one repair request; if that also fails, the orchestrator coerces it
+  safely and records a warning.
 
 **Termination: the Critic proposes, the ledger disposes.** The Critic signals CONCLUDE or CONTINUE, but
 CONCLUDE is accepted only when the evidence agrees:
