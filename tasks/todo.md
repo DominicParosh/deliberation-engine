@@ -88,4 +88,10 @@ Environment (updated 2026-10-04 06:55):
 - [x] Fixed `ablate.py`'s claim that each configuration differs in one thing (naive swaps the whole policy)
 
 ## Review
-_(filled in at the end)_
+- Delivered: the 45-run comparison analysed (`experiments/results.md`), one published trace per request (`runs/`),
+  the README's evidence section with limitations, and a DECISIONS.md data pack for Domi (kept outside the repo).
+- Independent review (rubric grader and README fact-check) led to: the lens check on `converged`, every instruction
+  in `prompts/`, a decision record that shows both sides' last word, declined challenges and undone settlements,
+  twelve README corrections, and 54 tests. Replaying all 45 recorded runs through the final code reproduces every
+  ledger, trace and model call.
+- Open: DECISIONS.md (Domi writes it), one live smoke run of the final code (Domi), and the sync to the Mac.
