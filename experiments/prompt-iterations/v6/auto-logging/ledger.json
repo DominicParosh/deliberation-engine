@@ -1,0 +1,610 @@
+{
+  "request": "Meetings with government officials should be logged automatically so we stop losing engagement history.",
+  "pre_mortem": "A year after launch, the automated logging feature inadvertently recorded sensitive discussions held during classified diplomatic meetings. As a result, meeting logs were accessed by unauthorized project managers who were not privy to the information, leading to a diplomatic incident. Notably, confidential details leaked to the wrong ministry contact, causing severe reputational damage to the government.",
+  "gaps": [
+    "What specific access permissions will be set for regional coordinators and project managers to prevent unauthorized view or edits of logs?",
+    "How will meetings lacking proper authorization or having confidentiality concerns be identified and handled to avoid unintentional logging?",
+    "What happens to logged meetings when personnel, such as regional coordinators or project managers, change roles or leave the organization?",
+    "How will false positives be managed to ensure that non-engagement meeting entries are not logged?",
+    "What criteria will be used to determine which meetings are considered confidential and should not be logged automatically?",
+    "What mechanism will be implemented to ensure that the logged data can be audited for compliance with data protection regulations?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will implement an automated logging feature for meetings with government officials in the Government CRM, aimed at preserving engagement history. It is intended for use by regional coordinators and project managers who need to maintain accurate records of interactions with government counterparts.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automate the logging of meeting details, including date, time, participants, and notes."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure that all logged meetings are easily accessible and searchable by authorized users."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Automatically log meeting details such as the date, time, attendees (both internal and external), and a summary of the discussion."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a feature for regional coordinators and project managers to edit or add notes to logged meetings."
+        },
+        {
+          "id": "S3",
+          "text": "Provide a search function to filter logged meetings by date, participant, or keywords in the notes."
+        },
+        {
+          "id": "S4",
+          "text": "Set access permissions so that only regional coordinators and project managers can view and edit meeting logs."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external calendar applications for automatic meeting logging."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide analytics or reporting features on engagement history."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover meetings that lack proper authorization or have confidentiality concerns."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The system will have access to a complete list of meetings scheduled with government officials, which depends on the proper entry of data by users."
+        },
+        {
+          "id": "A2",
+          "text": "All users logging meetings will have the necessary training and understanding of how to report sensitive information securely."
+        },
+        {
+          "id": "A3",
+          "text": "Relevant stakeholders will prioritize and approve the automatic logging feature, assuming they recognize the importance of maintaining engagement history."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'automatically log' means to record meeting details in the database without manual entry, triggered by a meeting initiation."
+        },
+        {
+          "id": "D2",
+          "text": "'engagement history' means a chronological record of interactions with government officials, including but not limited to meetings, calls, and correspondence."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of the quarter, the automated logging feature should log at least 90% of scheduled meetings with government officials, as determined by comparing meeting entries to calendar data."
+        }
+      ]
+    },
+    {
+      "summary": "This feature release aims to automate the logging of meeting details for engagement history, ensuring only relevant meetings are captured while providing access control and compliance measures. The implementations include notifications for unauthorized access, oversight committee validation for confidential meetings, and clear ownership of logged data.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automate the logging of meeting details, including date, time, participants, and notes."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure that all logged meetings are easily accessible and searchable by authorized users."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Automatically log meeting details such as the date, time, attendees (both internal and external), and a summary of the discussion, with an auditing mechanism implemented to track access and changes to logged meetings."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a feature for regional coordinators and project managers to edit or add notes to logged meetings."
+        },
+        {
+          "id": "S3",
+          "text": "Provide a search function to filter logged meetings by date, participant, or keywords in the notes."
+        },
+        {
+          "id": "S4",
+          "text": "Set access permissions so that only regional coordinators and project managers can view and edit meeting logs, with automated alerts sent to administrators for any unauthorized access attempts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external calendar applications for automatic meeting logging."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide analytics or reporting features on engagement history."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover meetings that lack proper authorization or have confidentiality concerns unless identified and approved by a designated oversight committee responsible for authorization."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The system will have access to a complete list of meetings scheduled with government officials, which depends on the proper entry of data by users."
+        },
+        {
+          "id": "A2",
+          "text": "All users logging meetings will have the necessary training and understanding of how to report sensitive information securely."
+        },
+        {
+          "id": "A3",
+          "text": "Relevant stakeholders will prioritize and approve the automatic logging feature, assuming they recognize the importance of maintaining engagement history."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'automatically log' means to record meeting details in the database without manual entry, triggered by a meeting initiation."
+        },
+        {
+          "id": "D2",
+          "text": "'engagement history' means a chronological record of interactions with government officials, including but not limited to meetings, calls, and correspondence, with documented ownership and transfer protocols for all logged interactions."
+        },
+        {
+          "id": "D3",
+          "text": "'confidential meetings' means meetings that involve sensitive topics such as diplomatic discussions, classified information, or discussions under non-disclosure agreements, which require prior approval from the oversight committee to be logged."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of the quarter, the automated logging feature should log at least 90% of scheduled meetings with government officials, as determined by comparing meeting entries to calendar data."
+        }
+      ]
+    },
+    {
+      "summary": "This feature release aims to automate the logging of meeting details for engagement history while ensuring only relevant meetings are captured through clear guidelines and access control measures. Implementations include notifications for unauthorized access and oversight committee validation for logged meetings.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Automate the logging of meeting details, including date, time, participants, and notes."
+        },
+        {
+          "id": "V2",
+          "text": "Ensure that all logged meetings are easily accessible and searchable by authorized users."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "Automatically log meeting details such as the date, time, attendees (both internal and external), and a summary of the discussion, triggered only by meetings that involve direct engagement with government officials, subject to predefined criteria established by an oversight committee, with an auditing mechanism implemented to track access and changes to logged meetings."
+        },
+        {
+          "id": "S2",
+          "text": "Implement a feature for regional coordinators and project managers to edit or add notes to logged meetings."
+        },
+        {
+          "id": "S3",
+          "text": "Provide a search function to filter logged meetings by date, participant, or keywords in the notes."
+        },
+        {
+          "id": "S4",
+          "text": "Set access permissions so that only regional coordinators and project managers can view and edit meeting logs, with automated alerts sent to administrators for any unauthorized access attempts."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include integration with external calendar applications for automatic meeting logging."
+        },
+        {
+          "id": "X2",
+          "text": "This release will not provide analytics or reporting features on engagement history."
+        },
+        {
+          "id": "X3",
+          "text": "This release will not cover meetings that lack proper authorization or have confidentiality concerns unless identified and approved by a designated oversight committee responsible for authorization."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "The system will have access to a complete list of meetings scheduled with government officials, which depends on the proper entry of data by users."
+        },
+        {
+          "id": "A2",
+          "text": "All users logging meetings will have the necessary training and understanding of how to report sensitive information securely."
+        },
+        {
+          "id": "A3",
+          "text": "Relevant stakeholders will prioritize and approve the automatic logging feature, assuming they recognize the importance of maintaining engagement history."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "'automatically log' means to record meeting details in the database without manual entry, triggered by a meeting initiation."
+        },
+        {
+          "id": "D2",
+          "text": "'engagement history' means a chronological record of interactions with government officials, including but not limited to meetings, calls, and correspondence, with documented ownership and transfer protocols for all logged interactions."
+        },
+        {
+          "id": "D3",
+          "text": "'confidential meetings' means meetings that involve sensitive topics such as diplomatic discussions, classified information, or discussions under non-disclosure agreements, which require prior approval from the oversight committee to be logged."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "By the end of the quarter, the automated logging feature should log at least 90% of scheduled meetings with government officials, as determined by comparing meeting entries to calendar data."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S4"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "S4 commits to setting access permissions for regional coordinators and project managers, but fails to specify how unauthorized access will be prevented or monitored.",
+      "failure_scenario": "A project manager who is not authorized to access sensitive information gains access to meeting logs containing confidential diplomatic discussions, leading to the breach of sensitive information.",
+      "resolution_test": "What specific access controls will be put in place to prevent unauthorized access to meeting logs?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "S4 commits to setting access permissions for regional coordinators and project managers, but fails to specify how unauthorized access will be prevented or monitored.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit specifies that automated alerts will notify administrators of any unauthorized access attempts, thereby providing clarity on monitoring unauthorized access.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses monitoring for unauthorized access, answering the test. Fact: Automated alerts will notify administrators of unauthorized access attempts. Evidence: \"with automated alerts sent to administrators for any unauthorized access attempts.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "X3"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "X3 states that meetings lacking proper authorization or confidentiality concerns are out of scope, yet does not define how these criteria will be identified or who decides this.",
+      "failure_scenario": "An undocumented meeting with a sensitive nature is automatically logged, available to users who should not have access to this information, resulting in a data breach and potential legal implications.",
+      "resolution_test": "What specific processes are in place to identify and manage meetings that lack proper authorization or have confidentiality concerns?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "X3 states that meetings lacking proper authorization or confidentiality concerns are out of scope, yet does not define how these criteria will be identified or who decides this.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit introduces a designated oversight committee that will determine which meetings can be logged, ensuring clear identification of meetings with confidentiality concerns.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "X3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This provides a specific process for managing confidentiality, thereby answering the test. Fact: A designated oversight committee will identify and approve meetings for logging based on confidentiality concerns. Evidence: \"identified and approved by a designated oversight committee responsible for authorization.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "There is no clarity on the ownership and maintenance responsibilities of logged meeting data after personnel changes.",
+      "failure_scenario": "A regional coordinator leaves without proper delegation of access rights or responsibilities, leading to confusion about who can edit or delete sensitive or error-ridden meeting logs.",
+      "resolution_test": "What process will be established to transfer ownership of meeting logs and permissions when users change roles or leave the organization?",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no clarity on the ownership and maintenance responsibilities of logged meeting data after personnel changes.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit clarifies that ownership and transfer protocols must be documented for all logged interactions, addressing maintenance responsibilities after staff changes.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D2"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This ensures there is a defined process for ownership changes, directly addressing the test. Fact: Ownership and transfer protocols must be documented for all logged interactions to manage data after personnel changes. Evidence: \"with documented ownership and transfer protocols for all logged interactions.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not address management of false positives in logging, risking irrelevant meetings being recorded, which could confuse users.",
+      "failure_scenario": "Meetings that are not relevant to the engagement history are logged due to automated capturing without proper filtering, resulting in clutter and user frustration in searching for relevant logs.",
+      "resolution_test": "What guidelines will be implemented to ensure only relevant meetings are logged automatically?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "ESCALATED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address management of false positives in logging, risking irrelevant meetings being recorded, which could confuse users.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision specifies that only meetings involving direct engagement with government officials should be logged, which will help minimize irrelevant meetings being recorded.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The proposal does not specify guidelines or criteria leading to potential logging of irrelevant meetings.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit specifies that only meetings involving direct engagement with government officials will be logged automatically, thus minimizing the risk of irrelevant meetings being recorded.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The criteria for logging meetings is still unclear, as it rests on decisions by an oversight committee which is not defined within the proposal.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify the criteria for determining whether a meeting is confidential and should not be logged.",
+      "failure_scenario": "An important classified discussion is logged because the criteria for confidentiality were poorly defined, leading to unauthorized access to sensitive information.",
+      "resolution_test": "What specific criteria will determine which meetings are confidential and not logged automatically?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify the criteria for determining whether a meeting is confidential and should not be logged.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit defines confidential meetings and establishes a requirement for prior oversight committee approval before logging, mitigating the risk of logging sensitive discussions.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes criteria for confidentiality and helps prevent the logging of sensitive information. Fact: Confidential meetings require prior oversight committee approval to be logged. Evidence: \"which require prior approval from the oversight committee to be logged.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "BLOCKER",
+      "challenge": "There is no mention of an auditing mechanism to ensure compliance with data protection regulations regarding logged meeting data.",
+      "failure_scenario": "Lack of auditing features means that unauthorized access to sensitive meeting logs goes undetected, leading to breaches of regulatory compliance and potential legal action against the organization.",
+      "resolution_test": "What auditing mechanisms will be implemented to ensure all logged meeting data complies with data protection laws and regulations?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "There is no mention of an auditing mechanism to ensure compliance with data protection regulations regarding logged meeting data.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The edit incorporates auditing mechanisms to track access and changes, ensuring compliance with data protection laws and enhancing the proposal's accountability.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This addresses compliance by ensuring auditing measures are in place for logged meeting data. Fact: Auditing mechanisms will track access and changes to logged meetings. Evidence: \"with an auditing mechanism implemented to track access and changes to logged meetings.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not specify clear guidelines to ensure that only relevant meetings are logged automatically, risking irrelevant meetings being recorded.",
+      "failure_scenario": "Meetings about general updates or non-engagement topics are logged, cluttering the engagement history and causing confusion for users searching for significant logs.",
+      "resolution_test": "What specific guidelines will be implemented to ensure only relevant meetings are logged automatically?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "ESCALATED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not specify clear guidelines to ensure that only relevant meetings are logged automatically, risking irrelevant meetings being recorded.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision adds the requirement for a predefined set of criteria established by an oversight committee to determine which meetings qualify for automatic logging, ensuring only relevant meetings are captured.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ESCALATE",
+          "text": "The specific guidelines for determining relevant meetings remain unclarified, and thus the risk of irrelevant meetings being logged is not adequately mitigated.",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 80,
+      "critic_confidence": 40,
+      "proposer_worry": "Potential challenges in ensuring correct logging of meetings due to integration limitations or user compliance.",
+      "critic_worry": "The proposal lacks clear definitions and controls around confidentiality and access, creating significant risks of unauthorized access to sensitive data.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.25,
+      "proposer_confidence": 75,
+      "critic_confidence": 75,
+      "proposer_worry": "Ensuring all stakeholders understand and follow new access control procedures will be critical to prevent data breaches.",
+      "critic_worry": "Without strict adherence to clear guidelines on what constitutes a relevant meeting, the system may log superfluous information, complicating user experience.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 0,
+      "resolved": 5,
+      "escalated": 2,
+      "disagreement": 0.25,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "The success of this automated logging mechanism will heavily depend on the clear definition of 'direct engagement' and the criteria set by the oversight committee.",
+      "critic_worry": "The reliance on undefined criteria by an oversight committee leaves room for logging irrelevant meetings.",
+      "signal": "CONTINUE",
+      "decision": "converged",
+      "feedback": ""
+    }
+  ],
+  "termination": "converged",
+  "warnings": []
+}

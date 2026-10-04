@@ -1,6 +1,7 @@
 """Test doubles. `Fake` answers from the rendered prompt it receives, so tests drive the real
 prompt rendering, validation, ledger and termination code, with no API calls."""
 
+import itertools
 import json
 import re
 
@@ -55,9 +56,14 @@ def proposer_json(prompt: str, _messages=None, *, moves=None) -> str:
     return json.dumps({"responses": responses, "summary": "A first release.", "confidence": 70, "biggest_worry": "Adoption."})
 
 
+CASES = itertools.count(1)
+
+
 def challenge(severity="MAJOR", lens="CONFIDENTIALITY", targets=("S1",)) -> dict:
+    """Each call asks a different question, as a real Critic must: repeating one is refused."""
     return {"targets": list(targets), "lens": lens, "severity": severity, "challenge": "What breaks?",
-            "failure_scenario": "A coordinator sees a confidential note.", "resolution_test": "Restrict it."}
+            "failure_scenario": "A coordinator sees a confidential note.",
+            "resolution_test": f"Which rule settles case {next(CASES)}?"}
 
 
 def opening_json(*challenges) -> str:
@@ -74,7 +80,7 @@ def critic_json(rulings: dict[str, str] | str, new=(), signal="CONTINUE", covera
     accept = lambda r: r == "ACCEPT"  # noqa: E731
     return json.dumps({
         "verdicts": [{"challenge_id": c, "evidence": evidence if accept(r) else "", "fact": fact if accept(r) else "no fact",
-                      "answered": accept(r), "unconfirmed": False, "needs_human_decision": r == "ESCALATE",
+                      "settled": accept(r), "unconfirmed": False, "needs_human_decision": r == "ESCALATE",
                       "rationale": "Considered."} for c, r in rulings.items()],
         "new_challenges": list(new), "signal": signal, "confidence": confidence, "biggest_worry": "Leaks.",
         "lens_coverage": [{"lens": lens, "note": "No material risk."} for lens in coverage]})

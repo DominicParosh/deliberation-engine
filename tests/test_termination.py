@@ -50,7 +50,7 @@ def test_moderator_feedback_reaches_the_critic():
 
 def test_a_critic_that_is_never_satisfied_still_terminates_without_hitting_the_cap():
     def critic(prompt, _):  # maintains everything and always spends its full budget
-        new = [challenge("MAJOR", "OPERATIONS")] * budget_of(prompt)
+        new = [challenge("MAJOR", "OPERATIONS") for _ in range(budget_of(prompt))]
         if round_of(prompt) == 1:
             return opening_json(*THREE, *new[3:])
         return critic_json({c: "MAINTAIN" for c in open_ids(prompt)}, new=new)

@@ -35,7 +35,7 @@ def test_over_budget_critic_gets_one_repair_then_keeps_the_most_severe():
     def critic(prompt, _):
         if round_of(prompt) == 1:
             return opening_json(*THREE)
-        new = [challenge("MINOR", "OPERATIONS")] * 4 + [challenge("BLOCKER", "COMPLIANCE", ("GAP",))]
+        new = [challenge("MINOR", "OPERATIONS") for _ in range(4)] + [challenge("BLOCKER", "COMPLIANCE", ("GAP",))]
         return critic_json({c: "ACCEPT" for c in open_ids(prompt)}, new=new)  # 5 new, budget 3
 
     llms = agents(critic=critic)
@@ -141,7 +141,7 @@ def test_an_accept_must_quote_text_that_is_really_there():
     result = deliberate("Request.", "ctx", llms, GATED)
     assert "is not there" in llms["critic"].prompts[2][-1]["content"]  # one repair request first
     assert result.ledger.issues["C1"].strikes >= 1                      # then the unsupported ACCEPTs count as MAINTAIN
-    assert any("without a concrete fact or evidence" in w for w in result.ledger.warnings)
+    assert any("ACCEPT of C1 was refused" in w and "is not there" in w for w in result.ledger.warnings)
 
 
 def test_evidence_must_be_quoted_but_may_carry_an_id_or_elide_words():
@@ -157,7 +157,7 @@ def test_evidence_must_be_quoted_but_may_carry_an_id_or_elide_words():
 
 
 def verdict(**kw) -> Verdict:
-    return Verdict(**{"challenge_id": "C1", "evidence": "", "fact": "regional coordinators", "answered": True,
+    return Verdict(**{"challenge_id": "C1", "evidence": "", "fact": "regional coordinators", "settled": True,
                       "unconfirmed": False, "needs_human_decision": False, "rationale": "r", **kw})
 
 
@@ -175,7 +175,132 @@ def test_an_accept_needs_a_concrete_fact_and_evidence_from_a_decided_item():
     assert ledger.verdict_problem(verdict(evidence="Know who to call.", fact="none: no role can export")) == ""
     assert "at least four consecutive words" in ledger.verdict_problem(verdict(evidence="Know who"))
     assert ledger.verdict_problem(verdict(evidence="Know who to call.")) == ""
-    assert ledger.verdict_problem(verdict(answered=False, evidence="anything")) == ""  # only an ACCEPT needs support
+    assert ledger.verdict_problem(verdict(settled=False, evidence="anything")) == ""  # only an ACCEPT needs support
+
+
+def test_an_accept_cannot_rest_on_a_weak_phrase_or_on_a_question_sent_to_humans():
+    p = proposal()
+    p["in_scope"][0]["text"] = "A process will be established to reassign alerts when a coordinator leaves."
+    p["in_scope"][1]["text"] = "Alerts move to the regional coordinator's successor within 5 working days."
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
+    weak = ledger.verdict_problem(verdict(evidence="A process will be established to reassign alerts"))
+    assert "leans on 'will be established'" in weak
+    assert ledger.verdict_problem(verdict(evidence="Alerts move to the regional coordinator's successor")) == ""
+    trimmed = ledger.verdict_problem(verdict(evidence="to reassign alerts when a coordinator leaves"))
+    assert "leans on 'will be established'" in trimmed  # quoting around the weak phrase doesn't hide it
+    ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move="DEFEND", grounds="DESIGN_DETAIL",
+                                             text="Alert wording will be defined in design; this release fixes who gets them."))
+    assert ledger.verdict_problem(verdict(evidence="Alert wording will be defined in design")) == ""  # deferring is the point
+    ledger.issues["C1"].history.append(Event(round=2, actor="proposer", move="DEFEND", grounds="ACCEPTABLE_RISK",
+                                             text="Acceptable for a first release: appropriate staff will review alerts."))
+    assert "leans on 'appropriate'" in ledger.verdict_problem(verdict(evidence="appropriate staff will review alerts"))
+    ledger.issues["C1"].history.append(Event(round=3, actor="proposer", move="DEFEND", grounds="NEEDS_HUMAN_DECISION",
+                                             text="How long alerts are kept is for the records office to decide."))
+    assert "needs a human decision, so it can't be settled here" in \
+        ledger.verdict_problem(verdict(evidence="How long alerts are kept is for the records office"))
+
+
+def test_an_accepted_question_for_humans_is_refused_and_the_critics_own_routing_decides():
+    def proposer(prompt, _):
+        return proposer_json(prompt, moves={"C1": ("NEEDS_HUMAN_DECISION", [])})
+
+    llms = agents(proposer=proposer)  # the Critic accepts everything and never says C1 needs humans
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert "needs a human decision, so it can't be settled here" in llms["critic"].prompts[2][-1]["content"]
+    c1 = result.ledger.issues["C1"]
+    assert [e.move for e in c1.history if e.actor == "critic"][1] == "MAINTAIN"  # ours to decide, says the Critic
+    assert c1.status == "ESCALATED" and c1.strikes == 2                          # until the strike limit hands it over
+
+
+def test_a_new_challenge_may_not_repeat_an_existing_question():
+    def critic(prompt, _):
+        if round_of(prompt) == 1:
+            return opening_json(*THREE)
+        again = {**challenge("BLOCKER", "CONFIDENTIALITY"), "resolution_test": " which RULE settles case " + first + "?!"}
+        return critic_json({c: ("MAINTAIN" if c == "C1" else "ACCEPT") for c in open_ids(prompt)}, new=[again])
+
+    first = THREE[0]["resolution_test"].removeprefix("Which rule settles case ").rstrip("?")
+    llms = agents(critic=critic)
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert "asks the same question as C1" in llms["critic"].prompts[2][-1]["content"]
+    assert any("repeated an open question" in w for w in result.ledger.warnings)
+    assert len(result.ledger.issues) == 3  # nothing new was added
+
+
+def test_round_one_raises_a_challenge_per_open_question():
+    def critic(prompt, _):
+        doc = json.loads(accept_then_conclude(prompt, _))
+        if round_of(prompt) == 1:
+            doc["gaps"] = [f"Question {n}?" for n in range(1, 6)]  # five gaps, three challenges
+        return json.dumps(doc)
+
+    llms = agents(critic=critic)
+    deliberate("Request.", "ctx", llms, GATED)
+    assert "at least 5, at most 6" in llms["critic"].prompts[1][-1]["content"]
+
+
+def test_weak_phrases_are_only_the_ones_that_never_name_anything():
+    p = proposal()
+    concrete = ["The mission's protocol officer is the primary contact for each country.",
+                "A deputy acts in place of the focal point during leave.",
+                "Cold means inactive as defined in D1, checked by a periodic digest every Monday.",
+                "Inactivity will be determined by the date of the last logged meeting.",
+                "Only authorized users including regional coordinators and project managers see scores."]
+    p["in_scope"] = [{"id": f"S{n}", "text": t} for n, t in enumerate(concrete, 1)]
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(p)])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge())
+    for text in concrete:
+        assert ledger.verdict_problem(verdict(evidence=text)) == "", text
+
+
+def test_repeated_questions_are_caught_but_different_ones_are_not():
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **{**challenge(), "resolution_test":
+                                "What guidelines decide which meetings are logged?"})
+    ledger.issues["C2"] = Issue(id="C2", round_raised=1, status="RESOLVED", **{**challenge(), "resolution_test":
+                                "Which roles can view other teams' history?"})
+    from deliberation.schemas import NewChallenge
+
+    ask = lambda *tests: ledger._repeats([NewChallenge(**{**challenge(), "resolution_test": t}) for t in tests])  # noqa: E731
+    assert ask("What specific guidelines decide which meetings are logged?") == [(1, "C1")]  # one word inserted
+    assert ask("Which roles can view other teams' history?") == []   # C2 is closed: re-raising it is allowed
+    assert ask("Which roles can edit other teams' history?", "Which roles can edit other teams' history?") == \
+        [(2, "new challenge #1")]                                    # a repeat within one turn
+    assert ask("What guidelines decide which calls are logged?") == []  # a changed word is a different question
+
+
+def test_coercion_drops_repeats_before_cutting_to_the_budget():
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
+    ledger.issues["C1"] = Issue(id="C1", round_raised=1, **challenge("BLOCKER"))
+    from deliberation.schemas import CriticTurn, NewChallenge
+    new = [NewChallenge(**{**challenge("BLOCKER"), "resolution_test": ledger.issues["C1"].resolution_test}),
+           NewChallenge(**challenge("MAJOR")), NewChallenge(**challenge("MAJOR")), NewChallenge(**challenge("MINOR"))]
+    turn = CriticTurn(verdicts=[verdict(settled=False)], new_challenges=new, signal="CONTINUE", lens_coverage=[],
+                      confidence=50, biggest_worry="w")
+    kept = ledger.coerce_critic(turn, 2, budget=3).new_challenges
+    assert [c.severity for c in kept] == ["MAJOR", "MAJOR", "MINOR"]
+
+
+def test_the_round_one_minimum_never_exceeds_the_budget():
+    ledger = Ledger(request="r", proposals=[Proposal.model_validate(proposal())])
+    from deliberation.schemas import CriticOpening, NewChallenge
+    opening = CriticOpening(pre_mortem="p", gaps=[f"Q{n}?" for n in range(8)], confidence=40, biggest_worry="w",
+                            new_challenges=[NewChallenge(**challenge(lens=lens)) for lens in ("OWNERSHIP", "DEFINITIONS")
+                                            for _ in range(3)])
+    assert ledger.check_critic(opening, 1, budget=6) == []  # eight gaps, but six challenges is the most allowed
+
+
+def test_an_assumption_only_revision_is_recorded_as_no_usable_answer_after_a_failed_repair():
+    def proposer(prompt, _):
+        return proposer_json(prompt, moves={"C1": ("MISSING_DECISION", [("A1", "Regional coordinators own each record.")])})
+
+    llms = agents(proposer=proposer)
+    result = deliberate("Request.", "ctx", llms, GATED)
+    assert "only change assumptions" in llms["proposer"].prompts[2][-1]["content"]
+    c1 = [e for e in result.ledger.issues["C1"].history if e.actor == "proposer"][0]
+    assert c1.move == "DEFEND" and "No usable answer" in c1.text
+    assert result.ledger.proposals[1].items()["A1"] == result.ledger.proposals[0].items()["A1"]
 
 
 def test_evidence_is_credited_to_the_text_it_matches_best():
@@ -213,8 +338,8 @@ def test_a_revision_must_show_in_the_proposal_but_a_defense_may_be_quoted_from_t
 
 
 def test_the_ruling_follows_from_the_critics_judgements():
-    rule = lambda answered, unconfirmed, humans: verdict(answered=answered, unconfirmed=unconfirmed,  # noqa: E731
-                                                         needs_human_decision=humans).ruling
+    rule = lambda settled, unconfirmed, humans: verdict(settled=settled, unconfirmed=unconfirmed,  # noqa: E731
+                                                        needs_human_decision=humans).ruling
     assert rule(True, False, False) == rule(True, False, True) == "ACCEPT"
     # an answer resting on a team or policy nobody mentioned can't be accepted; the question decides where it goes:
     assert rule(True, True, True) == "ESCALATE"    # to humans, if answering needs their authority (e.g. retention law)
@@ -250,7 +375,7 @@ def test_a_defense_may_not_edit_and_a_revision_must():
     repair = llms["proposer"].prompts[2][-1]["content"]
     assert "C1: grounds ALREADY_COVERED mean DEFEND" in repair and "C2: grounds MISSING_DECISION mean REVISE" in repair
     assert result.ledger.proposals[1].items() == result.ledger.proposals[0].items()  # second failure: nothing changed
-    assert any("illegal edits were dropped" in w for w in result.ledger.warnings)
+    assert any("illegal edits dropped" in w for w in result.ledger.warnings)
     c2 = [e for e in result.ledger.issues["C2"].history if e.actor == "proposer"][0]
     assert c2.move == "DEFEND" and "No usable answer" in c2.text  # a claimed revision that changed nothing isn't one
 
@@ -263,6 +388,7 @@ def test_each_illegal_edit_is_named():
              (concede, "V1", "", "core commitments can't be removed"), (concede, "S9", "", "no S9 to remove"),
              (revise, "S1", "Scope item S1.", "exactly as it was"), (concede, "X1", "", "would leave 'out_of_scope' empty"),
              (revise, "S2", "", "only remove items, which is a concession"),
+             (revise, "A1", "Regional coordinators own each country's record.", "only change assumptions"),
              (concede, "S1", "Alerts pause during negotiations.", "a concession drops or descopes")]
     for grounds, item, text, expected in cases:
         response = Response(challenge_id="C1", grounds=grounds, edits=[Edit(id=item, text=text)], rationale="r")

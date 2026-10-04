@@ -148,10 +148,14 @@ class Verdict(BaseModel):
                                       "shown under the challenge (or from the Proposer's answer, for a defense or concession). "
                                       "Empty if nothing comes close.")
     fact: str = Field(description="What those words commit to, in a few words: the role, number, rule or yes/no your test asks "
-                                  "for. Write 'no fact' if they only promise ('a process will be established'), name no one "
-                                  "specific ('authorized users', 'appropriate clearance') or restate the question.")
-    answered: bool = Field(description="Does `fact` answer your test and stop your failure scenario as you described it? Judge "
-                                       "only that scenario: a new concern is a new challenge, not a reason to say no.")
+                                  "for; for a defense, what its argument establishes ('design detail: alert wording', 'covered "
+                                  "by S3'). Write 'no fact' if they only promise ('a process will be established'), name no "
+                                  "one specific ('authorized users', 'appropriate clearance') or restate the question.")
+    settled: bool = Field(description="Does `fact` answer your test and stop your failure scenario as you described it? For a "
+                                      "defense, does its argument hold instead: your test asked how to build rather than what, "
+                                      "another item already covers it, or the remaining risk is acceptable for a first release? "
+                                      "Judge only your original scenario: a new concern is a new challenge, not a reason to say no. "
+                                      "A challenge the Proposer says needs a human decision is never settled here.")
     unconfirmed: bool = Field(description="Does the answer rest on a team, policy, clearance level, law or system that the system "
                                           "description doesn't mention? Then it can't be accepted as it stands.")
     needs_human_decision: bool = Field(description="Does answering your test need authority neither of you has (what the law "
@@ -162,9 +166,9 @@ class Verdict(BaseModel):
 
     @property
     def ruling(self) -> str:
-        """An answered, confirmed test is accepted. Otherwise the question decides where it goes: to humans if it needs
-        authority neither agent has, back to the Proposer if it is a rule this deliberation can decide."""
-        if self.answered and not self.unconfirmed:
+        """A settled, confirmed challenge is accepted. Otherwise the question decides where it goes: to humans if it
+        needs authority neither agent has, back to the Proposer if it is a rule this deliberation can decide."""
+        if self.settled and not self.unconfirmed:
             return "ACCEPT"
         return "ESCALATE" if self.needs_human_decision else "MAINTAIN"
 
@@ -179,8 +183,8 @@ class CriticOpening(BaseModel):
 
     pre_mortem: str = Field(description="A year after launch, something this feature created (a record, a list, a score, an "
                                         "alert) caused a serious incident. In 2-3 sentences, what happened? Write this first.")
-    gaps: list[str] = Field(description="Questions the original request leaves open that a buildable release must answer, "
-                                        "one short question each.")
+    gaps: list[str] = Field(description="Questions the original request leaves open that a buildable release must answer and "
+                                        "the proposal answers badly or not at all, one short question each. Each gets a challenge.")
     new_challenges: list[NewChallenge] = Field(description="Most material first. If the proposal as written does not prevent "
                                                            "your pre-mortem, the first challenge is about that.")
     confidence: int = Field(description="0-100: how ready this proposal is to build as written.")

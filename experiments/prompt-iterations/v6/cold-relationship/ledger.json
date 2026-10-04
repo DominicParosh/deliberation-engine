@@ -1,0 +1,628 @@
+{
+  "request": "The CRM should alert us when our relationship with a country goes cold.",
+  "pre_mortem": "A year after the alerting system was launched, a sensitive diplomatic record was inadvertently shared with unauthorized personnel due to a malfunction in the alert distribution, leading to a breach of confidentiality and undermining relations with several countries. Additionally, some users received alerts about inactive engagements they were not authorized to see, causing confusion and distrust among stakeholders.",
+  "gaps": [
+    "Which roles are authorized to receive alerts about cold relationships?",
+    "How can we ensure that logged engagements are accurately captured to prevent false alerts?",
+    "What will happen when users change roles or leave the organization regarding the ownership of alert notifications?",
+    "What data protection measures are in place to handle the sensitive information within these alerts?",
+    "How will the system handle variations in engagement definitions across different countries or contexts, and are there safeguards against misinterpretations?",
+    "What is the retention policy for engagement history data, and how will it be enforced?"
+  ],
+  "proposals": [
+    {
+      "summary": "This release will implement an alerting system that notifies users when engagement with a country has been inactive for a predefined duration. It is intended for regional coordinators and project managers using the CRM system.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users will receive an alert if there is no engagement recorded with a country for six months."
+        },
+        {
+          "id": "V2",
+          "text": "Users can view a list of countries that have not had engagement in the past six months."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "The alert will be sent via email to regional coordinators and project managers associated with the inactive countries."
+        },
+        {
+          "id": "S2",
+          "text": "Users will have the option to define the threshold for inactivity, with a default setting of six months."
+        },
+        {
+          "id": "S3",
+          "text": "The system will track engagement history and determine inactivity based on logged interactions."
+        },
+        {
+          "id": "S4",
+          "text": "Alerts will include the country name, the date of last engagement, and a link to the relevant records in the CRM."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic actions based on the alerts, such as re-engagement plans or task assignments."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not cover historical engagement data prior to the implementation of this alert system."
+        },
+        {
+          "id": "X3",
+          "text": "The alert mechanism will not consider engagements logged outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will log all engagements with countries into the CRM system, which is critical for tracking engagement history."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has access to email functionality for alert notifications, which the alert system will utilize."
+        },
+        {
+          "id": "A3",
+          "text": "Users are aware of the importance of logging interactions promptly to maintain accurate engagement records."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"cold relationship\" means a period of six months or longer with no logged engagement activities between the organization and the country in the CRM."
+        },
+        {
+          "id": "D2",
+          "text": "\"alert\" means an automated email notification sent to users informing them of the cold relationship status."
+        },
+        {
+          "id": "D3",
+          "text": "\"engagement history\" means all interactions recorded in the CRM, including meetings, communications, and project collaborations."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users find the alert system useful, measured through feedback surveys after the release."
+        },
+        {
+          "id": "K2",
+          "text": "At least 90% of the alerts send successfully without errors in the first three months after deployment."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines an alert system for users when engagement with a country goes cold, clearly defining roles that will receive alerts and how engagements are categorized, tracked, and secured. Adjustments have been made to ensure proper management of the alert system and compliance with data protection measures.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users will receive an alert if there is no engagement recorded with a country for six months."
+        },
+        {
+          "id": "V2",
+          "text": "Users can view a list of countries that have not had engagement in the past six months."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "The alert will be sent via email to regional coordinators and project managers associated with the inactive countries, and all notifications will include measures to ensure data encryption and limit sensitive information to authorized recipients only."
+        },
+        {
+          "id": "S2",
+          "text": "Users will have the option to define the threshold for inactivity, with a default setting of six months."
+        },
+        {
+          "id": "S3",
+          "text": "The system will track engagement history and determine inactivity based on logged interactions, with periodic audits conducted to ensure accuracy and completeness of engagement records."
+        },
+        {
+          "id": "S4",
+          "text": "A process will be established to reassign alert notifications to new users when a user changes roles or leaves the organization, ensuring that alerts are sent only to active, authorized personnel."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic actions based on the alerts, such as re-engagement plans or task assignments."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not cover historical engagement data prior to the implementation of this alert system."
+        },
+        {
+          "id": "X3",
+          "text": "The alert mechanism will not consider engagements logged outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will log all engagements with countries into the CRM system, which is critical for tracking engagement history."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has access to email functionality for alert notifications, which the alert system will utilize."
+        },
+        {
+          "id": "A3",
+          "text": "Users are aware of the importance of logging interactions promptly to maintain accurate engagement records."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"cold relationship\" means a period of six months or longer with no logged engagement activities between the organization and the country in the CRM, defined consistently across all teams to ensure standardized interpretations of engagement across regions."
+        },
+        {
+          "id": "D2",
+          "text": "\"alert\" means an automated email notification sent to users informing them of the cold relationship status."
+        },
+        {
+          "id": "D3",
+          "text": "\"engagement history\" means all interactions recorded in the CRM, including meetings, communications, and project collaborations, categorized as follows: a) 'meeting' refers to all scheduled discussions with country representatives, b) 'communication' refers to all recorded correspondence, and c) 'projects' refers to any collaborations or initiatives involving the country."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users find the alert system useful, measured through feedback surveys after the release."
+        },
+        {
+          "id": "K2",
+          "text": "At least 90% of the alerts send successfully without errors in the first three months after deployment."
+        }
+      ]
+    },
+    {
+      "summary": "This proposal outlines an alert system for users when engagement with a country goes cold, clearly defining the specific roles authorized to receive alerts and ensuring proper management of sensitive information. Adjustments have been made to address confidentiality concerns, and compliance with data protection measures is reinforced.",
+      "core_commitments": [
+        {
+          "id": "V1",
+          "text": "Users will receive an alert if there is no engagement recorded with a country for six months."
+        },
+        {
+          "id": "V2",
+          "text": "Users can view a list of countries that have not had engagement in the past six months."
+        }
+      ],
+      "in_scope": [
+        {
+          "id": "S1",
+          "text": "The alert will be sent via email to regional coordinators and project managers assigned to the relevant countries in the CRM associated with the inactive countries, and all notifications will include measures to ensure data encryption and limit sensitive information to authorized recipients only."
+        },
+        {
+          "id": "S2",
+          "text": "Users will have the option to define the threshold for inactivity, with a default setting of six months."
+        },
+        {
+          "id": "S3",
+          "text": "The system will track engagement history and determine inactivity based on logged interactions, with periodic audits conducted to ensure accuracy and completeness of engagement records."
+        },
+        {
+          "id": "S4",
+          "text": "A process will be established to reassign alert notifications to new users when a user changes roles or leaves the organization, ensuring that alerts are sent only to active, authorized personnel."
+        }
+      ],
+      "out_of_scope": [
+        {
+          "id": "X1",
+          "text": "This release will not include automatic actions based on the alerts, such as re-engagement plans or task assignments."
+        },
+        {
+          "id": "X2",
+          "text": "This release does not cover historical engagement data prior to the implementation of this alert system."
+        },
+        {
+          "id": "X3",
+          "text": "The alert mechanism will not consider engagements logged outside of the CRM system."
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "text": "Users will log all engagements with countries into the CRM system, which is critical for tracking engagement history."
+        },
+        {
+          "id": "A2",
+          "text": "The CRM has access to email functionality for alert notifications, which the alert system will utilize."
+        },
+        {
+          "id": "A3",
+          "text": "Users are aware of the importance of logging interactions promptly to maintain accurate engagement records."
+        }
+      ],
+      "definitions": [
+        {
+          "id": "D1",
+          "text": "\"cold relationship\" means a period of six months or longer with no logged engagement activities between the organization and the country in the CRM, defined consistently across all teams to ensure standardized interpretations of engagement across regions."
+        },
+        {
+          "id": "D2",
+          "text": "\"alert\" means an automated email notification sent to users informing them of the cold relationship status."
+        },
+        {
+          "id": "D3",
+          "text": "\"engagement history\" means all interactions recorded in the CRM, including meetings, communications, and project collaborations, categorized as follows: a) 'meeting' refers to all scheduled discussions with country representatives, b) 'communication' refers to all recorded correspondence, and c) 'projects' refers to any collaborations or initiatives involving the country."
+        }
+      ],
+      "success_criteria": [
+        {
+          "id": "K1",
+          "text": "At least 80% of users find the alert system useful, measured through feedback surveys after the release."
+        },
+        {
+          "id": "K2",
+          "text": "At least 90% of the alerts send successfully without errors in the first three months after deployment."
+        }
+      ]
+    }
+  ],
+  "issues": {
+    "C1": {
+      "targets": [
+        "S1",
+        "S2"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not define which specific roles are authorized to receive alerts related to cold relationships, potentially leading to unauthorized exposure of sensitive diplomatic information.",
+      "failure_scenario": "A project manager from one region receives cold relationship alerts about countries handled by another team, leading to disruptive inquiries and discussions that compromise sensitive engagements.",
+      "resolution_test": "Which specific roles are authorized to receive cold relationship alerts?",
+      "id": "C1",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 1,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define which specific roles are authorized to receive alerts related to cold relationships, potentially leading to unauthorized exposure of sensitive diplomatic information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies that only users assigned to the relevant countries in the CRM will receive alerts, thus protecting sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "MAINTAIN",
+          "text": "The commitment does not specify exactly which roles are authorized to receive alerts, potentially leading to confusion about role assignment.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision explicitly states that only regional coordinators and project managers assigned to the relevant countries will receive alerts, thus addressing confidentiality concerns and preventing unauthorized exposure of sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The commitment specifies which roles are authorized to receive alerts, addressing the confidentiality issue. Fact: Only regional coordinators and project managers assigned are authorized to receive alerts. Evidence: \"The alert will be sent via email to regional coordinators and project managers assigned to the relevant countries in the CRM associated with the inactive countries.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C2": {
+      "targets": [
+        "D1",
+        "D3"
+      ],
+      "lens": "DEFINITIONS",
+      "severity": "MAJOR",
+      "challenge": "The definitions provided do not clarify how logged engagements are categorized, which could lead to discrepancies in defining a 'cold relationship.'",
+      "failure_scenario": "An engagement that should qualify as significant is misclassified due to incomplete logging, resulting in alerts being sent erroneously, which erodes trust in the alerting system.",
+      "resolution_test": "How are engagement activities categorized and validated in the CRM to inform what counts as a logged engagement?",
+      "id": "C2",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The definitions provided do not clarify how logged engagements are categorized, which could lead to discrepancies in defining a 'cold relationship.'",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision categorizes engagement activities to clarify what counts as logged engagements, reducing discrepancies in defining a 'cold relationship'.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The categorization clarifies how engagements are logged, reducing risks of discrepancies. Fact: Engagement activities categorized as meetings, communications, or projects. Evidence: \"categorized as follows: a) 'meeting' refers to all scheduled discussions with country representatives, b) 'communication' refers to all recorded correspondence, c) 'projects' refers to any collaborations or initiatives\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C3": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OWNERSHIP",
+      "severity": "MAJOR",
+      "challenge": "The proposal lacks clarity on who will manage the alert system's configuration after users change roles or leave, risking alerts being sent incorrectly.",
+      "failure_scenario": "A user who left the organization still receives alerts, leading to confusion among remaining team members regarding who is responsible for addressing cold relationships with countries.",
+      "resolution_test": "Outline the process for reassigning alert notifications and determining ownership when users change roles or leave.",
+      "id": "C3",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal lacks clarity on who will manage the alert system's configuration after users change roles or leave, risking alerts being sent incorrectly.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This specification outlines the process for assigning alerts to rightfully authorized users, addressing potential miscommunication and confusion.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S4"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "This establishes clarity on alert ownership and communication. Fact: A process exists to reassign notifications when users leave or change roles. Evidence: \"A process will be established to reassign alert notifications to new users when a user changes roles or leaves the organization\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C4": {
+      "targets": [
+        "S3"
+      ],
+      "lens": "DATA_QUALITY",
+      "severity": "MAJOR",
+      "challenge": "The proposal does not provide an explanation of how the engagement tracking will ensure data accuracy and completeness, risking false positives in alerts.",
+      "failure_scenario": "Alerts are generated erroneously because some engagements went unlogged or were incorrectly recorded, resulting in wasted time and reduced confidence in the system.",
+      "resolution_test": "What mechanisms are in place to validate the accuracy and completeness of engagement records logged in the CRM?",
+      "id": "C4",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not provide an explanation of how the engagement tracking will ensure data accuracy and completeness, risking false positives in alerts.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This edit adds an auditing process that will validate engagement records for accuracy and completeness, minimizing false positives.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S3"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Auditing enhances data quality and reduces false positives. Fact: Periodic audits will verify the accuracy of engagement records. Evidence: \"with periodic audits conducted to ensure accuracy and completeness of engagement records\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C5": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "COMPLIANCE",
+      "severity": "MINOR",
+      "challenge": "The proposal does not mention any compliance safeguards to handle sensitive data related to alerts, which raises concerns about data security.",
+      "failure_scenario": "Alerts sent via email expose sensitive country engagement details to unintended recipients, resulting in diplomatic tensions and breaches of confidentiality.",
+      "resolution_test": "What data protection measures will be implemented to secure sensitive information conveyed in alerts?",
+      "id": "C5",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not mention any compliance safeguards to handle sensitive data related to alerts, which raises concerns about data security.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision ensures the alerts contain data protection measures, ensuring sensitive information remains secure.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "These measures help secure sensitive information across alerts. Fact: Data protection measures are in place for alert notifications. Evidence: \"measures to ensure data encryption and limit sensitive information to authorized recipients only\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C6": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "OPERATIONS",
+      "severity": "MINOR",
+      "challenge": "The proposal does not address how the alert system will manage varying definitions of engagement across different regions or teams, which could lead to misalignment of alert criteria.",
+      "failure_scenario": "Users in one region interpret cold relationships differently than users in another due to differing engagement practices, leading to ineffective responses and missed opportunities.",
+      "resolution_test": "What is the approach for standardizing engagement definitions across different countries and contexts in the alerting system?",
+      "id": "C6",
+      "round_raised": 1,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 1,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not address how the alert system will manage varying definitions of engagement across different regions or teams, which could lead to misalignment of alert criteria.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 2,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "This revision specifies that the definition of engagement will be standardized across all teams, addressing any potential misinterpretation.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "D1"
+          ]
+        },
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "Standardization prevents misalignment in alert criteria. Fact: Engagement definitions are standardized across teams. Evidence: \"defined consistently across all teams to ensure standardized interpretations\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    },
+    "C7": {
+      "targets": [
+        "GAP"
+      ],
+      "lens": "CONFIDENTIALITY",
+      "severity": "BLOCKER",
+      "challenge": "The proposal does not define which specific roles are authorized to receive alerts related to cold relationships, potentially leading to unauthorized exposure of sensitive diplomatic information.",
+      "failure_scenario": "A project manager from one region receives cold relationship alerts about countries handled by another team, leading to disruptive inquiries and discussions that compromise sensitive engagements.",
+      "resolution_test": "Which specific roles are authorized to receive cold relationship alerts?",
+      "id": "C7",
+      "round_raised": 2,
+      "status": "RESOLVED",
+      "strikes": 0,
+      "history": [
+        {
+          "round": 2,
+          "actor": "critic",
+          "move": "RAISE",
+          "text": "The proposal does not define which specific roles are authorized to receive alerts related to cold relationships, potentially leading to unauthorized exposure of sensitive diplomatic information.",
+          "grounds": "",
+          "changed": []
+        },
+        {
+          "round": 3,
+          "actor": "proposer",
+          "move": "REVISE",
+          "text": "The revision clearly identifies that only users assigned to relevant countries will receive alerts, which directly addresses the challenge of ensuring confidentiality and authorized access to sensitive information.",
+          "grounds": "MISSING_DECISION",
+          "changed": [
+            "S1"
+          ]
+        },
+        {
+          "round": 3,
+          "actor": "critic",
+          "move": "ACCEPT",
+          "text": "The revision clarifies which specific roles receive alerts, mitigating the risk of unauthorized exposure. Fact: Only regional coordinators and project managers assigned are authorized to receive alerts. Evidence: \"The alert will be sent via email to regional coordinators and project managers assigned to the relevant countries in the CRM associated with the inactive countries.\"",
+          "grounds": "",
+          "changed": []
+        }
+      ]
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "raised": 6,
+      "open": 6,
+      "resolved": 0,
+      "escalated": 0,
+      "disagreement": 1.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 40,
+      "proposer_worry": "Ensuring users consistently log all engagements accurately is critical to the functionality of the alert system.",
+      "critic_worry": "The undefined roles for alert recipients could lead to unauthorized access to sensitive diplomatic information.",
+      "signal": "-",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 2,
+      "raised": 7,
+      "open": 2,
+      "resolved": 5,
+      "escalated": 0,
+      "disagreement": 0.43,
+      "proposer_confidence": 85,
+      "critic_confidence": 80,
+      "proposer_worry": "Ensuring effective training and adherence to engagement logging by all users to avoid misclassification of cold relationships.",
+      "critic_worry": "The potential for unauthorized exposure of sensitive diplomatic information still looms if system roles are not managed diligently.",
+      "signal": "CONTINUE",
+      "decision": "continue",
+      "feedback": ""
+    },
+    {
+      "round": 3,
+      "raised": 7,
+      "open": 0,
+      "resolved": 7,
+      "escalated": 0,
+      "disagreement": 0.0,
+      "proposer_confidence": 75,
+      "critic_confidence": 85,
+      "proposer_worry": "The successful implementation of tracking and alert functionality may still depend on user adherence to logging engagements accurately.",
+      "critic_worry": "There could still be issues with user role changes leading to alerts being sent to unauthorized personnel.",
+      "signal": "CONCLUDE",
+      "decision": "consensus",
+      "feedback": ""
+    }
+  ],
+  "termination": "consensus",
+  "warnings": []
+}

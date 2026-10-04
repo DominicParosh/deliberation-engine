@@ -53,7 +53,14 @@ Environment (updated 2026-10-04 06:55):
 - [x] Edits: sequential for one item, distinct new IDs, no remove-and-rewrite, concession/revision labels checked,
       repeated "S3:" stripped
 - [x] Independent review of the diff; all findings fixed or deliberately kept (revert check), fuzzed coercion clean
-- [ ] v6 live batch (Domi), then analyse and log
+- [x] v6 live batch run and analysed: assumptions as answers, vague accepts, same-turn repeats, no defenses
+
+## Prompt iteration v7 (2026-10-04)
+- [x] Ledger rules from the v6 batch: assumption-only revisions, weak-phrase evidence, repeated questions,
+      `settled` with a defense path, NEEDS_HUMAN answers never accepted, round 1 covers its gaps
+- [x] Replayed the 43 v5–v6 ACCEPTs through the new checks (18/28 vague refused, 1/15 concrete)
+- [x] Independent review; fixed ordering, routing, weak-phrase precision and trim-resistance; fuzzed coercion clean
+- [ ] v7 live batch (Domi), then analyse; if acceptable, freeze prompts and run the comparisons
 
 ## Day 2 — evidence and polish
 - [x] Inputs A + B

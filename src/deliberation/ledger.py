@@ -19,6 +19,21 @@ from .schemas import (SECTIONS, WEIGHT, CriticOpening, CriticTurn, Edit, Item, N
 Status = Literal["OPEN", "RESOLVED", "ESCALATED", "UNRESOLVED"]
 SETTLED_BY = {"DEFEND": "DEFENDED", "REVISE": "REVISED", "CONCEDE": "CONCEDED"}
 
+# Phrases that sound like a decision but name no role, number or rule: the "weak phrases" requirements-quality tools
+# have flagged since NASA's ARM tool. This is the subset the Critic accepted as evidence in the v5 and v6 batches, kept
+# to phrases that are vague wherever they appear: "protocol", "mechanism" or "periodic" alone are left out because real
+# answers use them ("the protocol officer", "a periodic digest every Monday"), and "will be determined by <rule>",
+# "will be developed in a later release" or "authorized users including <roles>" say something after all.
+WEAK = re.compile(r"\b(?:" + "|".join([
+    r"will be (?:established|developed|defined|determined|agreed|put in place|set up|clarified)"
+    r"(?!\s+(?:by|as|in\s+(?:a\s+|the\s+)?(?:later|future|subsequent|next))\b)",
+    r"periodic (?:audits?|reviews?|checks?)(?!\s+every\b)",
+    r"appropriate(?:ly)?", r"designated (?:teams?|managers?|committees?|staff|personnel|users?|roles?|oversight)",
+    r"authori[sz]ed (?:users|personnel|recipients|staff|individuals)(?!\s+(?:including|such as|namely)\b)",
+    r"clearly defined", r"defined consistently", r"(?:safeguards|measures|controls|processes|procedures) (?:are |will be )?in place",
+    r"measures to", r"including but not limited to",
+]) + r")\b", re.I)
+
 
 class Event(BaseModel):
     round: int
@@ -123,7 +138,11 @@ class Ledger(BaseModel):
     def check_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int) -> list[str]:
         new = turn.new_challenges
         if rnd == 1:
-            problems = [] if len(new) >= 3 else ["Round 1: raise at least 3 challenges."]
+            need = min(budget, max(3, len(turn.gaps)))
+            problems = [] if len(new) >= need else [
+                f"Round 1: `gaps` lists {len(turn.gaps)} questions the proposal answers badly or not at all, so raise a "
+                f"challenge for each (at least {need}, at most {budget}, never fewer than 3). If the proposal already "
+                f"answers one, remove it from `gaps`."]
             if len({c.lens for c in new}) < 2:
                 problems.append("Round 1: cover at least 2 different lenses.")
         else:
@@ -134,6 +153,9 @@ class Ledger(BaseModel):
         for n, c in enumerate(new, 1):
             if not c.targets or set(c.targets) - valid:
                 problems.append(f"New challenge #{n}: targets must be current item IDs or GAP; got {c.targets}.")
+        for n, earlier in self._repeats(new):
+            problems.append(f"New challenge #{n} asks the same question as {earlier}. To keep pressing it, rule MAINTAIN on "
+                            f"it; a new challenge must ask something else.")
         open_ids = {i.id for i in self.open_issues()}  # rulings on closed issues are ignored, so they cost no repair
         problems += [p for v in getattr(turn, "verdicts", []) if v.challenge_id in open_ids and (p := self.verdict_problem(v))]
         return problems
@@ -143,22 +165,65 @@ class Ledger(BaseModel):
         (or, for a defense or concession, in the Proposer's answer)."""
         if v.ruling != "ACCEPT" or v.challenge_id not in self.issues:
             return ""
+        cid, answer = v.challenge_id, self._last_answer(v.challenge_id)
+        if answer and answer.grounds == "NEEDS_HUMAN_DECISION":
+            return (f"{cid}: the Proposer answered that it needs a human decision, so it can't be settled here. Mark it not "
+                    f"settled, and set needs_human_decision if you agree (ESCALATE) or leave it unset if it is a rule you two "
+                    f"can decide (MAINTAIN).")
         if re.match(r"\W*(no fact\b|n/?a\W*$|$)", v.fact, flags=re.I):
-            return (f"{v.challenge_id}: you marked it answered, but `fact` is '{v.fact}'. Words that only promise or name no "
-                    f"one specific don't answer a test: name the fact they commit to, or mark it not answered.")
+            return (f"{cid}: you marked it settled, but `fact` is '{v.fact}'. Words that only promise or name no one specific "
+                    f"don't settle a test: name the fact they commit to, or mark it not settled.")
         if len(_quote_words(v.evidence)) < 4:
-            return (f"{v.challenge_id}: you marked it answered, so `evidence` must quote at least four consecutive words "
-                    f"from the item text (or, for a defense or concession, from the Proposer's answer), so they can be found.")
+            return (f"{cid}: you marked it settled, so `evidence` must quote at least four consecutive words from the item "
+                    f"text (or, for a defense or concession, from the Proposer's answer), so they can be found.")
         source = self.evidence_source(v)
         if not source:
-            return (f"{v.challenge_id}: you marked it answered, so `evidence` must be copied from the item text shown under "
-                    f"the challenge (or, for a defense or concession, from the Proposer's answer), and \"{v.evidence[:80]}\" "
-                    f"is not there. Quote the words that answer your test, or mark it not answered.")
+            return (f"{cid}: you marked it settled, so `evidence` must be copied from the item text shown under the challenge "
+                    f"(or, for a defense or concession, from the Proposer's answer), and \"{v.evidence[:80]}\" is not there. "
+                    f"Quote the words that settle your test, or mark it not settled.")
         if source.startswith("A"):
-            return (f"{v.challenge_id}: your evidence comes from assumption {source}. An assumption is what the release "
-                    f"depends on, not what it decides, so it can't answer a challenge: quote a V, S, X, D or K item, or mark "
-                    f"it not answered.")
+            return (f"{cid}: your evidence comes from assumption {source}. An assumption is what the release depends on, not "
+                    f"what it decides, so it can't settle a challenge: quote a V, S, X, D or K item, or mark it not settled.")
+        if weak := self._weak_phrase(v, source):
+            return (f"{cid}: the sentence you quote leans on '{weak}', which names no role, number or rule. Quote a "
+                    f"sentence that states the fact; if there is none, mark it not settled.")
         return ""
+
+    def _weak_phrase(self, v: Verdict, source: str) -> str:
+        """A weak phrase in the quoted words or in the few words that govern them ("A process will be established to
+        [reassign alerts...]"), so trimming the quote doesn't hide it; what comes after the quote is not its business.
+        Checked for items and for acceptable-risk defenses, whose mitigation must be real; not for other defenses
+        ("decided in design", "covered by S3"), where deferring is the point."""
+        answer = self._last_answer(v.challenge_id)
+        if source == "answer":
+            text = answer.text if answer and answer.grounds == "ACCEPTABLE_RISK" else ""
+        else:
+            text = self.proposal.items()[source]
+        words, sentence_starts, text_words = _quote_words(v.evidence), [], []
+        for sentence in re.split(r"(?<=[.;!?])\s+", text):
+            sentence_starts.append(len(text_words))
+            text_words += _words(sentence).split()
+        blocks = [b for b in SequenceMatcher(None, words, text_words, autojunk=False).get_matching_blocks() if b.size]
+        if not blocks:
+            return ""
+        start, end = blocks[0].b, blocks[-1].b + blocks[-1].size
+        start = max(start - 6, max(s for s in sentence_starts if s <= start))
+        weak = WEAK.search(" ".join(text_words[start:end]))
+        return weak.group(0) if weak else ""
+
+    def _last_answer(self, cid: str) -> Event | None:
+        answers = [e for e in self.issues[cid].history if e.actor == "proposer"]
+        return answers[-1] if answers else None
+
+    def _repeats(self, new: list) -> list[tuple[int, str]]:
+        """New challenges (by number) whose resolution test repeats an open issue's or an earlier new one's. A closed
+        issue may be raised again: the proposal can change in a way that reopens it."""
+        tests, out = [(i.id, i.resolution_test) for i in self.open_issues()], []
+        for n, c in enumerate(new, 1):
+            if earlier := next((k for k, t in tests if _same_question(c.resolution_test, t)), None):
+                out.append((n, earlier))
+            tests.append((f"new challenge #{n}", c.resolution_test))
+        return out
 
     def evidence_source(self, verdict: Verdict) -> str:
         """Where the quoted evidence really is: an item ID, "answer" (the Proposer's answer to a defense or concession; a
@@ -166,8 +231,8 @@ class Ledger(BaseModel):
         in order, so punctuation, an ID prefix or a slipped word don't matter, but a paraphrase or a description of a
         change ("S1 now says...") fails. The best match wins; on a tie a decided item beats an assumption, and an assumption beats an answer that
         only repeats it, so an assumption can't be smuggled in through a defense."""
-        answer = [e for e in self.issues[verdict.challenge_id].history if e.actor == "proposer"][-1:]
-        texts = self.proposal.items() | {"answer": e.text for e in answer if e.move != "REVISE"}
+        answer = self._last_answer(verdict.challenge_id)
+        texts = self.proposal.items() | ({"answer": answer.text} if answer and answer.move != "REVISE" else {})
         words = _quote_words(verdict.evidence)
         if len(words) < 4:
             return ""
@@ -194,19 +259,22 @@ class Ledger(BaseModel):
             self.warnings.append(f"R{rnd}: Proposer did not answer {cid}; recorded as DEFEND.")
         responses, problems = self._vet(responses)
         if problems:
-            self.warnings.append(f"R{rnd}: the Proposer's turn still broke these rules after a repair, so illegal edits were "
-                                 f"dropped and mislabelled moves corrected: " + " ".join(problems))
+            self.warnings.append(f"R{rnd}: the Proposer's turn still broke these rules after a repair (illegal edits dropped, "
+                                 f"mislabelled moves corrected, the rest recorded as given): " + " ".join(problems))
         for n, r in enumerate(responses):
-            if r.action != "DEFEND" and not r.edits:  # a revision or concession with no legal edit left changed nothing
-                responses[n] = Response(challenge_id=r.challenge_id, grounds="ACCEPTABLE_RISK", edits=[],
-                                        rationale="(No usable answer: its edits broke the rules twice; the proposal stands.)")
-                self.warnings.append(f"R{rnd}: Proposer's {r.action} of {r.challenge_id} had no legal edit; recorded as DEFEND.")
-            elif r.action == "CONCEDE" and not _drops(r.edits):  # it added or changed items: that is a revision
-                responses[n] = r.model_copy(update={"grounds": "MISSING_DECISION"})
+            if r.action == "CONCEDE" and r.edits and not _drops(r.edits):  # it added or changed items: a revision
+                r = r.model_copy(update={"grounds": "MISSING_DECISION"})
                 self.warnings.append(f"R{rnd}: Proposer's CONCEDE of {r.challenge_id} dropped nothing; recorded as REVISE.")
-            elif r.action == "REVISE" and _only_removes(r.edits):  # nothing left to quote: that is a concession
-                responses[n] = r.model_copy(update={"grounds": "SHOULD_NOT_BUILD"})
+            elif r.action == "REVISE" and _only_removes(r.edits):  # nothing left to quote: a concession
+                r = r.model_copy(update={"grounds": "SHOULD_NOT_BUILD"})
                 self.warnings.append(f"R{rnd}: Proposer's REVISE of {r.challenge_id} only removed items; recorded as CONCEDE.")
+            if r.action == "REVISE" and all(section_of(e.id) == "assumptions" for e in r.edits):
+                r = r.model_copy(update={"edits": []})  # assumptions alone settle nothing (this also covers no edits)
+            if r.action != "DEFEND" and not r.edits:  # a revision or concession with no legal edit left changed nothing
+                r = Response(challenge_id=r.challenge_id, grounds="ACCEPTABLE_RISK", edits=[],
+                             rationale="(No usable answer: its edits broke the rules twice; the proposal stands.)")
+                self.warnings.append(f"R{rnd}: Proposer's answer to {r.challenge_id} had no legal edit; recorded as DEFEND.")
+            responses[n] = r
         return turn.model_copy(update={"responses": responses})
 
     def _vet(self, responses: list[Response]) -> tuple[list[Response], list[str]]:
@@ -222,13 +290,19 @@ class Ledger(BaseModel):
             if not defend and not r.edits:
                 problems.append(f"{r.challenge_id}: grounds {r.grounds} mean {r.action}, so `edits` must change at least one "
                                 f"item. Write the decision into the item itself, or choose other grounds.")
-            kept = []
+            kept, snapshot = [], (after, dict(wording))
             for e in [] if defend else r.edits:
                 if problem := self._edit_problem(e, after, wording):
                     problems.append(f"{r.challenge_id}: {problem}.")
                 else:
                     kept.append(e)
                     wording[e.id], after = e.text.strip(), after.edited([e])
+            if r.action == "REVISE" and kept and all(section_of(e.id) == "assumptions" for e in kept):
+                problems.append(f"{r.challenge_id}: your edits only change assumptions, and an assumption can't settle a "
+                                f"challenge: it is what the release depends on, not what it decides. Write the decision into a "
+                                f"V, S, X, D or K item; if only the organisation can decide it, the grounds are "
+                                f"NEEDS_HUMAN_DECISION.")
+                kept, (after, wording) = [], snapshot  # none of it is applied
             if r.action == "CONCEDE" and kept and not _drops(kept):
                 problems.append(f"{r.challenge_id}: a concession drops or descopes something: remove an item, or add or edit an "
                                 f"out-of-scope item. If you are adding a rule, the grounds are MISSING_DECISION.")
@@ -270,6 +344,10 @@ class Ledger(BaseModel):
 
     def coerce_critic(self, turn: CriticOpening | CriticTurn, rnd: int, budget: int):
         new = turn.new_challenges
+        if repeats := self._repeats(new):  # before the budget cut, so a repeat never displaces a real challenge
+            new = [c for n, c in enumerate(new, 1) if n not in {r for r, _ in repeats}]
+            self.warnings.append(f"R{rnd}: dropped new challenge(s) that repeated an open question: "
+                                 + ", ".join(f"#{n} ({earlier})" for n, earlier in repeats) + ".")
         if len(new) > budget:
             new = sorted(new, key=lambda c: -WEIGHT[c.severity])[:budget]
             self.warnings.append(f"R{rnd}: Critic exceeded its budget; kept the {budget} most severe challenge(s).")
@@ -280,15 +358,16 @@ class Ledger(BaseModel):
             open_ids = [i.id for i in self.open_issues()]
             verdicts = _dedupe(turn.verdicts, open_ids, lambda v: v.challenge_id)
             for cid in [c for c in open_ids if c not in {v.challenge_id for v in verdicts}]:
-                verdicts.append(Verdict(challenge_id=cid, evidence="", fact="no fact", answered=False, unconfirmed=False,
+                verdicts.append(Verdict(challenge_id=cid, evidence="", fact="no fact", settled=False, unconfirmed=False,
                                         needs_human_decision=False, rationale="(No ruling given.)"))
                 self.warnings.append(f"R{rnd}: Critic did not rule on {cid}; recorded as MAINTAIN.")
             for n, v in enumerate(verdicts):
-                if self.verdict_problem(v):
-                    verdicts[n] = v.model_copy(update={"answered": False, "rationale": v.rationale + " [Not counted as "
-                                                       "answered: no concrete fact, or no evidence in a decided item.]"})
-                    self.warnings.append(f"R{rnd}: Critic accepted {v.challenge_id} without a concrete fact or evidence in a "
-                                         f"decided item; recorded as not accepted.")
+                if problem := self.verdict_problem(v):  # not settled; the Critic's own judgement still routes it
+                    reason = re.sub(r"^C\d+: ", "", problem).split(". ")[0].rstrip(".")
+                    verdicts[n] = v.model_copy(update={"settled": False,
+                                                       "rationale": f"{v.rationale} [Not counted as settled: {reason}.]"})
+                    self.warnings.append(f"R{rnd}: Critic's ACCEPT of {v.challenge_id} was refused ({reason}); recorded as "
+                                         f"{verdicts[n].ruling}.")
             update["verdicts"] = verdicts
         return turn.model_copy(update=update)
 
@@ -377,6 +456,13 @@ def _share(words: list[str], text: str) -> float:
     """The share of `words` that appear in `text` in the same order, ignoring case and punctuation."""
     blocks = SequenceMatcher(None, words, _words(text).split(), autojunk=False).get_matching_blocks()
     return sum(b.size for b in blocks) / len(words) if words else 1.0
+
+
+def _same_question(a: str, b: str) -> bool:
+    """The same words in the same order, give or take two inserted words ("What specific guidelines..." repeats "What
+    guidelines..."), ignoring case and punctuation. A changed word ("view" vs "edit") makes a different question."""
+    short, long_ = sorted((_words(a).split(), _words(b).split()), key=len)
+    return len(long_) - len(short) <= 2 and _share(short, " ".join(long_)) == 1.0
 
 
 def _keeps(earlier: str, later: str) -> bool:

@@ -54,7 +54,9 @@ Each run writes `runs/<request-id>/`:
 | `ledger.json` | The full deliberation state |
 | `events.jsonl` | Every model call's raw output, which is what `--replay` plays back |
 
-The console prints the same round-by-round view as `trace.md` while the deliberation runs.
+The console prints the same round-by-round view as `trace.md` while the deliberation runs. A replay runs the
+recorded model outputs through the current code, so a run recorded before a change to the output schemas only
+replays on the commit that recorded it.
 
 ## How it works
 
@@ -82,15 +84,16 @@ always schema-valid) that the orchestrator checks against the ledger before appl
   answer. Generic pushback cannot be expressed in the schema. From round 2 it rules on every answered
   challenge in fixed steps: it quotes the words that come closest to answering its test (from a decided item,
   or from the Proposer's answer to a defense or concession, never from an assumption), names the concrete fact
-  they commit to, and judges whether that answers the test and stops its failure scenario. The ruling follows:
-  answered with nothing unconfirmed → **ACCEPT** (the ledger checks the quote is really there and a fact was
-  named); otherwise a test that needs authority neither agent has (law, policy, budgets, existing teams) →
-  **ESCALATE** to humans, and any other → **MAINTAIN**, back to the Proposer. An answer that rests on a team,
-  policy or system nobody has confirmed is never accepted.
-- An illegal move (a missing answer or ruling, an over-budget challenge, a defense that edits, a revision
-  that doesn't, a concession that drops nothing, an attempt to remove a core commitment, an ACCEPT without a
-  concrete fact or real evidence) gets one repair request; if that also fails, the orchestrator coerces it
-  safely and records a warning.
+  they commit to, and judges whether the challenge is settled: the fact answers the test and stops the failure
+  scenario, or a defense's argument holds. The ruling follows: settled with nothing unconfirmed → **ACCEPT**
+  (the ledger checks the quote is really there, names a fact, and doesn't lean on a weak phrase such as "a
+  process will be established"); otherwise a test that needs authority neither agent has (law, policy,
+  budgets, existing teams) → **ESCALATE** to humans, and any other → **MAINTAIN**, back to the Proposer. An
+  answer that rests on a team, policy or system nobody has confirmed is never accepted.
+- An illegal move (a missing answer or ruling, an over-budget or repeated challenge, a defense that edits, a
+  revision that doesn't or only touches assumptions, a concession that drops nothing, an attempt to remove a
+  core commitment, an ACCEPT without a concrete fact or real evidence) gets one repair request; if that also
+  fails, the orchestrator coerces it safely and records a warning.
 
 **Termination: the Critic proposes, the ledger disposes.** The Critic signals CONCLUDE or CONTINUE, but
 CONCLUDE is accepted only when the evidence agrees:

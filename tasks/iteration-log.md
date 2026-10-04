@@ -254,3 +254,74 @@ What didn't:
   concession still counted; the first ruling design sent "follows existing policy" punts on role changes to humans;
   "none" was both the no-fact marker and a legitimate answer ("which roles can export? none"); the ID stripper could
   eat "S1-S3".
+
+## v6 → sixth live batch (2026-10-04 ~13:00, code cebe2dc)
+
+| Request | Rounds | Exit | Proposer moves | Critic rulings | Escalated | Open questions | Repairs |
+|---|---|---|---|---|---|---|---|
+| right-contact | 5 | converged | 8 REVISE, 1 CONCEDE | 5 ACCEPT, 4 MAINTAIN (2 auto-escalated) | 2/7 | 2 | 3 |
+| engagement-history | 2 | converged | 3 REVISE | 2 ACCEPT, 1 ESCALATE | 1/3 | 1 | 1 |
+| cold-relationship | 3 | consensus | 8 REVISE | 7 ACCEPT, 1 MAINTAIN | 0/7 | 0 | 2 |
+| auto-logging | 3 | converged | 8 REVISE | 5 ACCEPT, 1 MAINTAIN, 2 ESCALATE | 2/7 | 2 | 2 |
+| influence-ranking | 6 | converged | 14 REVISE, 2 DEFEND | 1 ACCEPT, 8 MAINTAIN, 7 ESCALATE (3 auto) | 10/11 | 10 | 8 |
+
+What improved: round 1 now raises 6 challenges in 4/5 runs (it was always 3); MAINTAIN is back (14, v5: 0); the
+Critic's attempts to accept answers parked in assumptions were refused 11 times, and from round 3 on it maintained
+them itself ("based on an assumption rather than a decision").
+
+What didn't:
+1. **The Proposer writes its decisions into assumptions.** In influence-ranking every revision from round 2 to 6 edited
+   only A1–A4 (authority, criteria, governance, retention); right-contact C5/C7 edited only A1 for three rounds. The
+   Critic was right not to accept, but the Proposer never moved the decision into an S or D item, so those issues
+   were maintained twice and auto-escalated: 10 of 11 influence-ranking issues ended with humans.
+2. **The Critic still accepts promises and unnamed roles**, now with a paraphrase as the "fact": "A process will be
+   established to reassign alert notifications" (fact: "A process exists to reassign notifications"), "with clearly
+   defined roles for who is authorized to edit ... and a conflict resolution protocol", "periodic audits", "a
+   designated oversight committee", "appropriate security clearance as defined in organizational policy". Labelling
+   the 43 ACCEPTs of v5–v6 by hand, 28 rest on a promise, an unnamed role, an invented fact or an untestable condition.
+3. **Same-turn duplicates.** When it maintains or escalates an issue, the Critic also re-raises it as a new challenge:
+   cold-relationship C7 and auto-logging C7 repeat C1 and C4 word for word; influence C7/C8 restate C4/C5.
+4. **Defenses can't win any more**: 2 DEFEND in 44 moves (v4: 15/45). The v6 test ("does the fact answer your test and
+   stop your failure scenario?") has no path for a defense that is right because the test asked for design detail or
+   the risk is acceptable, and the Proposer revises even MINOR challenges.
+5. engagement-history raised only 3 challenges (with 6 gaps listed) and ended after round 2 with nothing new: without
+   the gaps list in round 2, nothing prompted the rest. "Full history" (how far back) was never bound or challenged.
+6. Still no "should this exist?" (influence ranking) and no challenge to auto-logging being manual entry.
+
+## v7 changes
+
+Each rule below comes from a v6 failure and is a check in the ledger: a move that breaks it gets one repair request
+and is then coerced.
+- **A revision can't consist only of assumption edits** (v6 #1). The Proposer is told at once to write the decision
+  into a V, S, X, D or K item (or to choose NEEDS_HUMAN_DECISION if only the organisation can decide), instead of
+  learning it from two MAINTAINs and an auto-escalation. If the repair fails too, the answer is recorded as "no usable
+  answer". The prompt adds: a challenge that targets an assumption is still answered with a decision.
+- **Weak phrases can't carry an ACCEPT** (v6 #2). An ACCEPT is refused when the quoted words, or the few words that
+  govern them ("A process will be established to [reassign alerts...]"), lean on a phrase that names no role, number
+  or rule: "will be established/developed/defined...", "appropriate", "a designated team/manager...", "authorized
+  personnel", "clearly defined", "safeguards in place", "measures to", "periodic audits", "including but not limited
+  to". Requirements-quality tools have flagged such weak phrases since NASA's ARM tool; this list is the subset seen in
+  v5–v6, kept to phrases that are vague wherever they appear ("protocol officer", "a periodic digest every Monday",
+  "will be determined by the date of the last meeting", "will be developed in a later release" and "authorized users
+  including regional coordinators" all pass). Replaying the 43 ACCEPTs of v5–v6 against the proposals the Critic saw,
+  v7 refuses 18 of the 28 hand-labelled vague or invented answers (15 weak phrases, 3 assumptions) and 1 of the 15
+  concrete ones (a quote that included a vague second clause; the repair asks for the sentence that states the fact).
+  The rest need judgement a pattern can't give: untestable conditions and invented teams. It also applies to an
+  acceptable-risk defense's mitigation, but not to "decided in design" or "covered by S3" defenses.
+- **A new challenge can't repeat an open question** (v6 #3): the same words in the same order, give or take two
+  inserted words ("What specific guidelines..." repeats "What guidelines..."), while a changed word ("view" vs "edit")
+  is a different question. Closed issues may be raised again, since a later edit can reopen them. The repair says to
+  MAINTAIN instead; coercion drops repeats before cutting to the budget.
+- **Defenses can win again** (v6 #4). The verdict's `answered` became `settled`: the fact answers the test and stops the
+  failure scenario, *or* a defense's argument holds (design detail, already covered, acceptable risk), with `fact`
+  naming what the argument establishes. A challenge the Proposer sent to humans is never settled here; a refused ACCEPT
+  of one is routed by the Critic's own `needs_human_decision`, so a product rule punted to humans comes back to the
+  Proposer. Proposer prompt: a MINOR challenge usually deserves an acceptable-risk defense; spend revisions on BLOCKERs
+  and MAJORs.
+- **Round 1 covers every gap it lists** (v6 #5). `gaps` now lists only the questions the proposal answers badly or not
+  at all, and each gets a challenge: at least min(budget, max(3, number of gaps)).
+- An independent review of the diff found, and these changes fix: the budget cut ran before repeats were dropped (so a
+  repeat could displace a real challenge); the repair for an accepted NEEDS_HUMAN answer asked for a change that didn't
+  alter the ruling; the first weak-phrase list refused real roles ("protocol officer") and was dodged by trimming the
+  quote; repeats were checked against closed issues; and coercion left assumption-only revisions failing the check.
+  Coerced rulings now carry the real refusal reason, so the Proposer and the record see which phrase failed.
