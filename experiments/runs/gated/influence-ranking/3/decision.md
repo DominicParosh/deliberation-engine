@@ -14,21 +14,15 @@ A contact influence scoring feature will be built to prioritize government conta
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to assign and view an influence score for each contact.  
-  Users will be able to assign and view influence scores for each contact, enhancing prioritization.
-- **V2** Provide a filtering option to display contacts based on their influence score.  
-  Users will have a filtering option to display contacts based on their influence scores, improving usability.
+- **V1** Enable users to assign and view an influence score for each contact.
+- **V2** Provide a filtering option to display contacts based on their influence score.
 
 **In scope**
 
-- **S1** Create an 'influence score' field in the contact records, ranging from 1 (low influence) to 10 (high influence).  
-  An 'influence score' field will be created to standardize the scoring from 1 to 10, which helps ensure clarity in scoring.
-- **S2** Develop a user interface that allows regional coordinators and project managers to assign an influence score to each contact.  
-  A user interface will allow scoring assignments, streamlining the input process for users.
-- **S3** Implement a sorting feature that allows users to filter and sort contacts by their influence score.  
-  Implementing a sorting feature enhances the capability to filter contacts by influence, facilitating user engagement strategies.
-- **S4** Provide a way to visualize the distribution of influence scores across contacts in a number of reports available to users.  
-  Visualization of influence scores in reports will help in tracking and monitoring influence across contacts.
+- **S1** Create an 'influence score' field in the contact records, ranging from 1 (low influence) to 10 (high influence).
+- **S2** Develop a user interface that allows regional coordinators and project managers to assign an influence score to each contact.
+- **S3** Implement a sorting feature that allows users to filter and sort contacts by their influence score.
+- **S4** Provide a way to visualize the distribution of influence scores across contacts in a number of reports available to users.
 - **S5** Establish role-based access control so only authorized users (regional coordinators and project managers) can assign influence scores and view influence score reports. Regular audits will be conducted to ensure compliance.  
   Role-based access control will restrict score assignments and viewing, with audits ensuring confidentiality compliance. _(C2)_
 
@@ -36,12 +30,9 @@ A contact influence scoring feature will be built to prioritize government conta
 
 **Out of scope for this release**
 
-- **X1** This release does not include predictive analytics or recommendations for influence scoring.  
-  Predictive analytics were ruled out as out of scope to maintain focus on the core scoring mechanism.
-- **X2** This release will not handle the historical data of influence scores, only the current values will be recorded.  
-  Historical data handling was excluded to keep the implementation straightforward and focused on current values only.
-- **X3** This release does not include integration with external databases or influence measurement tools.  
-  Integration with external databases was not included to avoid increased complexity in the project.
+- **X1** This release does not include predictive analytics or recommendations for influence scoring.
+- **X2** This release will not handle the historical data of influence scores, only the current values will be recorded.
+- **X3** This release does not include integration with external databases or influence measurement tools.
 
 **Rejected during deliberation**
 
@@ -65,8 +56,7 @@ A contact influence scoring feature will be built to prioritize government conta
 
 ## Success criteria
 
-- **K1** By the end of the quarter, at least 70% of contacts have assigned influence scores by regional coordinators and project managers, measured via system usage logs.  
-  The success criterion measuring at least 70% assignment of scores ensures a benchmark for the feature’s effectiveness post-implementation.
+- **K1** By the end of the quarter, at least 70% of contacts have assigned influence scores by regional coordinators and project managers, measured via system usage logs.
 
 ## Open questions for humans
 

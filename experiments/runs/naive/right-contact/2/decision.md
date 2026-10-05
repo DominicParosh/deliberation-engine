@@ -14,8 +14,7 @@ A new 'Primary Contacts' feature will be implemented to define and maintain prim
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Establish a user interface to define and modify primary contacts for each member country.  
-  A user interface for defining and modifying primary contacts will streamline the management of contact information for member countries.
+- **V1** Establish a user interface to define and modify primary contacts for each member country.
 - **V2** Provide a search and filter functionality to enable users to quickly find relevant contacts.
 
 **In scope**

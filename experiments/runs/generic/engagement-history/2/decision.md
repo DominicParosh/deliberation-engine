@@ -14,13 +14,11 @@ The feature to be developed will allow project managers and regional coordinator
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers can access the full history of engagements with each country.  
-  Project managers will have access to the full history of engagements with each country, which ensures they are informed before starting new missions.
+- **V1** Project managers can access the full history of engagements with each country.
 
 **In scope**
 
-- **S1** Implement a user interface for project managers that displays engagement history with countries, including dates, descriptions of interactions, and associated personnel.  
-  A new user interface will be created for project managers that displays detailed engagement history, enhancing transparency and accessibility.
+- **S1** Implement a user interface for project managers that displays engagement history with countries, including dates, descriptions of interactions, and associated personnel.
 - **S2** Gather and aggregate relevant historical data from existing records related to each country's engagements into a unified view, with a designated data owner responsible for maintaining and updating access as project managers transition roles.  
   Historical data will be aggregated from existing records with a designated data owner responsible for accuracy verification. _(C3, C4)_
 - **S3** Ensure that the engagement history includes data only from the last 5 years in accordance with the organization's data retention policy, while records older than 5 years will be archived and accessible only with special permission to ensure compliance and historical context.  
@@ -32,12 +30,9 @@ The feature to be developed will allow project managers and regional coordinator
 
 **Out of scope for this release**
 
-- **X1** This release will not include any functionality for editing or deleting historical engagement records.  
-  No editing or deleting of historical engagement records will be allowed in this release to maintain data integrity.
-- **X2** This release will not cover engagement data older than 5 years.  
-  Data older than 5 years will not be included in this release to adhere to retention policies.
-- **X3** This release will not include access for users outside of the project management role.  
-  Access will not be extended beyond project managers and regional coordinators to maintain strict control over sensitive information.
+- **X1** This release will not include any functionality for editing or deleting historical engagement records.
+- **X2** This release will not cover engagement data older than 5 years.
+- **X3** This release will not include access for users outside of the project management role.
 
 **Rejected during deliberation**
 
@@ -55,15 +50,12 @@ The feature to be developed will allow project managers and regional coordinator
 
 - **D1** "engagement history" means a chronological record of all interactions with a country, excluding sensitive diplomatic communications, confidential internal memos, and any records designated as restricted access.  
   The revised definition of 'engagement history' now explicitly excludes sensitive communications, improving data safety. _(C2)_
-- **D2** "project managers" means individuals assigned within the organization whose responsibilities include overseeing specific projects and missions.  
-  The definition of 'project managers' accurately describes their role and functions to clarify feature access.
-- **D3** "full history" means all records of engagement for a country within the last 5 years.  
-  The definition of 'full history' specifies it as the last 5 years of records, ensuring compliance with policies.
+- **D2** "project managers" means individuals assigned within the organization whose responsibilities include overseeing specific projects and missions.
+- **D3** "full history" means all records of engagement for a country within the last 5 years.
 
 ## Success criteria
 
-- **K1** At least 80% of project managers report satisfaction with the new engagement history feature based on a user survey conducted within three months of release.  
-  Satisfaction of project managers with the new feature will be measured to gauge its effectiveness and usability.
+- **K1** At least 80% of project managers report satisfaction with the new engagement history feature based on a user survey conducted within three months of release.
 
 ## Open questions for humans
 

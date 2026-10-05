@@ -377,7 +377,7 @@ budget of 6, no two-strike escalation); `generic` swaps the prompts (no role sta
 | Challenges raised per run | 7.4 | 15.1 | 7.9 |
 | Defenses on merit (accepted) | 15 (4) | 7 (2) | 1 (0) |
 | Revisions accepted by the Critic | 84% | 76% | 84% |
-| Repair requests per run | 2.1 | 5.1 | 2.7 |
+| Repair requests per run | 1.9 | 4.1 | 2.5 |
 
 What it shows:
 1. **naive concludes over its own objections.** In 3 of its 12 CONCLUDEs the Critic maintained a MAJOR in the same
@@ -393,7 +393,8 @@ What it shows:
    runs with no defense 1/15 vs 4/15; the Critic declared itself satisfied 2/15 vs 8/15. Of the 4 accepted merit
    defenses (all MINOR), one is clean (engagement-history/2 C6); MINOR risk disputes usually deadlock and are
    auto-escalated (cold-relationship/3 C5, right-contact/1 C6, influence-ranking/1 C6).
-5. **What the ledger sent back** (gated, 31 repair requests, 46 problems): 16 assumption-only revisions, 10 resolution
+5. **What the ledger sent back** (gated: 29 repair requests; 46 problems in the 31 rejected replies, counting the 2
+   repairs that failed too): 16 assumption-only revisions, 10 resolution
    tests that weren't questions, 7 ACCEPTs quoting outside a decided item, 5 weak phrases, 4 round-1 openings short of
    their gaps, 2 repeats, 1 defense with edits, 1 missing answer.
 
@@ -419,7 +420,7 @@ the agents' to decide; scope never shrinks (no "should this exist?"); a self-con
 
 ## Independent review after the batch (2026-10-04 ~15:50)
 
-Two fresh reviewers: one graded the repo against the brief's rubric (about 61/90 before DECISIONS.md), one
+Two fresh reviewers: one checked the repo against the brief's requirements and evaluation criteria, one
 fact-checked every claim in the README against the files (about 150 verified, 12 corrected). Changed:
 - **`converged` also requires every mandatory lens to be examined.** A CONTINUE with nothing open used to end the run
   without the lens check that a CONCLUDE must pass. Now the Critic gets one more round, once, to examine the lens or
@@ -437,10 +438,32 @@ fact-checked every claim in the README against the files (about 150 verified, 12
 - Live runs write to `out/` by default, so they no longer overwrite the published runs in `runs/`.
 - README: twelve claims corrected (cost ratio 1.9, not 1.8; "twice as many rounds" by median; S11 rewritten, not grown;
   out-of-scope lists grew in four non-gated runs; v7 figures labelled v7; "unconfirmed" only when the Critic flags it;
-  what the Rapporteur writes vs what the ledger decides; …), and new limitations with verified numbers: the Critic
-  marked 32 of 192 gated answers unconfirmed but never one it judged settled; 52 of 111 resolution tests still ask
-  for a process; 37% of gated challenges end with humans.
+  what the Rapporteur writes vs what the ledger decides; …), and new limitations: the Critic marks answers
+  unconfirmed but never one it judged settled; about half the resolution tests still ask for a process; 37% of gated
+  challenges end with humans (exact figures as corrected in the final check below).
 
 Kept as stated limitations rather than changed, because they need the deliberation prompts or semantic checks: paraphrased
 repeats, invented roles accepted as fact, vacuous coverage notes, no "should this exist?" challenge, and contradictions
 inside a document (auto-logging S1 vs X2; cold-relationship D1 vs S4).
+
+## Final check before submitting (2026-10-05)
+
+A third fresh review, of the public repo as a grader would clone it, read against the brief. Changed:
+- **A note only where the deliberation shaped an item.** The Rapporteur was asked for a note on every item, and for
+  items no challenge touched it could only restate them or invent a reason (right-contact X1 "was dropped to
+  maintain control over data accuracy"; no agent said so). The renderer now keeps a note only when a challenge
+  targeted or changed the item, and the Rapporteur's prompt asks for only those. Re-rendering all 50 recorded runs
+  removed 441 such notes (330 of them visible in decision.md; the rest were assumption notes, kept only in
+  decision.json) and left the 298 others unchanged; ledgers, traces and events still replay byte-identical.
+- **`uv run deliberate` with no arguments runs every request in `config/requests.yaml`** (`$DELIBERATION_REQUEST`
+  if set). It used to exit asking for a request, so the single command the brief asks for needed a flag.
+- **OpenAI is the default when both keys are set**, since every recorded run used it. The Anthropic adapter is
+  unit-tested and uses the documented `output_config.format` API for Haiku 4.5, but has not been run live.
+- **Corrected figures.** Repair requests per run are 1.9 / 4.1 / 2.5 (the earlier 2.1 / 5.1 / 2.7 counted rejected
+  replies, including repairs that failed). In its final replies the Critic marked 28 of 141 gated verdicts
+  unconfirmed (32 of 192 had included replies sent back for repair). 50 of 111 gated resolution tests ask for a
+  process, measure, safeguard, protocol, mechanism or procedure.
+- **Limitations added after reading the published runs against the brief's notes on its own examples:** a
+  paraphrased weak phrase settled a BLOCKER (cold-relationship C1, "users who have authorization"); right-contact
+  never defines "right person" or "better"; nobody asks whether a relationship can be dormant by design; a challenge
+  touched a success criterion in only 4 of 15 gated runs.

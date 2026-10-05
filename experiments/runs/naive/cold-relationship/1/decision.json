@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Implement an alert system that notifies users of declining engagement with country representatives.",
-      "note": "The commitment to implement the alert system is based on the need for proactive monitoring of diplomatic engagements.",
+      "note": "",
       "refs": []
     }
   ],
@@ -31,7 +31,7 @@
     {
       "id": "S1",
       "text": "Users will receive an alert when there have been no recorded engagements with a country representative for 90 days.",
-      "note": "An alert will trigger after 90 days of no recorded engagements, establishing a clear inactivity threshold for monitoring.",
+      "note": "",
       "refs": []
     },
     {
@@ -78,13 +78,13 @@
     {
       "id": "X2",
       "text": "The system will not notify users about relationships going cold with organizations other than country representatives.",
-      "note": "Relationship notifications are limited to country representatives, which clearly scopes the alert system's functionality.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "No modifications to the existing user interface beyond the alert settings will be included.",
-      "note": "No changes to the user interface beyond alert settings were included to streamline the implementation.",
+      "note": "",
       "refs": []
     }
   ],
@@ -94,7 +94,7 @@
     {
       "id": "A1",
       "text": "Users will have access to the CRM system and appropriate permissions to configure alert settings.",
-      "note": "Assumption regarding user access and permissions aligns with standard operational practices for CRM use.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -102,18 +102,15 @@
     {
       "id": "A2",
       "text": "There exists a clear definition of what constitutes an engagement, specifically what types of interactions are tracked in the CRM.",
-      "note": "Defining engagements is crucial to ensure clarity in what will be tracked to support the alert system.",
-      "refs": [
-        "C3",
-        "C6"
-      ],
+      "note": "",
+      "refs": [],
       "kept": true,
       "challenges": []
     },
     {
       "id": "A3",
       "text": "The email notification system is functioning and able to deliver alerts to users.",
-      "note": "The successful functioning of the email notification system is critical to the alert system's effectiveness.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -121,7 +118,7 @@
     {
       "id": "A4",
       "text": "Users understand the importance of monitoring their engagements and will actively use the alert system.",
-      "note": "User understanding of engagement monitoring underscores the need for active participation in utilization of the alert system.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -140,7 +137,7 @@
     {
       "id": "D2",
       "text": "\"alert\" means a notification system that sends an email to users when a specified threshold of inactivity is met.",
-      "note": "The definition of an alert is straightforward, ensuring users understand what to expect when notifications are triggered.",
+      "note": "",
       "refs": []
     }
   ],
@@ -148,7 +145,7 @@
     {
       "id": "K1",
       "text": "Success will be measured by a 70% user adoption rate of the alert system within three months of release.",
-      "note": "A user adoption target of 70% within three months is measurable and ensures accountability in engagement monitoring.",
+      "note": "",
       "refs": []
     }
   ],

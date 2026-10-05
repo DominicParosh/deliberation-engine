@@ -92,13 +92,15 @@ def decision(run) -> dict:
     L, S, final = run.ledger, run.synthesis, run.ledger.proposal
     notes = {n.id: n for n in S.item_notes}
 
-    def item(i) -> dict:
-        n = notes.get(i.id)
-        return {"id": i.id, "text": i.text, "note": n.note if n else "", "refs": n.refs if n else []}
-
     def challenges(item_id: str) -> list[dict]:  # issues that targeted the item, or whose answer edited it
         return [{"id": i.id, "outcome": i.outcome} for i in L.issues.values()
                 if item_id in i.targets or any(item_id in e.changed for e in i.history)]
+
+    def item(i) -> dict:
+        # A note says how the deliberation shaped an item. For an item no challenge touched the record holds nothing
+        # to explain, and the Rapporteur could only restate it or invent a reason, so its note is left out.
+        n = notes.get(i.id) if challenges(i.id) else None
+        return {"id": i.id, "text": i.text, "note": n.note if n else "", "refs": n.refs if n else []}
 
     assumptions = [{**item(a), "kept": True, "challenges": challenges(a.id)} for a in final.assumptions]
     assumptions += [{"id": k, "text": text, "note": "", "refs": [], "kept": False, "challenges": challenges(k)}

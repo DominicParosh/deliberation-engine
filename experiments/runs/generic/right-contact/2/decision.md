@@ -14,10 +14,8 @@ This release will implement a mechanism for tracking the primary contact person 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Implement a feature that allows users to designate a primary contact for each country.  
-  A feature will be developed that allows users to designate a primary contact for each country, ensuring better coordination and outreach.
-- **V2** Provide a streamlined interface to update and view primary contact information.  
-  A streamlined interface for updating and viewing primary contact information will provide users with easier access to the necessary details.
+- **V1** Implement a feature that allows users to designate a primary contact for each country.
+- **V2** Provide a streamlined interface to update and view primary contact information.
 
 **In scope**
 
@@ -25,8 +23,7 @@ This release will implement a mechanism for tracking the primary contact person 
   Regional coordinators will have the capability to set and edit the primary contact, with designated administrators managing changes when contacts leave or change roles, ensuring information remains current. _(C1)_
 - **S2** Display the primary contact information prominently on each country profile within the CRM.  
   Primary contact information will be displayed prominently within the country profile to allow quick access for users.
-- **S3** Enable project managers to view the list of primary contacts while browsing through country records.  
-  Project managers will be able to view the list of primary contacts to facilitate their engagement efforts.
+- **S3** Enable project managers to view the list of primary contacts while browsing through country records.
 - **S4** Implement a search function that enables users to quickly find the primary contact for a selected country.  
   A search function will allow users to quickly find the designated primary contact for specific countries, improving efficiency.
 - **S5** Implement a notification mechanism to alert users when primary contact information has been updated, ensuring that regional coordinators and project managers are aware of any changes.  
@@ -36,10 +33,8 @@ This release will implement a mechanism for tracking the primary contact person 
 
 **Out of scope for this release**
 
-- **X1** This release will not include integration with external databases for contact information.  
-  Integration with external databases for contact information has been ruled out to maintain system integrity and focus on internal resources.
-- **X2** This release will not support multi-language capabilities for contact information display.  
-  Multi-language capabilities for the display of contact information have been deemed outside the scope of this release to prioritize essential functionalities.
+- **X1** This release will not include integration with external databases for contact information.
+- **X2** This release will not support multi-language capabilities for contact information display.
 - **X3** This release will not include any automated alerts or notifications regarding contact changes.  
   Automated alerts or notifications regarding contact changes will not be included in this release to avoid confusion with the new notification mechanism.
 
@@ -64,8 +59,7 @@ This release will implement a mechanism for tracking the primary contact person 
 
 ## Success criteria
 
-- **K1** At least 80% of regional coordinators report improved ability to identify primary contacts in a user satisfaction survey conducted three months after release.  
-  A success criterion has been established to measure the effectiveness of the new contact identification feature through user satisfaction surveys.
+- **K1** At least 80% of regional coordinators report improved ability to identify primary contacts in a user satisfaction survey conducted three months after release.
 
 ## Open questions for humans
 

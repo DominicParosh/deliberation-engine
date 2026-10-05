@@ -14,10 +14,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Categorize contacts by influence level based on specific criteria.  
-  Categorizing contacts by influence level is critical for prioritization, hence it has been committed to based on specific criteria outlined.
-- **V2** Provide a searchable and filterable interface for users to prioritize contacts.  
-  Providing a searchable interface for prioritizing contacts is essential for operational efficacy; therefore, this is included in the final commitments.
+- **V1** Categorize contacts by influence level based on specific criteria.
+- **V2** Provide a searchable and filterable interface for users to prioritize contacts.
 
 **In scope**
 
@@ -25,8 +23,7 @@ The proposal will enhance the categorization and prioritization of contacts by t
   Defining 'influence' with adaptable criteria across contexts allows for flexibility in varying governmental interactions, which is crucial. _(C1)_
 - **S2** Establish a formal protocol for transferring ownership and responsibilities of influence scores during role changes or when project managers leave, including documentation for the incoming project manager to ensure continuity in score management.  
   Establishing protocols for score ownership during role changes is vital for maintaining the accuracy of influence scores, addressing a significant concern. _(C2)_
-- **S3** Develop a dashboard for regional coordinators and project managers to view and filter contacts by influence level.  
-  A dashboard to view influence levels will facilitate strategic decision-making for coordinators and project managers; hence, it has been prioritized.
+- **S3** Develop a dashboard for regional coordinators and project managers to view and filter contacts by influence level.
 - **S4** Implement role-based access controls (RBAC) to restrict influence score visibility to project managers and authorized personnel only, ensuring sensitive data is protected from unauthorized access.  
   Role-based access controls are critical for protecting sensitive data, satisfying confidentiality requirements. _(C3)_
 - **S5** Incorporate compliance checks into the review process for influence scores, requiring legal and data privacy teams to review and approve the procedures for processing personal data every six months.  
@@ -40,10 +37,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 
 **Out of scope for this release**
 
-- **X1** This release will not incorporate machine learning or AI to auto-generate influence scores.  
-  Machine learning or AI was deemed too complex to incorporate in this phase, given the current sensitivity of data and need for manual oversight. Therefore, it is excluded.
-- **X2** The release will not include historical data analysis of engagement outcomes to influence future scoring.  
-  Historical data analysis wasn’t included as it does not align with the immediate objectives of influence scoring, focusing instead on current relationships.
+- **X1** This release will not incorporate machine learning or AI to auto-generate influence scores.
+- **X2** The release will not include historical data analysis of engagement outcomes to influence future scoring.
 - **X3** This release will not change the existing user privacy settings or access controls.  
   Existing user privacy settings will remain unchanged to prevent potential disruption or confusion during the rollout of the new system.
 
@@ -68,10 +63,8 @@ The proposal will enhance the categorization and prioritization of contacts by t
 
 ## Success criteria
 
-- **K1** At least 70% of regional coordinators and project managers report satisfaction with the new feature on a post-release survey.  
-  Satisfaction criteria were agreed upon to measure the effectiveness of the new system through user feedback post-release, aligning with operational goals.
-- **K2** Within three months of launch, at least 80% of contacts in the system should be assigned an influence score.  
-  Setting a target for influence score assignments ensures accountability for timely and effective implementation.
+- **K1** At least 70% of regional coordinators and project managers report satisfaction with the new feature on a post-release survey.
+- **K2** Within three months of launch, at least 80% of contacts in the system should be assigned an influence score.
 
 ## Open questions for humans
 

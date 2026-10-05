@@ -14,25 +14,19 @@ This release will allow project managers to view a comprehensive engagement hist
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers will have access to a comprehensive engagement history of each country.  
-  Project managers will have access to a comprehensive engagement history of each country, addressing the need for better data access for planning new missions.
-- **V2** The system will display past project affiliations and associated contacts for each country.  
-  The system will display past project affiliations and associated contacts for each country, providing context and continuity for project managers.
+- **V1** Project managers will have access to a comprehensive engagement history of each country.
+- **V2** The system will display past project affiliations and associated contacts for each country.
 
 **In scope**
 
-- **S1** Engagement history means all recorded interactions with a country, including meetings, communications, project details, and mission specifics.  
-  Engagement history is defined to include all recorded interactions with a country, ensuring project managers have complete insights into past engagements.
+- **S1** Engagement history means all recorded interactions with a country, including meetings, communications, project details, and mission specifics.
 - **S2** The feature will be accessible only to users with the role of project manager and will have enforced permission settings to ensure they can access engagement history relevant to their clearance level.  
   The feature restricts access to authorized project managers only, ensuring sensitive information is protected according to permission settings. _(C2)_
-- **S3** The history will include data from the last five years of engagement with the country.  
-  Limiting the history to data from the last five years ensures relevance and manageability of the information provided to project managers.
+- **S3** The history will include data from the last five years of engagement with the country.
 - **S4** The data displayed will include the names of relevant contacts, general notes from engagements, and project outcomes; it will explicitly exclude sensitive diplomatic notes, internal assessments, and security-related information.  
   The data will explicitly exclude sensitive diplomatic notes, internal assessments, and security-related information to maintain confidentiality and protect sensitive content. _(C1)_
-- **S5** Project managers will be able to filter the engagement history by date, type of engagement (meeting, email, etc.), and involved contacts.  
-  Filtering capabilities allow project managers to efficiently navigate through historical data, focusing on specific types of interactions and timeframes.
-- **S6** The proposal includes a user interface that allows project managers to easily navigate and read the engagement history.  
-  A user-friendly interface is included to enhance usability, making it easier for project managers to access the engagement history.
+- **S5** Project managers will be able to filter the engagement history by date, type of engagement (meeting, email, etc.), and involved contacts.
+- **S6** The proposal includes a user interface that allows project managers to easily navigate and read the engagement history.
 
 ## What it will not do
 
@@ -40,10 +34,8 @@ This release will allow project managers to view a comprehensive engagement hist
 
 - **X1** This release will not include the ability to edit or delete engagement history records.  
   Editing or deleting records is not included to prevent potential data integrity issues in future iterations, ensuring current safeguarded restrictions remain effective. _(C6)_
-- **X2** The feature will not integrate with external systems or databases that provide historical data outside of the current CRM records.  
-  The decision not to integrate with external systems is made to maintain focus on the current CRM records and streamline project management functions.
-- **X3** The display of engagement history will not include sensitive data points that require higher security clearance.  
-  Exclusion of sensitive data points is vital for compliance and user security, addressing significant confidentiality concerns raised during discussions.
+- **X2** The feature will not integrate with external systems or databases that provide historical data outside of the current CRM records.
+- **X3** The display of engagement history will not include sensitive data points that require higher security clearance.
 
 **Rejected during deliberation**
 
@@ -63,15 +55,13 @@ This release will allow project managers to view a comprehensive engagement hist
 
 - **D1** "Engagement history" means all documented interactions and engagements with a specific country, including meetings, communications, project details, and outcomes, but excluding sensitive diplomatic notes and internal assessments.  
   The refined definition of 'engagement history' clarifies what interactions are included and ensures consistency and usability for project managers. _(C4)_
-- **D2** "Project manager" means a user role that consists of personnel responsible for overseeing projects and missions within the Government CRM.  
-  Defining 'project manager' helps outline user roles clearly within the system and aligns with operational structure.
+- **D2** "Project manager" means a user role that consists of personnel responsible for overseeing projects and missions within the Government CRM.
 - **D3** "Filter" means the capability to sort and display specific engagement records based on user-selected criteria, which includes date, type of engagement (meeting, email, report), and involved contacts.  
   Clarifying the definition of 'filter' minimizes potential confusion and establishes clear expectations for project managers on how to access historical data. _(C5)_
 
 ## Success criteria
 
-- **K1** By the end of the quarter, 80% of project managers will successfully access and review a country's full engagement history within the system, as measured by user feedback surveys.  
-  The success criterion ensures that the implementation of the feature meets user needs and gauges its acceptance and functionality by measuring access and reviews from project managers.
+- **K1** By the end of the quarter, 80% of project managers will successfully access and review a country's full engagement history within the system, as measured by user feedback surveys.
 
 ## Open questions for humans
 

@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "The system will send an alert to designated users when there has been no engagement with a country contact for 6 months.",
-      "note": "The alert threshold was set at 6 months of no recorded engagement to effectively monitor relationships without overwhelming users with frequent alerts.",
+      "note": "",
       "refs": []
     }
   ],
@@ -39,7 +39,7 @@
     {
       "id": "S2",
       "text": "The alert will include the country name, contact details, and the last date of recorded engagement.",
-      "note": "The alert will include essential information such as the country name and last engagement date, ensuring users have relevant context without compromising sensitive data.",
+      "note": "",
       "refs": []
     },
     {
@@ -79,13 +79,13 @@
     {
       "id": "X2",
       "text": "The system will not analyze reasons for decreased engagement or categorize types of engagements.",
-      "note": "The system will not analyze reasons for engagement decline to limit scope and complexity, focusing instead on alert generation based on user-defined periods of inactivity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "The release will not implement alerts for individual team members, only for designated roles (regional coordinators and project managers).",
-      "note": "Deciding not to implement alerts for individual team members keeps the system focused on key relationship managers, preventing unnecessary complexity.",
+      "note": "",
       "refs": []
     },
     {
@@ -103,7 +103,7 @@
     {
       "id": "A1",
       "text": "It is assumed that engagement is tracked through logged calls, meetings, or emails in the CRM; the request depends on having a clear definition of 'engagement'.",
-      "note": "The definition of engagement tracking through logged interactions was assumed necessary to provide clarity for the alert trigger mechanism.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -111,7 +111,7 @@
     {
       "id": "A2",
       "text": "It is assumed that the organization has a standard protocol for relationship management that justifies the need for cold alerts; the request assumes familiarity with this protocol.",
-      "note": "It was assumed that a standard protocol for relationship management exists, justifying the need for alerts and ensuring users are familiar with it.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -119,7 +119,7 @@
     {
       "id": "A3",
       "text": "It is assumed that users of the CRM have necessary permissions to access contact histories; the request depends on current user permissions being appropriate.",
-      "note": "User permissions must allow access to contact histories, ensuring alert recipients are adequately informed to take action when necessary.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -137,13 +137,13 @@
     {
       "id": "D2",
       "text": "'Engagement' means any logged interaction, such as meetings, phone calls, or emails with country contacts.",
-      "note": "'Engagement' was defined specifically as logged interactions, which addresses potential misunderstandings and ensures clarity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "'Users' refers specifically to regional coordinators and project managers who manage country relationships within the CRM.",
-      "note": "Defined 'users' specifically to eliminate ambiguity about who will receive alerts, which are only the designated role holders.",
+      "note": "",
       "refs": []
     },
     {
@@ -159,7 +159,7 @@
     {
       "id": "K1",
       "text": "At least 80% of users report receiving alerts in a timely manner (measured through user feedback surveys conducted 1 month after release).",
-      "note": "Success criteria of timely alerts were established to evaluate user satisfaction and system effectiveness after release.",
+      "note": "",
       "refs": []
     }
   ],

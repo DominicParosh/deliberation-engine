@@ -14,15 +14,13 @@ An automatic logging feature for meetings with government officials will be impl
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable automatic logging of meetings with government officials in the CRM.  
-  The decision to enable automatic logging directly addresses the need for accurate engagement history tracking, responding to stakeholder concerns about lost data.
+- **V1** Enable automatic logging of meetings with government officials in the CRM.
 
 **In scope**
 
 - **S1** Implement a feature that automatically logs meetings held with government officials, including date, time, duration, participants, and agenda; establish a process for users to report inaccuracies in logged meeting data, which involves submitting a correction request to a designated administrator who will review and verify the report before any changes are made.  
   The inclusion of a process for users to report inaccuracies in logged meeting data ensures that data integrity is maintained, which was a critical concern during deliberations. _(C3, C10)_
-- **S2** Provide functionality for users (regional coordinators and project managers) to view and edit logged meeting details within the CRM.  
-  Functionality for viewing and editing meeting details is in scope, empowering users to manage their records effectively without compromising data integrity.
+- **S2** Provide functionality for users (regional coordinators and project managers) to view and edit logged meeting details within the CRM.
 - **S3** Ensure only users with the roles of regional coordinators and project managers can view and edit meeting logs; access enforcement will be managed through role-based access control (RBAC) mechanisms, ensuring no other roles will have access to this information.  
   User access to meeting logs will be restricted to regional coordinators and project managers to safeguard sensitive information; this was made explicit to address confidentiality concerns. _(C1, C6, C7)_
 - **S4** Integrate the feature with existing contact and engagement history modules in the CRM, ensuring that logged meetings are associated with the relevant government official records using unique identifiers that link each record to a corresponding government official.  
@@ -32,12 +30,9 @@ An automatic logging feature for meetings with government officials will be impl
 
 **Out of scope for this release**
 
-- **X1** This release will not implement real-time notifications for users about logged meetings.  
-  Real-time notifications were deemed unnecessary for this release, allowing focus on core functionality without overcomplicating the system.
-- **X2** This release will not log other types of engagement (such as emails or phone calls) with government officials.  
-  Logging of other engagement types was excluded to maintain a clear scope and ensure the feature meets its primary objective of logging meetings.
-- **X3** This release does not include any analytics or reporting features related to engagement history.  
-  Analytics or reporting on engagement history is out of scope, ensuring the initial implementation remains straightforward and focused on logging functionality.
+- **X1** This release will not implement real-time notifications for users about logged meetings.
+- **X2** This release will not log other types of engagement (such as emails or phone calls) with government officials.
+- **X3** This release does not include any analytics or reporting features related to engagement history.
 
 **Rejected during deliberation**
 
@@ -55,8 +50,7 @@ An automatic logging feature for meetings with government officials will be impl
 
 - **D1** "automatic logging" means capturing meeting information without manual input by the user, based on predefined parameters set in the system; these parameters include that the meeting is scheduled in advance, involves at least one government official who is a participant, and is conducted through approved channels of communication. Informal meetings and unscheduled meetings will not be automatically logged.  
   The definition of 'automatic logging' was refined to clarify conditions, mitigating the risk of incorrect logging and ensuring user understanding. _(C4, C9)_
-- **D2** "government officials" means individuals representing member countries, including country representatives, ministry contacts, and mission delegates.  
-  'Government officials' is clearly defined to specify the types of individuals involved, avoiding ambiguity during the logging process.
+- **D2** "government officials" means individuals representing member countries, including country representatives, ministry contacts, and mission delegates.
 
 ## Success criteria
 

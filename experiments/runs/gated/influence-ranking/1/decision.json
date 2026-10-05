@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Develop a feature to identify and rank the influence of contacts based on a defined influence scoring system.",
-      "note": "A feature will be developed to identify and rank contacts based on a defined influence scoring system, ensuring a systematic approach to influence assessment.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide a dashboard view for regional coordinators and project managers to display the influence rankings of their contacts.",
-      "note": "A dashboard view for regional coordinators and project managers will display influence rankings, enhancing their ability to prioritize contacts effectively.",
+      "note": "",
       "refs": []
     }
   ],

@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "The system will send alerts to regional coordinators and project managers when no engagement events are recorded with a country for 12 months.",
-      "note": "The commitment to send alerts after 12 months of no engagement was established to ensure proactive relationship management and compliance obligations are met.",
+      "note": "",
       "refs": []
     }
   ],
@@ -132,7 +132,7 @@
     {
       "id": "A2",
       "text": "Assumes that users have access to email and that they will regularly check their email for alerts.",
-      "note": "Assuming email access for all users emphasizes the need for regular monitoring of alerts, which hinges on user engagement.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -140,7 +140,7 @@
     {
       "id": "A3",
       "text": "Assumes that the organization has a defined policy on engagement thresholds for diplomatic relationships.",
-      "note": "This assumption highlights reliance on existing organizational policies concerning diplomatic engagement thresholds, which may already be established.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -163,7 +163,7 @@
     {
       "id": "D1",
       "text": "'Goes cold' means there have been no recorded engagement events in the CRM for 12 months.",
-      "note": "'Goes cold' clearly indicates a lack of engagement events in 12 months, providing clarity for alert generation criteria.",
+      "note": "",
       "refs": []
     },
     {
@@ -175,7 +175,7 @@
     {
       "id": "D3",
       "text": "'Alert' means a notification sent via email to designated users informing them of a cold relationship with a country.",
-      "note": "The clarification on alerts ensures users understand the nature of notifications sent regarding cold relationships, enhancing transparency.",
+      "note": "",
       "refs": []
     }
   ],

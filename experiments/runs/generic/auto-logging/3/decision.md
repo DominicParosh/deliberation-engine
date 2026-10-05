@@ -14,23 +14,19 @@ This release will implement an automated logging feature for meetings with gover
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automate the logging of meetings with government officials in the Government CRM system.  
-  Automating the logging of meetings was established to improve engagement tracking and accountability.
-- **V2** Provide users a clear history of engagement with government officials through the automated logging feature.  
-  Providing a clear history of engagement through the automated logging feature supports users' ability to track interactions effectively.
+- **V1** Automate the logging of meetings with government officials in the Government CRM system.
+- **V2** Provide users a clear history of engagement with government officials through the automated logging feature.
 
 **In scope**
 
 - **S1** Automatically log meetings in the CRM when users input the meeting details into a designated form. Access to these logs will be restricted to regional coordinators and project managers only, ensuring that sensitive information is not accessible to unauthorized personnel.  
   Access control measures were clarified to limit visibility of logged meetings to only regional coordinators and project managers, addressing confidentiality concerns. _(C1)_
-- **S2** Provide an interface for regional coordinators and project managers to view logged meetings with government officials.  
-  An interface for viewing logs was included to facilitate easy access for authorized users.
+- **S2** Provide an interface for regional coordinators and project managers to view logged meetings with government officials.
 - **S3** Ensure that the logs include essential details such as date, time, participants, agenda, meeting outcomes, and implement a comparison mechanism to check for duplicate entries within a specified timeframe.  
   The detail inclusion requirement enhances data quality and addresses potential duplication of meeting logs. _(C3)_
 - **S4** Implement data validation to ensure only correctly formatted entries for meeting logs are accepted. Specific criteria for data validation include mandatory fields for date, time, participants, and agenda, with strict checks for non-empty values, correct date formats, and email format validation for participants prior to submission.  
   Data validation criteria were clearly defined to prevent incomplete or inaccurate meeting logs, reinforcing data integrity. _(C4, C5, C6, C8)_
-- **S5** Notifications will be sent to users if any required fields are missing upon submission of meeting logs.  
-  Notifications for missing fields enhance user promptness and the quality of submissions.
+- **S5** Notifications will be sent to users if any required fields are missing upon submission of meeting logs.
 - **S6** A defined process will automatically transfer the ownership of logged meeting records from departing users to designated personnel within the same team or role, ensuring continuity in engagement history. When a user departs or changes roles, the system will notify the designated personnel and require them to confirm the transfer of ownership within 48 hours of the notification.  
   Ownership transfer procedures were established to minimize gaps in engagement history when users change roles, although the specifics on personnel designation remain unresolved. _(C2, C9)_
 
@@ -56,10 +52,8 @@ This release will implement an automated logging feature for meetings with gover
 
 ## Definitions
 
-- **D1** "Meetings with government officials" means any scheduled discussions involving representatives from government bodies recognized by the organization.  
-  Clarifying meetings with government officials ensures all logged interactions are appropriately defined and consistent.
-- **D2** "Logging automatically" means the system will capture and create records of meetings without requiring user intervention after initial entry of meeting details.  
-  Defining automatic logging clarifies the interaction process without requiring manual intervention after details are entered.
+- **D1** "Meetings with government officials" means any scheduled discussions involving representatives from government bodies recognized by the organization.
+- **D2** "Logging automatically" means the system will capture and create records of meetings without requiring user intervention after initial entry of meeting details.
 - **D3** "Engagement history" means a chronological record of all interactions between users and government officials that are tracked for transparency and accountability, including the minimum required fields of date, time, participants, agenda, and outcomes for compliance with data handling regulations.  
   Outlining minimum data fields aligns the system requirements with compliance considerations, enhancing legal adherence. _(C4)_
 - **D4** "Data quality checks" means a verification process that reviews all logged meeting records to ensure accuracy and completeness, including confirmation of required fields and checking for consistency with existing records, and is to be conducted within 48 hours after a meeting is logged.  
@@ -67,8 +61,7 @@ This release will implement an automated logging feature for meetings with gover
 
 ## Success criteria
 
-- **K1** Ensure 90% of scheduled meetings are logged automatically within 24 hours of occurrence, measured through CRM analytics.  
-  Setting success criteria based on logging performance measures ensures accountability and effectiveness of the automated system.
+- **K1** Ensure 90% of scheduled meetings are logged automatically within 24 hours of occurrence, measured through CRM analytics.
 - **K2** Ensure that 90% of scheduled meetings are logged automatically within 24 hours of occurrence and reviewed for data integrity within 48 hours, measured through CRM analytics.  
   The criteria for data integrity checks build upon K1 by incorporating a review mechanism. _(C5)_
 

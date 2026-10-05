@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Users can view the influence level of each contact in the Government CRM.",
-      "note": "Users will be able to view the influence level of each contact in the Government CRM, providing a clear understanding of their relationships.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Users are able to sort and filter contacts based on their influence level.",
-      "note": "Users are able to sort and filter contacts based on their influence level, ensuring that prioritization can easily occur.",
+      "note": "",
       "refs": []
     }
   ],
@@ -51,7 +51,7 @@
     {
       "id": "S3",
       "text": "Users will be able to filter the contacts list to show only those with 'High' influence.",
-      "note": "Users will be able to filter the contacts list to show only those with 'High' influence, making it easier to focus on key contacts.",
+      "note": "",
       "refs": []
     },
     {
@@ -65,7 +65,7 @@
     {
       "id": "S5",
       "text": "Users can view the influence status directly on the contact detail pages.",
-      "note": "Users can view the influence status directly on contact detail pages, facilitating quick access to essential classification information.",
+      "note": "",
       "refs": []
     },
     {
@@ -87,13 +87,13 @@
     {
       "id": "X2",
       "text": "This release will not add any predictive analytics or algorithms to determine future influence.",
-      "note": "This release will not include predictive analytics or algorithms as the focus is on current influence levels only.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "The feature will not include influence tracking over time; it will focus solely on current influence levels.",
-      "note": "Influence tracking over time will not be incorporated as the feature will focus solely on current levels, streamlining implementation.",
+      "note": "",
       "refs": []
     }
   ],
@@ -103,7 +103,7 @@
     {
       "id": "A1",
       "text": "It is assumed that designated team members will have the authority to classify influence levels, based on their knowledge of contacts.",
-      "note": "It is assumed that designated team members will classify influence levels based on their knowledge, ensuring informed decisions.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -111,10 +111,8 @@
     {
       "id": "A2",
       "text": "It is assumed that users will have adequate training to understand how to use the new influence categorization feature.",
-      "note": "Adequate training is assumed to be in place for users to effectively engage with the influence categorization feature.",
-      "refs": [
-        "C6"
-      ],
+      "note": "",
+      "refs": [],
       "kept": true,
       "challenges": []
     },
@@ -153,16 +151,14 @@
     {
       "id": "D1",
       "text": "'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities.",
-      "note": "'Influence Level' is clearly defined as a classification that reflects a contact's ability to affect organizational outcomes, enhancing clarity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making.",
-      "note": "The definitions of 'High', 'Medium', and 'Low' are clear and outlined, aiding users in consistent assessment.",
-      "refs": [
-        "C2"
-      ]
+      "note": "",
+      "refs": []
     },
     {
       "id": "D3",
@@ -177,7 +173,7 @@
     {
       "id": "K1",
       "text": "At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys.",
-      "note": "User feedback surveys will measure the success criterion, focusing on whether the influence categorization improves prioritization.",
+      "note": "",
       "refs": []
     }
   ],

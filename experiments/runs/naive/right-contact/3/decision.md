@@ -14,10 +14,8 @@ The proposal to enhance contact management by designating primary contacts for c
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to designate a primary contact person for each country.  
-  Enabled users to designate a primary contact for each country to improve communication channels.
-- **V2** Allow users to view and update the primary contact details easily.  
-  Allowed users to easily view and update primary contact details to streamline information management.
+- **V1** Enable users to designate a primary contact person for each country.
+- **V2** Allow users to view and update the primary contact details easily.
 
 **In scope**
 
@@ -25,8 +23,7 @@ The proposal to enhance contact management by designating primary contacts for c
   Provided a user interface for designated users to select a primary contact for each member country, ensuring proper contact assignment.
 - **S2** Implement functionality allowing authorized users to update, view, and save contact details such as name, title, email, and phone number for the primary contact in the system.  
   Implemented functionality for authorized users to update and save primary contact details, ensuring accuracy.
-- **S3** Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system.  
-  Integrated updates with existing contact records to ensure consistency throughout the CRM system.
+- **S3** Integrate with existing contact records to ensure that updates to primary contact status are reflected across the CRM system.
 - **S4** Ensure that changes are logged for auditing purposes, tracking who made changes and when. These logs will be retained for a minimum of five years, ensuring compliance with data retention standards.  
   Ensured change logs for auditing are retained for a minimum of five years, addressing compliance needs.
 - **S5** Define user access levels for primary contact information, allowing only regional coordinators and project managers from the same region to view primary contacts. When a designated user changes roles or leaves the organization, access to the primary contact information will be automatically revoked through the role management system.  
@@ -40,8 +37,7 @@ The proposal to enhance contact management by designating primary contacts for c
 
 - **X1** This release will not provide detailed historical records of changes to contact designations beyond the latest record; however, designated users will be notified of any updates made to primary contact details for accountability.  
   Historical records of changes to contact designations will not be provided, limiting visibility into past updates.
-- **X2** This release will not implement notifications or alerts for when contact assignments change.  
-  No notifications for when contact assignments change will be included in this release.
+- **X2** This release will not implement notifications or alerts for when contact assignments change.
 - **X3** This release will not include additional contact-related functionalities such as ranking multiple contacts or adding multiple points of contact, and will not provide alternative processes for communicating with additional individuals. Users will be expected to identify the most relevant primary contact for communication.  
   Additional functionalities for multiple contacts are out of scope, focusing only on primary contact designation.
 
@@ -72,8 +68,7 @@ The proposal to enhance contact management by designating primary contacts for c
 
 ## Success criteria
 
-- **K1** Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch.  
-  Success criteria are established to track the percentage of accurate updates within three months.
+- **K1** Achieve 90% of primary contact entries correctly updated and maintained within the CRM system as measured through user feedback and system audits within the first three months of launch.
 
 ## Open questions for humans
 

@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Enable automatic logging of meetings with government officials in the CRM.",
-      "note": "The decision to enable automatic logging directly addresses the need for accurate engagement history tracking, responding to stakeholder concerns about lost data.",
+      "note": "",
       "refs": []
     }
   ],
@@ -40,7 +40,7 @@
     {
       "id": "S2",
       "text": "Provide functionality for users (regional coordinators and project managers) to view and edit logged meeting details within the CRM.",
-      "note": "Functionality for viewing and editing meeting details is in scope, empowering users to manage their records effectively without compromising data integrity.",
+      "note": "",
       "refs": []
     },
     {
@@ -66,19 +66,19 @@
     {
       "id": "X1",
       "text": "This release will not implement real-time notifications for users about logged meetings.",
-      "note": "Real-time notifications were deemed unnecessary for this release, allowing focus on core functionality without overcomplicating the system.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not log other types of engagement (such as emails or phone calls) with government officials.",
-      "note": "Logging of other engagement types was excluded to maintain a clear scope and ensure the feature meets its primary objective of logging meetings.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release does not include any analytics or reporting features related to engagement history.",
-      "note": "Analytics or reporting on engagement history is out of scope, ensuring the initial implementation remains straightforward and focused on logging functionality.",
+      "note": "",
       "refs": []
     }
   ],
@@ -88,7 +88,7 @@
     {
       "id": "A1",
       "text": "The CRM currently has the capability to track meetings, and user roles are defined within the system.",
-      "note": "Assumed capability to track meetings and defined user roles helps to streamline the implementation process, affirming the system's readiness for this feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -115,7 +115,7 @@
     {
       "id": "A3",
       "text": "The users (regional coordinators and project managers) are trained and familiar with the existing functionalities of the CRM.",
-      "note": "User training assumptions were accepted as a basis for ensuring effective use of the new features without requiring additional resources at this stage.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -134,7 +134,7 @@
     {
       "id": "D2",
       "text": "\"government officials\" means individuals representing member countries, including country representatives, ministry contacts, and mission delegates.",
-      "note": "'Government officials' is clearly defined to specify the types of individuals involved, avoiding ambiguity during the logging process.",
+      "note": "",
       "refs": []
     }
   ],

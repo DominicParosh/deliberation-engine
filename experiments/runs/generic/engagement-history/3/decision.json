@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Project managers can view the complete engagement history with each country.",
-      "note": "Project managers can view the complete engagement history with each country, addressing the need for informed decision-making as outlined in the initial feature request.",
+      "note": "",
       "refs": []
     }
   ],
@@ -31,7 +31,7 @@
     {
       "id": "S1",
       "text": "Provide project managers with a feature to access and view the engagement history of a selected country.",
-      "note": "Project managers will have a feature to access and view the engagement history of a selected country, directly supporting their need for full visibility before mission planning.",
+      "note": "",
       "refs": []
     },
     {
@@ -66,19 +66,19 @@
     {
       "id": "X1",
       "text": "This release will not include features for editing or deleting engagement history.",
-      "note": "Editing or deleting engagement histories is excluded to maintain data integrity and protect sensitive information.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not provide additional analytics or insights into engagement history beyond what is displayed.",
-      "note": "Additional analytics beyond the displayed engagement history are not included to keep the focus on essential access features for project managers.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release will not allow access to engagement history for users other than project managers and authorized coordinators.",
-      "note": "Access restrictions are firmly set, with no allowance for users outside the specified project managers and authorized regional coordinators, ensuring the security of sensitive data.",
+      "note": "",
       "refs": []
     }
   ],
@@ -88,7 +88,7 @@
     {
       "id": "A1",
       "text": "It is assumed that project managers need the engagement history to make informed decisions before new missions, which is the basis for this feature request.",
-      "note": "The assumption is that project managers require access to the engagement history for informed decision-making, forming the basis for the feature request.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -96,7 +96,7 @@
     {
       "id": "A2",
       "text": "It is assumed that engagement histories are stored in the CRM system and are up to date.",
-      "note": "Assuming engagement histories are stored in the system and kept up to date supports the reliability of the new access feature for users.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -104,7 +104,7 @@
     {
       "id": "A3",
       "text": "It is assumed that there are no existing legal or organizational barriers preventing project managers from accessing historical engagement data.",
-      "note": "Assuming no legal barriers exist allows for the proposed access to engagement histories to proceed as planned without hindrances.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -114,13 +114,13 @@
     {
       "id": "D1",
       "text": "\"engagement history\" means a record of all interactions between the organization and the government counterpart, including dates of contact, participants, and summaries of discussions or activities.",
-      "note": "The definition of 'engagement history' has been clarified to delineate what information will be available to project managers regarding interactions with government counterparts.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"project managers\" means designated personnel responsible for overseeing specific missions or projects within the organization.",
-      "note": "The definition of 'project managers' ensures clarity on who will have access, aligning with expectations of personnel responsible for missions.",
+      "note": "",
       "refs": []
     },
     {
@@ -136,7 +136,7 @@
     {
       "id": "K1",
       "text": "Successfully providing access to engagement history to 100% of project managers as measured by system access logs within one month of the release.",
-      "note": "The success criterion emphasizes that 100% of project managers must access the engagement history within a month, focusing on monitoring system access logs as a measure of success.",
+      "note": "",
       "refs": []
     }
   ],

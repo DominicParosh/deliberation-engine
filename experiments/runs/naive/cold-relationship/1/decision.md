@@ -14,13 +14,11 @@ An alert system will be implemented to notify users when engagement with country
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Implement an alert system that notifies users of declining engagement with country representatives.  
-  The commitment to implement the alert system is based on the need for proactive monitoring of diplomatic engagements.
+- **V1** Implement an alert system that notifies users of declining engagement with country representatives.
 
 **In scope**
 
-- **S1** Users will receive an alert when there have been no recorded engagements with a country representative for 90 days.  
-  An alert will trigger after 90 days of no recorded engagements, establishing a clear inactivity threshold for monitoring.
+- **S1** Users will receive an alert when there have been no recorded engagements with a country representative for 90 days.
 - **S2** The alert will be sent via email to the registered email addresses of the regional coordinators and project managers associated with that country.  
   The alert notification will target registered emails of relevant personnel to ensure that appropriate team members receive timely information. _(C2)_
 - **S3** The system will log all user engagements, defined as any documented interactions with country representatives that are officially recorded in the CRM, including emails, meetings, phone calls, and notes. There will also be a mechanism in place to regularly review logged engagements to ensure compliance and accuracy.  
@@ -36,10 +34,8 @@ An alert system will be implemented to notify users when engagement with country
 
 - **X1** This release will not provide analytics or dashboards on engagement metrics or any auditing mechanism related to logged engagements.  
   The exclusion of analytics or dashboards allows focus on the alert system without complicating the release with additional features.
-- **X2** The system will not notify users about relationships going cold with organizations other than country representatives.  
-  Relationship notifications are limited to country representatives, which clearly scopes the alert system's functionality.
-- **X3** No modifications to the existing user interface beyond the alert settings will be included.  
-  No changes to the user interface beyond alert settings were included to streamline the implementation.
+- **X2** The system will not notify users about relationships going cold with organizations other than country representatives.
+- **X3** No modifications to the existing user interface beyond the alert settings will be included.
 
 **Rejected during deliberation**
 
@@ -58,13 +54,11 @@ An alert system will be implemented to notify users when engagement with country
 
 - **D1** "cold relationship" means a lack of recorded engagement with a country representative for a specified duration, requiring that all engagements which contribute to this classification are documented in the CRM regardless of the type of interaction; these include emails, meetings, phone calls, or official notes.  
   The refined definition of a cold relationship clarifies the engagement tracking requirements, reducing the possibility of misclassification. _(C1, C6)_
-- **D2** "alert" means a notification system that sends an email to users when a specified threshold of inactivity is met.  
-  The definition of an alert is straightforward, ensuring users understand what to expect when notifications are triggered.
+- **D2** "alert" means a notification system that sends an email to users when a specified threshold of inactivity is met.
 
 ## Success criteria
 
-- **K1** Success will be measured by a 70% user adoption rate of the alert system within three months of release.  
-  A user adoption target of 70% within three months is measurable and ensures accountability in engagement monitoring.
+- **K1** Success will be measured by a 70% user adoption rate of the alert system within three months of release.
 
 ## Open questions for humans
 

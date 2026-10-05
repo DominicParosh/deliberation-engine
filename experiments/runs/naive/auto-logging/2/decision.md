@@ -14,21 +14,15 @@ This release will introduce an automatic logging feature for meetings with gover
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automatically log meetings with government officials in the CRM system.  
-  This feature will automatically log meetings without requiring user intervention, ensuring accurate engagement history recording.
-- **V2** Provide notifications to the relevant users when meetings are logged.  
-  Notifications will be sent to relevant users to enhance transparency regarding logged meetings and their details.
+- **V1** Automatically log meetings with government officials in the CRM system.
+- **V2** Provide notifications to the relevant users when meetings are logged.
 
 **In scope**
 
-- **S1** Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature.  
-  This scope item allows for meetings scheduled through the CRM's calendar to be logged automatically, streamlining the process effectively.
-- **S2** Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points.  
-  Email notifications are essential for ensuring users are aware of newly logged meetings and can access the relevant details.
-- **S3** Allow users to manually edit the automatically logged meeting entries if needed.  
-  Allowing users to manually edit entries ensures accuracy and accountability in the logged information.
-- **S4** Provide access to these logged meetings for regional coordinators and project managers.  
-  Providing access to logged meetings for regional coordinators and project managers enhances security around sensitive information.
+- **S1** Enable the automatic logging of meetings with government officials that are scheduled through the CRM's calendar feature.
+- **S2** Notify users via email when a meeting is logged into the CRM, including details such as date, time, participants, and key discussion points.
+- **S3** Allow users to manually edit the automatically logged meeting entries if needed.
+- **S4** Provide access to these logged meetings for regional coordinators and project managers.
 - **S5** Establish role-based access controls where access to logged meetings is restricted to users with the roles of regional coordinators and project managers; other roles cannot view or edit these logs.  
   This scope item establishes necessary role-based access, ensuring that only authorized personnel can view and edit logged meetings. _(C1)_
 - **S6** Retain logged meetings within the individual user's profile, but set access restrictions so if a user changes roles, their access to these logs is limited to their new role; if they leave the organization, access is removed completely.  
@@ -40,12 +34,9 @@ This release will introduce an automatic logging feature for meetings with gover
 
 **Out of scope for this release**
 
-- **X1** Manual logging of meetings; this feature will focus solely on automation.  
-  Manual logging is out of scope because the focus is on automating the logging process to prevent loss of engagement history.
-- **X2** Integration with external calendar systems other than the CRM's internal calendar.  
-  Integration with external systems is excluded as it would complicate the implementation of the automated logging feature.
-- **X3** Tracking of informal or non-scheduled conversations with government officials.  
-  Informal conversations are out of scope, as the focus is on systematically logging scheduled meetings for clarity and accuracy.
+- **X1** Manual logging of meetings; this feature will focus solely on automation.
+- **X2** Integration with external calendar systems other than the CRM's internal calendar.
+- **X3** Tracking of informal or non-scheduled conversations with government officials.
 
 **Rejected during deliberation**
 
@@ -61,10 +52,8 @@ This release will introduce an automatic logging feature for meetings with gover
 
 ## Definitions
 
-- **D1** "Automatically log meetings" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar.  
-  This definition clarifies that automatic logging occurs without user intervention, ensuring a systematic record is maintained.
-- **D2** "Engagement history" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials.  
-  Defining engagement history ensures clarity about what constitutes recorded interactions with government officials.
+- **D1** "Automatically log meetings" means the system will create an entry in the CRM without user intervention when a meeting concludes, capturing relevant information from the calendar.
+- **D2** "Engagement history" means the record of interactions, including date, time, participants, and any discussed topics related to meetings with government officials.
 - **D3** "Logged meeting entries" means the automatically created records will include the date, time, participants, and key discussion points; confidential information must be marked and encrypted to restrict access.  
   This outlines the specific content included in logged meetings to prevent confusion regarding data management. _(C2)_
 - **D4** "Eligible meetings for automatic logging" means any meeting with government officials that is scheduled using the CRM calendar feature; ad-hoc meetings without prior scheduling are not included.  
@@ -74,10 +63,8 @@ This release will introduce an automatic logging feature for meetings with gover
 
 ## Success criteria
 
-- **K1** At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs.  
-  This success criterion sets a measurable goal for the automatic logging efficiency, aligning with operational expectations.
-- **K2** User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release.  
-  User satisfaction measurement is essential to ensure that the new feature meets user needs and expectations after implementation.
+- **K1** At least 80% of scheduled meetings with government officials are logged automatically within 10 minutes of the meeting's conclusion, measured by monitoring system logs.
+- **K2** User satisfaction regarding meeting logging increases by at least 20% in a survey conducted three months after the feature release.
 
 ## Open questions for humans
 

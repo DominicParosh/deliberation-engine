@@ -14,30 +14,24 @@ This release will provide project managers with access to the full engagement hi
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Provide project managers with a detailed engagement history for selected countries.  
-  Providing detailed engagement history for selected countries ensures project managers have the necessary background for informed decision-making.
-- **V2** Ensure the engagement history includes all relevant records such as previous missions, key contacts, and engagement dates.  
-  Including all relevant records in the engagement history is critical for context and accuracy during project planning.
+- **V1** Provide project managers with a detailed engagement history for selected countries.
+- **V2** Ensure the engagement history includes all relevant records such as previous missions, key contacts, and engagement dates.
 
 **In scope**
 
 - **S1** Implement a user interface that allows project managers to select one country at a time from a dropdown list, with a search functionality for easier retrieval.  
   The user interface will allow project managers to select only one country at a time, reducing the risk of user errors during data retrieval. _(C3)_
-- **S2** Display the full engagement history for the selected country, including dates, types of engagement, and involved personnel.  
-  Displaying the full engagement history is essential for bringing project managers up to speed with past interactions.
+- **S2** Display the full engagement history for the selected country, including dates, types of engagement, and involved personnel.
 - **S3** Ensure that engagement history is filtered to show only interactions relevant to the requesting project manager's access level, which is determined by their assigned roles and the sensitivity of the engagement data.  
   Filtering engagement history based on roles and data sensitivity addresses confidentiality concerns and prevents unauthorized access. _(C1)_
-- **S4** Include an export option for the engagement history in a PDF format for offline reference.  
-  Providing a PDF export option allows project managers to reference engagement histories offline as needed.
+- **S4** Include an export option for the engagement history in a PDF format for offline reference.
 
 ## What it will not do
 
 **Out of scope for this release**
 
-- **X1** This release will not include real-time updates or notifications for ongoing engagements.  
-  Real-time updates for ongoing engagements are deemed unnecessary for this release at this stage.
-- **X2** This release will not integrate with external data sources or CRMs beyond the current system.  
-  Integration with external data sources is outside the scope of this release and may require a future proposal.
+- **X1** This release will not include real-time updates or notifications for ongoing engagements.
+- **X2** This release will not integrate with external data sources or CRMs beyond the current system.
 - **X3** User roles outside project managers will not have access to engagement history in this release, defined explicitly as users without the 'project manager' designation in the CRM, with no exceptions.  
   Access is strictly limited to users designated as project managers, with no exceptions, enhancing data confidentiality. _(C6)_
 
@@ -57,10 +51,8 @@ This release will provide project managers with access to the full engagement hi
 
 - **D1** 'Full engagement history' means all records of interactions with a country, including past missions, contact details, engagement dates, and engagement types, and must be verified for accuracy and completeness before display.  
   The definition of 'full engagement history' was revised to include requirements for data verification, ensuring accuracy before display. _(C4)_
-- **D2** 'Project managers' means users designated with the role of project managers in the CRM system, who have permission to view project-related data.  
-  Clearly defining 'project managers' ensures there is no ambiguity regarding who can access engagement data.
-- **D3** 'Country' means a member nation represented in the CRM.  
-  Defining 'country' clarifies the context in which engagement history is relevant within the CRM.
+- **D2** 'Project managers' means users designated with the role of project managers in the CRM system, who have permission to view project-related data.
+- **D3** 'Country' means a member nation represented in the CRM.
 
 ## Success criteria
 

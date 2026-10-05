@@ -14,10 +14,8 @@ This release will implement a contact prioritization feature that allows users t
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to categorize contacts based on their influence level.  
-  Users will be able to categorize contacts based on their influence level, a core component of the proposal that addresses the need for prioritization.
-- **V2** Provide users with a visual representation of contact influence levels for prioritization.  
-  A visual representation of contact influence levels will be provided, helping users quickly assess and prioritize engagement with contacts.
+- **V1** Enable users to categorize contacts based on their influence level.
+- **V2** Provide users with a visual representation of contact influence levels for prioritization.
 
 **In scope**
 
@@ -25,8 +23,7 @@ This release will implement a contact prioritization feature that allows users t
   A new field for 'Influence Level' was created to allow designated users to assign values, addressing the need for a systematic way to categorize influence. _(C1)_
 - **S2** Develop a simple interface for regional coordinators and project managers with approved permissions to update the Influence Level of contacts, accompanied by a review mechanism where a designated administrator checks for consistency and correctness of updates.  
   A simple interface for updating 'Influence Level' has been established, including a review mechanism, ensuring accuracy and consistency in data. _(C4)_
-- **S3** Implement a filter in the contacts list that allows users to sort contacts by Influence Level.  
-  Implementing a filter to sort contacts by Influence Level contributes directly to the prioritization goal by allowing for quick access to categorized contacts.
+- **S3** Implement a filter in the contacts list that allows users to sort contacts by Influence Level.
 - **S4** Add tooltips or help text with standardized guidelines outlining specific criteria and examples for determining Influence Level for contacts.  
   Standardized guidelines have been established to accompany tooltips, ensuring consistent categorization among users. _(C5)_
 - **S5** Include a process for auditing 'Influence Level' data retention, ensuring that sensitive categorizations are reviewed annually and retained only as long as necessary for operational needs.  
@@ -36,12 +33,9 @@ This release will implement a contact prioritization feature that allows users t
 
 **Out of scope for this release**
 
-- **X1** This release does not include automated tools or algorithms to determine a contact's Influence Level.  
-  Automated tools for determining Influence Level are out of scope to prevent reliance on potentially misleading automation.
-- **X2** This release will not encompass any external integrations with third-party systems for influence analytics.  
-  External integrations with third-party systems are not included to keep the current system self-contained and secure.
-- **X3** No changes will be made to existing user permissions in the CRM system regarding contact detail visibility.  
-  No changes to existing user permissions were made to maintain the current structure and avoid complications with data access.
+- **X1** This release does not include automated tools or algorithms to determine a contact's Influence Level.
+- **X2** This release will not encompass any external integrations with third-party systems for influence analytics.
+- **X3** No changes will be made to existing user permissions in the CRM system regarding contact detail visibility.
 
 **Rejected during deliberation**
 
@@ -59,13 +53,11 @@ This release will implement a contact prioritization feature that allows users t
 
 - **D1** 'Influence Level' means an assigned categorical value (Low, Medium, High) to indicate the importance of a contact in decision-making or project engagement, with specific criteria: 'Low' is for contacts with minimal impact, 'Medium' for contacts that can influence but are not central to decisions, and 'High' for contacts who are critical in decision-making processes.  
   Definitions of influence levels were clarified with specific criteria to prevent subjective interpretations and ensure consistency. _(C2)_
-- **D2** 'Visual representation' means a graphical or tabular display that allows users to quickly understand the influence status of their contacts at a glance.  
-  The definition of visual representation was established to clearly communicate how influence levels will be displayed for user convenience.
+- **D2** 'Visual representation' means a graphical or tabular display that allows users to quickly understand the influence status of their contacts at a glance.
 
 ## Success criteria
 
-- **K1** At least 75% of users report satisfaction with the new contact categorization feature through a follow-up survey conducted one month after release.  
-  Success criteria of 75% satisfaction among users will gauge the feature's acceptance and functional success post-release.
+- **K1** At least 75% of users report satisfaction with the new contact categorization feature through a follow-up survey conducted one month after release.
 
 ## Open questions for humans
 

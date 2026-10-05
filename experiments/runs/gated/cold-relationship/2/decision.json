@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Users will receive alerts when there is no engagement recorded with a country for over six months.",
-      "note": "Users will receive alerts when there is no engagement recorded with a country for over six months, providing timely informational support while maintaining confidentiality with non-sensitive details.",
+      "note": "",
       "refs": []
     }
   ],
@@ -37,13 +37,13 @@
     {
       "id": "S2",
       "text": "The alert will include the country name, last engagement date, and a suggestion to re-engage.",
-      "note": "The alert will include the country name, last engagement date, and a suggestion to re-engage, ensuring users have the relevant information needed for follow-ups.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Users will be able to set preferences for receiving alerts weekly or monthly.",
-      "note": "Users will be able to set preferences for receiving alerts weekly or monthly, enhancing user control over their notifications and engagement processes.",
+      "note": "",
       "refs": []
     },
     {
@@ -67,13 +67,13 @@
     {
       "id": "X2",
       "text": "Historical engagement records prior to the implementation of this alert system will not be included.",
-      "note": "Historical engagement records prior to the implementation of this alert system will not be included to streamline the process and focus on future engagements.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "Development of a dashboard for visualizing engagement metrics will not be considered in this release.",
-      "note": "Development of a dashboard for visualizing engagement metrics will not be considered in this release, as it complicates the primary objective of the alert system.",
+      "note": "",
       "refs": []
     }
   ],
@@ -106,7 +106,7 @@
     {
       "id": "A2",
       "text": "All engaged users possess an email account registered with their CRM profile, as the alert system relies on this.",
-      "note": "The alert system relies on users having registered email accounts, ensuring notifications can be effectively communicated.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -114,7 +114,7 @@
     {
       "id": "A3",
       "text": "The CRM can access and process engagement data without performance issues, which is necessary for a timely alert system.",
-      "note": "The system's ability to process engagement data without performance issues is assumed, establishing a foundation for timely alerting.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -162,7 +162,7 @@
     {
       "id": "K1",
       "text": "At least 80% of users receive the alerts successfully without any technical failures, measured by system logs and user feedback within the first month after launch.",
-      "note": "Success will be measured by ensuring that at least 80% of users receive alerts successfully without any technical failures in the first month after launch, establishing a clear performance benchmark for the system.",
+      "note": "",
       "refs": []
     }
   ],

@@ -14,8 +14,7 @@ This release will implement an email alert system that notifies users when engag
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** The system will send alerts to regional coordinators and project managers when no engagement events are recorded with a country for 12 months.  
-  The commitment to send alerts after 12 months of no engagement was established to ensure proactive relationship management and compliance obligations are met.
+- **V1** The system will send alerts to regional coordinators and project managers when no engagement events are recorded with a country for 12 months.
 
 **In scope**
 
@@ -57,12 +56,10 @@ This release will implement an email alert system that notifies users when engag
 
 ## Definitions
 
-- **D1** 'Goes cold' means there have been no recorded engagement events in the CRM for 12 months.  
-  'Goes cold' clearly indicates a lack of engagement events in 12 months, providing clarity for alert generation criteria.
+- **D1** 'Goes cold' means there have been no recorded engagement events in the CRM for 12 months.
 - **D2** 'Engagement event' means any documented communication between the organization and a country, including formal meetings, emails, official communications, and any documented informal communications that have specific relevance to diplomatic engagements.  
   The definition specifies the types of communications included as engagement events, ensuring comprehensive coverage of all relevant interactions.
-- **D3** 'Alert' means a notification sent via email to designated users informing them of a cold relationship with a country.  
-  The clarification on alerts ensures users understand the nature of notifications sent regarding cold relationships, enhancing transparency.
+- **D3** 'Alert' means a notification sent via email to designated users informing them of a cold relationship with a country.
 
 ## Success criteria
 

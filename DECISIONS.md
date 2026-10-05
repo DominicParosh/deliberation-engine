@@ -1,10 +1,9 @@
 # Design decisions
 
 The brief's central risk is two agents that either agree at once or never stop. My answer takes both outcomes away
-from them: each turn is a typed move (a revision, a defense, a ruling) that a ledger validates and applies, and the
-ledger decides what is settled, what goes to humans and when to stop. Seven live batches showed where the leverage is:
-asking gpt-4o-mini to behave did little; making a bad move impossible to express, or checkable by code, fixed every
-failure I measured.
+from them: each turn is a typed move that a ledger validates and applies, and the ledger decides what is settled,
+what goes to humans and when to stop. Over seven live batches, asking gpt-4o-mini to behave did little; what worked
+was making a bad move impossible to express, or checkable by code.
 
 ## 1. The prompts
 
@@ -12,9 +11,8 @@ failure I measured.
 Critic is the architect who owns the data-protection sign-off. The burden of proof sits with the Critic: a challenge
 earns a change only if its failure scenario is plausible and material. I tested this by removing the stakes (the
 `generic` runs). The Critic accepted 84% of revisions either way; what changed was the Proposer. With the stakes it
-defended on the merits 15 times, without them once (28 of its 29 defenses were "a human must decide"). Arguing isn't
-winning: the Critic accepted 4 of the 15, all minor; most of these disputes are about risk appetite and go to a named
-human.
+defended on the merits 15 times, without them once. Arguing isn't winning: the Critic accepted 4 of the 15, all
+minor; most were risk-appetite disputes handed to a named human.
 
 **Classify, then derive.** Neither agent picks its move directly: the Proposer names the kind of challenge it faces
 (missing decision, design detail, acceptable risk, needs a human) and the move follows; the Critic quotes the words
@@ -23,13 +21,13 @@ Models classify honestly but don't push back when merely asked: prose about when
 46 moves; a grounds field (v3) produced 65%.
 
 **Specific pushback by construction.** A challenge must name its target items, a lens, a severity, a failure scenario
-and a resolution test answerable with a role, a number or a rule, so "have you considered security?" cannot be
-expressed. A pre-mortem points the Critic's first challenges at the real risk.
+and a resolution test answerable with a role, a number or a rule, so bare pushback cannot be expressed, though tests
+can still ask for "safeguards". A pre-mortem points the Critic's first challenges at the real risk.
 
 **Where prompts stopped working, the ledger took over.** Rubber-stamped ACCEPTs (v1), revisions described but never
 written (v4), promises such as "a process will be established" accepted as answers (v5) and decisions parked in
 assumptions (v6) each became a rule the ledger checks (one repair, then a safe coercion); in the 15 final gated runs it
-sent back 31 moves. That is why the code is about 1,150 lines rather than 300: the loop and stop rules are about 115,
+sent 29 replies back. That is why the code is about 1,150 lines rather than 300: the loop and stop rules are about 115,
 and the rest are those rules, each traceable in `tasks/iteration-log.md`. A stronger model would need fewer.
 
 ## 2. Termination
@@ -46,8 +44,8 @@ closed with a BLOCKER or MAJOR open; three times the Critic concluded in the sam
 objection. Without convergence pressure it re-asked old questions in new words, took twice as many rounds, cost 1.9
 times as much, and in 44 settlements a later edit removed the agreed wording. A fixed round count ends on the clock,
 not the content. A confidence threshold fails because self-reported confidence doesn't track open risk (one record
-shows the Proposer at 80/100 with a blocker open). A judge model adds another unreliable opinion; the ledger's rule is
-deterministic and testable.
+shows the Proposer at 80/100 with a blocker open). A judge model deciding when to stop adds another unreliable
+opinion; the ledger's rule is deterministic and testable.
 
 **What I accept.** The gate never had to reject a CONCLUDE in the final runs: the budget and the two-strike rule
 emptied the ledger first, and in 13 of 15 runs the Critic still said CONTINUE with nothing left. So "done" means every
@@ -57,19 +55,19 @@ more round would have settled, and from round 5 a late concern survives only as 
 ## 3. One thing I would do differently
 
 I would add a semantic check where the lexical ones run out. The ledger catches missing quotes, assumptions used as
-answers and listed weak phrases, but not paraphrased repeats (right-contact C4 and C7 are one question), real text
-that doesn't answer the question, or invented roles: the Critic marked 32 of 192 gated answers unconfirmed, never one it had
-judged settled. A small verifier model would ask one narrow question per ACCEPT, "does this quote answer this test?",
-measured against the 43 hand-labelled ACCEPTs from v5 and v6 as the weak-phrase rule was (17 of 28 vague answers
-refused, 0 of 15 concrete).
+answers and listed weak phrases, but not paraphrases of a weak phrase or of an earlier question, real text that
+doesn't answer the question, or invented roles: the Critic marked 28 of its 141 final gated verdicts unconfirmed,
+never one it had judged settled. A small verifier model would ask one narrow question per ACCEPT, "does this quote
+answer this test?", measured against the 43 hand-labelled ACCEPTs from v5 and v6 as the weak-phrase rule was (17 of
+28 vague answers refused, 0 of 15 concrete).
 
 ## Interpretations and other choices
 
-- "The Critic must be capable of signaling completion": it signals; the ledger decides whether that holds.
 - "Open questions requiring human input": what needs authority neither agent has (law, policy, budgets, existing
   teams). Who sees what, and what happens when people change roles, are product rules for the agents.
 - No framework: the core is a typed loop around a ledger, and orchestration frameworks optimize for the free-form
   conversation this design avoids.
 - gpt-4o-mini in every role, at about $0.009 per run.
-- I built this with Claude as a pair programmer: it wrote most of the code and prompt drafts and ran the analyses; I
-  chose the architecture, ran every live batch and decided what to keep. The commits carry a co-author line.
+- I built this with Claude as a pair programmer: it wrote most of the code and prompt drafts, ran the analyses and
+  drafted this document from my decisions and the batch data; I chose the architecture, ran every live batch and
+  decided what to keep.

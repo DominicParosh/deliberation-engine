@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Implement an alert system for detecting inactive relationships with country contacts.",
-      "note": "The alert system for detecting inactive relationships with country contacts will be built to enhance user awareness of engagement status and improve oversight.",
+      "note": "",
       "refs": []
     }
   ],
@@ -47,7 +47,7 @@
     {
       "id": "S3",
       "text": "Enable users to filter and view a list of contacts with cold relationships in the CRM.",
-      "note": "Users will be able to view a list of contacts with cold relationships, aiding in the management of country engagements and enabling monitoring.",
+      "note": "",
       "refs": []
     },
     {
@@ -95,7 +95,7 @@
     {
       "id": "A1",
       "text": "Users have sufficient privileges to set alert preferences and view engagement history; this depends on existing user role management capabilities.",
-      "note": "Assumed user privileges exist for setting alert preferences and accessing engagement history; this will depend on role management capabilities.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -103,7 +103,7 @@
     {
       "id": "A2",
       "text": "Engagement activities are logged in the CRM; this depends on current CRM functionality for tracking such activities.",
-      "note": "Assumed current CRM functionality allows for effective logging of engagement activities; this is necessary for the alert system to function properly.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -111,7 +111,7 @@
     {
       "id": "A3",
       "text": "Users understand what constitutes a \"cold relationship\" based on the defined thresholds; this assumes adequate training and documentation is provided.",
-      "note": "Users are expected to understand the concept of a 'cold relationship,' depending on training and clear documentation being provided.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -121,13 +121,13 @@
     {
       "id": "D1",
       "text": "\"cold relationship\" means a lack of recorded engagement activities with a country contact for 90 consecutive days.",
-      "note": "'Cold relationship' is clearly defined to ensure users know when engagement activity is deemed inactive, aiding in system clarity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"engagement activities\" means any logged interaction or correspondence with a country contact, such as meetings, emails, or calls.",
-      "note": "Engagement activities are defined to include logged interactions that allow transparency and functionality within the alert system.",
+      "note": "",
       "refs": []
     }
   ],
@@ -135,7 +135,7 @@
     {
       "id": "K1",
       "text": "Achieve at least a 75% user satisfaction rate with the new alert system, measured through user surveys within one month of release.",
-      "note": "A user satisfaction rate of at least 75% is targeted post-release to gauge the effectiveness and acceptance of the alert system.",
+      "note": "",
       "refs": []
     }
   ],

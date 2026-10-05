@@ -14,15 +14,12 @@ This release will introduce a new contact tracking feature allowing users to ide
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enhance user ability to identify the right contact person for government counterparts based on specific criteria.  
-  Enhancing user ability to identify the right contact person was essential to address operational needs and improve interactions with government counterparts.
+- **V1** Enhance user ability to identify the right contact person for government counterparts based on specific criteria.
 
 **In scope**
 
-- **S1** Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status.  
-  Implementing a searchable database enables users to efficiently filter contacts, significantly benefiting project managers and regional coordinators.
-- **S2** Develop a user interface for project managers and regional coordinators to view and select relevant contacts.  
-  Developing a user interface tailored for the intended users enhances usability and effectiveness in identifying contacts.
+- **S1** Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status.
+- **S2** Develop a user interface for project managers and regional coordinators to view and select relevant contacts.
 - **S3** Integrate contact history in a manner that limits visibility to users based on their access rights, ensuring only 'Project Managers' and 'Regional Coordinators' can view sensitive histories associated with their projects.  
   Integrating contact history with restricted visibility based on user role ensures sensitive information is protected from unauthorized access. _(C4)_
 - **S4** Ensure that there is a mechanism in place for regularly updating and verifying the accuracy of contact details in the database, including a process for timely revocation of access when personnel change roles or leave.  
@@ -55,17 +52,14 @@ This release will introduce a new contact tracking feature allowing users to ide
 
 ## Definitions
 
-- **D1** "Contact tracking feature" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria.  
-  Defining 'contact tracking feature' clarifies system enhancements intended to streamline access to government contact records.
-- **D2** "Searchable database" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status.  
-  Defining 'searchable database' helps specify the database's functionality for users, ensuring they understand its application.
+- **D1** "Contact tracking feature" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria.
+- **D2** "Searchable database" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status.
 - **D3** "Authorized personnel" means users in the roles of 'Project Manager', 'Regional Coordinator', and 'Executive Staff', who have received explicit approvals from their direct supervisors to access sensitive information within the CRM.  
   Updating the definition of 'authorized personnel' removes ambiguity around access rights, clarifying user roles required for accessing sensitive data. _(C3)_
 
 ## Success criteria
 
-- **K1** Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature.  
-  Setting a user satisfaction target ensures that feedback is captured regarding the effectiveness of the new contact tracking feature after release.
+- **K1** Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature.
 
 ## Open questions for humans
 

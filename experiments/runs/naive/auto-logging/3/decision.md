@@ -14,8 +14,7 @@ This release will implement an automatic logging feature for meetings with gover
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable automatic logging of meetings with government officials to preserve engagement history.  
-  The core commitment to enable automatic logging of meetings was accepted to preserve engagement history as a necessary feature.
+- **V1** Enable automatic logging of meetings with government officials to preserve engagement history.
 
 **In scope**
 
@@ -56,8 +55,7 @@ This release will implement an automatic logging feature for meetings with gover
 
 - **D1** "automatic logging" means the system will record meetings without requiring the user to manually input this information, triggered by user actions indicating a meeting occurred, such as the users marking that the meeting is set on their calendar and confirming attendance.  
   The definition of 'automatic logging' was revised to clarify logging triggers, ensuring accuracy in logging events and reducing errors. _(C3)_
-- **D2** "engagement history" means the cumulative records of interactions and meetings with government contacts tracked within the CRM.  
-  The definition of 'engagement history' was established to outline the scope of the records tracked within the CRM without contention.
+- **D2** "engagement history" means the cumulative records of interactions and meetings with government contacts tracked within the CRM.
 
 ## Success criteria
 

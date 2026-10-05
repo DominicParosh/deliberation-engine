@@ -25,7 +25,7 @@
     {
       "id": "V1",
       "text": "Enable users to view an influence score for each contact so they can prioritize engagement efforts.",
-      "note": "This core commitment focuses on providing influence scores to assist users in prioritizing engagement, addressing the proposal's central aim.",
+      "note": "",
       "refs": []
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": "A1",
       "text": "Users will have sufficient permissions to view influence scores, depending on their role in the organization.",
-      "note": "This assumption about user permissions is necessary for the system's integrity but was not contested during deliberation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -160,7 +160,7 @@
     {
       "id": "A3",
       "text": "Influence scoring does not violate any data protection regulations concerning how contact information can be assessed or displayed.",
-      "note": "The assurance that the influence scoring system will comply with data protection regulations is crucial for the proposal's viability, though it remains to be validated further.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []

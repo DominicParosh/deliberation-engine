@@ -11,18 +11,25 @@ Why it is built this way, what else was considered, and what I'd change: [DECISI
 
 ## Run it
 
-Needs Python 3.11+ and [uv](https://docs.astral.sh/uv/).
+Needs Python 3.11+, [uv](https://docs.astral.sh/uv/) and an API key: `cp .env.example .env` and fill in
+`OPENAI_API_KEY` or `ANTHROPIC_API_KEY` (or export it). Then one command runs everything:
 
 ```bash
-uv sync
-cp .env.example .env        # then fill in OPENAI_API_KEY or ANTHROPIC_API_KEY (either works)
+uv run deliberate        # all five requests in config/requests.yaml, end to end: about 5 minutes and $0.05
+```
 
-uv run deliberate --request-id cold-relationship     # one request from config/requests.yaml
-uv run deliberate --all                              # all five
+`uv run` installs the dependencies on first use. Each request runs round by round, printed as it goes, until the
+termination policy ends it, then writes its trace and decision document to `out/<request-id>/`. One request, or
+your own:
+
+```bash
+uv run deliberate --request-id cold-relationship     # about a minute and $0.01
 uv run deliberate --request "Executives want a dashboard of relationship health."
 ```
 
-Exported environment variables work too and take precedence over `.env`.
+Exported environment variables take precedence over `.env`. Every recorded run used OpenAI's gpt-4o-mini, which is
+also the default when both keys are set. The Anthropic adapter (Claude Haiku 4.5, structured outputs) is covered
+by unit tests but has not been run live.
 
 No API key? Every committed run can be replayed from its recorded model outputs, with no API calls:
 
@@ -36,9 +43,9 @@ Tests need no key either: `uv run pytest`.
 
 | Flag | Default | |
 |---|---|---|
-| `--request` / `--request-file` / `--request-id ID...` / `--all` | `$DELIBERATION_REQUEST` | Where the request comes from |
+| `--request` / `--request-file` / `--request-id ID...` / `--all` | `$DELIBERATION_REQUEST`, else every request in `config/requests.yaml` | Where the request comes from |
 | `--policy` | `gated` | `naive` runs the baseline termination policy (Critic's word + round cap) |
-| `--provider`, `--model` | whichever key is set | `anthropic` → `claude-haiku-4-5-20251001`, `openai` → `gpt-4o-mini` |
+| `--provider`, `--model` | OpenAI if its key is set, else Anthropic | `openai` → `gpt-4o-mini`, `anthropic` → `claude-haiku-4-5-20251001` |
 | `--critic-provider`, `--critic-model` | same as Proposer | Run the Critic on a different model family |
 | `--context` | `config/system_context.md` | The system description both agents reason about |
 | `--prompts DIR` | — | Override prompt files by name |
@@ -84,8 +91,8 @@ always schema-valid) that the orchestrator checks against the ledger before appl
 - The Critic opens with a pre-mortem (a year after launch, something this feature created caused an
   incident: what happened?) and the questions the request leaves open, then raises challenges. Each must name the IDs it targets, a
   lens, a severity, a concrete failure scenario and a resolution test phrased as a question with a concrete
-  answer. Generic pushback cannot be expressed in the schema. From round 2 it rules on every answered
-  challenge in fixed steps: it quotes the words that come closest to answering its test (from a decided item,
+  answer. Pushback can't be raised without targets, a failure scenario and a question-form test. From round 2 it
+  rules on every answered challenge in fixed steps: it quotes the words that come closest to answering its test (from a decided item,
   or from the Proposer's answer to a defense or concession, never from an assumption), names the concrete fact
   they commit to, and judges whether the challenge is settled: the fact answers the test and stops the failure
   scenario, or a defense's argument holds. The ruling follows: settled with nothing unconfirmed → **ACCEPT**
@@ -120,11 +127,11 @@ of both policies is covered in [`tests/test_termination.py`](tests/test_terminat
 **The decision document is built from the ledger, not from a summary.** Scope, statuses and assumptions come
 straight from the ledger, and so do which issues become open questions, whether each blocks the build (from the
 Critic's severity) and where each side stood when the question left the agents. The Rapporteur writes the prose:
-the summary, the notes on each item, and each question's wording, owner and options; every ID in its structured
-fields is checked. The document also reports a **disagreement index** per round (severity-weighted share of
-issues not settled by agreement), each agent's final confidence and remaining worry, and flags when an agent
-claims high confidence while a blocker is unsettled, or when a later edit removed the wording that settled a
-challenge.
+the summary, a note on each item a challenge targeted or changed, and each question's wording, owner and options;
+every ID in its structured fields is checked. The document also reports a **disagreement index** per round
+(severity-weighted share of issues not settled by agreement), each agent's final confidence and remaining worry,
+and flags when an agent claims high confidence while a blocker is unsettled, or when a later edit removed the
+wording that settled a challenge.
 
 ## Where things are
 
@@ -156,9 +163,9 @@ all 15 were read through (all 15 are in `experiments/runs/gated/`). Start with c
 
 | Request | | What to look at |
 |---|---|---|
-| cold-relationship (brief) | [trace](runs/cold-relationship/trace.md) · [decision](runs/cold-relationship/decision.md) | 3 rounds. C4 is maintained ("vagueness over the specific roles") and accepted once the revision names one. Two MINOR acceptable-risk defenses: C6 is accepted after a monthly accuracy review is added; C5 (alert fatigue) is maintained twice and handed to the product owner. |
-| right-contact (brief) | [trace](runs/right-contact/trace.md) · [decision](runs/right-contact/decision.md) | 5 rounds. Access is limited to each project team's own countries (S4) and primary contacts are reviewed quarterly by regional coordinators (S1). A risk-acceptance dispute about the change log (C6) goes to humans after two strikes. The record flags that C9's edit to S4 removed the wording that had settled C8. |
-| engagement-history (brief) | [trace](runs/engagement-history/trace.md) · [decision](runs/engagement-history/decision.md) | 2 rounds. "Full history" becomes the last five years, with diplomatic notes excluded (S3, S4). A defense wins on merit (C6: X1 already rules out editing), and the engine drops a re-asked question. |
+| cold-relationship (brief) | [trace](runs/cold-relationship/trace.md) · [decision](runs/cold-relationship/decision.md) | 3 rounds. C4 is maintained ("vagueness over the specific roles") until the revision names a role, though the role it names (`diplomatic_security`) is invented. Two MINOR acceptable-risk defenses: C6 is accepted after a monthly accuracy review is added; C5 (alert fatigue) is maintained twice and handed to the product owner. Also shows what the checks miss: BLOCKER C1 is settled by "users who have authorization", a paraphrase the weak-phrase list doesn't catch, and nobody asks whether a relationship can be dormant by design. |
+| right-contact (brief) | [trace](runs/right-contact/trace.md) · [decision](runs/right-contact/decision.md) | 5 rounds. Access is limited to each project team's own countries (S4) and primary contacts are reviewed quarterly by regional coordinators (S1). A risk-acceptance dispute about the change log (C6) goes to humans after two strikes. The record flags that C9's edit to S4 removed the wording that had settled C8. It never defines "right person" or "better": D2 defines a primary contact as the main point of contact. |
+| engagement-history (brief) | [trace](runs/engagement-history/trace.md) · [decision](runs/engagement-history/decision.md) | 2 rounds. "Full history" becomes the last five years, with diplomatic notes excluded (S3, S4). A defense wins on merit (C6: X1 already rules out editing), and the engine drops a re-asked question. What one project team may see of another's interactions is left to "permission settings" (S2). |
 | auto-logging | [trace](runs/auto-logging/trace.md) · [decision](runs/auto-logging/decision.md) | 3 rounds. Who counts as a government official (D4), who sees the logs (S4), who is notified (S2). Also shows two limitations: "automatic" is never pinned down, and two questions reach humans twice in different words. |
 | influence-ranking | [trace](runs/influence-ranking/trace.md) · [decision](runs/influence-ranking/decision.md) | 5 rounds, ending in consensus (the Critic concluded and the ledger agreed): three challenges narrow "influence" to weights (50/30/20) and numeric thresholds (C1 → C7 → C10). Nobody asks whether ranking named officials should exist at all. |
 
@@ -179,7 +186,7 @@ the burden-of-proof guidance from the prompts.
 | Proposer moves: defend / revise / concede | 37 / 62 / 1% | 15 / 84 / 1% | 22 / 77 / 1% |
 | Defenses on merit (not "humans must decide"), of which accepted | 15 (4) | 7 (2) | 1 (0) |
 | Revisions the Critic accepted | 84% | 76% | 84% |
-| Repair requests per run | 2.1 | 5.1 | 2.7 |
+| Repair requests per run | 1.9 | 4.1 | 2.5 |
 | Cost per run | $0.009 | $0.016 | $0.009 |
 
 **The Critic's word is not a stopping rule.** Under `naive`, 7 of 15 runs ended with a BLOCKER or MAJOR still
@@ -242,7 +249,7 @@ defend; 0 of 46 moves were defenses).
 | v7 | A ledger rule for each v6 failure, and a path for a defense to win | 33 revise, 12 defend, 2–5 rounds, 2–4 open questions per document |
 | v7.1 | Small fixes from the v7 batch; prompts frozen | The comparison batch above (gated: 77 revise, 46 defend) |
 
-After the comparison batch, three things changed, and none of them alters a recorded deliberation: replaying all
+After the comparison batch, four things changed, and none of them alters a recorded deliberation: replaying all
 45 runs through the final code reproduces every ledger, trace and model call byte for byte.
 - Whether an open question blocks the build follows the Critic's severity instead of the Rapporteur's guess (it
   had marked 14 of 16 MINOR questions as blocking).
@@ -250,21 +257,33 @@ After the comparison batch, three things changed, and none of them alters a reco
   merits, and any settlement a later edit undid.
 - `converged` also requires every mandatory lens to have been examined. Every recorded run that converged
   already had each one covered by a challenge or a coverage note.
+- The Rapporteur's note on an item appears only if a challenge targeted or changed that item. It had been asked
+  for a note on every item, and for items nobody discussed it could only restate them or invent a reason
+  (right-contact X1 was "dropped to maintain control over data accuracy", which no agent said). Across the 50
+  runs this removed 441 such notes (330 of them visible in `decision.md`) and left the 298 on discussed items
+  unchanged.
 
 The decision documents in this repo were re-rendered from the recorded outputs accordingly.
 
 ### Limitations
 
 - **The checks are lexical.** They catch a quote that isn't in the proposal, an assumption offered as an answer
-  and listed weak phrases ("a process will be established", "authorized users" with no role named). They can't
-  tell whether real text answers the question, or whether a team or policy it names exists. The Critic marked an
-  answer unconfirmed 32 times in 192 gated rulings, but never one it also judged settled, so invented facts still
-  get accepted ("managed by the data privacy officer" in right-contact S4; "data management processes currently
-  in use" in influence-ranking C5). The Critic's `fact` often describes the quote ("Defines who can view sensitive
-  information") instead of stating it, and a lens coverage note is taken at face value (right-contact's reads "No
-  challenges were raised under this lens."); the ledger checks quotes, not paraphrases or notes.
-- **Challenges still ask for processes.** About half the resolution tests (52 of 111 in gated runs) ask for a
-  process, measure or safeguard, which the Critic's prompt tells it not to do, and such tests invite boilerplate.
+  and listed weak phrases ("a process will be established", "authorized users" with no role named), but not a
+  paraphrase of one: "users who have authorization" settles BLOCKER C1 in the cold-relationship run. They can't
+  tell whether real text answers the question, or whether a team or policy it names exists. In its final replies
+  the Critic marked 28 of 141 gated verdicts unconfirmed, but never one it also judged settled, so invented facts
+  still get accepted ("managed by the data privacy officer" in right-contact S4; the `diplomatic_security` role in
+  cold-relationship S2; "data management processes currently in use" in influence-ranking C5). The Critic's `fact`
+  often describes the quote ("Defines who can view sensitive information") instead of stating it, and a lens
+  coverage note is taken at face value (right-contact's reads "No challenges were raised under this lens."); the
+  ledger checks quotes, not paraphrases or notes.
+- **Challenges still ask for processes.** About half the resolution tests (50 of 111 in gated runs) ask for a
+  process, measure, safeguard, protocol, mechanism or procedure, which the Critic's prompt tells it not to do, and
+  such tests invite boilerplate.
+- **Vague terms aren't always bound.** "Bind every vague term" is a prompt rule the ledger doesn't check, and the
+  DEFINITIONS lens passes on a coverage note: right-contact never defines "right person" or "better".
+- **Success criteria go unexamined.** A challenge touched a success criterion in 4 of the 15 gated runs, and 7 of
+  the 15 measure success with a user survey.
 - **Escalation is the easy exit.** 37% of gated challenges end with humans, and 31 of the Proposer's 46 defenses
   were "needs a human decision".
 - **Paraphrased repeats get through.** The repeat check compares words in order, so the same question in new words

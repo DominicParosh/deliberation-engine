@@ -14,21 +14,17 @@ This release will implement an alert system notifying users when engagement with
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Implement an alert system for users when engagement with a country is considered 'cold.'  
-  An alert system for users will be implemented to signal when engagement with a country is considered 'cold', allowing for a better response to declining interactions.
+- **V1** Implement an alert system for users when engagement with a country is considered 'cold.'
 
 **In scope**
 
-- **S1** Define 'cold' engagement as a lack of recorded communication or updates for 90 days.  
-  'Cold' engagement is defined as lack of recorded communication or updates for 90 days to provide a clear threshold for alerts.
+- **S1** Define 'cold' engagement as a lack of recorded communication or updates for 90 days.
 - **S2** Develop a notification system that sends alerts to regional coordinators and project managers, excluding users who do not have the 'engagement management' role and those who are on leave or have left the organization. Alerts will be reassigned to users actively maintaining the relationship when someone changes roles.  
   The notification system will include specific criteria excluding alert recipients, addressing confidentiality concerns that arose during discussions. _(C1, C6)_
 - **S3** Alerts will be sent via email to the primary user responsible for the country contact in the CRM, determined by the role assigned to that contact. If the primary user is on leave or has left the organization, the alert will be directed to an alternate user specified as a backup, based on the organizational hierarchy or prior assignment protocols.  
   Alerts will be sent to the primary user responsible for the country contact and can be reassigned to ensure timely engagement management without compromising accountability. _(C2, C4)_
-- **S4** Incorporate a dashboard feature that displays a list of countries with 'cold' engagements for easier monitoring.  
-  Incorporating a dashboard feature will facilitate monitoring of 'cold' engagements for users, which is essential for managing communications effectively.
-- **S5** Allow users to customize their alert settings for engagement thresholds (e.g., 30, 60, 90 days) within the system.  
-  Customization of alert settings will empower users to adjust thresholds according to their needs, enhancing user engagement with the system.
+- **S4** Incorporate a dashboard feature that displays a list of countries with 'cold' engagements for easier monitoring.
+- **S5** Allow users to customize their alert settings for engagement thresholds (e.g., 30, 60, 90 days) within the system.
 
 ## What it will not do
 

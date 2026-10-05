@@ -14,8 +14,7 @@ The feature will enable users to view influence scores for each contact, aiding 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to view an influence score for each contact so they can prioritize engagement efforts.  
-  This core commitment focuses on providing influence scores to assist users in prioritizing engagement, addressing the proposal's central aim.
+- **V1** Enable users to view an influence score for each contact so they can prioritize engagement efforts.
 
 **In scope**
 

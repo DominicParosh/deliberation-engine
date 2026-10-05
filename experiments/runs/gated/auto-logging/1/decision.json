@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Automatically log meetings with government officials in the Government CRM.",
-      "note": "Automatically logging meetings with government officials will enhance the preservation of engagement history and ensure consistency in record-keeping.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Enhance engagement history tracking for users without requiring manual entries.",
-      "note": "Enhancing tracking of engagement history without manual entries will streamline user workflows and reduce the risk of errors.",
+      "note": "",
       "refs": []
     }
   ],
@@ -37,7 +37,7 @@
     {
       "id": "S1",
       "text": "Meetings will be automatically logged in the system whenever a meeting is scheduled or completed with contacts classified as government officials.",
-      "note": "Automatic logging will occur whenever a meeting is scheduled or completed, ensuring comprehensive tracking of government interactions.",
+      "note": "",
       "refs": []
     },
     {
@@ -69,19 +69,19 @@
     {
       "id": "X1",
       "text": "This release will not include the ability to edit or delete automatically logged meetings.",
-      "note": "Editing or deleting logged meetings was dropped to maintain a clear and unalterable record of engagements.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "The feature will not integrate with external calendar applications or other event management systems in this initial release.",
-      "note": "Integration with external calendar applications was dropped for the initial release to focus on core logging functionality.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "Meetings that are not classified under government officials will not be auto-logged.",
-      "note": "Auto-logging meetings not classified under government officials was dropped to limit scope and ensure accurate tracking of relevant interactions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -112,7 +112,7 @@
     {
       "id": "A2",
       "text": "Meeting details such as participants and summaries can be accurately retrieved from the system during the logging process.",
-      "note": "Assuming meeting details can be accurately retrieved is foundational for the logging process, with no challenges presented.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -148,13 +148,13 @@
     {
       "id": "D2",
       "text": "\"Automatically logged\" means the system records meetings without requiring user interaction after the meeting is held.",
-      "note": "The definition of 'automatically logged' clarifies expected system behavior and the non-requirement of user input post-meeting.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "\"Engagement history\" means a chronological record of interactions and meetings with contacts, stored within the CRM.",
-      "note": "Clarifying 'engagement history' ensures users understand what is being tracked in the CRM.",
+      "note": "",
       "refs": []
     },
     {
@@ -170,7 +170,7 @@
     {
       "id": "K1",
       "text": "At least 90% of meetings with government officials are successfully logged within the system over a three-month period, measured by CRM usage reports.",
-      "note": "Setting a success criterion of 90% logged meetings establishes a measurable goal for the feature's effectiveness.",
+      "note": "",
       "refs": []
     }
   ],

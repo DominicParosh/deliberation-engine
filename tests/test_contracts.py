@@ -1,15 +1,18 @@
-"""The contract around the agents: repair-then-coerce, summarizer validation, replay, adapters."""
+"""The contract around the agents: repair-then-coerce, summarizer validation, replay, adapters, CLI defaults."""
 
 import json
 from types import SimpleNamespace
 
+import yaml
 from conftest import (Fake, answer, challenge, critic_json, open_ids, opening_json, proposal, proposer_json, round_of,
                       summarizer_json)
 
 from deliberation import render
+from deliberation.agents import ROOT
+from deliberation.cli import parse_args, resolve_requests
 from deliberation.engine import deliberate, replay
 from deliberation.ledger import Event, Issue, Ledger
-from deliberation.llm import AnthropicLLM, OpenAILLM
+from deliberation.llm import AnthropicLLM, OpenAILLM, default_provider
 from deliberation.schemas import (CriticOpening, CriticTurn, Edit, Proposal, ProposerOpening, ProposerTurn, Response,
                                   Synthesis, Verdict)
 from deliberation.termination import GATED
@@ -106,6 +109,23 @@ def test_the_record_shows_where_each_side_stood_on_open_questions_and_which_chal
     assert "- Declined **C2** (MAJOR · DEFINITIONS):" in md and "- Declined **C3** (MINOR · OWNERSHIP):" in md
 
 
+def test_only_items_a_challenge_touched_keep_the_rapporteurs_note():
+    def proposer(prompt, messages):  # every challenge targets S1; the answer to C1 also rewrites S2
+        return proposer_json(prompt, messages, moves={"C1": ("MISSING_DECISION", [("S2", "Only coordinators see alerts.")])})
+
+    def summarizer(prompt, messages):  # nobody discussed X1
+        doc = json.loads(summarizer_json(prompt, messages))
+        doc["item_notes"] = [{"id": "S1", "note": "Narrowed by C1.", "refs": ["C1"]},
+                             {"id": "S2", "note": "Rewritten for C1.", "refs": ["C1"]},
+                             {"id": "X1", "note": "Dropped to keep the release small.", "refs": []}]
+        return json.dumps(doc)
+
+    doc = render.decision(deliberate("Request.", "ctx", agents(proposer=proposer, summarizer=summarizer), GATED))
+    notes = {i["id"]: i["note"] for i in doc["in_scope"] + doc["out_of_scope"]}
+    assert notes == {"S1": "Narrowed by C1.", "S2": "Rewritten for C1.", "X1": ""}
+    assert "Dropped to keep the release small." not in render.decision_md(doc)
+
+
 def test_a_settlement_that_a_later_edit_removed_is_flagged():
     first, later = "Only regional coordinators see confidential notes.", "Contacts are reviewed every 30 days by their coordinator."
 
@@ -198,6 +218,28 @@ def test_openai_adapter_prepends_the_system_prompt_and_returns_raw_text():
     out = OpenAILLM("gpt-4o-mini", client=client).complete("system", [{"role": "user", "content": "hi"}], ProposerTurn)
     assert sent["messages"][0] == {"role": "system", "content": "system"} and sent["response_format"] is ProposerTurn
     assert (out.raw, out.input_tokens, out.output_tokens) == ('{"ok": 1}', 5, 3)
+
+
+def test_with_both_keys_set_the_default_is_openai_the_provider_of_every_recorded_run(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
+    assert default_provider() == "openai"
+    monkeypatch.delenv("OPENAI_API_KEY")
+    assert default_provider() == "anthropic"
+    monkeypatch.delenv("ANTHROPIC_API_KEY")
+    assert default_provider() is None
+
+
+def test_with_no_request_given_the_bare_command_runs_every_request_in_the_config_file(monkeypatch, tmp_path):
+    monkeypatch.delenv("DELIBERATION_REQUEST", raising=False)
+    configured = [(r["id"], r["text"]) for r in yaml.safe_load((ROOT / "config/requests.yaml").read_text())["requests"]]
+    assert resolve_requests(parse_args([])) == configured
+    monkeypatch.setenv("DELIBERATION_REQUEST", "Track who to call.")
+    assert resolve_requests(parse_args([])) == [("track-who-to-call", "Track who to call.")]
+    assert resolve_requests(parse_args(["--all"])) == configured
+    (tmp_path / "request.txt").write_text("Alert us early.\n")
+    assert resolve_requests(parse_args(["--request-file", str(tmp_path / "request.txt")])) == [("alert-us-early", "Alert us early.")]
+    assert resolve_requests(parse_args(["--request-id", "cold-relationship"]))[0][0] == "cold-relationship"
 
 
 def test_an_accept_must_quote_text_that_is_really_there():

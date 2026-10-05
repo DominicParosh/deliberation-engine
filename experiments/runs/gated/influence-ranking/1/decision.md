@@ -14,10 +14,8 @@ This release will introduce a feature that identifies and ranks contacts by infl
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Develop a feature to identify and rank the influence of contacts based on a defined influence scoring system.  
-  A feature will be developed to identify and rank contacts based on a defined influence scoring system, ensuring a systematic approach to influence assessment.
-- **V2** Provide a dashboard view for regional coordinators and project managers to display the influence rankings of their contacts.  
-  A dashboard view for regional coordinators and project managers will display influence rankings, enhancing their ability to prioritize contacts effectively.
+- **V1** Develop a feature to identify and rank the influence of contacts based on a defined influence scoring system.
+- **V2** Provide a dashboard view for regional coordinators and project managers to display the influence rankings of their contacts.
 
 **In scope**
 

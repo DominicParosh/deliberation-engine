@@ -14,10 +14,8 @@ This release will automate the logging of meetings with government officials in 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automated logging of meetings with government officials in the CRM system.  
-  Automated logging of meetings with government officials will be implemented to maintain accurate engagement histories as requested by users.
-- **V2** User notifications will be sent to confirm successful logging of each meeting.  
-  User notifications for confirming successful logging were added to enhance user experience and accountability.
+- **V1** Automated logging of meetings with government officials in the CRM system.
+- **V2** User notifications will be sent to confirm successful logging of each meeting.
 
 **In scope**
 
@@ -25,10 +23,8 @@ This release will automate the logging of meetings with government officials in 
   The scope was clarified to ensure that key discussion points are defined as actionable items or decisions made during meetings, which will improve consistency in logging. _(C3)_
 - **S2** Regional coordinators and project managers will be the primary users of the automated logging feature. A designated data steward will be responsible for maintaining the accuracy of logged information, which includes reviewing logs for errors, correcting inaccuracies, and ensuring adherence to data quality standards.  
   A designated data steward's role in maintaining the accuracy of logged information was explicitly included to address ownership and accountability issues. _(C2)_
-- **S3** Users will receive notifications via the system to confirm the logging of their meetings.  
-  Notifications confirming meeting loggings were integrated into the system to ensure users are informed about the status of their entries.
-- **S4** All logged meetings will be associated with the relevant government officials' profiles in the CRM.  
-  Linking logged meetings to government officials' profiles in the CRM supports easier tracking and engagement monitoring.
+- **S3** Users will receive notifications via the system to confirm the logging of their meetings.
+- **S4** All logged meetings will be associated with the relevant government officials' profiles in the CRM.
 - **S5** The system will ensure that only users with appropriate access rights, specifically regional coordinators, project managers, and designated data stewards with Level 2 security clearance or higher, can log meetings involving sensitive or confidential information. These access levels will be determined by the organization's data governance policy.  
   Access rights were firmly established to include only regional coordinators and project managers with Level 2 security clearance to manage confidentiality and security concerns. _(C1, C8)_
 - **S6** The system will archive all confirmations of scheduled meetings, which includes the method of logging confirmation, such as email confirmations or digital acknowledgment by participants, as evidence to maintain compliance.  
@@ -40,10 +36,8 @@ This release will automate the logging of meetings with government officials in 
 
 - **X1** The feature will not include automatic logging of informal meetings or conversations, such as phone calls or casual discussions, which will be classified as meetings not requiring prior scheduling or formality.  
   Clarification on the classification of informal vs. formal meetings was added to prevent misclassifications and ensure accurate records. _(C4)_
-- **X2** Integration with external calendar systems for automatic meeting logging is not included in this release.  
-  Integration with external calendar systems was deemed out of scope, as it was not essential for the initial release of the logging feature.
-- **X3** User role management and security clearance updates are outside the scope of this release.  
-  User role management updates remain outside this release, as they are governed by separate organizational processes.
+- **X2** Integration with external calendar systems for automatic meeting logging is not included in this release.
+- **X3** User role management and security clearance updates are outside the scope of this release.
 
 **Rejected during deliberation**
 
@@ -59,10 +53,8 @@ This release will automate the logging of meetings with government officials in 
 
 ## Definitions
 
-- **D1** "Automated logging" means the functionality within the CRM that captures meeting details without manual input once the meeting is scheduled and confirmed.  
-  The definition of 'automated logging' was kept concise to ensure understanding of the functionality's core purpose.
-- **D2** "Meeting details" means the specific information regarding the meeting, including the date, time, attendees (individuals involved), and an outline of key discussion points.  
-  Defining 'meeting details' ensures all users have a consistent understanding of what information should be logged, enhancing clarity.
+- **D1** "Automated logging" means the functionality within the CRM that captures meeting details without manual input once the meeting is scheduled and confirmed.
+- **D2** "Meeting details" means the specific information regarding the meeting, including the date, time, attendees (individuals involved), and an outline of key discussion points.
 
 ## Success criteria
 

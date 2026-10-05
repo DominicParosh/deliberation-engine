@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Users receive alerts when no engagement activities have occurred with a specific country for a period of six months.",
-      "note": "Users will receive alerts for inactive engagements after six months to prompt re-engagement.",
+      "note": "",
       "refs": []
     }
   ],
@@ -39,7 +39,7 @@
     {
       "id": "S2",
       "text": "An alert will be generated and sent via email to the designated regional coordinator and project manager when a relationship goes cold as defined in V1.",
-      "note": "Specifies that alerts will be sent to coordinators and project managers, ensuring relevant stakeholders are informed.",
+      "note": "",
       "refs": []
     },
     {
@@ -54,7 +54,7 @@
     {
       "id": "S4",
       "text": "A dashboard will display a summary of all countries with cold relationships, indicating the country name and the last date of engagement.",
-      "note": "Includes a dashboard overview of cold relationships to facilitate quick visibility on engagement health.",
+      "note": "",
       "refs": []
     }
   ],
@@ -62,19 +62,19 @@
     {
       "id": "X1",
       "text": "This release will not include alerts for relationships that have simply decreased in frequency but still have some ongoing engagement.",
-      "note": "Will not include alerts for relationships with decreased engagement frequency to focus specifically on complete inactivity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not cover any changes to the underlying CRM system architecture or any complex user-defined rules beyond the specified duration for alert settings.",
-      "note": "No changes to CRM architecture or complex user-defined alert rules will be made, keeping the implementation straightforward.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "The CRM will not provide detailed historical data analysis on the reasons for the cold relationship in this release.",
-      "note": "Historical reasons for cold relationships are outside the scope of this release to maintain focused objectives.",
+      "note": "",
       "refs": []
     },
     {
@@ -100,7 +100,7 @@
     {
       "id": "A1",
       "text": "Users will have access to the CRM and be trained on how to interpret alerts about cold relationships.",
-      "note": "Assumes users will access the CRM and be trained to use the alert system effectively.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -108,7 +108,7 @@
     {
       "id": "A2",
       "text": "Users understand and agree on what constitutes a relationship being 'cold', based on engagement activity, per S1.",
-      "note": "Assumes a consensus on what constitutes a 'cold' relationship is in place among users.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -116,7 +116,7 @@
     {
       "id": "A3",
       "text": "It is assumed that the CRM has the necessary permissions and data structures to track and log engagement activities.",
-      "note": "Assumes the CRM has the necessary structures to track engagement activities.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -126,19 +126,19 @@
     {
       "id": "D1",
       "text": "\"cold relationship\" means a relationship with a country that has not recorded any engagement activity for six months as per V1.",
-      "note": "Defines a 'cold relationship' based on the absence of engagement activities for six months.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"engagement activities\" means any recorded form of communication, meeting, or project interaction between users of the CRM and government representatives from member countries.",
-      "note": "Clarifies what constitutes 'engagement activities' to avoid confusion and ensure comprehensive tracking.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "\"authorized users\" means users who have been granted permission to configure alert settings within the CRM.",
-      "note": "Defines 'authorized users' as those permitted to set alert configurations, ensuring clarity on responsibilities.",
+      "note": "",
       "refs": []
     }
   ],

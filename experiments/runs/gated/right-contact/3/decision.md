@@ -14,17 +14,14 @@ This feature will enhance the Government CRM by enabling users to efficiently vi
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to view and update key contact information for each member country.  
-  This commitment ensures users can view and update important contact information, addressing the core need of the proposal.
-- **V2** Allow users to categorize contacts by role and relevance to their specific projects or missions.  
-  This commitment allows categorization of contacts, making it easier for users to prioritize engagement based on project relevance.
+- **V1** Enable users to view and update key contact information for each member country.
+- **V2** Allow users to categorize contacts by role and relevance to their specific projects or missions.
 
 **In scope**
 
 - **S1** Implement a new data entry form for users to input and update contact information, including fields for name, title, organization, phone number, email address, and role.  
   Implementation of a data entry form is essential for capturing and managing updated contact details effectively.
-- **S2** Add a categorization feature that allows users to tag contacts based on their relevance (e.g., primary contact, secondary contact, etc.).  
-  A tagging feature enhances usability by allowing users to categorize contacts by relevance, supporting better project engagement.
+- **S2** Add a categorization feature that allows users to tag contacts based on their relevance (e.g., primary contact, secondary contact, etc.).
 - **S3** Provide users with a dashboard view that displays key contacts for each country, showing their assigned roles (validated by an authorized data steward) and the status of their projects. Only regional coordinators and project managers can edit roles, while all users can view them.  
   The dashboard view will assist users in tracking key contacts efficiently while establishing clear editing permissions for authorized personnel. _(C1)_
 - **S4** Establish user roles so that only regional coordinators and project managers can edit contact details, while all users can view them. Define access permissions to ensure only authorized roles can view sensitive contact information relevant to their assigned projects or countries.  
@@ -34,8 +31,7 @@ This feature will enhance the Government CRM by enabling users to efficiently vi
 
 **Out of scope for this release**
 
-- **X1** This release will not include automated alerts or reminders for contact updates.  
-  Automated alerts for updates are seen as unnecessary at this stage and will not be included in this release.
+- **X1** This release will not include automated alerts or reminders for contact updates.
 - **X2** This release will not modify the existing data retention policies; however, it will define the retention period for contact information related to key contacts as a minimum of three years after the last engagement or until such time as the information is deemed irrelevant by an authorized data steward.  
   Retention policies are not being modified; however, clarity around a minimum retention period for sensitive contact information is now established, thus not an immediate concern. _(C6)_
 
@@ -53,12 +49,10 @@ This feature will enhance the Government CRM by enabling users to efficiently vi
 
 ## Definitions
 
-- **D1** "Key contact" means the individual in a government organization who is identified as the primary resource for communication regarding specific projects or missions.  
-  Defining 'key contact' helps users understand the role's importance in project communications, adding clarity to the proposal.
+- **D1** "Key contact" means the individual in a government organization who is identified as the primary resource for communication regarding specific projects or missions.
 - **D2** "Role" means the designated function or position of the contact within their organization, such as 'Minister', 'Deputy Minister', or 'Project Lead'. Roles must be assigned and validated by an authorized data steward prior to being inputted into the CRM.  
   Clarifying what constitutes a role is essential for ensuring accurate assignment and validating entries by authorized personnel. _(C1)_
-- **D3** "Categorization feature" means a system allowing users to categorize contacts as primary, secondary, or other relevant tags for the purpose of prioritizing engagement.  
-  A clear categorization feature will allow prioritization of engagement, addressing critical user needs effectively.
+- **D3** "Categorization feature" means a system allowing users to categorize contacts as primary, secondary, or other relevant tags for the purpose of prioritizing engagement.
 
 ## Success criteria
 

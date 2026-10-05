@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Identify the top 20 influential contacts based on a scoring mechanism.",
-      "note": "This commitment specifies the identification of the top 20 influential contacts based on a scoring mechanism to prioritize engagements.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide an accessible interface for users to view and filter influential contacts.",
-      "note": "This commitment ensures users have an accessible interface to view and filter influential contacts.",
+      "note": "",
       "refs": []
     }
   ],
@@ -59,7 +59,7 @@
     {
       "id": "S4",
       "text": "Allow filtering options by role, country, and mission status to refine visible contact lists.",
-      "note": "Filtering options will be available to refine the display of contacts according to user needs.",
+      "note": "",
       "refs": []
     },
     {
@@ -111,13 +111,13 @@
     {
       "id": "X2",
       "text": "Long-term management of influence score data beyond the initial calculation will not be included in this release.",
-      "note": "Long-term management of influence scores beyond initial calculation will not be included in this release.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "Integration with external data sources for influence scoring will not be implemented in this release.",
-      "note": "Integration with external data sources will be deferred to ensure focus on core functionalities.",
+      "note": "",
       "refs": []
     }
   ],
@@ -127,17 +127,15 @@
     {
       "id": "A1",
       "text": "There exists sufficient historical engagement data to assess contact influence levels without overwhelming data volume.",
-      "note": "The assumption regarding sufficient historical engagement data remains pivotal but unconfirmed due to potential dependencies.",
-      "refs": [
-        "C6"
-      ],
+      "note": "",
+      "refs": [],
       "kept": true,
       "challenges": []
     },
     {
       "id": "A2",
       "text": "Users will need training on how to interpret influence scores appropriately to take action.",
-      "note": "Training for users is planned to ensure proper interpretation and action based on influence scores.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -145,7 +143,7 @@
     {
       "id": "A3",
       "text": "Scoring methodology will comply with existing data protection policies to ensure sensitive information is handled safely.",
-      "note": "The scoring methodology is assumed to comply with existing data protection policies, but final validation is pending.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -155,21 +153,19 @@
     {
       "id": "D1",
       "text": "'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects.",
-      "note": "Clarifying the definition of 'influence' helps mitigate risks of misinterpretation and ensures consistency.",
-      "refs": [
-        "C2"
-      ]
+      "note": "",
+      "refs": []
     },
     {
       "id": "D2",
       "text": "'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism.",
-      "note": "The specification of 'Top 20' ensures clarity in what is being scored, directly linked to user actions.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making.",
-      "note": "Defining 'Dashboard' aids in user understanding of the interface intended for enhanced decision-making.",
+      "note": "",
       "refs": []
     }
   ],
@@ -177,7 +173,7 @@
     {
       "id": "K1",
       "text": "At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation.",
-      "note": "User satisfaction will be measured post-implementation to ensure the scoring system meets user needs.",
+      "note": "",
       "refs": []
     }
   ],

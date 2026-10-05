@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Provide project managers with a detailed engagement history for selected countries.",
-      "note": "Providing detailed engagement history for selected countries ensures project managers have the necessary background for informed decision-making.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Ensure the engagement history includes all relevant records such as previous missions, key contacts, and engagement dates.",
-      "note": "Including all relevant records in the engagement history is critical for context and accuracy during project planning.",
+      "note": "",
       "refs": []
     }
   ],
@@ -45,7 +45,7 @@
     {
       "id": "S2",
       "text": "Display the full engagement history for the selected country, including dates, types of engagement, and involved personnel.",
-      "note": "Displaying the full engagement history is essential for bringing project managers up to speed with past interactions.",
+      "note": "",
       "refs": []
     },
     {
@@ -59,7 +59,7 @@
     {
       "id": "S4",
       "text": "Include an export option for the engagement history in a PDF format for offline reference.",
-      "note": "Providing a PDF export option allows project managers to reference engagement histories offline as needed.",
+      "note": "",
       "refs": []
     }
   ],
@@ -67,13 +67,13 @@
     {
       "id": "X1",
       "text": "This release will not include real-time updates or notifications for ongoing engagements.",
-      "note": "Real-time updates for ongoing engagements are deemed unnecessary for this release at this stage.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not integrate with external data sources or CRMs beyond the current system.",
-      "note": "Integration with external data sources is outside the scope of this release and may require a future proposal.",
+      "note": "",
       "refs": []
     },
     {
@@ -91,7 +91,7 @@
     {
       "id": "A1",
       "text": "There is an existing database of engagement records and countries that project managers can access.",
-      "note": "The assumption of an existing database ensures that project managers have the requisite information to fulfill their tasks.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -99,7 +99,7 @@
     {
       "id": "A2",
       "text": "Project managers who use this feature have the necessary permissions to access engagement histories.",
-      "note": "It is assumed project managers will have the necessary permissions for data access to engage history.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -107,7 +107,7 @@
     {
       "id": "A3",
       "text": "The structure of engagement data is consistent and complete for all member countries.",
-      "note": "The consistency of engagement data across member countries is critical for reliable access and decision-making.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -125,13 +125,13 @@
     {
       "id": "D2",
       "text": "'Project managers' means users designated with the role of project managers in the CRM system, who have permission to view project-related data.",
-      "note": "Clearly defining 'project managers' ensures there is no ambiguity regarding who can access engagement data.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "'Country' means a member nation represented in the CRM.",
-      "note": "Defining 'country' clarifies the context in which engagement history is relevant within the CRM.",
+      "note": "",
       "refs": []
     }
   ],

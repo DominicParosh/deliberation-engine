@@ -14,17 +14,14 @@ This release will implement an automated system for logging meetings with govern
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automatically log meetings with government officials in the CRM.  
-  The commitment to automatically log meetings was accepted as it addresses the need for accurate engagement history.
+- **V1** Automatically log meetings with government officials in the CRM.
 
 **In scope**
 
 - **S1** Meetings will be logged automatically whenever a user inputs meeting details into the CRM, including meeting date, time, location, participants (both internal and external), agenda, and minutes. Access to logged meetings will be restricted based on user roles; only users with 'regional coordinator' or 'executive-level staff' roles will have access to all meeting logs, while 'project managers' will only access logs relevant to their projects.  
   Automatic logging of meetings with defined access restrictions was included to mitigate risks of unauthorized access to sensitive information. _(C1)_
-- **S2** The system will allow users to indicate the participants from the government side by selecting from a list of government officials that have been pre-loaded in the CRM.  
-  Allowing users to select government representatives from a list ensures accuracy in capturing meeting details.
-- **S3** Automated logging will also include a status indicator (e.g., completed, canceled, rescheduled) for each meeting entry.  
-  Including status indicators for meetings enhances the clarity of meeting entries.
+- **S2** The system will allow users to indicate the participants from the government side by selecting from a list of government officials that have been pre-loaded in the CRM.
+- **S3** Automated logging will also include a status indicator (e.g., completed, canceled, rescheduled) for each meeting entry.
 - **S4** Regional coordinators and project managers will have access to view the logged meeting data in the engagement history section of the CRM. Access permissions for meeting logs will be routinely updated and revoked as necessary when personnel change roles or exit the organization, ensuring that sensitive information remains secure.  
   The inclusion of regular updates to access permissions addresses accountability in maintaining meeting logs. _(C2)_
 - **S5** Users will receive automated reminders to log meeting details immediately after a meeting has concluded.  
@@ -34,12 +31,9 @@ This release will implement an automated system for logging meetings with govern
 
 **Out of scope for this release**
 
-- **X1** This release will not include integration with external calendar applications for automatic meeting logging.  
-  Integration with external calendar applications was deemed unnecessary for this release.
-- **X2** This release will not allow for the modification or deletion of logged meeting entries by users.  
-  The inability to modify or delete logged entries was included to maintain data integrity.
-- **X3** This release will not implement advanced analytics or reporting features related to meeting history.  
-  Advanced analytics features were not included to maintain the initial focus on logging.
+- **X1** This release will not include integration with external calendar applications for automatic meeting logging.
+- **X2** This release will not allow for the modification or deletion of logged meeting entries by users.
+- **X3** This release will not implement advanced analytics or reporting features related to meeting history.
 
 **Rejected during deliberation**
 
@@ -58,8 +52,7 @@ This release will implement an automated system for logging meetings with govern
 
 - **D1** "Meetings with government officials" means scheduled engagements between CRM users and representatives from government entities that are documented and logged within the CRM, specifically when the meeting addresses topics related to organizational projects, involving at least one member from the government side.  
   Defining 'meetings with government officials' reduces ambiguity and establishes clear logging criteria. _(C5)_
-- **D2** "Engagement history" means the record of all interactions between CRM users and government officials, including logged meetings, correspondence, and any relevant notes.  
-  The definition of 'engagement history' was accepted to encompass all interactions, reinforcing clarity.
+- **D2** "Engagement history" means the record of all interactions between CRM users and government officials, including logged meetings, correspondence, and any relevant notes.
 
 ## Success criteria
 

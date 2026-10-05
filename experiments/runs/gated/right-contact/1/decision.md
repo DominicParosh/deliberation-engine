@@ -14,19 +14,15 @@ This release will enable users to track key contacts in each of the ~100 member 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to view and update key contact information for each of the ~100 member countries.  
-  Users will be enabled to view and update key contact information, facilitating better management of government counterparts.
-- **V2** Allow users to assign a primary contact per country for easier identification.  
-  Assigning a primary contact per country simplifies identification and improves communication.
+- **V1** Enable users to view and update key contact information for each of the ~100 member countries.
+- **V2** Allow users to assign a primary contact per country for easier identification.
 
 **In scope**
 
 - **S1** Create a 'Key Contacts' section in the Government CRM for each member country, displaying the primary contact's name, title, and contact details. The designation of primary contacts will be reviewed quarterly by regional coordinators to ensure accuracy.  
   A 'Key Contacts' section will be created, with a quarterly review process for primary contacts to maintain data accuracy. _(C2)_
-- **S2** Provide a form for users to add or edit contact information, including options to designate a contact as the primary for each country.  
-  A form for adding or editing contact information will facilitate user engagement with the system’s features.
-- **S3** Implement a search feature that allows users to find key contacts by country or name.  
-  Implementing a search feature allows users to efficiently locate key contacts, supporting user needs.
+- **S2** Provide a form for users to add or edit contact information, including options to designate a contact as the primary for each country.
+- **S3** Implement a search feature that allows users to find key contacts by country or name.
 - **S4** Ensure that only authorized users can add, edit, or view contact information. Authorized access is restricted to users within their own project teams for the countries they are responsible for, and is managed by the data privacy officer. Each project team will have a defined list of users authorized for their specific countries, with access privileges checkable through the system for compliance audits.  
   Access is strictly limited to authorized users within their project teams to prevent unauthorized exposure of sensitive contacts. _(C1, C3, C9)_
 - **S5** Provide a history log of changes made to each contact entry to track updates.  
@@ -36,12 +32,9 @@ This release will enable users to track key contacts in each of the ~100 member 
 
 **Out of scope for this release**
 
-- **X1** This release will not include automatic updates of contact information from external databases.  
-  Automatic updates from external databases were dropped to maintain control over data accuracy and integrity.
-- **X2** Integration with third-party communication tools is not included in this release.  
-  Integration with third-party communication tools was deemed outside the scope of this release to avoid complexity.
-- **X3** Historical engagement data with contacts beyond the current contact information will not be part of this release.  
-  Historical engagement data with contacts will not be included to focus on current contact management.
+- **X1** This release will not include automatic updates of contact information from external databases.
+- **X2** Integration with third-party communication tools is not included in this release.
+- **X3** Historical engagement data with contacts beyond the current contact information will not be part of this release.
 
 **Rejected during deliberation**
 
@@ -57,15 +50,12 @@ This release will enable users to track key contacts in each of the ~100 member 
 
 ## Definitions
 
-- **D1** 'Key Contacts' means a designated individual representing a specific country for collaboration, including their name, title, and contact information.  
-  'Key Contacts' is defined to specify the individuals representing countries for communication.
-- **D2** 'Primary contact' means the key contact designated as the main point of contact for a country in the Government CRM.  
-  'Primary contact' is clearly defined to help in the identification of main points of communication.
+- **D1** 'Key Contacts' means a designated individual representing a specific country for collaboration, including their name, title, and contact information.
+- **D2** 'Primary contact' means the key contact designated as the main point of contact for a country in the Government CRM.
 
 ## Success criteria
 
-- **K1** By the end of the quarter, at least 80% of regional coordinators and project managers report improved access to key contact information, measured through a user survey.  
-  Success will be measured through surveys showing improved access, emphasizing user satisfaction.
+- **K1** By the end of the quarter, at least 80% of regional coordinators and project managers report improved access to key contact information, measured through a user survey.
 
 ## Open questions for humans
 

@@ -14,8 +14,7 @@ The proposal will enable tracking of primary contact persons for each member cou
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable tracking of primary contact persons for each member country.  
-  The commitment to enable tracking of primary contact persons has been upheld as essential for improving communication effectiveness with government counterparts.
+- **V1** Enable tracking of primary contact persons for each member country.
 - **V2** Implement a process whereby designated staff members, specifically regional coordinators and project managers, are responsible for regularly auditing, verifying, and updating contact information to maintain data accuracy.  
   The process for regularly auditing and verifying contact information will be implemented to enhance data accuracy, addressing prior concerns about outdated records. _(C3)_
 - **V3** A designated data integrity officer will oversee the ongoing accuracy of primary contact information, supported by regional coordinators and project managers who are responsible for making and tracking updates.  
@@ -23,8 +22,7 @@ The proposal will enable tracking of primary contact persons for each member cou
 
 **In scope**
 
-- **S1** Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number.  
-  The item to create a new section for tracking primary contacts is within scope, providing necessary fields for effective data management.
+- **S1** Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number.
 - **S2** Implement functionality allowing regional coordinators and project managers to edit and update contact details as needed, with a mandatory process to audit, verify, and protect records at least quarterly and implement corrective actions for any inaccuracies identified outside of these updates. Additionally, implement role-based authentication to ensure that only authorized users can access sensitive contact information, regularly audit user access permissions, and monitor data access logs for suspicious activities.  
   This item includes measures for regular audits of contact details, implementing user access controls, and monitoring data access logs for security, balancing user needs and data protection. _(C16)_
 - **S3** Ensure user access controls are in place, allowing only the following roles to view and edit contact information for primary contacts: regional coordinators, project managers, and designated executive staff, with each role restricted to access within their designated territories and areas of responsibility.  
@@ -36,10 +34,8 @@ The proposal will enable tracking of primary contact persons for each member cou
 
 **Out of scope for this release**
 
-- **X1** This release will not include integration with external contact databases or systems.  
-  Integration with external contact databases is excluded from the current release to focus on core functionalities.
-- **X2** This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts.  
-  Historical engagement records are excluded to maintain the scope on current primary contacts for improved data accuracy.
+- **X1** This release will not include integration with external contact databases or systems.
+- **X2** This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts.
 - **X3** This release will not define a specific retention period for contact information; this will be determined in future releases after compliance assessment.  
   A specific retention policy for contact information is out of scope as it requires further compliance assessments in future releases.
 
@@ -61,15 +57,13 @@ The proposal will enable tracking of primary contact persons for each member cou
   The definition of 'primary contact person' has been clarified to eliminate ambiguity regarding roles and responsibilities. _(C2)_
 - **D2** "User access controls" means the permissions established to restrict and allow user access to different features and data within the CRM, determined by roles such as regional coordinators, project managers, and executive staff.  
   The definition of 'user access controls' has been refined to specify role-based permissions, enhancing clarity around security measures. _(C6)_
-- **D3** 'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields.  
-  A clear definition of 'search function' enhances understanding of how users can interact with the CRM to find necessary contacts effectively.
+- **D3** 'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields.
 - **D4** Data accuracy means that all contact information, including name, position, email address, and phone number, must be current and verified by a designated data integrity officer, with updates made in real-time when changes occur and verified quarterly to maintain the reliability of the records.  
   The definition of 'data accuracy' now specifies criteria for maintaining reliable contact records, aligning with overall data quality goals. _(C9)_
 
 ## Success criteria
 
-- **K1** At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics.  
-  The success criterion for user satisfaction in finding and updating contact information is framed to measure the effectiveness of the implementation.
+- **K1** At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics.
 
 ## Open questions for humans
 

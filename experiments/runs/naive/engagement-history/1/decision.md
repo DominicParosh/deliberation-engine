@@ -14,8 +14,7 @@ Project managers will gain access to a detailed engagement history for each coun
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers will have access to a detailed engagement history for each country.  
-  Project managers will have access to a detailed engagement history for each country, ensuring they are better equipped for new missions.
+- **V1** Project managers will have access to a detailed engagement history for each country.
 
 **In scope**
 
@@ -52,8 +51,7 @@ Project managers will gain access to a detailed engagement history for each coun
 
 ## Definitions
 
-- **D1** 'Engagement history' means the record of all interactions, communications, projects, and missions involving a country, stored in the CRM and retrievable by project managers.  
-  'Engagement history' is defined to include all interactions and communications related to a country, making it clear what project managers can access.
+- **D1** 'Engagement history' means the record of all interactions, communications, projects, and missions involving a country, stored in the CRM and retrievable by project managers.
 - **D2** 'Confidential record' means any engagement history record that meets the following specific criteria: (1) it contains sensitive diplomatic information as defined by the organization's data protection policies, (2) it has been explicitly marked as confidential by authorized personnel in writing with documented approval from a manager, or (3) it pertains to ongoing negotiations or engagements which have been designated as confidential by leadership with specific visibility restrictions.  
   The definition of 'Confidential record' now includes specific criteria for marking records to reduce subjectivity and the risk of unauthorized access. _(C11)_
 

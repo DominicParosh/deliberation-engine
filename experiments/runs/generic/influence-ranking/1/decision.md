@@ -14,10 +14,8 @@ This release will introduce a feature to categorize government contacts by their
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Users can view the influence level of each contact in the Government CRM.  
-  Users will be able to view the influence level of each contact in the Government CRM, providing a clear understanding of their relationships.
-- **V2** Users are able to sort and filter contacts based on their influence level.  
-  Users are able to sort and filter contacts based on their influence level, ensuring that prioritization can easily occur.
+- **V1** Users can view the influence level of each contact in the Government CRM.
+- **V2** Users are able to sort and filter contacts based on their influence level.
 
 **In scope**
 
@@ -25,12 +23,10 @@ This release will introduce a feature to categorize government contacts by their
   A new field called 'Influence Level' will be added to each contact record to facilitate the categorization process.
 - **S2** Influence Level will be categorized into three levels: 'High', 'Medium', and 'Low'.  
   The influence level will be categorized into three levels: 'High', 'Medium', and 'Low', providing a simple and understandable classification. _(C2)_
-- **S3** Users will be able to filter the contacts list to show only those with 'High' influence.  
-  Users will be able to filter the contacts list to show only those with 'High' influence, making it easier to focus on key contacts.
+- **S3** Users will be able to filter the contacts list to show only those with 'High' influence.
 - **S4** Training materials will be developed and must include clear guidelines, practical examples, and assessments that require users to demonstrate their understanding and application of the influence categorization process.  
   Training materials will include guidelines, practical examples, and assessments to ensure users effectively understand the influence categorization process. _(C4)_
-- **S5** Users can view the influence status directly on the contact detail pages.  
-  Users can view the influence status directly on contact detail pages, facilitating quick access to essential classification information.
+- **S5** Users can view the influence status directly on the contact detail pages.
 - **S6** Only designated team members, such as regional coordinators and project managers, will have the authority to assign and alter the 'Influence Level' for contacts.  
   Only designated team members will have the authority to assign and alter 'Influence Level', ensuring that only qualified individuals handle this sensitive data. _(C7)_
 
@@ -40,10 +36,8 @@ This release will introduce a feature to categorize government contacts by their
 
 - **X1** This release will not include automatic determination of influence levels; these will be manually assigned by designated team members.  
   Automatic determination of influence levels will not be included to maintain a high level of accuracy through manual assessments.
-- **X2** This release will not add any predictive analytics or algorithms to determine future influence.  
-  This release will not include predictive analytics or algorithms as the focus is on current influence levels only.
-- **X3** The feature will not include influence tracking over time; it will focus solely on current influence levels.  
-  Influence tracking over time will not be incorporated as the feature will focus solely on current levels, streamlining implementation.
+- **X2** This release will not add any predictive analytics or algorithms to determine future influence.
+- **X3** The feature will not include influence tracking over time; it will focus solely on current influence levels.
 
 **Rejected during deliberation**
 
@@ -60,17 +54,14 @@ This release will introduce a feature to categorize government contacts by their
 
 ## Definitions
 
-- **D1** 'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities.  
-  'Influence Level' is clearly defined as a classification that reflects a contact's ability to affect organizational outcomes, enhancing clarity.
-- **D2** 'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making.  
-  The definitions of 'High', 'Medium', and 'Low' are clear and outlined, aiding users in consistent assessment. _(C2)_
+- **D1** 'Influence Level' means a classification assigned to a contact based on their ability to affect decisions or outcomes related to the organization's activities.
+- **D2** 'High', 'Medium', 'Low' influence means the following: 'High' indicates significant decision-making power or authority, 'Medium' indicates moderate influence without decision-making power, and 'Low' indicates minimal influence on decision-making.
 - **D3** The criteria for assigning 'Influence Level' will be based on the contact's role, previous engagement history, and demonstrated ability to influence decisions related to the organization's activities.  
   Criteria for assigning influence levels are now defined, providing a consistent framework that mitigates subjectivity in evaluations. _(C8)_
 
 ## Success criteria
 
-- **K1** At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys.  
-  User feedback surveys will measure the success criterion, focusing on whether the influence categorization improves prioritization.
+- **K1** At least 75% of users report that the influence categorization has improved their prioritization of contacts, measured through user feedback surveys.
 
 ## Open questions for humans
 

@@ -14,19 +14,15 @@ This release will enable project managers to view the complete history of engage
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable project managers to view the complete history of engagement with selected countries.  
-  Enable project managers to view engagement history to support informed decision-making about new missions.
-- **V2** Ensure data on engagement history is presented in a clear, accessible format.  
-  Ensure that the data is presented clearly to enhance usability for project managers.
+- **V1** Enable project managers to view the complete history of engagement with selected countries.
+- **V2** Ensure data on engagement history is presented in a clear, accessible format.
 
 **In scope**
 
 - **S1** Allow project managers to access engagement history records for any of the ~100 member countries.  
   Project managers will access engagement history for all member countries to ensure comprehensive insights.
-- **S2** Display engagement history that includes past projects, meeting notes, and communications related to the country.  
-  Engagement history will include detailed records of past projects and communications to provide full context.
-- **S3** Implement a filter option that allows project managers to search engagement history by date range or project type.  
-  Implementing filters allows project managers to customize their search, improving efficiency.
+- **S2** Display engagement history that includes past projects, meeting notes, and communications related to the country.
+- **S3** Implement a filter option that allows project managers to search engagement history by date range or project type.
 - **S4** Ensure that only authorized project managers and regional coordinators, as defined by the organization’s access control policies, can access this engagement history data.  
   Access will be restricted to authorized personnel as defined by the organization’s access control policies to protect sensitive data. _(C1)_
 
@@ -34,12 +30,9 @@ This release will enable project managers to view the complete history of engage
 
 **Out of scope for this release**
 
-- **X1** Do not include a feature for editing engagement history records in this release.  
-  Editing engagement records is deemed unnecessary and could pose data integrity risks if included in this release.
-- **X2** Do not provide analytics or insights derived from engagement history data in this release.  
-  Analytics from the engagement data are excluded to focus on core access features without complicating initial build.
-- **X3** Do not include integration with external databases or systems to fetch additional records.  
-  Integration with external systems is not planned for this release to prevent complications in data handling.
+- **X1** Do not include a feature for editing engagement history records in this release.
+- **X2** Do not provide analytics or insights derived from engagement history data in this release.
+- **X3** Do not include integration with external databases or systems to fetch additional records.
 
 **Rejected during deliberation**
 
@@ -57,13 +50,11 @@ This release will enable project managers to view the complete history of engage
 
 - **D1** "Engagement history" means a chronological record of all documented interactions, meetings, projects, and communications related to a specific country stored within the CRM. This includes written communications such as emails and official reports, as well as notes from meetings. Access to engagement histories will vary based on their sensitivity, and more sensitive diplomatic records will have stricter access thresholds.  
   Definition of 'engagement history' has been refined to specify documented interactions, reducing ambiguity for users. _(C2)_
-- **D2** "Project managers" means individuals responsible for planning and executing missions who require full context regarding a country's past engagements to make informed decisions.  
-  Clarifies that 'project managers' are defined as individuals involved in mission planning requiring historical context.
+- **D2** "Project managers" means individuals responsible for planning and executing missions who require full context regarding a country's past engagements to make informed decisions.
 
 ## Success criteria
 
-- **K1** Achieve an 80% satisfaction rate from project managers regarding accessibility and clarity of engagement history within the first three months of release.  
-  Success will be measured by a satisfaction rate, ensuring the release meets users' needs for accessing engagement history effectively.
+- **K1** Achieve an 80% satisfaction rate from project managers regarding accessibility and clarity of engagement history within the first three months of release.
 
 ## Open questions for humans
 

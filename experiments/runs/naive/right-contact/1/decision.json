@@ -28,7 +28,7 @@
     {
       "id": "V1",
       "text": "Enable tracking of primary contact persons for each member country.",
-      "note": "The commitment to enable tracking of primary contact persons has been upheld as essential for improving communication effectiveness with government counterparts.",
+      "note": "",
       "refs": []
     },
     {
@@ -52,7 +52,7 @@
     {
       "id": "S1",
       "text": "Create a new section in the CRM specifically for tracking primary contact persons, including fields for name, position, email address, and phone number.",
-      "note": "The item to create a new section for tracking primary contacts is within scope, providing necessary fields for effective data management.",
+      "note": "",
       "refs": []
     },
     {
@@ -82,13 +82,13 @@
     {
       "id": "X1",
       "text": "This release will not include integration with external contact databases or systems.",
-      "note": "Integration with external contact databases is excluded from the current release to focus on core functionalities.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not cover historical engagement histories with contacts; it focuses solely on current primary contacts.",
-      "note": "Historical engagement records are excluded to maintain the scope on current primary contacts for improved data accuracy.",
+      "note": "",
       "refs": []
     },
     {
@@ -104,7 +104,7 @@
     {
       "id": "A1",
       "text": "Users have the necessary permissions to access and update contact information; this enables them to manage contact details effectively.",
-      "note": "It is assumed that users will have necessary permissions to manage contact information to facilitate the tracking process efficiently.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -112,7 +112,7 @@
     {
       "id": "A2",
       "text": "The current data structure of the CRM can accommodate the new section for primary contacts without requiring extensive backend modifications.",
-      "note": "The assumption that the existing data structure can accommodate new sections aligns with the project's technical feasibility.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -120,7 +120,7 @@
     {
       "id": "A3",
       "text": "There are designated staff members responsible for entering and regularly updating contact information.",
-      "note": "Designated staff responsible for updating contact information are assumed to ensure ongoing data accuracy through established processes.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -146,7 +146,7 @@
     {
       "id": "D3",
       "text": "'Search function' means a tool within the CRM that enables users to input criteria and retrieve relevant contacts based on defined fields.",
-      "note": "A clear definition of 'search function' enhances understanding of how users can interact with the CRM to find necessary contacts effectively.",
+      "note": "",
       "refs": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": "K1",
       "text": "At least 80% of users can successfully find and update contact information within three searches, measured through user feedback and CRM usage analytics.",
-      "note": "The success criterion for user satisfaction in finding and updating contact information is framed to measure the effectiveness of the implementation.",
+      "note": "",
       "refs": []
     }
   ],

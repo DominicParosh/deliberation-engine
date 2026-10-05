@@ -14,10 +14,8 @@ This release will implement a feature that enables users to categorize contacts 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to categorize contacts by influence level to prioritize engagements.  
-  Users will be able to categorize contacts by influence levels to prioritize engagements, addressing the need for better resource allocation.
-- **V2** Provide a visual interface to quickly assess and filter contacts based on their influence.  
-  A visual interface will help users assess and filter contacts based on influence, enhancing user experience and decision-making.
+- **V1** Enable users to categorize contacts by influence level to prioritize engagements.
+- **V2** Provide a visual interface to quickly assess and filter contacts based on their influence.
 
 **In scope**
 
@@ -29,8 +27,7 @@ This release will implement a feature that enables users to categorize contacts 
   Users will be able to filter contacts by Influence Level, with filtering measures ensuring role-based access to sensitive data. _(C5)_
 - **S4** Provide access to this feature for users, specifically including regional coordinators and project managers, and designate a primary role (e.g., regional coordinators) responsible for maintaining and updating the 'Influence Level' ratings.  
   Regional coordinators will be designated to maintain the Influence Level ratings, providing clear ownership and responsibility. _(C2)_
-- **S5** Implement user training sessions to ensure efficient usage of the new influence tracking feature.  
-  User training sessions will be implemented to support effective usage of the new feature, addressing potential gaps in user competency.
+- **S5** Implement user training sessions to ensure efficient usage of the new influence tracking feature.
 - **S6** Implement a review process for validating 'Influence Level' ratings, where each contact's assigned rating must be reviewed and approved by a designated authority, such as a senior project manager or regional coordinator, on a quarterly basis. This review process aims to mitigate risks related to inflated or biased ratings.  
   A review process for Influence Level ratings will be established, allowing for oversight and correctness in the ratings assigned. _(C7)_
 
@@ -58,15 +55,12 @@ This release will implement a feature that enables users to categorize contacts 
 
 - **D1** 'Influence Level' means a numeric rating from 1 (lowest influence) to 5 (highest influence) assigned to contacts based on established criteria, which include: role within the government, historical collaboration with our organization, perceived relationship strength, and influence on decision-making processes.  
   The definition of 'Influence Level' provides a standardized numeric rating, mitigating subjectivity and protecting data integrity. _(C1)_
-- **D2** 'User Roles' means defined positions within the CRM system that have varying levels of access and capabilities, specifically including regional coordinators and project managers.  
-  Defined user roles will clarify varying access levels within the CRM system, ensuring appropriate permissions are maintained.
+- **D2** 'User Roles' means defined positions within the CRM system that have varying levels of access and capabilities, specifically including regional coordinators and project managers.
 
 ## Success criteria
 
-- **K1** Achieve at least a 75% user satisfaction rate with the new influence tracking feature, measured through user feedback surveys within one month of release.  
-  The desired user satisfaction rate reflects the goal of effective feature usage and acceptance among users.
-- **K2** Ensure that at least 80% of contacts have their Influence Level rated within the first two months of feature launch.  
-  A target rate of Influence Levels assigned to contacts ensures timely and effective utilization of the feature post-launch.
+- **K1** Achieve at least a 75% user satisfaction rate with the new influence tracking feature, measured through user feedback surveys within one month of release.
+- **K2** Ensure that at least 80% of contacts have their Influence Level rated within the first two months of feature launch.
 
 ## Open questions for humans
 

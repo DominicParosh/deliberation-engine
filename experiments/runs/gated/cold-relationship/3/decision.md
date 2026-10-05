@@ -14,8 +14,7 @@ This release will implement an alert system that notifies users when engagement 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Implement an alert system for detecting inactive relationships with country contacts.  
-  The alert system for detecting inactive relationships with country contacts will be built to enhance user awareness of engagement status and improve oversight.
+- **V1** Implement an alert system for detecting inactive relationships with country contacts.
 
 **In scope**
 
@@ -23,8 +22,7 @@ This release will implement an alert system that notifies users when engagement 
   The definition of 'cold relationship' was clarified to specifically require inactivity for 90 consecutive days, addressing confidentiality concerns regarding alert distribution. _(C1)_
 - **S2** Allow users to receive alerts via email regarding cold relationships, with protocols in place ensuring that alerts regarding diplomatic contacts are sent exclusively to users with the 'diplomatic_security' role in the CRM, who have clearance to handle sensitive information.  
   Protocols for sending alerts concerning sensitive diplomatic contacts were established to ensure only authorized personnel receive them, addressing confidentiality issues. _(C4)_
-- **S3** Enable users to filter and view a list of contacts with cold relationships in the CRM.  
-  Users will be able to view a list of contacts with cold relationships, aiding in the management of country engagements and enabling monitoring.
+- **S3** Enable users to filter and view a list of contacts with cold relationships in the CRM.
 - **S4** Provide options for users to set customized thresholds for inactivity alerts, ranging from 30 to 120 days, with the stipulation that valid engagement activities must include documented interactions such as meetings, emails, or official communications logged in the CRM, which will be reviewed monthly for accuracy by the CRM administrator.  
   The threshold for engagement activities needed for alerts was specified clearly to mitigate the risk of users setting inappropriate custom values. _(C2)_
 - **S5** Assign the responsibility for maintaining the alert system, monitoring engagement logs, and adjusting user preferences to the CRM administrator role, who will work with regional coordinators to filter and prioritize alerts based on urgency.  
@@ -52,15 +50,12 @@ This release will implement an alert system that notifies users when engagement 
 
 ## Definitions
 
-- **D1** "cold relationship" means a lack of recorded engagement activities with a country contact for 90 consecutive days.  
-  'Cold relationship' is clearly defined to ensure users know when engagement activity is deemed inactive, aiding in system clarity.
-- **D2** "engagement activities" means any logged interaction or correspondence with a country contact, such as meetings, emails, or calls.  
-  Engagement activities are defined to include logged interactions that allow transparency and functionality within the alert system.
+- **D1** "cold relationship" means a lack of recorded engagement activities with a country contact for 90 consecutive days.
+- **D2** "engagement activities" means any logged interaction or correspondence with a country contact, such as meetings, emails, or calls.
 
 ## Success criteria
 
-- **K1** Achieve at least a 75% user satisfaction rate with the new alert system, measured through user surveys within one month of release.  
-  A user satisfaction rate of at least 75% is targeted post-release to gauge the effectiveness and acceptance of the alert system.
+- **K1** Achieve at least a 75% user satisfaction rate with the new alert system, measured through user surveys within one month of release.
 
 ## Open questions for humans
 

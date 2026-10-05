@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Project managers will have access to a detailed engagement history for each country.",
-      "note": "Project managers will have access to a detailed engagement history for each country, ensuring they are better equipped for new missions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -95,7 +95,7 @@
     {
       "id": "A1",
       "text": "It is assumed that engagement data is being collected and stored accurately in the CRM system, as the display of this data relies on its existence.",
-      "note": "It is assumed that engagement data is accurately stored, as this is foundational for displaying information in the system.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -130,7 +130,7 @@
     {
       "id": "A3",
       "text": "It is assumed that the existing database structure can support extended historical data display without performance issues, which is necessary for the UI implementation.",
-      "note": "It is assumed that the current database structure can handle the display of extended historical data without affecting performance.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -140,7 +140,7 @@
     {
       "id": "D1",
       "text": "'Engagement history' means the record of all interactions, communications, projects, and missions involving a country, stored in the CRM and retrievable by project managers.",
-      "note": "'Engagement history' is defined to include all interactions and communications related to a country, making it clear what project managers can access.",
+      "note": "",
       "refs": []
     },
     {

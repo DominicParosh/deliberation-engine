@@ -14,10 +14,8 @@ This release will implement a feature that allows users to categorize and identi
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Users will be able to assign an influence score to each contact within the Government CRM.  
-  Users will be able to assign influence scores to contacts to prioritize engagements based on defined permissions and training protocols.
-- **V2** Users will see a prioritized list of contacts based on their influence scores.  
-  A prioritized list of contacts based on influence scores will be displayed to help users identify key contacts quickly.
+- **V1** Users will be able to assign an influence score to each contact within the Government CRM.
+- **V2** Users will see a prioritized list of contacts based on their influence scores.
 - **V3** There will be a standard set of criteria established by the organization to define 'influence' for consistent scoring across all users.  
   Establishing a set of criteria to define 'influence' ensures consistent application among users of influence scoring. _(C1)_
 
@@ -25,10 +23,8 @@ This release will implement a feature that allows users to categorize and identi
 
 - **S1** Regional coordinators, project managers, and executive-level staff will be able to assign influence scores to contacts on a scale of 1-5, where 1 means low influence and 5 means high influence.  
   Users, specifically regional coordinators and executive-level staff, will score contacts on a scale of 1-5, allowing for prioritized engagement.
-- **S2** The contact list will display the assigned influence scores alongside contact names to help users quickly identify influential contacts.  
-  The assigned influence scores will be displayed to assist in quickly determining which contacts are most important to engage with.
-- **S3** Users will have the ability to filter the contact list based on influence scores to prioritize engagements.  
-  Filtering options enable users to prioritize their engagements based on the influence scores assigned.
+- **S2** The contact list will display the assigned influence scores alongside contact names to help users quickly identify influential contacts.
+- **S3** Users will have the ability to filter the contact list based on influence scores to prioritize engagements.
 - **S4** The feature will include permissions: only regional coordinators and executive-level staff will be authorized to assign influence scores; project managers will be permitted to view but not assign these scores.  
   Clear permissions will be implemented so that only certain users can assign scores, reducing the risk of unauthorized access to sensitive information. _(C2)_
 
@@ -38,8 +34,7 @@ This release will implement a feature that allows users to categorize and identi
 
 - **X1** This release will not include a manual influence scoring system; the feature will instead be developed as a foundational capability without an automated influence assessment.  
   The decision to exclude a manual influence scoring system aims to prevent subjective bias and ensure foundational capabilities are prioritized. _(C6)_
-- **X2** This release will not change existing contact record fields outside the influence scoring.  
-  This release will not change existing contact record fields, focusing solely on introducing the influence scoring feature.
+- **X2** This release will not change existing contact record fields outside the influence scoring.
 
 **Rejected during deliberation**
 
@@ -57,8 +52,7 @@ This release will implement a feature that allows users to categorize and identi
 
 - **D1** "influence score" means a numerical value assigned to a contact that represents their level of influence, rated on a scale of 1 (low influence) to 5 (high influence).  
   'Influence score' is defined as a rating from 1 to 5 that reflects a contact's level of influence, which must be consistently applied. _(C1)_
-- **D2** "prioritized list" means an ordered list of contacts displayed in the Government CRM that reflects their influence scores, with the highest scores appearing first.  
-  'Prioritized list' is defined as an ordered listing of contacts based on influence scores in the CRM, promoting effective engagement strategies.
+- **D2** "prioritized list" means an ordered list of contacts displayed in the Government CRM that reflects their influence scores, with the highest scores appearing first.
 
 ## Success criteria
 

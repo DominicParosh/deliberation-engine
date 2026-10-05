@@ -25,13 +25,13 @@
     {
       "id": "V1",
       "text": "Automate the logging of meetings with government officials in the Government CRM system.",
-      "note": "Automating the logging of meetings was established to improve engagement tracking and accountability.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide users a clear history of engagement with government officials through the automated logging feature.",
-      "note": "Providing a clear history of engagement through the automated logging feature supports users' ability to track interactions effectively.",
+      "note": "",
       "refs": []
     }
   ],
@@ -47,7 +47,7 @@
     {
       "id": "S2",
       "text": "Provide an interface for regional coordinators and project managers to view logged meetings with government officials.",
-      "note": "An interface for viewing logs was included to facilitate easy access for authorized users.",
+      "note": "",
       "refs": []
     },
     {
@@ -72,7 +72,7 @@
     {
       "id": "S5",
       "text": "Notifications will be sent to users if any required fields are missing upon submission of meeting logs.",
-      "note": "Notifications for missing fields enhance user promptness and the quality of submissions.",
+      "note": "",
       "refs": []
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "A1",
       "text": "Users have access to a designated form for logging meetings, which enables them to input meeting details.",
-      "note": "Assuming access to designated forms for logging supports the proposal's feasibility and implementation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -119,7 +119,7 @@
     {
       "id": "A2",
       "text": "Users are trained on how to use the new automated logging feature and understand the importance of logging meetings.",
-      "note": "Training users on the automated logging feature assures proper usage and adherence to logging practices.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -127,7 +127,7 @@
     {
       "id": "A3",
       "text": "Data security and privacy policies will allow automated logging of sensitive government engagements.",
-      "note": "Assuming compliance with data security policies supports the operational basis for automated logging.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -137,13 +137,13 @@
     {
       "id": "D1",
       "text": "\"Meetings with government officials\" means any scheduled discussions involving representatives from government bodies recognized by the organization.",
-      "note": "Clarifying meetings with government officials ensures all logged interactions are appropriately defined and consistent.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"Logging automatically\" means the system will capture and create records of meetings without requiring user intervention after initial entry of meeting details.",
-      "note": "Defining automatic logging clarifies the interaction process without requiring manual intervention after details are entered.",
+      "note": "",
       "refs": []
     },
     {
@@ -167,7 +167,7 @@
     {
       "id": "K1",
       "text": "Ensure 90% of scheduled meetings are logged automatically within 24 hours of occurrence, measured through CRM analytics.",
-      "note": "Setting success criteria based on logging performance measures ensures accountability and effectiveness of the automated system.",
+      "note": "",
       "refs": []
     },
     {

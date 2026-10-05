@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable users to assign and view an influence score for each contact.",
-      "note": "Users will be able to assign and view influence scores for each contact, enhancing prioritization.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide a filtering option to display contacts based on their influence score.",
-      "note": "Users will have a filtering option to display contacts based on their influence scores, improving usability.",
+      "note": "",
       "refs": []
     }
   ],
@@ -37,25 +37,25 @@
     {
       "id": "S1",
       "text": "Create an 'influence score' field in the contact records, ranging from 1 (low influence) to 10 (high influence).",
-      "note": "An 'influence score' field will be created to standardize the scoring from 1 to 10, which helps ensure clarity in scoring.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S2",
       "text": "Develop a user interface that allows regional coordinators and project managers to assign an influence score to each contact.",
-      "note": "A user interface will allow scoring assignments, streamlining the input process for users.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Implement a sorting feature that allows users to filter and sort contacts by their influence score.",
-      "note": "Implementing a sorting feature enhances the capability to filter contacts by influence, facilitating user engagement strategies.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "Provide a way to visualize the distribution of influence scores across contacts in a number of reports available to users.",
-      "note": "Visualization of influence scores in reports will help in tracking and monitoring influence across contacts.",
+      "note": "",
       "refs": []
     },
     {
@@ -71,19 +71,19 @@
     {
       "id": "X1",
       "text": "This release does not include predictive analytics or recommendations for influence scoring.",
-      "note": "Predictive analytics were ruled out as out of scope to maintain focus on the core scoring mechanism.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not handle the historical data of influence scores, only the current values will be recorded.",
-      "note": "Historical data handling was excluded to keep the implementation straightforward and focused on current values only.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release does not include integration with external databases or influence measurement tools.",
-      "note": "Integration with external databases was not included to avoid increased complexity in the project.",
+      "note": "",
       "refs": []
     }
   ],
@@ -93,7 +93,7 @@
     {
       "id": "A1",
       "text": "Users will have background knowledge of their contacts and the ability to assess their influence. This assumption is necessary for assigning accurate influence scores.",
-      "note": "The assumption that users will possess adequate background knowledge for scoring is crucial for maintaining scoring accuracy.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -101,7 +101,7 @@
     {
       "id": "A2",
       "text": "There are no legal or regulatory constraints preventing the use of influence scores in the government CRM. This affects the implementation of the feature.",
-      "note": "The assumption of no legal constraints is necessary to proceed with implementing influence scoring.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -109,7 +109,7 @@
     {
       "id": "A3",
       "text": "Users have defined criteria for determining influence, which will guide the scoring process.",
-      "note": "Defining criteria for influence assessment is essential for supporting consistent scoring practices.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -117,7 +117,7 @@
     {
       "id": "A4",
       "text": "The current architecture of the CRM can accommodate new data fields and filtering features without significant redesign.",
-      "note": "The assumption that the current architecture can handle new fields is vital for successful implementation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -143,7 +143,7 @@
     {
       "id": "K1",
       "text": "By the end of the quarter, at least 70% of contacts have assigned influence scores by regional coordinators and project managers, measured via system usage logs.",
-      "note": "The success criterion measuring at least 70% assignment of scores ensures a benchmark for the feature’s effectiveness post-implementation.",
+      "note": "",
       "refs": []
     }
   ],

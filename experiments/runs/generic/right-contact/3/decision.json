@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Enhance user ability to identify the right contact person for government counterparts based on specific criteria.",
-      "note": "Enhancing user ability to identify the right contact person was essential to address operational needs and improve interactions with government counterparts.",
+      "note": "",
       "refs": []
     }
   ],
@@ -31,13 +31,13 @@
     {
       "id": "S1",
       "text": "Implement a searchable database that allows users to filter contacts by criteria such as role, ministry, and current engagement status.",
-      "note": "Implementing a searchable database enables users to efficiently filter contacts, significantly benefiting project managers and regional coordinators.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S2",
       "text": "Develop a user interface for project managers and regional coordinators to view and select relevant contacts.",
-      "note": "Developing a user interface tailored for the intended users enhances usability and effectiveness in identifying contacts.",
+      "note": "",
       "refs": []
     },
     {
@@ -106,7 +106,7 @@
     {
       "id": "A1",
       "text": "Users will have appropriate access rights to sensitive contact information depending on their roles.",
-      "note": "Assuming users will have appropriate access rights aligns with the need for confidentiality and operational security.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -114,7 +114,7 @@
     {
       "id": "A2",
       "text": "The existing CRM infrastructure has the capacity to support a new searchable database feature.",
-      "note": "The assumption that existing infrastructure can support the new features is crucial for successful implementation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -122,7 +122,7 @@
     {
       "id": "A3",
       "text": "Users require accurate and up-to-date information about the contacts in their respective countries.",
-      "note": "Assuming users need accurate information reinforces the importance of integrating reliable contact records into the CRM.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -132,13 +132,13 @@
     {
       "id": "D1",
       "text": "\"Contact tracking feature\" means a system enhancement that allows users to search and filter through government contact records based on predefined criteria.",
-      "note": "Defining 'contact tracking feature' clarifies system enhancements intended to streamline access to government contact records.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"Searchable database\" means a collection of contact records that users can query and filter according to specified attributes like role and engagement status.",
-      "note": "Defining 'searchable database' helps specify the database's functionality for users, ensuring they understand its application.",
+      "note": "",
       "refs": []
     },
     {
@@ -154,7 +154,7 @@
     {
       "id": "K1",
       "text": "Achieve a minimum of 80% user satisfaction based on feedback surveys within one month of release regarding the new contact tracking feature.",
-      "note": "Setting a user satisfaction target ensures that feedback is captured regarding the effectiveness of the new contact tracking feature after release.",
+      "note": "",
       "refs": []
     }
   ],

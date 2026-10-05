@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Automatically log meetings with government officials in the system.",
-      "note": "This commitment reflects the need to automate the logging of meetings to prevent loss of engagement history.",
+      "note": "",
       "refs": []
     }
   ],
@@ -67,13 +67,13 @@
     {
       "id": "X2",
       "text": "The feature will not integrate with other calendar or scheduling tools in this release.",
-      "note": "Integration with other tools is excluded to keep the release focused on the core functionality.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release does not include notifications or alerts related to the logged meetings.",
-      "note": "Notifications related to logged meetings are out of scope at this time to prioritize essential features.",
+      "note": "",
       "refs": []
     }
   ],
@@ -103,7 +103,7 @@
     {
       "id": "A2",
       "text": "All meetings with government officials will be conducted either in person or virtually, as the logging will depend on meeting type.",
-      "note": "This assumption is based on the anticipated types of meetings users will conduct and the corresponding logging capabilities.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -111,7 +111,7 @@
     {
       "id": "A3",
       "text": "Data privacy policies allow automatic logging of meetings with government officials.",
-      "note": "This assumption is predicated on existing data privacy policies allowing for automatic logging of meetings.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -121,13 +121,13 @@
     {
       "id": "D1",
       "text": "\"Automatically log\" means that the system will capture and store meeting information without manual input required from the user at the time of the meeting.",
-      "note": "The definition clarifies the level of automation in meeting logs to set expectations for users.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"Engagement history\" means the record of all interactions with government officials, including meetings, contacts, and activities, as stored in the CRM.",
-      "note": "Defining 'engagement history' emphasizes the importance of maintaining detailed records of interactions.",
+      "note": "",
       "refs": []
     },
     {

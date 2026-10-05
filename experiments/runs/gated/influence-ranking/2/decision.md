@@ -14,10 +14,8 @@ This release will implement a contact influence scoring system that identifies a
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Identify the top 20 influential contacts based on a scoring mechanism.  
-  This commitment specifies the identification of the top 20 influential contacts based on a scoring mechanism to prioritize engagements.
-- **V2** Provide an accessible interface for users to view and filter influential contacts.  
-  This commitment ensures users have an accessible interface to view and filter influential contacts.
+- **V1** Identify the top 20 influential contacts based on a scoring mechanism.
+- **V2** Provide an accessible interface for users to view and filter influential contacts.
 
 **In scope**
 
@@ -27,8 +25,7 @@ This release will implement a contact influence scoring system that identifies a
   The influence scoring system will calculate scores based on defined criteria, ensuring proper prioritization of contacts. _(C2)_
 - **S3** Display the top 20 contacts by influence score on a dedicated dashboard for regional coordinators and project managers.  
   The display of the top 20 contacts by influence score in a dashboard allows for easy access by key users.
-- **S4** Allow filtering options by role, country, and mission status to refine visible contact lists.  
-  Filtering options will be available to refine the display of contacts according to user needs.
+- **S4** Allow filtering options by role, country, and mission status to refine visible contact lists.
 - **S5** Create user documentation detailing how influence scores are calculated and how to use the interface effectively.  
   User documentation will be crucial for instructing users on how to interpret and utilize influence scores correctly.
 - **S6** Define 'Authorized Users' means regional coordinators, project managers, and executive staff who are granted access to view influence scores based on clearance levels determined by organizational policy.  
@@ -46,10 +43,8 @@ This release will implement a contact influence scoring system that identifies a
 
 - **X1** This release will not include a detailed breakdown of how the influence score is calculated to prevent manipulation or bias.  
   Excluding a detailed breakdown of how influence scores are calculated was decided to prevent potential manipulation.
-- **X2** Long-term management of influence score data beyond the initial calculation will not be included in this release.  
-  Long-term management of influence scores beyond initial calculation will not be included in this release.
-- **X3** Integration with external data sources for influence scoring will not be implemented in this release.  
-  Integration with external data sources will be deferred to ensure focus on core functionalities.
+- **X2** Long-term management of influence score data beyond the initial calculation will not be included in this release.
+- **X3** Integration with external data sources for influence scoring will not be implemented in this release.
 
 **Rejected during deliberation**
 
@@ -65,17 +60,13 @@ This release will implement a contact influence scoring system that identifies a
 
 ## Definitions
 
-- **D1** 'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects.  
-  Clarifying the definition of 'influence' helps mitigate risks of misinterpretation and ensures consistency. _(C2)_
-- **D2** 'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism.  
-  The specification of 'Top 20' ensures clarity in what is being scored, directly linked to user actions.
-- **D3** 'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making.  
-  Defining 'Dashboard' aids in user understanding of the interface intended for enhanced decision-making.
+- **D1** 'Influence' means a calculated score based on each contact's position, the frequency of interaction, and outcomes achieved from previous projects.
+- **D2** 'Top 20' means the contacts with the highest influence scores as determined by the scoring mechanism.
+- **D3** 'Dashboard' means a user interface feature that visually presents key metrics and lists for easy access and decision making.
 
 ## Success criteria
 
-- **K1** At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation.  
-  User satisfaction will be measured post-implementation to ensure the scoring system meets user needs.
+- **K1** At least 80% of users report satisfaction with the ability to identify and prioritize contacts based on influence scores, measured through a user survey after implementation.
 
 ## Open questions for humans
 

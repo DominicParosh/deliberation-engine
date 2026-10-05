@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Automatically log meetings with government officials in the CRM.",
-      "note": "The commitment to automatically log meetings was accepted as it addresses the need for accurate engagement history.",
+      "note": "",
       "refs": []
     }
   ],
@@ -39,13 +39,13 @@
     {
       "id": "S2",
       "text": "The system will allow users to indicate the participants from the government side by selecting from a list of government officials that have been pre-loaded in the CRM.",
-      "note": "Allowing users to select government representatives from a list ensures accuracy in capturing meeting details.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Automated logging will also include a status indicator (e.g., completed, canceled, rescheduled) for each meeting entry.",
-      "note": "Including status indicators for meetings enhances the clarity of meeting entries.",
+      "note": "",
       "refs": []
     },
     {
@@ -67,19 +67,19 @@
     {
       "id": "X1",
       "text": "This release will not include integration with external calendar applications for automatic meeting logging.",
-      "note": "Integration with external calendar applications was deemed unnecessary for this release.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not allow for the modification or deletion of logged meeting entries by users.",
-      "note": "The inability to modify or delete logged entries was included to maintain data integrity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release will not implement advanced analytics or reporting features related to meeting history.",
-      "note": "Advanced analytics features were not included to maintain the initial focus on logging.",
+      "note": "",
       "refs": []
     }
   ],
@@ -89,7 +89,7 @@
     {
       "id": "A1",
       "text": "The system has existing access to all official government contacts and their details that can be logged during meetings.",
-      "note": "The assumption about existing access to government contacts is crucial for the logging process.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -114,7 +114,7 @@
     {
       "id": "A3",
       "text": "All users have access to the engagement history section of the CRM.",
-      "note": "The assumption of access to the engagement history section is essential for user interaction with logs.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -149,7 +149,7 @@
     {
       "id": "D2",
       "text": "\"Engagement history\" means the record of all interactions between CRM users and government officials, including logged meetings, correspondence, and any relevant notes.",
-      "note": "The definition of 'engagement history' was accepted to encompass all interactions, reinforcing clarity.",
+      "note": "",
       "refs": []
     }
   ],

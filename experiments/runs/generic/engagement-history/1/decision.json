@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Project managers can view the complete engagement history for each country they are responsible for.",
-      "note": "Project managers will be allowed to view the complete engagement history to provide necessary context for mission planning.",
+      "note": "",
       "refs": []
     }
   ],
@@ -39,13 +39,13 @@
     {
       "id": "S2",
       "text": "Access to the engagement history will be granted specifically to users with the role of project manager.",
-      "note": "Access will be restricted to users with the project manager role, ensuring that engagement data is viewed only by authorized personnel.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "The engagement history will include records from the last 5 years to ensure recent context is available.",
-      "note": "Restricting the engagement history to the last 5 years will ensure that relevant and recent context is available for project managers.",
+      "note": "",
       "refs": []
     },
     {
@@ -92,7 +92,7 @@
     {
       "id": "A1",
       "text": "It is assumed that the CRM system has current and accurate records of engagement history for all countries, which this proposal relies on to function.",
-      "note": "The assumption regarding the current accuracy of records relies on the system's existing data integrity, a critical foundation for this feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -100,7 +100,7 @@
     {
       "id": "A2",
       "text": "It is assumed that project managers have been clearly defined as a user role with specific permissions regarding access to sensitive data.",
-      "note": "It is assumed that project managers have defined roles permitting them to access sensitive data as specified in the proposal.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -108,7 +108,7 @@
     {
       "id": "A3",
       "text": "It is assumed that the organization has established confidentiality and data protection policies that will govern how engagement histories are accessed and viewed by project managers.",
-      "note": "This assumption reflects the organization's commitment to confidentiality and data protection, guiding the access protocols for engagement histories.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -118,13 +118,13 @@
     {
       "id": "D1",
       "text": "\"engagement history\" means the record of all interactions and communications between the organization and a country, including mission details, contact records, meeting notes, and any documented correspondence.",
-      "note": "The definition of 'engagement history' was accepted to clarify the scope of interactions included in the records.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"project manager\" means an individual within the organization with the designated responsibility for overseeing missions and projects related to a specific country or region.",
-      "note": "The definition of 'project manager' was accepted to ensure clarity around the responsibilities and permissions associated with this role.",
+      "note": "",
       "refs": []
     },
     {
@@ -140,7 +140,7 @@
     {
       "id": "K1",
       "text": "Within three months of the feature release, at least 80% of project managers report satisfaction with their ability to access and use the engagement history feature, measured via a user feedback survey.",
-      "note": "The success criterion focuses on user satisfaction post-release, establishing a clear metric to evaluate the feature's effectiveness.",
+      "note": "",
       "refs": []
     }
   ],

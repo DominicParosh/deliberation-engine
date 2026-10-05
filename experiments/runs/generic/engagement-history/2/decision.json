@@ -23,7 +23,7 @@
     {
       "id": "V1",
       "text": "Project managers can access the full history of engagements with each country.",
-      "note": "Project managers will have access to the full history of engagements with each country, which ensures they are informed before starting new missions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -31,7 +31,7 @@
     {
       "id": "S1",
       "text": "Implement a user interface for project managers that displays engagement history with countries, including dates, descriptions of interactions, and associated personnel.",
-      "note": "A new user interface will be created for project managers that displays detailed engagement history, enhancing transparency and accessibility.",
+      "note": "",
       "refs": []
     },
     {
@@ -64,19 +64,19 @@
     {
       "id": "X1",
       "text": "This release will not include any functionality for editing or deleting historical engagement records.",
-      "note": "No editing or deleting of historical engagement records will be allowed in this release to maintain data integrity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not cover engagement data older than 5 years.",
-      "note": "Data older than 5 years will not be included in this release to adhere to retention policies.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release will not include access for users outside of the project management role.",
-      "note": "Access will not be extended beyond project managers and regional coordinators to maintain strict control over sensitive information.",
+      "note": "",
       "refs": []
     }
   ],
@@ -86,7 +86,7 @@
     {
       "id": "A1",
       "text": "It is assumed that historical engagement data is already available in the system and can be aggregated without major technical challenges.",
-      "note": "It was assumed that historical engagement data is readily available, allowing for aggregation without significant technical barriers.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -94,7 +94,7 @@
     {
       "id": "A2",
       "text": "It is assumed that project managers are already established as a distinct user role within the Government CRM.",
-      "note": "It is assumed that project managers are already defined within the system to ensure seamless access to the new features.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -102,7 +102,7 @@
     {
       "id": "A3",
       "text": "It is assumed that the sensitivity of the data will be appropriately managed according to existing organizational policies.",
-      "note": "The assumption stands that data sensitivity will be managed according to existing policies to avoid breaches.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -120,13 +120,13 @@
     {
       "id": "D2",
       "text": "\"project managers\" means individuals assigned within the organization whose responsibilities include overseeing specific projects and missions.",
-      "note": "The definition of 'project managers' accurately describes their role and functions to clarify feature access.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D3",
       "text": "\"full history\" means all records of engagement for a country within the last 5 years.",
-      "note": "The definition of 'full history' specifies it as the last 5 years of records, ensuring compliance with policies.",
+      "note": "",
       "refs": []
     }
   ],
@@ -134,7 +134,7 @@
     {
       "id": "K1",
       "text": "At least 80% of project managers report satisfaction with the new engagement history feature based on a user survey conducted within three months of release.",
-      "note": "Satisfaction of project managers with the new feature will be measured to gauge its effectiveness and usability.",
+      "note": "",
       "refs": []
     }
   ],

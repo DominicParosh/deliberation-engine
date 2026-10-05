@@ -14,21 +14,16 @@ A contact tracking feature will be built to assist regional coordinators and pro
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable tracking of primary contacts for each member country.  
-  Core commitment to track primary contacts is essential for effective communication and coordination within member countries.
-- **V2** Provide engagement history linked to identified contacts.  
-  Providing engagement history linked to contacts is vital to ensure users have context for each interaction.
+- **V1** Enable tracking of primary contacts for each member country.
+- **V2** Provide engagement history linked to identified contacts.
 
 **In scope**
 
-- **S1** Implement a searchable contact list feature that allows users to filter contacts by country, role, and project affiliation.  
-  The searchable contact list feature improves usability by allowing filtering based on key criteria, enhancing efficiency.
+- **S1** Implement a searchable contact list feature that allows users to filter contacts by country, role, and project affiliation.
 - **S2** Establish a database schema modification to include fields for 'primary contact' designation per country, with a defined process for updating primary contact designations immediately upon personnel changes, handled by regional coordinators.  
   This scope item details who is responsible for maintaining currency in primary contact designations, addressing critical ownership concerns. _(C1, C2)_
-- **S3** Ensure that engagement history is accessible for each contact displayed in the system.  
-  Ensuring accessibility of engagement history for each contact aligns with the core objectives of the feature.
-- **S4** Provide user training materials to regional coordinators and project managers on using the new contact tracking features.  
-  User training materials will help ensure effective adoption of the new features by users.
+- **S3** Ensure that engagement history is accessible for each contact displayed in the system.
+- **S4** Provide user training materials to regional coordinators and project managers on using the new contact tracking features.
 - **S5** Develop a user interface that highlights the primary contact whenever a country profile is viewed, incorporating role-based access controls to restrict views of sensitive engagement information based on user roles and responsibilities.  
   Highlighting primary contacts with role-based access controls is a necessary measure to maintain data confidentiality. _(C4)_
 
@@ -36,12 +31,9 @@ A contact tracking feature will be built to assist regional coordinators and pro
 
 **Out of scope for this release**
 
-- **X1** This release will not include automatic alerts or notifications for changes in contact roles.  
-  Automatic alerts for changes in contact roles are considered out of scope to keep the initial implementation focused and manageable.
-- **X2** This release will not incorporate direct integration with external databases or CRM systems.  
-  Integration with external systems is deemed unnecessary for this specific enhancement and complicating factors may arise.
-- **X3** This release will not change the underlying security protocols governing data access.  
-  No alterations to security protocols are planned to maintain stability during the implementation phase.
+- **X1** This release will not include automatic alerts or notifications for changes in contact roles.
+- **X2** This release will not incorporate direct integration with external databases or CRM systems.
+- **X3** This release will not change the underlying security protocols governing data access.
 
 **Rejected during deliberation**
 
@@ -61,8 +53,7 @@ A contact tracking feature will be built to assist regional coordinators and pro
   Defining 'primary contact' ensures that only those with appropriate oversight roles can be designated, minimizing confidentiality risks. _(C3, C8)_
 - **D2** 'engagement history' means a record of interactions, communications, and transactions with the contact related to the organization's projects, specifically including email correspondence, meeting notes, and project updates.  
   Clarifying 'engagement history' helps ensure consistency in how interactions are recorded and documented. _(C6)_
-- **D3** 'searchable contact list' means a feature that allows users to filter and locate contacts based on specific criteria such as country, role, or project.  
-  The definition of 'searchable contact list' solidifies expectations around this feature's capabilities, aiding design principles.
+- **D3** 'searchable contact list' means a feature that allows users to filter and locate contacts based on specific criteria such as country, role, or project.
 
 ## Success criteria
 

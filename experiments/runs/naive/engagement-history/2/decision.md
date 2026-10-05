@@ -14,21 +14,15 @@ The release will enable project managers to access a detailed engagement history
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers can view a detailed engagement history for each country.  
-  Project managers can now view a detailed engagement history for each country, ensuring they have necessary information for new missions.
-- **V2** The engagement history includes timestamps, record notes, and outcomes.  
-  The engagement history will include timestamps, record notes, and outcomes, providing comprehensive insights into previous interactions.
+- **V1** Project managers can view a detailed engagement history for each country.
+- **V2** The engagement history includes timestamps, record notes, and outcomes.
 
 **In scope**
 
-- **S1** Project managers will have access to a dedicated 'Engagement History' section in the CRM.  
-  Project managers will have access to a dedicated 'Engagement History' section in the CRM, facilitating ease of use.
-- **S2** Engagement history means all recorded interactions with government counterparts, including meetings, communications, and notes.  
-  The definition of engagement history has been clarified to include all recorded interactions, ensuring project managers have complete information. _(C5)_
-- **S3** The system will display engagement history for all countries with which there is a past record in the CRM.  
-  The system will display engagement history for all countries with past records, allowing project managers to access necessary data.
-- **S4** Users can filter the engagement history by date range and type of interaction.  
-  Users can filter the engagement history by date range and type of interaction, enabling targeted searches for relevant information.
+- **S1** Project managers will have access to a dedicated 'Engagement History' section in the CRM.
+- **S2** Engagement history means all recorded interactions with government counterparts, including meetings, communications, and notes.
+- **S3** The system will display engagement history for all countries with which there is a past record in the CRM.
+- **S4** Users can filter the engagement history by date range and type of interaction.
 - **S5** Upon a project manager's transition out of their role, their access to sensitive engagement records will be revoked immediately by the system administrator responsible for managing user access, in compliance with the organization's security policy.  
   Access to sensitive records will be revoked immediately when a project manager transitions out of their role, ensuring compliance with security policies. _(C2, C19)_
 - **S6** The system will maintain an audit trail of all changes made to engagement history records, documenting the user who made the change, the timestamp of the modification, and the specifics of what was changed. This audit trail will undergo quarterly reviews by designated compliance officers to ensure adherence to data governance standards.  
@@ -42,10 +36,8 @@ The release will enable project managers to access a detailed engagement history
 
 - **X1** This release will not implement any changes to user roles or security clearances outside of current definitions.  
   The release will not implement changes to user roles or security clearances outside current definitions to maintain control.
-- **X2** The release will not provide access to engagement records of countries that are not involved in any active missions.  
-  This release will not provide access to records from non-active missions, focusing only on relevant historical data.
-- **X3** This release will not include any real-time updates from ongoing engagements; it will only display historical data.  
-  Real-time updates from ongoing engagements are out of scope, as this feature will only display historical data.
+- **X2** The release will not provide access to engagement records of countries that are not involved in any active missions.
+- **X3** This release will not include any real-time updates from ongoing engagements; it will only display historical data.
 
 **Rejected during deliberation**
 
@@ -67,8 +59,7 @@ The release will enable project managers to access a detailed engagement history
 
 ## Success criteria
 
-- **K1** At least 80% of project managers report they can easily access and utilize the engagement history feature based on a post-deployment survey.  
-  Success criteria set to ensure at least 80% satisfaction from project managers regarding the accessibility of the new feature.
+- **K1** At least 80% of project managers report they can easily access and utilize the engagement history feature based on a post-deployment survey.
 
 ## Open questions for humans
 

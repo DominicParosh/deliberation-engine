@@ -26,13 +26,13 @@
     {
       "id": "V1",
       "text": "Project managers can view a detailed engagement history for each country.",
-      "note": "Project managers can now view a detailed engagement history for each country, ensuring they have necessary information for new missions.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "The engagement history includes timestamps, record notes, and outcomes.",
-      "note": "The engagement history will include timestamps, record notes, and outcomes, providing comprehensive insights into previous interactions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -40,27 +40,25 @@
     {
       "id": "S1",
       "text": "Project managers will have access to a dedicated 'Engagement History' section in the CRM.",
-      "note": "Project managers will have access to a dedicated 'Engagement History' section in the CRM, facilitating ease of use.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S2",
       "text": "Engagement history means all recorded interactions with government counterparts, including meetings, communications, and notes.",
-      "note": "The definition of engagement history has been clarified to include all recorded interactions, ensuring project managers have complete information.",
-      "refs": [
-        "C5"
-      ]
+      "note": "",
+      "refs": []
     },
     {
       "id": "S3",
       "text": "The system will display engagement history for all countries with which there is a past record in the CRM.",
-      "note": "The system will display engagement history for all countries with past records, allowing project managers to access necessary data.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "Users can filter the engagement history by date range and type of interaction.",
-      "note": "Users can filter the engagement history by date range and type of interaction, enabling targeted searches for relevant information.",
+      "note": "",
       "refs": []
     },
     {
@@ -101,13 +99,13 @@
     {
       "id": "X2",
       "text": "The release will not provide access to engagement records of countries that are not involved in any active missions.",
-      "note": "This release will not provide access to records from non-active missions, focusing only on relevant historical data.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release will not include any real-time updates from ongoing engagements; it will only display historical data.",
-      "note": "Real-time updates from ongoing engagements are out of scope, as this feature will only display historical data.",
+      "note": "",
       "refs": []
     }
   ],
@@ -117,7 +115,7 @@
     {
       "id": "A1",
       "text": "Project managers are users of the CRM with the necessary permissions to access engagement histories.",
-      "note": "It is assumed project managers have the necessary permissions to access engagement histories, ensuring smooth functionality.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -125,7 +123,7 @@
     {
       "id": "A2",
       "text": "Engagement records are currently stored in a structured way that allows for filtering and retrieval.",
-      "note": "Assumed structured storage of engagement records will facilitate filtering and retrieval, critical for project managers.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -133,7 +131,7 @@
     {
       "id": "A3",
       "text": "There are existing records of past engagements with each country that can be extracted for display.",
-      "note": "Expecting existing records of past engagements is key for displaying data effectively in the engagement history section.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -141,7 +139,7 @@
     {
       "id": "A4",
       "text": "The organization has policies in place to uphold data protection and privacy regarding sensitive contacts.",
-      "note": "The organization's data protection and privacy policies are assumed to be in place to protect sensitive contacts.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -162,7 +160,7 @@
     {
       "id": "K1",
       "text": "At least 80% of project managers report they can easily access and utilize the engagement history feature based on a post-deployment survey.",
-      "note": "Success criteria set to ensure at least 80% satisfaction from project managers regarding the accessibility of the new feature.",
+      "note": "",
       "refs": []
     }
   ],

@@ -14,13 +14,11 @@ This release will provide project managers access to the full engagement history
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers can view the complete engagement history with each country.  
-  Project managers can view the complete engagement history with each country, addressing the need for informed decision-making as outlined in the initial feature request.
+- **V1** Project managers can view the complete engagement history with each country.
 
 **In scope**
 
-- **S1** Provide project managers with a feature to access and view the engagement history of a selected country.  
-  Project managers will have a feature to access and view the engagement history of a selected country, directly supporting their need for full visibility before mission planning.
+- **S1** Provide project managers with a feature to access and view the engagement history of a selected country.
 - **S2** Display engagement history that includes contact dates, involved personnel, and summary of activities. Data quality will be maintained through a tiered auditing process, where a designated data quality officer will validate information before access is granted to project managers, ensuring accuracy and consistency.  
   Engagement history will include validated contact details and summaries, with a data quality officer designated to maintain accuracy and consistency before access is granted to project managers. _(C2)_
 - **S3** Limit access to engagement history to only project managers and authorized regional coordinators. The Data Steward will implement access control measures that include authentication protocols, logging of access attempts, and a notification system for unauthorized access attempts.  
@@ -32,12 +30,9 @@ This release will provide project managers access to the full engagement history
 
 **Out of scope for this release**
 
-- **X1** This release will not include features for editing or deleting engagement history.  
-  Editing or deleting engagement histories is excluded to maintain data integrity and protect sensitive information.
-- **X2** This release will not provide additional analytics or insights into engagement history beyond what is displayed.  
-  Additional analytics beyond the displayed engagement history are not included to keep the focus on essential access features for project managers.
-- **X3** This release will not allow access to engagement history for users other than project managers and authorized coordinators.  
-  Access restrictions are firmly set, with no allowance for users outside the specified project managers and authorized regional coordinators, ensuring the security of sensitive data.
+- **X1** This release will not include features for editing or deleting engagement history.
+- **X2** This release will not provide additional analytics or insights into engagement history beyond what is displayed.
+- **X3** This release will not allow access to engagement history for users other than project managers and authorized coordinators.
 
 **Rejected during deliberation**
 
@@ -53,17 +48,14 @@ This release will provide project managers access to the full engagement history
 
 ## Definitions
 
-- **D1** "engagement history" means a record of all interactions between the organization and the government counterpart, including dates of contact, participants, and summaries of discussions or activities.  
-  The definition of 'engagement history' has been clarified to delineate what information will be available to project managers regarding interactions with government counterparts.
-- **D2** "project managers" means designated personnel responsible for overseeing specific missions or projects within the organization.  
-  The definition of 'project managers' ensures clarity on who will have access, aligning with expectations of personnel responsible for missions.
+- **D1** "engagement history" means a record of all interactions between the organization and the government counterpart, including dates of contact, participants, and summaries of discussions or activities.
+- **D2** "project managers" means designated personnel responsible for overseeing specific missions or projects within the organization.
 - **D3** "relevant authorized regional coordinators" means regional coordinators designated by the Data Steward based on their involvement in or necessity for accessing a specific country’s engagement history.  
   This definition formalizes criteria for 'relevant authorized regional coordinators', reducing ambiguity in access rights and responsibilities. _(C5)_
 
 ## Success criteria
 
-- **K1** Successfully providing access to engagement history to 100% of project managers as measured by system access logs within one month of the release.  
-  The success criterion emphasizes that 100% of project managers must access the engagement history within a month, focusing on monitoring system access logs as a measure of success.
+- **K1** Successfully providing access to engagement history to 100% of project managers as measured by system access logs within one month of the release.
 
 ## Open questions for humans
 

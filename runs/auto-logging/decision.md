@@ -14,15 +14,12 @@ This release will implement an automatic logging feature for meetings with gover
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automatically log meetings with government officials in the Government CRM.  
-  Automatically logging meetings with government officials will enhance the preservation of engagement history and ensure consistency in record-keeping.
-- **V2** Enhance engagement history tracking for users without requiring manual entries.  
-  Enhancing tracking of engagement history without manual entries will streamline user workflows and reduce the risk of errors.
+- **V1** Automatically log meetings with government officials in the Government CRM.
+- **V2** Enhance engagement history tracking for users without requiring manual entries.
 
 **In scope**
 
-- **S1** Meetings will be automatically logged in the system whenever a meeting is scheduled or completed with contacts classified as government officials.  
-  Automatic logging will occur whenever a meeting is scheduled or completed, ensuring comprehensive tracking of government interactions.
+- **S1** Meetings will be automatically logged in the system whenever a meeting is scheduled or completed with contacts classified as government officials.
 - **S2** A notification will be sent to meeting participants and their respective supervisors confirming that the meeting has been logged automatically.  
   Notifications will confirm logged meetings, ensuring all relevant parties are informed and reducing communication breakdowns. _(C6)_
 - **S3** Log entries will include details such as the date, time, duration, meeting participants (both internal and external), and a summary of the discussion points, while excluding sensitive topics or details deemed confidential by the meeting participants or by regulations.  
@@ -34,12 +31,9 @@ This release will implement an automatic logging feature for meetings with gover
 
 **Out of scope for this release**
 
-- **X1** This release will not include the ability to edit or delete automatically logged meetings.  
-  Editing or deleting logged meetings was dropped to maintain a clear and unalterable record of engagements.
-- **X2** The feature will not integrate with external calendar applications or other event management systems in this initial release.  
-  Integration with external calendar applications was dropped for the initial release to focus on core logging functionality.
-- **X3** Meetings that are not classified under government officials will not be auto-logged.  
-  Auto-logging meetings not classified under government officials was dropped to limit scope and ensure accurate tracking of relevant interactions.
+- **X1** This release will not include the ability to edit or delete automatically logged meetings.
+- **X2** The feature will not integrate with external calendar applications or other event management systems in this initial release.
+- **X3** Meetings that are not classified under government officials will not be auto-logged.
 
 **Rejected during deliberation**
 
@@ -57,17 +51,14 @@ This release will implement an automatic logging feature for meetings with gover
 
 - **D1** "Meetings" means scheduled events occurring between internal users and external contacts defined as government officials.  
   Defining meetings clearly as events with government officials prevents ambiguity in logging processes.
-- **D2** "Automatically logged" means the system records meetings without requiring user interaction after the meeting is held.  
-  The definition of 'automatically logged' clarifies expected system behavior and the non-requirement of user input post-meeting.
-- **D3** "Engagement history" means a chronological record of interactions and meetings with contacts, stored within the CRM.  
-  Clarifying 'engagement history' ensures users understand what is being tracked in the CRM.
+- **D2** "Automatically logged" means the system records meetings without requiring user interaction after the meeting is held.
+- **D3** "Engagement history" means a chronological record of interactions and meetings with contacts, stored within the CRM.
 - **D4** "Government officials" means contacts that are classified in the system as belonging to government entities or representatives of a government agency, including but not limited to ministers, diplomats, and government employees.  
   Providing a clear definition for 'government officials' mitigates the risk of misclassification during logging. _(C1)_
 
 ## Success criteria
 
-- **K1** At least 90% of meetings with government officials are successfully logged within the system over a three-month period, measured by CRM usage reports.  
-  Setting a success criterion of 90% logged meetings establishes a measurable goal for the feature's effectiveness.
+- **K1** At least 90% of meetings with government officials are successfully logged within the system over a three-month period, measured by CRM usage reports.
 
 ## Open questions for humans
 

@@ -14,17 +14,14 @@ This release will implement an alert system to notify users when engagement with
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Users will receive alerts when there is no engagement recorded with a country for over six months.  
-  Users will receive alerts when there is no engagement recorded with a country for over six months, providing timely informational support while maintaining confidentiality with non-sensitive details.
+- **V1** Users will receive alerts when there is no engagement recorded with a country for over six months.
 
 **In scope**
 
 - **S1** An alert system will be built to notify regional coordinators and project managers via email when there is no engagement activity logged in the CRM for a country over a period of six months.  
   An alert system will be built to notify regional coordinators and project managers via email when there is no engagement activity logged in the CRM for a country over a period of six months, focusing on critical relationship management.
-- **S2** The alert will include the country name, last engagement date, and a suggestion to re-engage.  
-  The alert will include the country name, last engagement date, and a suggestion to re-engage, ensuring users have the relevant information needed for follow-ups.
-- **S3** Users will be able to set preferences for receiving alerts weekly or monthly.  
-  Users will be able to set preferences for receiving alerts weekly or monthly, enhancing user control over their notifications and engagement processes.
+- **S2** The alert will include the country name, last engagement date, and a suggestion to re-engage.
+- **S3** Users will be able to set preferences for receiving alerts weekly or monthly.
 - **S4** Only users with access to government contact records will receive these alerts, and email alerts will only include non-sensitive information such as country name and last engagement date, ensuring confidentiality is maintained.  
   Only non-sensitive information will be included in the alerts to maintain confidentiality, addressing concerns about data exposure and unauthorized access. _(C1)_
 
@@ -34,10 +31,8 @@ This release will implement an alert system to notify users when engagement with
 
 - **X1** This release will not include any additional features for re-engagement strategies or monitoring user interactions as part of the alert system.  
   This release will not include any additional features for re-engagement strategies or monitoring user interactions as part of the alert system, focusing instead on the primary alert functionality. _(C5)_
-- **X2** Historical engagement records prior to the implementation of this alert system will not be included.  
-  Historical engagement records prior to the implementation of this alert system will not be included to streamline the process and focus on future engagements.
-- **X3** Development of a dashboard for visualizing engagement metrics will not be considered in this release.  
-  Development of a dashboard for visualizing engagement metrics will not be considered in this release, as it complicates the primary objective of the alert system.
+- **X2** Historical engagement records prior to the implementation of this alert system will not be included.
+- **X3** Development of a dashboard for visualizing engagement metrics will not be considered in this release.
 
 **Rejected during deliberation**
 
@@ -62,8 +57,7 @@ This release will implement an alert system to notify users when engagement with
 
 ## Success criteria
 
-- **K1** At least 80% of users receive the alerts successfully without any technical failures, measured by system logs and user feedback within the first month after launch.  
-  Success will be measured by ensuring that at least 80% of users receive alerts successfully without any technical failures in the first month after launch, establishing a clear performance benchmark for the system.
+- **K1** At least 80% of users receive the alerts successfully without any technical failures, measured by system logs and user feedback within the first month after launch.
 
 ## Open questions for humans
 

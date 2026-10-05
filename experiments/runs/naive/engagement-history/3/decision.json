@@ -26,7 +26,7 @@
     {
       "id": "V1",
       "text": "Project managers can access a detailed engagement history for each country.",
-      "note": "Project managers can access a detailed engagement history for each country, which is key for informed decision-making.",
+      "note": "",
       "refs": []
     }
   ],
@@ -70,7 +70,7 @@
     {
       "id": "S5",
       "text": "Users will have the ability to filter the engagement history by date range, contact, or project to find specific information quickly.",
-      "note": "Users will have filtering capabilities to quickly find specific engagement information by date range, contact, or project.",
+      "note": "",
       "refs": []
     },
     {
@@ -96,7 +96,7 @@
     {
       "id": "X1",
       "text": "This release will not include the ability for project managers to edit engagement history.",
-      "note": "Project managers will not be able to edit engagement history, maintaining the integrity of records.",
+      "note": "",
       "refs": []
     },
     {
@@ -108,7 +108,7 @@
     {
       "id": "X3",
       "text": "The integration with external systems for historical data retrieval is not included in this release.",
-      "note": "Integration with external systems for historical data retrieval was not included in this release to focus on internal processes.",
+      "note": "",
       "refs": []
     }
   ],
@@ -126,7 +126,7 @@
     {
       "id": "A1",
       "text": "The current CRM already stores engagement history in a retrievable format; this is necessary for project managers to access it.",
-      "note": "The CRM's existing structure supports engagement history, which is necessary for fulfilling this feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -134,7 +134,7 @@
     {
       "id": "A2",
       "text": "Users with the 'Project Manager' role have permissions to access the relevant engagement history features.",
-      "note": "Project managers are assumed to have the necessary permissions to access engagement history.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -171,7 +171,7 @@
     {
       "id": "D2",
       "text": "Project Manager means a user who has been assigned the role of 'Project Manager' in the Government CRM system, with the ability to manage projects and access related data.",
-      "note": "Project Manager is explicitly defined to clarify user capabilities within the system.",
+      "note": "",
       "refs": []
     }
   ],
@@ -179,7 +179,7 @@
     {
       "id": "K1",
       "text": "At least 80% of project managers report that they can successfully access and utilize the engagement history before initiating a new mission, measured through a user satisfaction survey conducted after the implementation.",
-      "note": "A success metric has been defined to ensure project managers can effectively access and utilize the engagement history.",
+      "note": "",
       "refs": []
     },
     {

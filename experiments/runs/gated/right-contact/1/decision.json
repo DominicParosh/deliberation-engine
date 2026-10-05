@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable users to view and update key contact information for each of the ~100 member countries.",
-      "note": "Users will be enabled to view and update key contact information, facilitating better management of government counterparts.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Allow users to assign a primary contact per country for easier identification.",
-      "note": "Assigning a primary contact per country simplifies identification and improves communication.",
+      "note": "",
       "refs": []
     }
   ],
@@ -45,13 +45,13 @@
     {
       "id": "S2",
       "text": "Provide a form for users to add or edit contact information, including options to designate a contact as the primary for each country.",
-      "note": "A form for adding or editing contact information will facilitate user engagement with the system’s features.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Implement a search feature that allows users to find key contacts by country or name.",
-      "note": "Implementing a search feature allows users to efficiently locate key contacts, supporting user needs.",
+      "note": "",
       "refs": []
     },
     {
@@ -77,19 +77,19 @@
     {
       "id": "X1",
       "text": "This release will not include automatic updates of contact information from external databases.",
-      "note": "Automatic updates from external databases were dropped to maintain control over data accuracy and integrity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "Integration with third-party communication tools is not included in this release.",
-      "note": "Integration with third-party communication tools was deemed outside the scope of this release to avoid complexity.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "Historical engagement data with contacts beyond the current contact information will not be part of this release.",
-      "note": "Historical engagement data with contacts will not be included to focus on current contact management.",
+      "note": "",
       "refs": []
     }
   ],
@@ -99,7 +99,7 @@
     {
       "id": "A1",
       "text": "Users have the necessary training to access and use the new 'Key Contacts' feature, which is necessary for engagement efficiency.",
-      "note": "The assumption that users have training is essential for the effective use of the new feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -107,7 +107,7 @@
     {
       "id": "A2",
       "text": "There are no existing protocols preventing users from storing and updating contact details for government counterparts.",
-      "note": "Confirming no existing protocols preventing user updates is crucial for implementing the feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -134,13 +134,13 @@
     {
       "id": "D1",
       "text": "'Key Contacts' means a designated individual representing a specific country for collaboration, including their name, title, and contact information.",
-      "note": "'Key Contacts' is defined to specify the individuals representing countries for communication.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "'Primary contact' means the key contact designated as the main point of contact for a country in the Government CRM.",
-      "note": "'Primary contact' is clearly defined to help in the identification of main points of communication.",
+      "note": "",
       "refs": []
     }
   ],
@@ -148,7 +148,7 @@
     {
       "id": "K1",
       "text": "By the end of the quarter, at least 80% of regional coordinators and project managers report improved access to key contact information, measured through a user survey.",
-      "note": "Success will be measured through surveys showing improved access, emphasizing user satisfaction.",
+      "note": "",
       "refs": []
     }
   ],

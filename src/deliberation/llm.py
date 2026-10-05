@@ -12,7 +12,7 @@ MAX_TOKENS = 8000
 DEFAULT_MODELS = {"anthropic": "claude-haiku-4-5-20251001", "openai": "gpt-4o-mini"}
 # USD per million input/output tokens, from each provider's pricing page (Oct 2026).
 PRICES = {"claude-haiku-4-5": (1.0, 5.0), "gpt-4o-mini": (0.15, 0.60)}
-KEYS = {"anthropic": "ANTHROPIC_API_KEY", "openai": "OPENAI_API_KEY"}
+KEYS = {"openai": "OPENAI_API_KEY", "anthropic": "ANTHROPIC_API_KEY"}  # in order of preference
 
 
 @dataclass
@@ -104,7 +104,7 @@ def load_env(path) -> None:
 
 
 def default_provider() -> str | None:
-    """Anthropic if its key is set, otherwise OpenAI if its key is set."""
+    """OpenAI if its key is set (every recorded run used it), otherwise Anthropic if its key is set."""
     return next((p for p, key in KEYS.items() if os.environ.get(key)), None)
 
 

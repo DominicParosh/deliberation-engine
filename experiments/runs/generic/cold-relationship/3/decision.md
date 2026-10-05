@@ -14,15 +14,13 @@ This release will implement an alert system in the Government CRM to notify user
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** The system will send an alert to designated users when there has been no engagement with a country contact for 6 months.  
-  The alert threshold was set at 6 months of no recorded engagement to effectively monitor relationships without overwhelming users with frequent alerts.
+- **V1** The system will send an alert to designated users when there has been no engagement with a country contact for 6 months.
 
 **In scope**
 
 - **S1** The system will automatically update alert recipients when users change roles or leave the organization, ensuring alerts are sent only to current managers of that country contact.  
   Revised to specify that the system will automatically update alert recipients based on user role changes, addressing concerns about outdated alert recipients. _(C3)_
-- **S2** The alert will include the country name, contact details, and the last date of recorded engagement.  
-  The alert will include essential information such as the country name and last engagement date, ensuring users have relevant context without compromising sensitive data.
+- **S2** The alert will include the country name, contact details, and the last date of recorded engagement.
 - **S3** The system will include a mechanism for users to establish threshold triggers based on the number of engagement alerts received, minimizing alert fatigue by consolidating alerts for less critical situations.  
   A mechanism for minimizing alert fatigue was added, allowing users to establish threshold triggers for alerts, thus ensuring important alerts are more noticeable. _(C5)_
 - **S4** Regional coordinators and project managers will be the primary users receiving these alerts.  
@@ -36,10 +34,8 @@ This release will implement an alert system in the Government CRM to notify user
 
 - **X1** The release will not include proactive actions or suggestions for following up with the country contacts after the alert is received, leaving follow-up actions to the discretion of users.  
   The decision not to include follow-up actions clarifies that follow-up responsibility lies with users, establishing clear expectations for engagement. _(C6)_
-- **X2** The system will not analyze reasons for decreased engagement or categorize types of engagements.  
-  The system will not analyze reasons for engagement decline to limit scope and complexity, focusing instead on alert generation based on user-defined periods of inactivity.
-- **X3** The release will not implement alerts for individual team members, only for designated roles (regional coordinators and project managers).  
-  Deciding not to implement alerts for individual team members keeps the system focused on key relationship managers, preventing unnecessary complexity.
+- **X2** The system will not analyze reasons for decreased engagement or categorize types of engagements.
+- **X3** The release will not implement alerts for individual team members, only for designated roles (regional coordinators and project managers).
 - **X4** The alert system will not include sensitive country contacts in alerts, ensuring that alerts are restricted to non-sensitive country contacts only as defined by designated project managers.  
   Out of scope to include sensitive contacts in alerts was established to maintain confidentiality and avoid potential breaches of sensitive information. _(C9)_
 
@@ -59,17 +55,14 @@ This release will implement an alert system in the Government CRM to notify user
 
 - **D1** 'Cold' means a period of 6 months without any recorded engagement (contacts or meetings) logged in the CRM, excluding informal communications such as internal discussions or unlogged emails.  
   Changed to clarify that 'cold' engagement consists of no logged interactions for 6 months, thus preventing confusion over what counts as engagement. _(C2)_
-- **D2** 'Engagement' means any logged interaction, such as meetings, phone calls, or emails with country contacts.  
-  'Engagement' was defined specifically as logged interactions, which addresses potential misunderstandings and ensures clarity.
-- **D3** 'Users' refers specifically to regional coordinators and project managers who manage country relationships within the CRM.  
-  Defined 'users' specifically to eliminate ambiguity about who will receive alerts, which are only the designated role holders.
+- **D2** 'Engagement' means any logged interaction, such as meetings, phone calls, or emails with country contacts.
+- **D3** 'Users' refers specifically to regional coordinators and project managers who manage country relationships within the CRM.
 - **D4** 'Engagement logs' mean any documented record of an interaction with a country contact that is formally logged in the CRM, including entries that detail date, type, and subject of communication such as meetings, phone calls, or emails.  
   Clarified what constitutes an engagement log to ensure that only formal interactions are counted, reducing potential errors in the alert system. _(C10)_
 
 ## Success criteria
 
-- **K1** At least 80% of users report receiving alerts in a timely manner (measured through user feedback surveys conducted 1 month after release).  
-  Success criteria of timely alerts were established to evaluate user satisfaction and system effectiveness after release.
+- **K1** At least 80% of users report receiving alerts in a timely manner (measured through user feedback surveys conducted 1 month after release).
 
 ## Open questions for humans
 

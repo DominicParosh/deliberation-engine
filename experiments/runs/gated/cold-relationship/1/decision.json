@@ -25,7 +25,7 @@
     {
       "id": "V1",
       "text": "Implement an alert system for users when engagement with a country is considered 'cold.'",
-      "note": "An alert system for users will be implemented to signal when engagement with a country is considered 'cold', allowing for a better response to declining interactions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -33,7 +33,7 @@
     {
       "id": "S1",
       "text": "Define 'cold' engagement as a lack of recorded communication or updates for 90 days.",
-      "note": "'Cold' engagement is defined as lack of recorded communication or updates for 90 days to provide a clear threshold for alerts.",
+      "note": "",
       "refs": []
     },
     {
@@ -57,13 +57,13 @@
     {
       "id": "S4",
       "text": "Incorporate a dashboard feature that displays a list of countries with 'cold' engagements for easier monitoring.",
-      "note": "Incorporating a dashboard feature will facilitate monitoring of 'cold' engagements for users, which is essential for managing communications effectively.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S5",
       "text": "Allow users to customize their alert settings for engagement thresholds (e.g., 30, 60, 90 days) within the system.",
-      "note": "Customization of alert settings will empower users to adjust thresholds according to their needs, enhancing user engagement with the system.",
+      "note": "",
       "refs": []
     }
   ],

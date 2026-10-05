@@ -14,30 +14,24 @@ This release will implement an alert system to notify users when engagement with
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Users receive alerts when no engagement activities have occurred with a specific country for a period of six months.  
-  Users will receive alerts for inactive engagements after six months to prompt re-engagement.
+- **V1** Users receive alerts when no engagement activities have occurred with a specific country for a period of six months.
 
 **In scope**
 
 - **S1** The system will define 'engagement activities' as any logged communication or meeting with a country representative, ministry contact, project lead, or mission delegate. All logged engagement activities must undergo an internal review process every six months, including checks for completeness, accuracy, and relevance. If errors are identified during the review, the designated authorized user must correct these discrepancies within five business days and document the corrective actions taken in a corrections log. Access to sensitive information will be restricted to authorized personnel only, and a two-factor authentication protocol will be implemented to access sensitive logs. Additionally, all reviews will be tracked through an access log.  
   Defines engagement activities and includes a review process to ensure accuracy, though the specific metrics for these checks remain a point of contention. _(C3)_
-- **S2** An alert will be generated and sent via email to the designated regional coordinator and project manager when a relationship goes cold as defined in V1.  
-  Specifies that alerts will be sent to coordinators and project managers, ensuring relevant stakeholders are informed.
+- **S2** An alert will be generated and sent via email to the designated regional coordinator and project manager when a relationship goes cold as defined in V1.
 - **S3** The CRM will include a configuration option that allows only regional coordinators and project managers to set the duration for alerts related to inactive relationships, allowing for customization between three to twelve months. If a user who has set configurations leaves or changes their role, their alert settings will be reset, and the new user assigned to their role will need to establish new alert configurations.  
   Defines which roles are authorized to set alert durations, addressing ownership concerns about misconfiguration when users change roles. _(C1, C2)_
-- **S4** A dashboard will display a summary of all countries with cold relationships, indicating the country name and the last date of engagement.  
-  Includes a dashboard overview of cold relationships to facilitate quick visibility on engagement health.
+- **S4** A dashboard will display a summary of all countries with cold relationships, indicating the country name and the last date of engagement.
 
 ## What it will not do
 
 **Out of scope for this release**
 
-- **X1** This release will not include alerts for relationships that have simply decreased in frequency but still have some ongoing engagement.  
-  Will not include alerts for relationships with decreased engagement frequency to focus specifically on complete inactivity.
-- **X2** This release will not cover any changes to the underlying CRM system architecture or any complex user-defined rules beyond the specified duration for alert settings.  
-  No changes to CRM architecture or complex user-defined alert rules will be made, keeping the implementation straightforward.
-- **X3** The CRM will not provide detailed historical data analysis on the reasons for the cold relationship in this release.  
-  Historical reasons for cold relationships are outside the scope of this release to maintain focused objectives.
+- **X1** This release will not include alerts for relationships that have simply decreased in frequency but still have some ongoing engagement.
+- **X2** This release will not cover any changes to the underlying CRM system architecture or any complex user-defined rules beyond the specified duration for alert settings.
+- **X3** The CRM will not provide detailed historical data analysis on the reasons for the cold relationship in this release.
 - **X4** This release will ensure all alerts regarding cold relationships are only accessible to regional coordinators and project managers, and sensitive engagement data will be protected by role-based access controls.  
   Alerts for cold relationships will be accessible only to regional coordinators and project managers, ensuring proper confidentiality. _(C5)_
 - **X5** This release will ensure alerts regarding cold relationships are retained for a maximum of six months before automatic deletion from the system.  
@@ -57,12 +51,9 @@ This release will implement an alert system to notify users when engagement with
 
 ## Definitions
 
-- **D1** "cold relationship" means a relationship with a country that has not recorded any engagement activity for six months as per V1.  
-  Defines a 'cold relationship' based on the absence of engagement activities for six months.
-- **D2** "engagement activities" means any recorded form of communication, meeting, or project interaction between users of the CRM and government representatives from member countries.  
-  Clarifies what constitutes 'engagement activities' to avoid confusion and ensure comprehensive tracking.
-- **D3** "authorized users" means users who have been granted permission to configure alert settings within the CRM.  
-  Defines 'authorized users' as those permitted to set alert configurations, ensuring clarity on responsibilities.
+- **D1** "cold relationship" means a relationship with a country that has not recorded any engagement activity for six months as per V1.
+- **D2** "engagement activities" means any recorded form of communication, meeting, or project interaction between users of the CRM and government representatives from member countries.
+- **D3** "authorized users" means users who have been granted permission to configure alert settings within the CRM.
 
 ## Success criteria
 

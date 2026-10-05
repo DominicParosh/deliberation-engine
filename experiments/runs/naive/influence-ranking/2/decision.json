@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable users to categorize contacts based on their influence level.",
-      "note": "Users will be able to categorize contacts based on their influence level, a core component of the proposal that addresses the need for prioritization.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide users with a visual representation of contact influence levels for prioritization.",
-      "note": "A visual representation of contact influence levels will be provided, helping users quickly assess and prioritize engagement with contacts.",
+      "note": "",
       "refs": []
     }
   ],
@@ -53,7 +53,7 @@
     {
       "id": "S3",
       "text": "Implement a filter in the contacts list that allows users to sort contacts by Influence Level.",
-      "note": "Implementing a filter to sort contacts by Influence Level contributes directly to the prioritization goal by allowing for quick access to categorized contacts.",
+      "note": "",
       "refs": []
     },
     {
@@ -78,19 +78,19 @@
     {
       "id": "X1",
       "text": "This release does not include automated tools or algorithms to determine a contact's Influence Level.",
-      "note": "Automated tools for determining Influence Level are out of scope to prevent reliance on potentially misleading automation.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not encompass any external integrations with third-party systems for influence analytics.",
-      "note": "External integrations with third-party systems are not included to keep the current system self-contained and secure.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "No changes will be made to existing user permissions in the CRM system regarding contact detail visibility.",
-      "note": "No changes to existing user permissions were made to maintain the current structure and avoid complications with data access.",
+      "note": "",
       "refs": []
     }
   ],
@@ -100,7 +100,7 @@
     {
       "id": "A1",
       "text": "Users have the knowledge and criteria to manually assess the Influence Level of their contacts based on established protocols.",
-      "note": "The assumption that users can manually assess Influence Levels remains, as it ensures that users adhere to established protocols.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -108,7 +108,7 @@
     {
       "id": "A2",
       "text": "All users of this CRM have the necessary permissions to edit contact details.",
-      "note": "User permission editing is assumed necessary to allow updates to contact details by appropriate users, ensuring operational effectiveness.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -116,7 +116,7 @@
     {
       "id": "A3",
       "text": "Data integrity is maintained; users will not misuse the Influence Level categorization.",
-      "note": "Data integrity is assumed to be upheld by the users and will be critical for the success of the influence categorization.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -134,7 +134,7 @@
     {
       "id": "D2",
       "text": "'Visual representation' means a graphical or tabular display that allows users to quickly understand the influence status of their contacts at a glance.",
-      "note": "The definition of visual representation was established to clearly communicate how influence levels will be displayed for user convenience.",
+      "note": "",
       "refs": []
     }
   ],
@@ -142,7 +142,7 @@
     {
       "id": "K1",
       "text": "At least 75% of users report satisfaction with the new contact categorization feature through a follow-up survey conducted one month after release.",
-      "note": "Success criteria of 75% satisfaction among users will gauge the feature's acceptance and functional success post-release.",
+      "note": "",
       "refs": []
     }
   ],

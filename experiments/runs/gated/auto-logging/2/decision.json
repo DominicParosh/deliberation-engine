@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Automatically log meetings with government officials, including details such as participants, date, and notes.",
-      "note": "This feature is imperative to enhance the logging of meetings with government officials to prevent loss of engagement history.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Allow users to view and retrieve logged meeting histories easily.",
-      "note": "Facilitating easy access to logged meeting histories is crucial for users to refer back to previous engagements.",
+      "note": "",
       "refs": []
     }
   ],
@@ -53,13 +53,13 @@
     {
       "id": "S3",
       "text": "Users will receive a notification confirming that the meeting has been logged.",
-      "note": "Notifications confirm that meetings are logged adequately, helping users keep track of their engagement activities.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "Meeting log entries will be available for review in a timeline format within the CRM.",
-      "note": "The timeline format for review aids in providing a clear view of engagement activities to users.",
+      "note": "",
       "refs": []
     },
     {
@@ -107,7 +107,7 @@
     {
       "id": "A1",
       "text": "Users have the necessary permissions to log meetings within the CRM, determining access to engagement histories.",
-      "note": "This assumption underscores the importance of established user permissions for effective logging within the CRM.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -115,7 +115,7 @@
     {
       "id": "A2",
       "text": "The CRM already possesses a basic structure to log user input for meetings.",
-      "note": "It is presumed that the foundation for logging meetings is already in place within the CRM system.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -123,7 +123,7 @@
     {
       "id": "A3",
       "text": "Users are willing to manually input meeting details at least once to trigger the logging process.",
-      "note": "User willingness to manually input meeting details is necessary to initiate the logging process.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -133,7 +133,7 @@
     {
       "id": "D1",
       "text": "\"meetings with government officials\" means scheduled interactions between CRM users and representatives from governmental entities, including but not limited to country representatives and ministry contacts.",
-      "note": "Clarification of what constitutes 'meetings with government officials' aids in defining the logging parameters accurately.",
+      "note": "",
       "refs": []
     },
     {
@@ -155,7 +155,7 @@
     {
       "id": "K1",
       "text": "At least 90% of logged meeting entries are successfully recorded without errors in the first month after deployment, measured by user reports and system logs.",
-      "note": "Setting a benchmark for error-free logging of meetings ensures accountability and attention to data quality post-launch.",
+      "note": "",
       "refs": []
     }
   ],

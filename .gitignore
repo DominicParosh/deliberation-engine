@@ -1,15 +1,9 @@
-.venv/
-__pycache__/
-.pytest_cache/
-.env
-runs/*/replay/
-out/
-
 # Python
 __pycache__/
 *.pyc
 .venv/
 venv/
+.pytest_cache/
 
 # Secrets
 .env
@@ -20,5 +14,6 @@ venv/
 # Mac
 .DS_Store
 
-# Generated files
-.pytest_cache/
+# Run output (runs/ holds the published runs; --replay writes a replay/ folder beside each recording)
+out/
+replay/

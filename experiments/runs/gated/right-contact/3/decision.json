@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable users to view and update key contact information for each member country.",
-      "note": "This commitment ensures users can view and update important contact information, addressing the core need of the proposal.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Allow users to categorize contacts by role and relevance to their specific projects or missions.",
-      "note": "This commitment allows categorization of contacts, making it easier for users to prioritize engagement based on project relevance.",
+      "note": "",
       "refs": []
     }
   ],
@@ -43,7 +43,7 @@
     {
       "id": "S2",
       "text": "Add a categorization feature that allows users to tag contacts based on their relevance (e.g., primary contact, secondary contact, etc.).",
-      "note": "A tagging feature enhances usability by allowing users to categorize contacts by relevance, supporting better project engagement.",
+      "note": "",
       "refs": []
     },
     {
@@ -67,7 +67,7 @@
     {
       "id": "X1",
       "text": "This release will not include automated alerts or reminders for contact updates.",
-      "note": "Automated alerts for updates are seen as unnecessary at this stage and will not be included in this release.",
+      "note": "",
       "refs": []
     },
     {
@@ -100,7 +100,7 @@
     {
       "id": "A2",
       "text": "The CRM has the necessary data fields available for contact roles and categorization, which depends on existing CRM capabilities being sufficient for this feature.",
-      "note": "This assumption relies on existing CRM capabilities being sufficient, which hasn’t been contested during deliberation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -123,7 +123,7 @@
     {
       "id": "D1",
       "text": "\"Key contact\" means the individual in a government organization who is identified as the primary resource for communication regarding specific projects or missions.",
-      "note": "Defining 'key contact' helps users understand the role's importance in project communications, adding clarity to the proposal.",
+      "note": "",
       "refs": []
     },
     {
@@ -137,7 +137,7 @@
     {
       "id": "D3",
       "text": "\"Categorization feature\" means a system allowing users to categorize contacts as primary, secondary, or other relevant tags for the purpose of prioritizing engagement.",
-      "note": "A clear categorization feature will allow prioritization of engagement, addressing critical user needs effectively.",
+      "note": "",
       "refs": []
     }
   ],

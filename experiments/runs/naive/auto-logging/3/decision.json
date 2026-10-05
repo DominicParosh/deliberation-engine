@@ -26,7 +26,7 @@
     {
       "id": "V1",
       "text": "Enable automatic logging of meetings with government officials to preserve engagement history.",
-      "note": "The core commitment to enable automatic logging of meetings was accepted to preserve engagement history as a necessary feature.",
+      "note": "",
       "refs": []
     }
   ],
@@ -123,7 +123,7 @@
     {
       "id": "A2",
       "text": "The existing CRM system supports adding new features without major architectural changes regarding data handling.",
-      "note": "The assumption about the CRM’s capability to support new features without major changes was accepted as a forward-looking consideration.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -131,7 +131,7 @@
     {
       "id": "A3",
       "text": "All users with the ability to log meetings have the required security clearance to access the logged information.",
-      "note": "The assumption that all users have requisite security clearance was accepted but also raises questions about training and oversight.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -149,7 +149,7 @@
     {
       "id": "D2",
       "text": "\"engagement history\" means the cumulative records of interactions and meetings with government contacts tracked within the CRM.",
-      "note": "The definition of 'engagement history' was established to outline the scope of the records tracked within the CRM without contention.",
+      "note": "",
       "refs": []
     }
   ],

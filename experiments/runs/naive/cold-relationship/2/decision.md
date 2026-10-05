@@ -14,21 +14,15 @@ An alert system will be built to notify users when their engagement with a count
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Implement an alert system to notify users when engagement records are inactive for a period of time.  
-  An alert system will inform users about inactive engagement records to enhance awareness of relationship status.
-- **V2** Allow users to customize the duration that defines 'cold' relationships.  
-  Users will customize alert durations to suit their needs, thus improving the relevance of notifications.
+- **V1** Implement an alert system to notify users when engagement records are inactive for a period of time.
+- **V2** Allow users to customize the duration that defines 'cold' relationships.
 
 **In scope**
 
-- **S1** Users will receive an email notification if no engagement has been recorded for a specified duration of 90 days.  
-  Email notifications will be sent if no engagement is recorded for 90 days, providing clear thresholds for alerting users.
-- **S2** Regional coordinators and project managers will have the ability to set the 'inactive duration' for alerts between 30 to 120 days.  
-  Role-specific customization of alert durations between 30 to 120 days ensures that users can tailor notifications to their engagement practices.
-- **S3** An 'engagement record' will be defined as any update made to a country contact's record in the CRM, including emails, project updates, or meeting minutes.  
-  Defining 'engagement record' allows the system to precisely track relevant updates, ensuring accurate assessment of relationship status.
-- **S4** The system will have a dashboard view for users to see a list of 'cold' relationships based on their customizable thresholds.  
-  The dashboard view for 'cold' relationships empowers users to monitor their engagements visually based on personal thresholds.
+- **S1** Users will receive an email notification if no engagement has been recorded for a specified duration of 90 days.
+- **S2** Regional coordinators and project managers will have the ability to set the 'inactive duration' for alerts between 30 to 120 days.
+- **S3** An 'engagement record' will be defined as any update made to a country contact's record in the CRM, including emails, project updates, or meeting minutes.
+- **S4** The system will have a dashboard view for users to see a list of 'cold' relationships based on their customizable thresholds.
 - **S5** Users with roles of 'executive-level staff' and 'other project managers' will not receive alerts about cold relationships from teams outside their own. Only regional coordinators will receive alerts pertaining to their direct country responsibilities.  
   This item specifies role restrictions to prevent unauthorized access, addressing previous confidentiality concerns. _(C1)_
 - **S6** The CRM will include a system prompt to remind users to update engagement records if no updates have been made for 30 days. Failure to update records will flag users for a review process by their supervisor every quarter.  
@@ -63,15 +57,13 @@ An alert system will be built to notify users when their engagement with a count
 
 - **D1** 'Cold' means a lack of engagement record updates for a specified duration of 90 days, and at least one documented interaction must occur every 30 days to prevent a relationship from being deemed cold.  
   The definition of 'cold' relationships now incorporates both time and interaction criteria, improving clarity. _(C2)_
-- **D2** 'Engagement record' means any documented interaction, update, or note added to the contact's record in the CRM.  
-  Clarifies that any recorded interaction qualifies as an engagement record, which is vital for accurate relationship assessment.
+- **D2** 'Engagement record' means any documented interaction, update, or note added to the contact's record in the CRM.
 - **D3** 'Engagement record' means any documented interaction, such as email correspondence, meeting notes, project updates, or any formal record that reflects a discussion or negotiation with a country contact added to the CRM, excluding non-official communications.  
   This expanded definition eliminates ambiguity about engagement records to prevent misclassification of cold relationships. _(C6)_
 
 ## Success criteria
 
-- **K1** At least 75% of users report that they received timely alerts for cold relationships within the first month after implementation, measured by user feedback surveys.  
-  Success will be measured through user feedback to ensure the effectiveness of the alerts, confirming user satisfaction with the notification system.
+- **K1** At least 75% of users report that they received timely alerts for cold relationships within the first month after implementation, measured by user feedback surveys.
 
 ## Open questions for humans
 

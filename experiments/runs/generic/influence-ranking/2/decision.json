@@ -25,13 +25,13 @@
     {
       "id": "V1",
       "text": "Enable users to categorize contacts by influence level to prioritize engagements.",
-      "note": "Users will be able to categorize contacts by influence levels to prioritize engagements, addressing the need for better resource allocation.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide a visual interface to quickly assess and filter contacts based on their influence.",
-      "note": "A visual interface will help users assess and filter contacts based on influence, enhancing user experience and decision-making.",
+      "note": "",
       "refs": []
     }
   ],
@@ -69,7 +69,7 @@
     {
       "id": "S5",
       "text": "Implement user training sessions to ensure efficient usage of the new influence tracking feature.",
-      "note": "User training sessions will be implemented to support effective usage of the new feature, addressing potential gaps in user competency.",
+      "note": "",
       "refs": []
     },
     {
@@ -107,7 +107,7 @@
     {
       "id": "A1",
       "text": "The organization has defined criteria for determining the 'Influence Level' of contacts. This assumption is critical for coding and testing the ranking scale.",
-      "note": "The organization has established criteria for determining influence levels, which is critical for feature implementation.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -155,7 +155,7 @@
     {
       "id": "D2",
       "text": "'User Roles' means defined positions within the CRM system that have varying levels of access and capabilities, specifically including regional coordinators and project managers.",
-      "note": "Defined user roles will clarify varying access levels within the CRM system, ensuring appropriate permissions are maintained.",
+      "note": "",
       "refs": []
     }
   ],
@@ -163,13 +163,13 @@
     {
       "id": "K1",
       "text": "Achieve at least a 75% user satisfaction rate with the new influence tracking feature, measured through user feedback surveys within one month of release.",
-      "note": "The desired user satisfaction rate reflects the goal of effective feature usage and acceptance among users.",
+      "note": "",
       "refs": []
     },
     {
       "id": "K2",
       "text": "Ensure that at least 80% of contacts have their Influence Level rated within the first two months of feature launch.",
-      "note": "A target rate of Influence Levels assigned to contacts ensures timely and effective utilization of the feature post-launch.",
+      "note": "",
       "refs": []
     }
   ],

@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Implement an alert system to notify users when engagement records are inactive for a period of time.",
-      "note": "An alert system will inform users about inactive engagement records to enhance awareness of relationship status.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Allow users to customize the duration that defines 'cold' relationships.",
-      "note": "Users will customize alert durations to suit their needs, thus improving the relevance of notifications.",
+      "note": "",
       "refs": []
     }
   ],
@@ -37,25 +37,25 @@
     {
       "id": "S1",
       "text": "Users will receive an email notification if no engagement has been recorded for a specified duration of 90 days.",
-      "note": "Email notifications will be sent if no engagement is recorded for 90 days, providing clear thresholds for alerting users.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S2",
       "text": "Regional coordinators and project managers will have the ability to set the 'inactive duration' for alerts between 30 to 120 days.",
-      "note": "Role-specific customization of alert durations between 30 to 120 days ensures that users can tailor notifications to their engagement practices.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "An 'engagement record' will be defined as any update made to a country contact's record in the CRM, including emails, project updates, or meeting minutes.",
-      "note": "Defining 'engagement record' allows the system to precisely track relevant updates, ensuring accurate assessment of relationship status.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "The system will have a dashboard view for users to see a list of 'cold' relationships based on their customizable thresholds.",
-      "note": "The dashboard view for 'cold' relationships empowers users to monitor their engagements visually based on personal thresholds.",
+      "note": "",
       "refs": []
     },
     {
@@ -117,7 +117,7 @@
     {
       "id": "A1",
       "text": "Users will regularly update engagement records within the CRM to ensure accurate tracking of relationships.",
-      "note": "The assumption focuses on user behavior regarding engagement record maintenance, which is crucial for the system's effectiveness.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -125,7 +125,7 @@
     {
       "id": "A2",
       "text": "Users have access to email notifications and check their inbox for alerts regarding cold relationships.",
-      "note": "This assumption ensures all users can receive notifications, essential for implementation success.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -133,7 +133,7 @@
     {
       "id": "A3",
       "text": "Engagement records include updates to projects or meetings with country contacts; this is necessary to define cold relationships.",
-      "note": "Clarifying the types of engagement records integral to determining 'cold' relationships is critical for accurate tracking.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -141,7 +141,7 @@
     {
       "id": "A4",
       "text": "The users' roles allow them to set alert durations but not to modify system-level settings.",
-      "note": "This assumption defines user role limitations, which are important for maintaining proper access and permissions in the system.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -159,7 +159,7 @@
     {
       "id": "D2",
       "text": "'Engagement record' means any documented interaction, update, or note added to the contact's record in the CRM.",
-      "note": "Clarifies that any recorded interaction qualifies as an engagement record, which is vital for accurate relationship assessment.",
+      "note": "",
       "refs": []
     },
     {
@@ -175,7 +175,7 @@
     {
       "id": "K1",
       "text": "At least 75% of users report that they received timely alerts for cold relationships within the first month after implementation, measured by user feedback surveys.",
-      "note": "Success will be measured through user feedback to ensure the effectiveness of the alerts, confirming user satisfaction with the notification system.",
+      "note": "",
       "refs": []
     }
   ],

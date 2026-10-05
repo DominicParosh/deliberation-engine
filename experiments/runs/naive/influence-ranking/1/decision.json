@@ -25,13 +25,13 @@
     {
       "id": "V1",
       "text": "Categorize contacts by influence level based on specific criteria.",
-      "note": "Categorizing contacts by influence level is critical for prioritization, hence it has been committed to based on specific criteria outlined.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide a searchable and filterable interface for users to prioritize contacts.",
-      "note": "Providing a searchable interface for prioritizing contacts is essential for operational efficacy; therefore, this is included in the final commitments.",
+      "note": "",
       "refs": []
     }
   ],
@@ -55,7 +55,7 @@
     {
       "id": "S3",
       "text": "Develop a dashboard for regional coordinators and project managers to view and filter contacts by influence level.",
-      "note": "A dashboard to view influence levels will facilitate strategic decision-making for coordinators and project managers; hence, it has been prioritized.",
+      "note": "",
       "refs": []
     },
     {
@@ -93,13 +93,13 @@
     {
       "id": "X1",
       "text": "This release will not incorporate machine learning or AI to auto-generate influence scores.",
-      "note": "Machine learning or AI was deemed too complex to incorporate in this phase, given the current sensitivity of data and need for manual oversight. Therefore, it is excluded.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "The release will not include historical data analysis of engagement outcomes to influence future scoring.",
-      "note": "Historical data analysis wasn’t included as it does not align with the immediate objectives of influence scoring, focusing instead on current relationships.",
+      "note": "",
       "refs": []
     },
     {
@@ -115,7 +115,7 @@
     {
       "id": "A1",
       "text": "Assuming that users have access to sufficient data regarding contacts' position and engagement within their respective ministries, which is necessary for influence scoring.",
-      "note": "It is assumed that users will have access to necessary data for scoring, which is fundamental for operationalized scoring to be effective.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -123,7 +123,7 @@
     {
       "id": "A2",
       "text": "Assuming that the influence scoring method can be standardized across different countries and contexts.",
-      "note": "Standardization of influence scoring across contexts is presumed feasible to maintain consistency, critical for the project's success.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -131,7 +131,7 @@
     {
       "id": "A3",
       "text": "Assuming that there will be no legal barriers preventing the internal categorization of contacts based on their influence.",
-      "note": "The absence of legal barriers is assumed for categorizing contacts, allowing the operational process to move forward without legal hindrances.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -159,13 +159,13 @@
     {
       "id": "K1",
       "text": "At least 70% of regional coordinators and project managers report satisfaction with the new feature on a post-release survey.",
-      "note": "Satisfaction criteria were agreed upon to measure the effectiveness of the new system through user feedback post-release, aligning with operational goals.",
+      "note": "",
       "refs": []
     },
     {
       "id": "K2",
       "text": "Within three months of launch, at least 80% of contacts in the system should be assigned an influence score.",
-      "note": "Setting a target for influence score assignments ensures accountability for timely and effective implementation.",
+      "note": "",
       "refs": []
     }
   ],

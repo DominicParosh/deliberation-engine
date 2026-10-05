@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Automated logging of meetings with government officials in the CRM system.",
-      "note": "Automated logging of meetings with government officials will be implemented to maintain accurate engagement histories as requested by users.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "User notifications will be sent to confirm successful logging of each meeting.",
-      "note": "User notifications for confirming successful logging were added to enhance user experience and accountability.",
+      "note": "",
       "refs": []
     }
   ],
@@ -53,13 +53,13 @@
     {
       "id": "S3",
       "text": "Users will receive notifications via the system to confirm the logging of their meetings.",
-      "note": "Notifications confirming meeting loggings were integrated into the system to ensure users are informed about the status of their entries.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "All logged meetings will be associated with the relevant government officials' profiles in the CRM.",
-      "note": "Linking logged meetings to government officials' profiles in the CRM supports easier tracking and engagement monitoring.",
+      "note": "",
       "refs": []
     },
     {
@@ -92,13 +92,13 @@
     {
       "id": "X2",
       "text": "Integration with external calendar systems for automatic meeting logging is not included in this release.",
-      "note": "Integration with external calendar systems was deemed out of scope, as it was not essential for the initial release of the logging feature.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "User role management and security clearance updates are outside the scope of this release.",
-      "note": "User role management updates remain outside this release, as they are governed by separate organizational processes.",
+      "note": "",
       "refs": []
     }
   ],
@@ -108,7 +108,7 @@
     {
       "id": "A1",
       "text": "Users will have access to a designated interface for entering meeting details in the CRM, which the proposal depends on.",
-      "note": "The assumption regarding user access to a designated interface was retained, as it is necessary for the feature to function as intended.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -135,7 +135,7 @@
     {
       "id": "A3",
       "text": "The organization has existing policies regarding data sensitivity and confidentiality, which will dictate how meeting details are logged and accessed.",
-      "note": "Policies regarding data sensitivity and confidentiality were acknowledged as vital for determining access and logging strategies, but more specification is needed on documentation processes.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -145,13 +145,13 @@
     {
       "id": "D1",
       "text": "\"Automated logging\" means the functionality within the CRM that captures meeting details without manual input once the meeting is scheduled and confirmed.",
-      "note": "The definition of 'automated logging' was kept concise to ensure understanding of the functionality's core purpose.",
+      "note": "",
       "refs": []
     },
     {
       "id": "D2",
       "text": "\"Meeting details\" means the specific information regarding the meeting, including the date, time, attendees (individuals involved), and an outline of key discussion points.",
-      "note": "Defining 'meeting details' ensures all users have a consistent understanding of what information should be logged, enhancing clarity.",
+      "note": "",
       "refs": []
     }
   ],

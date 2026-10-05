@@ -25,13 +25,13 @@
     {
       "id": "V1",
       "text": "Project managers will have access to a comprehensive engagement history of each country.",
-      "note": "Project managers will have access to a comprehensive engagement history of each country, addressing the need for better data access for planning new missions.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "The system will display past project affiliations and associated contacts for each country.",
-      "note": "The system will display past project affiliations and associated contacts for each country, providing context and continuity for project managers.",
+      "note": "",
       "refs": []
     }
   ],
@@ -39,7 +39,7 @@
     {
       "id": "S1",
       "text": "Engagement history means all recorded interactions with a country, including meetings, communications, project details, and mission specifics.",
-      "note": "Engagement history is defined to include all recorded interactions with a country, ensuring project managers have complete insights into past engagements.",
+      "note": "",
       "refs": []
     },
     {
@@ -53,7 +53,7 @@
     {
       "id": "S3",
       "text": "The history will include data from the last five years of engagement with the country.",
-      "note": "Limiting the history to data from the last five years ensures relevance and manageability of the information provided to project managers.",
+      "note": "",
       "refs": []
     },
     {
@@ -67,13 +67,13 @@
     {
       "id": "S5",
       "text": "Project managers will be able to filter the engagement history by date, type of engagement (meeting, email, etc.), and involved contacts.",
-      "note": "Filtering capabilities allow project managers to efficiently navigate through historical data, focusing on specific types of interactions and timeframes.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S6",
       "text": "The proposal includes a user interface that allows project managers to easily navigate and read the engagement history.",
-      "note": "A user-friendly interface is included to enhance usability, making it easier for project managers to access the engagement history.",
+      "note": "",
       "refs": []
     }
   ],
@@ -89,13 +89,13 @@
     {
       "id": "X2",
       "text": "The feature will not integrate with external systems or databases that provide historical data outside of the current CRM records.",
-      "note": "The decision not to integrate with external systems is made to maintain focus on the current CRM records and streamline project management functions.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "The display of engagement history will not include sensitive data points that require higher security clearance.",
-      "note": "Exclusion of sensitive data points is vital for compliance and user security, addressing significant confidentiality concerns raised during discussions.",
+      "note": "",
       "refs": []
     }
   ],
@@ -128,7 +128,7 @@
     {
       "id": "A2",
       "text": "All relevant engagement history data is currently being recorded and maintained within the Government CRM.",
-      "note": "Assuming all engagement data is appropriately recorded ensures that the feature has a comprehensive database to work with.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -136,7 +136,7 @@
     {
       "id": "A3",
       "text": "User interface elements for the engagement history feature can be developed within the timeframe of this release.",
-      "note": "The technical feasibility of developing the user interface within the required timeframe aligns with project goals and resource capabilities.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -144,7 +144,7 @@
     {
       "id": "A4",
       "text": "The technical infrastructure can support the filtering and display requirements outlined in this proposal.",
-      "note": "Technical infrastructure supporting the filtering and display requirements is presumed adequate to meet the outlined expectations of this feature.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -162,7 +162,7 @@
     {
       "id": "D2",
       "text": "\"Project manager\" means a user role that consists of personnel responsible for overseeing projects and missions within the Government CRM.",
-      "note": "Defining 'project manager' helps outline user roles clearly within the system and aligns with operational structure.",
+      "note": "",
       "refs": []
     },
     {
@@ -178,7 +178,7 @@
     {
       "id": "K1",
       "text": "By the end of the quarter, 80% of project managers will successfully access and review a country's full engagement history within the system, as measured by user feedback surveys.",
-      "note": "The success criterion ensures that the implementation of the feature meets user needs and gauges its acceptance and functionality by measuring access and reviews from project managers.",
+      "note": "",
       "refs": []
     }
   ],

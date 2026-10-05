@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable project managers to view the complete history of engagement with selected countries.",
-      "note": "Enable project managers to view engagement history to support informed decision-making about new missions.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Ensure data on engagement history is presented in a clear, accessible format.",
-      "note": "Ensure that the data is presented clearly to enhance usability for project managers.",
+      "note": "",
       "refs": []
     }
   ],
@@ -43,13 +43,13 @@
     {
       "id": "S2",
       "text": "Display engagement history that includes past projects, meeting notes, and communications related to the country.",
-      "note": "Engagement history will include detailed records of past projects and communications to provide full context.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Implement a filter option that allows project managers to search engagement history by date range or project type.",
-      "note": "Implementing filters allows project managers to customize their search, improving efficiency.",
+      "note": "",
       "refs": []
     },
     {
@@ -65,19 +65,19 @@
     {
       "id": "X1",
       "text": "Do not include a feature for editing engagement history records in this release.",
-      "note": "Editing engagement records is deemed unnecessary and could pose data integrity risks if included in this release.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "Do not provide analytics or insights derived from engagement history data in this release.",
-      "note": "Analytics from the engagement data are excluded to focus on core access features without complicating initial build.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "Do not include integration with external databases or systems to fetch additional records.",
-      "note": "Integration with external systems is not planned for this release to prevent complications in data handling.",
+      "note": "",
       "refs": []
     }
   ],
@@ -117,7 +117,7 @@
     {
       "id": "A3",
       "text": "Users have prior knowledge of how to navigate to the engagement history section in the CRM.",
-      "note": "Users are expected to know how to navigate the CRM, ensuring they can efficiently locate the engagement history.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -135,7 +135,7 @@
     {
       "id": "D2",
       "text": "\"Project managers\" means individuals responsible for planning and executing missions who require full context regarding a country's past engagements to make informed decisions.",
-      "note": "Clarifies that 'project managers' are defined as individuals involved in mission planning requiring historical context.",
+      "note": "",
       "refs": []
     }
   ],
@@ -143,7 +143,7 @@
     {
       "id": "K1",
       "text": "Achieve an 80% satisfaction rate from project managers regarding accessibility and clarity of engagement history within the first three months of release.",
-      "note": "Success will be measured by a satisfaction rate, ensuring the release meets users' needs for accessing engagement history effectively.",
+      "note": "",
       "refs": []
     }
   ],

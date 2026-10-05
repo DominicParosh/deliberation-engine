@@ -14,8 +14,7 @@ This release will improve the tracking and management of primary contact persons
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Enable users to track and manage primary contact persons for each country.  
-  This commitment to enable tracking and management of primary contacts is essential to improve operational communication with government counterparts.
+- **V1** Enable users to track and manage primary contact persons for each country.
 - **V2** Provide an intuitive interface for users to update and view contact information easily.
 
 **In scope**

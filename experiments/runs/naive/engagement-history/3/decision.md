@@ -14,8 +14,7 @@ The feature will allow project managers to access a detailed engagement history 
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers can access a detailed engagement history for each country.  
-  Project managers can access a detailed engagement history for each country, which is key for informed decision-making.
+- **V1** Project managers can access a detailed engagement history for each country.
 
 **In scope**
 
@@ -27,8 +26,7 @@ The feature will allow project managers to access a detailed engagement history 
   Access to engagement history is logged for compliance tracking, enhancing transparency and accountability. _(C4, C12)_
 - **S4** The engagement history will be retained for a period of 6 years from the date of the last interaction, ensuring compliance with data retention policies. After this period, data will be archived or deleted according to the organizational data handling policy.  
   A clear retention period of six years for engagement history was established to comply with data handling policies. _(C13)_
-- **S5** Users will have the ability to filter the engagement history by date range, contact, or project to find specific information quickly.  
-  Users will have filtering capabilities to quickly find specific engagement information by date range, contact, or project.
+- **S5** Users will have the ability to filter the engagement history by date range, contact, or project to find specific information quickly.
 - **S6** Access to engagement history will automatically be revoked when a Project Manager changes roles or leaves the organization. The HR department is responsible for managing and revoking access rights, ensuring that this is completed within 24 hours of the change being processed to prevent unauthorized access to sensitive data.  
   Access revocation processes linked to role changes or employee exit have been defined, with HR responsible for timely management. _(C2, C10)_
 - **S7** The system shall be designed to retrieve engagement history data for five years in under 5 seconds for 95% of requests, utilizing optimized database queries and caching mechanisms to ensure efficiency.  
@@ -38,12 +36,10 @@ The feature will allow project managers to access a detailed engagement history 
 
 **Out of scope for this release**
 
-- **X1** This release will not include the ability for project managers to edit engagement history.  
-  Project managers will not be able to edit engagement history, maintaining the integrity of records.
+- **X1** This release will not include the ability for project managers to edit engagement history.
 - **X2** This release does not allow access to sensitive or confidential notes associated with engagements unless the user has explicit permissions, which must be validated based on their role and current permissions.  
   Project managers will not have access to confidential notes unless explicitly permitted, ensuring confidentiality is upheld.
-- **X3** The integration with external systems for historical data retrieval is not included in this release.  
-  Integration with external systems for historical data retrieval was not included in this release to focus on internal processes.
+- **X3** The integration with external systems for historical data retrieval is not included in this release.
 
 **Rejected during deliberation**
 
@@ -62,13 +58,11 @@ The feature will allow project managers to access a detailed engagement history 
 
 - **D1** Engagement history means a chronological record of all interactions with contacts from the country, including meeting dates, participants, topics discussed, and action items. This is essential for project managers to understand prior dealings.  
   Engagement history is defined to provide essential context for project managers, encompassing various interaction records.
-- **D2** Project Manager means a user who has been assigned the role of 'Project Manager' in the Government CRM system, with the ability to manage projects and access related data.  
-  Project Manager is explicitly defined to clarify user capabilities within the system.
+- **D2** Project Manager means a user who has been assigned the role of 'Project Manager' in the Government CRM system, with the ability to manage projects and access related data.
 
 ## Success criteria
 
-- **K1** At least 80% of project managers report that they can successfully access and utilize the engagement history before initiating a new mission, measured through a user satisfaction survey conducted after the implementation.  
-  A success metric has been defined to ensure project managers can effectively access and utilize the engagement history.
+- **K1** At least 80% of project managers report that they can successfully access and utilize the engagement history before initiating a new mission, measured through a user satisfaction survey conducted after the implementation.
 - **K2** The expected response time for retrieving a five-year engagement history will be defined as no longer than 5 seconds for 95% of all requests, measured through system logging and usage statistics after deployment.  
   A performance target ensures that retrieval of five-year histories meets user satisfaction requirements.
 

@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Enable tracking of primary contacts for each member country.",
-      "note": "Core commitment to track primary contacts is essential for effective communication and coordination within member countries.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Provide engagement history linked to identified contacts.",
-      "note": "Providing engagement history linked to contacts is vital to ensure users have context for each interaction.",
+      "note": "",
       "refs": []
     }
   ],
@@ -37,7 +37,7 @@
     {
       "id": "S1",
       "text": "Implement a searchable contact list feature that allows users to filter contacts by country, role, and project affiliation.",
-      "note": "The searchable contact list feature improves usability by allowing filtering based on key criteria, enhancing efficiency.",
+      "note": "",
       "refs": []
     },
     {
@@ -52,13 +52,13 @@
     {
       "id": "S3",
       "text": "Ensure that engagement history is accessible for each contact displayed in the system.",
-      "note": "Ensuring accessibility of engagement history for each contact aligns with the core objectives of the feature.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S4",
       "text": "Provide user training materials to regional coordinators and project managers on using the new contact tracking features.",
-      "note": "User training materials will help ensure effective adoption of the new features by users.",
+      "note": "",
       "refs": []
     },
     {
@@ -74,19 +74,19 @@
     {
       "id": "X1",
       "text": "This release will not include automatic alerts or notifications for changes in contact roles.",
-      "note": "Automatic alerts for changes in contact roles are considered out of scope to keep the initial implementation focused and manageable.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X2",
       "text": "This release will not incorporate direct integration with external databases or CRM systems.",
-      "note": "Integration with external systems is deemed unnecessary for this specific enhancement and complicating factors may arise.",
+      "note": "",
       "refs": []
     },
     {
       "id": "X3",
       "text": "This release will not change the underlying security protocols governing data access.",
-      "note": "No alterations to security protocols are planned to maintain stability during the implementation phase.",
+      "note": "",
       "refs": []
     }
   ],
@@ -96,7 +96,7 @@
     {
       "id": "A1",
       "text": "Users will have the necessary permissions to access and modify contact information based on their roles in the organization.",
-      "note": "It is assumed this permission structure will be adequate for role-based access, enabling appropriate data handling by users.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -104,7 +104,7 @@
     {
       "id": "A2",
       "text": "It is assumed that current user training on existing processes will be sufficient for using the new features.",
-      "note": "Assuming existing user training is sufficient allows for a streamlined rollout instead of developing new training materials from scratch.",
+      "note": "",
       "refs": [],
       "kept": true,
       "challenges": []
@@ -151,7 +151,7 @@
     {
       "id": "D3",
       "text": "'searchable contact list' means a feature that allows users to filter and locate contacts based on specific criteria such as country, role, or project.",
-      "note": "The definition of 'searchable contact list' solidifies expectations around this feature's capabilities, aiding design principles.",
+      "note": "",
       "refs": []
     }
   ],

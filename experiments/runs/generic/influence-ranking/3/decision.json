@@ -23,13 +23,13 @@
     {
       "id": "V1",
       "text": "Users will be able to assign an influence score to each contact within the Government CRM.",
-      "note": "Users will be able to assign influence scores to contacts to prioritize engagements based on defined permissions and training protocols.",
+      "note": "",
       "refs": []
     },
     {
       "id": "V2",
       "text": "Users will see a prioritized list of contacts based on their influence scores.",
-      "note": "A prioritized list of contacts based on influence scores will be displayed to help users identify key contacts quickly.",
+      "note": "",
       "refs": []
     },
     {
@@ -51,13 +51,13 @@
     {
       "id": "S2",
       "text": "The contact list will display the assigned influence scores alongside contact names to help users quickly identify influential contacts.",
-      "note": "The assigned influence scores will be displayed to assist in quickly determining which contacts are most important to engage with.",
+      "note": "",
       "refs": []
     },
     {
       "id": "S3",
       "text": "Users will have the ability to filter the contact list based on influence scores to prioritize engagements.",
-      "note": "Filtering options enable users to prioritize their engagements based on the influence scores assigned.",
+      "note": "",
       "refs": []
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "X2",
       "text": "This release will not change existing contact record fields outside the influence scoring.",
-      "note": "This release will not change existing contact record fields, focusing solely on introducing the influence scoring feature.",
+      "note": "",
       "refs": []
     }
   ],
@@ -91,10 +91,8 @@
     {
       "id": "A1",
       "text": "Users are familiar with the concept of influence scoring and understand how to use a scoring system; this knowledge is required for effective use of the feature.",
-      "note": "Users need to be familiar with influence scoring to effectively utilize the feature, ensuring proper engagement prioritization.",
-      "refs": [
-        "C4"
-      ],
+      "note": "",
+      "refs": [],
       "kept": true,
       "challenges": []
     },
@@ -141,7 +139,7 @@
     {
       "id": "D2",
       "text": "\"prioritized list\" means an ordered list of contacts displayed in the Government CRM that reflects their influence scores, with the highest scores appearing first.",
-      "note": "'Prioritized list' is defined as an ordered listing of contacts based on influence scores in the CRM, promoting effective engagement strategies.",
+      "note": "",
       "refs": []
     }
   ],

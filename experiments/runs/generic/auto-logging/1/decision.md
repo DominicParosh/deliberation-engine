@@ -14,8 +14,7 @@ This release will introduce an automated logging feature for meetings with gover
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Automatically log meetings with government officials in the system.  
-  This commitment reflects the need to automate the logging of meetings to prevent loss of engagement history.
+- **V1** Automatically log meetings with government officials in the system.
 
 **In scope**
 
@@ -32,10 +31,8 @@ This release will introduce an automated logging feature for meetings with gover
 
 - **X1** The feature will not include logging meetings that are informal or not formally scheduled by regional coordinators and project managers, such as casual discussions without a defined purpose.  
   Informal meetings are excluded from logging to maintain clarity and relevance in engagement history. _(C3)_
-- **X2** The feature will not integrate with other calendar or scheduling tools in this release.  
-  Integration with other tools is excluded to keep the release focused on the core functionality.
-- **X3** This release does not include notifications or alerts related to the logged meetings.  
-  Notifications related to logged meetings are out of scope at this time to prioritize essential features.
+- **X2** The feature will not integrate with other calendar or scheduling tools in this release.
+- **X3** This release does not include notifications or alerts related to the logged meetings.
 
 **Rejected during deliberation**
 
@@ -51,10 +48,8 @@ This release will introduce an automated logging feature for meetings with gover
 
 ## Definitions
 
-- **D1** "Automatically log" means that the system will capture and store meeting information without manual input required from the user at the time of the meeting.  
-  The definition clarifies the level of automation in meeting logs to set expectations for users.
-- **D2** "Engagement history" means the record of all interactions with government officials, including meetings, contacts, and activities, as stored in the CRM.  
-  Defining 'engagement history' emphasizes the importance of maintaining detailed records of interactions.
+- **D1** "Automatically log" means that the system will capture and store meeting information without manual input required from the user at the time of the meeting.
+- **D2** "Engagement history" means the record of all interactions with government officials, including meetings, contacts, and activities, as stored in the CRM.
 - **D3** "Formal scheduled meeting" means a meeting that is planned in advance, has a clear agenda, and is documented in the CRM system or a similar scheduling platform, ensuring that it is recognized as an official engagement.  
   The revised definition of formal meetings reduces the risk of logging informal discussions, clarifying what can be logged. _(C9)_
 

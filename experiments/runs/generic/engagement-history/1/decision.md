@@ -14,17 +14,14 @@ The upcoming release will enable project managers to view the complete engagemen
 
 **Core commitments** (only the stakeholder can drop these)
 
-- **V1** Project managers can view the complete engagement history for each country they are responsible for.  
-  Project managers will be allowed to view the complete engagement history to provide necessary context for mission planning.
+- **V1** Project managers can view the complete engagement history for each country they are responsible for.
 
 **In scope**
 
 - **S1** A feature will be developed to display the full engagement history, and protocols will be implemented to regularly identify and resolve any duplicate or inaccurate engagement records before presenting them to project managers.  
   The feature will incorporate protocols to manage duplicate or inaccurate engagement records to maintain data quality for project managers. _(C6)_
-- **S2** Access to the engagement history will be granted specifically to users with the role of project manager.  
-  Access will be restricted to users with the project manager role, ensuring that engagement data is viewed only by authorized personnel.
-- **S3** The engagement history will include records from the last 5 years to ensure recent context is available.  
-  Restricting the engagement history to the last 5 years will ensure that relevant and recent context is available for project managers.
+- **S2** Access to the engagement history will be granted specifically to users with the role of project manager.
+- **S3** The engagement history will include records from the last 5 years to ensure recent context is available.
 - **S4** The feature will ensure that only authorized project managers can view sensitive engagement history data, and that access rights for project managers will be revoked automatically within 24 hours of a role change or exit from the organization, to prevent unauthorized access.  
   Clarifications added to specify how access control measures will prevent unauthorized access to sensitive engagement data, thereby addressing previously raised concerns. _(C1, C2)_
 - **S5** The system will include mechanisms to verify and validate the accuracy and completeness of engagement history records prior to being made accessible to project managers, ensuring that all available data from the last 5 years is both accurate and complete.  
@@ -52,17 +49,14 @@ The upcoming release will enable project managers to view the complete engagemen
 
 ## Definitions
 
-- **D1** "engagement history" means the record of all interactions and communications between the organization and a country, including mission details, contact records, meeting notes, and any documented correspondence.  
-  The definition of 'engagement history' was accepted to clarify the scope of interactions included in the records.
-- **D2** "project manager" means an individual within the organization with the designated responsibility for overseeing missions and projects related to a specific country or region.  
-  The definition of 'project manager' was accepted to ensure clarity around the responsibilities and permissions associated with this role.
+- **D1** "engagement history" means the record of all interactions and communications between the organization and a country, including mission details, contact records, meeting notes, and any documented correspondence.
+- **D2** "project manager" means an individual within the organization with the designated responsibility for overseeing missions and projects related to a specific country or region.
 - **D3** "sensitive engagement history data" means any information that contains personal, confidential, or classified elements, including but not limited to negotiation records, personal-identifiable information of contacts, and internal communications, which are subject to organizational confidentiality rules.  
   The revised definition of 'sensitive engagement history data' clarifies what information is subject to confidentiality, helping to avoid misinterpretation. _(C3)_
 
 ## Success criteria
 
-- **K1** Within three months of the feature release, at least 80% of project managers report satisfaction with their ability to access and use the engagement history feature, measured via a user feedback survey.  
-  The success criterion focuses on user satisfaction post-release, establishing a clear metric to evaluate the feature's effectiveness.
+- **K1** Within three months of the feature release, at least 80% of project managers report satisfaction with their ability to access and use the engagement history feature, measured via a user feedback survey.
 
 ## Open questions for humans
 
